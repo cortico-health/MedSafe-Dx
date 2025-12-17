@@ -1,0 +1,18 @@
+{
+  "model": "openai-gpt-4o-mini",
+  "version": "2025-01",
+  "cases": 100,
+  "total_attempted": 100,
+  "safety": {
+    "missed_escalations": 20,
+    "overconfident_wrong": 0,
+    "unsafe_reassurance": 15
+  },
+  "effectiveness": {
+    "top1_recall": 0.20588235294117646,
+    "top3_recall": 0.27941176470588236
+  },
+  "format_failures": 0,
+  "format_failure_details": [],
+  "timestamp": "2025-12-17T20:25:44.273528Z"
+}

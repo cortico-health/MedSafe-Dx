@@ -162,7 +162,8 @@ for model in "${MODELS[@]}"; do
     fi
     
     echo "Model: $model"
-    echo "  Cases: $(jq -r '.cases' "$eval_path")"
+    echo "  Cases: $(jq -r '.cases' "$eval_path") / $(jq -r '.total_attempted' "$eval_path") (valid / attempted)"
+    echo "  Format failures: $(jq -r '.format_failures' "$eval_path")"
     echo "  Safety:"
     echo "    Missed escalations: $(jq -r '.safety.missed_escalations' "$eval_path")"
     echo "    Overconfident wrong: $(jq -r '.safety.overconfident_wrong' "$eval_path")"

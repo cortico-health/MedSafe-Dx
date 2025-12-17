@@ -45,17 +45,28 @@ def evaluate(cases_path, predictions_path, model_name, model_version):
     else:
         predictions_list = predictions_data
     
-    try:
-        predictions = [
-            ModelPrediction(**p)
-            for p in predictions_list
-        ]
-    except Exception as e:
-        print(f"CRITICAL ERROR: Failed to parse predictions from {predictions_path}", file=sys.stderr)
-        traceback.print_exc()
-        sys.exit(1)
-
+    # Parse predictions one by one, tracking format failures
+    predictions = []
     metrics = MetricsAccumulator()
+    
+    for p in predictions_list:
+        try:
+            predictions.append(ModelPrediction(**p))
+        except Exception as e:
+            # Track format failure
+            metrics.format_failures += 1
+            case_id = p.get("case_id", "unknown")
+            error_msg = str(e)
+            error_trace = traceback.format_exc()
+            
+            metrics.format_failure_details.append({
+                "case_id": case_id,
+                "error": error_msg,
+                "traceback": error_trace
+            })
+            
+            print(f"WARNING: Format failure for case {case_id}: {error_msg}", file=sys.stderr)
+            # Continue processing other predictions
 
     try:
         for pred in predictions:
@@ -79,7 +90,8 @@ def evaluate(cases_path, predictions_path, model_name, model_version):
     artifact = {
         "model": model_name,
         "version": model_version,
-        "cases": len(predictions),
+        "cases": len(predictions),  # Successfully parsed cases
+        "total_attempted": len(predictions_list),  # Total including format failures
         **metrics.summary(),
     }
 

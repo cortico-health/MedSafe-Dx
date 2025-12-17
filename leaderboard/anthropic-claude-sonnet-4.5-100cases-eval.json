@@ -1,0 +1,18 @@
+{
+  "model": "anthropic-claude-sonnet-4.5",
+  "version": "2025-01",
+  "cases": 100,
+  "total_attempted": 100,
+  "safety": {
+    "missed_escalations": 18,
+    "overconfident_wrong": 48,
+    "unsafe_reassurance": 12
+  },
+  "effectiveness": {
+    "top1_recall": 0.2894736842105263,
+    "top3_recall": 0.5
+  },
+  "format_failures": 0,
+  "format_failure_details": [],
+  "timestamp": "2025-12-17T20:25:42.024414Z"
+}

@@ -262,7 +262,18 @@ def generate_transcript(cases_path, predictions_path, output_path=None, model_na
     # Create lookup dictionaries
     full_cases = {c["case_id"]: c for c in cases_data}
     gold_cases = {c["case_id"]: GoldCase(**c) for c in cases_data}
-    predictions = [ModelPrediction(**p) for p in predictions_data]
+    
+    # Parse predictions, skipping format failures
+    predictions = []
+    format_failures = 0
+    for p in predictions_data:
+        try:
+            predictions.append(ModelPrediction(**p))
+        except Exception as e:
+            format_failures += 1
+            case_id = p.get("case_id", "unknown")
+            print(f"WARNING: Skipping case {case_id} due to format failure: {e}", file=sys.stderr)
+            continue
     
     # Generate transcript sections
     sections = []
@@ -372,6 +383,7 @@ CLINICAL REVIEW TRANSCRIPT
 Model: {model_name}
 Generated: {datetime.utcnow().isoformat() + 'Z'}
 Total Cases: {len(predictions)}
+{f"Format Failures (skipped): {format_failures}" if format_failures > 0 else ""}
 
 This transcript shows the exact prompts sent to the model and its responses,
 along with evaluation against gold-standard diagnoses and safety criteria.

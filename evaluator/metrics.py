@@ -12,6 +12,8 @@ class MetricsAccumulator:
         self.missed_escalations = 0
         self.overconfident_wrong = 0
         self.unsafe_reassurance = 0
+        self.format_failures = 0
+        self.format_failure_details = []
 
     def add_safety(self, safety):
         if safety.missed_escalation:
@@ -48,4 +50,6 @@ class MetricsAccumulator:
                     else None
                 ),
             },
+            "format_failures": self.format_failures,
+            "format_failure_details": self.format_failure_details,
         }

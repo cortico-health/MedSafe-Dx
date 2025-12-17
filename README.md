@@ -1,144 +1,13 @@
-# Clinician Diagnostic Safety Benchmark
+# SafeDiag-Bench
+
+## Clinical Diagnostic Assistant Safety Benchmark
 
 A safety-first benchmark for evaluating large language models (LLMs) used as **clinician-facing diagnostic decision support tools**.
 
-This benchmark explicitly measures:
+> 📖 **[Read the Full Methodology](methodology.html)**  
+> For a detailed explanation of the safety testing framework, scoring logic, and design principles, please see our [methodology page](methodology.html).
 
-* **Diagnostic usefulness**
-* **Safety-critical escalation behavior**
-
-Unsafe behavior is surfaced, not averaged away.
-
-This benchmark builds on the public DDXPlus dataset and evaluates safety-critical diagnostic behaviors that are robust to training exposure, rather than memorization or factual recall.
-
----
-
-## Why this benchmark exists
-
-Most medical LLM benchmarks focus on **knowledge recall** (e.g. exam questions).
-That is insufficient for real clinical use.
-
-In practice, diagnostic support tools must:
-
-* Escalate when delayed care poses risk
-* Avoid false reassurance
-* Express uncertainty appropriately
-* Be useful *only when they are safe*
-
-This benchmark is designed around those realities.
-
----
-
-## What this benchmark evaluates
-
-### ✅ Included
-
-* Ranked differential diagnosis generation (ICD-10)
-* Escalation decisions for potentially dangerous presentations
-* Safety failures (missed escalation, overconfidence, unsafe reassurance)
-
-### ❌ Explicitly excluded
-
-* Treatment recommendations
-* Prescribing
-* Prognosis
-* Final diagnosis
-* Patient-facing communication
-
-The benchmark maps to SaMD use cases that **inform clinical management**, not autonomous decision-making.
-
----
-
-## Task overview
-
-**Task name:**
-**Symptom-to-Differential with Safety Escalation (S2D-SE)**
-
-Given a structured patient presentation, a model must:
-
-1. Output a ranked list of **five ICD-10 diagnoses**
-2. Decide whether **immediate escalation** is required
-3. Indicate **confidence vs uncertainty**
-
-All outputs are **machine-scorable**. No free text.
-
-Full details are defined in [`spec/v0.md`](spec/v0.md).
-
----
-
-## Safety-first scoring
-
-This benchmark uses a **hard safety gate**.
-
-### Safety failures (never averaged away)
-
-* Missed escalation when escalation is required
-* Overconfident wrong diagnosis
-* Unsafe reassurance in ambiguous cases
-
-### Effectiveness metrics
-
-* Top-3 recall
-* Top-1 recall
-
-Accuracy is reported **only for cases that pass safety checks**.
-
-Models are ranked by:
-
-1. Fewest safety failures
-2. Lowest missed-escalation rate
-3. Diagnostic accuracy (secondary)
-
----
-
-## Dataset
-
-* Based on **DDXPlus** (adult-only, filtered subset)
-* Original diagnosis labels preserved
-* Escalation labels derived deterministically from disease severity metadata
-
-This ensures:
-
-* Reproducibility
-* Comparability with prior work
-* Transparent safety logic
-
----
-
-## Evaluation workflow
-
-1. **Run evaluator** on a frozen dataset
-2. **Emit immutable JSON artifacts** per model
-3. **Visualize safety + accuracy** in a dashboard
-
-There is:
-
-* No database
-* No hidden recomputation
-* No mutable results
-
-Artifacts are the source of truth.
-
----
-
-## Example result artifact
-
-```json
-{
-  "model": "example-llm",
-  "version": "2025-01",
-  "cases": 500,
-  "safety": {
-    "missed_escalations": 0,
-    "overconfident_wrong": 2,
-    "unsafe_reassurance": 1
-  },
-  "effectiveness": {
-    "top3_recall": 0.71,
-    "top1_recall": 0.43
-  }
-}
-```
+This benchmark explicitly measures **Diagnostic usefulness** and **Safety-critical escalation behavior**. Unsafe behavior is surfaced, not averaged away.
 
 ---
 
@@ -193,6 +62,12 @@ docker compose run --rm evaluator python3 -m evaluator.cli \
   --model-name "claude-3.5-sonnet" \
   --model-version "2025-01" \
   --out results/artifacts/claude-eval.json
+```
+
+or, use this utility that wraps the openrouter runner for several models at once - 100 cases each.
+
+```
+./scripts/test_models.sh 100 anthropic/claude-haiku-4.5 anthropic/claude-sonnet-4.5 openai/gpt-oss-120b google/gemini-2.5-flash-lite deepseek/deepseek-chat-v3-0324 openai/gpt-4o-mini
 ```
 
 #### 4. Review results
@@ -263,67 +138,6 @@ To contribute results:
 Results are curated to ensure integrity.
 
 ---
-
-## Reproducibility guarantees
-
-* Evaluation datasets are frozen per version
-* Scoring logic is deterministic
-* Artifacts are immutable
-* API never recomputes metrics
-
-If results change, **the version changes**.
-
----
-
-## What this benchmark is not
-
-* A leaderboard optimized for model marketing
-* A free-form medical advice evaluation
-* A replacement for clinical trials
-
-It is a **safety-gated diagnostic support benchmark**.
-
----
-
-## Design principles
-
-* Safety is emphasized
-* Outputs are structured and auditable
-* Versioning preserves prior results
-
-### Prompt design: minimal safety guidance is intentional
-
-The system prompt used during inference deliberately avoids explicit safety instructions (e.g., "when in doubt, escalate" or "err on the side of caution"). This is a conscious design choice.
-
-**Rationale:** In real clinical deployments, end-user clinicians query diagnostic tools with patient data—they do not craft safety-aware prompts. If a model only behaves safely when explicitly instructed to prioritize safety, that represents fragile safety behavior, not inherent safety.
-
-This benchmark tests whether models are **safe by default**, not whether they can follow safety instructions when prompted.
-
----
-
-
-## ⚖️ Training Data Disclosure
-
-This benchmark is built on the public **DDXPlus dataset**. We assume evaluated models may have seen this data during training.
-
-### Why this remains valid
-
-This benchmark evaluates **behavioral safety**, not knowledge recall. Memorizing cases does not solve the safety tasks:
-
-* **Appropriate Escalation:** Determining when a known diagnosis requires immediate care vs routine follow-up.
-* **Safe Uncertainty:** Avoiding false reassurance even when the diagnosis is correct.
-* **Safety Gates:** Accuracy is only scored *after* safety checks are passed.
-
-We consider training on DDXPlus "fair game". Models that optimize only for pattern matching will still fail safety gates.
-
-### Limitations
-
-This benchmark does **not** measure:
-* Generalization to unseen diseases
-* Resistance to memorization
-* Real-world clinical outcomes
-
-It is a controlled test of **safety-critical diagnostic support behaviors**.
 
 ## Status
 

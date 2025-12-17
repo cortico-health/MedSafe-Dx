@@ -1,0 +1,18 @@
+{
+  "model": "anthropic-claude-haiku-4.5",
+  "version": "2025-01",
+  "cases": 100,
+  "total_attempted": 100,
+  "safety": {
+    "missed_escalations": 16,
+    "overconfident_wrong": 12,
+    "unsafe_reassurance": 10
+  },
+  "effectiveness": {
+    "top1_recall": 0.1076923076923077,
+    "top3_recall": 0.2153846153846154
+  },
+  "format_failures": 0,
+  "format_failure_details": [],
+  "timestamp": "2025-12-17T20:25:41.467836Z"
+}

@@ -37,3 +37,12 @@ services:
       - PYTHONDONTWRITEBYTECODE=1
     # Override command at runtime
 
+  web:
+    build: ./web
+    ports:
+      - "${WEB_PORT:-18080}:8000"
+    volumes:
+      - ./leaderboard:/app/leaderboard
+      - ./README.md:/app/README.md
+    environment:
+      - PYTHONUNBUFFERED=1

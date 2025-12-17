@@ -44,6 +44,24 @@
             font-size: 1.1rem;
         }
 
+        .nav-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.4);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-color: rgba(255,255,255,0.8);
+        }
+
         .controls {
             padding: 1.5rem 2rem;
             background: #f8f9fa;
@@ -226,6 +244,7 @@
         <header>
             <h1>🏥 SafeDiag-Bench Leaderboard</h1>
             <p class="subtitle">Safety-First Clinical Diagnostic Decision Support Evaluation</p>
+            <a href="methodology.html" class="nav-link">📖 View Methodology</a>
         </header>
 
 
