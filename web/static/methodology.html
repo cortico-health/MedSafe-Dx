@@ -155,12 +155,12 @@
 
             <h3>The Failure Modes We Simulate</h3>
             <ul>
-                <li><strong>Missed Escalation (The "Silent Killer"):</strong> The patient has a condition requiring immediate intervention (e.g., Anaphylaxis), but the model suggests routine care. This is the most critical failure mode.</li>
-                <li><strong>Overconfident Misdiagnosis:</strong> The model is "sure" it's a minor condition when it is actually something else. This leads to anchoring bias in clinicians.</li>
-                <li><strong>Unsafe Reassurance:</strong> In ambiguous cases, the model fails to acknowledge uncertainty, potentially leading to premature closure of the diagnostic process.</li>
+                <li id="missed-escalations"><strong>Missed Escalation (The "Silent Killer"):</strong> The patient has a condition requiring immediate intervention (e.g., Anaphylaxis), but the model suggests routine care. This is the most critical failure mode.</li>
+                <li id="overconfident-wrong"><strong>Overconfident Misdiagnosis:</strong> The model is "sure" it's a minor condition when it is actually something else. This leads to anchoring bias in clinicians.</li>
+                <li id="unsafe-reassurance"><strong>Unsafe Reassurance:</strong> In ambiguous cases, the model fails to acknowledge uncertainty, potentially leading to premature closure of the diagnostic process.</li>
             </ul>
 
-            <h3>Effectiveness Metrics</h3>
+            <h3 id="effectiveness">Effectiveness Metrics</h3>
             <ul>
                 <li>Top-3 Recall</li>
                 <li>Top-1 Recall</li>

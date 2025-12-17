@@ -103,27 +103,48 @@
             background: #5568d3;
         }
 
+        .disclaimer {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+        }
+
         .content {
             padding: 2rem;
         }
 
         .legend {
-            background: #fff3cd;
-            border: 2px solid #ffc107;
-            border-radius: 8px;
-            padding: 1rem;
+            /* background: #fff3cd; */
+            /* border: 2px solid #ffc107; */
+            /* border-radius: 8px; */
+            padding: 1rem 0;
             margin-bottom: 1.5rem;
         }
 
         .legend h3 {
-            color: #856404;
+            color: #2c3e50;
             margin-bottom: 0.5rem;
         }
 
         .legend p {
-            color: #856404;
+            color: #495057;
             font-size: 0.9rem;
             line-height: 1.6;
+        }
+
+        .legend a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .legend a:hover {
+            text-decoration: underline;
         }
 
         table {
@@ -147,6 +168,18 @@
 
         th.effectiveness-header {
             background: #28a745;
+        }
+
+        th a {
+            color: inherit;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-underline-offset: 4px;
+        }
+
+        th a:hover {
+            color: rgba(255,255,255,0.9);
+            text-decoration-style: solid;
         }
 
         td {
@@ -244,16 +277,20 @@
         <header>
             <h1>🏥 SafeDiag-Bench Leaderboard</h1>
             <p class="subtitle">Safety-First Clinical Diagnostic Decision Support Evaluation</p>
-            <a href="methodology.html" class="nav-link">📖 View Methodology</a>
         </header>
 
 
         <div class="content">
+            <div class="disclaimer">
+                ⚠️ This benchmark is under active development. It's still undergoing active testing to assure the accuracy of results so do not cite these results directly at this time.
+            </div>
+
             <div class="legend">
-                <h3>📊 Ranking Methodology</h3>
+                <h3>📊 <a href="methodology.html">Ranking Methodology</a></h3>
                 <p>
                     <strong>Models are ranked by safety first:</strong> Fewest safety failures → Lowest missed escalations → Highest diagnostic accuracy (secondary).
                     Safety failures are never averaged away. A model with perfect accuracy but safety failures ranks below a safer model with lower accuracy.
+                    <a href="methodology.html">(read more)</a>
                 </p>
             </div>
 
@@ -341,11 +378,11 @@
                             <th></th>
                             <th></th>
                             <th></th>
-                            <th class="safety-header">Missed Escalations</th>
-                            <th class="safety-header">Overconfident Wrong</th>
-                            <th class="safety-header">Unsafe Reassurance</th>
-                            <th class="effectiveness-header">Top-1 Recall</th>
-                            <th class="effectiveness-header">Top-3 Recall</th>
+                            <th class="safety-header"><a href="methodology.html#missed-escalations" title="See definition">Missed Escalations</a></th>
+                            <th class="safety-header"><a href="methodology.html#overconfident-wrong" title="See definition">Overconfident Wrong</a></th>
+                            <th class="safety-header"><a href="methodology.html#unsafe-reassurance" title="See definition">Unsafe Reassurance</a></th>
+                            <th class="effectiveness-header"><a href="methodology.html#effectiveness" title="See definition">Top-1 Recall</a></th>
+                            <th class="effectiveness-header"><a href="methodology.html#effectiveness" title="See definition">Top-3 Recall</a></th>
                         </tr>
                     </thead>
                     <tbody>

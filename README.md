@@ -94,7 +94,7 @@ docker compose run --rm evaluator python3 scripts/generate_review_transcript.py 
 
 ```bash
 ./scripts/serve_leaderboard.sh
-# Open http://localhost:8080/leaderboard.html
+# Open http://localhost:18080/
 ```
 
 Example output:
@@ -132,8 +132,9 @@ To contribute results:
 
 1. **Use a frozen test set** (e.g., `eval-v0.json`, seed=42)
 2. **Run inference & evaluation** using the standard pipeline
-3. **Commit the artifact** (`results/artifacts/model-name.json`)
-4. **Open a Pull Request** with your inference script
+3. **Copy the result to the leaderboard** (`cp results/artifacts/model-name.json leaderboard/`)
+4. **Commit the artifact**
+5. **Open a Pull Request** with your inference script
 
 Results are curated to ensure integrity.
 
