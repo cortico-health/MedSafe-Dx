@@ -1,0 +1,37 @@
+results
+
+# Raw data files (prevent gaming)
+data/ddxplus_v0
+data/test_sets
+data/section111_valid_icd10_october2025.xlsx
+
+# Generated test sets (user-created with seeds)
+# Can be force-added with `git add -f` if needed for versioning
+data/test_sets/
+
+# Environment variables
+.env
+.env.local
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+

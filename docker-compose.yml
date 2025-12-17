@@ -1,0 +1,39 @@
+services:
+  converter:
+    build: .
+    volumes:
+      - ./data:/app/data
+      - ./results:/app/results
+    user: "1000:1000"
+    command: python data/cases.py
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+
+  inference:
+    build: .
+    volumes:
+      - ./data:/app/data
+      - ./results:/app/results
+      - ./inference:/app/inference
+    user: "1000:1000"
+    env_file:
+      - .env.local
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+    # Override command at runtime
+
+  evaluator:
+    build: .
+    volumes:
+      - ./data:/app/data
+      - ./results:/app/results
+      - ./evaluator:/app/evaluator
+      - ./scripts:/app/scripts
+    user: "1000:1000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+    # Override command at runtime
+

@@ -1,0 +1,18 @@
+# Python dependencies for diagnostic-safety-benchmark
+
+# API clients
+requests>=2.31.0
+
+# Data validation
+pydantic>=2.5.0
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# Optional: FastAPI for serving results
+fastapi>=0.104.0
+uvicorn>=0.24.0
+
+# Data Processing
+pandas>=2.0.0
+openpyxl>=3.1.0

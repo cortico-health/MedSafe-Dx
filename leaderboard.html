@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeDiag-Bench Leaderboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .controls {
+            padding: 1.5rem 2rem;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .file-input-wrapper {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .file-input-wrapper label {
+            font-weight: 600;
+            color: #495057;
+        }
+
+        input[type="file"] {
+            padding: 0.5rem;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #5568d3;
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .legend {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .legend h3 {
+            color: #856404;
+            margin-bottom: 0.5rem;
+        }
+
+        .legend p {
+            color: #856404;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th {
+            background: #495057;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 3px solid #343a40;
+        }
+
+        th.safety-header {
+            background: #dc3545;
+        }
+
+        th.effectiveness-header {
+            background: #28a745;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .rank {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #667eea;
+            width: 60px;
+        }
+
+        .model-name {
+            font-weight: 600;
+            color: #212529;
+        }
+
+        .model-version {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.25rem;
+        }
+
+        .metric {
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .metric.danger {
+            color: #dc3545;
+            font-weight: 700;
+        }
+
+        .metric.success {
+            color: #28a745;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .badge.perfect {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge.warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .badge.danger {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #6c757d;
+        }
+
+        .empty-state h2 {
+            margin-bottom: 1rem;
+            color: #495057;
+        }
+
+        footer {
+            padding: 1.5rem 2rem;
+            background: #f8f9fa;
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .cases-count {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏥 SafeDiag-Bench Leaderboard</h1>
+            <p class="subtitle">Safety-First Clinical Diagnostic Decision Support Evaluation</p>
+        </header>
+
+
+        <div class="content">
+            <div class="legend">
+                <h3>📊 Ranking Methodology</h3>
+                <p>
+                    <strong>Models are ranked by safety first:</strong> Fewest safety failures → Lowest missed escalations → Highest diagnostic accuracy (secondary).
+                    Safety failures are never averaged away. A model with perfect accuracy but safety failures ranks below a safer model with lower accuracy.
+                </p>
+            </div>
+
+            <div id="leaderboard"></div>
+        </div>
+
+        <footer>
+            SafeDiag-Bench v0 | Safety-gated diagnostic support evaluation<br>
+            Copyright © Cortico Health Technologies Inc 2025 | Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>
+        </footer>
+    </div>
+
+    <script>
+        let results = [];
+
+        // Load leaderboard data from aggregated JSON file
+        async function loadLeaderboardData() {
+            try {
+                const response = await fetch('leaderboard-data.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                results = await response.json();
+                renderLeaderboard();
+            } catch (err) {
+                console.error('Error loading leaderboard data:', err);
+                alert('Error loading leaderboard data: ' + err.message);
+            }
+        }
+
+
+        function calculateSafetyScore(safety) {
+            // Lower is better for safety score (fewer failures)
+            return safety.missed_escalations + safety.overconfident_wrong + safety.unsafe_reassurance;
+        }
+
+        function getSafetyBadge(safetyScore) {
+            if (safetyScore === 0) return '<span class="badge perfect">Perfect Safety</span>';
+            if (safetyScore <= 2) return '<span class="badge warning">Minor Issues</span>';
+            return '<span class="badge danger">Safety Concerns</span>';
+        }
+
+        function renderLeaderboard() {
+            const container = document.getElementById('leaderboard');
+            
+            if (results.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <h2>No Results Loaded</h2>
+                        <p>Upload evaluation JSON files or click "Load Default Results" to view the leaderboard.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Sort results by safety score (ascending), then by top-3 recall (descending)
+            const sortedResults = [...results].sort((a, b) => {
+                const safetyA = calculateSafetyScore(a.safety);
+                const safetyB = calculateSafetyScore(b.safety);
+                
+                if (safetyA !== safetyB) return safetyA - safetyB;
+                
+                // If safety scores are equal, sort by missed escalations
+                if (a.safety.missed_escalations !== b.safety.missed_escalations) {
+                    return a.safety.missed_escalations - b.safety.missed_escalations;
+                }
+                
+                // Then by effectiveness
+                const recallA = a.effectiveness.top3_recall || 0;
+                const recallB = b.effectiveness.top3_recall || 0;
+                return recallB - recallA;
+            });
+
+            let html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Model</th>
+                            <th>Cases</th>
+                            <th class="safety-header" colspan="3">Safety Failures (Lower is Better)</th>
+                            <th class="effectiveness-header" colspan="2">Effectiveness</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th class="safety-header">Missed Escalations</th>
+                            <th class="safety-header">Overconfident Wrong</th>
+                            <th class="safety-header">Unsafe Reassurance</th>
+                            <th class="effectiveness-header">Top-1 Recall</th>
+                            <th class="effectiveness-header">Top-3 Recall</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            sortedResults.forEach((result, index) => {
+                const safetyScore = calculateSafetyScore(result.safety);
+                const badge = getSafetyBadge(safetyScore);
+                const top1 = result.effectiveness.top1_recall !== null ? 
+                    (result.effectiveness.top1_recall * 100).toFixed(1) + '%' : 'N/A';
+                const top3 = result.effectiveness.top3_recall !== null ? 
+                    (result.effectiveness.top3_recall * 100).toFixed(1) + '%' : 'N/A';
+
+                html += `
+                    <tr>
+                        <td class="rank">#${index + 1}</td>
+                        <td>
+                            <div class="model-name">${result.model}${badge}</div>
+                            <div class="model-version">v${result.version}</div>
+                        </td>
+                        <td class="cases-count">${result.cases} cases</td>
+                        <td class="metric ${result.safety.missed_escalations > 0 ? 'danger' : 'success'}">
+                            ${result.safety.missed_escalations}
+                        </td>
+                        <td class="metric ${result.safety.overconfident_wrong > 0 ? 'danger' : 'success'}">
+                            ${result.safety.overconfident_wrong}
+                        </td>
+                        <td class="metric ${result.safety.unsafe_reassurance > 0 ? 'danger' : 'success'}">
+                            ${result.safety.unsafe_reassurance}
+                        </td>
+                        <td class="metric">${top1}</td>
+                        <td class="metric">${top3}</td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                    </tbody>
+                </table>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        // Initial load
+        loadLeaderboardData();
+    </script>
+</body>
+</html>
+
