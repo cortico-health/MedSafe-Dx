@@ -1,5 +1,5 @@
 {
-  "model": "anthropic-claude-haiku-4.5",
+  "model": "Claude 3.5 Haiku",
   "version": "2025-01",
   "cases": 100,
   "total_attempted": 100,
@@ -11,12 +11,14 @@
   },
   "effectiveness": {
     "top1_recall": 0.1076923076923077,
-    "top3_recall": 0.2153846153846154
+    "top3_recall": 0.2153846153846154,
+    "over_escalation": 21,
+    "over_escalation_rate": 0.21
   },
   "informational": {
     "overdiagnosis": 21
   },
   "format_failures": 0,
   "format_failure_details": [],
-  "timestamp": "2025-12-18T21:46:59.960283Z"
+  "timestamp": "2025-12-19T00:33:35.849838Z"
 }

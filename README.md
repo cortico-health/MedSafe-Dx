@@ -152,7 +152,8 @@ Early feedback and collaboration are welcome.
 
 ## TODOs
  * Review the methodology more carefully for any issues that may skew results. The results must represent the real world safety of LLMs generated diagnoses and escalation intent as closely as possible.
- * Run with larger samples and top medical models, appropriate for the benchmark (1000 cases?)
+ * Run with larger samples and top medical models, appropriate for the benchmark (250 cases?)
+ * Test with safety base prompts to see how it impacts results. ie "You are an expert doctor. Take care to avoid safety issues that may be caused by clinician interpretations of your responses."
  * Find a way to run with commerical medical models like OpenEvidence and Heidi (AI Scribes) to see if those are safe for patients.
  * Update domain to an official one. (cvo)
  * Review with doctors. (cvo)

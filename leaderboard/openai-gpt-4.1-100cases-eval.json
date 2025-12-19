@@ -11,12 +11,14 @@
   },
   "effectiveness": {
     "top1_recall": 0.2777777777777778,
-    "top3_recall": 0.3333333333333333
+    "top3_recall": 0.3333333333333333,
+    "over_escalation": 12,
+    "over_escalation_rate": 0.12121212121212122
   },
   "informational": {
     "overdiagnosis": 12
   },
   "format_failures": 0,
   "format_failure_details": [],
-  "timestamp": "2025-12-18T23:02:34.620191Z"
+  "timestamp": "2025-12-19T00:32:48.453397Z"
 }

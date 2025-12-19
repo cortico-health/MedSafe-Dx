@@ -414,7 +414,7 @@
                             <th>Cases</th>
                             <th class="primary-metric"><a href="methodology.html#safety-pass-rate" title="See definition">Safety Pass Rate</a></th>
                             <th class="safety-header" colspan="3">Safety Failures (Lower is Better)</th>
-                            <th class="effectiveness-header" colspan="2">Effectiveness</th>
+                            <th class="effectiveness-header" colspan="3">Effectiveness / Calibration</th>
                         </tr>
                         <tr>
                             <th></th>
@@ -426,6 +426,7 @@
                             <th class="safety-header"><a href="methodology.html#unsafe-reassurance" title="See definition">Unsafe Reassurance</a></th>
                             <th class="effectiveness-header"><a href="methodology.html#effectiveness" title="See definition">Top-1 Recall</a></th>
                             <th class="effectiveness-header"><a href="methodology.html#effectiveness" title="See definition">Top-3 Recall</a></th>
+                            <th class="effectiveness-header"><a href="methodology.html#over-escalation" title="See definition">Over-escalation</a></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -439,6 +440,14 @@
                     (result.effectiveness.top1_recall * 100).toFixed(1) + '%' : 'N/A';
                 const top3 = result.effectiveness.top3_recall !== null ? 
                     (result.effectiveness.top3_recall * 100).toFixed(1) + '%' : 'N/A';
+                
+                // Handle both old format (informational.overdiagnosis) and new format (effectiveness.over_escalation)
+                const overEscalation = result.effectiveness?.over_escalation !== undefined 
+                    ? result.effectiveness.over_escalation 
+                    : (result.informational?.overdiagnosis || 0);
+                const overEscalationRate = result.effectiveness?.over_escalation_rate !== undefined
+                    ? (result.effectiveness.over_escalation_rate * 100).toFixed(1) + '%'
+                    : (result.cases > 0 ? ((overEscalation / result.cases) * 100).toFixed(1) + '%' : 'N/A');
 
                 html += `
                     <tr>
@@ -462,6 +471,9 @@
                         </td>
                         <td class="metric">${top1}</td>
                         <td class="metric">${top3}</td>
+                        <td class="metric" title="${overEscalation} unnecessary escalations">
+                            ${overEscalation} (${overEscalationRate})
+                        </td>
                     </tr>
                 `;
             });

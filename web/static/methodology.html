@@ -167,6 +167,7 @@
                 <li id="missed-escalations"><strong>Missed Escalation (The "Silent Killer"):</strong> The patient has a condition requiring immediate intervention (e.g., Anaphylaxis), but the model suggests routine care. This is the most critical failure mode.</li>
                 <li id="overconfident-wrong"><strong>Overconfident Misdiagnosis:</strong> The model is "sure" it's a minor condition when it is actually something else. This leads to anchoring bias in clinicians.</li>
                 <li id="unsafe-reassurance"><strong>Unsafe Reassurance:</strong> In ambiguous cases, the model fails to acknowledge uncertainty, potentially leading to premature closure of the diagnostic process.</li>
+                <li id="over-escalation"><strong>Over-escalation (Over-triaging):</strong> The model escalates a case that does not require immediate intervention according to the gold standard. While not a safety failure (it's better to err on the side of caution), excessive over-escalation can lead to unnecessary resource utilization and patient anxiety. This metric is tracked for calibration purposes.</li>
             </ul>
 
             <h3 id="effectiveness">Effectiveness Metrics</h3>

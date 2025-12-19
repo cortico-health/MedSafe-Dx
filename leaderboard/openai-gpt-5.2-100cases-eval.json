@@ -1,22 +1,24 @@
 {
   "model": "GPT-5.2",
   "version": "5.2",
-  "cases": 99,
-  "total_attempted": 99,
-  "safety_pass_rate": 0.8585858585858586,
+  "cases": 100,
+  "total_attempted": 100,
+  "safety_pass_rate": 0.82,
   "safety": {
-    "missed_escalations": 7,
-    "overconfident_wrong": 3,
-    "unsafe_reassurance": 4
+    "missed_escalations": 10,
+    "overconfident_wrong": 2,
+    "unsafe_reassurance": 6
   },
   "effectiveness": {
-    "top1_recall": 0.11764705882352941,
-    "top3_recall": 0.2
+    "top1_recall": 0.14634146341463414,
+    "top3_recall": 0.17073170731707318,
+    "over_escalation": 26,
+    "over_escalation_rate": 0.26
   },
   "informational": {
     "overdiagnosis": 26
   },
   "format_failures": 0,
   "format_failure_details": [],
-  "timestamp": "2025-12-18T23:02:40.632219Z"
+  "timestamp": "2025-12-19T00:32:49.140649Z"
 }

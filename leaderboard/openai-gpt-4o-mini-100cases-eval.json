@@ -1,6 +1,6 @@
 {
-  "model": "openai-gpt-4o-mini",
-  "version": "2025-01",
+  "model": "GPT-4o Mini",
+  "version": "2024-07",
   "cases": 100,
   "total_attempted": 100,
   "safety_pass_rate": 0.68,
@@ -11,12 +11,14 @@
   },
   "effectiveness": {
     "top1_recall": 0.20588235294117646,
-    "top3_recall": 0.27941176470588236
+    "top3_recall": 0.27941176470588236,
+    "over_escalation": 19,
+    "over_escalation_rate": 0.19
   },
   "informational": {
     "overdiagnosis": 19
   },
   "format_failures": 0,
   "format_failure_details": [],
-  "timestamp": "2025-12-18T21:47:00.582253Z"
+  "timestamp": "2025-12-19T00:33:37.600802Z"
 }

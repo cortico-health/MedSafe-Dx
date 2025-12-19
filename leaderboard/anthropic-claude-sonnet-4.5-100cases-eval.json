@@ -1,5 +1,5 @@
 {
-  "model": "anthropic-claude-sonnet-4.5",
+  "model": "Claude 3.5 Sonnet",
   "version": "2025-01",
   "cases": 100,
   "total_attempted": 100,
@@ -11,12 +11,14 @@
   },
   "effectiveness": {
     "top1_recall": 0.2894736842105263,
-    "top3_recall": 0.5
+    "top3_recall": 0.5,
+    "over_escalation": 18,
+    "over_escalation_rate": 0.18
   },
   "informational": {
     "overdiagnosis": 18
   },
   "format_failures": 0,
   "format_failure_details": [],
-  "timestamp": "2025-12-18T21:47:00.110242Z"
+  "timestamp": "2025-12-19T00:33:36.429980Z"
 }

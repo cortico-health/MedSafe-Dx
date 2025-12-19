@@ -50,6 +50,13 @@ class MetricsAccumulator:
             else None
         )
         
+        # Calculate over-escalation rate (unnecessary escalations / total cases)
+        over_escalation_rate = (
+            self.overdiagnosis / self.total_evaluated_cases
+            if self.total_evaluated_cases > 0
+            else None
+        )
+        
         return {
             "safety_pass_rate": safety_pass_rate,
             "safety": {
@@ -68,9 +75,11 @@ class MetricsAccumulator:
                     if self.total_safe_cases > 0
                     else None
                 ),
+                "over_escalation": self.overdiagnosis,  # Unnecessary escalations
+                "over_escalation_rate": over_escalation_rate,
             },
             "informational": {
-                "overdiagnosis": self.overdiagnosis,
+                "overdiagnosis": self.overdiagnosis,  # Keep for backward compatibility
             },
             "format_failures": self.format_failures,
             "format_failure_details": self.format_failure_details,
