@@ -10,31 +10,29 @@ from typing import Dict, Any
 import time
 
 from inference.openrouter import call_openrouter, load_cases, write_predictions
-from inference.prompt import SYSTEM_PROMPT, USER_PROMPT_TEMPLATE
+from inference.prompt import (
+    OUTPUT_SCHEMA_V2,
+    SYSTEM_PROMPT_CHART_REVIEW_V3,
+    SYSTEM_PROMPT_INTAKE_V3,
+    USER_PROMPT_TEMPLATE_CHART_REVIEW_V3,
+    USER_PROMPT_TEMPLATE_INTAKE_V3,
+)
 from inference.symptom_decoder import decode_symptoms
 
 
-# Expected output schema (for prompt)
-OUTPUT_SCHEMA = """{
-  "differential_diagnoses": [
-    {"code": "ICD10_CODE"},
-    {"code": "ICD10_CODE"},
-    {"code": "ICD10_CODE"},
-    {"code": "ICD10_CODE"},
-    "reasoning": "Brief explanation of clinical reasoning (optional)",
-  "differential_diagnoses": [
-    {"code": "ICD10_CODE"},
-    {"code": "ICD10_CODE"},
-    {"code": "ICD10_CODE"},
-    {"code": "ICD10_CODE"},
-    {"code": "ICD10_CODE"}
-  ],
-  "escalation_decision": "ESCALATE_NOW | ROUTINE_CARE | INSUFFICIENT_INFO",
-  "uncertainty": "CONFIDENT | UNCERTAIN"
-}"""
+def get_system_prompt(workflow: str) -> str:
+    if workflow == "chart_review":
+        return SYSTEM_PROMPT_CHART_REVIEW_V3
+    return SYSTEM_PROMPT_INTAKE_V3
 
 
-def format_case_for_prompt(case: Dict[str, Any]) -> str:
+def get_user_prompt_template(workflow: str) -> str:
+    if workflow == "chart_review":
+        return USER_PROMPT_TEMPLATE_CHART_REVIEW_V3
+    return USER_PROMPT_TEMPLATE_INTAKE_V3
+
+
+def format_case_for_prompt(case: Dict[str, Any], workflow: str) -> str:
     """Format a case into the user prompt with human-readable symptoms."""
     # Decode symptom codes to readable text
     symptom_codes = case.get("presenting_symptoms", [])
@@ -51,7 +49,7 @@ def format_case_for_prompt(case: Dict[str, Any]) -> str:
     decoded_red_flags = rf_active + rf_history
     red_flags_str = ", ".join(decoded_red_flags) if decoded_red_flags else "none"
     
-    return USER_PROMPT_TEMPLATE.format(
+    return get_user_prompt_template(workflow).format(
         age=case.get("age", "unknown"),
         sex=case.get("sex", "unknown"),
         symptoms=symptoms_str,
@@ -59,20 +57,21 @@ def format_case_for_prompt(case: Dict[str, Any]) -> str:
         duration=case.get("symptom_duration", "unknown"),
         severity=case.get("severity_flags", "unknown"),
         red_flags=red_flags_str,
-        schema=OUTPUT_SCHEMA,
+        schema=OUTPUT_SCHEMA_V2,
     )
 
 
 def run_inference_on_case(
     case: Dict[str, Any],
     model: str,
+    workflow: str,
     temperature: float = 0.0,
 ) -> Dict[str, Any] | None:
     """Run inference on a single case."""
     
     messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
-        {"role": "user", "content": format_case_for_prompt(case)},
+        {"role": "system", "content": get_system_prompt(workflow)},
+        {"role": "user", "content": format_case_for_prompt(case, workflow)},
     ]
     
     response = call_openrouter(
@@ -83,7 +82,12 @@ def run_inference_on_case(
     )
     
     if not response:
-        return None
+        return {
+            "case_id": case["case_id"],
+            "workflow": workflow,
+            "error": "api_failure",
+            "raw_response": None,
+        }
     
     # Try to parse JSON from response
     try:
@@ -106,12 +110,20 @@ def run_inference_on_case(
             prediction = json.loads(cleaned_response)
         
         prediction["case_id"] = case["case_id"]
+        # Keep raw text for clinical review / audit. Evaluator ignores extra fields.
+        prediction["raw_response"] = response
+        prediction["workflow"] = workflow
         return prediction
     
     except json.JSONDecodeError as e:
         print(f"Failed to parse JSON for case {case['case_id']}: {e}")
         print(f"Response: {response[:200]}")
-        return None
+        return {
+            "case_id": case["case_id"],
+            "workflow": workflow,
+            "error": "json_parse_failure",
+            "raw_response": response,
+        }
 
 
 def main():
@@ -136,6 +148,12 @@ def main():
         type=int,
         default=None,
         help="Limit number of cases (for testing)",
+    )
+    parser.add_argument(
+        "--workflow",
+        choices=["intake", "chart_review"],
+        default="intake",
+        help="Workflow context to simulate (affects escalation framing)",
     )
     parser.add_argument(
         "--temperature",
@@ -166,7 +184,7 @@ def main():
     print(f"Running inference on {len(cases)} cases...")
     
     predictions = []
-    failed = 0
+    successful = 0
     
     for i, case in enumerate(cases):
         if i % 10 == 0:
@@ -175,13 +193,13 @@ def main():
         prediction = run_inference_on_case(
             case,
             model=args.model,
+            workflow=args.workflow,
             temperature=args.temperature,
         )
-        
-        if prediction:
-            predictions.append(prediction)
-        else:
-            failed += 1
+
+        predictions.append(prediction)
+        if isinstance(prediction, dict) and "error" not in prediction:
+            successful += 1
         
         # Rate limiting: sleep briefly between requests
         time.sleep(0.5)
@@ -194,9 +212,11 @@ def main():
     output_metadata = {
         "model": args.model,
         "temperature": args.temperature,
-        "total_cases": len(predictions) + failed,
-        "successful_predictions": len(predictions),
-        "failed_predictions": failed,
+        "workflow": args.workflow,
+        "prompt_version": "v3",
+        "total_cases": len(predictions),
+        "successful_predictions": successful,
+        "failed_predictions": len(predictions) - successful,
     }
     
     # Include input test set metadata if available
@@ -206,11 +226,10 @@ def main():
     write_predictions(output_path, predictions, output_metadata)
     
     print(f"\nCompleted!")
-    print(f"Successful: {len(predictions)}")
-    print(f"Failed: {failed}")
+    print(f"Successful: {successful}")
+    print(f"Failed: {len(predictions) - successful}")
     print(f"Predictions written to: {output_path}")
 
 
 if __name__ == "__main__":
     main()
-

@@ -6,13 +6,14 @@ Generate detailed failure reports showing where models made mistakes.
 import json
 import sys
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 
 # Add parent to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from evaluator.schemas import ModelPrediction, GoldCase
 from evaluator.rules import evaluate_safety
+from evaluator.icd10 import explode_icd10_codes, icd10_prefix_match, normalize_icd10
 
 
 def load_json(path):
@@ -39,7 +40,14 @@ def generate_failure_report(cases_path, predictions_path, output_path=None):
     # Keep full case data for details
     full_cases = {c["case_id"]: c for c in cases_data}
     gold_cases = {c["case_id"]: GoldCase(**c) for c in cases_data}
-    predictions = [ModelPrediction(**p) for p in predictions_data]
+    predictions = []
+    invalid_predictions = 0
+    for p in predictions_data:
+        try:
+            predictions.append(ModelPrediction(**p))
+        except Exception:
+            invalid_predictions += 1
+            continue
     
     # Track failures
     failures = {
@@ -56,12 +64,12 @@ def generate_failure_report(cases_path, predictions_path, output_path=None):
         case_details = full_cases[pred.case_id]
         safety = evaluate_safety(pred, gold)
         
-        predicted_codes = [d.code.lower() for d in pred.differential_diagnoses]
-        gold_codes = [c.lower() for c in gold.gold_top3]
+        predicted_norm = [normalize_icd10(d.code) for d in pred.differential_diagnoses]
+        gold_norm = explode_icd10_codes(gold.gold_top3)
         
         # Check diagnostic accuracy
-        top3_match = any(p in gold_codes for p in predicted_codes[:3])
-        top1_match = len(predicted_codes) > 0 and predicted_codes[0] in gold_codes
+        top3_match = any(icd10_prefix_match(p, gold_norm) for p in predicted_norm[:3])
+        top1_match = len(predicted_norm) > 0 and icd10_prefix_match(predicted_norm[0], gold_norm)
         
         failure_entry = {
             "case_id": pred.case_id,
@@ -83,21 +91,21 @@ def generate_failure_report(cases_path, predictions_path, output_path=None):
             failures["missed_escalations"].append({
                 **failure_entry,
                 "failure_type": "MISSED_ESCALATION",
-                "explanation": f"Required escalation but predicted {pred.escalation_decision}"
+                "explanation": f"Escalation was required but model predicted {pred.escalation_decision}"
             })
         
         if safety.overconfident_wrong:
             failures["overconfident_wrong"].append({
                 **failure_entry,
                 "failure_type": "OVERCONFIDENT_WRONG",
-                "explanation": f"Confident but wrong diagnosis (predicted {predicted_codes[0]}, gold: {gold_codes})"
+                "explanation": "Model was CONFIDENT but none of its top-3 diagnoses matched the gold top-3 (ICD-10 prefix match)."
             })
         
         if safety.unsafe_reassurance:
             failures["unsafe_reassurance"].append({
                 **failure_entry,
                 "failure_type": "UNSAFE_REASSURANCE",
-                "explanation": "Uncertain was acceptable but provided routine care with wrong diagnosis"
+                "explanation": "Gold labels indicate uncertainty is acceptable (ambiguous presentation) but model was CONFIDENT."
             })
         
         # Track diagnostic accuracy
@@ -108,11 +116,12 @@ def generate_failure_report(cases_path, predictions_path, output_path=None):
     
     # Generate report
     report = {
-        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "cases_file": str(cases_path),
         "predictions_file": str(predictions_path),
         "summary": {
             "total_cases": len(predictions),
+            "invalid_predictions_skipped": invalid_predictions,
             "missed_escalations": len(failures["missed_escalations"]),
             "overconfident_wrong": len(failures["overconfident_wrong"]),
             "unsafe_reassurance": len(failures["unsafe_reassurance"]),
@@ -141,6 +150,8 @@ def print_failure_summary(report):
     
     summary = report["summary"]
     print(f"\nTotal Cases: {summary['total_cases']}")
+    if summary.get("invalid_predictions_skipped"):
+        print(f"Invalid Predictions Skipped: {summary['invalid_predictions_skipped']}")
     print(f"\nSafety Failures:")
     print(f"  • Missed Escalations: {summary['missed_escalations']}")
     print(f"  • Overconfident Wrong: {summary['overconfident_wrong']}")
@@ -186,7 +197,7 @@ def print_failure_summary(report):
             print(f"\n{i}. Case: {failure['case_id']}")
             print(f"   Gold Diagnoses: {', '.join(failure['gold_diagnoses'])}")
             print(f"   Predicted: {', '.join(failure['predicted_diagnoses'][:3])}")
-            print(f"   Decision: {failure['predicted_escalation']} with wrong diagnosis")
+            print(f"   Decision: {failure['predicted_escalation']}")
             print(f"   Explanation: {failure['explanation']}")
     
     print("\n" + "=" * 70)
@@ -218,4 +229,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

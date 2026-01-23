@@ -27,6 +27,8 @@ mkdir -p "$OUTPUT_DIR"
 declare -A TEST_SETS=(
     ["dev"]="10:1"
     ["test"]="100:42"
+    # NOTE: These seeds are intentionally aligned with the committed v0 test sets in
+    # data/test_sets/*.json to avoid “seed drift” between the script and the repo.
     ["eval"]="500:42"
     ["full-eval"]="2000:42"
 )
@@ -70,4 +72,3 @@ echo "  python3 -m inference.run_inference --cases $OUTPUT_DIR/dev-v0.json ..."
 echo "  python3 -m inference.run_inference --cases $OUTPUT_DIR/test-v0.json ..."
 echo "  python3 -m inference.run_inference --cases $OUTPUT_DIR/eval-v0.json ..."
 echo ""
-

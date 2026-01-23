@@ -11,7 +11,7 @@ class ModelPrediction(BaseModel):
     case_id: str
     differential_diagnoses: List[Diagnosis]
     escalation_decision: Literal[
-        "ESCALATE_NOW", "ROUTINE_CARE", "INSUFFICIENT_INFO"
+        "ESCALATE_NOW", "ROUTINE_CARE"
     ]
     uncertainty: Literal["CONFIDENT", "UNCERTAIN"]
 

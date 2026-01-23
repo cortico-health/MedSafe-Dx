@@ -130,7 +130,7 @@ Example output:
 
 To contribute results:
 
-1. **Use a frozen test set** (e.g., `eval-v0.json`, seed=42)
+1. **Use a frozen test set** (e.g., `eval-v0.json`)
 2. **Run inference & evaluation** using the standard pipeline
 3. **Copy the result to the leaderboard** (`cp results/artifacts/model-name.json leaderboard/`)
 4. **Commit the artifact**
@@ -172,5 +172,3 @@ Copyright © Cortico Health Technologies Inc 2025
 This work is licensed under [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/).
 
 Initial releases are curated to preserve evaluation integrity.
-
-

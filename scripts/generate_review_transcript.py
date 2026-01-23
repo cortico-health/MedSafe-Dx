@@ -12,7 +12,14 @@ from datetime import datetime
 # Add parent to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from inference.prompt import SYSTEM_PROMPT, USER_PROMPT_TEMPLATE
+from inference.prompt import (
+    OUTPUT_SCHEMA_V2,
+    SYSTEM_PROMPT_CHART_REVIEW_V3,
+    SYSTEM_PROMPT_INTAKE_V3,
+    USER_PROMPT_TEMPLATE_CHART_REVIEW_V3,
+    USER_PROMPT_TEMPLATE_INTAKE_V3,
+)
+from inference.symptom_decoder import decode_symptoms
 from evaluator.schemas import ModelPrediction, GoldCase
 from evaluator.rules import evaluate_safety
 
@@ -209,45 +216,55 @@ def decode_symptom(symptom_code):
     return (f"{symptom_code} ({description})", is_antecedent)
 
 
-OUTPUT_SCHEMA = """{
-  "differential_diagnoses": [
-    {"code": "ICD10_CODE"},
-    {"code": "ICD10_CODE"},
-    {"code": "ICD10_CODE"},
-    {"code": "ICD10_CODE"},
-    {"code": "ICD10_CODE"}
-  ],
-  "escalation_decision": "ESCALATE_NOW | ROUTINE_CARE | INSUFFICIENT_INFO",
-  "uncertainty": "CONFIDENT | UNCERTAIN"
-}"""
+def get_system_prompt(workflow: str) -> str:
+    if workflow == "chart_review":
+        return SYSTEM_PROMPT_CHART_REVIEW_V3
+    return SYSTEM_PROMPT_INTAKE_V3
 
 
-def load_json(path):
-    """Load JSON with metadata support."""
+def get_user_prompt_template(workflow: str) -> str:
+    if workflow == "chart_review":
+        return USER_PROMPT_TEMPLATE_CHART_REVIEW_V3
+    return USER_PROMPT_TEMPLATE_INTAKE_V3
+
+
+OUTPUT_SCHEMA = OUTPUT_SCHEMA_V2
+
+
+def load_json_with_metadata(path):
+    """Load JSON, returning (items, metadata) when present."""
     with open(path) as f:
         data = json.load(f)
     
     if isinstance(data, dict):
         if "cases" in data:
-            return data["cases"]
+            return data["cases"], data.get("metadata")
         if "predictions" in data:
-            return data["predictions"]
+            return data["predictions"], data.get("metadata")
     
-    return data
+    return data, None
 
 
-def format_case_for_prompt(case):
-    """Format a case into the user prompt (same as inference)."""
-    symptoms_str = ", ".join(case.get("presenting_symptoms", []))
-    red_flags_str = ", ".join(case.get("red_flag_indicators", []))
-    
-    return USER_PROMPT_TEMPLATE.format(
+def format_case_for_prompt(case, workflow: str):
+    """Format a case into the user prompt (mirrors inference formatting)."""
+    symptom_codes = case.get("presenting_symptoms", [])
+    active_symptoms, antecedents = decode_symptoms(symptom_codes)
+    symptoms_str = ", ".join(active_symptoms) if active_symptoms else "none"
+    history_str = ", ".join(antecedents) if antecedents else "none"
+
+    red_flag_codes = case.get("red_flag_indicators", [])
+    rf_active, rf_history = decode_symptoms(red_flag_codes) if red_flag_codes else ([], [])
+    decoded_red_flags = rf_active + rf_history
+    red_flags_str = ", ".join(decoded_red_flags) if decoded_red_flags else "none"
+
+    return get_user_prompt_template(workflow).format(
         age=case.get("age", "unknown"),
         sex=case.get("sex", "unknown"),
-        symptoms=symptoms_str or "none",
+        symptoms=symptoms_str,
+        history=history_str,
         duration=case.get("symptom_duration", "unknown"),
         severity=case.get("severity_flags", "unknown"),
-        red_flags=red_flags_str or "none",
+        red_flags=red_flags_str,
         schema=OUTPUT_SCHEMA,
     )
 
@@ -256,12 +273,16 @@ def generate_transcript(cases_path, predictions_path, output_path=None, model_na
     """Generate human-readable transcript."""
     
     # Load data
-    cases_data = load_json(cases_path)
-    predictions_data = load_json(predictions_path)
+    cases_data, cases_metadata = load_json_with_metadata(cases_path)
+    predictions_data, predictions_metadata = load_json_with_metadata(predictions_path)
+    workflow_default = (predictions_metadata or {}).get("workflow") or "intake"
     
     # Create lookup dictionaries
     full_cases = {c["case_id"]: c for c in cases_data}
     gold_cases = {c["case_id"]: GoldCase(**c) for c in cases_data}
+    raw_predictions_by_case_id = {
+        (p.get("case_id") or ""): p for p in predictions_data if isinstance(p, dict)
+    }
     
     # Parse predictions, skipping format failures
     predictions = []
@@ -282,6 +303,12 @@ def generate_transcript(cases_path, predictions_path, output_path=None, model_na
         case_details = full_cases[pred.case_id]
         gold = gold_cases[pred.case_id]
         safety = evaluate_safety(pred, gold)
+        raw_pred = raw_predictions_by_case_id.get(pred.case_id, {})
+        workflow = raw_pred.get("workflow") or workflow_default
+        system_prompt = get_system_prompt(workflow)
+        user_prompt = format_case_for_prompt(case_details, workflow)
+        raw_response = raw_pred.get("raw_response")
+        raw_response_str = raw_response if raw_response else "N/A"
         
         # Calculate accuracy
         predicted_codes = [d.code.lower() for d in pred.differential_diagnoses]
@@ -324,6 +351,14 @@ def generate_transcript(cases_path, predictions_path, output_path=None, model_na
 CASE {i}/{len(predictions)}: {pred.case_id}
 {'=' * 80}
 
+WORKFLOW CONTEXT: {workflow}
+
+SYSTEM PROMPT:
+{system_prompt}
+
+USER PROMPT:
+{user_prompt}
+
 PATIENT PRESENTATION:
   Age: {case_details.get('age')} years
   Sex: {case_details.get('sex')}
@@ -344,6 +379,9 @@ MODEL RESPONSE:
   
   Escalation Decision: {pred.escalation_decision}
   Uncertainty Level: {pred.uncertainty}
+
+RAW MODEL OUTPUT:
+{raw_response_str}
 
 GOLD STANDARD:
   Correct Diagnoses: {', '.join([format_diagnosis_code(c) for c in gold.gold_top3])}
@@ -370,7 +408,7 @@ EVALUATION:
             section += f"\n  ⚠ Model was CONFIDENT but diagnosis was WRONG"
         
         if safety.unsafe_reassurance:
-            section += f"\n  ⚠ Model provided routine care despite incorrect diagnosis in uncertain case"
+            section += f"\n  ⚠ Model was CONFIDENT in an ambiguous (uncertainty-acceptable) case"
         
         sections.append(section)
     
@@ -441,4 +479,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

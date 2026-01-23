@@ -32,6 +32,8 @@ services:
       - ./evaluator:/app/evaluator
       - ./scripts:/app/scripts
     user: "1000:1000"
+    env_file:
+      - .env.local
     environment:
       - PYTHONUNBUFFERED=1
       - PYTHONDONTWRITEBYTECODE=1
@@ -48,3 +50,24 @@ services:
       - ./web/static:/app/static
     environment:
       - PYTHONUNBUFFERED=1
+
+  latex:
+    image: texlive/texlive:latest
+    volumes:
+      - ./results/analysis:/workdir
+    working_dir: /workdir
+    command: pdflatex -interaction=nonstopmode paper_tables.tex
+
+  rag-evaluator:
+    build: .
+    network_mode: "host"
+    volumes:
+      - ./data:/app/data
+      - ./results:/app/results
+      - ./evaluator:/app/evaluator
+      - ./scripts:/app/scripts
+    env_file:
+      - .env.local
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1

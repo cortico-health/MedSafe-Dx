@@ -56,13 +56,17 @@ def normalize_sex(sex):
 
 def derive_uncertainty(gold_diagnoses: List[dict]) -> bool:
     """
-    Uncertainty acceptable if more than one plausible diagnosis
-    at similar severity.
+    Uncertainty is acceptable (and expressing CONFIDENT is inappropriate) when
+    the case is statistically ambiguous: multiple plausible diagnoses at similar
+    severity levels based on the DDXPlus probabilistic model.
+
+    This is a calibration metric - if the gold standard indicates ambiguity,
+    the model should express UNCERTAIN regardless of clinical severity.
     """
     if len(gold_diagnoses) <= 1:
         return False
 
-    # Check if severities are within 1 level of each other
+    # Check if severities are within 1 level of each other (ambiguous)
     severities = sorted([d["severity"] for d in gold_diagnoses])
     return severities[-1] - severities[0] <= 1
 
