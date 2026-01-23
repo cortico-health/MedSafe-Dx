@@ -46,6 +46,7 @@ services:
     volumes:
       - ./leaderboard:/app/leaderboard
       - ./README.md:/app/README.md
+      - ./RESULTS_SUMMARY.md:/app/RESULTS_SUMMARY.md
       - ./web/main.py:/app/main.py
       - ./web/static:/app/static
     environment:

@@ -132,4 +132,56 @@ async def read_methodology():
 async def read_readme():
     return FileResponse('README.md', media_type='text/markdown')
 
+@app.get("/results-summary.html")
+async def read_results_summary():
+    """Serve RESULTS_SUMMARY.md as rendered HTML."""
+    try:
+        with open('RESULTS_SUMMARY.md', 'r') as f:
+            md_content = f.read()
+
+        # Simple HTML wrapper with markdown content (rendered by browser or JS)
+        html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedSafe-Dx Results Summary</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        body {{
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+            color: #333;
+        }}
+        h1, h2, h3 {{ color: #4b54f6; }}
+        h1 {{ border-bottom: 2px solid #4b54f6; padding-bottom: 0.5rem; }}
+        h2 {{ margin-top: 2rem; border-bottom: 1px solid #ddd; padding-bottom: 0.3rem; }}
+        table {{ border-collapse: collapse; width: 100%; margin: 1rem 0; }}
+        th, td {{ border: 1px solid #ddd; padding: 0.5rem; text-align: left; }}
+        th {{ background: #f8f9fa; }}
+        tr:nth-child(even) {{ background: #fafafa; }}
+        code {{ background: #f4f4f4; padding: 0.2rem 0.4rem; border-radius: 3px; }}
+        pre {{ background: #f4f4f4; padding: 1rem; overflow-x: auto; }}
+        a {{ color: #4b54f6; }}
+        .back-link {{ margin-bottom: 1rem; }}
+    </style>
+</head>
+<body>
+    <div class="back-link"><a href="/">&larr; Back to Leaderboard</a></div>
+    <div id="content"></div>
+    <script>
+        const md = {repr(md_content)};
+        document.getElementById('content').innerHTML = marked.parse(md);
+    </script>
+</body>
+</html>"""
+        return Response(content=html, media_type='text/html')
+    except FileNotFoundError:
+        return Response(content="Results summary not found", status_code=404)
+
 app.mount("/", StaticFiles(directory="static"), name="static")
