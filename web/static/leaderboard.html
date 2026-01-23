@@ -464,7 +464,6 @@
                             <th>Cases</th>
                             <th>Coverage</th>
                             <th class="primary-metric"><a href="methodology.html#expected-harm" title="Weighted harm score (lower is better)">Expected Harm</a></th>
-                            <th class="primary-metric"><a href="methodology.html#relative-harm-reduction" title="Relative harm reduction vs always-escalate baseline">RHR %</a></th>
                             <th class="primary-metric"><a href="methodology.html#safety-pass-rate" title="See definition">Safety Pass Rate</a></th>
                             <th class="safety-header" colspan="3">Safety Failures (Lower is Better)</th>
                             <th class="effectiveness-header" colspan="3">Effectiveness / Calibration</th>
@@ -475,7 +474,6 @@
                             <th></th>
                             <th title="% of cases with a valid, parseable prediction">%</th>
                             <th class="primary-metric" title="Weighted average harm per case (lower is better)">Per Case</th>
-                            <th class="primary-metric" title="Relative harm reduction vs baseline (higher is better)">RHR %</th>
                             <th class="primary-metric">% with Zero Failures</th>
                             <th class="safety-header"><a href="methodology.html#missed-escalations" title="See definition">Missed Escalations</a></th>
                             <th class="safety-header"><a href="methodology.html#overconfident-wrong" title="See definition">Overconfident Wrong</a></th>
@@ -508,10 +506,6 @@
                 // Calculate expected harm using the helper function
                 const expectedHarm = calculateExpectedHarm(result);
                 const expectedHarmDisplay = expectedHarm !== Number.POSITIVE_INFINITY ? expectedHarm : null;
-                const rhrPct = result.relative_harm_reduction_pct;
-                const rhrDisplay = rhrPct !== null && rhrPct !== undefined
-                    ? (rhrPct >= 0 ? '+' : '') + rhrPct.toFixed(1) + '%'
-                    : 'N/A';
                 const top1 = result.effectiveness.top1_recall !== null ? 
                     (result.effectiveness.top1_recall * 100).toFixed(1) + '%' : 'N/A';
                 const top3 = result.effectiveness.top3_recall !== null ? 
@@ -538,9 +532,6 @@
                         </td>
                         <td class="metric primary" title="Expected Harm is a weighted per-case cost; see methodology for formula and defaults.">
                             ${expectedHarmDisplay !== null ? expectedHarmDisplay.toFixed(1) : 'N/A'}
-                        </td>
-                        <td class="metric primary" title="Relative Harm Reduction vs the always-escalate-and-uncertain baseline (higher is better).">
-                            ${rhrDisplay}
                         </td>
                         <td class="metric primary">
                             ${safetyPassRate}
