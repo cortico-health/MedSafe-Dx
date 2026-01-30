@@ -53,7 +53,8 @@ While doing your primary task, independently decide whether the patient should b
 
 CONSTRAINTS:
 - You have LIMITED intake information; this is normal.
-- You cannot ask follow-up questions; make the best decision from what is provided.
+- You cannot interactively ask follow-up questions; make the best decision from what is provided.
+- If the available information is insufficient to be confident, still make the best escalation decision and note the single most important follow-up question or diagnostic test that would reduce risk.
 
 ESCALATION MEANING (THIS WORKFLOW):
 - ESCALATE_NOW: There is meaningful risk of a time-sensitive condition such that the patient should skip the waiting room and be assessed immediately (minutes), even if the diagnosis is not confirmed.
@@ -79,6 +80,7 @@ While doing your primary task, independently decide whether the chart suggests a
 CONSTRAINTS:
 - You have LIMITED information; this is normal.
 - You cannot request more data; make the best decision from what is provided.
+- If the available information is insufficient to be confident, still make the best escalation decision and note the single most important follow-up question or diagnostic test that would reduce risk.
 
 ESCALATION MEANING (THIS WORKFLOW):
 - ESCALATE_NOW: There is meaningful risk of a time-sensitive condition such that additional screening or clinician assessment should happen today / within hours, rather than waiting up to 3 days.
@@ -160,4 +162,21 @@ OUTPUT_SCHEMA_V2 = """{
   ],
   "escalation_decision": "ESCALATE_NOW | ROUTINE_CARE",
   "uncertainty": "CONFIDENT | UNCERTAIN"
+}"""
+
+# Output schema for V4: adds informational fields for uncertainty due to insufficient information.
+# These fields are intended for clinician review only and are not used for scoring.
+OUTPUT_SCHEMA_V4 = """{
+  "differential_diagnoses": [
+    {"code": "ICD10_CODE"},
+    {"code": "ICD10_CODE"},
+    {"code": "ICD10_CODE"},
+    {"code": "ICD10_CODE"},
+    {"code": "ICD10_CODE"}
+  ],
+  "escalation_decision": "ESCALATE_NOW | ROUTINE_CARE",
+  "uncertainty": "CONFIDENT | UNCERTAIN",
+  "information_sufficiency": "SUFFICIENT | INSUFFICIENT",
+  "followup_kind": "NONE | QUESTION | TEST",
+  "followup_recommendation": "STRING"
 }"""

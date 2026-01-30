@@ -1,0 +1,2169 @@
+{
+  "metadata": {
+    "model": "google/gemini-3-pro-preview",
+    "temperature": 0.0,
+    "workflow": "intake",
+    "prompt_version": "v3",
+    "total_cases": 100,
+    "successful_predictions": 86,
+    "failed_predictions": 14,
+    "test_set_metadata": {
+      "source_file": "data/ddxplus_v0/cases.json",
+      "total_available_cases": 109938,
+      "sampled_cases": 100,
+      "seed": 42,
+      "timestamp": "2025-12-17T06:03:37.169007Z",
+      "test_set_name": "test-v0"
+    }
+  },
+  "predictions": [
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "J93.9"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "I30.9"
+        },
+        {
+          "code": "R07.1"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_100728",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I26.9\"},\n    {\"code\": \"J93.9\"},\n    {\"code\": \"J18.9\"},\n    {\"code\": \"I30.9\"},\n    {\"code\": \"R07.1\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "I33.0"
+        },
+        {
+          "code": "A41.9"
+        },
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "J22"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_101756",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J18.9\"},\n    {\"code\": \"I33.0\"},\n    {\"code\": \"A41.9\"},\n    {\"code\": \"I26.9\"},\n    {\"code\": \"J22\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "T61.1"
+        },
+        {
+          "code": "T78.2"
+        },
+        {
+          "code": "T78.40"
+        },
+        {
+          "code": "A05.9"
+        },
+        {
+          "code": "E34.0"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_101867",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"T61.1\"},\n    {\"code\": \"T78.2\"},\n    {\"code\": \"T78.40\"},\n    {\"code\": \"A05.9\"},\n    {\"code\": \"E34.0\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "R00.2"
+        },
+        {
+          "code": "E05.90"
+        },
+        {
+          "code": "I48.91"
+        },
+        {
+          "code": "I47.1"
+        },
+        {
+          "code": "R42"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_102471",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"R00.2\"},\n    {\"code\": \"E05.90\"},\n    {\"code\": \"I48.91\"},\n    {\"code\": \"I47.1\"},\n    {\"code\": \"R42\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I71.0"
+        },
+        {
+          "code": "I21.9"
+        },
+        {
+          "code": "K25.0"
+        },
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "K85.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_103880",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I71.0\"},\n    {\"code\": \"I21.9\"},\n    {\"code\": \"K25.0\"},\n    {\"code\": \"I26.9\"},\n    {\"code\": \"K85.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J44.1"
+        },
+        {
+          "code": "J44.0"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "J20.9"
+        },
+        {
+          "code": "I50.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_104180",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J44.1\"},\n    {\"code\": \"J44.0\"},\n    {\"code\": \"J18.9\"},\n    {\"code\": \"J20.9\"},\n    {\"code\": \"I50.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J36"
+        },
+        {
+          "code": "J05.10"
+        },
+        {
+          "code": "J02.9"
+        },
+        {
+          "code": "J03.90"
+        },
+        {
+          "code": "J39.0"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_1059",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J36\"},\n    {\"code\": \"J05.10\"},\n    {\"code\": \"J02.9\"},\n    {\"code\": \"J03.90\"},\n    {\"code\": \"J39.0\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "G70.01"
+        },
+        {
+          "code": "G70.00"
+        },
+        {
+          "code": "G61.0"
+        },
+        {
+          "code": "A05.1"
+        },
+        {
+          "code": "G35"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_106026",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"G70.01\"},\n    {\"code\": \"G70.00\"},\n    {\"code\": \"G61.0\"},\n    {\"code\": \"A05.1\"},\n    {\"code\": \"G35\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I48.91"
+        },
+        {
+          "code": "I47.1"
+        },
+        {
+          "code": "I50.9"
+        },
+        {
+          "code": "J44.1"
+        },
+        {
+          "code": "Q24.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_107449",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I48.91\"},\n    {\"code\": \"I47.1\"},\n    {\"code\": \"I50.9\"},\n    {\"code\": \"J44.1\"},\n    {\"code\": \"Q24.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "G44.0"
+        },
+        {
+          "code": "I60.9"
+        },
+        {
+          "code": "G43.0"
+        },
+        {
+          "code": "J01.9"
+        },
+        {
+          "code": "G44.4"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_108509",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"G44.0\"},\n    {\"code\": \"I60.9\"},\n    {\"code\": \"G43.0\"},\n    {\"code\": \"J01.9\"},\n    {\"code\": \"G44.4\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "case_id": "ddxplus_109592",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "T78.0XXA"
+        },
+        {
+          "code": "T78.2XXA"
+        },
+        {
+          "code": "T78.3XXA"
+        },
+        {
+          "code": "L50.0"
+        },
+        {
+          "code": "R06.1"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_111961",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"T78.0XXA\"},\n    {\"code\": \"T78.2XXA\"},\n    {\"code\": \"T78.3XXA\"},\n    {\"code\": \"L50.0\"},\n    {\"code\": \"R06.1\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K92.2"
+        },
+        {
+          "code": "D62"
+        },
+        {
+          "code": "M31.6"
+        },
+        {
+          "code": "R06.0"
+        },
+        {
+          "code": "N18.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_11197",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"K92.2\"},\n    {\"code\": \"D62\"},\n    {\"code\": \"M31.6\"},\n    {\"code\": \"R06.0\"},\n    {\"code\": \"N18.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J06.9"
+        },
+        {
+          "code": "J11.1"
+        },
+        {
+          "code": "J01.90"
+        },
+        {
+          "code": "J02.9"
+        },
+        {
+          "code": "B34.9"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_112477",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J06.9\"},\n    {\"code\": \"J11.1\"},\n    {\"code\": \"J01.90\"},\n    {\"code\": \"J02.9\"},\n    {\"code\": \"B34.9\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J03.90"
+        },
+        {
+          "code": "J36"
+        },
+        {
+          "code": "R04.2"
+        },
+        {
+          "code": "J05.1"
+        },
+        {
+          "code": "A15.0"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_112558",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J03.90\"},\n    {\"code\": \"J36\"},\n    {\"code\": \"R04.2\"},\n    {\"code\": \"J05.1\"},\n    {\"code\": \"A15.0\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "T78.0"
+        },
+        {
+          "code": "T78.3"
+        },
+        {
+          "code": "L50.0"
+        },
+        {
+          "code": "K52.2"
+        },
+        {
+          "code": "R42"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_112988",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"T78.0\"},\n    {\"code\": \"T78.3\"},\n    {\"code\": \"L50.0\"},\n    {\"code\": \"K52.2\"},\n    {\"code\": \"R42\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "A37.9"
+        },
+        {
+          "code": "J45.901"
+        },
+        {
+          "code": "J20.9"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "J06.9"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_11469",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"A37.9\"},\n    {\"code\": \"J45.901\"},\n    {\"code\": \"J20.9\"},\n    {\"code\": \"J18.9\"},\n    {\"code\": \"J06.9\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "C25.9"
+        },
+        {
+          "code": "K86.1"
+        },
+        {
+          "code": "K83.1"
+        },
+        {
+          "code": "K80.5"
+        },
+        {
+          "code": "C24.0"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_114826",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"C25.9\"},\n    {\"code\": \"K86.1\"},\n    {\"code\": \"K83.1\"},\n    {\"code\": \"K80.5\"},\n    {\"code\": \"C24.0\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J03.90"
+        },
+        {
+          "code": "J06.9"
+        },
+        {
+          "code": "R04.2"
+        },
+        {
+          "code": "J04.0"
+        },
+        {
+          "code": "J18.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_117013",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J03.90\"},\n    {\"code\": \"J06.9\"},\n    {\"code\": \"R04.2\"},\n    {\"code\": \"J04.0\"},\n    {\"code\": \"J18.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I21.9"
+        },
+        {
+          "code": "I20.0"
+        },
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "I71.0"
+        },
+        {
+          "code": "K21.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_118106",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I21.9\"},\n    {\"code\": \"I20.0\"},\n    {\"code\": \"I26.9\"},\n    {\"code\": \"I71.0\"},\n    {\"code\": \"K21.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K92.1"
+        },
+        {
+          "code": "K92.2"
+        },
+        {
+          "code": "D62"
+        },
+        {
+          "code": "R42"
+        },
+        {
+          "code": "R51.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_118799",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"K92.1\"},\n    {\"code\": \"K92.2\"},\n    {\"code\": \"D62\"},\n    {\"code\": \"R42\"},\n    {\"code\": \"R51.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I48.91"
+        },
+        {
+          "code": "I50.9"
+        },
+        {
+          "code": "I20.9"
+        },
+        {
+          "code": "I38"
+        },
+        {
+          "code": "E05.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_118944",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I48.91\"},\n    {\"code\": \"I50.9\"},\n    {\"code\": \"I20.9\"},\n    {\"code\": \"I38\"},\n    {\"code\": \"E05.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "case_id": "ddxplus_121707",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "R04.2"
+        },
+        {
+          "code": "A15.0"
+        },
+        {
+          "code": "C09.9"
+        },
+        {
+          "code": "J02.9"
+        },
+        {
+          "code": "J18.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_122461",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"R04.2\"},\n    {\"code\": \"A15.0\"},\n    {\"code\": \"C09.9\"},\n    {\"code\": \"J02.9\"},\n    {\"code\": \"J18.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "case_id": "ddxplus_124029",
+      "workflow": "intake",
+      "error": "json_parse_failure",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J06.9\"},\n    {\"code\": \"J03.9\"},\n    {\"code\": \"J20.9\"},\n    {\"code\": \"J18.9\"},\n    "
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "R04.2"
+        },
+        {
+          "code": "J02.9"
+        },
+        {
+          "code": "C32.9"
+        },
+        {
+          "code": "J03.9"
+        },
+        {
+          "code": "J20.9"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_12653",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"R04.2\"},\n    {\"code\": \"J02.9\"},\n    {\"code\": \"C32.9\"},\n    {\"code\": \"J03.9\"},\n    {\"code\": \"J20.9\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "T78.0"
+        },
+        {
+          "code": "T78.3"
+        },
+        {
+          "code": "L50.0"
+        },
+        {
+          "code": "R10.0"
+        },
+        {
+          "code": "T78.4"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_12815",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"T78.0\"},\n    {\"code\": \"T78.3\"},\n    {\"code\": \"L50.0\"},\n    {\"code\": \"R10.0\"},\n    {\"code\": \"T78.4\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J01.90"
+        },
+        {
+          "code": "J11.1"
+        },
+        {
+          "code": "U07.1"
+        },
+        {
+          "code": "J00"
+        },
+        {
+          "code": "J06.9"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_129294",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J01.90\"},\n    {\"code\": \"J11.1\"},\n    {\"code\": \"U07.1\"},\n    {\"code\": \"J00\"},\n    {\"code\": \"J06.9\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "G70.01"
+        },
+        {
+          "code": "G70.00"
+        },
+        {
+          "code": "I63.9"
+        },
+        {
+          "code": "A05.1"
+        },
+        {
+          "code": "G61.0"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_129493",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"G70.01\"},\n    {\"code\": \"G70.00\"},\n    {\"code\": \"I63.9\"},\n    {\"code\": \"A05.1\"},\n    {\"code\": \"G61.0\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K92.1"
+        },
+        {
+          "code": "K62.5"
+        },
+        {
+          "code": "D62"
+        },
+        {
+          "code": "K92.2"
+        },
+        {
+          "code": "R42"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_129862",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"K92.1\"},\n    {\"code\": \"K62.5\"},\n    {\"code\": \"D62\"},\n    {\"code\": \"K92.2\"},\n    {\"code\": \"R42\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "G70.01"
+        },
+        {
+          "code": "I63.9"
+        },
+        {
+          "code": "G61.0"
+        },
+        {
+          "code": "R06.00"
+        },
+        {
+          "code": "H53.2"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_133038",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"G70.01\"},\n    {\"code\": \"I63.9\"},\n    {\"code\": \"G61.0\"},\n    {\"code\": \"R06.00\"},\n    {\"code\": \"H53.2\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J11.1"
+        },
+        {
+          "code": "U07.1"
+        },
+        {
+          "code": "J01.90"
+        },
+        {
+          "code": "J02.9"
+        },
+        {
+          "code": "J06.9"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_133786",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J11.1\"},\n    {\"code\": \"U07.1\"},\n    {\"code\": \"J01.90\"},\n    {\"code\": \"J02.9\"},\n    {\"code\": \"J06.9\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "D63.1"
+        },
+        {
+          "code": "G44.2"
+        },
+        {
+          "code": "D50.9"
+        },
+        {
+          "code": "R42"
+        },
+        {
+          "code": "I62.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_13949",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"D63.1\"},\n    {\"code\": \"G44.2\"},\n    {\"code\": \"D50.9\"},\n    {\"code\": \"R42\"},\n    {\"code\": \"I62.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"UNCERTAIN\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "case_id": "ddxplus_14879",
+      "workflow": "intake",
+      "error": "json_parse_failure",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"M94.0\"},\n    {\"code\": \"I40.9\"},\n    {\""
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K92.1"
+        },
+        {
+          "code": "D62"
+        },
+        {
+          "code": "M31.6"
+        },
+        {
+          "code": "R06.02"
+        },
+        {
+          "code": "R51.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_15033",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"K92.1\"},\n    {\"code\": \"D62\"},\n    {\"code\": \"M31.6\"},\n    {\"code\": \"R06.02\"},\n    {\"code\": \"R51.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "T61.1"
+        },
+        {
+          "code": "T78.0"
+        },
+        {
+          "code": "T78.2"
+        },
+        {
+          "code": "L50.0"
+        },
+        {
+          "code": "T78.4"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_15509",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"T61.1\"},\n    {\"code\": \"T78.0\"},\n    {\"code\": \"T78.2\"},\n    {\"code\": \"L50.0\"},\n    {\"code\": \"T78.4\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I48.91"
+        },
+        {
+          "code": "I47.1"
+        },
+        {
+          "code": "E05.9"
+        },
+        {
+          "code": "E16.2"
+        },
+        {
+          "code": "R42"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_16212",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I48.91\"},\n    {\"code\": \"I47.1\"},\n    {\"code\": \"E05.9\"},\n    {\"code\": \"E16.2\"},\n    {\"code\": \"R42\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J45.901"
+        },
+        {
+          "code": "J20.9"
+        },
+        {
+          "code": "J32.9"
+        },
+        {
+          "code": "J30.9"
+        },
+        {
+          "code": "J18.9"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_16411",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J45.901\"},\n    {\"code\": \"J20.9\"},\n    {\"code\": \"J32.9\"},\n    {\"code\": \"J30.9\"},\n    {\"code\": \"J18.9\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J44.1"
+        },
+        {
+          "code": "J44.0"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "J20.9"
+        },
+        {
+          "code": "J45.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_16460",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J44.1\"},\n    {\"code\": \"J44.0\"},\n    {\"code\": \"J18.9\"},\n    {\"code\": \"J20.9\"},\n    {\"code\": \"J45.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J02.9"
+        },
+        {
+          "code": "J06.9"
+        },
+        {
+          "code": "U07.1"
+        },
+        {
+          "code": "J03.90"
+        },
+        {
+          "code": "B37.0"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_17897",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J02.9\"},\n    {\"code\": \"J06.9\"},\n    {\"code\": \"U07.1\"},\n    {\"code\": \"J03.90\"},\n    {\"code\": \"B37.0\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "C25.9"
+        },
+        {
+          "code": "K86.1"
+        },
+        {
+          "code": "K80.5"
+        },
+        {
+          "code": "C24.0"
+        },
+        {
+          "code": "K83.1"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_20026",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"C25.9\"},\n    {\"code\": \"K86.1\"},\n    {\"code\": \"K80.5\"},\n    {\"code\": \"C24.0\"},\n    {\"code\": \"K83.1\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "case_id": "ddxplus_22435",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I50.9"
+        },
+        {
+          "code": "I21.9"
+        },
+        {
+          "code": "I20.9"
+        },
+        {
+          "code": "N18.6"
+        },
+        {
+          "code": "J81.0"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_24971",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I50.9\"},\n    {\"code\": \"I21.9\"},\n    {\"code\": \"I20.9\"},\n    {\"code\": \"N18.6\"},\n    {\"code\": \"J81.0\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K40.90"
+        },
+        {
+          "code": "N83.20"
+        },
+        {
+          "code": "R10.32"
+        },
+        {
+          "code": "M25.55"
+        },
+        {
+          "code": "R19.0"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_25647",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"K40.90\"},\n    {\"code\": \"N83.20\"},\n    {\"code\": \"R10.32\"},\n    {\"code\": \"M25.55\"},\n    {\"code\": \"R19.0\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"UNCERTAIN\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J04.0"
+        },
+        {
+          "code": "J02.9"
+        },
+        {
+          "code": "J03.9"
+        },
+        {
+          "code": "J04.1"
+        },
+        {
+          "code": "J06.9"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_26129",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J04.0\"},\n    {\"code\": \"J02.9\"},\n    {\"code\": \"J03.9\"},\n    {\"code\": \"J04.1\"},\n    {\"code\": \"J06.9\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "E84.0"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "J47.1"
+        },
+        {
+          "code": "R04.2"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_30901",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"E84.0\"},\n    {\"code\": \"J18.9\"},\n    {\"code\": \"I26.9\"},\n    {\"code\": \"J47.1\"},\n    {\"code\": \"R04.2\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "case_id": "ddxplus_31957",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "I82.4"
+        },
+        {
+          "code": "I21.9"
+        },
+        {
+          "code": "I71.0"
+        },
+        {
+          "code": "J93.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_33668",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I26.9\"},\n    {\"code\": \"I82.4\"},\n    {\"code\": \"I21.9\"},\n    {\"code\": \"I71.0\"},\n    {\"code\": \"J93.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "G61.0"
+        },
+        {
+          "code": "I63.9"
+        },
+        {
+          "code": "G70.01"
+        },
+        {
+          "code": "G45.9"
+        },
+        {
+          "code": "A05.1"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_34593",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"G61.0\"},\n    {\"code\": \"I63.9\"},\n    {\"code\": \"G70.01\"},\n    {\"code\": \"G45.9\"},\n    {\"code\": \"A05.1\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "case_id": "ddxplus_35140",
+      "workflow": "intake",
+      "error": "json_parse_failure",
+      "raw_response": "{\n  \"differential_diagnoses\": ["
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J44.1"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "I50.9"
+        },
+        {
+          "code": "J20.9"
+        },
+        {
+          "code": "I26.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_35424",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J44.1\"},\n    {\"code\": \"J18.9\"},\n    {\"code\": \"I50.9\"},\n    {\"code\": \"J20.9\"},\n    {\"code\": \"I26.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J44.1"
+        },
+        {
+          "code": "J44.0"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "J20.9"
+        },
+        {
+          "code": "J45.901"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_35863",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J44.1\"},\n    {\"code\": \"J44.0\"},\n    {\"code\": \"J18.9\"},\n    {\"code\": \"J20.9\"},\n    {\"code\": \"J45.901\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "case_id": "ddxplus_36629",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I50.9"
+        },
+        {
+          "code": "I20.0"
+        },
+        {
+          "code": "N18.6"
+        },
+        {
+          "code": "I31.9"
+        },
+        {
+          "code": "R06.0"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_37410",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I50.9\"},\n    {\"code\": \"I20.0\"},\n    {\"code\": \"N18.6\"},\n    {\"code\": \"I31.9\"},\n    {\"code\": \"R06.0\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "case_id": "ddxplus_37435",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I50.9"
+        },
+        {
+          "code": "I20.9"
+        },
+        {
+          "code": "N18.6"
+        },
+        {
+          "code": "I25.10"
+        },
+        {
+          "code": "R07.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_39376",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I50.9\"},\n    {\"code\": \"I20.9\"},\n    {\"code\": \"N18.6\"},\n    {\"code\": \"I25.10\"},\n    {\"code\": \"R07.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "C25.9"
+        },
+        {
+          "code": "K86.1"
+        },
+        {
+          "code": "E11.62"
+        },
+        {
+          "code": "R63.4"
+        },
+        {
+          "code": "R10.12"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_4038",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"C25.9\"},\n    {\"code\": \"K86.1\"},\n    {\"code\": \"E11.62\"},\n    {\"code\": \"R63.4\"},\n    {\"code\": \"R10.12\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "R56.9"
+        },
+        {
+          "code": "T60.0X1A"
+        },
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "R06.00"
+        },
+        {
+          "code": "G56.0"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_42585",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"R56.9\"},\n    {\"code\": \"T60.0X1A\"},\n    {\"code\": \"I26.9\"},\n    {\"code\": \"R06.00\"},\n    {\"code\": \"G56.0\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J30.9"
+        },
+        {
+          "code": "J30.0"
+        },
+        {
+          "code": "J00"
+        },
+        {
+          "code": "J30.2"
+        },
+        {
+          "code": "J01.90"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_4279",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J30.9\"},\n    {\"code\": \"J30.0\"},\n    {\"code\": \"J00\"},\n    {\"code\": \"J30.2\"},\n    {\"code\": \"J01.90\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "G44.0"
+        },
+        {
+          "code": "G43.9"
+        },
+        {
+          "code": "G50.0"
+        },
+        {
+          "code": "H40.2"
+        },
+        {
+          "code": "I60.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_42979",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"G44.0\"},\n    {\"code\": \"G43.9\"},\n    {\"code\": \"G50.0\"},\n    {\"code\": \"H40.2\"},\n    {\"code\": \"I60.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J01.90"
+        },
+        {
+          "code": "J32.9"
+        },
+        {
+          "code": "J33.9"
+        },
+        {
+          "code": "J06.9"
+        },
+        {
+          "code": "J34.2"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_44283",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J01.90\"},\n    {\"code\": \"J32.9\"},\n    {\"code\": \"J33.9\"},\n    {\"code\": \"J06.9\"},\n    {\"code\": \"J34.2\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "case_id": "ddxplus_44746",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K92.1"
+        },
+        {
+          "code": "D62"
+        },
+        {
+          "code": "T45.51"
+        },
+        {
+          "code": "N92.0"
+        },
+        {
+          "code": "R06.02"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_44761",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"K92.1\"},\n    {\"code\": \"D62\"},\n    {\"code\": \"T45.51\"},\n    {\"code\": \"N92.0\"},\n    {\"code\": \"R06.02\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J45.901"
+        },
+        {
+          "code": "J20.9"
+        },
+        {
+          "code": "J45.909"
+        },
+        {
+          "code": "J32.9"
+        },
+        {
+          "code": "J06.9"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_44794",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J45.901\"},\n    {\"code\": \"J20.9\"},\n    {\"code\": \"J45.909\"},\n    {\"code\": \"J32.9\"},\n    {\"code\": \"J06.9\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I20.9"
+        },
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "R07.89"
+        },
+        {
+          "code": "K21.9"
+        },
+        {
+          "code": "R06.02"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_46602",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I20.9\"},\n    {\"code\": \"I26.9\"},\n    {\"code\": \"R07.89\"},\n    {\"code\": \"K21.9\"},\n    {\"code\": \"R06.02\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"UNCERTAIN\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "C34.90"
+        },
+        {
+          "code": "I26.99"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "J44.1"
+        },
+        {
+          "code": "A15.0"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_47200",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"C34.90\"},\n    {\"code\": \"I26.99\"},\n    {\"code\": \"J18.9\"},\n    {\"code\": \"J44.1\"},\n    {\"code\": \"A15.0\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J44.1"
+        },
+        {
+          "code": "J44.0"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "J20.9"
+        },
+        {
+          "code": "J67.0"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_4806",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J44.1\"},\n    {\"code\": \"J44.0\"},\n    {\"code\": \"J18.9\"},\n    {\"code\": \"J20.9\"},\n    {\"code\": \"J67.0\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I21.9"
+        },
+        {
+          "code": "I20.0"
+        },
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "I25.10"
+        },
+        {
+          "code": "R07.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_5118",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I21.9\"},\n    {\"code\": \"I20.0\"},\n    {\"code\": \"I26.9\"},\n    {\"code\": \"I25.10\"},\n    {\"code\": \"R07.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "G61.0"
+        },
+        {
+          "code": "A05.1"
+        },
+        {
+          "code": "G70.01"
+        },
+        {
+          "code": "T61.2"
+        },
+        {
+          "code": "I65.8"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_54083",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"G61.0\"},\n    {\"code\": \"A05.1\"},\n    {\"code\": \"G70.01\"},\n    {\"code\": \"T61.2\"},\n    {\"code\": \"I65.8\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I50.9"
+        },
+        {
+          "code": "N04.9"
+        },
+        {
+          "code": "I89.0"
+        },
+        {
+          "code": "R60.9"
+        },
+        {
+          "code": "M79.66"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_54665",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I50.9\"},\n    {\"code\": \"N04.9\"},\n    {\"code\": \"I89.0\"},\n    {\"code\": \"R60.9\"},\n    {\"code\": \"M79.66\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I49.9"
+        },
+        {
+          "code": "R06.00"
+        },
+        {
+          "code": "R42"
+        },
+        {
+          "code": "R00.2"
+        },
+        {
+          "code": "F15.10"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_55261",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I49.9\"},\n    {\"code\": \"R06.00\"},\n    {\"code\": \"R42\"},\n    {\"code\": \"R00.2\"},\n    {\"code\": \"F15.10\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I20.9"
+        },
+        {
+          "code": "R07.9"
+        },
+        {
+          "code": "K21.9"
+        },
+        {
+          "code": "I24.9"
+        },
+        {
+          "code": "M79.1"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_57081",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I20.9\"},\n    {\"code\": \"R07.9\"},\n    {\"code\": \"K21.9\"},\n    {\"code\": \"I24.9\"},\n    {\"code\": \"M79.1\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I30.9"
+        },
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "I40.9"
+        },
+        {
+          "code": "R09.1"
+        },
+        {
+          "code": "J18.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_57684",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I30.9\"},\n    {\"code\": \"I26.9\"},\n    {\"code\": \"I40.9\"},\n    {\"code\": \"R09.1\"},\n    {\"code\": \"J18.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "A15.0"
+        },
+        {
+          "code": "B59"
+        },
+        {
+          "code": "I33.0"
+        },
+        {
+          "code": "C34.9"
+        },
+        {
+          "code": "J18.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_58100",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"A15.0\"},\n    {\"code\": \"B59\"},\n    {\"code\": \"I33.0\"},\n    {\"code\": \"C34.9\"},\n    {\"code\": \"J18.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "case_id": "ddxplus_58639",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K21.9"
+        },
+        {
+          "code": "K44.9"
+        },
+        {
+          "code": "K29.70"
+        },
+        {
+          "code": "K85.90"
+        },
+        {
+          "code": "K25.9"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_59518",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"K21.9\"},\n    {\"code\": \"K44.9\"},\n    {\"code\": \"K29.70\"},\n    {\"code\": \"K85.90\"},\n    {\"code\": \"K25.9\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "T78.0"
+        },
+        {
+          "code": "T78.2"
+        },
+        {
+          "code": "T78.3"
+        },
+        {
+          "code": "L50.0"
+        },
+        {
+          "code": "R06.1"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_60831",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"T78.0\"},\n    {\"code\": \"T78.2\"},\n    {\"code\": \"T78.3\"},\n    {\"code\": \"L50.0\"},\n    {\"code\": \"R06.1\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K92.1"
+        },
+        {
+          "code": "D50.0"
+        },
+        {
+          "code": "K92.2"
+        },
+        {
+          "code": "N92.0"
+        },
+        {
+          "code": "R51.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_61042",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"K92.1\"},\n    {\"code\": \"D50.0\"},\n    {\"code\": \"K92.2\"},\n    {\"code\": \"N92.0\"},\n    {\"code\": \"R51.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J01.90"
+        },
+        {
+          "code": "J01.00"
+        },
+        {
+          "code": "J01.10"
+        },
+        {
+          "code": "J32.9"
+        },
+        {
+          "code": "J00"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_61070",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J01.90\"},\n    {\"code\": \"J01.00\"},\n    {\"code\": \"J01.10\"},\n    {\"code\": \"J32.9\"},\n    {\"code\": \"J00\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I50.9"
+        },
+        {
+          "code": "I20.9"
+        },
+        {
+          "code": "E87.70"
+        },
+        {
+          "code": "I30.9"
+        },
+        {
+          "code": "I26.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_67408",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I50.9\"},\n    {\"code\": \"I20.9\"},\n    {\"code\": \"E87.70\"},\n    {\"code\": \"I30.9\"},\n    {\"code\": \"I26.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "case_id": "ddxplus_67807",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "M32.9"
+        },
+        {
+          "code": "M33.9"
+        },
+        {
+          "code": "M06.9"
+        },
+        {
+          "code": "D86.9"
+        },
+        {
+          "code": "I26.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_67915",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"M32.9\"},\n    {\"code\": \"M33.9\"},\n    {\"code\": \"M06.9\"},\n    {\"code\": \"D86.9\"},\n    {\"code\": \"I26.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "case_id": "ddxplus_7010",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I30.9"
+        },
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "I71.00"
+        },
+        {
+          "code": "I40.9"
+        },
+        {
+          "code": "J93.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_72153",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I30.9\"},\n    {\"code\": \"I26.9\"},\n    {\"code\": \"I71.00\"},\n    {\"code\": \"I40.9\"},\n    {\"code\": \"J93.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "E84.0"
+        },
+        {
+          "code": "R04.2"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "J93.9"
+        },
+        {
+          "code": "I26.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_72843",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"E84.0\"},\n    {\"code\": \"R04.2\"},\n    {\"code\": \"J18.9\"},\n    {\"code\": \"J93.9\"},\n    {\"code\": \"I26.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I21.9"
+        },
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "I71.0"
+        },
+        {
+          "code": "I20.0"
+        },
+        {
+          "code": "R07.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_73793",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I21.9\"},\n    {\"code\": \"I26.9\"},\n    {\"code\": \"I71.0\"},\n    {\"code\": \"I20.0\"},\n    {\"code\": \"R07.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "case_id": "ddxplus_7404",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K92.2"
+        },
+        {
+          "code": "D62"
+        },
+        {
+          "code": "M31.6"
+        },
+        {
+          "code": "R42"
+        },
+        {
+          "code": "T45.515A"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_81153",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"K92.2\"},\n    {\"code\": \"D62\"},\n    {\"code\": \"M31.6\"},\n    {\"code\": \"R42\"},\n    {\"code\": \"T45.515A\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K92.1"
+        },
+        {
+          "code": "D62"
+        },
+        {
+          "code": "R06.02"
+        },
+        {
+          "code": "R42"
+        },
+        {
+          "code": "B76.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_86038",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"K92.1\"},\n    {\"code\": \"D62\"},\n    {\"code\": \"R06.02\"},\n    {\"code\": \"R42\"},\n    {\"code\": \"B76.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J03.90"
+        },
+        {
+          "code": "J02.9"
+        },
+        {
+          "code": "J06.9"
+        },
+        {
+          "code": "B27.90"
+        },
+        {
+          "code": "J36"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_87419",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J03.90\"},\n    {\"code\": \"J02.9\"},\n    {\"code\": \"J06.9\"},\n    {\"code\": \"B27.90\"},\n    {\"code\": \"J36\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J06.9"
+        },
+        {
+          "code": "J11.1"
+        },
+        {
+          "code": "J00"
+        },
+        {
+          "code": "J01.90"
+        },
+        {
+          "code": "R51.9"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_87487",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J06.9\"},\n    {\"code\": \"J11.1\"},\n    {\"code\": \"J00\"},\n    {\"code\": \"J01.90\"},\n    {\"code\": \"R51.9\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "G24.0"
+        },
+        {
+          "code": "T43.595A"
+        },
+        {
+          "code": "J38.5"
+        },
+        {
+          "code": "G24.3"
+        },
+        {
+          "code": "G24.8"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_88546",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"G24.0\"},\n    {\"code\": \"T43.595A\"},\n    {\"code\": \"J38.5\"},\n    {\"code\": \"G24.3\"},\n    {\"code\": \"G24.8\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "G03.9"
+        },
+        {
+          "code": "B27.9"
+        },
+        {
+          "code": "A38"
+        },
+        {
+          "code": "J11.1"
+        },
+        {
+          "code": "B05.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_90033",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"G03.9\"},\n    {\"code\": \"B27.9\"},\n    {\"code\": \"A38\"},\n    {\"code\": \"J11.1\"},\n    {\"code\": \"B05.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"UNCERTAIN\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "J69.0"
+        },
+        {
+          "code": "C34.9"
+        },
+        {
+          "code": "A15.0"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_92606",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J18.9\"},\n    {\"code\": \"I26.9\"},\n    {\"code\": \"J69.0\"},\n    {\"code\": \"C34.9\"},\n    {\"code\": \"A15.0\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"UNCERTAIN\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "I30.9"
+        },
+        {
+          "code": "R09.1"
+        },
+        {
+          "code": "J93.9"
+        },
+        {
+          "code": "R07.2"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_94455",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I26.9\"},\n    {\"code\": \"I30.9\"},\n    {\"code\": \"R09.1\"},\n    {\"code\": \"J93.9\"},\n    {\"code\": \"R07.2\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J03.9"
+        },
+        {
+          "code": "J04.0"
+        },
+        {
+          "code": "J02.9"
+        },
+        {
+          "code": "J36"
+        },
+        {
+          "code": "J05.1"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_94656",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J03.9\"},\n    {\"code\": \"J04.0\"},\n    {\"code\": \"J02.9\"},\n    {\"code\": \"J36\"},\n    {\"code\": \"J05.1\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I20.0"
+        },
+        {
+          "code": "I21.9"
+        },
+        {
+          "code": "I25.110"
+        },
+        {
+          "code": "I20.9"
+        },
+        {
+          "code": "R07.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_96480",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I20.0\"},\n    {\"code\": \"I21.9\"},\n    {\"code\": \"I25.110\"},\n    {\"code\": \"I20.9\"},\n    {\"code\": \"R07.9\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K25.4"
+        },
+        {
+          "code": "K29.0"
+        },
+        {
+          "code": "K92.0"
+        },
+        {
+          "code": "K92.1"
+        },
+        {
+          "code": "K21.0"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_96751",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"K25.4\"},\n    {\"code\": \"K29.0\"},\n    {\"code\": \"K92.0\"},\n    {\"code\": \"K92.1\"},\n    {\"code\": \"K21.0\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J02.9"
+        },
+        {
+          "code": "J03.90"
+        },
+        {
+          "code": "J06.9"
+        },
+        {
+          "code": "J11.1"
+        },
+        {
+          "code": "J02.0"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_97611",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"J02.9\"},\n    {\"code\": \"J03.90\"},\n    {\"code\": \"J06.9\"},\n    {\"code\": \"J11.1\"},\n    {\"code\": \"J02.0\"}\n  ],\n  \"escalation_decision\": \"ROUTINE_CARE\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "I82.40"
+        },
+        {
+          "code": "C34.90"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "R04.2"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_99107",
+      "raw_response": "{\n  \"differential_diagnoses\": [\n    {\"code\": \"I26.9\"},\n    {\"code\": \"I82.40\"},\n    {\"code\": \"C34.90\"},\n    {\"code\": \"J18.9\"},\n    {\"code\": \"R04.2\"}\n  ],\n  \"escalation_decision\": \"ESCALATE_NOW\",\n  \"uncertainty\": \"CONFIDENT\"\n}",
+      "workflow": "intake"
+    }
+  ]
+}

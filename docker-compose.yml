@@ -29,6 +29,7 @@ services:
     volumes:
       - ./data:/app/data
       - ./results:/app/results
+      - ./leaderboard:/app/leaderboard
       - ./evaluator:/app/evaluator
       - ./scripts:/app/scripts
     user: "1000:1000"
@@ -44,9 +45,10 @@ services:
     ports:
       - "${WEB_PORT:-18080}:8000"
     volumes:
+      - ./:/app/project:ro
+      - ./data:/app/data:ro
       - ./leaderboard:/app/leaderboard
-      - ./README.md:/app/README.md
-      - ./RESULTS_SUMMARY.md:/app/RESULTS_SUMMARY.md
+      - ./results/analysis:/app/results/analysis
       - ./web/main.py:/app/main.py
       - ./web/static:/app/static
     environment:

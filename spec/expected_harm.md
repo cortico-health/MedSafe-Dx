@@ -1,4 +1,8 @@
-# Expected Harm Scoring (Draft)
+# Expected Harm Scoring (DEPRECATED)
+
+> **⚠️ DEPRECATED:** This metric is computed internally but is not included in public write-ups or leaderboard rankings. Safety Pass Rate remains the primary metric. This document is retained for internal reference only.
+
+---
 
 This benchmark includes an **Expected Harm** score designed to reflect patient best interest while reducing incentives for gaming (e.g., always escalating).
 

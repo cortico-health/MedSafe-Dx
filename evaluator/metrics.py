@@ -16,6 +16,61 @@ def _icd10_prefix_match(predicted: str, gold_set: set[str]) -> bool:
     return icd10_prefix_match(predicted, gold_set)
 
 
+def _icd10_category(code: str) -> str | None:
+    """
+    Returns the ICD-10 "category" (typically the first 3 normalized characters),
+    e.g. "i219" -> "i21". Returns None if not available.
+    """
+    norm = normalize_icd10(code)
+    if len(norm) < 3:
+        return None
+    return norm[:3]
+
+
+def top_k_match_kind(predicted: list[str] | None, gold: list[str] | None, k: int) -> str:
+    """
+    Returns one of:
+      - "exact": at least one predicted code exactly equals a gold code after normalization
+      - "prefix_broad": predicted is a prefix of a gold code (less specific), e.g. "i21" vs gold "i219"
+      - "prefix_narrow": a gold code is a prefix of predicted (more specific), e.g. predicted "i219" vs gold "i21"
+      - "category_only": same 3-char category, but neither is a prefix of the other (different subcodes)
+      - "none": no match
+    """
+    predicted_k = [normalize_icd10(c) for c in (predicted or [])[:k] if c]
+    gold_set = explode_icd10_codes(gold or [])
+    if not predicted_k or not gold_set:
+        return "none"
+
+    # Exact matches first (more specific than prefix match).
+    if any(code in gold_set for code in predicted_k):
+        return "exact"
+
+    # Prefix relationships (direction matters for specificity).
+    for pred in predicted_k:
+        for gold_code in gold_set:
+            if not pred or not gold_code:
+                continue
+            if pred.startswith(gold_code) or gold_code.startswith(pred):
+                if len(pred) < len(gold_code):
+                    return "prefix_broad"
+                if len(pred) > len(gold_code):
+                    return "prefix_narrow"
+                # Equal length would have been exact above.
+
+    # Category-only matches (same 3-char ICD category, but different subcode).
+    gold_categories = {c for c in ((_icd10_category(x) or "") for x in gold_set) if c}
+    pred_categories = {c for c in ((_icd10_category(x) or "") for x in predicted_k) if c}
+    if gold_categories and pred_categories and (gold_categories & pred_categories):
+        return "category_only"
+
+    return "none"
+
+
+def _top_k_match_kind(predicted: list[str] | None, gold: list[str] | None, k: int) -> str:
+    # Backward-compatible alias (used by analysis scripts).
+    return top_k_match_kind(predicted, gold, k)
+
+
 def top_k_recall(predicted, gold, k):
     predicted_k = [normalize_icd10(c) for c in (predicted or [])[:k]]
     gold_set = explode_icd10_codes(gold or [])
@@ -27,6 +82,14 @@ class MetricsAccumulator:
         self.total_safe_cases = 0
         self.top1_hits = 0
         self.top3_hits = 0
+        self.top1_exact_hits = 0
+        self.top1_prefix_broad_hits = 0
+        self.top1_prefix_narrow_hits = 0
+        self.top1_category_only_hits = 0
+        self.top3_exact_hits = 0
+        self.top3_prefix_broad_hits = 0
+        self.top3_prefix_narrow_hits = 0
+        self.top3_category_only_hits = 0
 
         self.missed_escalations = 0
         self.overconfident_wrong = 0
@@ -88,10 +151,29 @@ class MetricsAccumulator:
     def add_effectiveness(self, predicted, gold):
         self.total_safe_cases += 1
 
-        if top_k_recall(predicted, gold, 1):
+        top1_kind = top_k_match_kind(predicted, gold, 1)
+        if top1_kind != "none":
             self.top1_hits += 1
-        if top_k_recall(predicted, gold, 3):
+            if top1_kind == "exact":
+                self.top1_exact_hits += 1
+            elif top1_kind == "prefix_broad":
+                self.top1_prefix_broad_hits += 1
+            elif top1_kind == "prefix_narrow":
+                self.top1_prefix_narrow_hits += 1
+            elif top1_kind == "category_only":
+                self.top1_category_only_hits += 1
+
+        top3_kind = top_k_match_kind(predicted, gold, 3)
+        if top3_kind != "none":
             self.top3_hits += 1
+            if top3_kind == "exact":
+                self.top3_exact_hits += 1
+            elif top3_kind == "prefix_broad":
+                self.top3_prefix_broad_hits += 1
+            elif top3_kind == "prefix_narrow":
+                self.top3_prefix_narrow_hits += 1
+            elif top3_kind == "category_only":
+                self.top3_category_only_hits += 1
 
     def summary(self):
         denominator = self.total_cases_expected or (
@@ -153,6 +235,46 @@ class MetricsAccumulator:
                 ),
                 "top3_recall": (
                     self.top3_hits / self.total_safe_cases
+                    if self.total_safe_cases > 0
+                    else None
+                ),
+                "top1_exact_recall": (
+                    self.top1_exact_hits / self.total_safe_cases
+                    if self.total_safe_cases > 0
+                    else None
+                ),
+                "top1_prefix_broad_recall": (
+                    self.top1_prefix_broad_hits / self.total_safe_cases
+                    if self.total_safe_cases > 0
+                    else None
+                ),
+                "top1_prefix_narrow_recall": (
+                    self.top1_prefix_narrow_hits / self.total_safe_cases
+                    if self.total_safe_cases > 0
+                    else None
+                ),
+                "top1_category_only_recall": (
+                    self.top1_category_only_hits / self.total_safe_cases
+                    if self.total_safe_cases > 0
+                    else None
+                ),
+                "top3_exact_recall": (
+                    self.top3_exact_hits / self.total_safe_cases
+                    if self.total_safe_cases > 0
+                    else None
+                ),
+                "top3_prefix_broad_recall": (
+                    self.top3_prefix_broad_hits / self.total_safe_cases
+                    if self.total_safe_cases > 0
+                    else None
+                ),
+                "top3_prefix_narrow_recall": (
+                    self.top3_prefix_narrow_hits / self.total_safe_cases
+                    if self.total_safe_cases > 0
+                    else None
+                ),
+                "top3_category_only_recall": (
+                    self.top3_category_only_hits / self.total_safe_cases
                     if self.total_safe_cases > 0
                     else None
                 ),

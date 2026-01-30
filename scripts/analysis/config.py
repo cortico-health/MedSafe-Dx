@@ -63,6 +63,12 @@ MODELS = {
         "cost_per_1k_input": 0.002,
         "cost_per_1k_output": 0.008,
     },
+    "openai-gpt-5-mini": {
+        "display_name": "GPT-5 Mini",
+        "provider": "OpenAI",
+        "cost_per_1k_input": 0.0003,
+        "cost_per_1k_output": 0.0012,
+    },
     "openai-gpt-5.2": {
         "display_name": "GPT-5.2",
         "provider": "OpenAI",

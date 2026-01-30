@@ -11,13 +11,13 @@ import time
 
 from inference.openrouter import call_openrouter, load_cases, write_predictions
 from inference.prompt import (
-    OUTPUT_SCHEMA_V2,
+    OUTPUT_SCHEMA_V4,
     SYSTEM_PROMPT_CHART_REVIEW_V3,
     SYSTEM_PROMPT_INTAKE_V3,
     USER_PROMPT_TEMPLATE_CHART_REVIEW_V3,
     USER_PROMPT_TEMPLATE_INTAKE_V3,
 )
-from inference.symptom_decoder import decode_symptoms
+from inference.symptom_decoder import decode_symptoms, decode_symptoms_with_audit
 
 
 def get_system_prompt(workflow: str) -> str:
@@ -36,7 +36,7 @@ def format_case_for_prompt(case: Dict[str, Any], workflow: str) -> str:
     """Format a case into the user prompt with human-readable symptoms."""
     # Decode symptom codes to readable text
     symptom_codes = case.get("presenting_symptoms", [])
-    active_symptoms, antecedents = decode_symptoms(symptom_codes)
+    active_symptoms, antecedents, symptoms_audit = decode_symptoms_with_audit(symptom_codes)
     
     symptoms_str = ", ".join(active_symptoms) if active_symptoms else "none"
     history_str = ", ".join(antecedents) if antecedents else "none"
@@ -45,10 +45,19 @@ def format_case_for_prompt(case: Dict[str, Any], workflow: str) -> str:
     red_flag_codes = case.get("red_flag_indicators", [])
     # Red flags are typically active symptoms, so we take the first part of the return tuple
     # Note: decode_symptoms returns (active, antecedents), we just join them all for red flags
-    rf_active, rf_history = decode_symptoms(red_flag_codes) if red_flag_codes else ([], [])
+    if red_flag_codes:
+        rf_active, rf_history, red_flags_audit = decode_symptoms_with_audit(red_flag_codes)
+    else:
+        rf_active, rf_history, red_flags_audit = ([], [], None)
     decoded_red_flags = rf_active + rf_history
     red_flags_str = ", ".join(decoded_red_flags) if decoded_red_flags else "none"
     
+    # Attach decode fidelity for downstream clinician QA/auditing (not used for scoring).
+    case["_input_decode_audit"] = {
+        "symptoms": symptoms_audit,
+        "red_flags": red_flags_audit,
+    }
+
     return get_user_prompt_template(workflow).format(
         age=case.get("age", "unknown"),
         sex=case.get("sex", "unknown"),
@@ -57,7 +66,7 @@ def format_case_for_prompt(case: Dict[str, Any], workflow: str) -> str:
         duration=case.get("symptom_duration", "unknown"),
         severity=case.get("severity_flags", "unknown"),
         red_flags=red_flags_str,
-        schema=OUTPUT_SCHEMA_V2,
+        schema=OUTPUT_SCHEMA_V4,
     )
 
 
@@ -113,6 +122,8 @@ def run_inference_on_case(
         # Keep raw text for clinical review / audit. Evaluator ignores extra fields.
         prediction["raw_response"] = response
         prediction["workflow"] = workflow
+        if isinstance(case, dict) and case.get("_input_decode_audit"):
+            prediction["input_decode_audit"] = case["_input_decode_audit"]
         return prediction
     
     except json.JSONDecodeError as e:
@@ -123,6 +134,7 @@ def run_inference_on_case(
             "workflow": workflow,
             "error": "json_parse_failure",
             "raw_response": response,
+            "input_decode_audit": case.get("_input_decode_audit") if isinstance(case, dict) else None,
         }
 
 
@@ -213,7 +225,7 @@ def main():
         "model": args.model,
         "temperature": args.temperature,
         "workflow": args.workflow,
-        "prompt_version": "v3",
+        "prompt_version": "v4",
         "total_cases": len(predictions),
         "successful_predictions": successful,
         "failed_predictions": len(predictions) - successful,

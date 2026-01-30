@@ -60,17 +60,18 @@ OUTPUT_DIR = PATHS["analysis_output_dir"] / "variations"
 # ============================================================================
 
 # Models to test for individual variations (baseline, safety prompt, RAG)
+# Note: gpt-5-mini/gpt-5-pro and gemini-3-pro-preview are reasoning models that
+# return empty content. Gemini-3-flash has rate limit issues. Using reliable models.
 INDIVIDUAL_MODELS = [
-    "openai/gpt-4o-mini",           # 4o
-    "openai/gpt-5-mini",            # 5.2-mini
-    "google/gemini-3-pro-preview",  # r3
-    "anthropic/claude-haiku-4.5",   # haiku
+    "openai/gpt-4o-mini",              # 4o - reliable
+    "openai/gpt-5-chat",               # 5 chat (not reasoning) - reliable
+    "anthropic/claude-haiku-4.5",      # haiku - reliable
 ]
 
 # Models for MOE panel (use different vendors for diversity)
 MOE_PANEL_MODELS = [
     "openai/gpt-4o-mini",
-    "google/gemini-3-pro-preview",
+    "openai/gpt-5-chat",
     "anthropic/claude-haiku-4.5",
 ]
 
@@ -80,8 +81,7 @@ MOE_SUMMARIZER = "anthropic/claude-sonnet-4"
 # Model display names for reports
 MODEL_NAMES = {
     "openai/gpt-4o-mini": "GPT-4o-mini",
-    "openai/gpt-5-mini": "GPT-5-mini",
-    "google/gemini-3-pro-preview": "Gemini-3-Pro",
+    "openai/gpt-5-chat": "GPT-5-chat",
     "anthropic/claude-haiku-4.5": "Haiku-4.5",
     "anthropic/claude-sonnet-4": "Sonnet-4",
 }

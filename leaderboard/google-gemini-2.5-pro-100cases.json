@@ -1,0 +1,1149 @@
+{
+  "metadata": {
+    "model": "google/gemini-2.5-pro",
+    "temperature": 0.0,
+    "total_cases": 100,
+    "successful_predictions": 44,
+    "failed_predictions": 56,
+    "test_set_metadata": {
+      "source_file": "data/ddxplus_v0/cases.json",
+      "total_available_cases": 109938,
+      "sampled_cases": 100,
+      "seed": 42,
+      "timestamp": "2025-12-17T08:26:29.688859Z",
+      "test_set_name": "test-100cases-6models"
+    }
+  },
+  "predictions": [
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I26.99"
+        },
+        {
+          "code": "I30.9"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "R09.1"
+        },
+        {
+          "code": "M94.0"
+        }
+      ],
+      "reasoning": "The combination of sharp chest pain, significant dyspnea, and recent travel history is highly concerning for pulmonary embolism. Other key differentials include inflammatory causes like pericarditis or infectious etiologies such as pneumonia, which can also present with pleuritic pain and shortness of breath.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_100728"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I71.01"
+        },
+        {
+          "code": "K22.3"
+        },
+        {
+          "code": "K25.1"
+        },
+        {
+          "code": "I21.9"
+        },
+        {
+          "code": "I26.99"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "reasoning": "The patient's sudden onset of severe, radiating chest and abdominal pain, coupled with shortness of breath and hematemesis, suggests an acute intrathoracic or intra-abdominal catastrophe. The differential includes aortic dissection, esophageal rupture, and perforated viscus, all requiring immediate evaluation.",
+      "case_id": "ddxplus_103880"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J44.1",
+          "reasoning": "Chronic obstructive pulmonary disease with (acute) exacerbation. This is the most likely diagnosis given the patient's history of severe COPD and classic symptoms of increased dyspnea, sputum production, and wheezing."
+        },
+        {
+          "code": "J18.9",
+          "reasoning": "Pneumonia, unspecified organism. The productive cough with colored sputum and acute dyspnea are highly suggestive of pneumonia, which can be a trigger for or complication of a COPD flare."
+        },
+        {
+          "code": "I50.9",
+          "reasoning": "Heart failure, unspecified. Acute decompensated heart failure can present with dyspnea and wheezing ('cardiac asthma') and is a critical consideration in a patient with risk factors like smoking and chronic lung disease."
+        },
+        {
+          "code": "I26.99",
+          "reasoning": "Other pulmonary embolism without acute cor pulmonale. Acute shortness of breath warrants consideration of PE, a life-threatening condition that can mimic a COPD exacerbation."
+        },
+        {
+          "code": "J20.9",
+          "reasoning": "Acute bronchitis, unspecified. While the symptoms fit, in a patient with severe COPD, this presentation is more appropriately classified as a COPD exacerbation, which carries higher morbidity."
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_104180"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K40.90",
+          "reasoning": "Pain in the iliac fossa and testicle that worsens with increased intra-abdominal pressure (coughing, effort) is highly suggestive of an inguinal hernia. The palpable 'lesion' likely represents the hernia bulge."
+        },
+        {
+          "code": "K35.80",
+          "reasoning": "Acute appendicitis is a critical differential for any patient presenting with right iliac fossa pain. Worsening pain with cough (Dunphy's sign) is a sign of peritoneal irritation that can be seen in appendicitis."
+        },
+        {
+          "code": "N45.1",
+          "reasoning": "Right testicular pain is a primary feature, making epididymitis or orchitis a key consideration. Pain can radiate to the groin and lower abdomen, mimicking other conditions."
+        },
+        {
+          "code": "N20.1",
+          "reasoning": "A ureteral stone can cause pain that radiates from the flank to the lower abdomen, groin, and testicle, fitting the patient's pain distribution."
+        },
+        {
+          "code": "K57.30",
+          "reasoning": "Diverticulitis is a common cause of lower abdominal pain and bloating, and while typically left-sided, right-sided or diffuse presentations can occur."
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_109592"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J11.1"
+        },
+        {
+          "code": "U07.1"
+        },
+        {
+          "code": "J00"
+        },
+        {
+          "code": "J01.90"
+        },
+        {
+          "code": "B27.90"
+        }
+      ],
+      "reasoning": "The patient's constellation of fever, myalgia, cough, and sore throat, especially with a known sick contact, strongly suggests a viral upper respiratory infection. Influenza and COVID-19 are top differentials. Acute sinusitis is considered due to the specific facial pain, and infectious mononucleosis is an important differential in this age group.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_112477"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J36",
+          "reasoning": "Peritonsillar abscess. The severe, localized pain (9/10), fever, and potential for airway compromise make this a primary concern, representing a serious complication of tonsillitis."
+        },
+        {
+          "code": "A15.0",
+          "reasoning": "Tuberculosis of lung. Hemoptysis in an immunosuppressed patient with a contact history is a major red flag for TB, which must be urgently ruled out."
+        },
+        {
+          "code": "J03.90",
+          "reasoning": "Acute tonsillitis. The core symptoms of severe throat pain, fever, and URI symptoms align well with a severe case of tonsillitis."
+        },
+        {
+          "code": "J18.9",
+          "reasoning": "Pneumonia, unspecified organism. Hemoptysis, fever, and cough in an immunosuppressed patient warrant investigation for a lower respiratory tract infection."
+        },
+        {
+          "code": "B27.90",
+          "reasoning": "Infectious mononucleosis. A common cause of severe exudative pharyngitis and fever in this age group, fitting the contact history."
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_112558"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "A37.90",
+          "reasoning": "The combination of intense coughing fits (paroxysms), post-tussive emesis, and a known sick contact is highly suggestive of Pertussis. Other common causes of severe cough, such as acute bronchitis and an asthma exacerbation (given the patient's history), are also included."
+        },
+        {
+          "code": "J20.9"
+        },
+        {
+          "code": "J45.901"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "J06.9"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_11469"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K92.2",
+          "reasoning": "Patient reports both melena (black stools) and hematochezia (red blood in stool), which are hallmark signs of gastrointestinal hemorrhage. This is the most urgent diagnosis to consider."
+        },
+        {
+          "code": "D62",
+          "reasoning": "The profound fatigue, dizziness, and lightheadedness are classic symptoms of acute posthemorrhagic anemia resulting from the active GI bleed."
+        },
+        {
+          "code": "K25.9",
+          "reasoning": "Gastric ulcer is a common cause of an upper GI bleed, which would explain the melena. This is a leading potential source of the hemorrhage."
+        },
+        {
+          "code": "N18.9",
+          "reasoning": "The history of chronic kidney failure is a critical comorbidity that can cause anemia of chronic disease and also increases the risk of GI bleeding (e.g., uremic gastritis)."
+        },
+        {
+          "code": "R51.9",
+          "reasoning": "The diffuse headache is likely secondary to the anemia and potential hypovolemia, rather than a primary headache disorder, but warrants inclusion."
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_118799"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "C10.9",
+          "reasoning": "Malignancy of the oropharynx is a primary concern given the patient's age, gradual onset of diffuse pain, and hemoptysis. Immunosuppression is a significant risk factor."
+        },
+        {
+          "code": "A15.0",
+          "reasoning": "Tuberculosis must be considered due to hemoptysis, cough, and immunosuppression. Laryngeal involvement could explain the severe throat pain."
+        },
+        {
+          "code": "J36",
+          "reasoning": "A peritonsillar abscess could explain the severe, localized throat pain and may present with bleeding, especially in an immunosuppressed patient."
+        },
+        {
+          "code": "B44.9",
+          "reasoning": "Invasive fungal infection (e.g., Aspergillosis) is a critical diagnosis to consider in an immunosuppressed patient with hemoptysis and sinonasal symptoms."
+        },
+        {
+          "code": "C32.9",
+          "reasoning": "Laryngeal cancer is also on the differential, explaining the pain localized to the thyroid cartilage and the presence of hemoptysis."
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_122461"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J02.9",
+          "reasoning": "Acute pharyngitis. The diffuse oropharyngeal pain, fever, and nasal symptoms are classic for a viral or bacterial pharyngitis, which is common given the sick contact."
+        },
+        {
+          "code": "J20.9",
+          "reasoning": "Acute bronchitis. The cough and hemoptysis can be explained by inflammation of the bronchial tubes, especially in a smoker. Forceful coughing can cause minor bleeding."
+        },
+        {
+          "code": "J18.9",
+          "reasoning": "Pneumonia, unspecified organism. Given the patient is immunosuppressed, has a fever, cough, and hemoptysis, pneumonia is a critical consideration that must be ruled out."
+        },
+        {
+          "code": "R04.2",
+          "reasoning": "Hemoptysis. This is a primary presenting symptom and a red flag. While it may be secondary to infection, it warrants its own consideration and workup, especially given the smoking history."
+        },
+        {
+          "code": "C09.9",
+          "reasoning": "Malignant neoplasm of tonsil. In a 58-year-old smoker with gradual onset oropharyngeal pain and hemoptysis, an underlying malignancy must be considered, even if an acute infection is also present."
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_124029"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "C32.9"
+        },
+        {
+          "code": "C10.9"
+        },
+        {
+          "code": "J04.2"
+        },
+        {
+          "code": "J31.2"
+        },
+        {
+          "code": "A15.0"
+        }
+      ],
+      "reasoning": "Hemoptysis in a 63-year-old male with a significant smoking history is highly concerning for malignancy of the upper aerodigestive tract, primarily laryngeal or oropharyngeal cancer. While a severe inflammatory or infectious process could cause these symptoms, cancer must be urgently excluded.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_12653"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J11.1",
+          "name": "Influenza due to unidentified influenza virus with other respiratory manifestations"
+        },
+        {
+          "code": "U07.1",
+          "name": "COVID-19"
+        },
+        {
+          "code": "J01.90",
+          "name": "Acute sinusitis, unspecified"
+        },
+        {
+          "code": "J02.9",
+          "name": "Acute pharyngitis, unspecified"
+        },
+        {
+          "code": "J00",
+          "name": "Acute nasopharyngitis [common cold]"
+        }
+      ],
+      "reasoning": "The constellation of systemic symptoms (sweating, myalgia) and upper respiratory symptoms (cough, sore throat, congestion) strongly suggests a viral illness like Influenza or COVID-19, especially given the contact history. The prominent bilateral cheek pain indicates concurrent acute sinusitis, a common complication.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_129294"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "D50.0",
+          "name": "Iron deficiency anemia secondary to blood loss (chronic)"
+        },
+        {
+          "code": "K92.2",
+          "name": "Gastrointestinal hemorrhage, unspecified"
+        },
+        {
+          "code": "K25.4",
+          "name": "Gastric ulcer with hemorrhage"
+        },
+        {
+          "code": "K57.32",
+          "name": "Diverticulosis of large intestine with hemorrhage"
+        },
+        {
+          "code": "R53.83",
+          "name": "Other fatigue"
+        }
+      ],
+      "reasoning": "The patient's presentation of fatigue, dizziness, and lightheadedness, coupled with a history of anemia and being underweight, is highly suggestive of anemia. The report of both melena (black stools) and hematochezia (bright red blood) are strong indicators of a gastrointestinal bleed, which is the likely cause of the anemia. The differential considers anemia from blood loss and common sources of upper (ulcer) and lower (diverticulosis) GI bleeding.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_129862"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "G70.0",
+          "name": "Myasthenia gravis"
+        },
+        {
+          "code": "I63.9",
+          "name": "Cerebral infarction, unspecified"
+        },
+        {
+          "code": "G61.0",
+          "name": "Guillain-Barre syndrome"
+        },
+        {
+          "code": "G73.1",
+          "name": "Lambert-Eaton syndrome in neoplastic disease"
+        },
+        {
+          "code": "A05.1",
+          "name": "Botulism"
+        }
+      ],
+      "reasoning": "The constellation of fluctuating, fatigable weakness affecting ocular (diplopia), bulbar (dysarthria, jaw weakness), and respiratory (dyspnea) muscles is highly suggestive of a myasthenic crisis. Given the patient's age and acute deficits, a brainstem stroke is a critical alternative.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_133038"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J11.1",
+          "reasoning": "The constellation of fever, cough, myalgia, sore throat, and headache is highly suggestive of an influenza-like illness. This is a primary consideration given the systemic symptoms."
+        },
+        {
+          "code": "U07.1",
+          "reasoning": "Symptoms show significant overlap with COVID-19, which remains a high-prevalence infectious disease. The patient's social history (crowded living, daycare) increases risk."
+        },
+        {
+          "code": "B27.99",
+          "reasoning": "Infectious mononucleosis is common in this age group and presents with fever, sore throat, headache, and myalgia. This diagnosis fits the patient's demographic and clinical picture."
+        },
+        {
+          "code": "J02.9",
+          "reasoning": "Acute pharyngitis is consistent with the reported sore throat and fever. While likely viral given the associated cough and myalgia, it remains a core component of the presentation."
+        },
+        {
+          "code": "G03.9",
+          "reasoning": "The presence of fever with a severe (7/10) headache necessitates the inclusion of meningitis in the differential. Although less likely, it is a critical diagnosis that must be excluded."
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_133786"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I40.9"
+        },
+        {
+          "code": "M94.0"
+        },
+        {
+          "code": "R09.1"
+        },
+        {
+          "code": "I20.9"
+        },
+        {
+          "code": "I26.99"
+        }
+      ],
+      "reasoning": "The presentation of exertional chest pain, fatigue, and myalgias following a viral illness raises strong suspicion for an inflammatory cardiac process like myocarditis. Musculoskeletal causes are also possible. Given the exertional component, ischemic heart disease must be ruled out despite the patient's age.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_14879"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J44.1",
+          "name": "Chronic obstructive pulmonary disease with (acute) exacerbation"
+        },
+        {
+          "code": "J18.9",
+          "name": "Pneumonia, unspecified organism"
+        },
+        {
+          "code": "J20.9",
+          "name": "Acute bronchitis, unspecified"
+        },
+        {
+          "code": "I26.99",
+          "name": "Other pulmonary embolism without acute cor pulmonale"
+        },
+        {
+          "code": "I50.9",
+          "name": "Heart failure, unspecified"
+        }
+      ],
+      "reasoning": "The patient's history of COPD and smoking, combined with acute worsening of dyspnea and a productive cough, strongly suggests an acute exacerbation (AECOPD). Pneumonia is a key alternative or co-existing diagnosis. Less likely but critical considerations include pulmonary embolism and heart failure given the acute dyspnea.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_16460"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J02.9"
+        },
+        {
+          "code": "U07.1"
+        },
+        {
+          "code": "J02.0"
+        },
+        {
+          "code": "J03.90"
+        },
+        {
+          "code": "B27.90"
+        }
+      ],
+      "reasoning": "The presentation of sore throat, cough, and sick contact suggests an infectious pharyngitis, most commonly viral (J02.9). Given the pandemic context and symptoms, COVID-19 (U07.1) is a primary consideration. Bacterial pharyngitis (J02.0) is less likely with a cough but must be ruled out. The patient's immunosuppression increases susceptibility and warrants consideration of other pathogens like EBV (B27.90).",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_17897"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K21.0"
+        },
+        {
+          "code": "K44.9"
+        },
+        {
+          "code": "K29.70"
+        },
+        {
+          "code": "K27.9"
+        },
+        {
+          "code": "K80.20"
+        }
+      ],
+      "reasoning": "The patient's presentation of burning epigastric pain, heartburn, regurgitation, and postprandial worsening of symptoms is classic for gastroesophageal reflux disease (GERD), especially given her history of a hiatal hernia. Other causes of epigastric pain like gastritis, peptic ulcer disease, and biliary colic are included in the differential.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_22435"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "G40.909",
+          "reasoning": "The primary reported event is loss of consciousness with violent muscle contractions, which is highly suggestive of a new-onset generalized seizure. The etiology is unknown."
+        },
+        {
+          "code": "I26.99",
+          "reasoning": "Significant shortness of breath with loss of consciousness raises high suspicion for a massive pulmonary embolism causing syncope. Obesity is a risk factor."
+        },
+        {
+          "code": "T60.0X1A",
+          "reasoning": "The patient's occupation in agriculture makes toxic exposure, such as to organophosphates, a critical consideration. This can cause seizures, respiratory distress, and neurological symptoms like the reported pain."
+        },
+        {
+          "code": "R55",
+          "reasoning": "This code for syncope and collapse is included to cover non-epileptic causes of transient loss of consciousness, such as a primary cardiac arrhythmia leading to convulsive syncope."
+        },
+        {
+          "code": "E87.8",
+          "reasoning": "A severe metabolic or electrolyte disturbance (e.g., hyponatremia, hypocalcemia) can precipitate both seizures and sensory disturbances like the burning finger pain."
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_42585"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J30.9",
+          "name": "Allergic rhinitis, unspecified"
+        },
+        {
+          "code": "J30.0",
+          "name": "Vasomotor rhinitis"
+        },
+        {
+          "code": "J00",
+          "name": "Acute nasopharyngitis (common cold)"
+        },
+        {
+          "code": "J32.9",
+          "name": "Chronic sinusitis, unspecified"
+        },
+        {
+          "code": "J30.89",
+          "name": "Other allergic rhinitis"
+        }
+      ],
+      "reasoning": "The combination of pruritus, clear rhinorrhea, and congestion with a strong family history of atopy makes allergic rhinitis the most probable diagnosis. Non-allergic rhinitis and acute viral URI are key differentials, while chronic sinusitis is less likely but possible if symptoms are long-standing.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_4279"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "C34.90",
+          "reasoning": "Malignant neoplasm of unspecified part of unspecified bronchus or lung. The combination of advanced age, extensive smoking history, family history, hemoptysis, and constitutional symptoms (weight loss, anorexia, fatigue) makes lung cancer the leading diagnosis."
+        },
+        {
+          "code": "I26.99",
+          "reasoning": "Other pulmonary embolism without acute cor pulmonale. Malignancy is a major risk factor. The acute onset of dyspnea, chest pain, and hemoptysis are classic symptoms for this life-threatening condition."
+        },
+        {
+          "code": "A15.0",
+          "reasoning": "Tuberculosis of lung. Hemoptysis, cough, weight loss, and fatigue are hallmark symptoms. Recent travel and advanced age (potential for reactivation) make this a key differential."
+        },
+        {
+          "code": "J18.9",
+          "reasoning": "Pneumonia, unspecified organism. A common and serious infection in the elderly that can present with cough, dyspnea, fatigue, and sometimes hemoptysis."
+        },
+        {
+          "code": "J47.9",
+          "reasoning": "Bronchiectasis, uncomplicated. A chronic condition that can cause persistent cough and hemoptysis, fitting part of the clinical picture."
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_47200"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J44.1",
+          "reasoning": "The patient's known COPD, smoking history, and presentation with increased dyspnea, productive cough, and wheezing make an acute exacerbation the most likely diagnosis."
+        },
+        {
+          "code": "J18.9",
+          "reasoning": "Pneumonia is a common trigger for COPD exacerbations and presents with similar symptoms like productive cough and dyspnea. It must be considered and ruled out."
+        },
+        {
+          "code": "J20.9",
+          "reasoning": "Acute bronchitis presents with cough and wheezing and can be difficult to distinguish from a mild COPD exacerbation, representing a viral or bacterial infection of the airways."
+        },
+        {
+          "code": "J45.901",
+          "reasoning": "Given the prominent wheezing, an asthma component or Asthma-COPD Overlap Syndrome (ACOS) exacerbation is a possibility."
+        },
+        {
+          "code": "I50.9",
+          "reasoning": "Acute decompensated heart failure can present with dyspnea and wheezing ('cardiac asthma') and should be considered in a patient with risk factors like smoking."
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_4806"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I21.9"
+        },
+        {
+          "code": "I20.0"
+        },
+        {
+          "code": "I26.99"
+        },
+        {
+          "code": "I71.00"
+        },
+        {
+          "code": "R07.4"
+        }
+      ],
+      "reasoning": "The patient's presentation of sudden, severe, radiating chest pain with dyspnea and diaphoresis, combined with numerous cardiovascular risk factors (DM, HTN, HLD, smoking, prior MI/angina), is highly concerning for Acute Coronary Syndrome. The differential includes other life-threatening causes like PE and aortic dissection.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_5118"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "G61.0",
+          "name": "Guillain-Barr\u00e9 syndrome"
+        },
+        {
+          "code": "G70.00",
+          "name": "Myasthenia gravis without (acute) exacerbation"
+        },
+        {
+          "code": "A05.1",
+          "name": "Botulism"
+        },
+        {
+          "code": "T63.4",
+          "name": "Toxic effect of venom of other arthropods"
+        },
+        {
+          "code": "A69.2",
+          "name": "Lyme disease"
+        }
+      ],
+      "reasoning": "The patient's presentation of acute, progressive, symmetric weakness involving limbs, facial muscles, and respiratory muscles is highly suggestive of Guillain-Barr\u00e9 syndrome. However, other neuromuscular emergencies like myasthenic crisis, botulism, and tick paralysis must be urgently excluded. Immediate escalation is required due to the risk of imminent respiratory failure.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_54083"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I50.9"
+        },
+        {
+          "code": "N04.9"
+        },
+        {
+          "code": "I89.0"
+        },
+        {
+          "code": "T50.995A"
+        },
+        {
+          "code": "I87.2"
+        }
+      ],
+      "reasoning": "The patient's bilateral lower extremity edema and pain in the context of known heart failure, protein-losing nephropathy, and prior lymphadenectomy present a complex picture. The differential includes exacerbation of systemic disease (heart failure, nephrotic syndrome), iatrogenic causes (medication side effects), and localized lymphatic obstruction.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_54665"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I47.1"
+        },
+        {
+          "code": "I48.91"
+        },
+        {
+          "code": "I26.99"
+        },
+        {
+          "code": "I21.9"
+        },
+        {
+          "code": "F41.0"
+        }
+      ],
+      "reasoning": "The patient's symptoms of palpitations, significant shortness of breath, and dizziness, combined with a history of regular stimulant and energy drink use, are highly concerning for a cardiac arrhythmia (SVT, AFib) or acute coronary syndrome. Pulmonary embolism is also a critical consideration given the dyspnea. An anxiety attack is possible but is a diagnosis of exclusion.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_55261"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I20.0",
+          "name": "Unstable angina"
+        },
+        {
+          "code": "I21.9",
+          "name": "Acute myocardial infarction, unspecified"
+        },
+        {
+          "code": "K21.0",
+          "name": "Gastro-esophageal reflux disease with esophagitis"
+        },
+        {
+          "code": "I30.9",
+          "name": "Acute pericarditis, unspecified"
+        },
+        {
+          "code": "M94.0",
+          "name": "Chondrocostal junction syndrome [Tietze]"
+        }
+      ],
+      "reasoning": "The patient's exertional chest pain, radiation pattern, and extensive cardiovascular risk factors are highly concerning for Acute Coronary Syndrome (ACS). Unstable angina and myocardial infarction are the primary concerns requiring immediate evaluation.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_57081"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I30.9"
+        },
+        {
+          "code": "I26.99"
+        },
+        {
+          "code": "I40.9"
+        },
+        {
+          "code": "I21.9"
+        },
+        {
+          "code": "R09.1"
+        }
+      ],
+      "reasoning": "The presentation with sharp, pleuritic chest pain, SOB, and palpitations following a viral illness in a patient with a history of pericarditis strongly suggests recurrence. However, life-threatening conditions like pulmonary embolism (given travel) and acute coronary syndrome must be urgently excluded.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_57684"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "A15.0",
+          "name": "Tuberculosis of lung"
+        },
+        {
+          "code": "J18.9",
+          "name": "Pneumonia, unspecified organism"
+        },
+        {
+          "code": "B59",
+          "name": "Pneumocystosis"
+        },
+        {
+          "code": "C34.90",
+          "name": "Malignant neoplasm of unspecified part of unspecified bronchus or lung"
+        },
+        {
+          "code": "B44.0",
+          "name": "Invasive pulmonary aspergillosis"
+        }
+      ],
+      "reasoning": "The patient's presentation of hemoptysis with profound immunosuppression (HIV, IVDU, diabetes, low BMI) strongly suggests an opportunistic pulmonary infection. Tuberculosis is the leading diagnosis. Other serious infections like bacterial pneumonia, PJP, and aspergillosis, as well as malignancy, must be urgently excluded.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_58100"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K21.0",
+          "reasoning": "Gastro-esophageal reflux disease with esophagitis. Classic symptoms of burning epigastric pain, worse after eating and when supine, with a known hiatal hernia."
+        },
+        {
+          "code": "K85.9",
+          "reasoning": "Acute pancreatitis. Epigastric pain and a significant history of excessive alcohol use make this a critical diagnosis to consider."
+        },
+        {
+          "code": "K29.2",
+          "reasoning": "Alcoholic gastritis. The patient's alcohol history is a direct risk factor for gastritis, which presents with epigastric burning pain."
+        },
+        {
+          "code": "K27.9",
+          "reasoning": "Peptic ulcer disease. Burning epigastric pain worsened by food is suggestive. Smoking and alcohol are major risk factors."
+        },
+        {
+          "code": "I20.9",
+          "reasoning": "Angina pectoris, unspecified. Atypical cardiac ischemia must be ruled out in a male smoker with pain radiating to the chest, despite strong GI features."
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_59518"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "C34.90",
+          "reasoning": "Hemoptysis, constitutional symptoms (fatigue, appetite loss), advanced age, and a significant smoking history are highly suspicious for lung cancer. This is the leading diagnosis to exclude."
+        },
+        {
+          "code": "A15.0",
+          "reasoning": "Tuberculosis can present with hemoptysis, cough, and constitutional symptoms. Recent travel history, although vague, increases the index of suspicion for infectious causes."
+        },
+        {
+          "code": "J47.9",
+          "reasoning": "Bronchiectasis is a chronic condition that can cause persistent cough and hemoptysis. The patient's smoking history is a risk factor for underlying lung damage."
+        },
+        {
+          "code": "I26.99",
+          "reasoning": "Pulmonary embolism is a life-threatening cause of hemoptysis. While the gradual onset is less typical, it must be considered in any patient presenting with coughing up blood."
+        },
+        {
+          "code": "J41.0",
+          "reasoning": "Simple chronic bronchitis, often related to smoking, can cause chronic cough and occasional hemoptysis, particularly during an exacerbation."
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_67807"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I30.9",
+          "name": "Acute pericarditis, unspecified"
+        },
+        {
+          "code": "I26.99",
+          "name": "Other pulmonary embolism without acute cor pulmonale"
+        },
+        {
+          "code": "I71.00",
+          "name": "Dissection of aorta, unspecified site"
+        },
+        {
+          "code": "I40.9",
+          "name": "Acute myocarditis, unspecified"
+        },
+        {
+          "code": "I21.4",
+          "name": "Non-ST elevation (NSTEMI) myocardial infarction"
+        }
+      ],
+      "reasoning": "The patient's pleuritic, positional chest pain, recent viral illness, and history of pericarditis strongly suggest recurrent acute pericarditis. However, the sudden onset of 10/10 pain radiating to the back requires urgent exclusion of life-threatening conditions like pulmonary embolism, aortic dissection, and acute coronary syndrome.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_72153"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "E84.0",
+          "reasoning": "A patient with cystic fibrosis presenting with hemoptysis, dyspnea, and a productive cough is highly indicative of a severe pulmonary exacerbation. Hemoptysis is a critical finding requiring immediate evaluation. Differential includes common CF complications like ABPA and underlying bronchiectasis."
+        },
+        {
+          "code": "J47.1"
+        },
+        {
+          "code": "R04.2"
+        },
+        {
+          "code": "B44.81"
+        },
+        {
+          "code": "J18.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_72843"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I21.9",
+          "name": "Acute myocardial infarction, unspecified"
+        },
+        {
+          "code": "I71.00",
+          "name": "Dissection of unspecified part of aorta"
+        },
+        {
+          "code": "I26.99",
+          "name": "Other pulmonary embolism without acute cor pulmonale"
+        },
+        {
+          "code": "I30.9",
+          "name": "Acute pericarditis, unspecified"
+        },
+        {
+          "code": "R07.9",
+          "name": "Chest pain, unspecified"
+        }
+      ],
+      "reasoning": "The patient's presentation of sudden, severe (9/10) chest pain with shortness of breath, radiation to both arms and back, and multiple cardiovascular risk factors (smoking, HTN, HLD, family hx) is highly concerning for an acute cardiopulmonary emergency. The top differentials are life-threatening and require immediate evaluation.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_73793"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K92.1",
+          "name": "Melena"
+        },
+        {
+          "code": "D50.0",
+          "name": "Iron deficiency anemia secondary to blood loss (chronic)"
+        },
+        {
+          "code": "K25.4",
+          "name": "Chronic or unspecified gastric ulcer with hemorrhage"
+        },
+        {
+          "code": "K29.00",
+          "name": "Acute gastritis without bleeding"
+        },
+        {
+          "code": "R06.02",
+          "name": "Shortness of breath"
+        }
+      ],
+      "reasoning": "The patient's presentation of melena (black stools) is a significant red flag for an upper gastrointestinal bleed. The associated symptoms of severe fatigue, shortness of breath, and dizziness are classic signs of anemia, likely acute-on-chronic given the history. The differential focuses on the bleed, the resulting anemia, and likely causes such as a peptic ulcer.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_86038"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J00"
+        },
+        {
+          "code": "J11.1"
+        },
+        {
+          "code": "J01.90"
+        },
+        {
+          "code": "J02.9"
+        },
+        {
+          "code": "G44.209"
+        }
+      ],
+      "reasoning": "The patient's symptoms (fever, cough, myalgia, sore throat, nasal congestion) are classic for a viral upper respiratory infection, with daycare work as a key risk factor. The diffuse, low-grade headache with cheek pain suggests secondary sinus congestion or a tension-type headache. The differential prioritizes common viral etiologies.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_87487"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "G24.0"
+        },
+        {
+          "code": "J38.5"
+        },
+        {
+          "code": "G24.3"
+        },
+        {
+          "code": "H51.8"
+        },
+        {
+          "code": "R25.2"
+        }
+      ],
+      "reasoning": "The constellation of acute-onset muscle spasms (oculogyric crisis, torticollis, laryngospasm) is highly suggestive of a drug-induced dystonic reaction, given the recent medication history. Laryngeal involvement represents a potential airway emergency.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_88546"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "B27.90"
+        },
+        {
+          "code": "B20"
+        },
+        {
+          "code": "A87.9"
+        },
+        {
+          "code": "B25.9"
+        },
+        {
+          "code": "R50.9"
+        }
+      ],
+      "reasoning": "The constellation of fever, pharyngitis, fatigue, myalgia, and rash strongly suggests a viral syndrome. The differential includes infectious mononucleosis (EBV/CMV) and acute HIV. However, the presence of headache and neck pain in an immunosuppressed patient raises significant concern for meningitis, which must be ruled out urgently. Fever of unknown origin is also a consideration pending further workup.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_90033"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I26.99",
+          "name": "Other pulmonary embolism without acute cor pulmonale"
+        },
+        {
+          "code": "J18.9",
+          "name": "Pneumonia, unspecified organism"
+        },
+        {
+          "code": "A15.0",
+          "name": "Tuberculosis of lung"
+        },
+        {
+          "code": "M31.31",
+          "name": "Granulomatosis with polyangiitis with lung involvement"
+        },
+        {
+          "code": "C34.90",
+          "name": "Malignant neoplasm of unspecified part of unspecified bronchus or lung"
+        }
+      ],
+      "reasoning": "The patient's hemoptysis and pleuritic chest pain are highly concerning for life-threatening conditions like pulmonary embolism. Pneumonia is also likely given the productive cough and chills. The rash raises suspicion for a systemic process like vasculitis, while malignancy and TB are critical considerations for hemoptysis.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_92606"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I30.9"
+        },
+        {
+          "code": "I26.99"
+        },
+        {
+          "code": "I40.9"
+        },
+        {
+          "code": "R09.1"
+        },
+        {
+          "code": "M94.0"
+        }
+      ],
+      "reasoning": "The patient's sharp, positional chest pain (worse lying down) and significant dyspnea are highly concerning for acute pericarditis. However, given the recent travel, a life-threatening pulmonary embolism must be ruled out. Myocarditis is also a consideration due to the combination of chest pain and heart failure symptoms (orthopnea).",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_94455"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J02.9",
+          "name": "Acute pharyngitis, unspecified"
+        },
+        {
+          "code": "J36",
+          "name": "Peritonsillar abscess"
+        },
+        {
+          "code": "C32.9",
+          "name": "Malignant neoplasm of larynx, unspecified"
+        },
+        {
+          "code": "J05.10",
+          "name": "Acute epiglottitis without obstruction"
+        },
+        {
+          "code": "B27.90",
+          "name": "Infectious mononucleosis, unspecified without complication"
+        }
+      ],
+      "reasoning": "The presentation suggests acute pharyngitis, but hoarseness in a 64-year-old smoker is a significant finding. This raises concern for urgent conditions like epiglottitis or peritonsillar abscess, which can compromise the airway, as well as the possibility of laryngeal malignancy requiring prompt evaluation.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_94656"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I20.0"
+        },
+        {
+          "code": "I21.4"
+        },
+        {
+          "code": "I71.0"
+        },
+        {
+          "code": "I26.99"
+        },
+        {
+          "code": "K21.9"
+        }
+      ],
+      "reasoning": "The patient's presentation with crescendo angina, now at rest, accompanied by diaphoresis, dyspnea, and multiple cardiac risk factors is highly concerning for Acute Coronary Syndrome (ACS). Life-threatening differentials like aortic dissection and pulmonary embolism must be urgently ruled out.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_96480"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J02.9",
+          "name": "Acute pharyngitis, unspecified"
+        },
+        {
+          "code": "U07.1",
+          "name": "COVID-19"
+        },
+        {
+          "code": "J03.90",
+          "name": "Acute tonsillitis, unspecified"
+        },
+        {
+          "code": "B27.90",
+          "name": "Infectious mononucleosis, unspecified without complication"
+        },
+        {
+          "code": "J02.0",
+          "name": "Streptococcal pharyngitis"
+        }
+      ],
+      "reasoning": "The patient's symptoms of sore throat, fever, and cough, combined with a history of sick contact, strongly suggest a contagious upper respiratory infection. The differential includes common viral etiologies, infectious mononucleosis given the patient's age, and bacterial pharyngitis which should be ruled out.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_97611"
+    }
+  ]
+}

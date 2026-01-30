@@ -1,0 +1,1521 @@
+{
+  "metadata": {
+    "model": "google/gemini-2.5-flash-lite-preview-05-20",
+    "temperature": 0.0,
+    "workflow": "intake",
+    "prompt_version": "v4",
+    "total_cases": 250,
+    "successful_predictions": 0,
+    "failed_predictions": 250,
+    "test_set_metadata": {
+      "source_file": "data/ddxplus_v0/cases.json",
+      "total_available_cases": 109938,
+      "sampled_cases": 250,
+      "seed": 42,
+      "timestamp": "2025-12-17T06:03:35.267657Z",
+      "test_set_name": "eval-250-v0"
+    }
+  },
+  "predictions": [
+    {
+      "case_id": "ddxplus_100190",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_100541",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_100728",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_101125",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_101633",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_101640",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_101756",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_101867",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_102089",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_102399",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_10242",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_102471",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_102565",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_102711",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_103014",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_10318",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_103463",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_103580",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_103880",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_104179",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_104180",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_104547",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_104758",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_104836",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_105074",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_105390",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_105649",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_105781",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_1059",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_106026",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_106124",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_106348",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_10654",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_107066",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_107256",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_107382",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_107449",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_107696",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_107970",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_108264",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_108509",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_10851",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_109070",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_109101",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_109307",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_10945",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_109592",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_109759",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_110219",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_11029",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_110327",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_110602",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_11072",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_110805",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_11144",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_111717",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_111961",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_11197",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_112477",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_112558",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_112823",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_112988",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_113163",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_113494",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_11383",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_11408",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_114333",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_11469",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_114826",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_114855",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_115087",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_115138",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_115209",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_115418",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_115577",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_115799",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_116000",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_11660",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_1167",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_116778",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_116908",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_116916",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_117013",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_117044",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_117137",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_117361",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_11773",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_117977",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_118106",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_118799",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_118892",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_118944",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_119083",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_119501",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_119819",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_119965",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_120434",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_120600",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_12085",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_120875",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_12108",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_121148",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_121226",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_121707",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_121987",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_122212",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_122296",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_122461",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_122845",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_123241",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_123290",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_123714",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_124029",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_124484",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_124910",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_125691",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_125797",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_125884",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_125966",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_12647",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_12653",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_1269",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_127082",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_12815",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_128460",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_12868",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_129169",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_129294",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_129440",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_129489",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_129493",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_129554",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_129643",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_129862",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_130923",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_131101",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_13161",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_131855",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_133027",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_133038",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_133402",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_133729",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_133786",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_134087",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_13747",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_13949",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_14588",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_14807",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_14879",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_14960",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_15033",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_15135",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_1515",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_15509",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_15541",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_15697",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_1572",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_15786",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_16054",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_16212",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_16411",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_16460",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_16646",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_17109",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_17208",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_17556",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_17619",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_17897",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_17931",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_17980",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_17981",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_18399",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_18542",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_1860",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_19253",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_19428",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_20026",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_20181",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_20604",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_21019",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_21030",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_21272",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_21294",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_21591",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_22235",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_22435",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_22449",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_22530",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_22956",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_2387",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_23954",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_24546",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_24547",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_24864",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_24966",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_24971",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_25286",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_25336",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_25410",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_25647",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_25704",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_25944",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_25951",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_26129",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_26249",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_26457",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_26531",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_26719",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_27506",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_28731",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_29500",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_29885",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_30528",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_30573",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_30607",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_30789",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_30901",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_3142",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_31957",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_31967",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_32315",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_32700",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_32805",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_33668",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_33845",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_33904",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_3395",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_34036",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_34166",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_34252",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_34344",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_34420",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_34593",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_34991",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_35140",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_35246",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_35295",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_35390",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_354",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_35424",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_35863",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_36111",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_36629",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_36794",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_36810",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_36986",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_37410",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_37435",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_37814",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    },
+    {
+      "case_id": "ddxplus_38003",
+      "workflow": "intake",
+      "error": "api_failure",
+      "raw_response": null
+    }
+  ]
+}

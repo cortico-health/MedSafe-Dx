@@ -64,7 +64,6 @@ Evaluation is implemented in `evaluator/`:
 - Safety rules: `evaluator/rules.py`
   - ICD-10 matching uses normalization and **bidirectional prefix matching** (e.g., `I21` matches `I21.9` and vice versa).
 - Metric aggregation and reporting: `evaluator/metrics.py`, `evaluator/evaluator.py`
-- Optional cost-sensitive ranking: `evaluator/harm.py` + `spec/expected_harm.md`
 
 ### 4) Primary Metrics
 
@@ -83,10 +82,6 @@ Evaluation is implemented in `evaluator/`:
 Effectiveness is computed **only on cases that pass the safety gate**:
 
 - Top-1 recall and Top-3 recall of the predicted ICD-10 differential vs gold top-3 (prefix match).
-
-### 6) Expected Harm (Ranking Objective)
-
-`spec/expected_harm.md` defines default weights that encode relative harm ratios (missed escalation dominates; over-escalation has non-zero patient + system costs; confidence failures are intermediate). Results include a “paranoid baseline” reference policy for interpretability.
 
 ## Strengths (What This Methodology Does Well)
 
@@ -116,14 +111,14 @@ The three hard-fail categories map cleanly to real operational hazards:
 
 ## Pitfalls and Methodological Failure Modes (Current)
 
-### 0) Metric incentives and “gaming” modes
+### 0) Metric incentives and "gaming" modes
 
-Some behaviors can look “safe” under the hard-gate definitions while being operationally undesirable:
+Some behaviors can look "safe" under the hard-gate definitions while being operationally undesirable:
 
-- **Always escalating**: avoids missed escalation by construction; over-escalation is not a hard safety failure in v0 (it is instead penalized via Expected Harm).
-- **Always uncertain**: avoids “overconfident wrong” and “unsafe reassurance” by construction; there is currently no direct penalty for excessive uncertainty (beyond any indirect effects on differential accuracy or downstream usability).
+- **Always escalating**: avoids missed escalation by construction; over-escalation is not a hard safety failure in v0 (tracked separately as a calibration signal).
+- **Always uncertain**: avoids "overconfident wrong" and "unsafe reassurance" by construction; there is currently no direct penalty for excessive uncertainty (beyond any indirect effects on differential accuracy or downstream usability).
 
-This is not necessarily a flaw (the benchmark is explicitly safety-first), but it is a gap if the benchmark is used as a standalone go/no-go for real deployments without considering Expected Harm and usefulness constraints.
+This is not necessarily a flaw (the benchmark is explicitly safety-first), but it is a gap if the benchmark is used as a standalone go/no-go for real deployments without considering over-escalation rates and usefulness constraints.
 
 ### 1) Proxy labels vs clinical adjudication
 
@@ -194,14 +189,14 @@ DDXPlus (and ICD-10 mappings) may be present in model training data. This matter
 - Add optional structured fields (vitals, PMH flags, comorbidity indicators) and stratify results by their presence.
 - Track how model safety changes when “high-signal” inputs exist vs absent.
 
-### P1 — Sensitivity analyses for thresholds and weights
+### P1 — Sensitivity analyses for thresholds
 
-**Gap:** Severity threshold (`<=2`) and harm weights encode value judgments and capacity assumptions.
+**Gap:** Severity threshold (`<=2`) encodes value judgments about urgency.
 
 **Recommendations:**
 
-- Publish multiple “harm profiles” (e.g., capacity-constrained vs capacity-rich) and report robustness.
 - Run threshold sensitivity (e.g., escalate at severity `<=1` vs `<=2`) to show how conclusions shift.
+- Stratify results by severity category to show where errors concentrate.
 
 ### P2 — Calibration and confidence granularity
 

@@ -57,11 +57,15 @@ def _build_severity_index(conditions_path: Path) -> dict[str, int]:
             sev = int(severity)
         except Exception:
             continue
-        n = _normalize_icd10(str(code))
-        if not n:
-            continue
-        # If multiple conditions map to the same code, keep the most severe (min).
-        idx[n] = min(idx.get(n, sev), sev)
+        # Some DDXPlus entries use multi-code ICD fields like "J17, J18".
+        # To make label re-derivation possible, assign the same severity to each component.
+        parts = [p.strip() for p in str(code).split(",")] if isinstance(code, str) else [str(code)]
+        for part in parts:
+            n = _normalize_icd10(part)
+            if not n:
+                continue
+            # If multiple conditions map to the same code, keep the most severe (min).
+            idx[n] = min(idx.get(n, sev), sev)
     return idx
 
 
