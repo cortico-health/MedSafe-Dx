@@ -222,9 +222,69 @@ Notes:
 - The derived rates above are computed against the fixed denominators (156/94/101) from the 250-case eval set.
 - Some models (GPT-5 Mini, Gemini 2.0 Flash, Gemini 3 Pro) have reduced coverage due to format compliance issues.
 
-### 4.2 Exploratory intervention analyses (separate reports)
+### 4.2 Exploratory intervention analyses
 
-We also run additional experiments (e.g., MoE panels, RAG augmentation, prompt interventions). These are **not** included in the primary leaderboard because they change the system configuration and are not yet standardized across models. For internal review, see artifacts under `MedSafe-Dx/results/analysis/` (e.g., `moe_panel_report.md`, `rag_best_practice_report.md`, and `variations/comparison_report.md`).
+We run additional experiments to understand how safety performance can be improved through system-level interventions. These are **not** included in the primary leaderboard because they change the system configuration. Full details in `results/analysis/`.
+
+#### 4.2.1 Safety Prompting
+
+Testing whether explicit safety instructions improve model behavior. The intervention reframes escalation as the PRIMARY task (vs secondary) and adds: "When in doubt, ESCALATE_NOW."
+
+| Model | Baseline | Safety Prompt | Δ Safety | Δ Top-3 |
+|-------|----------|---------------|----------|---------|
+| GPT-4o-mini | 68.0% | **100.0%** | **+32.0%** | -4.0% |
+| GPT-5-chat | 70.0% | 92.0% | +22.0% | +6.0% |
+| Claude Haiku 4.5 | 74.0% | 92.0% | +18.0% | +6.0% |
+
+**Finding:** Safety prompting substantially improves safety (+18–32%) with minimal impact on diagnostic accuracy. Missed escalations are nearly eliminated. See `safety_prompting_report.md`.
+
+#### 4.2.2 Mixture-of-Experts Panel
+
+Testing whether an ensemble of 3 models from different vendors, combined with a synthesizer, improves safety over individual models.
+
+| Configuration | Safety | Top-3 | Missed Esc |
+|---------------|--------|-------|------------|
+| GPT-4.1 (individual) | 73.0% | 50.0% | 19.0% |
+| Claude Sonnet 4 (individual) | 80.0% | 65.0% | 9.0% |
+| DeepSeek v3 (individual) | 83.0% | 48.0% | 13.0% |
+| **MoE Consensus** | **91.9%** | **64.6%** | **7.1%** |
+
+**Finding:** Consensus (91.9%) outperforms best individual model (83.0%) by 8.9%. The MoE panel uses evidence-based synthesis with a critical-diagnosis safety net (auto-escalate for MI, PE, stroke codes). Over-escalation rate is 25.3%, mostly from unanimous panel agreement on clinically defensible escalations. See `moe_panel_report.md`.
+
+#### 4.2.3 Run Variability
+
+Testing benchmark stability by running models multiple times with temperature=0.7, similar to HealthBench Table 5.
+
+| Model | Safety Mean±Std | Range | Top-3 Mean±Std | Range |
+|-------|-----------------|-------|----------------|-------|
+| Claude Sonnet 4 | 69.6% ± 2.0% | [66–72%] | 72.8% ± 2.0% | [70–76%] |
+| DeepSeek v3 | 65.6% ± 2.3% | [62–68%] | 58.0% ± 2.2% | [54–60%] |
+
+**Finding:** Safety pass rate varies by ~4–6 percentage points across runs (std ~2%). Missed escalation rate is stable (constant across runs), while overconfident-wrong rate shows higher variance. This suggests escalation behavior is deterministic but diagnostic ranking is stochastic. See `run_variability_report.md`.
+
+#### 4.2.4 Worst-at-k Reliability
+
+Testing how safety reliability degrades with more samples per case. If you sample k responses per case, what's the probability of seeing at least one safety failure?
+
+| Model | Pass Rate | k=1 | k=2 | k=4 |
+|-------|-----------|-----|-----|-----|
+| Claude Sonnet 4 | 69.6% | 30.4% | 32.4% | 33.6% |
+| DeepSeek v3 | 65.6% | 34.4% | 40.6% | 46.0% |
+
+**Finding:** DeepSeek shows faster reliability degradation (34% → 46% failure probability from k=1 to k=4) compared to Claude (30% → 34%). This indicates DeepSeek's safety failures are more case-dependent (different cases fail), while Claude's failures are more consistent (same cases fail across runs). See `worst_at_k_report.md`.
+
+#### 4.2.5 Reasoning Token Sensitivity
+
+Testing how safety and accuracy vary with internal reasoning token budget on DeepSeek-R1.
+
+| Reasoning Tokens | Safety | Missed Esc | Overconf Wrong | Top-3 |
+|------------------|--------|------------|----------------|-------|
+| 0 (disabled) | 83.3% | 3.3% | 13.3% | 66.7% |
+| 1,024 | 90.0% | 0.0% | 10.0% | 70.0% |
+| 4,096 | 90.0% | 0.0% | 10.0% | 63.3% |
+| 16,384 | 86.7% | 0.0% | 13.3% | 70.0% |
+
+**Finding:** Enabling reasoning tokens (1K–4K) improves safety by ~7% and eliminates missed escalations. Diminishing returns beyond 4K tokens. See `reasoning_sensitivity_report.md`.
 
 ### 4.3 Publication tables (uncertainty + stratifications)
 
