@@ -1,0 +1,2296 @@
+{
+  "metadata": {
+    "model": "openai/gpt-4.1",
+    "temperature": 0.0,
+    "total_cases": 100,
+    "successful_predictions": 99,
+    "failed_predictions": 1,
+    "test_set_metadata": {
+      "source_file": "data/ddxplus_v0/cases.json",
+      "total_available_cases": 109938,
+      "sampled_cases": 100,
+      "seed": 42,
+      "timestamp": "2025-12-17T08:26:29.688859Z",
+      "test_set_name": "test-100cases-6models"
+    }
+  },
+  "predictions": [
+    {
+      "reasoning": "Young male with bilateral diffuse chest and breast pain, and significant dyspnea on exertion. The presentation is suggestive of pleuritic or musculoskeletal origins but pulmonary causes must be considered. No red flags or severe acute findings stated.",
+      "differential_diagnoses": [
+        {
+          "code": "R07.1"
+        },
+        {
+          "code": "J98.4"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "R06.02"
+        },
+        {
+          "code": "M79.1"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_100728"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "B34.2"
+        },
+        {
+          "code": "A41.9"
+        },
+        {
+          "code": "I33.0"
+        },
+        {
+          "code": "E11.65"
+        }
+      ],
+      "reasoning": "IV drug use and diabetes increase risk for pneumonia, endocarditis, and sepsis. Recent travel raises suspicion for potentially unusual pathogens. Pulmonary and systemic infection symptoms predominate.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_101756"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "L50.0"
+        },
+        {
+          "code": "T78.1"
+        },
+        {
+          "code": "A09"
+        },
+        {
+          "code": "L23.9"
+        },
+        {
+          "code": "T78.2"
+        }
+      ],
+      "reasoning": "Acute widespread pruritic rash, diarrhea, flushing, dizziness, palpitations, and recent fish/cheese ingestion strongly suggest an acute allergic reaction or scombroid poisoning. Other differentials include foodborne illness, contact dermatitis, or unspecified adverse effect.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_101867"
+    },
+    {
+      "reasoning": "Palpitations, exertional symptoms, and history of hyperthyroidism, structural heart disease, and COPD suggest possible arrhythmia, heart failure, thyrotoxicosis, or pulmonary hypertension. No acute red flags noted.",
+      "differential_diagnoses": [
+        {
+          "code": "I49.9"
+        },
+        {
+          "code": "I50.9"
+        },
+        {
+          "code": "E05.9"
+        },
+        {
+          "code": "I34.0"
+        },
+        {
+          "code": "I27.20"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_102471"
+    },
+    {
+      "reasoning": "Acute, severe, and radiating pain with hematemesis and respiratory distress raises concern for serious intra-abdominal pathology such as perforated ulcer, pancreatitis, or aortic dissection/rupture. The combination of abdominal and thoracic symptoms warrants urgent evaluation.",
+      "differential_diagnoses": [
+        {
+          "code": "K25.0"
+        },
+        {
+          "code": "K85.0"
+        },
+        {
+          "code": "I71.0"
+        },
+        {
+          "code": "K74.6"
+        },
+        {
+          "code": "J18.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_103880"
+    },
+    {
+      "reasoning": "This patient with severe COPD, productive cough, worsening dyspnea, and wheeze is likely experiencing an acute exacerbation of COPD, but infection and other pulmonary causes must be considered.",
+      "differential_diagnoses": [
+        {
+          "code": "J44.1"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "J20.9"
+        },
+        {
+          "code": "J45.909"
+        },
+        {
+          "code": "J96.00"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_104180"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J03.90"
+        },
+        {
+          "code": "J02.9"
+        },
+        {
+          "code": "J00"
+        },
+        {
+          "code": "B37.0"
+        },
+        {
+          "code": "C77.0"
+        }
+      ],
+      "reasoning": "Severe, burning, diffuse pharyngeal and peritonsillar pain with fever, plus immunosuppression, points to acute pharyngitis, tonsillitis, or viral URI, but serious etiology like peritonsillar abscess or malignancy cannot be ruled out. Daycare exposure increases infectious likelihood.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_1059"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "G70.0"
+        },
+        {
+          "code": "G35"
+        },
+        {
+          "code": "G12.9"
+        },
+        {
+          "code": "G61.0"
+        },
+        {
+          "code": "E87.1"
+        }
+      ],
+      "reasoning": "Young adult with diplopia, dysphagia, generalized fatigable weakness, ptosis, and family history suggest myasthenia gravis. Differential includes multiple sclerosis, motor neuron disease, Guillain-Barr\u00e9, and electrolyte disturbance. Shortness of breath and bulbar symptoms may require urgent assessment.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_106026"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I34.0"
+        },
+        {
+          "code": "I42.9"
+        },
+        {
+          "code": "I47.1"
+        },
+        {
+          "code": "J44.9"
+        },
+        {
+          "code": "I26.9"
+        }
+      ],
+      "reasoning": "Symptoms of dyspnea, palpitations, and exertional intolerance in a young male with valvular disease, heart defect, and COPD suggest possible valvular insufficiency, arrhythmia, heart failure, or COPD exacerbation. Recent travel also raises suspicion for pulmonary embolism.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_107449"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "G44.0"
+        },
+        {
+          "code": "J00"
+        },
+        {
+          "code": "G43.9"
+        },
+        {
+          "code": "I67.8"
+        },
+        {
+          "code": "H57.1"
+        }
+      ],
+      "reasoning": "Sudden severe bilateral frontal and periorbital pain with nasal symptoms suggests neuralgia (e.g. cluster or trigeminal), acute sinusitis, or migraine. Vasodilator use increases risk of certain headache syndromes. No red flags present.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_108509"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K40.90"
+        },
+        {
+          "code": "K41.90"
+        },
+        {
+          "code": "N44"
+        },
+        {
+          "code": "M25.55"
+        },
+        {
+          "code": "L98.9"
+        }
+      ],
+      "reasoning": "Gradual onset right iliac pain with ipsilateral testicular and bilateral hip involvement, aggravated by coughing and presence of a pale, swollen lesion, raise suspicion for hernia (inguinal/femoral). Differential includes orchitis, arthropathy, or nonspecific skin lesion.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_109592"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "T78.2"
+        },
+        {
+          "code": "L50.9"
+        },
+        {
+          "code": "K52.9"
+        },
+        {
+          "code": "R06.1"
+        },
+        {
+          "code": "D84.1"
+        }
+      ],
+      "reasoning": "History of severe food allergy with multi-site swelling, urticaria, rash, diarrhea, shortness of breath, stridor, dizziness and near-syncope strongly suggests acute anaphylaxis. Other causes considered are urticaria/angioedema, acute gastroenteritis, airway pathology, or underlying immunologic disorder.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_111961"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "D64.9"
+        },
+        {
+          "code": "N18.9"
+        },
+        {
+          "code": "K92.1"
+        },
+        {
+          "code": "G44.1"
+        },
+        {
+          "code": "I67.4"
+        }
+      ],
+      "reasoning": "Diffuse headache, fatigue, paleness, dyspnea, and history of anemia with evidence of GI blood loss suggest symptomatic anemia (D64.9), possibly exacerbated by chronic kidney disease (N18.9). GI bleeding (K92.1) is supported by red blood per rectum. Headache could represent tension type (G44.1) or vascular etiology (I67.4), but primary cause is likely systemic.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_11197"
+    },
+    {
+      "reasoning": "The patient has upper respiratory symptoms (fever, sore throat, cough, nasal congestion), myalgia, headache/face pain, and known sick contact, suggesting a viral infection. Bacterial causes and sinusitis are also possible. No red flags indicate immediate escalation is needed.",
+      "differential_diagnoses": [
+        {
+          "code": "J06.9"
+        },
+        {
+          "code": "J00"
+        },
+        {
+          "code": "J01.90"
+        },
+        {
+          "code": "B34.9"
+        },
+        {
+          "code": "J02.9"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_112477"
+    },
+    {
+      "reasoning": "Severe pain, hemoptysis, fever, and immunosuppression prompt concern for deep neck infection, severe pharyngitis, or tonsillitis but malignancy or TB must also be considered. Social risk factors raise concern for infectious etiologies.",
+      "differential_diagnoses": [
+        {
+          "code": "J36"
+        },
+        {
+          "code": "J03.90"
+        },
+        {
+          "code": "A16.2"
+        },
+        {
+          "code": "C14.0"
+        },
+        {
+          "code": "J01.90"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_112558"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "T78.0"
+        },
+        {
+          "code": "L50.0"
+        },
+        {
+          "code": "K52.9"
+        },
+        {
+          "code": "R19.7"
+        },
+        {
+          "code": "L29.9"
+        }
+      ],
+      "reasoning": "Sudden onset diffuse pain, diarrhea, and severe itching with swelling in multiple facial regions and known severe food allergy raise high suspicion for an allergic reaction (possible anaphylaxis), urticaria, or angioedema. GI involvement supports allergic gastroenteritis. Rash and pruritus also considered.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_112988"
+    },
+    {
+      "reasoning": "Recent contact with pertussis, violent coughing with post-tussive emesis, and unknown vaccination status suggest Bordetella pertussis infection is most likely. Asthma may contribute; other infectious etiologies are possible.",
+      "differential_diagnoses": [
+        {
+          "code": "A37.0"
+        },
+        {
+          "code": "J45.9"
+        },
+        {
+          "code": "J20.9"
+        },
+        {
+          "code": "J44.9"
+        },
+        {
+          "code": "J18.9"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_11469"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K86.1"
+        },
+        {
+          "code": "C25.9"
+        },
+        {
+          "code": "K83.1"
+        },
+        {
+          "code": "K74.6"
+        },
+        {
+          "code": "B18.9"
+        }
+      ],
+      "reasoning": "History of chronic pancreatitis with pale stools, dark urine, weight loss, and family history of pancreatic cancer raise concern for pancreatobiliary disease or malignancy. Skin lesion and rash could be related to cholestasis or another systemic process.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_114826"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J36"
+        },
+        {
+          "code": "J03.90"
+        },
+        {
+          "code": "B20"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "C32.9"
+        }
+      ],
+      "reasoning": "Immunosuppression and hemoptysis raise concern for severe infection, such as peritonsillar abscess, bacterial or viral pharyngitis, pneumonia, and less likely malignancy. Risk factors and diffuse pain increase concern for complicated infection.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_117013"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I21.9"
+        },
+        {
+          "code": "I20.9"
+        },
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "R07.1"
+        },
+        {
+          "code": "C50.911"
+        }
+      ],
+      "reasoning": "Sudden-onset, diffuse, severe chest pain radiating to several locations, shortness of breath, and cardiovascular risk factors raise concern for acute coronary syndrome (I21.9), unstable angina (I20.9), pulmonary embolism (I26.9), and less likely, musculoskeletal or breast pathologies.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_118106"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K92.1"
+        },
+        {
+          "code": "D50.9"
+        },
+        {
+          "code": "N18.9"
+        },
+        {
+          "code": "G44.1"
+        },
+        {
+          "code": "I95.1"
+        }
+      ],
+      "reasoning": "Black and red stools with anemia history and NOAC use suggest GI bleeding (K92.1). Chronic fatigue and previous anemia support iron deficiency anemia (D50.9). Chronic kidney disease (N18.9) can contribute to anemia and fatigue. Headache and dizziness may relate to anemia or tension-type headache (G44.1). Orthostatic hypotension (I95.1) is possible with anemia and dizziness.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_118799"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I48.0"
+        },
+        {
+          "code": "I50.9"
+        },
+        {
+          "code": "I34.0"
+        },
+        {
+          "code": "E05.9"
+        },
+        {
+          "code": "I25.10"
+        }
+      ],
+      "reasoning": "The patient\u2019s symptoms and history are suggestive of atrial fibrillation, heart failure, valvular heart disease, hyperthyroidism-induced arrhythmia, or ischemic heart disease.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_118944"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "B20"
+        },
+        {
+          "code": "A63.0"
+        },
+        {
+          "code": "K12.1"
+        },
+        {
+          "code": "A54.9"
+        },
+        {
+          "code": "R50.9"
+        }
+      ],
+      "reasoning": "IV drug use, high-risk sexual behavior, and widespread symptoms with painful mucosal/gum lesions suggest HIV acute seroconversion or another STI. Oral ulcers and fever may indicate viral or bacterial etiology. Rash and systemic symptoms could also suggest non-specific viral syndrome.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_121707"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "C32.9"
+        },
+        {
+          "code": "J39.2"
+        },
+        {
+          "code": "J31.2"
+        },
+        {
+          "code": "J34.2"
+        },
+        {
+          "code": "B37.0"
+        }
+      ],
+      "reasoning": "Hemoptysis with burning, diffuse throat pain in an immunosuppressed patient raises concern for malignancy (laryngeal cancer), but may represent chronic pharyngitis, sinusitis, or candidiasis. Malignancy and infection both considered due to symptom duration and immunosuppressed state.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_122461"
+    },
+    {
+      "reasoning": "Hemoptysis with pharyngeal/facial pain and fever raises concern for infectious causes (pharyngitis, tonsillitis, influenza). Immunosuppression, exposure, and smoking increase risk of severe or atypical infection, but no acute airway compromise or severe distress present. Malignancy less likely but possible with smoking/hemoptysis.",
+      "differential_diagnoses": [
+        {
+          "code": "J02.9"
+        },
+        {
+          "code": "J03.90"
+        },
+        {
+          "code": "J11.1"
+        },
+        {
+          "code": "A49.2"
+        },
+        {
+          "code": "C34.90"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_124029"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "C32.9"
+        },
+        {
+          "code": "J31.2"
+        },
+        {
+          "code": "J38.1"
+        },
+        {
+          "code": "R04.2"
+        },
+        {
+          "code": "J44.0"
+        }
+      ],
+      "reasoning": "Hemoptysis in a smoker with upper airway pain raises concern for laryngeal cancer (C32.9) or chronic laryngitis (J31.2), especially with gradual onset and burning pain. Infectious causes and acute bronchitis are also considered. Persistent hemoptysis requires prompt evaluation.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_12653"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "T78.2"
+        },
+        {
+          "code": "L50.0"
+        },
+        {
+          "code": "K52.2"
+        },
+        {
+          "code": "K35.80"
+        },
+        {
+          "code": "R21"
+        }
+      ],
+      "reasoning": "Severe pain, diffuse rash, history of severe food allergy, multiple site swelling and sudden onset suggest acute allergic reaction or possible anaphylaxis. Other considerations include acute urticaria, allergic gastroenteritis, and acute abdominal processes.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_12815"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J06.9"
+        },
+        {
+          "code": "B34.9"
+        },
+        {
+          "code": "J01.90"
+        },
+        {
+          "code": "M79.1"
+        },
+        {
+          "code": "R51"
+        }
+      ],
+      "reasoning": "Viral upper respiratory infection is most likely, given sore throat, congestion, cough, diffuse myalgia, and history of contact. Acute sinusitis considered due to bilateral facial and temple pain. Other possibilities include unspecified viral infection, muscle pain, and headache. No red flags or severe findings.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_129294"
+    },
+    {
+      "reasoning": "Symptoms of ptosis, diplopia, dysphagia, jaw weakness, proximal limb weakness, and dyspnea in an older woman with family history is highly suggestive of myasthenia gravis but other neuromuscular and neurological conditions must be considered.",
+      "differential_diagnoses": [
+        {
+          "code": "G70.0"
+        },
+        {
+          "code": "G61.0"
+        },
+        {
+          "code": "G12.21"
+        },
+        {
+          "code": "G44.8"
+        },
+        {
+          "code": "C71.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_129493"
+    },
+    {
+      "reasoning": "Young male with constitutional symptoms, history and family history of anemia, symptoms suggest both chronic and potentially acute GI blood loss (melena, hematochezia), and is underweight. Recent NOAC use increases bleeding risk. Consider both GI bleeding etiologies and anemia-related symptoms.",
+      "differential_diagnoses": [
+        {
+          "code": "K92.2"
+        },
+        {
+          "code": "D50.9"
+        },
+        {
+          "code": "I96"
+        },
+        {
+          "code": "E43"
+        },
+        {
+          "code": "K29.7"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_129862"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "G70.0"
+        },
+        {
+          "code": "G12.9"
+        },
+        {
+          "code": "G61.0"
+        },
+        {
+          "code": "I63.9"
+        },
+        {
+          "code": "G83.2"
+        }
+      ],
+      "reasoning": "The presentation of fluctuating muscle weakness, including bulbar symptoms, diplopia, and respiratory involvement is highly suggestive of myasthenia gravis (G70.0), but other neuromuscular causes such as motor neuron disease, Guillain-Barre syndrome, acute stroke, or transverse myelitis must be considered, especially in the elderly.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_133038"
+    },
+    {
+      "reasoning": "The patient presents with diffuse headache, fever, sore throat, myalgias, cough, and increased sweating. These symptoms are consistent with upper respiratory tract infections, influenza, and mononucleosis. Less likely but possible are meningitis (especially viral, given the lack of red flag neurologic symptoms), and sinusitis due to facial pain.",
+      "differential_diagnoses": [
+        {
+          "code": "J06.9"
+        },
+        {
+          "code": "J10.1"
+        },
+        {
+          "code": "B27.90"
+        },
+        {
+          "code": "G03.9"
+        },
+        {
+          "code": "J01.90"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_133786"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "D64.9"
+        },
+        {
+          "code": "N18.9"
+        },
+        {
+          "code": "G44.1"
+        },
+        {
+          "code": "E43"
+        },
+        {
+          "code": "I95.9"
+        }
+      ],
+      "reasoning": "Symptoms of fatigue, pallor, dizziness, and history suggest anemia (possibly from chronic kidney disease, malnutrition, or anticoagulation). Headaches may be linked to anemia, nutritional deficiency, or secondary causes such as hypotension.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_13949"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "M79.1"
+        },
+        {
+          "code": "R52"
+        },
+        {
+          "code": "R07.1"
+        },
+        {
+          "code": "J20.9"
+        },
+        {
+          "code": "G93.3"
+        }
+      ],
+      "reasoning": "Diffuse muscle aches, chest and breast pain, fatigue after recent viral infection suggest myalgia (M79.1), nonspecific pain (R52), intercostal neuralgia (R07.1), or post-viral syndrome/fatigue (G93.3). Pleuritic origin (J20.9) considered due to recent viral infection and exertion-exacerbated symptoms.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_14879"
+    },
+    {
+      "reasoning": "This elderly, underweight woman with anemia, chronic kidney disease, fatigue, pallor, dyspnea, and black stools likely has a GI bleed (melena), possibly due to peptic ulcer, GI malignancy, or gastritis. CKD and poor diet can worsen anemia. Temporal pain raises concern for temporal arteritis but less likely with her GI symptoms.",
+      "differential_diagnoses": [
+        {
+          "code": "K92.1"
+        },
+        {
+          "code": "D50.9"
+        },
+        {
+          "code": "N18.5"
+        },
+        {
+          "code": "C18.9"
+        },
+        {
+          "code": "G44.1"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_15033"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "T78.2"
+        },
+        {
+          "code": "L50.0"
+        },
+        {
+          "code": "L27.0"
+        },
+        {
+          "code": "L23.9"
+        },
+        {
+          "code": "T61.2"
+        }
+      ],
+      "reasoning": "Acute onset of pruritic, swollen, pink rash on multiple areas, associated with diarrhea, lightheadedness, nausea, and wheeze, after possible dietary trigger suggests allergic or toxin-mediated reaction. Scombroid (histamine) fish poisoning, urticaria, drug, or contact reactions could all be relevant.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_15509"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I48.0"
+        },
+        {
+          "code": "I49.9"
+        },
+        {
+          "code": "I10"
+        },
+        {
+          "code": "E05.90"
+        },
+        {
+          "code": "E11.9"
+        }
+      ],
+      "reasoning": "Elderly female with palpitations, irregular heartbeat, and dizziness with risk factors (hyperthyroidism, hypertension, obesity, COPD). Primary concern is atrial fibrillation or other arrhythmia, possibly precipitated by underlying conditions.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_16212"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J45.40"
+        },
+        {
+          "code": "J41.0"
+        },
+        {
+          "code": "J31.0"
+        },
+        {
+          "code": "J30.1"
+        },
+        {
+          "code": "J00"
+        }
+      ],
+      "reasoning": "Recurrent asthma attacks, wheezing, cough, recent URI, history of chronic sinusitis, and atopy point strongly toward asthma exacerbation, with chronic bronchitis, allergic rhinitis, and viral URI as possible contributors.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_16411"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J44.1"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "J41.0"
+        },
+        {
+          "code": "J45.901"
+        },
+        {
+          "code": "J67.9"
+        }
+      ],
+      "reasoning": "COPD exacerbation is most likely given history and symptoms, but pneumonia, chronic bronchitis, occupational hypersensitivity pneumonitis, and asthma overlap are also possible in this context.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_16460"
+    },
+    {
+      "reasoning": "Sore throat with burning, pharyngeal and tonsillar pain, exposure history, immunosuppression, and cough support common infectious etiologies. Burning and diffuse pain could be viral or bacterial. Smoking increases risk of chronic pharyngitis. No red flag symptoms reported.",
+      "differential_diagnoses": [
+        {
+          "code": "J02.9"
+        },
+        {
+          "code": "J03.90"
+        },
+        {
+          "code": "B34.9"
+        },
+        {
+          "code": "J42"
+        },
+        {
+          "code": "J04.0"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_17897"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "C25.9"
+        },
+        {
+          "code": "K86.1"
+        },
+        {
+          "code": "K83.0"
+        },
+        {
+          "code": "E16.2"
+        },
+        {
+          "code": "K74.6"
+        }
+      ],
+      "reasoning": "Painless jaundice, pale stools, dark urine, and weight loss in a patient with chronic pancreatitis and family history raise suspicion for pancreatic cancer. Chronic pancreatitis complications and cholestatic etiologies are also considered.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_20026"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K21.0"
+        },
+        {
+          "code": "K44.9"
+        },
+        {
+          "code": "R10.13"
+        },
+        {
+          "code": "J45.909"
+        },
+        {
+          "code": "O26.6"
+        }
+      ],
+      "reasoning": "Gastroesophageal reflux with hiatal hernia is likely given burning retrosternal pain and bitter taste post-prandially. Differential includes pain due to hernia, functional abdominal pain, asthma-related cough, and pain in pregnancy.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_22435"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I50.9"
+        },
+        {
+          "code": "I20.9"
+        },
+        {
+          "code": "J81.0"
+        },
+        {
+          "code": "I25.10"
+        },
+        {
+          "code": "N18.6"
+        }
+      ],
+      "reasoning": "Male patient with diffuse chest pain, dyspnea, orthopnea, leg swelling, history of renal failure on dialysis, heart disease and pulmonary edema; symptoms suggest acute decompensated heart failure, possible angina, or worsening pulmonary edema.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_24971"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "L30.9"
+        },
+        {
+          "code": "M79.60"
+        },
+        {
+          "code": "L98.9"
+        },
+        {
+          "code": "K59.9"
+        },
+        {
+          "code": "M25.559"
+        }
+      ],
+      "reasoning": "Presentation includes diffuse, low-intensity pain in multiple regions, bilateral hip and iliac fossa pain, and pale, swollen non-peeling rash over both iliac fossae. No prominent red flags or severe symptoms. Etiologies may be dermatologic or musculoskeletal.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_25647"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J03.90"
+        },
+        {
+          "code": "J38.0"
+        },
+        {
+          "code": "J31.2"
+        },
+        {
+          "code": "K12.2"
+        },
+        {
+          "code": "C09.9"
+        }
+      ],
+      "reasoning": "Gradual onset bilateral tonsillar and pharyngeal burning pain with hoarseness in a smoker post-viral illness suggests pharyngitis (J03.90), laryngitis (J38.0), or chronic pharyngitis (J31.2). Smoking and recent infection are risk factors. Oral ulceration (K12.2) and neoplasm (C09.9) are less likely but considered.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_26129"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J84.1"
+        },
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "A15.0"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "J98.4"
+        }
+      ],
+      "reasoning": "Hemoptysis and dyspnea in a patient with cystic fibrosis and immunosuppression raise concern for CF exacerbation, pulmonary embolism, TB, pneumonia, or alveolar hemorrhage. Risk of rapid deterioration is high.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_30901"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "L53.9"
+        },
+        {
+          "code": "M79.1"
+        },
+        {
+          "code": "J00"
+        },
+        {
+          "code": "R53"
+        },
+        {
+          "code": "G44.1"
+        }
+      ],
+      "reasoning": "Diffuse head and neck pain, fatigue, chills, myalgia, sweating, and pink, swollen non-peeling rash suggest a viral exanthem or non-specific dermatitis, possibly with viral myalgia. Nasal congestion points toward an upper respiratory infection. No clear red flags or signs warranting immediate escalation.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_31957"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I26"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "I82.409"
+        },
+        {
+          "code": "C79.51"
+        },
+        {
+          "code": "R07.1"
+        }
+      ],
+      "reasoning": "Acute, severe, pleuritic chest pain with dyspnea, bilateral leg swelling, immobility, active cancer, and syncope suggest pulmonary embolism. Differential includes pneumonia, DVT, cancer metastasis, and nonspecific chest pain.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_33668"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "G61.0"
+        },
+        {
+          "code": "G37.9"
+        },
+        {
+          "code": "G70.00"
+        },
+        {
+          "code": "I63.9"
+        },
+        {
+          "code": "G45.9"
+        }
+      ],
+      "reasoning": "Acute, progressive weakness with sensory changes and recent viral infection strongly suggests Guillain-Barr\u00e9 syndrome (G61.0), but other demyelinating, neuromuscular, and vascular processes must be considered.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_34593"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J03.90"
+        },
+        {
+          "code": "J02.9"
+        },
+        {
+          "code": "B27.90"
+        },
+        {
+          "code": "J39.2"
+        },
+        {
+          "code": "C14.0"
+        }
+      ],
+      "reasoning": "Subacute pharyngeal and tonsillar pain with cough in an immunosuppressed smoker and recent exposure suggests infectious pharyngitis or tonsillitis (bacterial or viral). Infectious mononucleosis and peritonsillar abscess are possible. Malignancy is lower likelihood but considered due to smoking and pain in palate and jaw.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_35140"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J44.1"
+        },
+        {
+          "code": "J20.9"
+        },
+        {
+          "code": "J45.909"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "J98.4"
+        }
+      ],
+      "reasoning": "Elderly male with severe COPD and recurrent exacerbations presents with acute respiratory symptoms. COPD exacerbation is most likely, but infection, asthma, pneumonia, or nonspecific alveolar/lower respiratory involvement should be considered.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_35424"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J44.1"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "J45.909"
+        },
+        {
+          "code": "J60"
+        },
+        {
+          "code": "R06.2"
+        }
+      ],
+      "reasoning": "Patient has COPD with productive cough, wheezing, and dyspnea, suggesting an acute exacerbation. Occupational exposures and travel raise suspicion for infection (pneumonia) and pneumoconiosis. Asthma overlap and nonspecific dyspnea should also be considered.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_35863"
+    },
+    {
+      "reasoning": "Systemic symptoms (fever, chills, malaise, diffuse pain) with headache, neck pain, rash, and sore throat raise concern for viral or bacterial infection with possible systemic involvement. Features suggest possibilities including viral exanthems, early meningitis, or systemic bacterial infection; severity does not mandate immediate escalation in the absence of red flags.",
+      "differential_diagnoses": [
+        {
+          "code": "B34.9"
+        },
+        {
+          "code": "A49.9"
+        },
+        {
+          "code": "G44.1"
+        },
+        {
+          "code": "J06.9"
+        },
+        {
+          "code": "L08.9"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_36629"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I50.9"
+        },
+        {
+          "code": "I25.9"
+        },
+        {
+          "code": "I34.1"
+        },
+        {
+          "code": "J81.0"
+        },
+        {
+          "code": "R60.0"
+        }
+      ],
+      "reasoning": "History of heart failure, dialysis, exertional dyspnea, orthopnea, paroxysmal nocturnal dyspnea, peripheral edema, and diffuse pain suggest congestive heart failure exacerbation. Ischemic heart disease and valvular pathology are possible given cardiac history. Pulmonary edema and generalized edema are also considered.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_37410"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "A49.9"
+        },
+        {
+          "code": "L98.9"
+        },
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "C34.9"
+        }
+      ],
+      "reasoning": "Hemoptysis with fever, productive cough, sharp pleuritic pain, and rash could indicate pneumonia or infection. Pulmonary embolism is possible due to risk factors. Skin lesions suggest possible associated infection or vasculitis. Malignancy is less likely but possible due to smoking/alcohol history.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_37435"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I50.9"
+        },
+        {
+          "code": "I25.9"
+        },
+        {
+          "code": "M79.1"
+        },
+        {
+          "code": "I87.2"
+        },
+        {
+          "code": "I73.9"
+        }
+      ],
+      "reasoning": "History of heart failure, prior cardiac disease, bilateral lower extremity swelling, chest/breast pain radiating to arms/jaw, and symptoms worse lying down suggest heart failure or ischemia. Musculoskeletal pain and venous insufficiency are also possible, but less likely. Dialysis, fluid retention, and swelling support fluid overload.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_39376"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K86.1"
+        },
+        {
+          "code": "K74.6"
+        },
+        {
+          "code": "C25.9"
+        },
+        {
+          "code": "L73.9"
+        },
+        {
+          "code": "E11.9"
+        }
+      ],
+      "reasoning": "Left upper quadrant pain, fatigue, jaundice (yellow rash), and weight loss in a patient with chronic pancreatitis and diabetes suggest ongoing pancreatic disease, possible malignancy, or hepatic dysfunction. The rash aligns with possible hepatic or pancreatic etiology. Cutaneous lesions may represent secondary manifestations.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_4038"
+    },
+    {
+      "reasoning": "The episode of loss of consciousness with sustained muscle contractions or absence could suggest a seizure disorder, with possible post-ictal hand pain. Other considerations include syncope, transient ischemic attack, or metabolic/electrolyte disturbance, though burning hand pain and dyspnea are less typical. No clear red flags or evidence of rash/infection.",
+      "differential_diagnoses": [
+        {
+          "code": "G40.9"
+        },
+        {
+          "code": "R55"
+        },
+        {
+          "code": "G56.0"
+        },
+        {
+          "code": "I95.1"
+        },
+        {
+          "code": "E87.6"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_42585"
+    },
+    {
+      "reasoning": "Symptoms of nasal itching and clear rhinorrhea with a family history of atopy suggest allergic rhinitis. Other causes like viral URI or nonallergic rhinitis are considered. Lack of red flags and no severe symptoms argue against emergency causes.",
+      "differential_diagnoses": [
+        {
+          "code": "J30.1"
+        },
+        {
+          "code": "J00"
+        },
+        {
+          "code": "J31.0"
+        },
+        {
+          "code": "R09.82"
+        },
+        {
+          "code": "J30.9"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_4279"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "G44.0"
+        },
+        {
+          "code": "G44.2"
+        },
+        {
+          "code": "G43.0"
+        },
+        {
+          "code": "R51"
+        },
+        {
+          "code": "H57.1"
+        }
+      ],
+      "reasoning": "Sudden, severe, unilateral facial/orbital pain with lacrimation and family history suggests cluster headache, though trigeminal neuralgia, migraine, general headache, and ocular pain are considered. No red flags and no need for immediate escalation.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_42979"
+    },
+    {
+      "reasoning": "Diffuse facial pain, anosmia, colored nasal discharge, and history of nasal polyps, asthma, and allergies suggest acute or chronic rhinosinusitis. Smoking and cough raise risk for bronchitis. No red flags present.",
+      "differential_diagnoses": [
+        {
+          "code": "J32.0"
+        },
+        {
+          "code": "J01.90"
+        },
+        {
+          "code": "J20.9"
+        },
+        {
+          "code": "J30.9"
+        },
+        {
+          "code": "R43.0"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_44283"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K41.9"
+        },
+        {
+          "code": "K40.90"
+        },
+        {
+          "code": "N45.2"
+        },
+        {
+          "code": "L03.312"
+        },
+        {
+          "code": "R10.9"
+        }
+      ],
+      "reasoning": "Sudden onset bilateral iliac fossa and testicular pain with abdominal distension, large pale rash, and swelling increased by coughing suggest possible inguinal/abdominal hernias or referred genitourinary infection. Cellulitis is considered due to skin findings. Abscess or nonspecific abdominal pain also possible.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_44746"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "D50.9"
+        },
+        {
+          "code": "N18.9"
+        },
+        {
+          "code": "K92.1"
+        },
+        {
+          "code": "I10"
+        },
+        {
+          "code": "F48.0"
+        }
+      ],
+      "reasoning": "The patient has signs of iron deficiency anemia (chronic fatigue, history of anemia, poor diet, menorrhagia, black stools), possible GI bleeding (black stools with NOACs), and chronic kidney disease. Shortness of breath and significant fatigue could all be related. Headache pain is likely secondary. Escalation required for possible ongoing bleeding and severe anemia.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_44761"
+    },
+    {
+      "reasoning": "Patient's symptoms of cough and wheezing, history of asthma, recent upper respiratory infection, and chronic sinusitis point toward asthma exacerbation but differential includes other causes of airway obstruction.",
+      "differential_diagnoses": [
+        {
+          "code": "J45.909"
+        },
+        {
+          "code": "J41.0"
+        },
+        {
+          "code": "J32.9"
+        },
+        {
+          "code": "J20.9"
+        },
+        {
+          "code": "R06.2"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_44794"
+    },
+    {
+      "reasoning": "Young female with multiple risk factors (diabetes, obesity, dyslipidemia, hypertension, alcohol use, cardiac history) and diffuse chest pain radiating to multiple areas with significant shortness of breath and fatigue. Serious cardiovascular and pulmonary conditions must be considered as well as musculoskeletal and GI causes.",
+      "differential_diagnoses": [
+        {
+          "code": "I20.9"
+        },
+        {
+          "code": "I25.9"
+        },
+        {
+          "code": "J98.4"
+        },
+        {
+          "code": "R07.4"
+        },
+        {
+          "code": "K30"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_46602"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "C34.90"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "J44.9"
+        },
+        {
+          "code": "I26.99"
+        },
+        {
+          "code": "A15.0"
+        }
+      ],
+      "reasoning": "Elderly male with hemoptysis, weight loss, fatigue, chronic cough, and chest pain. History and risk factors suggest lung cancer most likely, but pneumonia, COPD, pulmonary embolism, and tuberculosis are also considered.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_47200"
+    },
+    {
+      "reasoning": "In a 40-year-old female with known COPD, smoking history, and new/worsening cough with colored sputum, shortness of breath, and wheeze, COPD exacerbation is most likely. Infectious bronchitis or pneumonia, asthma, and occupational lung disease are also possible given her history and exposures.",
+      "differential_diagnoses": [
+        {
+          "code": "J44.1"
+        },
+        {
+          "code": "J20.9"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "J45.909"
+        },
+        {
+          "code": "J60"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_4806"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I21.9"
+        },
+        {
+          "code": "I20.9"
+        },
+        {
+          "code": "I25.10"
+        },
+        {
+          "code": "I50.9"
+        },
+        {
+          "code": "J18.9"
+        }
+      ],
+      "reasoning": "Acute, severe, diffuse chest pain radiating to jaws and arms with diaphoresis and dyspnea in a patient with multiple cardiac risk factors suggests acute myocardial infarction, but unstable angina, chronic ischemic heart disease, heart failure, and pneumonia must also be considered.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_5118"
+    },
+    {
+      "reasoning": "Acute bilateral limb and facial weakness with sensory changes raises concern for Guillain-Barr\u00e9 syndrome, but central demyelinating or neuromuscular junction disorders (e.g., myasthenia gravis) and other neurologic processes must be considered. Shortness of breath may indicate neuromuscular respiratory compromise.",
+      "differential_diagnoses": [
+        {
+          "code": "G61.0"
+        },
+        {
+          "code": "G70.0"
+        },
+        {
+          "code": "G35"
+        },
+        {
+          "code": "G37.9"
+        },
+        {
+          "code": "G12.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_54083"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I97.2"
+        },
+        {
+          "code": "I50.9"
+        },
+        {
+          "code": "I89.0"
+        },
+        {
+          "code": "N04.9"
+        },
+        {
+          "code": "T78.4"
+        }
+      ],
+      "reasoning": "Bilateral limb swelling and pain with history of heart failure, chronic steroid use, nephrotic syndrome, and lymph node surgery suggest multifactorial edema: possible post-lymphadenectomy lymphedema (I97.2), exacerbation of heart failure (I50.9), or nephrotic syndrome (N04.9). Calcium channel blockers can also cause edema (T78.4). Lymphedema or venous insufficiency (I89.0) are further supported by the distribution of swelling.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_54665"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I49.9"
+        },
+        {
+          "code": "F15.20"
+        },
+        {
+          "code": "I10"
+        },
+        {
+          "code": "F41.0"
+        },
+        {
+          "code": "R55"
+        }
+      ],
+      "reasoning": "The patient has palpitations, dizziness, and shortness of breath, with stimulant and energy drink use. Cardiac arrhythmia, stimulant-related effects, and anxiety are key considerations, with syncope and hypertension possible given the profile. No chest pain or red flags for emergent syndromes.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_55261"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I20.9"
+        },
+        {
+          "code": "I25.119"
+        },
+        {
+          "code": "R07.1"
+        },
+        {
+          "code": "M54.6"
+        },
+        {
+          "code": "K30"
+        }
+      ],
+      "reasoning": "Young woman with significant cardiovascular risk factors, diffuse exertional chest pain radiating to neck/jaw/thoracic spine, and personal/family history of cardiac disease raises concern for angina or ischemic disease. Musculoskeletal and gastrointestinal causes are also considered.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_57081"
+    },
+    {
+      "reasoning": "Chest pain worsened by inspiration, recent viral illness, prior pericarditis, and palpitations suggest pericarditis or myocarditis. Pleuritic features suggest pleurisy or pulmonary embolism; diffuse pain less likely ACS but cannot be excluded. Presentation lacks red flags for immediate escalation.",
+      "differential_diagnoses": [
+        {
+          "code": "I30.0"
+        },
+        {
+          "code": "I40.9"
+        },
+        {
+          "code": "J90"
+        },
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "I20.9"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_57684"
+    },
+    {
+      "reasoning": "Hemoptysis in an underweight HIV-positive IV drug user raises concern for pulmonary infections, including tuberculosis, and non-infectious causes. The risk of TB is elevated due to travel and immunosuppression. Other possibilities include bacterial pneumonia, fungal infections, and malignancy.",
+      "differential_diagnoses": [
+        {
+          "code": "A15.0"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "B20.6"
+        },
+        {
+          "code": "B44.9"
+        },
+        {
+          "code": "C34.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_58100"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I30.0"
+        },
+        {
+          "code": "K29.7"
+        },
+        {
+          "code": "R07.2"
+        },
+        {
+          "code": "K31.9"
+        },
+        {
+          "code": "M79.1"
+        }
+      ],
+      "reasoning": "Sharp, positional chest pain radiating to the back with prior pericarditis and recent viral infection are suggestive of acute pericarditis. Gastrointestinal sources, musculoskeletal pain, and non-specific chest pain are also considered.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_58639"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K86.1"
+        },
+        {
+          "code": "K44.9"
+        },
+        {
+          "code": "K29.7"
+        },
+        {
+          "code": "K21.9"
+        },
+        {
+          "code": "K70.1"
+        }
+      ],
+      "reasoning": "Epigastric and left hypochondrial pain worsened postprandially and when lying down, especially with alcohol use and history of hiatal hernia, is suggestive of chronic pancreatitis, hiatal hernia complications, gastritis, GERD, or alcoholic liver disease.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_59518"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "D50.9"
+        },
+        {
+          "code": "N92.0"
+        },
+        {
+          "code": "K92.1"
+        },
+        {
+          "code": "G44.1"
+        },
+        {
+          "code": "N18.9"
+        }
+      ],
+      "reasoning": "The triad of headache, marked fatigue, and history consistent with iron deficiency anemia (very heavy menses, melena, recent anticoagulant use, kidney disease) suggest anemia due to chronic blood loss. Other considerations include dysfunctional uterine bleeding, GI bleeding, tension-type headache, and symptoms from CKD.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_61042"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J01.90"
+        },
+        {
+          "code": "J32.9"
+        },
+        {
+          "code": "J00"
+        },
+        {
+          "code": "J45.909"
+        },
+        {
+          "code": "J41.0"
+        }
+      ],
+      "reasoning": "Gradually worsening, bilateral facial pain with anosmia, colored nasal discharge, and recent cold suggest acute or chronic sinusitis. Asthma and smoking increase risk for respiratory complications; nasal polyps and recurrent infections also noted. No red flags for urgent escalation.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_61070"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I50.9"
+        },
+        {
+          "code": "I25.9"
+        },
+        {
+          "code": "R60.0"
+        },
+        {
+          "code": "N18.6"
+        },
+        {
+          "code": "J96.00"
+        }
+      ],
+      "reasoning": "History of dialysis, nocturnal dyspnea, diffuse pain, edema, and orthopnea suggest heart failure or volume overload possibly related to ESRD. Possible angina or ACS given cardiac history and chest pain radiating to multiple areas. Pulmonary edema and general volume overload are also considerations.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_67408"
+    },
+    {
+      "reasoning": "An elderly male with hemoptysis, chronic cough, fatigue, and anorexia, plus a strong smoking history, raises suspicion for lung malignancy, but infection (TB, pneumonia), chronic bronchitis, and heart failure are also possible. No acute red flags, but hemoptysis in this context warrants expedited evaluation.",
+      "differential_diagnoses": [
+        {
+          "code": "C34.9"
+        },
+        {
+          "code": "J44.9"
+        },
+        {
+          "code": "I50.9"
+        },
+        {
+          "code": "A16.2"
+        },
+        {
+          "code": "J18.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_67807"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "M32.1"
+        },
+        {
+          "code": "M79.7"
+        },
+        {
+          "code": "L43.0"
+        },
+        {
+          "code": "M13.0"
+        },
+        {
+          "code": "L29.9"
+        }
+      ],
+      "reasoning": "Multisite joint pain, fatigue, oral ulcers, and malar rash suggest systemic lupus erythematosus. Other possibilities include fibromyalgia, lichen planus, other polyarthropathies, or nonspecific pruritic dermatosis. No immediate red flag symptoms are present.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_67915"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K59.09"
+        },
+        {
+          "code": "L12.0"
+        },
+        {
+          "code": "M35.9"
+        },
+        {
+          "code": "K52.9"
+        },
+        {
+          "code": "R19.0"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "reasoning": "Bilateral iliac fossa pain, mild bloating, and rash with swelling but no itching or systemic instability suggest mild inflammatory, dermatologic, or functional GI process; atypical features and lack of red flags lower concern for urgent pathology.",
+      "case_id": "ddxplus_7010"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I30.0"
+        },
+        {
+          "code": "I40.9"
+        },
+        {
+          "code": "R07.2"
+        },
+        {
+          "code": "I20.9"
+        },
+        {
+          "code": "K29.7"
+        }
+      ],
+      "reasoning": "Sudden, severe, pleuritic, positional chest pain with history of viral infection and prior pericarditis makes pericarditis most likely. Myocarditis and non-specific chest pain are also considered. ACS unlikely but possible at any age with severe chest pain; gastritis considered given epigastric pain. Immediate evaluation is warranted.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_72153"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J98.11"
+        },
+        {
+          "code": "J44.0"
+        },
+        {
+          "code": "J15.9"
+        },
+        {
+          "code": "A15.0"
+        },
+        {
+          "code": "R04.2"
+        }
+      ],
+      "reasoning": "Cystic fibrosis with chronic lung disease, history of COPD/asthma, and presenting hemoptysis with productive cough raises concern for acute infective exacerbation, possible pneumonia or tuberculosis, and bronchiectasis. Hemoptysis and worsening respiratory function require urgent attention.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_72843"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I21.9"
+        },
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "I20.9"
+        },
+        {
+          "code": "K22.0"
+        },
+        {
+          "code": "M54.6"
+        }
+      ],
+      "reasoning": "Sudden, severe, radiating chest pain with SOB, history of CAD risk factors and circulation issues suggests acute coronary syndrome, pulmonary embolism, or unstable angina; other considerations include esophageal spasm and referred thoracic spine pain.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_73793"
+    },
+    {
+      "reasoning": "The patient's unilateral, severe, sudden-onset headache, autonomic symptoms (tearing, nasal congestion), family history, and risk factors are suggestive of cluster headache. Other trigeminal autonomic cephalalgias, migraine, and sinusitis remain in the differential.",
+      "differential_diagnoses": [
+        {
+          "code": "G44.0"
+        },
+        {
+          "code": "G43.1"
+        },
+        {
+          "code": "J01.90"
+        },
+        {
+          "code": "G44.8"
+        },
+        {
+          "code": "R51.9"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_7404"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "D64.9"
+        },
+        {
+          "code": "K92.1"
+        },
+        {
+          "code": "G44.1"
+        },
+        {
+          "code": "I10"
+        },
+        {
+          "code": "N18.5"
+        }
+      ],
+      "reasoning": "Elderly patient on NOACs with fatigue, pallor, GI blood loss, and chronic kidney disease most likely has anemia. Other considerations include GI bleeding, tension-type headache, hypertension, and worsening renal failure.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_81153"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K92.1"
+        },
+        {
+          "code": "D50.9"
+        },
+        {
+          "code": "G44.1"
+        },
+        {
+          "code": "F48.0"
+        },
+        {
+          "code": "E43"
+        }
+      ],
+      "reasoning": "Black stools suggest possible GI bleeding (K92.1); history, fatigue, and pallor point to anemia (D50.9); headache symptoms (G44.1), chronic fatigue (F48.0), and history of undernutrition (E43) are also significant.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_86038"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J03.90"
+        },
+        {
+          "code": "J02.9"
+        },
+        {
+          "code": "J10.1"
+        },
+        {
+          "code": "R07.0"
+        },
+        {
+          "code": "K12.2"
+        }
+      ],
+      "reasoning": "Gradual burning throat and palatal pain, cough, and lack of red flags support viral or bacterial pharyngitis, tonsillitis, or herpetic stomatitis. Crowded living and smoking increase risk of infections.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_87419"
+    },
+    {
+      "reasoning": "Young adult with gradual diffuse headache, fever, sore throat, myalgia, congestion, and cough; most likely viral URTI. Sinusitis and flu are possible. Meningitis is unlikely without red flags or meningeal signs.",
+      "differential_diagnoses": [
+        {
+          "code": "J06.9"
+        },
+        {
+          "code": "J00"
+        },
+        {
+          "code": "J11.1"
+        },
+        {
+          "code": "J01.90"
+        },
+        {
+          "code": "G44.1"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_87487"
+    },
+    {
+      "reasoning": "Acute dystonic reaction is highly likely given recent antipsychotic/antiemetic use and cranial-cervical spasms, eye movement issues, and airway involvement. Alternative causes such as seizure, myasthenia, or tetanus are less likely but considered.",
+      "differential_diagnoses": [
+        {
+          "code": "G24.3"
+        },
+        {
+          "code": "T43.205A"
+        },
+        {
+          "code": "G24.5"
+        },
+        {
+          "code": "G70.0"
+        },
+        {
+          "code": "R56.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_88546"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "B02.9"
+        },
+        {
+          "code": "L27.0"
+        },
+        {
+          "code": "J06.9"
+        },
+        {
+          "code": "R50.9"
+        },
+        {
+          "code": "B00.9"
+        }
+      ],
+      "reasoning": "Immunosuppressed patient with fever, sore throat, diffuse pain, fatigue, cough, and a pink, swollen rash could indicate viral reactivation (e.g., herpes zoster), viral exanthem, or non-specific viral illness. The absence of severe red flag symptoms and stable pain suggest routine care, but immunosuppression requires close follow-up.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_90033"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "R04.2"
+        },
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "L50.9"
+        },
+        {
+          "code": "J44.1"
+        }
+      ],
+      "reasoning": "Hemoptysis and pleuritic chest pain with cough and systemic symptoms in a patient with history of pneumonia and heart failure raise suspicion for pneumonia, pulmonary embolism, or COPD exacerbation. Rash with peeling and pruritus could suggest urticaria or a drug reaction. PE or severe infection cannot be excluded.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_92606"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I30.0"
+        },
+        {
+          "code": "J98.4"
+        },
+        {
+          "code": "N64.4"
+        },
+        {
+          "code": "R07.2"
+        },
+        {
+          "code": "I20.9"
+        }
+      ],
+      "reasoning": "Pericarditis is considered due to positional chest pain and dyspnea, but musculoskeletal chest wall pain, breast pain, and non-cardiac chest pain are also possible. No red flags or severe features provided, so immediate escalation is not indicated.",
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_94455"
+    },
+    {
+      "reasoning": "Gradual-onset bilateral tonsillar and pharyngeal pain, fever, hoarseness, tobacco use, and no red flags suggest an upper respiratory tract infection or tonsillitis. Differential includes pharyngitis, peritonsillar abscess, laryngitis, and neoplasms due to the patient's age and smoking history.",
+      "differential_diagnoses": [
+        {
+          "code": "J03.90"
+        },
+        {
+          "code": "J02.9"
+        },
+        {
+          "code": "J04.0"
+        },
+        {
+          "code": "C09.9"
+        },
+        {
+          "code": "J36"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "UNCERTAIN",
+      "case_id": "ddxplus_94656"
+    },
+    {
+      "reasoning": "This patient has significant risk factors and a presentation highly concerning for unstable angina or acute coronary syndrome. Symptoms include progressive chest pain at rest, radiating pain, shortness of breath, nausea, and fatigue. Other potential causes include heart failure, pulmonary embolism, gastrointestinal, and musculoskeletal pathologies, but acute coronary syndrome must be immediately excluded.",
+      "differential_diagnoses": [
+        {
+          "code": "I20.0"
+        },
+        {
+          "code": "I21.9"
+        },
+        {
+          "code": "I50.9"
+        },
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "K21.9"
+        }
+      ],
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_96480"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "K25.0"
+        },
+        {
+          "code": "K22.8"
+        },
+        {
+          "code": "K29.7"
+        },
+        {
+          "code": "I85.0"
+        },
+        {
+          "code": "C15.9"
+        }
+      ],
+      "reasoning": "The patient\u2019s upper abdominal/chest pain, melena, hematemesis, and risk factors (alcohol, smoking, hiatal hernia) suggest peptic ulcer with bleeding (K25.0), possible esophageal disease (K22.8), gastritis (K29.7), esophageal varices (I85.0), and less likely malignancy (C15.9). Symptoms and GI bleeding require urgent evaluation.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_96751"
+    },
+    {
+      "reasoning": "Young adult with pharyngeal and tonsillar pain, fever, and cough following contact exposure; most suggestive of viral or bacterial pharyngitis, but cannot rule out infectious mononucleosis or other respiratory pathogens.",
+      "differential_diagnoses": [
+        {
+          "code": "J02.9"
+        },
+        {
+          "code": "B27.90"
+        },
+        {
+          "code": "J03.90"
+        },
+        {
+          "code": "J06.9"
+        },
+        {
+          "code": "J00"
+        }
+      ],
+      "escalation_decision": "ROUTINE_CARE",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_97611"
+    },
+    {
+      "differential_diagnoses": [
+        {
+          "code": "I26.9"
+        },
+        {
+          "code": "C78.0"
+        },
+        {
+          "code": "J94.2"
+        },
+        {
+          "code": "J18.9"
+        },
+        {
+          "code": "J90"
+        }
+      ],
+      "reasoning": "Hemoptysis, pleuritic pain, SOB, and right leg swelling suggest pulmonary embolism, particularly with multiple risk factors. Pulmonary malignancy with metastasis, pleural effusion, pneumonia, or lung abscess are also possible.",
+      "escalation_decision": "ESCALATE_NOW",
+      "uncertainty": "CONFIDENT",
+      "case_id": "ddxplus_99107"
+    }
+  ]
+}
