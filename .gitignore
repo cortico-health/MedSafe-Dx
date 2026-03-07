@@ -34,6 +34,15 @@ ENV/
 *.swp
 *.swo
 
+# LaTeX build outputs
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.pdf
+*.synctex.gz
+
 # OS
 .DS_Store
 Thumbs.db
