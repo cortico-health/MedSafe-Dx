@@ -4,10 +4,92 @@ Run inference on benchmark cases using OpenRouter API.
 """
 
 import json
+import re
 import argparse
 from pathlib import Path
 from typing import Dict, Any
 import time
+
+
+def strip_json_comments(text: str) -> str:
+    """
+    Strip single-line // comments from a JSON string, respecting string literals.
+
+    This uses a character-level state machine so it never mistakes a ``//``
+    inside a quoted string value (e.g. a URL) for a comment.  Handles:
+      • ``// comment`` outside strings → removed (up to but not including \\n)
+      • ``\\"`` inside strings → treated as an escaped quote, does not toggle state
+      • Does NOT attempt to handle block comments (/* … */) because the models
+        we are targeting never emit them.
+    """
+    result = []
+    in_string = False
+    i = 0
+    n = len(text)
+    while i < n:
+        ch = text[i]
+
+        if in_string:
+            result.append(ch)
+            if ch == "\\":
+                # Escaped character – consume next char verbatim so \" doesn't
+                # accidentally close the string.
+                i += 1
+                if i < n:
+                    result.append(text[i])
+            elif ch == '"':
+                in_string = False
+        else:
+            if ch == '"':
+                in_string = True
+                result.append(ch)
+            elif ch == "/" and i + 1 < n and text[i + 1] == "/":
+                # Line comment – skip until end-of-line (keep the newline itself
+                # so line numbers stay intact for debugging).
+                while i < n and text[i] != "\n":
+                    i += 1
+                continue  # don't increment i again below
+            else:
+                result.append(ch)
+
+        i += 1
+    return "".join(result)
+
+
+def strip_trailing_commas(text: str) -> str:
+    """
+    Remove trailing commas before ``]`` or ``}`` in a JSON string.
+
+    Models occasionally emit a trailing comma after the last item in an array
+    (e.g. ``{"code": "R51"},  // comment\n  ]``).  After comment stripping the
+    comment disappears but the comma remains, producing invalid JSON.  A simple
+    regex handles this safely because JSON values cannot themselves start with
+    ``,``.
+    """
+    return re.sub(r",(\s*[}\]])", r"\1", text)
+
+
+def clean_model_json(response: str) -> str:
+    """
+    Apply the full cleaning pipeline to a raw model response:
+      1. Strip markdown fences (```json … ```)
+      2. Fall back to first ``{`` … last ``}`` if no fences
+      3. Strip ``//`` line comments
+      4. Strip trailing commas before ``]`` / ``}``
+    """
+    cleaned = response
+    if "```json" in response:
+        cleaned = response.split("```json")[1].split("```")[0].strip()
+    elif "```" in response:
+        cleaned = response.split("```")[1].split("```")[0].strip()
+    elif "{" in response and "}" in response:
+        start = response.find("{")
+        end   = response.rfind("}") + 1
+        cleaned = response[start:end]
+
+    cleaned = strip_json_comments(cleaned)
+    cleaned = strip_trailing_commas(cleaned)
+    return cleaned
 
 from inference.openrouter import call_openrouter, load_cases, write_predictions
 from inference.prompt import (
@@ -100,22 +182,13 @@ def run_inference_on_case(
     
     # Try to parse JSON from response
     try:
-        # Check if response is just plain JSON text first
+        # Fast path: response is already valid JSON.
         try:
              prediction = json.loads(response)
         except json.JSONDecodeError:
-            # Extract JSON if wrapped in markdown code blocks or has extra text
-            cleaned_response = response
-            if "```json" in response:
-                cleaned_response = response.split("```json")[1].split("```")[0].strip()
-            elif "```" in response:
-                cleaned_response = response.split("```")[1].split("```")[0].strip()
-            # If no markdown blocks, try to find the first '{' and last '}'
-            elif "{" in response and "}" in response:
-                start = response.find("{")
-                end = response.rfind("}") + 1
-                cleaned_response = response[start:end]
-            
+            # Full cleaning pipeline: fence stripping → comment stripping →
+            # trailing-comma removal.
+            cleaned_response = clean_model_json(response)
             prediction = json.loads(cleaned_response)
         
         prediction["case_id"] = case["case_id"]

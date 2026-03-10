@@ -1,6 +1,6 @@
 {
   "model": "openai-gpt-5-mini",
-  "version": "2026-03",
+  "version": "2025-01",
   "cases": 500,
   "valid_predictions": 443,
   "total_attempted": 500,
@@ -377,5 +377,5 @@
   "harm_reference_policy": "always_escalate_now_and_uncertain",
   "harm_reference_expected_harm": 0.776,
   "relative_harm_reduction_pct": -2239.6907216494847,
-  "timestamp": "2026-03-06T21:10:20.275544Z"
+  "timestamp": "2026-03-09T17:48:51.372834Z"
 }
