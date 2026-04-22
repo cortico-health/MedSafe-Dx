@@ -424,7 +424,7 @@
 
         .tradeoff-chart .ideal-zone {
             fill: #198754;
-            fill-opacity: 0.04;
+            fill-opacity: 0.10;
         }
 
         .tradeoff-chart .direction-arrow {
@@ -500,7 +500,7 @@
             <div class="tradeoff-chart" id="tradeoff-chart" style="position: relative;">
                 <h3>Safety vs. over-escalation tradeoff</h3>
                 <p class="chart-subtitle">
-                    Each model is one point. <strong>Top-left is ideal</strong>: high Safety Pass Rate (catches urgent cases, avoids unsafe reassurance) with low over-escalation (avoids alarm fatigue on routine cases). Hover a point for details.
+                    Each model is one point. <strong>Top-right is ideal</strong>: high Safety Pass Rate (catches urgent cases, avoids unsafe reassurance) with low over-escalation (avoids alarm fatigue on routine cases). The shaded zone marks the sweet spot: ≥ 90% Safety Pass Rate <em>and</em> ≤ 60% over-escalation. Hover a point for details.
                 </p>
                 <div id="tradeoff-svg-host"></div>
                 <div class="chart-legend" id="tradeoff-legend"></div>
@@ -786,8 +786,11 @@
             const xMin = Math.max(0, Math.floor((xMinObs - 5) / 5) * 5);
             const xMax = Math.min(100, Math.ceil((xMaxObs + 5) / 5) * 5);
 
-            const xScale = v => M.left + ((v - xMin) / (xMax - xMin)) * plotW;
+            // X axis is flipped: high over-escalation on the left, low (better) on the right.
+            // This puts the ideal corner (high SPR + low over-esc) at top-right.
+            const xScale = v => M.left + ((xMax - v) / (xMax - xMin)) * plotW;
             const yScale = v => M.top + (1 - (v - yMin) / (yMax - yMin)) * plotH;
+            const plotMidX = M.left + plotW / 2;
 
             const xTicks = [];
             for (let v = xMin; v <= xMax + 0.001; v += 5) xTicks.push(Math.round(v));
@@ -798,10 +801,13 @@
             const svgParts = [];
             svgParts.push(`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Scatter plot of Safety Pass Rate vs over-escalation rate by model">`);
 
-            // Subtle "ideal zone" highlight: top-left quarter of the plot area.
-            const idealW = plotW / 2;
-            const idealH = plotH / 2;
-            svgParts.push(`<rect class="ideal-zone" x="${M.left}" y="${M.top}" width="${idealW}" height="${idealH}" />`);
+            // Sweet-spot quadrant: SPR >= 90% AND over_esc_rate <= 60%.
+            // After the X flip, "<= 60% over-esc" lives to the right of xScale(60).
+            const sprThreshold = 90;
+            const overEscThreshold = 60;
+            const idealLeft = xScale(overEscThreshold);          // right of this → low over-esc
+            const idealBottom = yScale(sprThreshold);            // above this    → high SPR
+            svgParts.push(`<rect class="ideal-zone" x="${idealLeft}" y="${M.top}" width="${(M.left + plotW) - idealLeft}" height="${idealBottom - M.top}" />`);
 
             // Gridlines
             for (const t of xTicks) {
@@ -831,23 +837,24 @@
             svgParts.push(`<text class="axis-label" x="${M.left + plotW / 2}" y="${H - 18}" text-anchor="middle">Over-escalation rate (% of non-urgent cases) — lower is better →</text>`);
             svgParts.push(`<text class="axis-label" transform="translate(${M.left - 50}, ${M.top + plotH / 2}) rotate(-90)" text-anchor="middle">Safety Pass Rate — higher is better ↑</text>`);
 
-            // "Ideal" annotation in the top-left corner of plot area
-            svgParts.push(`<text class="direction-arrow" x="${M.left + 8}" y="${M.top + 14}">↖ ideal</text>`);
+            // "Ideal" annotation in the top-right corner of plot area
+            svgParts.push(`<text class="direction-arrow" x="${M.left + plotW - 8}" y="${M.top + 14}" text-anchor="end">ideal ↗</text>`);
 
-            // Points + labels. Slight per-model label offset to avoid overlap.
-            const labelOffsets = {
-                // model_id : { dx, dy } overrides; dy negative = above point
-                'openai-gpt-5.2':                  { dx: -8, dy: -10, anchor: 'end' },
-                'anthropic-claude-haiku-4.5':      { dx: -8, dy: -10, anchor: 'end' },
-                'openai-gpt-5-chat':               { dx:  8, dy: -10, anchor: 'start' },
-                'openai-gpt-4o-mini':              { dx:  8, dy: -10, anchor: 'start' },
-                'openai-gpt-4.1':                  { dx: -8, dy: -10, anchor: 'end' },
-                'anthropic-claude-sonnet-4.5':     { dx:  8, dy: -10, anchor: 'start' },
-                'openai-gpt-oss-120b':             { dx:  8, dy: 14,  anchor: 'start' },
-                'deepseek-deepseek-chat-v3-0324':  { dx:  8, dy: 14,  anchor: 'start' },
-                'openai-gpt-5-mini':               { dx: -8, dy: -10, anchor: 'end' },
-                'google-gemini-2.0-flash':         { dx:  8, dy: 14,  anchor: 'start' },
-                'google-gemini-3-pro-preview':    { dx:  8, dy: -10, anchor: 'start' },
+            // Per-model dy hints to push labels above/below their dot when needed
+            // to avoid collisions. Default is above (dy = -10). The horizontal side
+            // of the label is computed from the dot's position in the plot area.
+            // Label placement. Default = auto-anchor (label on the side of the dot
+            // that keeps it inside the plot) and above the dot. Overrides handle the
+            // dense ~85–88% SPR cluster where four models sit close enough that the
+            // auto rule produces overlap.
+            const labelOverrides = {
+                // 4-model cluster — each label gets its own quadrant relative to its dot
+                'openai-gpt-4.1':                 { dx: -8, dy: -10, anchor: 'end' },  // upper-left
+                'anthropic-claude-sonnet-4.5':    { dx: -8, dy: -10, anchor: 'end' },  // upper-left
+                'openai-gpt-oss-120b':            { dx: -8, dy: 14,  anchor: 'end' },  // lower-left
+                'deepseek-deepseek-chat-v3-0324': { dx: -8, dy: 14,  anchor: 'end' },  // lower-left
+                // Push below dot so it doesn't crowd the cluster above
+                'google-gemini-2.0-flash':        { dy: 14 },
             };
 
             for (const p of points) {
@@ -857,7 +864,10 @@
                 svgParts.push(
                     `<circle class="point" data-model="${p.model}" cx="${cx}" cy="${cy}" r="6" fill="${color}" fill-opacity="0.85" stroke="${color}" stroke-width="1.5" />`
                 );
-                const off = labelOffsets[p.model] || { dx: 8, dy: -10, anchor: 'start' };
+                // Compute auto-anchor as the default; an override may replace any field.
+                const onRight = cx > plotMidX;
+                const auto = { dx: onRight ? -8 : 8, dy: -10, anchor: onRight ? 'end' : 'start' };
+                const off = { ...auto, ...(labelOverrides[p.model] || {}) };
                 svgParts.push(
                     `<text class="point-label" x="${cx + off.dx}" y="${cy + off.dy}" text-anchor="${off.anchor}">${p.short}</text>`
                 );
