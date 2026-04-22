@@ -329,6 +329,144 @@
             color: #adb5bd;
             font-weight: 400;
         }
+
+        .tradeoff-chart {
+            margin-bottom: 2.5rem;
+            padding: 1.25rem 1rem 0.5rem;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            background: #fff;
+        }
+
+        .tradeoff-chart h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #4b54f6;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .tradeoff-chart .chart-subtitle {
+            font-family: 'Inter', sans-serif;
+            color: #6c757d;
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .tradeoff-chart svg {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 540px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .tradeoff-chart .chart-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.25rem;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #495057;
+            padding: 0.25rem 0 0.5rem;
+        }
+
+        .tradeoff-chart .chart-legend .legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .tradeoff-chart .chart-legend .legend-swatch {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .tradeoff-chart .point {
+            cursor: pointer;
+            transition: r 0.12s ease, stroke-width 0.12s ease;
+        }
+
+        .tradeoff-chart .point:hover {
+            stroke-width: 2.5;
+        }
+
+        .tradeoff-chart .point-label {
+            font-size: 11px;
+            fill: #495057;
+            pointer-events: none;
+            font-weight: 500;
+        }
+
+        .tradeoff-chart .axis-label {
+            font-size: 12px;
+            fill: #495057;
+            font-weight: 500;
+        }
+
+        .tradeoff-chart .axis-tick {
+            font-size: 10.5px;
+            fill: #6c757d;
+        }
+
+        .tradeoff-chart .axis-line {
+            stroke: #adb5bd;
+            stroke-width: 1;
+        }
+
+        .tradeoff-chart .gridline {
+            stroke: #f1f3f5;
+            stroke-width: 1;
+        }
+
+        .tradeoff-chart .ideal-zone {
+            fill: #198754;
+            fill-opacity: 0.04;
+        }
+
+        .tradeoff-chart .direction-arrow {
+            font-size: 11px;
+            fill: #198754;
+            font-weight: 600;
+        }
+
+        .chart-tooltip {
+            position: absolute;
+            background: #212529;
+            color: #fff;
+            padding: 0.55rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            line-height: 1.4;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.12s ease;
+            z-index: 10;
+            max-width: 240px;
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+        }
+
+        .chart-tooltip strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: #fff;
+        }
+
+        .chart-tooltip .tt-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            color: #ced4da;
+        }
+
+        .chart-tooltip .tt-row .tt-val {
+            color: #fff;
+            font-variant-numeric: tabular-nums;
+        }
     </style>
 </head>
 <body>
@@ -359,6 +497,16 @@
                 </p>
             </div>
 
+            <div class="tradeoff-chart" id="tradeoff-chart" style="position: relative;">
+                <h3>Safety vs. over-escalation tradeoff</h3>
+                <p class="chart-subtitle">
+                    Each model is one point. <strong>Top-left is ideal</strong>: high Safety Pass Rate (catches urgent cases, avoids unsafe reassurance) with low over-escalation (avoids alarm fatigue on routine cases). Hover a point for details.
+                </p>
+                <div id="tradeoff-svg-host"></div>
+                <div class="chart-legend" id="tradeoff-legend"></div>
+                <div class="chart-tooltip" id="tradeoff-tooltip"></div>
+            </div>
+
             <div id="leaderboard"></div>
         </div>
 
@@ -380,6 +528,7 @@
                 }
                 results = await response.json();
                 renderLeaderboard();
+                renderTradeoffChart();
             } catch (err) {
                 console.error('Error loading leaderboard data:', err);
                 alert('Error loading leaderboard data: ' + err.message);
@@ -539,6 +688,229 @@
             `;
 
             container.innerHTML = html;
+        }
+
+        // ==== Tradeoff scatter chart ====================================
+        // X axis: over-escalation rate (% of non-urgent cases). Lower is better.
+        // Y axis: Safety Pass Rate. Higher is better.
+        // Each model is one point, colored by provider.
+
+        const PROVIDER_COLORS = {
+            openai:    '#10a37f',  // OpenAI teal
+            anthropic: '#d97757',  // Anthropic coral
+            google:    '#4285f4',  // Google blue
+            deepseek:  '#6366f1',  // indigo
+            other:     '#6c757d',
+        };
+
+        // v0 frozen test set: 94 of 250 cases are non-urgent. Used as fallback
+        // denominator if the server-side enrichment hasn't populated denominators.
+        const V0_NONURGENT_FALLBACK = 94;
+
+        function providerOf(modelId) {
+            const m = modelId.toLowerCase();
+            if (m.startsWith('openai')) return 'openai';
+            if (m.startsWith('anthropic')) return 'anthropic';
+            if (m.startsWith('google')) return 'google';
+            if (m.startsWith('deepseek')) return 'deepseek';
+            return 'other';
+        }
+
+        function shortModelName(modelId) {
+            return modelId
+                .replace(/^anthropic-claude-/, 'Claude ')
+                .replace(/^openai-/, '')
+                .replace(/^google-gemini-/, 'Gemini ')
+                .replace(/^deepseek-deepseek-chat-v3-?\d*/, 'DeepSeek v3')
+                .replace(/-pro-preview$/, ' Pro')
+                .replace(/-flash$/, ' Flash')
+                .replace(/-flash-lite$/, ' Flash Lite')
+                .replace(/-mini$/, ' mini')
+                .replace(/-chat$/, ' chat')
+                .replace(/^gpt-/, 'GPT-')
+                .replace(/-haiku-/, 'Haiku ')
+                .replace(/-sonnet-/, 'Sonnet ')
+                .replace(/-opus-/, 'Opus ')
+                .replace(/^GPT-oss-/, 'GPT-OSS ')
+                .replace(/(\d+)b$/, '$1B');
+        }
+
+        function renderTradeoffChart() {
+            const host = document.getElementById('tradeoff-svg-host');
+            const tooltip = document.getElementById('tradeoff-tooltip');
+            const legendEl = document.getElementById('tradeoff-legend');
+            if (!host) return;
+
+            // Compute (x, y) for each model. Skip rows we can't position.
+            const points = results.map(r => {
+                const spr = r.safety_pass_rate;
+                const overCount = (r.effectiveness && r.effectiveness.over_escalation !== undefined)
+                    ? r.effectiveness.over_escalation
+                    : (r.informational && r.informational.overdiagnosis) || 0;
+                const nonurgent = (r.denominators && r.denominators.nonurgent_cases)
+                    || V0_NONURGENT_FALLBACK;
+                if (spr == null || nonurgent === 0) return null;
+                const overRate = overCount / nonurgent;
+                return {
+                    model: r.model,
+                    short: shortModelName(r.model),
+                    provider: providerOf(r.model),
+                    spr,
+                    overRate,
+                    overCount,
+                    nonurgent,
+                    coverage: r.coverage_rate,
+                    missed: r.safety && r.safety.missed_escalations,
+                    unsafe: r.safety && r.safety.unsafe_reassurance,
+                    overconf: r.safety && r.safety.overconfident_wrong,
+                    top3: r.effectiveness && r.effectiveness.top3_recall,
+                };
+            }).filter(Boolean);
+
+            if (points.length === 0) {
+                host.innerHTML = '<p style="color:#6c757d;font-size:0.85rem;">No data to chart yet.</p>';
+                return;
+            }
+
+            // Geometry — viewBox stays fixed; SVG scales with container.
+            const W = 820, H = 500;
+            const M = { top: 30, right: 150, bottom: 64, left: 76 };
+            const plotW = W - M.left - M.right;   // 594
+            const plotH = H - M.top - M.bottom;   // 406
+
+            // Domains. Y starts at 60 (just below the lowest observed SPR);
+            // X auto-fits to data with padding, clamped to [0, 100].
+            const yMin = 60, yMax = 100;
+            const xMaxObs = Math.max(...points.map(p => p.overRate)) * 100;
+            const xMinObs = Math.min(...points.map(p => p.overRate)) * 100;
+            const xMin = Math.max(0, Math.floor((xMinObs - 5) / 5) * 5);
+            const xMax = Math.min(100, Math.ceil((xMaxObs + 5) / 5) * 5);
+
+            const xScale = v => M.left + ((v - xMin) / (xMax - xMin)) * plotW;
+            const yScale = v => M.top + (1 - (v - yMin) / (yMax - yMin)) * plotH;
+
+            const xTicks = [];
+            for (let v = xMin; v <= xMax + 0.001; v += 5) xTicks.push(Math.round(v));
+            const yTicks = [];
+            for (let v = yMin; v <= yMax + 0.001; v += 5) yTicks.push(Math.round(v));
+
+            // Build SVG.
+            const svgParts = [];
+            svgParts.push(`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Scatter plot of Safety Pass Rate vs over-escalation rate by model">`);
+
+            // Subtle "ideal zone" highlight: top-left quarter of the plot area.
+            const idealW = plotW / 2;
+            const idealH = plotH / 2;
+            svgParts.push(`<rect class="ideal-zone" x="${M.left}" y="${M.top}" width="${idealW}" height="${idealH}" />`);
+
+            // Gridlines
+            for (const t of xTicks) {
+                const x = xScale(t);
+                svgParts.push(`<line class="gridline" x1="${x}" y1="${M.top}" x2="${x}" y2="${M.top + plotH}" />`);
+            }
+            for (const t of yTicks) {
+                const y = yScale(t);
+                svgParts.push(`<line class="gridline" x1="${M.left}" y1="${y}" x2="${M.left + plotW}" y2="${y}" />`);
+            }
+
+            // Axes
+            svgParts.push(`<line class="axis-line" x1="${M.left}" y1="${M.top + plotH}" x2="${M.left + plotW}" y2="${M.top + plotH}" />`);
+            svgParts.push(`<line class="axis-line" x1="${M.left}" y1="${M.top}" x2="${M.left}" y2="${M.top + plotH}" />`);
+
+            // Axis ticks + labels
+            for (const t of xTicks) {
+                const x = xScale(t);
+                svgParts.push(`<text class="axis-tick" x="${x}" y="${M.top + plotH + 16}" text-anchor="middle">${t}%</text>`);
+            }
+            for (const t of yTicks) {
+                const y = yScale(t);
+                svgParts.push(`<text class="axis-tick" x="${M.left - 8}" y="${y + 4}" text-anchor="end">${t}%</text>`);
+            }
+
+            // Axis titles
+            svgParts.push(`<text class="axis-label" x="${M.left + plotW / 2}" y="${H - 18}" text-anchor="middle">Over-escalation rate (% of non-urgent cases) — lower is better →</text>`);
+            svgParts.push(`<text class="axis-label" transform="translate(${M.left - 50}, ${M.top + plotH / 2}) rotate(-90)" text-anchor="middle">Safety Pass Rate — higher is better ↑</text>`);
+
+            // "Ideal" annotation in the top-left corner of plot area
+            svgParts.push(`<text class="direction-arrow" x="${M.left + 8}" y="${M.top + 14}">↖ ideal</text>`);
+
+            // Points + labels. Slight per-model label offset to avoid overlap.
+            const labelOffsets = {
+                // model_id : { dx, dy } overrides; dy negative = above point
+                'openai-gpt-5.2':                  { dx: -8, dy: -10, anchor: 'end' },
+                'anthropic-claude-haiku-4.5':      { dx: -8, dy: -10, anchor: 'end' },
+                'openai-gpt-5-chat':               { dx:  8, dy: -10, anchor: 'start' },
+                'openai-gpt-4o-mini':              { dx:  8, dy: -10, anchor: 'start' },
+                'openai-gpt-4.1':                  { dx: -8, dy: -10, anchor: 'end' },
+                'anthropic-claude-sonnet-4.5':     { dx:  8, dy: -10, anchor: 'start' },
+                'openai-gpt-oss-120b':             { dx:  8, dy: 14,  anchor: 'start' },
+                'deepseek-deepseek-chat-v3-0324':  { dx:  8, dy: 14,  anchor: 'start' },
+                'openai-gpt-5-mini':               { dx: -8, dy: -10, anchor: 'end' },
+                'google-gemini-2.0-flash':         { dx:  8, dy: 14,  anchor: 'start' },
+                'google-gemini-3-pro-preview':    { dx:  8, dy: -10, anchor: 'start' },
+            };
+
+            for (const p of points) {
+                const cx = xScale(p.overRate * 100);
+                const cy = yScale(p.spr * 100);
+                const color = PROVIDER_COLORS[p.provider];
+                svgParts.push(
+                    `<circle class="point" data-model="${p.model}" cx="${cx}" cy="${cy}" r="6" fill="${color}" fill-opacity="0.85" stroke="${color}" stroke-width="1.5" />`
+                );
+                const off = labelOffsets[p.model] || { dx: 8, dy: -10, anchor: 'start' };
+                svgParts.push(
+                    `<text class="point-label" x="${cx + off.dx}" y="${cy + off.dy}" text-anchor="${off.anchor}">${p.short}</text>`
+                );
+            }
+
+            svgParts.push('</svg>');
+            host.innerHTML = svgParts.join('');
+
+            // Tooltip wiring
+            const fmtPct = (v, d = 1) => v == null ? '—' : (v * 100).toFixed(d) + '%';
+            const pointMap = new Map(points.map(p => [p.model, p]));
+
+            host.querySelectorAll('.point').forEach(node => {
+                node.addEventListener('mouseenter', (e) => {
+                    const p = pointMap.get(node.getAttribute('data-model'));
+                    if (!p) return;
+                    tooltip.innerHTML = `
+                        <strong>${p.short}</strong>
+                        <div class="tt-row"><span>Safety Pass Rate</span><span class="tt-val">${fmtPct(p.spr)}</span></div>
+                        <div class="tt-row"><span>Over-escalation</span><span class="tt-val">${p.overCount} / ${p.nonurgent} (${fmtPct(p.overRate)})</span></div>
+                        <div class="tt-row"><span>Missed escalations</span><span class="tt-val">${p.missed ?? '—'}</span></div>
+                        <div class="tt-row"><span>Unsafe reassurance</span><span class="tt-val">${p.unsafe ?? '—'}</span></div>
+                        <div class="tt-row"><span>Overconfident wrong</span><span class="tt-val">${p.overconf ?? '—'}</span></div>
+                        <div class="tt-row"><span>Top-3 recall</span><span class="tt-val">${fmtPct(p.top3)}</span></div>
+                        <div class="tt-row"><span>Coverage</span><span class="tt-val">${fmtPct(p.coverage, 0)}</span></div>
+                    `;
+                    tooltip.style.opacity = '1';
+                });
+                node.addEventListener('mousemove', (e) => {
+                    const chart = document.getElementById('tradeoff-chart');
+                    const rect = chart.getBoundingClientRect();
+                    const x = e.clientX - rect.left + 12;
+                    const y = e.clientY - rect.top + 12;
+                    // Keep tooltip inside chart on the right edge
+                    const ttRect = tooltip.getBoundingClientRect();
+                    const maxX = rect.width - ttRect.width - 8;
+                    tooltip.style.left = Math.min(x, maxX) + 'px';
+                    tooltip.style.top = y + 'px';
+                });
+                node.addEventListener('mouseleave', () => {
+                    tooltip.style.opacity = '0';
+                });
+            });
+
+            // Provider legend
+            const providersInUse = [...new Set(points.map(p => p.provider))];
+            const providerLabels = {
+                openai: 'OpenAI', anthropic: 'Anthropic', google: 'Google',
+                deepseek: 'DeepSeek', other: 'Other',
+            };
+            legendEl.innerHTML = providersInUse.map(p =>
+                `<span class="legend-item"><span class="legend-swatch" style="background:${PROVIDER_COLORS[p]}"></span>${providerLabels[p]}</span>`
+            ).join('');
         }
 
         // Initial load
