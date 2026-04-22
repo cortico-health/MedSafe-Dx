@@ -443,10 +443,20 @@ def generate_markdown_tables(
     return "\n".join(lines)
 
 
+EVAL_CASE_COUNT = 250
+EVAL_CASES_PATH = PATHS["test_sets_dir"] / f"eval-{EVAL_CASE_COUNT}-v0.json"
+
+
+def _leaderboard_model_ids(case_count: int) -> set[str]:
+    """Return the set of model_ids that appear on the published leaderboard for this case count."""
+    suffix = f"-{case_count}cases-eval.json"
+    return {p.name[: -len(suffix)] for p in PATHS["leaderboard_dir"].glob(f"*{suffix}")}
+
+
 def main():
     """Run case breakdown analysis."""
-    print("Loading test cases...")
-    cases_df = load_test_cases()
+    print(f"Loading test cases from {EVAL_CASES_PATH.name}...")
+    cases_df = load_test_cases(EVAL_CASES_PATH)
     print(f"  Loaded {len(cases_df)} test cases")
 
     # Calculate symptom count terciles
@@ -457,10 +467,15 @@ def main():
     )
     print(f"  Symptom count terciles: {terciles}")
 
-    # Load all model results
+    # Load model results: filter to the published eval case count AND to models on the leaderboard.
+    # (Models that ran but were excluded from the leaderboard, e.g. severe API failures, are not analyzed here.)
     print("\nLoading model results...")
-    model_files = list_model_results()
-    print(f"  Found {len(model_files)} models")
+    leaderboard_models = _leaderboard_model_ids(EVAL_CASE_COUNT)
+    model_files = [
+        m for m in list_model_results()
+        if m["case_count"] == EVAL_CASE_COUNT and m["model_id"] in leaderboard_models
+    ]
+    print(f"  Found {len(model_files)} models on leaderboard at N={EVAL_CASE_COUNT}")
 
     all_results = {}
     for mf in model_files:

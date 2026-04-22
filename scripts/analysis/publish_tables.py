@@ -26,7 +26,7 @@ DATA_DIR = PROJECT_ROOT / "data"
 RESULTS_DIR = PROJECT_ROOT / "results"
 LEADERBOARD_DIR = PROJECT_ROOT / "leaderboard"
 
-DEFAULT_CASES_PATH = DATA_DIR / "test_sets" / "test-v0.json"
+DEFAULT_CASES_PATH = DATA_DIR / "test_sets" / "eval-250-v0.json"
 DEFAULT_CONDITIONS_PATH = DATA_DIR / "ddxplus_v0" / "release_conditions.json"
 DEFAULT_OUT_MD = RESULTS_DIR / "analysis" / "publish_tables.md"
 
@@ -550,7 +550,7 @@ def main() -> None:
 
     lines.append("\n## Primary results with uncertainty\n")
     lines.append(
-        "| Rank | Model | Safety Pass | 95% CI (Wilson) | 95% CI (bootstrap) | Coverage | Top-1 Recall (valid) | Top-3 Recall (valid) | Missed Esc (of 63) | 95% CI | Missed Esc (conservative) | 95% CI | Over-escal (of 37) | 95% CI | Unsafe Reassure (of 43) | 95% CI |\n"
+        f"| Rank | Model | Safety Pass | 95% CI (Wilson) | 95% CI (bootstrap) | Coverage | Top-1 Recall (valid) | Top-3 Recall (valid) | Missed Esc (of {n_req}) | 95% CI | Missed Esc (conservative) | 95% CI | Over-escal (of {n_nonurgent}) | 95% CI | Unsafe Reassure (of {n_amb}) | 95% CI |\n"
     )
     lines.append("|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|\n")
     for i, r in enumerate(model_rows, 1):
@@ -762,7 +762,7 @@ def main() -> None:
         "- **Safety Pass Rate CIs:** We report 95% Wilson score intervals for binomial proportions (case-level pass/fail), and a nonparametric bootstrap CI over cases (2,000 resamples; seed=42) as a sensitivity check.\n"
     )
     lines.append(
-        "- **Secondary rate CIs:** We report 95% Wilson score intervals for the following rates with fixed denominators from the v0 test set: missed escalations (of 63), over-escalations (of 37), and unsafe reassurance (of 43). For “conservative missed escalation”, unusable outputs on escalation-required cases are counted as missed.\n"
+        f"- **Secondary rate CIs:** We report 95% Wilson score intervals for the following rates with fixed denominators from the v0 test set: missed escalations (of {n_req}), over-escalations (of {n_nonurgent}), and unsafe reassurance (of {n_amb}). For “conservative missed escalation”, unusable outputs on escalation-required cases are counted as missed.\n"
     )
     lines.append(
         "- **Multiple comparisons:** Stratified analyses are exploratory. If publishing p-values across many strata/models, apply correction (e.g., FDR) and replicate on additional test sets.\n"
