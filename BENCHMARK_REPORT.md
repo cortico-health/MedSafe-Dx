@@ -1,9 +1,15 @@
 # MedSafe-Dx (v0): Methodology & Results
 
-**Date:** January 2026
+**Authors:** Clark Van Oyen, Namrah Mirza-Haq (Cortico Health Technologies)
+**Preprint:** [medRxiv 2026.04.14.26350711](https://doi.org/10.64898/2026.04.14.26350711) (posted April 21, 2026)
+**Live leaderboard:** <https://msdx.cortico.health/>
+**Source:** <https://github.com/cortico-health/MedSafe-Dx>
+
 **Primary eval set:** `data/test_sets/eval-250-v0.json` (N=250, seed=42)
 **Primary dataset:** DDXPlus (English; synthetic patients; adult-only filtered subset)
 **Primary ranking metric:** Safety Pass Rate (higher is better)
+
+> **Cite as:** Van Oyen C, Mirza-Haq N. *MedSafe-Dx (v0): A Safety-Focused Benchmark for Evaluating LLMs in Clinical Diagnostic Decision Support.* medRxiv 2026.04.14.26350711; doi: <https://doi.org/10.64898/2026.04.14.26350711>
 
 This report describes **what the benchmark measures**, **how DDXPlus is used to generate gold labels**, and **what results we observed** on the frozen v0 test set. It is not a clinical validation study and should not be used to claim real-world safety.
 
@@ -409,4 +415,4 @@ The remaining work needed to support publication-quality claims is primarily (1)
 
 ---
 
-*Version v0 (January 2026).*
+*Version v0. Initial methodology drafted January 2026; this report accompanies the medRxiv preprint posted April 21, 2026 ([doi.org/10.64898/2026.04.14.26350711](https://doi.org/10.64898/2026.04.14.26350711)).*

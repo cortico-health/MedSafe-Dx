@@ -109,14 +109,28 @@
         }
 
         .disclaimer {
-            background-color: #fff3cd;
-            border: 1px solid #ffeeba;
-            color: #856404;
-            padding: 1rem;
+            background-color: #e7f1ff;
+            border: 1px solid #b6d4fe;
+            color: #0c4a8a;
+            padding: 1rem 1.25rem;
             margin-bottom: 2rem;
             border-radius: 8px;
-            text-align: center;
-            font-weight: 500;
+            text-align: left;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .disclaimer .citation {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #0c4a8a;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .disclaimer a {
+            color: #0c4a8a;
+            font-weight: 600;
         }
 
         .content {
@@ -324,16 +338,17 @@
             <p class="subtitle">Safety-First Clinical Diagnostic Decision Support Evaluation</p>
             <div>
                 <a class="nav-link" href="report.html">📄 Methodology &amp; Results</a>
-                <a class="nav-link" href="README.md">🏠 Project README</a>
+                <a class="nav-link" href="https://doi.org/10.64898/2026.04.14.26350711" target="_blank" rel="noopener">📝 Preprint</a>
+                <a class="nav-link" href="https://github.com/cortico-health/MedSafe-Dx" target="_blank" rel="noopener">💻 GitHub</a>
+                <a class="nav-link" href="README.md">🏠 README</a>
             </div>
         </header>
 
 
         <div class="content">
             <div class="disclaimer">
-                ⚠️ This benchmark is under active development. It's still undergoing active testing to assure the accuracy of results so do not cite these results directly at this time.
-                <br>
-                This benchmark was developed by Cortico Health Technology to evaluate the safety of LLMs we use in our products. To contact us, email solutions@cortico.health
+                <strong>MedSafe-Dx v0</strong> — a safety-focused benchmark from Cortico Health Technologies for evaluating LLMs in clinical diagnostic decision support. Results on this leaderboard are reproducible from a frozen seed (<code>eval-250-v0.json</code>, N=250). New model runs are added as we go; issues and PRs welcome on <a href="https://github.com/cortico-health/MedSafe-Dx" target="_blank" rel="noopener">GitHub</a>. For inquiries: <a href="mailto:solutions@cortico.health">solutions@cortico.health</a>.
+                <span class="citation"><strong>Cite as:</strong> Van Oyen C, Mirza-Haq N. <em>MedSafe-Dx (v0): A Safety-Focused Benchmark for Evaluating LLMs in Clinical Diagnostic Decision Support.</em> medRxiv 2026.04.14.26350711; doi: <a href="https://doi.org/10.64898/2026.04.14.26350711" target="_blank" rel="noopener">10.64898/2026.04.14.26350711</a></span>
             </div>
 
             <div class="legend">
@@ -349,7 +364,7 @@
 
         <footer>
             MedSafe-Dx v0 | Safety-gated diagnostic support evaluation<br>
-            Copyright © <a href="https://cortico.health" target="_blank">Cortico Health Technologies Inc</a> 2025 | Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>
+            Copyright © <a href="https://cortico.health" target="_blank" rel="noopener">Cortico Health Technologies Inc</a> 2026 | Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>
         </footer>
     </div>
 

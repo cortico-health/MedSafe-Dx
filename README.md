@@ -1,13 +1,16 @@
-# MedSafe-Dx
+# MedSafe-Dx (v0)
 
-## Clinical Diagnostic Assistant Safety Benchmark
+## A Safety-Focused Benchmark for Evaluating LLMs in Clinical Diagnostic Decision Support
 
-A safety-first benchmark for evaluating large language models (LLMs) used as **clinician-facing diagnostic decision support tools**.
+A safety-first benchmark for evaluating large language models (LLMs) used as **clinician-facing diagnostic decision support tools**. MedSafe-Dx evaluates three dimensions: **escalation sensitivity**, **avoidance of false reassurance**, and **calibration of uncertainty**. Unsafe behavior is surfaced, not averaged away.
 
-> 📖 **[View the Leaderboard & Methodology](http://localhost:18080)**  
-> For a detailed explanation of the safety testing framework, scoring logic, and design principles, please see the [methodology page](http://localhost:18080/methodology.html) on the local server.
+**Authors:** Clark Van Oyen, Namrah Mirza-Haq (Cortico Health Technologies)
 
-This benchmark explicitly measures **Diagnostic usefulness** and **Safety-critical escalation behavior**. Unsafe behavior is surfaced, not averaged away.
+- 📊 **Live leaderboard:** <https://msdx.cortico.health/>
+- 📄 **Methodology & results:** <https://msdx.cortico.health/report.html> (rendered from [`BENCHMARK_REPORT.md`](BENCHMARK_REPORT.md))
+- 📝 **Preprint (medRxiv):** <https://doi.org/10.64898/2026.04.14.26350711>
+
+> **Cite as:** Van Oyen C, Mirza-Haq N. *MedSafe-Dx (v0): A Safety-Focused Benchmark for Evaluating LLMs in Clinical Diagnostic Decision Support.* medRxiv 2026.04.14.26350711; doi: <https://doi.org/10.64898/2026.04.14.26350711>
 
 ---
 
@@ -17,8 +20,8 @@ This benchmark explicitly measures **Diagnostic usefulness** and **Safety-critic
 
 * Docker and Docker Compose
 * OpenRouter API key (for inference)
-* Download [ICD10 code reference](https://www.cms.gov/files/document/valid-icd-10-list.xlsx-0) - to data/section111_valid_icd10_october2025.xlsx
-* Download [DDXPlus dataset](https://figshare.com/articles/dataset/DDXPlus_Dataset_English_/22687585) and extract to data/ddxplus_v0
+* Download [ICD10 code reference](https://www.cms.gov/files/document/valid-icd-10-list.xlsx-0) → `data/section111_valid_icd10_october2025.xlsx`
+* Download [DDXPlus dataset](https://figshare.com/articles/dataset/DDXPlus_Dataset_English_/22687585) and extract to `data/ddxplus_v0`
 
 ```bash
 echo "OPENROUTER_API_KEY=your_key_here" > .env.local
@@ -35,75 +38,77 @@ docker compose build
 # Create standard test sets
 docker compose run --rm evaluator ./scripts/create_standard_test_sets.sh
 
-# Or create custom test set
+# Or create a custom test set
 docker compose run --rm evaluator python3 scripts/prep_test_cases.py \
   --output data/test_sets/my-test.json \
-  --num-cases 100 \
+  --num-cases 250 \
   --seed 42
 ```
 
-Generated test sets: `dev-v0.json` (10), `test-v0.json` (100), `eval-v0.json` (500), `full-eval-v0.json` (2000)
+Standard test sets: `dev-v0.json` (10), `test-v0.json` (100), **`eval-250-v0.json` (250 — primary published eval set, seed=42)**, `eval-v0.json` (500), `full-eval-v0.json` (2000).
 
 #### 2. Run inference
 
 ```bash
 docker compose run --rm inference python3 -m inference.run_inference \
-  --cases data/test_sets/test-v0.json \
-  --model "anthropic/claude-3.5-sonnet" \
-  --out results/artifacts/claude-predictions.json
+  --cases data/test_sets/eval-250-v0.json \
+  --model "anthropic/claude-sonnet-4.5" \
+  --out results/artifacts/claude-sonnet-4.5-predictions.json
 ```
 
 #### 3. Evaluate model
 
 ```bash
 docker compose run --rm evaluator python3 -m evaluator.cli \
-  --cases data/test_sets/test-v0.json \
-  --predictions results/artifacts/claude-predictions.json \
-  --model-name "claude-3.5-sonnet" \
-  --model-version "2025-01" \
-  --out results/artifacts/claude-eval.json
+  --cases data/test_sets/eval-250-v0.json \
+  --predictions results/artifacts/claude-sonnet-4.5-predictions.json \
+  --model-name "claude-sonnet-4.5" \
+  --model-version "2025-09" \
+  --out results/artifacts/claude-sonnet-4.5-eval.json
 ```
 
-or, use this utility that wraps the openrouter runner for several models at once - 100 cases each.
+Or use this utility that wraps the OpenRouter runner for several models at once:
 
-```
-./scripts/test_models.sh 100 anthropic/claude-haiku-4.5 anthropic/claude-sonnet-4.5 openai/gpt-oss-120b google/gemini-2.5-flash-lite deepseek/deepseek-chat-v3-0324 openai/gpt-4o-mini
+```bash
+./scripts/test_models.sh 250 anthropic/claude-haiku-4.5 anthropic/claude-sonnet-4.5 \
+  openai/gpt-oss-120b google/gemini-2.5-flash-lite \
+  deepseek/deepseek-chat-v3-0324 openai/gpt-4o-mini
 ```
 
 #### 4. Review results
 
-**1. Summary Metrics:**
+**Summary metrics:**
 
 ```bash
-cat results/artifacts/claude-eval.json
+cat results/artifacts/claude-sonnet-4.5-eval.json
 ```
 
-**2. Clinical Review Transcript:**
-
-Generate a human-readable log for doctor review:
+**Clinical review transcript** — human-readable log for doctor review:
 
 ```bash
 docker compose run --rm evaluator python3 scripts/generate_review_transcript.py \
-  --cases data/test_sets/test-v0.json \
-  --predictions results/artifacts/claude-predictions.json \
-  --model-name "Claude 3.5 Sonnet" \
-  --out results/artifacts/claude-transcript.txt
+  --cases data/test_sets/eval-250-v0.json \
+  --predictions results/artifacts/claude-sonnet-4.5-predictions.json \
+  --model-name "Claude Sonnet 4.5" \
+  --out results/artifacts/claude-sonnet-4.5-transcript.txt
 ```
 
-**3. Interactive Leaderboard:**
+**Interactive leaderboard** (local):
 
 ```bash
 ./scripts/serve_leaderboard.sh
 # Open http://localhost:18080/
 ```
 
+The same UI is published at <https://msdx.cortico.health/>.
+
 Example output:
 
 ```json
 {
-  "model": "claude-sonnet-4",
-  "version": "2025-01",
-  "cases": 100,
+  "model": "claude-sonnet-4.5",
+  "version": "2025-09",
+  "cases": 250,
   "safety": {
     "missed_escalations": 5,
     "overconfident_wrong": 0,
@@ -118,11 +123,11 @@ Example output:
 
 ---
 
-### Key Benefits
+### Key benefits
 
-* **Reproducible**: Same seed → identical test cases for fair model comparison
-* **Traceable**: Full metadata (seed, timestamp) embedded in outputs
-* **Auditable**: Safety failures explicitly counted, not averaged away
+* **Reproducible:** same seed → identical test cases for fair model comparison
+* **Traceable:** full metadata (seed, timestamp, dataset hash, prediction hash) embedded in outputs
+* **Auditable:** safety failures explicitly counted, not averaged away
 
 ---
 
@@ -130,45 +135,27 @@ Example output:
 
 To contribute results:
 
-1. **Use a frozen test set** (e.g., `eval-v0.json`)
-2. **Run inference & evaluation** using the standard pipeline
-3. **Copy the result to the leaderboard** (`cp results/artifacts/model-name.json leaderboard/`)
-4. **Commit the artifact**
-5. **Open a Pull Request** with your inference script
+1. Use a frozen test set (the published eval set is `eval-250-v0.json`, seed=42).
+2. Run inference and evaluation using the standard pipeline above.
+3. Copy the eval output to the leaderboard: `cp results/artifacts/<model-name>-eval.json leaderboard/`.
+4. Commit the artifact.
+5. Open a Pull Request with your inference command and any prompt/config details.
 
-Results are curated to ensure integrity.
-
----
-
-## Status
-
-* **Current version:** v0
-* Spec is frozen
-* Evaluator and API under active development
-
-Early feedback and collaboration are welcome.
+Results are curated to preserve evaluation integrity.
 
 ---
 
-## TODOs
- * Review the methodology more carefully for any issues that may skew results. The results must represent the real world safety of LLMs generated diagnoses and escalation intent as closely as possible.
- * Run with larger samples and top medical models, appropriate for the benchmark (250 cases?)
- * Test with safety base prompts to see how it impacts results. ie "You are an expert doctor. Take care to avoid safety issues that may be caused by clinician interpretations of your responses."
- * Find a way to run with commerical medical models like OpenEvidence and Heidi (AI Scribes) to see if those are safe for patients.
- * Update domain to an official one. (cvo)
- * Review with doctors. (cvo)
- * Optionally make the UI a bit more attractive.
- * Publish?
- * Announce via Cortico PR channels.
+## Related work
 
-## Other Projects
+* Builds on approaches from [MedS-Ins](https://github.com/MAGIC-AI4Med/MedS-Ins).
+* See `BENCHMARK_REPORT.md` §1.5 for positioning relative to MedQA/USMLE-style knowledge benchmarks and rubric-based systems like HealthBench.
 
-* This project takes inspiration and builds on some approach in [MedS-Ins](https://github.com/MAGIC-AI4Med/MedS-Ins)
+---
 
-## License & governance
+## License
 
-Copyright © Cortico Health Technologies Inc 2025
+Copyright © Cortico Health Technologies Inc 2026
 
-This work is licensed under [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/).
+This work is licensed under [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/), matching the medRxiv preprint.
 
-Initial releases are curated to preserve evaluation integrity.
+For commercial use or derivative works, contact <solutions@cortico.health>.
