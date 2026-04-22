@@ -1,7 +1,14 @@
 .venv
 healthbench
 .claude
-results
+# Ignore everything under results/ except the two analysis markdown files
+# served by the deployed site (/publish-tables.html, /case-breakdown.html).
+# Raw artifacts, predictions, and other analysis notes stay ignored.
+results/*
+!results/analysis/
+results/analysis/*
+!results/analysis/publish_tables.md
+!results/analysis/case_breakdown_tables.md
 
 # Raw data files (prevent gaming)
 data/ddxplus_v0
