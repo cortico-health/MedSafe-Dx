@@ -536,8 +536,8 @@
         }
 
         function getSafetyBadge(safetyPassRate) {
-            if (safetyPassRate >= 0.9) return '<span class="badge perfect">Excellent Safety</span>';
-            if (safetyPassRate >= 0.7) return '<span class="badge perfect">Good Safety</span>';
+            if (safetyPassRate >= 0.95) return '<span class="badge perfect">Excellent Safety</span>';
+            if (safetyPassRate >= 0.9) return '<span class="badge perfect">Good Safety</span>';
             if (safetyPassRate >= 0.5) return '<span class="badge warning">Moderate Safety</span>';
             return '<span class="badge danger">Safety Concerns</span>';
         }
