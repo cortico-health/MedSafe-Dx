@@ -25,6 +25,12 @@
   urlcolor=blue!60!black
 }
 
+% ── v3 edit-marking macro ──
+% Wraps text that was added or modified after the published v2 preprint
+% (medRxiv 2026.04.14.26350711v2, April 23 2026). Redefine to `#1` to print
+% normally before journal submission.
+\newcommand{\vthree}[1]{\textcolor{red}{#1}}
+
 % ── Title ──
 \title{\textbf{MedSafe-Dx (v0): A Safety-Focused Benchmark \\ for Evaluating LLMs in Clinical Diagnostic Decision Support}}
 
@@ -33,14 +39,16 @@
 \affil[1]{Cortico Health Technologies}
 \affil[2]{Ziya Analytics}
 
-\date{Working draft (v3, May 2026 refresh) --- supersedes medRxiv v2 (April 23, 2026)}
+\date{\vthree{Working draft (v3, May 2026 refresh) --- supersedes medRxiv v2 (April 23, 2026)}}
 
 \begin{document}
 \maketitle
 
 % ══════════════════════════════════════════════════════════
 \begin{abstract}
+{\color{red}
 MedSafe-Dx (v0) introduces a safety-focused benchmark for evaluating large language models in clinical diagnostic decision support using a filtered subset of the DDx Plus dataset ($N{=}250$). MedSafe-Dx evaluates three dimensions: escalation sensitivity, avoidance of false reassurance, and calibration of uncertainty. Models were tasked with providing a ranked differential (ICD-10), an escalation decision (Urgent vs.\ Routine), and a confidence flag. We adopt \textbf{Triage Success Rate} (TSR) as the primary ranking metric, defined as Safety Pass Rate minus over-escalations as a share of all cases; this penalizes both under- and over-triage on a single axis and caps a valid ``always escalate and always uncertain'' strategy at $\sim$62\%. The Safety Pass Rate (SPR) is retained as a secondary metric that isolates the three hard failure modes: missed escalations, overconfident incorrect diagnoses, and unsafe reassurance. In a May 2026 model refresh, twelve frontier models were evaluated: five entries from the original v2 publication that were $>$9 months old at refresh time were retired, and six newer flagship and reasoning models were added (Claude Opus 4.7, Sonnet 4.6, OpenAI o3-pro, Llama 4 Maverick, Grok 4.20, DeepSeek R1). GPT-5 Chat leads on Triage Success Rate (72.4\%), with the open-weight Llama 4 Maverick and xAI Grok 4.20 tied for second (71.2\%). Three headline findings emerged: (1)~open-weight Llama 4 Maverick is competitive with the closed frontier on safety (96.8\% SPR, second-highest in the cohort); (2)~reasoning is not a free lunch --- both reasoning-equipped models tested (o3-pro, DeepSeek R1) land mid-pack or near the bottom of the TSR ranking; (3)~the size paradox extends within Anthropic's family, with Opus 4.7 (TSR 62.4\%) underperforming its smaller Haiku 4.5 (70.8\%) and Sonnet 4.6 (69.6\%) siblings, driven primarily by an order-of-magnitude higher overconfident-wrong rate. The persistent gap between observed over-escalation rates (49--71\% of non-urgent cases among models with TSR $\geq$70\%, and up to 77\% across the cohort) and the most permissive clinical tolerance (25--50\% under the ACS-COT trauma-triage standard) is the dominant remaining headroom on this benchmark.
+}
 \end{abstract}
 
 % ══════════════════════════════════════════════════════════
@@ -88,7 +96,7 @@ For each sampled case, we extracted three components to form a ``Gold Label'' st
 
 Frontier LLMs were presented with the structured patient symptoms and antecedents (excluding gold labels). Models were instructed to provide a response in a standardized JSON format including: (1)~a differential of 5 ICD-10 codes, (2)~a triage decision (\textsc{escalate\_now} or \textsc{routine\_care}), and (3)~a confidence self-assessment (\textsc{confident} or \textsc{uncertain}).
 
-\subsection{Deterministic Evaluation: Triage Success Rate and Safety Pass Rate}
+\subsection{\vthree{Deterministic Evaluation: Triage Success Rate and} Safety Pass Rate}
 
 Rather than utilizing ``LLM-as-a-judge'' or subjective rubrics, we utilized a Python-based scoring engine to compare model outputs against the DDx Plus gold labels. Models that failed to adhere to the output schema were marked as Coverage Failures (0\% score). The engine assessed cases for three ``Hard Fail'' safety violations:
 
@@ -98,6 +106,7 @@ Rather than utilizing ``LLM-as-a-judge'' or subjective rubrics, we utilized a Py
   \item \textbf{Overconfident Wrong:} The LLM expressed \textsc{confident} status but failed to include the ground-truth diagnosis in its top-3 ICD-10 codes.
 \end{itemize}
 
+{\color{red}
 The \textbf{Safety Pass Rate} (SPR) is the share of cases with zero hard safety failures: $\text{SPR} = C_{\text{safe}}/N$, where $C_{\text{safe}}$ is the count of cases passing all three checks and $N$ is the total expected case count (coverage failures remain in the denominator). The v2 preprint reported SPR as the primary ranking metric. In practice, however, SPR alone rewards an ``always escalate and uncertain'' strategy: a model that uniformly outputs \textsc{escalate\_now} and \textsc{uncertain} achieves SPR$=1$ but provides no triage value and creates untenable false-alarm volumes in deployment.
 
 We therefore adopt \textbf{Triage Success Rate} (TSR) as the primary ranking metric:
@@ -109,6 +118,7 @@ We therefore adopt \textbf{Triage Success Rate} (TSR) as the primary ranking met
 where $C_{\text{over\_escalation}}$ counts non-urgent cases for which the model selected \textsc{escalate\_now}. TSR puts both under- and over-triage on a single axis: a trivial ``always escalate and uncertain'' strategy is upper-bounded by $1 - (\text{non-urgent}/N) \approx 62.4\%$ on the v0/$N{=}250$ test set (94 of 250 cases are non-urgent), preventing it from topping the leaderboard. The two failure modes share the same denominator, so the subtraction is dimensionally clean; the approximation is exact up to the rare overlap of an over-escalation occurring on a case that already failed another safety check.
 
 Accuracy is treated as a secondary, conditional metric: Top-1 and Top-3 Diagnostic Recall are computed only on cases that passed all safety checks, so they reflect performance on the subset where the model was already safe. We continue to report SPR alongside TSR for direct comparison with the v2 preprint and for diagnosing the relative contribution of safety failures vs.\ over-escalation.
+}
 
 It is worth noting, given the large-scale availability of the DDx Plus dataset, it is possible that evaluated models encountered portions of this data during pre-training. However, the MedSafe-Dx benchmark remains valid because we are measuring behavioral safety rather than simple knowledge recall. The benchmark evaluates the model's ability to avoid false reassurance: even if a diagnosis is correct, the model must express appropriate uncertainty in ambiguous cases to pass the safety check. In addition, appropriate escalation requires the model to recognize when an identified diagnosis constitutes a clinical emergency requiring immediate intervention versus routine follow-up --- a reasoning step beyond diagnostic recall.
 
@@ -132,30 +142,31 @@ This study used a filtered synthetic subset of the publicly available DDx Plus d
 % ══════════════════════════════════════════════════════════
 \section{Results}
 
-The May 2026 model refresh evaluated twelve frontier Large Language Models (LLMs) on the MedSafe-Dx benchmark. Five entries from the v2 publication that were $>$9 months old at refresh time were retired (GPT-4o Mini, Gemini 2.0 Flash, GPT-4.1, DeepSeek Chat v3, Claude Sonnet 4.5; archived for reproducibility), and six newer flagship and reasoning models were added (Claude Opus 4.7, Sonnet 4.6, OpenAI o3-pro, Llama 4 Maverick, Grok 4.20, DeepSeek R1). The results are summarized in \Cref{tab:results}, ranked by the primary Triage Success Rate metric.
+\vthree{The May 2026 model refresh evaluated twelve frontier Large Language Models (LLMs) on the MedSafe-Dx benchmark. Five entries from the v2 publication that were $>$9 months old at refresh time were retired (GPT-4o Mini, Gemini 2.0 Flash, GPT-4.1, DeepSeek Chat v3, Claude Sonnet 4.5; archived for reproducibility), and six newer flagship and reasoning models were added (Claude Opus 4.7, Sonnet 4.6, OpenAI o3-pro, Llama 4 Maverick, Grok 4.20, DeepSeek R1). The results are summarized in \Cref{tab:results}, ranked by the primary Triage Success Rate metric.}
 
 \begin{table}[htbp]
 \centering
-\caption{Triage Success Rate, Safety Pass Rate, failure mode counts, and diagnostic recall for 12 frontier LLMs on MedSafe-Dx ($N{=}250$, May 2026 refresh). Models ranked by Triage Success Rate. SPR shown as a secondary metric for direct comparison with the v2 preprint. Note: Gemini 2.5 Pro and Gemini 2.5 Flash Lite excluded due to severe API issues (0--8\% valid responses). MedGemma not included (not exposed on OpenRouter; requires direct Vertex AI integration).}
+\caption{\vthree{Triage Success Rate, Safety Pass Rate, failure mode counts, and diagnostic recall for 12 frontier LLMs on MedSafe-Dx ($N{=}250$, May 2026 refresh). Models ranked by Triage Success Rate. SPR shown as a secondary metric for direct comparison with the v2 preprint. Note: Gemini 2.5 Pro and Gemini 2.5 Flash Lite excluded due to severe API issues (0--8\% valid responses). MedGemma not included (not exposed on OpenRouter; requires direct Vertex AI integration).}}
 \label{tab:results}
 \small
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}rlcccccccc@{}}
 \toprule
-Rank & Model & Coverage & \textbf{TSR} & SPR (95\% CI) & Missed Esc. & Overconf.\ Wrong & Unsafe Reassur. & Over-escal.$^\dagger$ & Top-3 Recall$^\ddagger$ \\
+Rank & Model & Coverage & \textbf{\textcolor{red}{TSR}} & SPR (95\% CI) & Missed Esc. & Overconf.\ Wrong & Unsafe Reassur. & Over-escal.$^\dagger$ & Top-3 Recall$^\ddagger$ \\
 \midrule
-\#1  & GPT-5 Chat (OpenAI)              & 100\% & \textbf{72.4\%} & 94.0\% (90.3--96.4) & 8  & 6  & 1  & 54/94 & 79.6\% \\
-\#2  & Llama 4 Maverick (Meta)          & 99\%  & \textbf{71.2\%} & 96.8\% (93.7--98.3) & 6  & 0  & 0  & 64/94 & 66.5\% \\
-\#2  & Grok 4.20 (xAI)                  & 100\% & \textbf{71.2\%} & 89.6\% (85.3--92.9) & 26 & 0  & 0  & 46/94 & 78.1\% \\
-\#4  & o3-pro (OpenAI)                  & 100\% & \textbf{70.8\%} & 92.8\% (89.0--95.4) & 13 & 5  & 0  & 55/94 & 79.3\% \\
-\#4  & GPT-5.2 (OpenAI)                 & 100\% & \textbf{70.8\%} & 97.6\% (94.8--99.0) & 5  & 1  & 0  & 67/94 & 71.3\% \\
-\#4  & Claude Haiku 4.5 (Anthropic)     & 100\% & \textbf{70.8\%} & 95.6\% (92.3--97.6) & 11 & 0  & 0  & 62/94 & 69.9\% \\
-\#7  & Claude Sonnet 4.6 (Anthropic)    & 100\% & \textbf{69.6\%} & 94.8\% (91.3--97.0) & 11 & 2  & 0  & 63/94 & 80.2\% \\
-\#8  & GPT-5 Mini (OpenAI)              & 88\%  & \textbf{68.0\%} & 84.8\% (79.6--88.9) & 9  & 0  & 0  & 42/94 & 77.8\% \\
-\#9  & GPT-OSS 120B (OpenAI)            & 100\% & \textbf{66.8\%} & 85.2\% (80.2--89.2) & 17 & 16 & 4  & 46/94 & 78.9\% \\
-\#10 & Claude Opus 4.7 (Anthropic)      & 100\% & \textbf{62.4\%} & 86.4\% (81.5--90.3) & 5  & 23 & 6  & 60/94 & 85.2\% \\
-\#11 & DeepSeek R1 (DeepSeek)           & 99\%  & \textbf{61.6\%} & 90.4\% (86.1--93.5) & 5  & 13 & 3  & 72/94 & 76.5\% \\
-\#12 & Gemini 3 Pro Preview (Google)    & 74\%  & \textbf{47.2\%} & 62.4\% (56.2--68.3) & 9  & 10 & 10 & 38/94 & 87.2\% \\
+% v3: table body wholly refreshed — \color{red} on each row colors the row text.
+\color{red}\#1  & GPT-5 Chat (OpenAI)              & 100\% & \textbf{72.4\%} & 94.0\% (90.3--96.4) & 8  & 6  & 1  & 54/94 & 79.6\% \\
+\color{red}\#2  & Llama 4 Maverick (Meta)          & 99\%  & \textbf{71.2\%} & 96.8\% (93.7--98.3) & 6  & 0  & 0  & 64/94 & 66.5\% \\
+\color{red}\#2  & Grok 4.20 (xAI)                  & 100\% & \textbf{71.2\%} & 89.6\% (85.3--92.9) & 26 & 0  & 0  & 46/94 & 78.1\% \\
+\color{red}\#4  & o3-pro (OpenAI)                  & 100\% & \textbf{70.8\%} & 92.8\% (89.0--95.4) & 13 & 5  & 0  & 55/94 & 79.3\% \\
+\color{red}\#4  & GPT-5.2 (OpenAI)                 & 100\% & \textbf{70.8\%} & 97.6\% (94.8--99.0) & 5  & 1  & 0  & 67/94 & 71.3\% \\
+\color{red}\#4  & Claude Haiku 4.5 (Anthropic)     & 100\% & \textbf{70.8\%} & 95.6\% (92.3--97.6) & 11 & 0  & 0  & 62/94 & 69.9\% \\
+\color{red}\#7  & Claude Sonnet 4.6 (Anthropic)    & 100\% & \textbf{69.6\%} & 94.8\% (91.3--97.0) & 11 & 2  & 0  & 63/94 & 80.2\% \\
+\color{red}\#8  & GPT-5 Mini (OpenAI)              & 88\%  & \textbf{68.0\%} & 84.8\% (79.6--88.9) & 9  & 0  & 0  & 42/94 & 77.8\% \\
+\color{red}\#9  & GPT-OSS 120B (OpenAI)            & 100\% & \textbf{66.8\%} & 85.2\% (80.2--89.2) & 17 & 16 & 4  & 46/94 & 78.9\% \\
+\color{red}\#10 & Claude Opus 4.7 (Anthropic)      & 100\% & \textbf{62.4\%} & 86.4\% (81.5--90.3) & 5  & 23 & 6  & 60/94 & 85.2\% \\
+\color{red}\#11 & DeepSeek R1 (DeepSeek)           & 99\%  & \textbf{61.6\%} & 90.4\% (86.1--93.5) & 5  & 13 & 3  & 72/94 & 76.5\% \\
+\color{red}\#12 & Gemini 3 Pro Preview (Google)    & 74\%  & \textbf{47.2\%} & 62.4\% (56.2--68.3) & 9  & 10 & 10 & 38/94 & 87.2\% \\
 \bottomrule
 \end{tabular}%
 }
@@ -167,28 +178,29 @@ Rank & Model & Coverage & \textbf{TSR} & SPR (95\% CI) & Missed Esc. & Overconf.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.95\textwidth]{figures/fig3_tsr_tradeoff.pdf}
-  \caption{Safety Pass Rate vs.\ over-escalation rate with iso-Triage-Success-Rate contours (dashed lines), full 0--100\% axes. The top-right corner (100\% SPR, 0\% over-escalation) is the ideal. The shaded region denotes the ACS-COT trauma-triage tolerance band (SPR $\geq$ 90\% with over-escalation $\leq$ 25\%); no current LLM enters this zone.}
+  \caption{\textcolor{red}{[v3, new figure] Safety Pass Rate vs.\ over-escalation rate with iso-Triage-Success-Rate contours (dashed lines). The top-right corner (100\% SPR, 0\% over-escalation) is the ideal. Eight of 12 models shown; Y-axis cropped to 50--100\% since no model falls below 50\% SPR. The shaded region denotes the ACS-COT trauma-triage tolerance band (SPR $\geq$ 90\% with over-escalation $\leq$ 25\%); no current LLM enters this zone.}}
   \label{fig:tsr-tradeoff}
 \end{figure}
 
 \subsection{The Safety--Knowledge Paradox}
 
-A key finding of this study is that strong performance in diagnostic recall does not necessarily equate to improved triage safety. Traditionally, high performance on medical examinations has been used as a proxy for clinical competence \citep{jmir2025gap}. However, our data suggests this is a flawed metric for safety. Gemini~3 Pro~Preview again achieved the highest Top-3 Diagnostic Recall (87.2\%) but recorded the lowest Triage Success Rate (47.2\%) and lowest SPR (62.4\%). Claude Opus 4.7 places second on Top-3 recall (85.2\%) but tenth on TSR (62.4\%), driven by 23 overconfident-wrong cases --- the highest count in the cohort by a factor of 1.4$\times$ over the next model. The frontier ``best at diagnosis'' models are not the frontier ``best at triage'' models.
+{\color{red}A key finding of this study is that strong performance in diagnostic recall does not necessarily equate to improved triage safety. Traditionally, high performance on medical examinations has been used as a proxy for clinical competence \citep{jmir2025gap}. However, our data suggests this is a flawed metric for safety. Gemini~3 Pro~Preview again achieved the highest Top-3 Diagnostic Recall (87.2\%) but recorded the lowest Triage Success Rate (47.2\%) and lowest SPR (62.4\%). Claude Opus 4.7 places second on Top-3 recall (85.2\%) but tenth on TSR (62.4\%), driven by 23 overconfident-wrong cases --- the highest count in the cohort by a factor of 1.4$\times$ over the next model. The frontier ``best at diagnosis'' models are not the frontier ``best at triage'' models.}
 
-The TSR framing surfaces a second paradox: safety and triage utility are also dissociable. GPT-5.2 retains the highest SPR (97.6\%) but slips to a 3-way tie at \#4 on TSR (70.8\%) because of its 71\% over-escalation rate on non-urgent cases. The newly-added open-weight Llama 4 Maverick ties for \#2 on TSR (71.2\%) with the second-highest SPR in the cohort (96.8\%) --- evidence that open-weight models can be competitive with closed frontier models on safety-critical triage when evaluated on the same deterministic gates.
+{\color{red}The TSR framing surfaces a second paradox: safety and triage utility are also dissociable. GPT-5.2 retains the highest SPR (97.6\%) but slips to a 3-way tie at \#4 on TSR (70.8\%) because of its 71\% over-escalation rate on non-urgent cases. The newly-added open-weight Llama 4 Maverick ties for \#2 on TSR (71.2\%) with the second-highest SPR in the cohort (96.8\%) --- evidence that open-weight models can be competitive with closed frontier models on safety-critical triage when evaluated on the same deterministic gates.}
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.85\textwidth]{figures/fig1_safety_vs_recall.pdf}
-  \caption{Safety Pass Rate vs.\ Top-3 Diagnostic Recall ($N{=}250$) for 11 frontier LLMs. Error bars represent 95\% Clopper--Pearson confidence intervals. The dashed line at 85\% denotes the safety risk threshold.}
+  \caption{Safety Pass Rate vs.\ Top-3 Diagnostic Recall ($N{=}250$) for \vthree{8 of 12} frontier LLMs. Error bars represent 95\% \vthree{Wilson} confidence intervals. The dashed line at 85\% denotes the safety risk threshold. \vthree{(v3: refreshed to May 2026 cohort.)}}
   \label{fig:safety-vs-recall}
 \end{figure}
 
 \subsection{Analysis of Critical Failure Modes}
 
-We identified three distinct ``hard fail'' categories that compromise patient safety in a triage environment. With Gemini 2.0 Flash now retired, the largest source of missed emergencies in the refreshed cohort is Grok 4.20 (26 missed escalations) --- notable because Grok 4.20 also has the lowest over-escalation rate among the top-tier models (49\% of non-urgent), revealing the cleanest ``conservative on routine, aggressive on emergent'' calibration tradeoff in the dataset.
+\vthree{We identified three distinct ``hard fail'' categories that compromise patient safety in a triage environment. With Gemini 2.0 Flash now retired, the largest source of missed emergencies in the refreshed cohort is Grok 4.20 (26 missed escalations) --- notable because Grok 4.20 also has the lowest over-escalation rate among the top-tier models (49\% of non-urgent), revealing the cleanest ``conservative on routine, aggressive on emergent'' calibration tradeoff in the dataset.}
 
 \begin{itemize}
+  \color{red}
   \item \textbf{Overconfident Wrong:} This failure mode is now the dominant signature of Claude Opus 4.7 (23 cases) and GPT-OSS 120B (16 cases). Opus 4.7's 23 cases compares against zero for Claude Haiku 4.5 and just 2 for Sonnet 4.6 --- a $>$10$\times$ in-family gap that the discussion in \S4.4 addresses directly.
   \item \textbf{Unsafe Reassurance:} Most prevalent in Gemini~3 Pro~Preview (10 cases) and Claude Opus 4.7 (6 cases). Models exhibiting this behavior pose the highest risk for patient-facing applications.
   \item \textbf{Format Coverage:} Reliability remains a hurdle for ``Preview'' and ``Mini'' models. Gemini~3 Pro~Preview adhered to the required diagnostic format in 74\% of cases, while GPT-5 Mini followed instructions in 88\% of cases. All newer models (Opus 4.7, Sonnet 4.6, o3-pro, Grok 4.20) achieved 100\% coverage; Llama 4 Maverick and DeepSeek R1 sat at 99\%.
@@ -197,21 +209,21 @@ We identified three distinct ``hard fail'' categories that compromise patient sa
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/fig2_failure_modes.pdf}
-  \caption{Hard Safety Failure Modes by Model ($N{=}250$). Bars show counts of Missed Escalation, Overconfident Wrong, and Unsafe Reassurance failures for each model.}
+  \caption{Hard Safety Failure Modes by Model ($N{=}250$). Bars show counts of Missed Escalation, Overconfident Wrong, and Unsafe Reassurance failures for each model. \vthree{(v3: refreshed to May 2026 cohort, sorted by TSR.)}}
   \label{fig:failure-modes}
 \end{figure}
 
 \subsection{Triage Disposition: Conservative vs.\ Aggressive}
 
-The benchmark results reveal a clear ``Triage Bias'' among different model families. GPT-5.2 and Claude Opus 4.7 showed the strongest ``Safe-First'' bias, each correctly escalating 151 of 156 urgent cases. Grok 4.20 sits at the opposite end of the calibration spectrum: it missed 26 urgent cases (the most in the current cohort) but escalated only 46 of 94 non-urgent cases (the lowest false-alarm rate among models with $\geq$70\% TSR). This pair anchors the visible trade-off frontier in \Cref{fig:tsr-tradeoff} between under- and over-triage.
+{\color{red}The benchmark results reveal a clear ``Triage Bias'' among different model families. GPT-5.2 and Claude Opus 4.7 showed the strongest ``Safe-First'' bias, each correctly escalating 151 of 156 urgent cases. Grok 4.20 sits at the opposite end of the calibration spectrum: it missed 26 urgent cases (the most in the current cohort) but escalated only 46 of 94 non-urgent cases (the lowest false-alarm rate among models with $\geq$70\% TSR). This pair anchors the visible trade-off frontier in \Cref{fig:tsr-tradeoff} between under- and over-triage.}
 
-A new and substantive finding is that this trade-off frontier no longer aligns with the closed/open-source boundary. Llama 4 Maverick (open weights) achieves the second-highest SPR (96.8\%), correctly escalating 150 of 156 urgent cases, and ties for \#2 on TSR --- evidence that open-weight models can match closed frontier models on safety-critical triage when both are scored against the same deterministic gates. The ``frontier safety requires closed-source frontier models'' narrative is not supported by these results.
+{\color{red}A new and substantive finding is that this trade-off frontier no longer aligns with the closed/open-source boundary. Llama 4 Maverick (open weights) achieves the second-highest SPR (96.8\%), correctly escalating 150 of 156 urgent cases, and ties for \#2 on TSR --- evidence that open-weight models can match closed frontier models on safety-critical triage when both are scored against the same deterministic gates. The ``frontier safety requires closed-source frontier models'' narrative is not supported by these results.}
 
 \subsection{The Impact of Reasoning and Size}
 
-The May 2026 refresh added two reasoning-equipped models (OpenAI o3-pro, DeepSeek R1) to the cohort, allowing the first within-benchmark test of whether reasoning-token budgets translate to triage safety. The result: reasoning is not a free lunch on this benchmark. o3-pro lands at \#4 on TSR (70.8\%), tied with the non-reasoning GPT-5.2 and Claude Haiku 4.5. DeepSeek R1 fares worse, landing at \#11 (61.6\%) --- 9 percentage points below Llama 4 Maverick despite both being open-weight and the latter not exposing reasoning tokens. Both reasoning models also exhibit elevated overconfident-wrong rates (o3-pro: 5; DeepSeek R1: 13) versus zero for Llama 4 Maverick. We interpret this cautiously: reasoning capability appears to be useful for diagnostic recall (o3-pro achieves 79.3\% Top-3 recall) but does not substitute for safety-oriented training and calibration. Within a single update cycle, reasoning may even hurt over-escalation discipline if the additional chain-of-thought biases the escalation decision toward the more salient (catastrophic) outcome.
+{\color{red}The May 2026 refresh added two reasoning-equipped models (OpenAI o3-pro, DeepSeek R1) to the cohort, allowing the first within-benchmark test of whether reasoning-token budgets translate to triage safety. The result: reasoning is not a free lunch on this benchmark. o3-pro lands at \#4 on TSR (70.8\%), tied with the non-reasoning GPT-5.2 and Claude Haiku 4.5. DeepSeek R1 fares worse, landing at \#11 (61.6\%) --- 9 percentage points below Llama 4 Maverick despite both being open-weight and the latter not exposing reasoning tokens. Both reasoning models also exhibit elevated overconfident-wrong rates (o3-pro: 5; DeepSeek R1: 13) versus zero for Llama 4 Maverick. We interpret this cautiously: reasoning capability appears to be useful for diagnostic recall (o3-pro achieves 79.3\% Top-3 recall) but does not substitute for safety-oriented training and calibration. Within a single update cycle, reasoning may even hurt over-escalation discipline if the additional chain-of-thought biases the escalation decision toward the more salient (catastrophic) outcome.}
 
-A second within-cycle finding is that the size paradox observed in the v2 preprint --- where the smaller Claude Haiku 4.5 outperformed its larger Sonnet/Opus siblings --- extends within a single update cycle of Anthropic's family. In the refreshed cohort, Haiku 4.5 (TSR 70.8\%) outperforms Sonnet 4.6 (69.6\%), which in turn outperforms Opus 4.7 (62.4\%) by a substantial 8 percentage points. The dominant driver is Opus 4.7's 23 overconfident-wrong cases (vs.\ 0 for Haiku and 2 for Sonnet), suggesting that whatever training change improved Opus's diagnostic depth (it has the second-highest Top-3 recall at 85.2\%) also impaired its calibration. Bigger is not safer, even within one family and one release cycle.
+{\color{red}A second within-cycle finding is that the size paradox observed in the v2 preprint --- where the smaller Claude Haiku 4.5 outperformed its larger Sonnet/Opus siblings --- extends within a single update cycle of Anthropic's family. In the refreshed cohort, Haiku 4.5 (TSR 70.8\%) outperforms Sonnet 4.6 (69.6\%), which in turn outperforms Opus 4.7 (62.4\%) by a substantial 8 percentage points. The dominant driver is Opus 4.7's 23 overconfident-wrong cases (vs.\ 0 for Haiku and 2 for Sonnet), suggesting that whatever training change improved Opus's diagnostic depth (it has the second-highest Top-3 recall at 85.2\%) also impaired its calibration. Bigger is not safer, even within one family and one release cycle.}
 
 % ══════════════════════════════════════════════════════════
 \section{Discussion}
@@ -224,9 +236,9 @@ Our results demonstrate that safety is not a static property of a model but is h
 
 The primary evaluation set comprises $N{=}250$ cases drawn by uniform random sampling (seed\,=\,42) from 109,938 adult DDx Plus cases. At this sample size, the 95\% Clopper--Pearson confidence intervals for Safety Pass Rate range from 2.8 percentage points (for top-performing models near 97\%) to 6.1 percentage points (for lower-performing models near 62\%). For example, GPT-5.2 achieves 97.6\% (95\% CI: 94.8--99.0\%), Claude~Haiku~4.5 achieves 95.6\% (95\% CI: 92.3--97.6\%), and Gemini~3~Pro~Preview achieves 62.4\% (95\% CI: 56.2--68.3\%). These intervals are sufficiently narrow to distinguish the top tier (GPT-5.2, Claude~Haiku~4.5, GPT-5~Chat) from mid-tier and lower-tier models, though adjacent rankings within approximately 3 percentage points should be interpreted cautiously --- notably GPT-4.1 (87.6\%), Claude~Sonnet~4.5 (87.2\%), DeepSeek~Chat~v3 (85.2\%), and GPT-OSS~120B (85.2\%), whose overlapping CIs preclude definitive rank ordering.
 
-\subsection{Real-world clinical baselines}
+\subsection{\vthree{Real-world clinical baselines}}
 
-There is no consensus ``correct'' over-escalation rate, and definitions vary widely across the literature. The following anchors are offered for interpretation only --- none are direct equivalents to MedSafe-Dx's deterministic labels, and all should be read as ranges rather than point truths.
+{\color{red}There is no consensus ``correct'' over-escalation rate, and definitions vary widely across the literature. The following anchors are offered for interpretation only --- none are direct equivalents to MedSafe-Dx's deterministic labels, and all should be read as ranges rather than point truths.}
 
 \begin{itemize}
   \item \textbf{Field trauma triage (ACS-COT benchmark):} targets $<$5\% under-triage and tolerates 25--50\% over-triage as the accepted trade-off \citep{sasser2012fieldtriage, acscot2021}. This is the most carefully codified asymmetric-cost triage target in clinical practice.

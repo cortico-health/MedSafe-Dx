@@ -358,7 +358,7 @@
             display: block;
             width: 100%;
             height: auto;
-            max-height: 540px;
+            max-height: 600px;
             font-family: 'Inter', sans-serif;
         }
 
@@ -506,7 +506,7 @@
             <div class="tradeoff-chart" id="tradeoff-chart" style="position: relative;">
                 <h3>Triage tradeoff: Safety Pass Rate vs. over-escalation</h3>
                 <p class="chart-subtitle">
-                    Each model is one point. <strong>Top-right is ideal</strong> — 100% Safety Pass Rate with 0% over-escalation. Diagonal dashed lines are iso-<strong>Triage Success Rate</strong> contours: points on the same line score the same on the primary metric. Axes span the full 0–100% range so the ideal corner and the realistic trade-off region are both visible. Hover a point for details.
+                    Eight of the 12 evaluated models shown (the other four — Sonnet 4.6, GPT-5 Mini, GPT-OSS 120B, DeepSeek R1 — are in the table below). <strong>Top-right is ideal</strong> — 100% Safety Pass Rate with 0% over-escalation. Diagonal dashed lines are iso-<strong>Triage Success Rate</strong> contours: points on the same line score the same on the primary metric. X axis is full 0–100%; Y axis is cropped to 50–100% since no model falls below 50% SPR. Hover a point for details.
                 </p>
                 <div id="tradeoff-svg-host"></div>
                 <div class="chart-legend" id="tradeoff-legend"></div>
@@ -797,8 +797,22 @@
             const legendEl = document.getElementById('tradeoff-legend');
             if (!host) return;
 
+            // Show only the 8 most narratively-important models on the scatter to
+            // keep labels legible. Sonnet 4.6, GPT-5 Mini, GPT-OSS 120B, and
+            // DeepSeek R1 are still in the table, just not plotted as dots.
+            const SCATTER_MODELS = new Set([
+                'openai-gpt-5-chat',
+                'openai-gpt-5.2',
+                'meta-llama-llama-4-maverick',
+                'x-ai-grok-4.20',
+                'openai-o3-pro',
+                'anthropic-claude-haiku-4.5',
+                'anthropic-claude-opus-4.7',
+                'google-gemini-3-pro-preview',
+            ]);
+
             // Compute (x, y) for each model. Skip rows we can't position.
-            const points = results.map(r => {
+            const points = results.filter(r => SCATTER_MODELS.has(r.model)).map(r => {
                 const spr = r.safety_pass_rate;
                 const overCount = (r.effectiveness && r.effectiveness.over_escalation !== undefined)
                     ? r.effectiveness.over_escalation
@@ -831,14 +845,15 @@
             }
 
             // Geometry — viewBox stays fixed; SVG scales with container.
-            const W = 820, H = 540;
+            // Wider canvas so 8 highlighted points have more horizontal room.
+            const W = 1000, H = 500;
             const M = { top: 30, right: 150, bottom: 64, left: 76 };
             const plotW = W - M.left - M.right;
             const plotH = H - M.top - M.bottom;
 
-            // Full 0–100% on both axes so the ideal corner (100% SPR, 0% over-esc)
-            // is always on-chart, not cropped to the data cluster.
-            const yMin = 0, yMax = 100;
+            // X full 0–100% so the ideal corner is on-chart.
+            // Y cropped to 50–100% — no model has SPR < 50%, so the lower half is empty noise.
+            const yMin = 50, yMax = 100;
             const xMin = 0, xMax = 100;
 
             // X axis is flipped: high over-escalation on the left, low (better, → ideal) on the right.
@@ -871,11 +886,12 @@
             // Determine k from the data; fall back to v0 constants if unavailable.
             const ks = points.map(p => p.nonurgent / 250).filter(v => isFinite(v) && v > 0);
             const k = ks.length ? (ks.reduce((s, v) => s + v, 0) / ks.length) : (V0_NONURGENT_FALLBACK / 250);
-            const isoLines = [25, 50, 75, 90];
+            // Drop TSR=25 — its line falls entirely below yMin=50 except in a tiny corner.
+            const isoLines = [50, 75, 90];
             for (const tsr of isoLines) {
-                // Clip x so both x and y = tsr + k*x stay inside the plot.
-                const xLo = Math.max(xMin, -tsr / k);
-                const xHi = Math.min(xMax, (100 - tsr) / k);
+                // Clip x so both x in [xMin, xMax] AND y = tsr + k*x in [yMin, yMax].
+                const xLo = Math.max(xMin, (yMin - tsr) / k);
+                const xHi = Math.min(xMax, (yMax - tsr) / k);
                 if (xHi <= xLo) continue;
                 const x1 = xScale(xLo), y1 = yScale(tsr + k * xLo);
                 const x2 = xScale(xHi), y2 = yScale(tsr + k * xHi);
@@ -920,28 +936,18 @@
 
             // Label placement. Default = auto-anchor (label on the side of the dot
             // that keeps it inside the plot) and above the dot.
-            // With full 0–100% axes the vertical spread is tight (~4.5px per 1% SPR),
-            // so two clusters need explicit per-model quadrant assignment:
-            //   Top cluster (SPR 90–98%): GPT-5.2, Haiku 4.5, GPT-5 chat, GPT-4o-mini
-            //   Mid cluster (SPR 85–88%): Sonnet 4.5, DeepSeek, GPT-OSS 120B, GPT-4.1, GPT-5 mini
-            // Top cluster (GPT-5.2 / Llama / Haiku / Sonnet 4.6) is so tight that
-            // dots overlap — spread labels radially so the white halo handles
-            // any remaining crossings.
+            // Label overrides for the 8-model scatter. The top cluster
+            // (GPT-5.2 / Llama 4 Maverick / Haiku 4.5) is the hardest — points
+            // sit within ~40px on x and ~10px on y even with the wider canvas.
             const labelOverrides = {
-                'openai-gpt-5.2':                 { dx: -10, dy: -8,  anchor: 'end' },     // upper-left
-                'meta-llama-llama-4-maverick':    { dx:  0,  dy: -14, anchor: 'middle' },  // straight above (top)
-                'anthropic-claude-haiku-4.5':     { dx:  10, dy: -8,  anchor: 'start' },   // upper-right
-                'anthropic-claude-sonnet-4.6':    { dx: -10, dy: 14,  anchor: 'end' },     // lower-left (clears Haiku/Llama)
-                // Upper-right pair
-                'openai-gpt-5-chat':              { dx:  10, dy: -8,  anchor: 'start' },   // upper-right
-                'openai-o3-pro':                  { dx:  10, dy: 14,  anchor: 'start' },   // lower-right
-                // Mid band
-                'x-ai-grok-4.20':                 { dx:  0,  dy: -10, anchor: 'middle' },  // above (clears OSS-120B below)
-                'anthropic-claude-opus-4.7':      { dx: -8,  dy: -6,  anchor: 'end' },     // upper-left
-                'openai-gpt-oss-120b':            { dx: -8,  dy: 14,  anchor: 'end' },     // lower-left
-                'openai-gpt-5-mini':              { dx:  8,  dy: 14,  anchor: 'start' },   // lower-right
-                // DeepSeek R1 — sits far left (worst over-esc); anchor outward, lift above Sonnet's row
-                'deepseek-deepseek-r1':           { dx: -10, dy: -18, anchor: 'end' },
+                'openai-gpt-5.2':                 { dx: -12, dy: 16,  anchor: 'end' },     // lower-left (clears Llama 4 above)
+                'meta-llama-llama-4-maverick':    { dx:  0,  dy: -14, anchor: 'middle' },  // straight above
+                'anthropic-claude-haiku-4.5':     { dx:  12, dy: -4,  anchor: 'start' },   // right of dot, slightly up
+                'openai-gpt-5-chat':              { dx:  12, dy:  4,  anchor: 'start' },   // right of dot
+                'openai-o3-pro':                  { dx: -10, dy: 14,  anchor: 'end' },     // lower-left (clears Grok)
+                'x-ai-grok-4.20':                 { dx:  0,  dy: -12, anchor: 'middle' },  // straight above
+                'anthropic-claude-opus-4.7':      { dx: -10, dy: -8,  anchor: 'end' },     // upper-left
+                'google-gemini-3-pro-preview':    { dx:  0,  dy: -12, anchor: 'middle' },  // straight above (well-separated)
             };
 
             for (const p of points) {
