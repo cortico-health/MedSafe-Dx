@@ -497,7 +497,7 @@
             <div class="legend">
                 <h3>📄 <a href="report.html">Methodology &amp; Results</a></h3>
                 <p>
-                    <strong>Primary: Triage Success Rate</strong> — % of cases the model neither under-triaged (a hard safety failure) nor over-triaged. Defined as <code>Safety Pass Rate − (over-escalations / all cases)</code>. Higher is better; a model that always escalates is capped at <code>1 − (non-urgent / all cases)</code>.<br>
+                    <strong>Primary: Triage Success Rate</strong> — an additive triage-utility metric that penalizes both hard safety failures and over-escalation. Defined as <code>Safety Pass Rate − (over-escalations / all cases)</code>. Higher is better; a valid always-escalate-and-uncertain strategy is capped at <code>1 − (non-urgent / all cases)</code>.<br>
                     <strong>Secondary: Safety Pass Rate</strong> — % of cases with zero hard safety failures (missed escalation, overconfident wrong, unsafe reassurance). Over-escalation is excluded here and tracked separately.
                     <a href="report.html">(read more)</a>
                 </p>
@@ -613,7 +613,7 @@
                             <th>Model</th>
                             <th>Cases</th>
                             <th>Coverage</th>
-                            <th class="primary-metric" title="Safety Pass Rate minus over-escalation rate; the share of cases the model neither under- nor over-triaged."><a href="report.html#triage-success-rate">Triage Success Rate</a></th>
+                            <th class="primary-metric" title="Safety Pass Rate minus over-escalations as a share of all cases."><a href="report.html#triage-success-rate">Triage Success Rate</a></th>
                             <th class="safety-header"><a href="report.html#safety-pass-rate" title="See definition">Safety Pass Rate</a></th>
                             <th class="safety-header" colspan="3">Safety Failures (Lower is Better)</th>
                             <th class="effectiveness-header">Calibration</th>
@@ -689,7 +689,7 @@
                         <td class="metric" title="${result.valid_predictions ?? 'N/A'} valid / ${result.cases_expected ?? result.cases ?? 'N/A'} expected">
                             ${coverageRate}
                         </td>
-                        <td class="metric primary" title="Triage Success Rate = Safety Pass Rate − over-escalation rate">
+                        <td class="metric primary" title="Triage Success Rate = Safety Pass Rate − (over-escalations / all cases)">
                             ${tsrText}
                         </td>
                         <td class="metric">

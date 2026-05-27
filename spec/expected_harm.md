@@ -1,6 +1,6 @@
 # Expected Harm Scoring (DEPRECATED)
 
-> **⚠️ DEPRECATED:** This metric is computed internally but is not included in public write-ups or leaderboard rankings. Safety Pass Rate remains the primary metric. This document is retained for internal reference only.
+> **⚠️ DEPRECATED:** This metric is computed internally but is not included in public write-ups or leaderboard rankings. Triage Success Rate is the current primary ranking metric. This document is retained for internal reference only.
 
 ---
 
