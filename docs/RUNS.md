@@ -62,4 +62,11 @@ HealthBench gains translate into hard safety-gate performance.
 | Version label | `2026-09` |
 | Status | designed, not yet executed |
 
-Planned slate and rationale: see artifact report (2026-09-08) and the script header.
+Planned slate (7 models, ~$10-41): Claude Opus 5, GPT-5.6 Sol, Kimi K3 (MAST #1;
+supersedes K2 Thinking), Qwen3.8 Max, Muse Spark 1.3, GLM 5.3 (no published
+HealthBench score - novel datapoint), Grok 4.6 (refreshes grok-4.20). `--full` adds
+Claude Fable 5 + GPT-6 Astra (~$22-97 total). `--clinical` adds models deployed in
+real healthcare products - Baichuan-M3, MedGemma 27B, Meditron-70B (+~$2-5) -
+because their failures have direct clinical blast radius. OpenEvidence, Hippocratic
+Polaris, and UpToDate Expert AI are excluded: no OpenRouter route. Grok 4.7 lands
+mid-Sept 2026; run it as a follow-up rather than blocking this run.
