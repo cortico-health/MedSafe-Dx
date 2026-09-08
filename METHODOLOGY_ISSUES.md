@@ -60,3 +60,21 @@ This document tracks methodological issues identified during review of the MedSa
 ---
 
 *Last updated: January 2026*
+
+---
+
+## Issue: eval-250-v0.json does not reproduce from seed alone
+
+**Status:** ✅ Resolved by derivation rule (September 2026), see docs/RUNS.md
+
+**Finding:** The frozen primary eval set was gitignored and lost. Regenerating with
+`prep_test_cases.py --num-cases 250 --seed 42` yields only 131/250 of the published
+case IDs, because `random.sample` is order-sensitive and the published 250-set was
+actually derived from the 500-case set (eval-v0, seed=42), not sampled directly.
+
+**Resolution:** The reproducible derivation is: take `eval-v0.json` (N=500, seed=42,
+which reproduces exactly), sort by `case_id`, take the first 250. Case-level
+equivalence with the published run is verified (identical 250 case IDs; content
+corroborated by prediction audits). Byte-level sha256 differs from the published
+`cases_sha256`, so cross-checks should compare case ID sets, not file hashes, for
+the v0 era. For v0.x+, commit frozen test sets (or their ID lists) to the repo.

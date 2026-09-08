@@ -15,8 +15,11 @@
 # Usage:
 #   ./scripts/run_healthbench_refresh_250.sh             # default 7-model slate
 #   ./scripts/run_healthbench_refresh_250.sh --full      # adds the 2 flagship models
-#   ./scripts/run_healthbench_refresh_250.sh --clinical  # adds 3 deployed-clinical models
 #   SMOKE=1 ./scripts/run_healthbench_refresh_250.sh     # 10-case dev-v0 dry run first
+#
+# Smoke-tested 2026-09-08 (N=10, dev-v0): see docs/RUNS.md. Qwen3.8 Max and
+# Muse Spark 1.3 route only via first-party providers (Alibaba, Meta) that the
+# account ZDR policy blocks - relax ZDR or drop them before the 250-case run.
 
 set -e
 cd "$(dirname "$0")/.."
@@ -34,7 +37,7 @@ MODELS=(
     "anthropic/claude-opus-5"       # HealthBench Pro ~59.8
     "openai/gpt-5.6-sol"            # HealthBench Pro ~60.5
     "moonshotai/kimi-k3"            # HealthBench 59.8; MAST #1 (62.9). Supersedes K2 Thinking.
-    "qwen/qwen3.8-max"              # top open-weights, HealthBench ~0.602
+    "qwen/qwen3.8-max-0902"         # top open-weights, HealthBench ~0.602 (dated slug; bare alias works too)
     "meta/muse-spark-1.3"           # HealthBench Pro ~59.3 (1.1); OR carries 1.3
     "z-ai/glm-5.3"                  # no published HealthBench score - novel datapoint, cheap
     "x-ai/grok-4.6"                 # latest xAI (2026-08); refreshes grok-4.20 on the board
@@ -48,16 +51,12 @@ if [ "${1:-}" = "--full" ]; then
     )
 fi
 
-# --clinical adds models actually deployed in healthcare products, because
-# safety failures there have direct clinical blast radius. (OpenEvidence,
-# Hippocratic Polaris, UpToDate Expert AI are excluded: no OpenRouter route.)
-if [ "${1:-}" = "--clinical" ] || [ "${2:-}" = "--clinical" ]; then
-    MODELS+=(
-        "baichuan/baichuan-m3"      # purpose-built clinical decision-making, 235B
-        "google/medgemma-27b"       # deployed in imaging/radiology triage
-        "epf-llm/meditron-70b"      # open auditable medical pipeline
-    )
-fi
+# NOTE on clinical-deployed models (2026-09-08 smoke finding): Baichuan-M3,
+# MedGemma, and Meditron are NOT listed on OpenRouter at all, so the planned
+# --clinical tier cannot run through this pipeline. OpenEvidence / Hippocratic
+# Polaris / UpToDate Expert AI are closed systems. A clinical tier needs a
+# non-OpenRouter runner (e.g., Fireworks/Vertex for MedGemma) - out of scope
+# for this run.
 
 VERSION="2026-09"
 

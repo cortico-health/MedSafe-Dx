@@ -49,7 +49,15 @@ def call_openrouter(
         return data["choices"][0]["message"]["content"]
     
     except requests.exceptions.RequestException as e:
-        print(f"API request failed: {e}")
+        # Log the response body because OpenRouter error details (invalid model
+        # ID, ZDR policy blocks, provider capacity) only appear there.
+        body = ""
+        if e.response is not None:
+            try:
+                body = e.response.text[:500]
+            except Exception:
+                body = "<unreadable body>"
+        print(f"API request failed: {e} | body: {body}")
         return None
     except (KeyError, IndexError) as e:
         print(f"Failed to parse API response: {e}")

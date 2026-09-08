@@ -60,13 +60,40 @@ HealthBench gains translate into hard safety-gate performance.
 | Eval set | `data/test_sets/eval-250-v0.json` (same frozen set, for comparability) |
 | Script | `scripts/run_healthbench_refresh_250.sh` |
 | Version label | `2026-09` |
-| Status | designed, not yet executed |
+| Status | smoke pass done (N=10), 250-case run pending decisions |
 
 Planned slate (7 models, ~$10-41): Claude Opus 5, GPT-5.6 Sol, Kimi K3 (MAST #1;
-supersedes K2 Thinking), Qwen3.8 Max, Muse Spark 1.3, GLM 5.3 (no published
-HealthBench score - novel datapoint), Grok 4.6 (refreshes grok-4.20). `--full` adds
-Claude Fable 5 + GPT-6 Astra (~$22-97 total). `--clinical` adds models deployed in
-real healthcare products - Baichuan-M3, MedGemma 27B, Meditron-70B (+~$2-5) -
-because their failures have direct clinical blast radius. OpenEvidence, Hippocratic
-Polaris, and UpToDate Expert AI are excluded: no OpenRouter route. Grok 4.7 lands
+supersedes K2 Thinking), Qwen3.8 Max (dated slug `qwen/qwen3.8-max-0902`), Muse Spark 1.3,
+GLM 5.3 (no published HealthBench score - novel datapoint), Grok 4.6 (refreshes
+grok-4.20). `--full` adds Claude Fable 5 + GPT-6 Astra (~$22-97 total). Grok 4.7 lands
 mid-Sept 2026; run it as a follow-up rather than blocking this run.
+
+Clinical-deployed tier: dropped 2026-09-08. Baichuan-M3, MedGemma, and Meditron are
+not listed on OpenRouter; OpenEvidence, Hippocratic Polaris, and UpToDate Expert AI
+are closed systems. A clinical tier needs a non-OpenRouter runner.
+
+### Smoke pass findings (N=10, dev-v0, 2026-09-08)
+
+Purpose was flushing harness issues, not scoring. Findings:
+
+1. **Harness bug (fixed):** `data/convert_csv_to_json.py` emits `id`, but inference
+   expects `case_id` - cases.json must go through `data/cases.py` (the two-stage
+   pipeline). Fresh checkouts hit a `KeyError: 'case_id'` wall without it.
+2. **Harness improvement (committed):** `inference/openrouter.py` now logs the error
+   response body; OpenRouter puts the real reason (invalid model ID, ZDR blocks)
+   only there.
+3. **ZDR policy blocks 2 models:** Qwen3.8 Max and Muse Spark 1.3 route only via
+   first-party providers (Alibaba, Meta) that the account's zero-data-retention
+   policy rejects. Decision needed: relax ZDR for this run (DDXPlus is synthetic,
+   no PHI) or drop both.
+4. **GLM 5.3 format failures:** 4-6/10 parseable depending on provider routing;
+   some endpoints return malformed JSON. Counted as safety failures by design -
+   genuine result, not a harness bug.
+5. **Frozen-set recovery:** the original `eval-250-v0.json` was gitignored and lost.
+   Forensics show it equals the first 250 (sorted by case_id) of `eval-v0.json`
+   (N=500, seed=42), which reproduces exactly. The 250-set was rebuilt that way and
+   case-level equivalence is verified (same 250 IDs as published predictions; symptom
+   counts match prediction audits). Byte-level sha256 still differs from the published
+   `cases_sha256`, so the original file had cosmetic differences. Note: seed-42
+   resampling at N=250 does NOT reproduce the frozen set - the derivation rule above
+   is the reproducible path, now documented here.
