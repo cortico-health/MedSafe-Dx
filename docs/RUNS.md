@@ -23,7 +23,7 @@ frozen primary eval set.
 | Field | Value |
 |---|---|
 | Eval set | `data/test_sets/eval-250-v0.json` (N=250, seed=42) |
-| Prompt | v4, `intake` workflow, temperature 0.0 |
+| Prompt | v4, `intake` workflow, temperature 0.0, **max_tokens 16000** (v0 used 2000; see smoke finding 4) |
 | Roster window | model versions 2026-01 to 2026-05 |
 | Artifacts | `results/artifacts/*-250cases{,-eval}.json`, published copies in `leaderboard/` |
 | Paper | medRxiv 2026.04.14.26350711 (v2/v3 text matches this roster) |
@@ -86,9 +86,14 @@ Purpose was flushing harness issues, not scoring. Findings:
    first-party providers (Alibaba, Meta) that the account's zero-data-retention
    policy rejects. Decision needed: relax ZDR for this run (DDXPlus is synthetic,
    no PHI) or drop both.
-4. **GLM 5.3 format failures:** 4-6/10 parseable depending on provider routing;
-   some endpoints return malformed JSON. Counted as safety failures by design -
-   genuine result, not a harness bug.
+4. **Reasoning models + `max_tokens=2000` starve content (fixed):** GLM 5.3
+   failed 4-6/10 and Kimi K3 1/10 because chain-of-thought tokens count against
+   the cap; when reasoning runs long the JSON content is truncated (GLM to a
+   literal `"{\n"` stub). Validated fix: raise the cap to 16000 - GLM and Kimi
+   then go 10/10 on dev-v0 (worst GLM case used ~7,000 reasoning tokens).
+   The v0 leaderboard ran with cap 2000; deepseek-r1's 3/250 format failures there
+   are likely the same starvation, so cross-era comparisons of reasoning models
+   should note this harness change (v0 cap vs v0.1 cap 16000).
 5. **Frozen-set recovery:** the original `eval-250-v0.json` was gitignored and lost.
    Forensics show it equals the first 250 (sorted by case_id) of `eval-v0.json`
    (N=500, seed=42), which reproduces exactly. The 250-set was rebuilt that way and

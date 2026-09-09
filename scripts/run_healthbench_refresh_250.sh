@@ -66,7 +66,12 @@ if [ ! -f "$TEST_SET" ]; then
     exit 1
 fi
 
-echo "run-2026-09-healthbench-refresh | $TEST_SET | ${#MODELS[@]} models"
+MAX_TOKENS=16000   # Reasoning models spend this budget on chain-of-thought first;
+                   # the v0 cap of 2000 starved GLM/Kimi content and caused spurious
+                   # format failures (validated 2026-09-08: GLM 4/10 -> 10/10,
+                   # Kimi 9/10 -> 10/10). Non-reasoning models use ~200 anyway.
+
+echo "run-2026-09-healthbench-refresh | $TEST_SET | ${#MODELS[@]} models | max_tokens=$MAX_TOKENS"
 
 for model in "${MODELS[@]}"; do
     model_safe=$(echo "$model" | sed 's/\//-/g')
@@ -84,7 +89,8 @@ for model in "${MODELS[@]}"; do
             --cases "$TEST_SET" \
             --model "$model" \
             --out "$pred_file" \
-            --temperature 0.0 || { echo "Inference failed for $model"; continue; }
+            --temperature 0.0 \
+            --max-tokens "$MAX_TOKENS" || { echo "Inference failed for $model"; continue; }
     fi
 
     if [ -f "$eval_file" ]; then

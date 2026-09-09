@@ -78,3 +78,21 @@ equivalence with the published run is verified (identical 250 case IDs; content
 corroborated by prediction audits). Byte-level sha256 differs from the published
 `cases_sha256`, so cross-checks should compare case ID sets, not file hashes, for
 the v0 era. For v0.x+, commit frozen test sets (or their ID lists) to the repo.
+
+---
+
+## Issue: Output token cap conflated reasoning budget with instruction-following
+
+**Status:** ✅ Fixed for v0.1 runs (September 2026), see docs/RUNS.md
+
+**Finding:** v0 ran inference with `max_tokens=2000`. For reasoning models, chain-of-thought
+tokens count against that cap, so longer-reasoning cases truncated the JSON payload -
+GLM 5.3 failed 4-6/10 cases on a 10-case smoke run (content reduced to `"{\n"`), Kimi K3
+1/10. These registered as format failures, i.e., safety failures, but they measured the
+token budget rather than the model's instruction-following or clinical safety. The v0
+roster's deepseek-r1 (3/250 format failures) was almost certainly the same mechanism.
+
+**Resolution:** v0.1 runs use `max_tokens=16000` (validated: GLM and Kimi 10/10 on the
+smoke set; worst-case observed reasoning ~7,000 tokens). Comparisons of reasoning models
+across eras must note the cap change; format-failure rates for reasoning models are not
+directly comparable between v0 and v0.1.

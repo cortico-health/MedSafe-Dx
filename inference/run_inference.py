@@ -157,6 +157,7 @@ def run_inference_on_case(
     model: str,
     workflow: str,
     temperature: float = 0.0,
+    max_tokens: int = 2000,
 ) -> Dict[str, Any] | None:
     """Run inference on a single case."""
     
@@ -169,7 +170,7 @@ def run_inference_on_case(
         model=model,
         messages=messages,
         temperature=temperature,
-        max_tokens=2000,
+        max_tokens=max_tokens,
     )
     
     if not response:
@@ -246,6 +247,12 @@ def main():
         default=0.0,
         help="Sampling temperature",
     )
+    parser.add_argument(
+        "--max-tokens",
+        type=int,
+        default=2000,
+        help="Output token cap. Reasoning models spend this budget on chain-of-thought first; a 2000 cap can starve content and cause spurious format failures (see docs/RUNS.md 2026-09-08).",
+    )
     
     args = parser.parse_args()
     
@@ -280,6 +287,7 @@ def main():
             model=args.model,
             workflow=args.workflow,
             temperature=args.temperature,
+            max_tokens=args.max_tokens,
         )
 
         predictions.append(prediction)
@@ -297,6 +305,7 @@ def main():
     output_metadata = {
         "model": args.model,
         "temperature": args.temperature,
+        "max_tokens": args.max_tokens,
         "workflow": args.workflow,
         "prompt_version": "v4",
         "total_cases": len(predictions),
