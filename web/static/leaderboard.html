@@ -524,6 +524,42 @@
             margin-bottom: 0.75rem;
         }
 
+        .changes-panel .changes-intro {
+            color: #212529;
+            font-size: 0.95rem;
+            line-height: 1.55;
+            margin-bottom: 0.6rem;
+        }
+
+        /* Collapsed to about five lines with a fade; the toggle reveals the rest. */
+        .changes-body {
+            position: relative;
+            overflow: hidden;
+            max-height: 7.5rem;
+        }
+        .changes-body::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 3.5rem;
+            background: linear-gradient(to bottom, rgba(247, 248, 255, 0), #f7f8ff 85%);
+            pointer-events: none;
+        }
+        .changes-panel.expanded .changes-body { max-height: none; }
+        .changes-panel.expanded .changes-body::after { display: none; }
+
+        .changes-toggle {
+            background: none;
+            color: #4b54f6;
+            border: 1px solid #c9ccfa;
+            padding: 0.35rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        .changes-toggle:hover { background: #e4e6fb; }
+
         .changes-panel ul {
             margin: 0 0 0.75rem 1.25rem;
             color: #495057;
@@ -540,6 +576,13 @@
             border: 1px solid #e4e6fb;
             border-radius: 8px;
             margin-bottom: 0.75rem;
+        }
+
+        .changes-panel .harness-note code {
+            background: #eef0ff;
+            padding: 0.1rem 0.35rem;
+            border-radius: 4px;
+            font-size: 0.78rem;
         }
 
         .changes-panel .harness-note {
@@ -738,7 +781,9 @@
 
             /* Pinned columns and swipe hints only matter on a scrolling screen. */
             #leaderboard th, #leaderboard td { position: static !important; box-shadow: none !important; }
-            .scroll-hint, .scatter-scroll-hint { display: none !important; }
+            .scroll-hint, .scatter-scroll-hint, .changes-toggle { display: none !important; }
+            .changes-body { max-height: none !important; }
+            .changes-body::after { display: none !important; }
             #tradeoff-svg-host { overflow: visible !important; }
             #tradeoff-svg-host svg { min-width: 0 !important; }
 
@@ -850,25 +895,32 @@
 
         <div class="content">
             <div class="changes-panel" id="changes-panel">
-                <h2>Leaderboard v0.1 - run-2026-09-healthbench-refresh</h2>
+                <h2>What's new: September 2026 update</h2>
+                <p class="changes-intro">
+                    We tested 11 new AI models on the same 250 patient cases as before. The question for each one:
+                    does it send urgent cases to care, and leave routine ones alone?
+                </p>
+                <div class="changes-body" id="changes-body">
                 <ul id="changes-list">
-                    <li><strong>11 models added (23 rows)</strong> on the same frozen 250 cases and prompt as the previous board: GPT-5.6 Terra, Sol and Luna, GPT-5.4 Mini, GPT-6 Astra, Claude Fable 5, Claude Opus 5, Kimi K3, GLM 5.3, Grok 4.6, and a Gemini 3.1 Pro row derived from an earlier N=500 run.</li>
-                    <li><strong>New #1 on Triage Success Rate: GPT-5.6 Terra (73.2%)</strong>, just ahead of the previous leader GPT-5 Chat (72.4%). GPT-5.4 Mini ties for second at 72.4%.</li>
-                    <li><strong>Most successors did not improve.</strong> Grok 4.6 (-3.2), GPT-5.6 Sol (-2.0) and Claude Opus 5 (-0.4) score below their predecessors, each by over-escalating more routine cases; GPT-5.4 Mini is the exception (+2.8 over the re-run GPT-5 Mini). The HealthBench frontier trio, GPT-6 Astra (#17), Claude Fable 5 (#18) and Claude Opus 5 (#21), have the best top-3 diagnostic recall on the board and sit in the bottom third for the same reason.</li>
-                    <li><strong>Two old rows re-run at max_tokens 16000</strong> (same model, same cases): GPT-5 Mini format failures 29 &rarr; 5, TSR 68.0% &rarr; 69.6%; DeepSeek R1 3 &rarr; 1, TSR 61.6% &rarr; 62.8%. Gemini 3 Pro Preview's 65 failures were 41 empty responses and 23 mid-sentence truncations, but the model has left OpenRouter so its row stays as published. The original rows remain on the archived board.</li>
-                    <li><strong>Evaluator change:</strong> ranked differentials longer than 5 are now truncated to the top 5 instead of rejected. Only Claude Opus 5 was affected (7 cases, SPR 84.8% &rarr; 87.6%); no previously published row changes.</li>
-
-
+                    <li><strong>A new leader.</strong> GPT-5.6 Terra takes the top spot with a Triage Success Rate of 73.2%, narrowly ahead of the previous leader, GPT-5 Chat (72.4%). GPT-5.4 Mini ties for second.</li>
+                    <li><strong>Newer is not always safer.</strong> Three of the four successor models (Grok 4.6, GPT-5.6 Sol and Claude Opus 5) score slightly below the models they replace, because they send more routine cases to urgent care. GPT-5.4 Mini is the exception, up 2.8 points on GPT-5 Mini.</li>
+                    <li><strong>Best at diagnosis, not at triage.</strong> GPT-6 Astra, Claude Fable 5 and Claude Opus 5 name the right diagnosis in their top three more often than any other model, yet they sit in the bottom third of the board because they over-escalate.</li>
+                    <li><strong>Fairer re-runs.</strong> Two older models, GPT-5 Mini and DeepSeek R1, were re-run with a longer answer limit. That fixed most of their earlier formatting failures and lifted their scores by 1 to 2 points. Their original rows stay on the archived board.</li>
+                    <li><strong>A small scoring tweak.</strong> Answers that list more than five possible diagnoses are now trimmed to the top five instead of rejected. Only Claude Opus 5 was affected (7 cases); no previously published score changed.</li>
                 </ul>
                 <div class="change-summary" id="change-summary">Computing release diff&hellip;</div>
                 <p class="harness-note">
-                    <strong>Harness change:</strong> max_tokens raised from 2000 to 16000 so reasoning models are not truncated.
-                    Older reasoning-model rows (e.g. DeepSeek R1's 3/250 format failures) were run at 2000.
+                    <strong>For the technically minded:</strong> this is run <code>run-2026-09-healthbench-refresh</code>, leaderboard v0.1.
+                    The answer limit (max_tokens) was raised from 2000 to 16000 so reasoning models are not cut off mid-answer;
+                    older reasoning-model rows were run at 2000. Gemini 3 Pro Preview's 65 failed answers were 41 empty responses
+                    and 23 truncations, but the model is no longer available to re-run, so its row stays as published.
                 </p>
-                <a class="archive-link" href="archive/run-2026-05-v0-refresh/">View the previous leaderboard (run-2026-05-v0-refresh, 12 models, as cited in the preprint)</a>
+                <a class="archive-link" href="archive/run-2026-05-v0-refresh/">View the previous leaderboard (May 2026, 12 models, as cited in the preprint)</a>
                 <p class="findings-line" style="margin-top: 0.75rem; font-size: 0.9rem;">
-                    <a href="findings-2026-09.html">Read the findings write-up</a>
+                    <a href="findings-2026-09.html">Read the full findings write-up</a>
                 </p>
+                </div>
+                <button type="button" class="changes-toggle" id="changes-toggle" aria-expanded="false" aria-controls="changes-body">Show more &#9662;</button>
             </div>
 
             <div class="disclaimer">
@@ -1008,6 +1060,18 @@
         let NEW_MODELS = new Set();
         let SUPERSEDED_BY = new Map();   // old model id -> new model id
 
+        // "What's new" panel: collapsed by default, one click to expand.
+        (function () {
+            const panel = document.getElementById('changes-panel');
+            const toggle = document.getElementById('changes-toggle');
+            if (!panel || !toggle) return;
+            toggle.addEventListener('click', () => {
+                const open = panel.classList.toggle('expanded');
+                toggle.setAttribute('aria-expanded', String(open));
+                toggle.innerHTML = open ? 'Show less &#9652;' : 'Show more &#9662;';
+            });
+        })();
+
         // Load leaderboard data from aggregated JSON file
         async function loadLeaderboardData() {
             try {
@@ -1084,14 +1148,14 @@
 
             if (prevBest && nowBest) {
                 parts.push(prevBest.model === nowBest.model && Math.abs(prevBest.tsr - nowBest.tsr) < 1e-9
-                    ? `top TSR unchanged at ${pct(nowBest.tsr)} (${shortModelName(nowBest.model)})`
-                    : `top TSR moved from ${pct(prevBest.tsr)} (${shortModelName(prevBest.model)}) to ${pct(nowBest.tsr)} (${shortModelName(nowBest.model)})`);
+                    ? `top score unchanged at ${pct(nowBest.tsr)} (${shortModelName(nowBest.model)})`
+                    : `top score moved from ${pct(prevBest.tsr)} (${shortModelName(prevBest.model)}) to ${pct(nowBest.tsr)} (${shortModelName(nowBest.model)})`);
             } else if (nowBest) {
-                parts.push(`top TSR ${pct(nowBest.tsr)} (${shortModelName(nowBest.model)})`);
+                parts.push(`top score ${pct(nowBest.tsr)} (${shortModelName(nowBest.model)})`);
             }
 
             if (rerunCount) {
-                parts.push(`${rerunCount} model${rerunCount === 1 ? '' : 's'} re-run at 16000`);
+                parts.push(`${rerunCount} model${rerunCount === 1 ? '' : 's'} re-run with the longer answer limit`);
             }
 
             el.textContent = parts.join(', ') + '.';
