@@ -23,6 +23,7 @@
 
 set -e
 cd "$(dirname "$0")/.."
+export MEDSAFE_GIT_COMMIT=$(git rev-parse --short HEAD 2>/dev/null)
 
 if [ "${SMOKE:-0}" = "1" ]; then
     TEST_SET="data/test_sets/dev-v0.json"
@@ -51,6 +52,12 @@ if [ "${1:-}" = "--full" ]; then
     )
 fi
 
+# MODELS_OVERRIDE="a/b c/d" runs only those slugs - lets one model run per shell so
+# the slate runs in parallel instead of sequentially (each 250-case pass is ~1-2 h).
+if [ -n "${MODELS_OVERRIDE:-}" ]; then
+    read -r -a MODELS <<< "$MODELS_OVERRIDE"
+fi
+
 # NOTE on clinical-deployed models (2026-09-08 smoke finding): Baichuan-M3,
 # MedGemma, and Meditron are NOT listed on OpenRouter at all, so the planned
 # --clinical tier cannot run through this pipeline. OpenEvidence / Hippocratic
@@ -58,7 +65,10 @@ fi
 # non-OpenRouter runner (e.g., Fireworks/Vertex for MedGemma) - out of scope
 # for this run.
 
-VERSION="2026-09"
+VERSION="${VERSION_OVERRIDE:-2026-09}"
+# LABEL_OVERRIDE lets a re-run of an already-published model write new artifacts
+# (e.g. "250cases-mt16000") instead of skipping because the old prediction file exists.
+LABEL="${LABEL_OVERRIDE:-$LABEL}"
 
 if [ ! -f "$TEST_SET" ]; then
     echo "Test set $TEST_SET missing. Regenerate standard sets first:"
@@ -82,9 +92,19 @@ for model in "${MODELS[@]}"; do
     echo "Model: $model"
     echo "========================================"
 
-    if [ -f "$pred_file" ]; then
-        echo "Predictions exist, skipping inference"
+    # Inference checkpoints every 10 cases and resumes from a partial file, so only
+    # skip when the file already covers every case in the test set.
+    if [ -f "$pred_file" ] && python3 - "$pred_file" "$TEST_SET" <<'PY'
+import json, sys
+p = json.load(open(sys.argv[1])); preds = p["predictions"] if isinstance(p, dict) else p
+c = json.load(open(sys.argv[2])); cases = c["cases"] if isinstance(c, dict) else c
+want = {x["case_id"] for x in cases}; have = {x.get("case_id") for x in preds if "error" not in x}
+sys.exit(0 if want <= have else 1)
+PY
+    then
+        echo "Predictions complete, skipping inference"
     else
+        [ -f "$pred_file" ] && echo "Partial predictions found, resuming"
         docker compose run --rm inference python3 -m inference.run_inference \
             --cases "$TEST_SET" \
             --model "$model" \

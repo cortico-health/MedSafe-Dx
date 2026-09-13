@@ -22,6 +22,8 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - PYTHONDONTWRITEBYTECODE=1
+      - MEDSAFE_GIT_COMMIT=${MEDSAFE_GIT_COMMIT:-}
+      - INFERENCE_WORKERS=${INFERENCE_WORKERS:-1}
     # Override command at runtime
 
   evaluator:
@@ -38,6 +40,7 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - PYTHONDONTWRITEBYTECODE=1
+      - MEDSAFE_GIT_COMMIT=${MEDSAFE_GIT_COMMIT:-}
     # Override command at runtime
 
   web:

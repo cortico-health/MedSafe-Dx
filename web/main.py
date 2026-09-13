@@ -188,6 +188,26 @@ def _render_markdown_file(path: str, title: str) -> Response:
         a {{ color: #4b54f6; }}
         .back-link {{ margin-bottom: 1rem; }}
         .render-meta {{ margin-top: 2rem; font-size: 0.85rem; color: #666; }}
+        img {{ max-width: 100%; height: auto; }}
+        /* Print: A4, light palette, tables that repeat headers and never clip. */
+        @page {{ size: A4; margin: 15mm; }}
+        @media print {{
+            body {{ max-width: none; padding: 0; color: #000; background: #fff; font-size: 10.5pt; }}
+            .back-link {{ display: none; }}
+            a {{ color: #000; text-decoration: none; }}
+            h1, h2, h3 {{ color: #000; page-break-after: avoid; }}
+            table {{ font-size: 9pt; page-break-inside: auto; }}
+            thead {{ display: table-header-group; }}
+            tr {{ page-break-inside: avoid; }}
+            th {{ background: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }}
+            tr:nth-child(even) {{ background: #f6f6f6 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }}
+            pre, img {{ page-break-inside: avoid; max-width: 100%; }}
+            img {{ max-height: 105mm; width: auto; display: block; margin: 0.5rem auto; }}
+            th, td {{ padding: 0.2rem 0.35rem; }}
+            table {{ font-size: 8pt; }}
+            .render-meta {{ font-size: 8pt; page-break-before: avoid; margin-top: 1rem; }}
+            p, li {{ orphans: 3; widows: 3; }}
+        }}
     </style>
 </head>
 <body>
@@ -243,6 +263,16 @@ async def read_case_breakdown():
     except FileNotFoundError:
         return Response(content="Case breakdown not found", status_code=404)
 
+@app.get("/findings-2026-09.html")
+async def read_findings_2026_09():
+    try:
+        return _render_markdown_file(
+            str(PROJECT_ROOT / "docs" / "FINDINGS-2026-09.md"),
+            "MedSafe-Dx: findings from the 2026-09 leaderboard refresh",
+        )
+    except FileNotFoundError:
+        return Response(content="Findings not found", status_code=404)
+
 @app.get("/README.md")
 async def read_readme():
     return FileResponse(str(PROJECT_ROOT / "README.md"), media_type="text/markdown")
@@ -257,4 +287,4 @@ async def read_results_summary():
     except FileNotFoundError:
         return Response(content="Report not found", status_code=404)
 
-app.mount("/", StaticFiles(directory="static"), name="static")
+app.mount("/", StaticFiles(directory="static", html=True), name="static")

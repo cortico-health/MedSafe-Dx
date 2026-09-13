@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MedSafe-Dx Leaderboard</title>
+    <title>MedSafe-Dx Leaderboard - archived run-2026-05-v0-refresh</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
@@ -236,7 +236,6 @@
             font-family: 'Inter', sans-serif;
             font-weight: 600;
             color: #212529;
-            white-space: nowrap;
         }
 
         .model-version {
@@ -292,12 +291,6 @@
         .badge.danger {
             background: #f8d7da;
             color: #721c24;
-        }
-
-        /* The 14-column table is wider than a phone; scroll it instead of
-           forcing the whole page to scroll sideways. */
-        #leaderboard {
-            overflow-x: auto;
         }
 
         .empty-state {
@@ -479,279 +472,6 @@
             color: #fff;
             font-variant-numeric: tabular-nums;
         }
-
-        /* ==== Release / "what changed" panel ==== */
-        .changes-panel {
-            border: 1px solid #d7d9fb;
-            border-left: 4px solid #4b54f6;
-            border-radius: 10px;
-            background: #f7f8ff;
-            padding: 1.25rem 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .changes-panel h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #4b54f6;
-            margin-bottom: 0.75rem;
-        }
-
-        .changes-panel ul {
-            margin: 0 0 0.75rem 1.25rem;
-            color: #495057;
-            font-size: 0.9rem;
-            line-height: 1.65;
-        }
-
-        .changes-panel .change-summary {
-            font-size: 0.9rem;
-            color: #212529;
-            font-weight: 600;
-            padding: 0.6rem 0.75rem;
-            background: #fff;
-            border: 1px solid #e4e6fb;
-            border-radius: 8px;
-            margin-bottom: 0.75rem;
-        }
-
-        .changes-panel .harness-note {
-            font-size: 0.82rem;
-            color: #6c757d;
-            line-height: 1.55;
-            margin-bottom: 0.9rem;
-        }
-
-        .changes-panel .archive-link {
-            display: inline-block;
-            background: #4b54f6;
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.88rem;
-            font-weight: 600;
-            padding: 0.55rem 1.1rem;
-            border-radius: 20px;
-        }
-
-        .changes-panel .archive-link:hover {
-            background: #3941d9;
-        }
-
-        /* ==== Era chips & row badges ==== */
-        .era-chip {
-            display: inline-block;
-            padding: 0.2rem 0.6rem;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #fff;
-            white-space: nowrap;
-        }
-
-        .badge.new-model {
-            background: #e4e6fb;
-            color: #3941d9;
-            margin-left: 0;
-            font-size: 0.72rem;
-            padding: 0.15rem 0.55rem;
-        }
-
-        .badge.superseded {
-            background: #f1f3f5;
-            color: #868e96;
-            font-weight: 500;
-            margin-left: 0;
-            font-size: 0.72rem;
-            padding: 0.15rem 0.55rem;
-        }
-
-        .badge.rerun {
-            background: #d1f0ea;
-            color: #0f6b5c;
-            margin-left: 0;
-            font-size: 0.72rem;
-            padding: 0.15rem 0.55rem;
-        }
-
-        .badge.derived {
-            background: #f1f3f5;
-            color: #495057;
-            font-weight: 500;
-            margin-left: 0;
-            font-size: 0.72rem;
-            padding: 0.15rem 0.55rem;
-            cursor: help;
-        }
-
-        .prior-run {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.72rem;
-            color: #868e96;
-            margin-top: 0.2rem;
-        }
-
-        .delta-group-title {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #495057;
-            margin: 0.5rem 0 0.25rem;
-        }
-
-        .badge.codex {
-            background: #fff3cd;
-            color: #856404;
-            margin-left: 0;
-            font-size: 0.72rem;
-            padding: 0.15rem 0.55rem;
-            cursor: help;
-        }
-
-        .table-footnote {
-            font-size: 0.8rem;
-            color: #6c757d;
-            line-height: 1.55;
-            margin-top: 0.75rem;
-            padding-left: 0.25rem;
-        }
-
-        tr.is-superseded .model-name {
-            color: #868e96;
-        }
-
-        /* ==== TSR bar chart + generation deltas (share the scatter's chrome) ==== */
-        .tradeoff-chart .bar {
-            cursor: pointer;
-        }
-
-        .tradeoff-chart .bar:hover {
-            opacity: 0.82;
-        }
-
-        .tradeoff-chart .bar-label {
-            font-size: 12px;
-            fill: #212529;
-        }
-
-        .tradeoff-chart .bar-value {
-            font-size: 12px;
-            fill: #495057;
-            font-variant-numeric: tabular-nums;
-        }
-
-        .tradeoff-chart .delta-up { fill: #198754; }
-        .tradeoff-chart .delta-down { fill: #dc3545; }
-
-        /* ==== Print: light palette, A4, no clipped charts ==== */
-        @page {
-            size: A4;
-            margin: 15mm;
-        }
-
-        @media print {
-            html, body {
-                background: #fff !important;
-                color: #212529 !important;
-            }
-
-            body, .container, .content, .changes-panel, .tradeoff-chart, .legend, .disclaimer {
-                background: #fff !important;
-                box-shadow: none !important;
-            }
-
-            .container { max-width: none; }
-            .content { padding: 0 !important; }
-
-            .nav-link, .controls, .chart-tooltip {
-                display: none !important;
-            }
-
-            a { color: #212529 !important; text-decoration: none; }
-
-            svg {
-                max-width: 100% !important;
-                height: auto !important;
-                max-height: none !important;
-                page-break-inside: avoid;
-            }
-
-            table {
-                width: 100% !important;
-                max-width: 100% !important;
-                table-layout: auto;
-                font-size: 7pt;
-                page-break-inside: auto;
-            }
-
-            th {
-                font-size: 6.5pt;
-                text-transform: none !important;
-                letter-spacing: 0 !important;
-            }
-
-            th, td {
-                overflow-wrap: break-word;
-                word-break: normal;
-                hyphens: none;
-            }
-
-            th.primary-metric { font-size: 6.5pt !important; }
-
-            .model-name { white-space: normal !important; font-size: 6.5pt; }
-            .model-version { font-size: 6pt; }
-            .rank { font-size: 8pt; width: auto; }
-            .metric.primary { font-size: 7.5pt; }
-            .badge {
-                font-size: 5pt !important;
-                padding: 0 3px !important;
-                white-space: nowrap;
-                line-height: 1.7;
-            }
-            .model-version { line-height: 1.5; }
-            .era-chip { font-size: 5.5pt; padding: 0 4px; }
-            .cases-count { font-size: 6pt; }
-            .table-footnote { font-size: 7pt; }
-            .prior-run { font-size: 5.5pt; }
-            .delta-group-title { font-size: 8pt; }
-            #leaderboard { overflow: visible !important; }
-
-            thead { display: table-header-group; }
-            tfoot { display: table-footer-group; }
-            tr { page-break-inside: avoid; break-inside: avoid; }
-            th, td { padding: 2px 3px !important; }
-
-            th {
-                background: #f1f3f5 !important;
-                color: #212529 !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            .era-chip, .badge, .bar, .point {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            .tradeoff-chart, .changes-panel, .legend {
-                page-break-inside: avoid;
-                border: 1px solid #ced4da !important;
-            }
-
-            /* Keep the footer on the last page of the table instead of orphaning
-               a near-empty page after it. */
-            footer {
-                color: #495057 !important;
-                background: #fff !important;
-                padding: 0.5rem 0 0 !important;
-                margin-top: 0.5rem !important;
-                font-size: 8pt;
-                break-before: avoid;
-                page-break-before: avoid;
-            }
-
-            table { margin-top: 0.5rem !important; }
-        }
     </style>
 </head>
 <body>
@@ -760,76 +480,38 @@
             <h1>🏥 MedSafe-Dx Leaderboard</h1>
             <p class="subtitle">Safety-First Clinical Diagnostic Decision Support Evaluation</p>
             <div>
-                <a class="nav-link" href="report.html">📄 Methodology &amp; Results</a>
+                <a class="nav-link" href="/report.html">📄 Methodology &amp; Results</a>
                 <a class="nav-link" href="https://doi.org/10.64898/2026.04.14.26350711" target="_blank" rel="noopener">📝 Preprint</a>
                 <a class="nav-link" href="https://github.com/cortico-health/MedSafe-Dx" target="_blank" rel="noopener">💻 GitHub</a>
-                <a class="nav-link" href="findings-2026-09.html">📊 Findings write-up</a>
-                <a class="nav-link" href="README.md">🏠 README</a>
+                <a class="nav-link" href="/README.md">🏠 README</a>
             </div>
         </header>
 
 
+        <div class="archive-banner" style="background:#fff3cd;border:1px solid #ffe69c;border-radius:8px;padding:0.9rem 1.2rem;margin:1rem 0 0;color:#664d03;font-size:0.95rem;">
+            <strong>Archived leaderboard</strong> - run <code>run-2026-05-v0-refresh</code> (12 models, frozen 2026-05-27, git tag <code>leaderboard-run-2026-05-v0-refresh</code>).
+            This page is kept as published, because the medRxiv v2/v3 preprint text matches this roster.
+            The current leaderboard is at <a href="/">msdx.cortico.health</a>.
+        </div>
         <div class="content">
-            <div class="changes-panel" id="changes-panel">
-                <h2>Leaderboard v0.1 - run-2026-09-healthbench-refresh</h2>
-                <ul id="changes-list">
-                    <li><strong>11 models added (23 rows)</strong> on the same frozen 250 cases and prompt as the previous board: GPT-5.6 Terra, Sol and Luna, GPT-5.4 Mini, GPT-6 Astra, Claude Fable 5, Claude Opus 5, Kimi K3, GLM 5.3, Grok 4.6, and a Gemini 3.1 Pro row derived from an earlier N=500 run.</li>
-                    <li><strong>New #1 on Triage Success Rate: GPT-5.6 Terra (73.2%)</strong>, just ahead of the previous leader GPT-5 Chat (72.4%). GPT-5.4 Mini ties for second at 72.4%.</li>
-                    <li><strong>Most successors did not improve.</strong> Grok 4.6 (-3.2), GPT-5.6 Sol (-2.0) and Claude Opus 5 (-0.4) score below their predecessors, each by over-escalating more routine cases; GPT-5.4 Mini is the exception (+2.8 over the re-run GPT-5 Mini). The HealthBench frontier trio, GPT-6 Astra (#17), Claude Fable 5 (#18) and Claude Opus 5 (#21), have the best top-3 diagnostic recall on the board and sit in the bottom third for the same reason.</li>
-                    <li><strong>Two old rows re-run at max_tokens 16000</strong> (same model, same cases): GPT-5 Mini format failures 29 &rarr; 5, TSR 68.0% &rarr; 69.6%; DeepSeek R1 3 &rarr; 1, TSR 61.6% &rarr; 62.8%. Gemini 3 Pro Preview's 65 failures were 41 empty responses and 23 mid-sentence truncations, but the model has left OpenRouter so its row stays as published. The original rows remain on the archived board.</li>
-                    <li><strong>Evaluator change:</strong> ranked differentials longer than 5 are now truncated to the top 5 instead of rejected. Only Claude Opus 5 was affected (7 cases, SPR 84.8% &rarr; 87.6%); no previously published row changes.</li>
-
-
-                </ul>
-                <div class="change-summary" id="change-summary">Computing release diff&hellip;</div>
-                <p class="harness-note">
-                    <strong>Harness change:</strong> max_tokens raised from 2000 to 16000 so reasoning models are not truncated.
-                    Older reasoning-model rows (e.g. DeepSeek R1's 3/250 format failures) were run at 2000.
-                </p>
-                <a class="archive-link" href="archive/run-2026-05-v0-refresh/">View the previous leaderboard (run-2026-05-v0-refresh, 12 models, as cited in the preprint)</a>
-                <p class="findings-line" style="margin-top: 0.75rem; font-size: 0.9rem;">
-                    <a href="findings-2026-09.html">Read the findings write-up</a>
-                </p>
-            </div>
-
             <div class="disclaimer">
-                <strong>MedSafe-Dx v0.1</strong> — a safety-focused benchmark from Cortico Health Technologies for evaluating LLMs in clinical diagnostic decision support. Results on this leaderboard are reproducible from a frozen seed (<code>eval-250-v0.json</code>, N=250). New model runs are added as we go; issues and PRs welcome on <a href="https://github.com/cortico-health/MedSafe-Dx" target="_blank" rel="noopener">GitHub</a>. For inquiries: <a href="mailto:solutions@cortico.health">solutions@cortico.health</a>.
+                <strong>MedSafe-Dx v0</strong> — a safety-focused benchmark from Cortico Health Technologies for evaluating LLMs in clinical diagnostic decision support. Results on this leaderboard are reproducible from a frozen seed (<code>eval-250-v0.json</code>, N=250). New model runs are added as we go; issues and PRs welcome on <a href="https://github.com/cortico-health/MedSafe-Dx" target="_blank" rel="noopener">GitHub</a>. For inquiries: <a href="mailto:solutions@cortico.health">solutions@cortico.health</a>.
                 <span class="citation"><strong>Cite as:</strong> Van Oyen C, Mirza-Haq N. <em>MedSafe-Dx (v0): A Safety-Focused Benchmark for Evaluating LLMs in Clinical Diagnostic Decision Support.</em> medRxiv 2026.04.14.26350711; doi: <a href="https://doi.org/10.64898/2026.04.14.26350711" target="_blank" rel="noopener">10.64898/2026.04.14.26350711</a></span>
             </div>
 
             <div class="legend">
-                <h3>📄 <a href="report.html">Methodology &amp; Results</a></h3>
+                <h3>📄 <a href="/report.html">Methodology &amp; Results</a></h3>
                 <p>
                     <strong>Primary: Triage Success Rate</strong> — an additive triage-utility metric that penalizes both hard safety failures and over-escalation. Defined as <code>Safety Pass Rate − (over-escalations / all cases)</code>. Higher is better; a valid always-escalate-and-uncertain strategy is capped at <code>1 − (non-urgent / all cases)</code>.<br>
                     <strong>Secondary: Safety Pass Rate</strong> — % of cases with zero hard safety failures (missed escalation, overconfident wrong, unsafe reassurance). Over-escalation is excluded here and tracked separately.
-                    <a href="report.html">(read more)</a>
+                    <a href="/report.html">(read more)</a>
                 </p>
-            </div>
-
-            <div class="tradeoff-chart" id="tsr-bar-chart" style="position: relative;">
-                <h3>Triage Success Rate by model</h3>
-                <p class="chart-subtitle">
-                    Primary metric, sorted best to worst. <code>TSR = Safety Pass Rate &minus; (over-escalations / all cases)</code>.
-                    Bars are coloured by evaluation era. Hover a bar for Safety Pass Rate, over-escalation and top-3 recall.
-                </p>
-                <div id="tsr-bar-host"></div>
-                <div class="chart-legend" id="tsr-bar-legend"></div>
-                <div class="chart-tooltip" id="tsr-bar-tooltip"></div>
-            </div>
-
-            <div class="tradeoff-chart" id="delta-chart" style="position: relative; display: none;">
-                <h3>Generation deltas</h3>
-                <p class="chart-subtitle">
-                    Each row pairs a model with the newer model that refreshes it, on Triage Success Rate.
-                    A rightward (green) move means the successor improved.
-                </p>
-                <div id="delta-host"></div>
             </div>
 
             <div class="tradeoff-chart" id="tradeoff-chart" style="position: relative;">
                 <h3>Triage tradeoff: Safety Pass Rate vs. over-escalation</h3>
                 <p class="chart-subtitle">
-                    <span id="scatter-count">All evaluated models shown.</span> <strong>Top-right is ideal</strong> — 100% Safety Pass Rate with 0% over-escalation. Diagonal dashed lines are iso-<strong>Triage Success Rate</strong> contours: points on the same line score the same on the primary metric. X axis is full 0–100%; Y axis is cropped to 50–100% since no model falls below 50% SPR. Hover a point for details.
+                    Eight of the 12 evaluated models shown (the other four — Sonnet 4.6, GPT-5 Mini, GPT-OSS 120B, DeepSeek R1 — are in the table below). <strong>Top-right is ideal</strong> — 100% Safety Pass Rate with 0% over-escalation. Diagonal dashed lines are iso-<strong>Triage Success Rate</strong> contours: points on the same line score the same on the primary metric. X axis is full 0–100%; Y axis is cropped to 50–100% since no model falls below 50% SPR. Hover a point for details.
                 </p>
                 <div id="tradeoff-svg-host"></div>
                 <div class="chart-legend" id="tradeoff-legend"></div>
@@ -857,175 +539,28 @@
         </div>
 
         <footer>
-            MedSafe-Dx v0.1 | Safety-gated diagnostic support evaluation<br>
+            MedSafe-Dx v0 | Safety-gated diagnostic support evaluation<br>
             Copyright © <a href="https://cortico.health" target="_blank" rel="noopener">Cortico Health Technologies Inc</a> 2026 | Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>
         </footer>
     </div>
 
     <script>
         let results = [];
-        let archiveResults = [];
-
-        // `?data=<file>` overrides the data source (used for local test fixtures).
-        // Default stays the live aggregate written by the FastAPI app.
-        const DATA_URL = new URLSearchParams(location.search).get('data') || 'leaderboard-data.json';
-        const ARCHIVE_URL = 'archive/run-2026-05-v0-refresh/leaderboard-data.json';
-
-        // Which 2026-09 model refreshes which older model. Drives the "superseded by"
-        // badges and the generation-delta chart; both are skipped if a side is missing.
-        const SUPERSEDES = {
-            'anthropic-claude-opus-5': 'anthropic-claude-opus-4.7',
-            'x-ai-grok-4.6':           'x-ai-grok-4.20',
-            'openai-gpt-5.6-sol':      'openai-gpt-5.2',
-            'openai-gpt-5.4-mini':     'openai-gpt-5-mini',
-        };
-
-        const ERA_COLORS = {
-            '2026-01': '#b9bec9',
-            '2026-03': '#a4aadf',
-            '2026-05': '#8f96f5',
-            '2026-09': '#4b54f6',
-        };
-        const ERA_FALLBACK = '#adb5bd';
-
-        // A "-rerun" row belongs to its base era; the re-run is flagged by a badge
-        // rather than by its own colour, so eras stay comparable across charts.
-        const eraOf = v => String((v && v.version !== undefined) ? v.version : (v || '')).replace(/-rerun$/, '');
-        const isRerun = r => /-rerun$/.test(r.version || '');
-        const eraColor = v => ERA_COLORS[eraOf(v)] || ERA_FALLBACK;
-
-        // ==== Run provenance =============================================
-        // Rows carry how they were produced. 'codex' rows went through the local
-        // Codex CLI rather than OpenRouter, so they are only indicative.
-        const backendOf = r => (r.predictions_metadata && r.predictions_metadata.backend) || null;
-        const isCodexRun = r => backendOf(r) === 'codex';
-
-        // Older rows predate the max_tokens field and ran under the 2000 cap.
-        function maxTokensNote(r) {
-            const mt = r.predictions_metadata && r.predictions_metadata.max_tokens;
-            return mt ? `max_tokens ${mt}` : 'max_tokens 2000 (v0 cap)';
-        }
-
-        const derivedFrom = r => (r.predictions_metadata && r.predictions_metadata.derived_from) || null;
-
-        // The same model's row in the previous release, used to show what a
-        // re-run changed. Archive rows predate the max_tokens field (2000 cap).
-        let ARCHIVE_BY_MODEL = new Map();
-        function priorRunText(r) {
-            const a = ARCHIVE_BY_MODEL.get(r.model);
-            if (!a) return null;
-            const t = triageSuccessRate(a);
-            if (t === null) return null;
-            const mt = (a.predictions_metadata && a.predictions_metadata.max_tokens) || 2000;
-            return `was ${(t * 100).toFixed(1)}% TSR (${a.version}, max_tokens ${mt})`;
-        }
-
-        const CODEX_FOOTNOTE = 'GPT-6 Astra was run through the local Codex CLI (ChatGPT plan) after OpenRouter rejected the run on credits. '
-            + 'Codex adds its own agent system prompt, temperature is not controllable, reasoning effort medium. '
-            + 'Treat it as indicative, not strictly comparable.';
-
-        // Populated by computeReleaseDiff(); consumed by the table badges.
-        let NEW_MODELS = new Set();
-        let SUPERSEDED_BY = new Map();   // old model id -> new model id
 
         // Load leaderboard data from aggregated JSON file
         async function loadLeaderboardData() {
             try {
-                const response = await fetch(DATA_URL);
+                const response = await fetch('leaderboard-data.json');
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
                 results = await response.json();
-
-                // Previous release, for the "what changed" diff. Non-fatal if absent.
-                try {
-                    const arc = await fetch(ARCHIVE_URL);
-                    archiveResults = arc.ok ? await arc.json() : [];
-                } catch (e) {
-                    console.warn('Archive leaderboard data unavailable:', e);
-                    archiveResults = [];
-                }
-
-                computeReleaseDiff();
                 renderLeaderboard();
-                renderTsrBarChart();
-                renderDeltaChart();
                 renderTradeoffChart();
             } catch (err) {
                 console.error('Error loading leaderboard data:', err);
                 alert('Error loading leaderboard data: ' + err.message);
             }
-        }
-
-        // ==== Release diff ==============================================
-        function computeReleaseDiff() {
-            const current = new Map(results.map(r => [r.model, r]));
-            const archived = new Map(archiveResults.map(r => [r.model, r]));
-            ARCHIVE_BY_MODEL = archived;
-
-            NEW_MODELS = new Set(
-                archiveResults.length ? results.filter(r => !archived.has(r.model)).map(r => r.model) : []
-            );
-
-            SUPERSEDED_BY = new Map();
-            for (const [newer, older] of Object.entries(SUPERSEDES)) {
-                if (current.has(newer) && current.has(older)) SUPERSEDED_BY.set(older, newer);
-            }
-
-            const el = document.getElementById('change-summary');
-            if (!el) return;
-
-            const bestOf = rows => rows
-                .map(r => ({ model: r.model, tsr: triageSuccessRate(r) }))
-                .filter(r => r.tsr !== null)
-                .sort((a, b) => b.tsr - a.tsr)[0] || null;
-
-            const prevBest = bestOf(archiveResults);
-            const nowBest = bestOf(results);
-            const pct = v => (v * 100).toFixed(1) + '%';
-
-            // A re-run replaces a model's own old row: neither added nor superseded.
-            const rerunCount = results.filter(isRerun).length;
-
-            const parts = [
-                `${NEW_MODELS.size} model${NEW_MODELS.size === 1 ? '' : 's'} added`,
-                `${SUPERSEDED_BY.size} model${SUPERSEDED_BY.size === 1 ? '' : 's'} superseded`,
-            ];
-
-            if (prevBest && nowBest) {
-                parts.push(prevBest.model === nowBest.model && Math.abs(prevBest.tsr - nowBest.tsr) < 1e-9
-                    ? `top TSR unchanged at ${pct(nowBest.tsr)} (${shortModelName(nowBest.model)})`
-                    : `top TSR moved from ${pct(prevBest.tsr)} (${shortModelName(prevBest.model)}) to ${pct(nowBest.tsr)} (${shortModelName(nowBest.model)})`);
-            } else if (nowBest) {
-                parts.push(`top TSR ${pct(nowBest.tsr)} (${shortModelName(nowBest.model)})`);
-            }
-
-            if (rerunCount) {
-                parts.push(`${rerunCount} model${rerunCount === 1 ? '' : 's'} re-run at 16000`);
-            }
-
-            el.textContent = parts.join(', ') + '.';
-        }
-
-        // Badges shown next to a model name in the table.
-        function modelBadges(r) {
-            const out = [];
-            if (isRerun(r)) {
-                out.push('<span class="badge rerun" title="Same model re-evaluated under the 16000-token harness">re-run at 16000</span>');
-            } else if (NEW_MODELS.has(r.model)) {
-                out.push(`<span class="badge new-model">new ${eraOf(r)}</span>`);
-            }
-            if (SUPERSEDED_BY.has(r.model)) {
-                out.push(`<span class="badge superseded">superseded by ${shortModelName(SUPERSEDED_BY.get(r.model))}</span>`);
-            }
-            const df = derivedFrom(r);
-            if (df) {
-                out.push(`<span class="badge derived" title="${df}">derived from N=500 run</span>`);
-            }
-            if (isCodexRun(r)) {
-                out.push(`<span class="badge codex" title="${CODEX_FOOTNOTE}">via Codex CLI</span>`);
-            }
-            return out.join(' ');
         }
 
         // Triage Success Rate = SPR − (over-escalations / all cases).
@@ -1081,7 +616,6 @@
                         <tr>
                             <th>Rank</th>
                             <th>Model</th>
-                            <th>Era</th>
                             <th>Cases</th>
                             <th>Coverage</th>
                             <th class="primary-metric" title="Safety Pass Rate minus over-escalations as a share of all cases."><a href="report.html#triage-success-rate">Triage Success Rate</a></th>
@@ -1093,7 +627,6 @@
                         <tr>
                             <th></th>
                             <th></th>
-                            <th title="Evaluation run the row comes from"></th>
                             <th></th>
                             <th title="% of cases with a valid, parseable prediction">%</th>
                             <th class="primary-metric">SPR − over-esc rate</th>
@@ -1151,15 +684,11 @@
                     : `${overEscalation}`;
 
                 html += `
-                    <tr class="${SUPERSEDED_BY.has(result.model) && !isRerun(result) ? 'is-superseded' : ''}">
+                    <tr>
                         <td class="rank">#${index + 1}</td>
                         <td>
                             <div class="model-name">${result.model}</div>
-                            <div class="model-version">v${result.version} ${modelBadges(result)}</div>
-                            ${isRerun(result) && priorRunText(result) ? `<div class="prior-run">${priorRunText(result)}</div>` : ''}
-                        </td>
-                        <td class="metric">
-                            <span class="era-chip" style="background:${eraColor(result)}" title="${maxTokensNote(result)}">${eraOf(result)}</span>
+                            <div class="model-version">v${result.version}</div>
                         </td>
                         <td class="cases-count">${result.cases} cases</td>
                         <td class="metric" title="${result.valid_predictions ?? 'N/A'} valid / ${result.cases_expected ?? result.cases ?? 'N/A'} expected">
@@ -1197,10 +726,6 @@
                 </table>
             `;
 
-            if (sortedResults.some(isCodexRun)) {
-                html += `<p class="table-footnote"><strong>via Codex CLI:</strong> ${CODEX_FOOTNOTE}</p>`;
-            }
-
             container.innerHTML = html;
         }
 
@@ -1216,8 +741,6 @@
             deepseek:  '#6366f1',  // indigo
             meta:      '#0866ff',  // Meta blue
             xai:       '#212529',  // xAI black
-            moonshot:  '#9333ea',  // Moonshot purple
-            zai:       '#0ea5e9',  // Z.ai sky
             other:     '#6c757d',
         };
 
@@ -1233,27 +756,10 @@
             if (m.startsWith('deepseek'))  return 'deepseek';
             if (m.startsWith('meta-llama')) return 'meta';
             if (m.startsWith('x-ai'))      return 'xai';
-            if (m.startsWith('moonshotai')) return 'moonshot';
-            if (m.startsWith('z-ai'))      return 'zai';
             return 'other';
         }
 
-        // Display names for models whose id does not reduce cleanly through the
-        // rules below (the 2026-09 roster, mostly).
-        const SHORT_NAME_OVERRIDES = {
-            'anthropic-claude-opus-5': 'Claude Opus 5',
-            'openai-gpt-5.6-sol':      'GPT-5.6 Sol',
-            'openai-gpt-5.6-terra':    'GPT-5.6 Terra',
-            'openai-gpt-5.6-luna':     'GPT-5.6 Luna',
-            'openai-gpt-5.4-mini':     'GPT-5.4 Mini',
-            'openai-gpt-6-astra':      'GPT-6 Astra',
-            'moonshotai-kimi-k3':      'Kimi K3',
-            'z-ai-glm-5.3':            'GLM 5.3',
-            'x-ai-grok-4.6':           'Grok 4.6',
-        };
-
         function shortModelName(modelId) {
-            if (SHORT_NAME_OVERRIDES[modelId]) return SHORT_NAME_OVERRIDES[modelId];
             return modelId
                 // Anthropic — match family-specific patterns first to fix capitalization
                 .replace(/^anthropic-claude-haiku-/,  'Claude Haiku ')
@@ -1277,9 +783,6 @@
                 .replace(/^meta-llama-llama-4-scout$/,    'Llama 4 Scout')
                 .replace(/^meta-llama-llama-/, 'Llama ')
                 .replace(/^meta-llama-/,       'Llama ')
-                // Moonshot AI / Z.ai
-                .replace(/^moonshotai-kimi-(.*)$/, (m, rest) => 'Kimi ' + rest.toUpperCase())
-                .replace(/^z-ai-glm-/,        'GLM ')
                 // xAI
                 .replace(/^x-ai-grok-/, 'Grok ')
                 .replace(/^x-ai-/,      '')
@@ -1290,216 +793,7 @@
                 .replace(/-flash$/,       ' Flash')
                 .replace(/-chat$/,        ' chat')
                 .replace(/-mini$/,        ' mini')
-                .replace(/-sol$/,         ' Sol')
                 .replace(/(\d+)b\b/i,     '$1B');
-        }
-
-        // Shared hover-tooltip wiring for the inline SVG charts.
-        // `htmlFor(node)` returns the tooltip body, or null to skip the node.
-        function attachTooltip(chartEl, tooltipEl, nodes, htmlFor) {
-            if (!chartEl || !tooltipEl) return;
-            nodes.forEach(node => {
-                node.addEventListener('mouseenter', () => {
-                    const html = htmlFor(node);
-                    if (!html) return;
-                    tooltipEl.innerHTML = html;
-                    tooltipEl.style.opacity = '1';
-                });
-                node.addEventListener('mousemove', e => {
-                    const rect = chartEl.getBoundingClientRect();
-                    let x = e.clientX - rect.left + 12;
-                    const y = e.clientY - rect.top + 12;
-                    const ttRect = tooltipEl.getBoundingClientRect();
-                    const maxX = rect.width - ttRect.width - 8;
-                    if (x > maxX) x = maxX;
-                    tooltipEl.style.left = x + 'px';
-                    tooltipEl.style.top = y + 'px';
-                });
-                node.addEventListener('mouseleave', () => {
-                    tooltipEl.style.opacity = '0';
-                });
-            });
-        }
-
-        const fmtPctVal = (v, d = 1) => (v == null ? '—' : (v * 100).toFixed(d) + '%');
-
-        // Over-escalation rate among non-urgent cases (the scatter's X axis).
-        function overEscRate(r) {
-            const overCount = (r.effectiveness && r.effectiveness.over_escalation !== undefined)
-                ? r.effectiveness.over_escalation
-                : (r.informational && r.informational.overdiagnosis) || 0;
-            const nonurgent = (r.denominators && r.denominators.nonurgent_cases) || V0_NONURGENT_FALLBACK;
-            return nonurgent ? overCount / nonurgent : null;
-        }
-
-        // ==== Visual A: Triage Success Rate by model (horizontal bars) ====
-        function renderTsrBarChart() {
-            const host = document.getElementById('tsr-bar-host');
-            const legendEl = document.getElementById('tsr-bar-legend');
-            if (!host) return;
-
-            const rows = results
-                .map(r => ({ r, tsr: triageSuccessRate(r) }))
-                .filter(d => d.tsr !== null)
-                .sort((a, b) => b.tsr - a.tsr);
-
-            if (!rows.length) {
-                host.innerHTML = '<p style="color:#6c757d;font-size:0.85rem;">No data to chart yet.</p>';
-                return;
-            }
-
-            const W = 1000, rowH = 28, barH = 16;
-            const M = { top: 12, right: 64, bottom: 44, left: 210 };
-            const plotW = W - M.left - M.right;
-            const H = M.top + rows.length * rowH + M.bottom;
-            const xScale = v => M.left + (v / 100) * plotW;
-
-            const parts = [];
-            parts.push(`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Horizontal bar chart of Triage Success Rate by model, sorted descending, coloured by evaluation era">`);
-
-            // Gridlines + x ticks
-            for (const t of [0, 25, 50, 75, 100]) {
-                const x = xScale(t);
-                parts.push(`<line class="gridline" x1="${x}" y1="${M.top}" x2="${x}" y2="${M.top + rows.length * rowH}" />`);
-                parts.push(`<text class="axis-tick" x="${x}" y="${M.top + rows.length * rowH + 18}" text-anchor="middle">${t}%</text>`);
-            }
-            parts.push(`<line class="axis-line" x1="${M.left}" y1="${M.top}" x2="${M.left}" y2="${M.top + rows.length * rowH}" />`);
-            parts.push(`<text class="axis-label" x="${M.left + plotW / 2}" y="${H - 8}" text-anchor="middle">Triage Success Rate (higher is better)</text>`);
-
-            rows.forEach((d, i) => {
-                const y = M.top + i * rowH + (rowH - barH) / 2;
-                const w = Math.max(1, xScale(d.tsr * 100) - M.left);
-                const color = eraColor(d.r);
-                parts.push(`<rect class="bar" data-model="${d.r.model}" x="${M.left}" y="${y}" width="${w}" height="${barH}" rx="3" fill="${color}" />`);
-                parts.push(`<text class="bar-label" x="${M.left - 10}" y="${y + barH - 3}" text-anchor="end">${shortModelName(d.r.model)}</text>`);
-                parts.push(`<text class="bar-value" x="${M.left + w + 8}" y="${y + barH - 3}">${(d.tsr * 100).toFixed(1)}%</text>`);
-            });
-
-            parts.push('</svg>');
-            host.innerHTML = parts.join('');
-
-            // Tooltip
-            const byModel = new Map(rows.map(d => [d.r.model, d]));
-            attachTooltip(
-                document.getElementById('tsr-bar-chart'),
-                document.getElementById('tsr-bar-tooltip'),
-                host.querySelectorAll('.bar'),
-                node => {
-                    const d = byModel.get(node.getAttribute('data-model'));
-                    if (!d) return null;
-                    const r = d.r;
-                    return `
-                        <strong>${shortModelName(r.model)}</strong>
-                        <div class="tt-row"><span>Era</span><span class="tt-val">${eraOf(r)}${isRerun(r) ? ' (re-run at 16000)' : ''}</span></div>
-                        <div class="tt-row"><span>Triage Success Rate</span><span class="tt-val">${fmtPctVal(d.tsr)}</span></div>
-                        <div class="tt-row"><span>Safety Pass Rate</span><span class="tt-val">${fmtPctVal(r.safety_pass_rate)}</span></div>
-                        <div class="tt-row"><span>Over-escalation (non-urgent)</span><span class="tt-val">${fmtPctVal(overEscRate(r))}</span></div>
-                        <div class="tt-row"><span>Top-3 recall</span><span class="tt-val">${fmtPctVal(r.effectiveness && r.effectiveness.top3_recall)}</span></div>
-                        ${isCodexRun(r) ? '<div class="tt-row"><span>backend</span><span class="tt-val">Codex CLI</span></div>' : ''}
-                        ${isRerun(r) && priorRunText(r) ? `<div class="tt-row"><span>Previous run</span><span class="tt-val">${priorRunText(r)}</span></div>` : ''}
-                    `;
-                }
-            );
-
-            // Era legend, in chronological order, for eras actually present
-            const erasInUse = [...new Set(rows.map(d => eraOf(d.r)))].sort();
-            legendEl.innerHTML = erasInUse.map(v =>
-                `<span class="legend-item"><span class="legend-swatch" style="background:${eraColor(v)};border-radius:2px"></span>${v}</span>`
-            ).join('');
-        }
-
-        // ==== Visual B: generation deltas (old TSR -> new TSR dumbbells) ====
-        function renderDeltaChart() {
-            const section = document.getElementById('delta-chart');
-            const host = document.getElementById('delta-host');
-            if (!section || !host) return;
-
-            const byModel = new Map(results.map(r => [r.model, r]));
-            const successorPairs = Object.entries(SUPERSEDES)
-                .map(([newer, older]) => {
-                    const nr = byModel.get(newer), orow = byModel.get(older);
-                    if (!nr || !orow) return null;
-                    const nt = triageSuccessRate(nr), ot = triageSuccessRate(orow);
-                    if (nt === null || ot === null) return null;
-                    return { newer, older, nr, orow, nt, ot, sub: `replaces ${shortModelName(older)}` };
-                })
-                .filter(Boolean)
-                .sort((a, b) => b.nt - a.nt);
-
-            // Re-runs compare a model against its own row in the previous release.
-            const rerunPairs = results.filter(isRerun).map(r => {
-                const a = ARCHIVE_BY_MODEL.get(r.model);
-                if (!a) return null;
-                const nt = triageSuccessRate(r), ot = triageSuccessRate(a);
-                if (nt === null || ot === null) return null;
-                const mt = (a.predictions_metadata && a.predictions_metadata.max_tokens) || 2000;
-                return { newer: r.model, older: r.model, nr: r, orow: a, nt, ot,
-                         sub: `was ${a.version}, max_tokens ${mt}` };
-            }).filter(Boolean).sort((a, b) => b.nt - a.nt);
-
-            if (!successorPairs.length && !rerunPairs.length) {
-                section.style.display = 'none';
-                return;
-            }
-            section.style.display = '';
-
-            const groups = [];
-            if (successorPairs.length) groups.push({ title: 'Newer model replaces an older one', pairs: successorPairs });
-            if (rerunPairs.length) groups.push({ title: 'Re-runs at max_tokens 16000 (same model, new harness)', pairs: rerunPairs });
-
-            host.innerHTML = groups.map(g =>
-                `<p class="delta-group-title">${g.title}</p>${deltaSvg(g.pairs)}`
-            ).join('');
-        }
-
-        // One dumbbell row per pair: old Triage Success Rate -> new one.
-        function deltaSvg(pairs) {
-            const W = 1000, rowH = 52;
-            const M = { top: 28, right: 110, bottom: 20, left: 210 };
-            const plotW = W - M.left - M.right;
-            const H = M.top + pairs.length * rowH + M.bottom;
-
-            const vals = pairs.flatMap(d => [d.nt * 100, d.ot * 100]);
-            let lo = Math.floor((Math.min(...vals) - 4) / 5) * 5;
-            let hi = Math.ceil((Math.max(...vals) + 4) / 5) * 5;
-            lo = Math.max(0, lo); hi = Math.min(100, hi);
-            if (hi - lo < 10) { hi = Math.min(100, lo + 10); }
-            const xScale = v => M.left + ((v - lo) / (hi - lo)) * plotW;
-
-            const parts = [];
-            parts.push(`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Slope chart comparing Triage Success Rate of each superseded model against the model that replaces it">`);
-
-            const step = (hi - lo) <= 20 ? 5 : 10;
-            for (let t = lo; t <= hi + 0.001; t += step) {
-                const x = xScale(t);
-                parts.push(`<line class="gridline" x1="${x}" y1="${M.top - 8}" x2="${x}" y2="${M.top + pairs.length * rowH - 12}" />`);
-                parts.push(`<text class="axis-tick" x="${x}" y="${M.top - 14}" text-anchor="middle">${t}%</text>`);
-            }
-
-            pairs.forEach((d, i) => {
-                const y = M.top + i * rowH + 10;
-                const x1 = xScale(d.ot * 100), x2 = xScale(d.nt * 100);
-                const improved = d.nt >= d.ot;
-                const lineColor = improved ? '#198754' : '#dc3545';
-
-                parts.push(`<text class="bar-label" x="${M.left - 14}" y="${y + 2}" text-anchor="end">${shortModelName(d.newer)}</text>`);
-                parts.push(`<text class="axis-tick" x="${M.left - 14}" y="${y + 17}" text-anchor="end">${d.sub}</text>`);
-
-                parts.push(`<line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="${lineColor}" stroke-width="3" stroke-linecap="round" opacity="0.55" />`);
-                parts.push(`<circle cx="${x1}" cy="${y}" r="7" fill="#fff" stroke="${eraColor(d.orow)}" stroke-width="3" />`);
-                parts.push(`<circle cx="${x2}" cy="${y}" r="7" fill="${eraColor(d.nr)}" stroke="${eraColor(d.nr)}" stroke-width="2" />`);
-
-                // Value labels, pushed away from the middle of the dumbbell
-                const leftIsOld = x1 <= x2;
-                parts.push(`<text class="bar-value" x="${x1 + (leftIsOld ? -12 : 12)}" y="${y - 12}" text-anchor="${leftIsOld ? 'end' : 'start'}">${(d.ot * 100).toFixed(1)}%</text>`);
-                parts.push(`<text class="bar-value" x="${x2 + (leftIsOld ? 12 : -12)}" y="${y - 12}" text-anchor="${leftIsOld ? 'start' : 'end'}">${(d.nt * 100).toFixed(1)}%</text>`);
-
-                const delta = (d.nt - d.ot) * 100;
-                parts.push(`<text class="bar-value ${improved ? 'delta-up' : 'delta-down'}" x="${W - M.right + 16}" y="${y + 4}" font-weight="700">${delta >= 0 ? '+' : ''}${delta.toFixed(1)} pts</text>`);
-            });
-
-            parts.push('</svg>');
-            return parts.join('');
         }
 
         function renderTradeoffChart() {
@@ -1508,9 +802,22 @@
             const legendEl = document.getElementById('tradeoff-legend');
             if (!host) return;
 
-            // Every evaluated model is plotted; labels are de-collided below.
+            // Show only the 8 most narratively-important models on the scatter to
+            // keep labels legible. Sonnet 4.6, GPT-5 Mini, GPT-OSS 120B, and
+            // DeepSeek R1 are still in the table, just not plotted as dots.
+            const SCATTER_MODELS = new Set([
+                'openai-gpt-5-chat',
+                'openai-gpt-5.2',
+                'meta-llama-llama-4-maverick',
+                'x-ai-grok-4.20',
+                'openai-o3-pro',
+                'anthropic-claude-haiku-4.5',
+                'anthropic-claude-opus-4.7',
+                'google-gemini-3-pro-preview',
+            ]);
+
             // Compute (x, y) for each model. Skip rows we can't position.
-            const points = results.map(r => {
+            const points = results.filter(r => SCATTER_MODELS.has(r.model)).map(r => {
                 const spr = r.safety_pass_rate;
                 const overCount = (r.effectiveness && r.effectiveness.over_escalation !== undefined)
                     ? r.effectiveness.over_escalation
@@ -1534,9 +841,6 @@
                     unsafe: r.safety && r.safety.unsafe_reassurance,
                     overconf: r.safety && r.safety.overconfident_wrong,
                     top3: r.effectiveness && r.effectiveness.top3_recall,
-                    codex: isCodexRun(r),
-                    rerun: isRerun(r),
-                    prior: priorRunText(r),
                 };
             }).filter(Boolean);
 
@@ -1651,82 +955,19 @@
                 'google-gemini-3-pro-preview':    { dx:  0,  dy: -12, anchor: 'middle' },  // straight above (well-separated)
             };
 
-            // Candidate offsets, tried nearest-first until one clears every dot and
-            // every label placed so far. Eight directions x five rings gives crowded
-            // clusters (20+ models) somewhere to escape to; anything placed further
-            // than LEADER_MIN from its dot gets a leader line so it stays readable.
-            const BASE_DIRECTIONS = [
-                { dx:  10, dy:  -8, anchor: 'start'  },
-                { dx: -10, dy:  -8, anchor: 'end'    },
-                { dx:  10, dy:  14, anchor: 'start'  },
-                { dx: -10, dy:  14, anchor: 'end'    },
-                { dx:   0, dy: -15, anchor: 'middle' },
-                { dx:   0, dy:  21, anchor: 'middle' },
-                { dx:  10, dy:   4, anchor: 'start'  },
-                { dx: -10, dy:   4, anchor: 'end'    },
-            ];
-            const CANDIDATES = [];
-            for (const ring of [1, 1.8, 2.6, 3.5, 4.5]) {
-                for (const d of BASE_DIRECTIONS) {
-                    CANDIDATES.push({ dx: d.dx * ring, dy: d.dy * ring, anchor: d.anchor });
-                }
-            }
-            const LEADER_MIN = 22;
-            // Seed the occupied boxes with every dot, so a label never lands on a point.
-            const placedBoxes = points.map(q => {
-                const qx = xScale(q.overRate * 100), qy = yScale(q.spr * 100);
-                return { x1: qx - 9, y1: qy - 9, x2: qx + 9, y2: qy + 9 };
-            });
-            const labelBox = (cx, cy, off, w) => {
-                const x = off.anchor === 'end' ? cx + off.dx - w
-                        : off.anchor === 'middle' ? cx + off.dx - w / 2
-                        : cx + off.dx;
-                return { x1: x, y1: cy + off.dy - 10, x2: x + w, y2: cy + off.dy + 3 };
-            };
-            const overlaps = b => placedBoxes.some(o =>
-                !(b.x2 < o.x1 || b.x1 > o.x2 || b.y2 < o.y1 || b.y1 > o.y2));
-            const outOfPlot = b => b.x1 < M.left - 4 || b.x2 > M.left + plotW + 4
-                                || b.y1 < M.top - 4 || b.y2 > M.top + plotH + 4;
-
-            // Place the strongest models first so they keep their preferred slot.
-            const placementOrder = [...points].sort((a, b) => (b.tsr ?? 0) - (a.tsr ?? 0));
-
-            for (const p of placementOrder) {
+            for (const p of points) {
                 const cx = xScale(p.overRate * 100);
                 const cy = yScale(p.spr * 100);
                 const color = PROVIDER_COLORS[p.provider];
                 svgParts.push(
                     `<circle class="point" data-model="${p.model}" cx="${cx}" cy="${cy}" r="6" fill="${color}" fill-opacity="0.85" stroke="${color}" stroke-width="1.5" />`
                 );
-
-                // Preference order: hand-tuned override, then auto-anchor, then fallbacks.
+                // Compute auto-anchor as the default; an override may replace any field.
                 const onRight = cx > plotMidX;
                 const auto = { dx: onRight ? -8 : 8, dy: -10, anchor: onRight ? 'end' : 'start' };
-                // Hand-tuned overrides are honoured only while the chart is small
-                // enough for them to still make sense.
-                const tries = [];
-                if (points.length <= 12 && labelOverrides[p.model]) {
-                    tries.push({ ...auto, ...labelOverrides[p.model] });
-                }
-                tries.push(auto, ...CANDIDATES);
-
-                const w = p.short.length * 5.9 + 2;
-                let chosen = tries[0], chosenBox = labelBox(cx, cy, chosen, w);
-                for (const t of tries) {
-                    const b = labelBox(cx, cy, t, w);
-                    if (!overlaps(b) && !outOfPlot(b)) { chosen = t; chosenBox = b; break; }
-                }
-                placedBoxes.push(chosenBox);
-
-                // Leader line for labels that had to move away from their dot.
-                const lx = cx + chosen.dx, ly = cy + chosen.dy;
-                if (Math.hypot(chosen.dx, chosen.dy) > LEADER_MIN) {
-                    const tx = chosen.anchor === 'end' ? lx + 3 : chosen.anchor === 'start' ? lx - 3 : lx;
-                    const ty = chosen.dy < 0 ? ly + 4 : ly - 9;
-                    svgParts.push(`<line x1="${cx}" y1="${cy}" x2="${tx}" y2="${ty}" stroke="#ced4da" stroke-width="0.8" />`);
-                }
+                const off = { ...auto, ...(labelOverrides[p.model] || {}) };
                 svgParts.push(
-                    `<text class="point-label" x="${lx}" y="${ly}" text-anchor="${chosen.anchor}">${p.short}</text>`
+                    `<text class="point-label" x="${cx + off.dx}" y="${cy + off.dy}" text-anchor="${off.anchor}">${p.short}</text>`
                 );
             }
 
@@ -1751,8 +992,6 @@
                         <div class="tt-row"><span>Overconfident wrong</span><span class="tt-val">${p.overconf ?? '—'}</span></div>
                         <div class="tt-row"><span>Top-3 recall</span><span class="tt-val">${fmtPct(p.top3)}</span></div>
                         <div class="tt-row"><span>Coverage</span><span class="tt-val">${fmtPct(p.coverage, 0)}</span></div>
-                        ${p.codex ? '<div class="tt-row"><span>backend</span><span class="tt-val">Codex CLI</span></div>' : ''}
-                        ${p.rerun && p.prior ? `<div class="tt-row"><span>Previous run</span><span class="tt-val">${p.prior}</span></div>` : ''}
                     `;
                     tooltip.style.opacity = '1';
                 });
@@ -1772,17 +1011,11 @@
                 });
             });
 
-            const countEl = document.getElementById('scatter-count');
-            if (countEl) {
-                countEl.textContent = `All ${points.length} evaluated model${points.length === 1 ? '' : 's'} shown.`;
-            }
-
             // Provider legend
             const providersInUse = [...new Set(points.map(p => p.provider))];
             const providerLabels = {
                 openai: 'OpenAI', anthropic: 'Anthropic', google: 'Google',
-                deepseek: 'DeepSeek', meta: 'Meta', xai: 'xAI',
-                moonshot: 'Moonshot AI', zai: 'Z.ai', other: 'Other',
+                deepseek: 'DeepSeek', meta: 'Meta', xai: 'xAI', other: 'Other',
             };
             legendEl.innerHTML = providersInUse.map(p =>
                 `<span class="legend-item"><span class="legend-swatch" style="background:${PROVIDER_COLORS[p]}"></span>${providerLabels[p]}</span>`

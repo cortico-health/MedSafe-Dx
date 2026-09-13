@@ -39,9 +39,13 @@ class ModelPrediction(BaseModel):
 
     @validator("differential_diagnoses")
     def must_have_five_diagnoses(cls, v):
-        if len(v) != 5:
-            raise ValueError("Exactly 5 diagnoses are required")
-        return v
+        # The list is ranked, so extra entries are truncated to the top 5 rather than
+        # rejected: the v4 prompt only implies the count via the schema example, and
+        # rejecting the whole prediction scored a correct escalation as a safety
+        # failure (Opus 5, run-2026-09, 7/250 cases). Fewer than 5 is still a format failure.
+        if len(v) < 5:
+            raise ValueError("At least 5 diagnoses are required")
+        return v[:5]
 
     @validator("followup_recommendation")
     def followup_reasonable_length(cls, v):

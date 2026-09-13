@@ -4,11 +4,15 @@ Run inference on benchmark cases using OpenRouter API.
 """
 
 import json
+import os
 import re
 import argparse
 from pathlib import Path
 from typing import Dict, Any
 import time
+from concurrent.futures import ThreadPoolExecutor
+
+CHECKPOINT_EVERY = 10
 
 
 def strip_json_comments(text: str) -> str:
@@ -92,6 +96,7 @@ def clean_model_json(response: str) -> str:
     return cleaned
 
 from inference.openrouter import call_openrouter, load_cases, write_predictions
+from inference.codex_cli import call_codex
 from inference.prompt import (
     OUTPUT_SCHEMA_V4,
     SYSTEM_PROMPT_CHART_REVIEW_V3,
@@ -158,6 +163,8 @@ def run_inference_on_case(
     workflow: str,
     temperature: float = 0.0,
     max_tokens: int = 2000,
+    backend: str = "openrouter",
+    reasoning_effort: str = "medium",
 ) -> Dict[str, Any] | None:
     """Run inference on a single case."""
     
@@ -166,12 +173,15 @@ def run_inference_on_case(
         {"role": "user", "content": format_case_for_prompt(case, workflow)},
     ]
     
-    response = call_openrouter(
-        model=model,
-        messages=messages,
-        temperature=temperature,
-        max_tokens=max_tokens,
-    )
+    if backend == "codex":
+        response = call_codex(model=model, messages=messages, reasoning_effort=reasoning_effort)
+    else:
+        response = call_openrouter(
+            model=model,
+            messages=messages,
+            temperature=temperature,
+            max_tokens=max_tokens,
+        )
     
     if not response:
         return {
@@ -253,6 +263,23 @@ def main():
         default=2000,
         help="Output token cap. Reasoning models spend this budget on chain-of-thought first; a 2000 cap can starve content and cause spurious format failures (see docs/RUNS.md 2026-09-08).",
     )
+    parser.add_argument(
+        "--backend",
+        choices=["openrouter", "codex"],
+        default="openrouter",
+        help="openrouter (API, default) or codex (local `codex exec`, ChatGPT plan; see inference/codex_cli.py)",
+    )
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=int(os.environ.get("INFERENCE_WORKERS", "1")),
+        help="concurrent cases per model (default 1, or env INFERENCE_WORKERS)",
+    )
+    parser.add_argument(
+        "--reasoning-effort",
+        default="medium",
+        help="codex backend only: model_reasoning_effort (low|medium|high|xhigh)",
+    )
     
     args = parser.parse_args()
     
@@ -274,51 +301,120 @@ def main():
         print(f"Limited to {args.limit} cases")
     
     print(f"Running inference on {len(cases)} cases...")
-    
+
+    output_path = Path(args.out)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    def build_output_metadata(preds, n_successful):
+        m = {
+            "model": args.model,
+            "temperature": args.temperature,
+            "max_tokens": args.max_tokens,
+            "workflow": args.workflow,
+            "prompt_version": "v4",
+            "backend": args.backend,
+            "reasoning_effort": args.reasoning_effort if args.backend == "codex" else None,
+            "total_cases": len(preds),
+            "successful_predictions": n_successful,
+            "failed_predictions": len(preds) - n_successful,
+            "git_commit": os.environ.get("MEDSAFE_GIT_COMMIT") or None,
+        }
+        if metadata:
+            m["test_set_metadata"] = metadata
+        return m
+
+    # Resume support: if the output file already exists and matches this
+    # model/workflow/test set, keep its predictions and skip those case_ids
+    # instead of re-running (and re-billing) them.
     predictions = []
     successful = 0
-    
-    for i, case in enumerate(cases):
-        if i % 10 == 0:
-            print(f"Progress: {i}/{len(cases)}")
-        
-        prediction = run_inference_on_case(
+    existing_case_ids = set()
+
+    if output_path.exists():
+        try:
+            with open(output_path) as f:
+                existing_data = json.load(f)
+            if isinstance(existing_data, dict) and "predictions" in existing_data:
+                existing_predictions = existing_data["predictions"]
+                existing_metadata = existing_data.get("metadata") or {}
+            else:
+                existing_predictions = existing_data if isinstance(existing_data, list) else []
+                existing_metadata = {}
+
+            same_run = (
+                existing_metadata.get("model") == args.model
+                and existing_metadata.get("workflow") == args.workflow
+                and existing_metadata.get("test_set_metadata") == metadata
+            )
+
+            if same_run and existing_predictions:
+                # Keep only usable predictions: entries that carry an "error"
+                # (api_failure, json_parse_failure) are dropped so they get
+                # re-run, e.g. after an HTTP 402 credit exhaustion mid-run.
+                predictions = [
+                    p for p in existing_predictions
+                    if isinstance(p, dict) and "error" not in p
+                ]
+                n_retry = len(existing_predictions) - len(predictions)
+                existing_case_ids = {p.get("case_id") for p in predictions}
+                successful = len(predictions)
+                print(
+                    f"Resuming from {output_path}: {len(existing_case_ids)} usable case(s) "
+                    f"already present for this model/test set, will skip those"
+                    + (f"; {n_retry} errored case(s) will be re-run" if n_retry else "")
+                )
+            elif existing_predictions:
+                print(
+                    f"Existing output at {output_path} is for a different "
+                    f"model/workflow/test set; starting fresh (will overwrite)"
+                )
+        except (json.JSONDecodeError, OSError) as e:
+            print(f"Could not read existing output {output_path} for resume ({e}); starting fresh")
+
+    since_checkpoint = 0
+    pending = [c for c in cases if c.get("case_id") not in existing_case_ids]
+    total = len(cases)
+
+    def _infer(case):
+        pred = run_inference_on_case(
             case,
             model=args.model,
             workflow=args.workflow,
             temperature=args.temperature,
             max_tokens=args.max_tokens,
+            backend=args.backend,
+            reasoning_effort=args.reasoning_effort,
         )
-
-        predictions.append(prediction)
-        if isinstance(prediction, dict) and "error" not in prediction:
-            successful += 1
-        
-        # Rate limiting: sleep briefly between requests
+        # Rate limiting: brief pause per request (per worker)
         time.sleep(0.5)
-    
-    # Write predictions with metadata
-    output_path = Path(args.out)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    
-    # Build output metadata
-    output_metadata = {
-        "model": args.model,
-        "temperature": args.temperature,
-        "max_tokens": args.max_tokens,
-        "workflow": args.workflow,
-        "prompt_version": "v4",
-        "total_cases": len(predictions),
-        "successful_predictions": successful,
-        "failed_predictions": len(predictions) - successful,
-    }
-    
-    # Include input test set metadata if available
-    if metadata:
-        output_metadata["test_set_metadata"] = metadata
-    
+        return pred
+
+    # --workers N runs N cases concurrently. Reasoning models at max_tokens 16000
+    # take 30-90 s per case, so a sequential 250-case pass is hours; 8 workers
+    # brings it to minutes. Results are collected in case order per chunk and the
+    # final write sorts by test-set order, so output is identical to sequential.
+    workers = max(1, int(args.workers))
+    done_count = len(existing_case_ids)
+    print(f"Progress: {done_count}/{total}")
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        for start in range(0, len(pending), CHECKPOINT_EVERY):
+            chunk = pending[start:start + CHECKPOINT_EVERY]
+            for prediction in pool.map(_infer, chunk):
+                predictions.append(prediction)
+                if isinstance(prediction, dict) and "error" not in prediction:
+                    successful += 1
+            done_count += len(chunk)
+            print(f"Progress: {done_count}/{total}")
+            # Checkpoint every CHECKPOINT_EVERY new predictions so a crash doesn't
+            # lose an entire run's worth of API calls.
+            write_predictions(output_path, predictions, build_output_metadata(predictions, successful))
+
+    # Final write with metadata, in test-set order (resumed runs append re-run cases at the end)
+    order = {c.get("case_id"): i for i, c in enumerate(cases)}
+    predictions.sort(key=lambda p: order.get(p.get("case_id") if isinstance(p, dict) else None, len(order)))
+    output_metadata = build_output_metadata(predictions, successful)
     write_predictions(output_path, predictions, output_metadata)
-    
+
     print(f"\nCompleted!")
     print(f"Successful: {successful}")
     print(f"Failed: {len(predictions) - successful}")

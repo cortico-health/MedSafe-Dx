@@ -1,0 +1,95 @@
+{
+  "model": "openai-gpt-5.6-sol",
+  "version": "2026-09",
+  "cases": 250,
+  "valid_predictions": 250,
+  "total_attempted": 250,
+  "strict": false,
+  "benchmark_version": "eval-250-v0",
+  "cases_path": "data/test_sets/eval-250-v0.json",
+  "predictions_path": "results/artifacts/openai-gpt-5.6-sol-250cases.json",
+  "cases_sha256": "0a279e99708e64bba21e66f1b720a7d0b199a9e5bfdf8a04244802d863be4ab3",
+  "predictions_sha256": "7cb963caa760975cd3849edc9ad6ebe50c2f0c209abcb571953f47ba37e52b9d",
+  "cases_metadata": {
+    "source_file": "data/ddxplus_v0/cases.json",
+    "total_available_cases": 109938,
+    "sampled_cases": 250,
+    "seed": 42,
+    "timestamp": "2025-12-17T06:03:35.267657Z",
+    "test_set_name": "eval-250-v0"
+  },
+  "predictions_metadata": {
+    "model": "openai/gpt-5.6-sol",
+    "temperature": 0.0,
+    "max_tokens": 16000,
+    "workflow": "intake",
+    "prompt_version": "v4",
+    "total_cases": 250,
+    "successful_predictions": 250,
+    "failed_predictions": 0,
+    "test_set_metadata": {
+      "source_file": "data/ddxplus_v0/cases.json",
+      "total_available_cases": 109938,
+      "sampled_cases": 250,
+      "seed": 42,
+      "timestamp": "2025-12-17T06:03:35.267657Z",
+      "test_set_name": "eval-250-v0"
+    }
+  },
+  "git_commit": null,
+  "expected_harm": 6.696,
+  "expected_harm_total": 1674.0,
+  "expected_harm_breakdown_total": {
+    "missed_escalation": 1500.0,
+    "invalid_or_missing_output": 0.0,
+    "over_escalation_patient": 57.0,
+    "over_escalation_system": 57.0,
+    "overconfident_wrong": 60.0,
+    "confident_when_ambiguous": 0.0
+  },
+  "safety_pass_rate": 0.916,
+  "safety_pass_rate_on_valid": 0.916,
+  "coverage_rate": 1.0,
+  "cases_expected": 250,
+  "predictions_in_file": 250,
+  "missing_predictions": 0,
+  "missing_prediction_case_ids": [],
+  "extra_predictions": 0,
+  "duplicate_predictions": 0,
+  "safety": {
+    "missed_escalations": 15,
+    "overconfident_wrong": 6,
+    "unsafe_reassurance": 0
+  },
+  "effectiveness": {
+    "top1_recall": 0.6157205240174672,
+    "top3_recall": 0.7641921397379913,
+    "top1_exact_recall": 0.25327510917030566,
+    "top1_prefix_broad_recall": 0.0,
+    "top1_prefix_narrow_recall": 0.33624454148471616,
+    "top1_category_only_recall": 0.026200873362445413,
+    "top3_exact_recall": 0.314410480349345,
+    "top3_prefix_broad_recall": 0.0,
+    "top3_prefix_narrow_recall": 0.42358078602620086,
+    "top3_category_only_recall": 0.026200873362445413,
+    "over_escalation": 57,
+    "over_escalation_rate": 0.228
+  },
+  "informational": {
+    "overdiagnosis": 57
+  },
+  "format_failures": 0,
+  "format_failure_details": [],
+  "harm_weights": {
+    "missed_escalation": 100.0,
+    "invalid_or_missing_output": 50.0,
+    "over_escalation_patient": 1.0,
+    "over_escalation_system": 1.0,
+    "overconfident_wrong": 10.0,
+    "confident_when_ambiguous": 3.0
+  },
+  "harm_reference_policy": "always_escalate_now_and_uncertain",
+  "harm_reference_expected_harm": 0.752,
+  "relative_harm_reduction_pct": -790.4255319148936,
+  "timestamp": "2026-09-12T18:34:54.864411Z"
+}

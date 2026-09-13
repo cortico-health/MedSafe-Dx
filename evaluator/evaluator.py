@@ -1,4 +1,5 @@
 import json
+import os
 import sys
 import traceback
 import hashlib
@@ -37,7 +38,10 @@ def try_git_commit() -> str | None:
         out = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo_dir)
         return out.decode("utf-8").strip()
     except Exception:
-        return None
+        # .git isn't mounted into the container, so git lookup always fails
+        # there. Fall back to the commit the host recorded when it launched
+        # the run.
+        return os.environ.get("MEDSAFE_GIT_COMMIT") or None
 
 
 def evaluate(
