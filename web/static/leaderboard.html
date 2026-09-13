@@ -298,6 +298,32 @@
            forcing the whole page to scroll sideways. */
         #leaderboard {
             overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Rank + model stay pinned while the table scrolls sideways.
+           --rank-col-w is measured in renderLeaderboard() after the table mounts. */
+        #leaderboard th:nth-child(1),
+        #leaderboard td:nth-child(1),
+        #leaderboard th:nth-child(2),
+        #leaderboard td:nth-child(2) {
+            position: sticky;
+            background: #fff;
+            z-index: 2;
+        }
+        #leaderboard th:nth-child(1), #leaderboard td:nth-child(1) { left: 0; }
+        #leaderboard th:nth-child(2), #leaderboard td:nth-child(2) {
+            left: var(--rank-col-w, 60px);
+            box-shadow: 2px 0 0 #e9ecef;
+        }
+        #leaderboard th:nth-child(1), #leaderboard th:nth-child(2) { background: #f8f9fa; z-index: 3; }
+        #leaderboard tr:hover td:nth-child(1), #leaderboard tr:hover td:nth-child(2) { background: #f8f9fa; }
+
+        .scroll-hint, .scatter-scroll-hint {
+            display: none;
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin: 1rem 0 -0.5rem;
         }
 
         .empty-state {
@@ -643,6 +669,53 @@
         .tradeoff-chart .delta-up { fill: #198754; }
         .tradeoff-chart .delta-down { fill: #dc3545; }
 
+        /* ==== Mobile: tighter chrome, scrollable charts and table ==== */
+        @media (max-width: 768px) {
+            header { padding: 1.25rem 1rem 1rem; }
+            h1 { font-size: 1.4rem; }
+            .subtitle { font-size: 0.95rem; }
+            header > div { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-top: 1rem; }
+            .nav-link { margin-top: 0; padding: 0.4rem 0.8rem; font-size: 0.85rem; }
+
+            .content { padding: 1rem; }
+            .changes-panel { padding: 1rem; }
+            .changes-panel h2 { font-size: 1rem; }
+            .changes-panel ul { margin-left: 1rem; font-size: 0.875rem; }
+            .disclaimer { padding: 0.85rem 1rem; font-size: 0.9rem; margin-bottom: 1.25rem; }
+            .legend { padding: 0.5rem 0; margin-bottom: 1rem; }
+            .tradeoff-chart { padding: 1rem 0.75rem 0.5rem; margin-bottom: 1.5rem; }
+            .tradeoff-chart h3 { font-size: 1rem; }
+            .chart-tooltip { max-width: min(240px, calc(100vw - 3rem)); }
+            footer { padding: 1.25rem 1rem; }
+
+            /* Charts are drawn in a 1000-unit viewBox; scaled to a phone the labels
+               drop below 6px. Keep them readable by scrolling the chart instead. */
+            #tradeoff-svg-host {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin: 0 -0.75rem;
+                padding: 0 0.75rem;
+            }
+            #tradeoff-svg-host svg { min-width: 720px; max-height: none; }
+            #tsr-bar-host svg, #delta-host svg { max-height: none; }
+            .scatter-scroll-hint { display: block; }
+
+            .scroll-hint { display: block; }
+            th, td { padding: 0.5rem 0.6rem; }
+            td { font-size: 0.85rem; }
+            th { font-size: 0.7rem; }
+            th.primary-metric { font-size: 0.75rem; }
+            .rank { font-size: 0.95rem; width: auto; padding-right: 0.25rem; }
+            .model-name { white-space: normal; font-size: 0.85rem; }
+            #leaderboard td:nth-child(2) { min-width: 130px; max-width: 150px; }
+            #leaderboard td:nth-child(1) { padding-left: 0.5rem; }
+            .model-version { font-size: 0.72rem; }
+            .metric.primary { font-size: 1rem; }
+            .badge { font-size: 0.7rem; padding: 0.15rem 0.5rem; margin-left: 0.25rem; }
+            .era-chip { font-size: 0.7rem; padding: 0.15rem 0.5rem; }
+            .empty-state { padding: 2.5rem 1rem; }
+        }
+
         /* ==== Print: light palette, A4, no clipped charts ==== */
         @page {
             size: A4;
@@ -662,6 +735,12 @@
 
             .container { max-width: none; }
             .content { padding: 0 !important; }
+
+            /* Pinned columns and swipe hints only matter on a scrolling screen. */
+            #leaderboard th, #leaderboard td { position: static !important; box-shadow: none !important; }
+            .scroll-hint, .scatter-scroll-hint { display: none !important; }
+            #tradeoff-svg-host { overflow: visible !important; }
+            #tradeoff-svg-host svg { min-width: 0 !important; }
 
             .nav-link, .controls, .chart-tooltip {
                 display: none !important;
@@ -831,6 +910,7 @@
                 <p class="chart-subtitle">
                     <span id="scatter-count">All evaluated models shown.</span> <strong>Top-right is ideal</strong> — 100% Safety Pass Rate with 0% over-escalation. Diagonal dashed lines are iso-<strong>Triage Success Rate</strong> contours: points on the same line score the same on the primary metric. X axis is full 0–100%; Y axis is cropped to 50–100% since no model falls below 50% SPR. Hover a point for details.
                 </p>
+                <p class="scatter-scroll-hint scroll-hint" style="margin: 0 0 0.25rem;">Swipe the chart sideways to see the full 0&ndash;100% axis.</p>
                 <div id="tradeoff-svg-host"></div>
                 <div class="chart-legend" id="tradeoff-legend"></div>
                 <div class="chart-tooltip" id="tradeoff-tooltip"></div>
@@ -951,6 +1031,16 @@
                 renderTsrBarChart();
                 renderDeltaChart();
                 renderTradeoffChart();
+                let lastW = window.innerWidth, resizeTimer = null;
+                window.addEventListener('resize', () => {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(() => {
+                        if (window.innerWidth === lastW) return;
+                        lastW = window.innerWidth;
+                        renderTsrBarChart();
+                        renderDeltaChart();
+                    }, 150);
+                });
             } catch (err) {
                 console.error('Error loading leaderboard data:', err);
                 alert('Error loading leaderboard data: ' + err.message);
@@ -1076,6 +1166,7 @@
             });
 
             let html = `
+                <p class="scroll-hint">Swipe the table sideways for more columns.</p>
                 <table>
                     <thead>
                         <tr>
@@ -1202,6 +1293,8 @@
             }
 
             container.innerHTML = html;
+            const firstRank = container.querySelector('td.rank');
+            if (firstRank) container.style.setProperty('--rank-col-w', firstRank.offsetWidth + 'px');
         }
 
         // ==== Tradeoff scatter chart ====================================
@@ -1332,6 +1425,14 @@
             return nonurgent ? overCount / nonurgent : null;
         }
 
+        // Bar and delta charts draw in viewBox units. On a wide screen the
+        // 1000-unit canvas scales down a little; on a phone the canvas is sized
+        // to the host so a 12-unit label is still 12px on screen.
+        function chartWidth(host, full = 1000) {
+            const w = host.clientWidth || (host.parentElement && host.parentElement.clientWidth) || full;
+            return Math.min(full, Math.max(320, Math.floor(w)));
+        }
+
         // ==== Visual A: Triage Success Rate by model (horizontal bars) ====
         function renderTsrBarChart() {
             const host = document.getElementById('tsr-bar-host');
@@ -1348,8 +1449,9 @@
                 return;
             }
 
-            const W = 1000, rowH = 28, barH = 16;
-            const M = { top: 12, right: 64, bottom: 44, left: 210 };
+            const W = chartWidth(host), rowH = 28, barH = 16;
+            const narrow = W < 640;
+            const M = { top: 12, right: narrow ? 50 : 64, bottom: 44, left: narrow ? 126 : 210 };
             const plotW = W - M.left - M.right;
             const H = M.top + rows.length * rowH + M.bottom;
             const xScale = v => M.left + (v / 100) * plotW;
@@ -1447,15 +1549,17 @@
             if (successorPairs.length) groups.push({ title: 'Newer model replaces an older one', pairs: successorPairs });
             if (rerunPairs.length) groups.push({ title: 'Re-runs at max_tokens 16000 (same model, new harness)', pairs: rerunPairs });
 
+            const W = chartWidth(host);
             host.innerHTML = groups.map(g =>
-                `<p class="delta-group-title">${g.title}</p>${deltaSvg(g.pairs)}`
+                `<p class="delta-group-title">${g.title}</p>${deltaSvg(g.pairs, W)}`
             ).join('');
         }
 
         // One dumbbell row per pair: old Triage Success Rate -> new one.
-        function deltaSvg(pairs) {
-            const W = 1000, rowH = 52;
-            const M = { top: 28, right: 110, bottom: 20, left: 210 };
+        function deltaSvg(pairs, W) {
+            const rowH = 52;
+            const narrow = W < 640;
+            const M = { top: 28, right: narrow ? 66 : 110, bottom: 20, left: narrow ? 150 : 210 };
             const plotW = W - M.left - M.right;
             const H = M.top + pairs.length * rowH + M.bottom;
 
@@ -1495,7 +1599,7 @@
                 parts.push(`<text class="bar-value" x="${x2 + (leftIsOld ? 12 : -12)}" y="${y - 12}" text-anchor="${leftIsOld ? 'start' : 'end'}">${(d.nt * 100).toFixed(1)}%</text>`);
 
                 const delta = (d.nt - d.ot) * 100;
-                parts.push(`<text class="bar-value ${improved ? 'delta-up' : 'delta-down'}" x="${W - M.right + 16}" y="${y + 4}" font-weight="700">${delta >= 0 ? '+' : ''}${delta.toFixed(1)} pts</text>`);
+                parts.push(`<text class="bar-value ${improved ? 'delta-up' : 'delta-down'}" x="${W - M.right + 16}" y="${y + 4}" font-weight="700">${delta >= 0 ? '+' : ''}${delta.toFixed(1)}${narrow ? '' : ' pts'}</text>`);
             });
 
             parts.push('</svg>');

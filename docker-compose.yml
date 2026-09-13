@@ -45,6 +45,7 @@ services:
 
   web:
     build: ./web
+    restart: always
     ports:
       - "${WEB_PORT:-18080}:8000"
     volumes:

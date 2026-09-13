@@ -158,6 +158,9 @@ def _render_markdown_file(path: str, title: str) -> Response:
         ],
         output_format="html5",
     )
+    # Wide markdown tables scroll inside their own box on narrow screens
+    # instead of forcing the whole page to scroll sideways.
+    body_html = body_html.replace("<table>", '<div class="table-wrap"><table>').replace("</table>", "</table></div>")
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -189,6 +192,16 @@ def _render_markdown_file(path: str, title: str) -> Response:
         .back-link {{ margin-bottom: 1rem; }}
         .render-meta {{ margin-top: 2rem; font-size: 0.85rem; color: #666; }}
         img {{ max-width: 100%; height: auto; }}
+        a, code {{ overflow-wrap: anywhere; }}
+        .table-wrap {{ overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1rem 0; }}
+        .table-wrap table {{ margin: 0; }}
+        @media (max-width: 768px) {{
+            body {{ padding: 1rem; font-size: 0.95rem; }}
+            h1 {{ font-size: 1.5rem; }}
+            h2 {{ font-size: 1.25rem; }}
+            th, td {{ padding: 0.35rem 0.5rem; font-size: 0.85rem; white-space: nowrap; }}
+            pre {{ padding: 0.75rem; font-size: 0.8rem; }}
+        }}
         /* Print: A4, light palette, tables that repeat headers and never clip. */
         @page {{ size: A4; margin: 15mm; }}
         @media print {{
