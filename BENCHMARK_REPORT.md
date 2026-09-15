@@ -374,15 +374,34 @@ Status quo, simplified: clinical practice tolerates substantial over-triage to k
 
 ### 5.4 Comparison to concurrent 2026 medical benchmarks
 
-MedSafe-Dx is one of several medical LLM benchmarks active in 2026. The most relevant concurrent work, all summarized briefly for context:
+MedSafe-Dx is one of several medical LLM benchmarks active in 2026. The table groups the most relevant ones by how close they sit to our task. Nobody else combines a hard safety gate, deterministic grading, and an over-escalation penalty; the nearest neighbours on diagnosis score accuracy or cost, and the nearest on safety use an LLM grader.
 
-- **HealthBench / HealthBench Hard** (OpenAI, May 2025) and **HealthBench Professional** (OpenAI, April 2026) — rubric-based, conversational, broad coverage. Different framing (rubric grading) but overlapping model roster.
-- **MedHELM** (Stanford CRFM, 35 benchmarks / 121 tasks) — umbrella benchmark; MedSafe-Dx-style safety stress tests are one slice within this broader framework.
-- **Medmarks** (May 2026, 30 benchmarks / 61 models) — closest in spirit to a "MedSafe-Dx-but-broader" leaderboard.
-- **ER-Reason** — emergency-room stepwise SCT reasoning; most directly comparable in scope to our triage focus.
-- **CSEDB** — explicitly dual-tracks safety + effectiveness, similar framing to ours but with different label sourcing.
+**Closest: diagnosis, triage and safety**
 
-Our differentiation remains **deterministic end-to-end scoring** (no LLM grader, no rubric authoring), at the cost of behavioral scope — see §1.5.
+| Benchmark | Publisher | Task | Scale | Grader | Data | Status |
+|---|---|---|---|---|---|---|
+| **MedSafe-Dx (this work)** | Cortico | Structured vignette to top-5 ICD-10 + escalate/routine + confidence | 250 cases | Deterministic rules, no LLM | Public, seeded from DDXPlus | Sep 2026 |
+| [SDBench + MAI-DxO](https://arxiv.org/abs/2506.22405) | Microsoft | Sequential diagnosis: ask, order tests, diagnose NEJM CPC cases | 304 cases, 56 held-out | Accuracy + cost | Partly held-out | Jun 2025 |
+| [CRAFT-MD](https://openreview.net/forum?id=Bk2nbTDtm8) | Harvard / Stanford | Conversational history-taking then diagnosis | ~2,000 vignettes | Simulated patient + LLM grader, clinician-validated | Public | 2025 |
+| [MedArena](https://medarena.ai/) | Stanford (Zou lab) | Clinician pairwise preference on real queries | 1,571+ votes | Bradley-Terry on clinician votes | Live platform | Ongoing |
+| **ER-Reason** | Academic | Emergency-room stepwise script-concordance reasoning | — | Script concordance | Public | 2025 |
+| **CSEDB** | Academic | Dual-tracks safety and effectiveness | — | Rubric | Public | 2025 |
+
+**Broad or conversational**
+
+| Benchmark | Publisher | Task | Scale | Grader | Data | Status |
+|---|---|---|---|---|---|---|
+| [HealthBench / Hard / Professional](https://openai.com/index/healthbench/) | OpenAI | Multi-turn health conversation, patient or clinician | 5,000 conversations, 48,562 rubric criteria | LLM grader against physician-written rubrics | Public | May 2025; Professional Apr 2026 |
+| [MLCR v1.1](https://www.wisedocs.ai/blogs/mlcr-v1-1-calibrating-llm-judges-for-long-context-medical-reasoning) | Wisedocs | Long-context reasoning over a claims-style case file (50–150 clinical summaries, 25k–64k tokens) | 10 cases; 60 held-out hard questions | Three LLM judges (Opus, GPT-5.5, Gemini 3.1 Pro), calibrated | Easy tiers public, hard tiers held-out | Aug 2026 |
+| [MedHELM](https://crfm.stanford.edu/helm/medhelm/) | Stanford CRFM | Umbrella: decision support, notes, patient communication, research | 121 tasks, 35 benchmarks | LLM jury + clinician consensus | Public | Jun 2025 |
+| [Medmarks](https://github.com/MedARC-AI/Medmarks) | MedARC | Umbrella of verifiable medical tasks | 30 benchmarks, 61 models | Exact match + LLM judge | Public | May 2026 |
+| [HealthAgentBench](https://github.com/microsoft/HealthAgentBench) | Microsoft | Agentic workflows: imaging, trial matching, EHR | 54 tasks | Binary task success | Public | Jun 2026 |
+
+**The rankings invert across benchmarks, and that is informative.** Claude Fable 5 leads MLCR v1.1 (64.4% overall) and, with Claude Opus 5 and GPT-6 Astra, leads HealthBench Professional. On MedSafe-Dx the same three models rank 17th to 21st of 23 (see the [September 2026 findings](/findings-2026-09.html)). They hold the best top-3 diagnostic recall on our board and the highest over-escalation. MLCR rewards complete, well-evidenced reasoning over long records; HealthBench rewards complete, well-communicated answers; MedSafe-Dx penalises caution that costs clinician time on routine cases. Same models, three different questions. A model chosen for one of these tasks should not be assumed safe or efficient on another.
+
+Two of these are vendor benchmarks, like ours. Wisedocs sells claims-documentation AI and MLCR tests the claims-review task its product performs. MedSafe-Dx tests the intake-triage task Cortico's product performs. Both are narrower than the academic umbrellas for that reason.
+
+Our differentiation remains **deterministic end-to-end scoring** (no LLM grader, no rubric authoring), at the cost of behavioral scope — see §1.5. MLCR's v1.1 release documents the cost of the alternative: its judge-agreement calibration raised Opus-to-GPT accuracy agreement from 12.9% to 62.3%, and the authors still report divergence on the hardest tiers.
 
 ---
 
