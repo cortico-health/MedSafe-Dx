@@ -110,6 +110,17 @@ We assume evaluated models may have encountered DDXPlus data during training. Th
 - **Safe uncertainty** requires avoiding false reassurance even when diagnoses are correct.
 - **Safety gates** mean that accuracy is scored only after safety checks pass; a correct diagnosis is worthless if escalation or confidence decisions fail.
 
+### 2.7 Clinician review of the methodology
+
+A clinician co-author (Namrah Mirza-Haq) reviewed the 250-case eval set. The review checked two things: whether the cases realistically represent the clinical information available in patient settings, and whether the scored findings are accurate.
+
+The review judged the methodology useful overall, with these observations:
+
+1. **Many model "mistakes" are errors a human clinician could reasonably make.** A failure on this benchmark does not always mean clinically unreasonable judgement. Scoring these cases still has value, because a decision-support tool should do better than the typical clinician on patient safety.
+2. **Models cannot ask for more information.** In practice a clinician facing an uncertain presentation would ask follow-up questions or order a test before deciding. The single-turn, no-follow-up format (§1.6) removes that step, so some errors reflect missing information rather than poor reasoning. See the context-seeking item in §7.2.
+
+This review did not re-label cases: escalation labels remain the deterministic proxy in §2.3. Direct quotes and per-case notes from the review will be added in a later revision.
+
 ---
 
 ## 3. Metrics (what we measure)
@@ -342,7 +353,7 @@ See: [Case Breakdown](/case-breakdown.html).
 
 Some test cases likely sit near a triage boundary where reasonable clinicians would disagree on the appropriate escalation decision. One driver is that DDXPlus differentials can include low-probability severe diagnoses; under our deterministic rule (“any gold diagnosis with severity ≤ 2 ⇒ escalation_required=True”), these become *escalation-required* labels even when the symptom presentation does not strongly support immediate escalation in real-world practice.
 
-**Implication:** The benchmark may contain a ceiling effect from proxy-label ambiguity, especially for escalation. This does not invalidate comparisons, but near the top of the leaderboard, small differences may reflect boundary effects as much as model behavior. A clinician review of a curated subset (e.g., missed-escalation cases from top models, plus matched controls) would materially strengthen publication claims.
+**Implication:** The benchmark may contain a ceiling effect from proxy-label ambiguity, especially for escalation. This does not invalidate comparisons, but near the top of the leaderboard, small differences may reflect boundary effects as much as model behavior. The clinician review (§2.7) agrees: many model failures are errors a human clinician could reasonably make. A per-case clinician adjudication of escalation labels, starting with the cases most models miss, would further strengthen publication claims.
 
 ### 5.2 Over-escalation and the "always escalate" strategy
 
@@ -452,6 +463,7 @@ These limitations are important when interpreting results and should be disclose
 - **Structured-output compliance confound:** missing/unparseable outputs count against safety pass rate by design. This is operationally meaningful, but it confounds “clinical reasoning failures” with “format/tooling failures” unless both are reported (coverage, format failures, and safety-on-valid).
 - **Safety-gated recall comparability:** Top‑k recall is computed on safety-passing cases; this is appropriate for safety-gated deployment settings but not directly comparable across models with very different safety pass rates. Publication reporting should include unconditional recall on valid outputs alongside conditional recall.
 - **Input representation and decoding:** the benchmark relies on decoded DDXPlus symptom/evidence codes. Any decoding loss or distortion (e.g., value semantics, negations, temporality) can systematically affect model behavior and evaluation outcomes.
+- **No context-seeking:** models must decide from a single presentation and cannot ask follow-up questions or request tests. The clinician review (§2.7) named this as the main gap between the benchmark and clinical practice.
 - **Optional follow-up suggestion is not evaluated:** models may output an “information sufficiency” flag and a single follow-up question/test for clinician review, but there is no gold-standard target for these suggestions and they are not scored. They should be treated as qualitative audit artifacts.
 - **Train/test contamination and tuning:** models may have encountered DDXPlus during training, and evaluation runs can differ by prompt/workflow/temperature unless strictly frozen and reported. We treat results as behavioral evaluations under a specified prompt/config, not as general clinical capability.
 - **Small sample size and multiplicity:** the v0 leaderboard uses N=250; rank differences of a few cases can be unstable. Stratified analyses and multiple comparisons are exploratory and should not be over-interpreted without larger test sets and replication.
@@ -485,7 +497,7 @@ The benchmark maps to SaMD (Software as a Medical Device) use cases that **infor
 
 MedSafe-Dx provides a deterministic, auditable evaluation of safety-critical diagnostic behavior on a frozen, reproducibly sampled test set. The primary value of the benchmark is comparative: it highlights which models are more likely to miss escalation, express unsafe confidence, or provide unusable outputs under standardized constraints.
 
-The remaining work needed to support publication-quality claims is primarily (1) **proxy-label validation** (triage and ambiguity) and (2) **external validity** on more realistic case formats and/or clinician-adjudicated datasets. We also recommend reporting robustness across controlled prompt/workflow variants to reduce the risk of prompt-specific artifacts.
+The methodology has had clinician review (§2.7). The remaining work needed to support publication-quality claims is primarily (1) **per-case proxy-label validation** (triage and ambiguity) and (2) **external validity** on more realistic case formats and/or clinician-adjudicated datasets. We also recommend reporting robustness across controlled prompt/workflow variants to reduce the risk of prompt-specific artifacts.
 
 ---
 

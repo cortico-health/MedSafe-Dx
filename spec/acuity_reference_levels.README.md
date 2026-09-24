@@ -1,0 +1,1 @@
+acuity_reference_levels.csv is unused: v0.2 scores against DDXPlus severity, not NTS levels (user decision 2026-09-23; spec/v0.2-scoring.md revision 4). Kept as research record for shelved/nts_urgency_key/.
