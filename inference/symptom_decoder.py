@@ -180,3 +180,184 @@ def decode_symptoms_with_audit(symptom_codes):
         "unknown_evidence_count": len(unknown_evidence_codes),
         "unknown_value_count": len(unknown_value_codes),
     }
+
+
+# ---------------------------------------------------------------------------
+# v0.2 decoder (spec/v0.2-scoring.md section 2)
+#
+# The v0 functions above stay byte-for-byte as they were, so the v0 test sets
+# decode to the prompts the published v0 runs saw. Callers pick the v0.2
+# rendering with version="v02". docs/v0.2-decoder-audit.md lists every defect
+# this fixes and every one it leaves in place.
+# ---------------------------------------------------------------------------
+
+DECODER_VERSIONS = ("v0", "v02")
+
+# DDXPlus answer values that mean "no answer" or "nowhere". v0 printed them as
+# findings ("Pain character NA", "Pain radiating to nowhere", "Feel pain somewhere").
+_V02_EMPTY_VALUES = {"V_11", "V_123"}
+
+# English value labels that mistranslate the French original (release_evidences.json).
+_V02_VALUE_TEXT = {
+    # E_54 pain character
+    "V_71": "tearing",                 # "déchirante"; v0: "heartbreaking"
+    "V_112": "lancinating (shooting)", # "lancinante"; v0: "haunting"
+    "V_154": "unpleasant",             # "pénible"; v0: "tedious"
+    "V_161": "tender",                 # "sensible"; v0: "sensitive"
+    "V_179": "stabbing",               # "un coup de couteau"; v0: "a knife stroke"
+    "V_184": "throbbing",              # "une pulsation"; v0: "a pulse"
+    "V_182": "cramping",               # "une crampe"; v0: "a cramp"
+    # body locations
+    "V_137": "palate",                 # "palais"; v0: "palace"
+    "V_105": "hamstring (R)",          # "ischio(D)"; v0: "ischio jambier(R)"
+    "V_106": "hamstring (L)",
+    "V_197": "epigastrium",            # v0: "epigastric" (adjective)
+    # E_204 travel
+    "V_8": "the Caribbean",            # v0: "Caraibes"
+}
+
+# Genital sites that contradict the patient's recorded sex. DDXPlus generates
+# testicular pain for female inguinal-hernia patients and labial lesions for male
+# HIV patients; v0.2 names the region without the sex-specific organ.
+_V02_MALE_SITES = {"V_168": "genital area (R)", "V_169": "genital area (L)", "V_155": "genitals", "V_158": "genitals"}
+_V02_FEMALE_SITES = {"V_95": "genitals (R)", "V_96": "genitals (L)", "V_146": "genitals (R)", "V_147": "genitals (L)"}
+
+# Whole-evidence renderings where the v0 text changes the meaning.
+_V02_EVIDENCE_TEXT = {
+    "E_4": "History of croup in the patient or a family member",
+    "E_202": "Barking cough",  # "toux aboyante"; the English question says "whooping cough"
+}
+
+_YES_NO = {"V_12": "yes", "V_10": "no"}
+
+# Detail questions and the question that opens them. DDXPlus fills the details
+# with default answers (0, "NA", "nowhere", "N") even when the patient answered
+# no to the opening question, and v0 printed them: a PSVT patient without pain
+# read "Feel pain somewhere, Gradual pain onset". v0.2 drops a detail code whose
+# opening question is absent. Every such code in the test split is a default value.
+_V02_DETAIL_OF = {
+    **{c: "E_53" for c in ("E_54", "E_55", "E_56", "E_57", "E_58", "E_59")},  # pain
+    **{c: "E_129" for c in ("E_130", "E_131", "E_132", "E_133", "E_134", "E_135", "E_136")},  # skin lesions
+    "E_152": "E_151",  # swelling
+}
+
+
+def _v02_value_text(evidence: dict, value_code: str, sex: str | None) -> str | None:
+    """Readable text for a categorical value, or None when the value means 'none'."""
+    if value_code in _V02_EMPTY_VALUES:
+        return None
+    s = (sex or "").lower()
+    if s in ("female", "f") and value_code in _V02_MALE_SITES:
+        return _V02_MALE_SITES[value_code]
+    if s in ("male", "m") and value_code in _V02_FEMALE_SITES:
+        return _V02_FEMALE_SITES[value_code]
+    if value_code in _V02_VALUE_TEXT:
+        return _V02_VALUE_TEXT[value_code]
+    meaning = evidence.get("value_meaning", {}).get(value_code)
+    if meaning:
+        return meaning.get("en", value_code).replace("(R)", " (R)").replace("(L)", " (L)").replace("  ", " ")
+    return None
+
+
+def _decode_symptom_v02(symptom_code: str, sex: str | None = None):
+    """
+    v0.2 rendering. Returns (description or None, is_antecedent, audit).
+    None means the code carries no finding ("nowhere", "NA") and is left out of the prompt.
+    """
+    parts = str(symptom_code).split("_@_")
+    base = parts[0]
+    value = parts[1] if len(parts) > 1 else None
+    evidence = EVIDENCE_DATA.get(base)
+    audit = {"input_code": symptom_code, "base_code": base,
+             "unknown_evidence_code": evidence is None, "unknown_value_code": False}
+    if evidence is None:
+        return (symptom_code, False, audit)
+    is_ante = bool(evidence.get("is_antecedent", False))
+
+    if value is None and base in _V02_EVIDENCE_TEXT:
+        return (_V02_EVIDENCE_TEXT[base], is_ante, audit)
+
+    if value is not None and value.isdigit():
+        n = int(value)
+        scales = {
+            "E_56": f"Pain intensity {n}/10",
+            "E_58": f"How precisely the pain can be located: {n}/10 (10 = most precise)",
+            "E_59": f"How fast the pain appeared: {n}/10 (10 = fastest)",
+            "E_132": f"Skin lesions raised: {n}/10",
+            "E_134": f"Pain caused by the skin lesions: {n}/10",
+            "E_136": f"Itching of the skin lesions: {n}/10",
+        }
+        if base in scales:
+            return (scales[base], is_ante, audit)
+
+    if value is not None:
+        if value not in evidence.get("value_meaning", {}) and not value.isdigit():
+            audit["unknown_value_code"] = True
+        if base == "E_204":
+            if value == "V_10":
+                return ("No travel outside the country in the last 4 weeks", True, audit)
+            text = _v02_value_text(evidence, value, sex) or value
+            return (f"Travel outside the country in the last 4 weeks: {text}", True, audit)
+        if base in ("E_131", "E_135"):
+            yn = _YES_NO.get(value, value)
+            label = "Skin lesions peel off" if base == "E_131" else "Skin lesion larger than 1 cm"
+            return (f"{label}: {yn}", is_ante, audit)
+        if base == "E_57" and value == "V_123":
+            return ("Pain does not radiate", is_ante, audit)
+        text = _v02_value_text(evidence, value, sex)
+        if text is None:
+            return (None, is_ante, audit)
+        templates = {
+            "E_54": "Pain character: {}",
+            "E_55": "Pain location: {}",
+            "E_57": "Pain radiates to: {}",
+            "E_130": "Skin lesion colour: {}",
+            "E_133": "Skin lesion location: {}",
+            "E_152": "Swelling location: {}",
+        }
+        if base in templates:
+            return (templates[base].format(text), is_ante, audit)
+
+    # Binary evidences, and any code the tables above do not cover: the v0 rendering.
+    description, is_ante_v0, audit_v0 = _decode_symptom_with_audit(symptom_code)
+    audit_v0["unknown_evidence_code"] = audit["unknown_evidence_code"]
+    return (description, is_ante_v0, audit_v0)
+
+
+def decode_symptoms_versioned(symptom_codes, version: str = "v0", sex: str | None = None):
+    """
+    Decode codes with the chosen decoder. Returns (active_symptoms, antecedents, audit),
+    the same shape as decode_symptoms_with_audit. version="v0" reproduces v0 exactly
+    (sex is ignored); version="v02" applies the v0.2 fixes.
+    """
+    if version == "v0":
+        return decode_symptoms_with_audit(symptom_codes)
+    if version != "v02":
+        raise ValueError(f"unknown decoder version {version!r}; expected one of {DECODER_VERSIONS}")
+    active, antecedents = [], []
+    unknown_ev, unknown_val, dropped, orphans = [], [], [], []
+    present = {str(c).split("_@_")[0] for c in symptom_codes or []}
+    for code in symptom_codes or []:
+        parent = _V02_DETAIL_OF.get(str(code).split("_@_")[0])
+        if parent and parent not in present:
+            orphans.append(str(code))
+            continue
+        text, is_ante, audit = _decode_symptom_v02(code, sex)
+        if audit.get("unknown_evidence_code"):
+            unknown_ev.append(str(code))
+        if audit.get("unknown_value_code"):
+            unknown_val.append(str(code))
+        if not text:
+            dropped.append(str(code))
+            continue
+        (antecedents if is_ante else active).append(text)
+    return active, antecedents, {
+        "decoder_version": version,
+        "total_codes": len(symptom_codes or []),
+        "unknown_evidence_codes": unknown_ev[:25],
+        "unknown_value_codes": unknown_val[:25],
+        "unknown_evidence_count": len(unknown_ev),
+        "unknown_value_count": len(unknown_val),
+        "dropped_empty_codes": dropped,
+        "dropped_orphan_detail_codes": orphans,
+    }

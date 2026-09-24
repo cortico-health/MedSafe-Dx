@@ -1,0 +1,627 @@
+code_prefix,category
+K92,GI haemorrhage
+K25.0,GI haemorrhage
+K25.2,GI haemorrhage
+K25.4,GI haemorrhage
+K25.6,GI haemorrhage
+K26.0,GI haemorrhage
+K26.2,GI haemorrhage
+K26.4,GI haemorrhage
+K26.6,GI haemorrhage
+K27.0,GI haemorrhage
+K27.2,GI haemorrhage
+K27.4,GI haemorrhage
+K27.6,GI haemorrhage
+K28.0,GI haemorrhage
+K28.4,GI haemorrhage
+I85.01,GI haemorrhage
+I85.11,GI haemorrhage
+K62.5,GI haemorrhage
+K25,Peptic ulcer and gastritis
+K26,Peptic ulcer and gastritis
+K27,Peptic ulcer and gastritis
+K28,Peptic ulcer and gastritis
+K29,Peptic ulcer and gastritis
+K30,Peptic ulcer and gastritis
+K31,Peptic ulcer and gastritis
+K20,Oesophageal disease (other)
+K22,Oesophageal disease (other)
+K23,Oesophageal disease (other)
+I85,Oesophageal disease (other)
+I60,Intracranial haemorrhage
+I61,Intracranial haemorrhage
+I62,Intracranial haemorrhage
+I63,Ischaemic stroke and TIA
+I64,Ischaemic stroke and TIA
+I65,Ischaemic stroke and TIA
+I66,Ischaemic stroke and TIA
+I67,Ischaemic stroke and TIA
+G45,Ischaemic stroke and TIA
+G46,Ischaemic stroke and TIA
+G00,CNS infection
+G01,CNS infection
+G02,CNS infection
+G03,CNS infection
+G04,CNS infection
+G05,CNS infection
+G06,CNS infection
+G07,CNS infection
+A39,CNS infection
+A80,CNS infection
+A81,CNS infection
+A82,CNS infection
+A83,CNS infection
+A84,CNS infection
+A85,CNS infection
+A86,CNS infection
+A87,CNS infection
+A88,CNS infection
+A89,CNS infection
+B00.3,CNS infection
+B00.4,CNS infection
+A40,Sepsis
+A41,Sepsis
+A48.3,Sepsis
+R65.1,Sepsis
+R65.2,Sepsis
+R78.81,Sepsis
+R57,Shock (non-anaphylactic)
+I71,Aortic aneurysm and dissection
+I72,Aortic aneurysm and dissection
+I33,Endocarditis
+I38,Endocarditis
+I39,Endocarditis
+I50,Heart failure
+I11.0,Heart failure
+I13.0,Heart failure
+I13.2,Heart failure
+I42,Cardiomyopathy and other myocardial disease
+I43,Cardiomyopathy and other myocardial disease
+I51,Cardiomyopathy and other myocardial disease
+I5A,Cardiomyopathy and other myocardial disease
+I31,Pericardial effusion and tamponade
+I05,Valvular heart disease
+I06,Valvular heart disease
+I07,Valvular heart disease
+I08,Valvular heart disease
+I34,Valvular heart disease
+I35,Valvular heart disease
+I36,Valvular heart disease
+I37,Valvular heart disease
+I44,Other arrhythmia and cardiac arrest
+I45,Other arrhythmia and cardiac arrest
+I46,Other arrhythmia and cardiac arrest
+I49,Other arrhythmia and cardiac arrest
+I47.0,Other arrhythmia and cardiac arrest
+I47.2,Other arrhythmia and cardiac arrest
+I48.3,Other arrhythmia and cardiac arrest
+I48.4,Other arrhythmia and cardiac arrest
+I48.92,Other arrhythmia and cardiac arrest
+I10,Hypertension
+I11,Hypertension
+I12,Hypertension
+I13,Hypertension
+I15,Hypertension
+I16,Hypertension
+I24,Other ischaemic heart disease
+I25,Other ischaemic heart disease
+I27,Pulmonary hypertension and cor pulmonale
+I80,Venous thromboembolism (DVT)
+I82,Venous thromboembolism (DVT)
+I83,Peripheral venous and lymphatic disease
+I86,Peripheral venous and lymphatic disease
+I87,Peripheral venous and lymphatic disease
+I89,Peripheral venous and lymphatic disease
+I73,Peripheral arterial disease
+I74,Peripheral arterial disease
+U07,COVID-19
+U09,COVID-19
+K85,Pancreatitis
+K86,Pancreatitis
+K80,Biliary disease
+K81,Biliary disease
+K82,Biliary disease
+K83,Biliary disease
+K70,Liver disease and hepatitis
+K71,Liver disease and hepatitis
+K72,Liver disease and hepatitis
+K73,Liver disease and hepatitis
+K74,Liver disease and hepatitis
+K75,Liver disease and hepatitis
+K76,Liver disease and hepatitis
+K77,Liver disease and hepatitis
+B15,Liver disease and hepatitis
+B16,Liver disease and hepatitis
+B17,Liver disease and hepatitis
+B18,Liver disease and hepatitis
+B19,Liver disease and hepatitis
+K35,Appendicitis and bowel obstruction
+K36,Appendicitis and bowel obstruction
+K37,Appendicitis and bowel obstruction
+K56,Appendicitis and bowel obstruction
+K50,Inflammatory and diverticular bowel disease
+K51,Inflammatory and diverticular bowel disease
+K52,Inflammatory and diverticular bowel disease
+K57,Inflammatory and diverticular bowel disease
+K58,Inflammatory and diverticular bowel disease
+K59,Inflammatory and diverticular bowel disease
+A00,Gastroenteritis and foodborne infection
+A01,Gastroenteritis and foodborne infection
+A02,Gastroenteritis and foodborne infection
+A03,Gastroenteritis and foodborne infection
+A04,Gastroenteritis and foodborne infection
+A05,Gastroenteritis and foodborne infection
+A06,Gastroenteritis and foodborne infection
+A07,Gastroenteritis and foodborne infection
+A08,Gastroenteritis and foodborne infection
+A09,Gastroenteritis and foodborne infection
+A05.1,Tetanus and botulism
+A33,Tetanus and botulism
+A34,Tetanus and botulism
+A35,Tetanus and botulism
+K40,Other hernia
+K41,Other hernia
+K42,Other hernia
+K43,Other hernia
+K44,Other hernia
+K45,Other hernia
+K46,Other hernia
+L50,Urticaria and angioedema
+T78.3,Urticaria and angioedema
+T78.1,Urticaria and angioedema
+T78.4,Urticaria and angioedema
+T78.8,Urticaria and angioedema
+L20,Dermatitis and eczema
+L21,Dermatitis and eczema
+L22,Dermatitis and eczema
+L23,Dermatitis and eczema
+L24,Dermatitis and eczema
+L25,Dermatitis and eczema
+L27,Dermatitis and eczema
+L28,Dermatitis and eczema
+L29,Dermatitis and eczema
+L30,Dermatitis and eczema
+L01,Skin and soft tissue infection
+L02,Skin and soft tissue infection
+L03,Skin and soft tissue infection
+L08,Skin and soft tissue infection
+L,Other skin disease
+J36,Peritonsillar and deep neck abscess
+J39.0,Peritonsillar and deep neck abscess
+J39.1,Peritonsillar and deep neck abscess
+K12.2,Peritonsillar and deep neck abscess
+J02.0,Streptococcal infection
+A38,Streptococcal infection
+A49.1,Streptococcal infection
+J35,Chronic tonsil and adenoid disease
+J37,Other upper airway disease
+J38,Other upper airway disease
+J39,Other upper airway disease
+J31,Non-allergic rhinitis and nasal disease
+J33,Non-allergic rhinitis and nasal disease
+J34,Non-allergic rhinitis and nasal disease
+J43,Emphysema
+J96,Respiratory failure
+J90,Pleural effusion and empyema
+J91,Pleural effusion and empyema
+J86,Pleural effusion and empyema
+J94,Pleural effusion and empyema
+J80,Interstitial and other lung disease
+J82,Interstitial and other lung disease
+J84,Interstitial and other lung disease
+J85,Interstitial and other lung disease
+J98,Interstitial and other lung disease
+J60,Interstitial and other lung disease
+J61,Interstitial and other lung disease
+J62,Interstitial and other lung disease
+J63,Interstitial and other lung disease
+J64,Interstitial and other lung disease
+J65,Interstitial and other lung disease
+J66,Interstitial and other lung disease
+J67,Interstitial and other lung disease
+J68,Interstitial and other lung disease
+J69,Aspiration pneumonitis
+J70,Interstitial and other lung disease
+E84,Cystic fibrosis
+T17,Foreign body in airway
+G43,Migraine and other headache
+G44,Migraine and other headache
+R51,Migraine and other headache
+G50,Cranial nerve disorders
+G51,Cranial nerve disorders
+G52,Cranial nerve disorders
+G53,Cranial nerve disorders
+G35,Demyelinating disease and myelitis
+G36,Demyelinating disease and myelitis
+G37,Demyelinating disease and myelitis
+G20,Parkinsonism and other movement disorders
+G21,Parkinsonism and other movement disorders
+G23,Parkinsonism and other movement disorders
+G24,Parkinsonism and other movement disorders
+G25,Parkinsonism and other movement disorders
+G26,Parkinsonism and other movement disorders
+G40,Seizure disorder
+G41,Seizure disorder
+R56,Seizure disorder
+G10,Other neurological disease
+G11,Other neurological disease
+G12,Other neurological disease
+G13,Other neurological disease
+G30,Other neurological disease
+G31,Other neurological disease
+G32,Other neurological disease
+G47,Other neurological disease
+G54,Other neuromuscular and peripheral nerve disease
+G55,Other neuromuscular and peripheral nerve disease
+G56,Other neuromuscular and peripheral nerve disease
+G57,Other neuromuscular and peripheral nerve disease
+G58,Other neuromuscular and peripheral nerve disease
+G59,Other neuromuscular and peripheral nerve disease
+G60,Other neuromuscular and peripheral nerve disease
+G61,Other neuromuscular and peripheral nerve disease
+G62,Other neuromuscular and peripheral nerve disease
+G63,Other neuromuscular and peripheral nerve disease
+G64,Other neuromuscular and peripheral nerve disease
+G65,Other neuromuscular and peripheral nerve disease
+G70,Other neuromuscular and peripheral nerve disease
+G71,Other neuromuscular and peripheral nerve disease
+G72,Other neuromuscular and peripheral nerve disease
+G73,Other neuromuscular and peripheral nerve disease
+G80,Other neuromuscular and peripheral nerve disease
+G81,Other neuromuscular and peripheral nerve disease
+G82,Other neuromuscular and peripheral nerve disease
+G83,Other neuromuscular and peripheral nerve disease
+G90,Other neurological disease
+G91,Other neurological disease
+G93,Other neurological disease
+G95,Other neurological disease
+G96,Other neurological disease
+G97,Other neurological disease
+G98,Other neurological disease
+H10,Conjunctivitis
+H40,Glaucoma
+H,Other eye and ear disease
+H60,Otitis externa
+H61,Otitis externa
+H62,Otitis externa
+H65,Other eye and ear disease
+H66,Other eye and ear disease
+H70,Mastoiditis and other middle ear disease
+H72,Mastoiditis and other middle ear disease
+H73,Mastoiditis and other middle ear disease
+H74,Mastoiditis and other middle ear disease
+H81,Vestibular and hearing disorders
+H82,Vestibular and hearing disorders
+H83,Vestibular and hearing disorders
+H90,Vestibular and hearing disorders
+H91,Vestibular and hearing disorders
+H92,Vestibular and hearing disorders
+H93,Vestibular and hearing disorders
+E00,Thyroid disease
+E01,Thyroid disease
+E02,Thyroid disease
+E03,Thyroid disease
+E04,Thyroid disease
+E05,Thyroid disease
+E06,Thyroid disease
+E07,Thyroid disease
+E,Endocrine, metabolic and electrolyte disorders
+M05,Inflammatory arthritis and joint disease
+M06,Inflammatory arthritis and joint disease
+M07,Inflammatory arthritis and joint disease
+M08,Inflammatory arthritis and joint disease
+M10,Inflammatory arthritis and joint disease
+M11,Inflammatory arthritis and joint disease
+M12,Inflammatory arthritis and joint disease
+M13,Inflammatory arthritis and joint disease
+M14,Inflammatory arthritis and joint disease
+M15,Inflammatory arthritis and joint disease
+M16,Inflammatory arthritis and joint disease
+M17,Inflammatory arthritis and joint disease
+M18,Inflammatory arthritis and joint disease
+M19,Inflammatory arthritis and joint disease
+M25,Inflammatory arthritis and joint disease
+M30,Systemic vasculitis
+M31,Systemic vasculitis
+M33,Other connective tissue disease
+M34,Other connective tissue disease
+M35,Other connective tissue disease
+M36,Other connective tissue disease
+M45,Spondyloarthritis and spine disease
+M46,Spondyloarthritis and spine disease
+M47,Spondyloarthritis and spine disease
+M48,Spondyloarthritis and spine disease
+M50,Spondyloarthritis and spine disease
+M51,Spondyloarthritis and spine disease
+M53,Spondyloarthritis and spine disease
+M54,Musculoskeletal pain (chest wall, back, soft tissue)
+M60,Musculoskeletal pain (chest wall, back, soft tissue)
+M62,Musculoskeletal pain (chest wall, back, soft tissue)
+M63,Musculoskeletal pain (chest wall, back, soft tissue)
+M65,Musculoskeletal pain (chest wall, back, soft tissue)
+M70,Musculoskeletal pain (chest wall, back, soft tissue)
+M75,Musculoskeletal pain (chest wall, back, soft tissue)
+M76,Musculoskeletal pain (chest wall, back, soft tissue)
+M77,Musculoskeletal pain (chest wall, back, soft tissue)
+M79,Musculoskeletal pain (chest wall, back, soft tissue)
+M94,Musculoskeletal pain (chest wall, back, soft tissue)
+M95,Musculoskeletal pain (chest wall, back, soft tissue)
+M80,Osteoporosis and bone disease
+M81,Osteoporosis and bone disease
+M84,Osteoporosis and bone disease
+M85,Osteoporosis and bone disease
+M86,Osteoporosis and bone disease
+M87,Osteoporosis and bone disease
+M89,Osteoporosis and bone disease
+M,Other musculoskeletal
+B00,Herpes and viral exanthem
+B01,Herpes and viral exanthem
+B02,Herpes and viral exanthem
+B05,Herpes and viral exanthem
+B06,Herpes and viral exanthem
+B08,Herpes and viral exanthem
+B09,Herpes and viral exanthem
+B27,Infectious mononucleosis
+A50,Sexually transmitted infection
+A51,Sexually transmitted infection
+A52,Sexually transmitted infection
+A53,Sexually transmitted infection
+A54,Sexually transmitted infection
+A55,Sexually transmitted infection
+A56,Sexually transmitted infection
+A57,Sexually transmitted infection
+A58,Sexually transmitted infection
+A59,Sexually transmitted infection
+A60,Sexually transmitted infection
+A63,Sexually transmitted infection
+A64,Sexually transmitted infection
+B50,Malaria and tropical infection
+B51,Malaria and tropical infection
+B52,Malaria and tropical infection
+B53,Malaria and tropical infection
+B54,Malaria and tropical infection
+B55,Malaria and tropical infection
+B56,Malaria and tropical infection
+B60,Malaria and tropical infection
+B65,Malaria and tropical infection
+B66,Malaria and tropical infection
+B67,Malaria and tropical infection
+B68,Malaria and tropical infection
+B69,Malaria and tropical infection
+B70,Malaria and tropical infection
+B71,Malaria and tropical infection
+B72,Malaria and tropical infection
+B73,Malaria and tropical infection
+B74,Malaria and tropical infection
+B75,Malaria and tropical infection
+B76,Malaria and tropical infection
+B77,Malaria and tropical infection
+B78,Malaria and tropical infection
+B79,Malaria and tropical infection
+B80,Malaria and tropical infection
+B81,Malaria and tropical infection
+B82,Malaria and tropical infection
+B83,Malaria and tropical infection
+A20,Zoonotic and rickettsial infection
+A21,Zoonotic and rickettsial infection
+A22,Zoonotic and rickettsial infection
+A23,Zoonotic and rickettsial infection
+A24,Zoonotic and rickettsial infection
+A25,Zoonotic and rickettsial infection
+A26,Zoonotic and rickettsial infection
+A27,Zoonotic and rickettsial infection
+A28,Zoonotic and rickettsial infection
+A68,Zoonotic and rickettsial infection
+A69,Zoonotic and rickettsial infection
+A70,Zoonotic and rickettsial infection
+A75,Zoonotic and rickettsial infection
+A77,Zoonotic and rickettsial infection
+A78,Zoonotic and rickettsial infection
+A79,Zoonotic and rickettsial infection
+A90,Viral haemorrhagic and arboviral fever
+A91,Viral haemorrhagic and arboviral fever
+A92,Viral haemorrhagic and arboviral fever
+A93,Viral haemorrhagic and arboviral fever
+A94,Viral haemorrhagic and arboviral fever
+A95,Viral haemorrhagic and arboviral fever
+A96,Viral haemorrhagic and arboviral fever
+A97,Viral haemorrhagic and arboviral fever
+A98,Viral haemorrhagic and arboviral fever
+A99,Viral haemorrhagic and arboviral fever
+A30,Other bacterial infection
+A31,Other bacterial infection
+A32,Other bacterial infection
+A36,Other bacterial infection
+A42,Other bacterial infection
+A43,Other bacterial infection
+A44,Other bacterial infection
+A46,Other bacterial infection
+A48,Other bacterial infection
+A49,Other bacterial infection
+B35,Fungal infection
+B36,Fungal infection
+B37,Fungal infection
+B38,Fungal infection
+B39,Fungal infection
+B40,Fungal infection
+B41,Fungal infection
+B42,Fungal infection
+B43,Fungal infection
+B44,Fungal infection
+B45,Fungal infection
+B46,Fungal infection
+B47,Fungal infection
+B48,Fungal infection
+B49,Fungal infection
+B25,Other viral infection
+B26,Other viral infection
+B30,Other viral infection
+B33,Other viral infection
+B34,Other viral infection
+B94,Other viral infection
+B95,Infectious agent codes (B95-B97)
+B96,Infectious agent codes (B95-B97)
+B97,Infectious agent codes (B95-B97)
+B99,Other viral infection
+C81,Lymphoma and leukaemia
+C82,Lymphoma and leukaemia
+C83,Lymphoma and leukaemia
+C84,Lymphoma and leukaemia
+C85,Lymphoma and leukaemia
+C86,Lymphoma and leukaemia
+C88,Lymphoma and leukaemia
+C90,Lymphoma and leukaemia
+C91,Lymphoma and leukaemia
+C92,Lymphoma and leukaemia
+C93,Lymphoma and leukaemia
+C94,Lymphoma and leukaemia
+C95,Lymphoma and leukaemia
+C96,Lymphoma and leukaemia
+C,Other malignant neoplasm
+D0,Benign or uncertain neoplasm
+D1,Benign or uncertain neoplasm
+D2,Benign or uncertain neoplasm
+D3,Benign or uncertain neoplasm
+D4,Benign or uncertain neoplasm
+D65,Coagulation and platelet disorders
+D66,Coagulation and platelet disorders
+D67,Coagulation and platelet disorders
+D68,Coagulation and platelet disorders
+D69,Coagulation and platelet disorders
+D70,Other blood disorders
+D71,Other blood disorders
+D72,Other blood disorders
+D73,Other blood disorders
+D74,Other blood disorders
+D75,Other blood disorders
+D76,Other blood disorders
+D77,Other blood disorders
+D80,Immune disorders
+D81,Immune disorders
+D82,Immune disorders
+D83,Immune disorders
+D84,Immune disorders
+D89,Immune disorders
+N00,Renal disease
+N01,Renal disease
+N02,Renal disease
+N03,Renal disease
+N04,Renal disease
+N05,Renal disease
+N06,Renal disease
+N07,Renal disease
+N08,Renal disease
+N17,Renal disease
+N18,Renal disease
+N19,Renal disease
+N25,Renal disease
+N26,Renal disease
+N27,Renal disease
+N28,Renal disease
+N10,Urinary tract infection
+N11,Urinary tract infection
+N12,Urinary tract infection
+N13,Urinary tract infection
+N15,Urinary tract infection
+N30,Urinary tract infection
+N34,Urinary tract infection
+N39,Urinary tract infection
+N20,Renal colic and stones
+N21,Renal colic and stones
+N22,Renal colic and stones
+N23,Renal colic and stones
+N40,Male genital disorders
+N41,Male genital disorders
+N42,Male genital disorders
+N43,Male genital disorders
+N44,Male genital disorders
+N45,Male genital disorders
+N46,Male genital disorders
+N47,Male genital disorders
+N48,Male genital disorders
+N49,Male genital disorders
+N50,Male genital disorders
+N,Gynaecological and other genitourinary
+O,Obstetric
+F,Other mental health
+T36,Poisoning and adverse drug effects
+T37,Poisoning and adverse drug effects
+T38,Poisoning and adverse drug effects
+T39,Poisoning and adverse drug effects
+T40,Poisoning and adverse drug effects
+T41,Poisoning and adverse drug effects
+T42,Poisoning and adverse drug effects
+T43,Poisoning and adverse drug effects
+T44,Poisoning and adverse drug effects
+T45,Poisoning and adverse drug effects
+T46,Poisoning and adverse drug effects
+T47,Poisoning and adverse drug effects
+T48,Poisoning and adverse drug effects
+T49,Poisoning and adverse drug effects
+T50,Poisoning and adverse drug effects
+T88,Poisoning and adverse drug effects
+T51,Toxic effects and environmental
+T52,Toxic effects and environmental
+T53,Toxic effects and environmental
+T54,Toxic effects and environmental
+T55,Toxic effects and environmental
+T56,Toxic effects and environmental
+T57,Toxic effects and environmental
+T58,Toxic effects and environmental
+T59,Toxic effects and environmental
+T60,Toxic effects and environmental
+T61,Toxic effects and environmental
+T62,Toxic effects and environmental
+T63,Toxic effects and environmental
+T64,Toxic effects and environmental
+T65,Toxic effects and environmental
+T66,Toxic effects and environmental
+T67,Toxic effects and environmental
+T68,Toxic effects and environmental
+T69,Toxic effects and environmental
+T70,Toxic effects and environmental
+T71,Toxic effects and environmental
+T73,Toxic effects and environmental
+T74,Toxic effects and environmental
+T75,Toxic effects and environmental
+T76,Toxic effects and environmental
+T78,Urticaria and angioedema
+T79,Injury and trauma
+T80,Complications of care
+T81,Complications of care
+T82,Complications of care
+T83,Complications of care
+T84,Complications of care
+T85,Complications of care
+T86,Complications of care
+T87,Complications of care
+S,Injury and trauma
+T0,Injury and trauma
+T1,Injury and trauma
+T2,Injury and trauma
+T3,Injury and trauma
+K00,Dental and oral disease
+K01,Dental and oral disease
+K02,Dental and oral disease
+K03,Dental and oral disease
+K04,Dental and oral disease
+K05,Dental and oral disease
+K06,Dental and oral disease
+K07,Dental and oral disease
+K08,Dental and oral disease
+K09,Dental and oral disease
+K10,Dental and oral disease
+K11,Dental and oral disease
+K12,Dental and oral disease
+K13,Dental and oral disease
+K14,Dental and oral disease
+K,Other digestive disease
+Q,Congenital
+Z,Status and history codes (Z)
+R,Symptoms and signs (R chapter)
+J,Other respiratory disease
+I,Other circulatory disease
+A,Other infectious disease
+B,Other infectious disease
+G,Other neurological disease
+D,Other blood or immune disorder

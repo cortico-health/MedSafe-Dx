@@ -9,6 +9,8 @@ import re
 import argparse
 from pathlib import Path
 from typing import Dict, Any
+import fcntl
+import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
 
@@ -95,16 +97,21 @@ def clean_model_json(response: str) -> str:
     cleaned = strip_trailing_commas(cleaned)
     return cleaned
 
-from inference.openrouter import call_openrouter, load_cases, write_predictions
+from inference.openrouter import call_openrouter, call_openrouter_detailed, load_cases, write_predictions
 from inference.codex_cli import call_codex
 from inference.prompt import (
     OUTPUT_SCHEMA_V4,
+    OUTPUT_SCHEMA_V5,
     SYSTEM_PROMPT_CHART_REVIEW_V3,
     SYSTEM_PROMPT_INTAKE_V3,
+    SYSTEM_PROMPT_INTAKE_V5,
     USER_PROMPT_TEMPLATE_CHART_REVIEW_V3,
     USER_PROMPT_TEMPLATE_INTAKE_V3,
+    USER_PROMPT_TEMPLATE_INTAKE_V5,
 )
-from inference.symptom_decoder import decode_symptoms, decode_symptoms_with_audit
+from inference.symptom_decoder import decode_symptoms, decode_symptoms_with_audit, decode_symptoms_versioned
+
+DEFAULT_RUN_CONFIG_V02 = Path(__file__).parent / "run_config_v02.json"
 
 
 def get_system_prompt(workflow: str) -> str:
@@ -155,6 +162,155 @@ def format_case_for_prompt(case: Dict[str, Any], workflow: str) -> str:
         red_flags=red_flags_str,
         schema=OUTPUT_SCHEMA_V4,
     )
+
+
+# ---------------------------------------------------------------------------
+# v0.2 (prompt v5): prompt, run configuration and per-prediction metadata
+# ---------------------------------------------------------------------------
+
+
+def format_case_for_prompt_v5(case: Dict[str, Any], decoder_version: str = "v02") -> str:
+    """Render one case as the v5 user prompt, with the v0.2 decoder by default."""
+    active, antecedents, audit = decode_symptoms_versioned(
+        case.get("presenting_symptoms", []), version=decoder_version, sex=case.get("sex")
+    )
+    case["_input_decode_audit"] = {"symptoms": audit}
+    return USER_PROMPT_TEMPLATE_INTAKE_V5.format(
+        age=case.get("age", "unknown"),
+        sex=case.get("sex", "unknown"),
+        symptoms=", ".join(active) if active else "none",
+        history=", ".join(antecedents) if antecedents else "none",
+        schema=OUTPUT_SCHEMA_V5,
+    )
+
+
+def build_messages_v5(case: Dict[str, Any], decoder_version: str = "v02") -> list[Dict[str, str]]:
+    return [
+        {"role": "system", "content": SYSTEM_PROMPT_INTAKE_V5},
+        {"role": "user", "content": format_case_for_prompt_v5(case, decoder_version)},
+    ]
+
+
+def load_run_config(path) -> Dict[str, Any]:
+    with open(path) as f:
+        return json.load(f)
+
+
+def resolve_run_settings(
+    config: Dict[str, Any],
+    model: str,
+    max_tokens: int | None = None,
+    reasoning_effort: str | None = None,
+    temperature: float | None = None,
+) -> Dict[str, Any]:
+    """
+    Settings for one model under the v0.2 run config. A CLI value that differs from
+    the config, or a model the config does not list, sets config_overridden, so the
+    row carries a flag (spec section 9: same configuration for every row, or a flag).
+    """
+    overridden = []
+    models = config.get("models", {})
+    if model in models:
+        effort = models[model].get("reasoning_effort")
+    else:
+        effort = config.get("default_reasoning_effort")
+        overridden.append("model_not_in_config")
+    settings = {
+        "config_version": config.get("config_version"),
+        "prompt_version": config.get("prompt_version", "v5"),
+        "decoder_version": config.get("decoder_version", "v02"),
+        "temperature": config.get("temperature", 0.0),
+        "max_tokens": config["max_tokens"],
+        "reasoning_effort": effort,
+        "empty_or_truncated_retries": int(config.get("empty_or_truncated_retries", 1)),
+    }
+    for key, value in (("max_tokens", max_tokens), ("reasoning_effort", reasoning_effort), ("temperature", temperature)):
+        if value is not None and value != settings[key]:
+            settings[key] = value
+            overridden.append(key)
+    settings["config_overridden"] = overridden
+    return settings
+
+
+def _needs_retry(meta: Dict[str, Any]) -> str | None:
+    """Reason to retry a response under the v0.2 rule, or None."""
+    if not (meta.get("content") or "").strip():
+        return "empty"
+    if meta.get("finish_reason") == "length":
+        return "truncated"
+    return None
+
+
+def call_model_v5(messages, model: str, settings: Dict[str, Any], backend: str = "openrouter") -> tuple[Dict[str, Any], list]:
+    """
+    Call the model with one retry on an empty or truncated response (settings
+    empty_or_truncated_retries). Returns (final attempt metadata, all attempts).
+    """
+    attempts = []
+    for i in range(settings["empty_or_truncated_retries"] + 1):
+        if backend == "codex":
+            text = call_codex(model=model, messages=messages, reasoning_effort=settings["reasoning_effort"] or "medium")
+            meta = {"content": text, "finish_reason": None, "native_finish_reason": None, "provider": "codex_cli",
+                    "request_id": None, "model_served": None, "usage": None, "error": None if text else "empty_content"}
+        else:
+            meta = call_openrouter_detailed(
+                model=model,
+                messages=messages,
+                temperature=settings["temperature"],
+                max_tokens=settings["max_tokens"],
+                reasoning_effort=settings["reasoning_effort"],
+                empty_content_retries=0,
+            )
+        reason = _needs_retry(meta)
+        # A failed request (HTTP error after the transport retries) is not a response,
+        # so it does not use the empty-or-truncated retry.
+        if meta.get("error") not in (None, "empty_content"):
+            reason = None
+        attempts.append({k: v for k, v in meta.items() if k != "content"} | {"problem": reason})
+        if reason is None:
+            break
+    return meta, attempts
+
+
+def run_inference_on_case_v5(
+    case: Dict[str, Any],
+    model: str,
+    settings: Dict[str, Any],
+    backend: str = "openrouter",
+) -> Dict[str, Any]:
+    """Run one case with prompt v5 and record the response metadata beside the prediction."""
+    messages = build_messages_v5(case, settings["decoder_version"])
+    meta, attempts = call_model_v5(messages, model, settings, backend)
+    record = {
+        "finish_reason": meta.get("finish_reason"),
+        "native_finish_reason": meta.get("native_finish_reason"),
+        "provider": meta.get("provider"),
+        "request_id": meta.get("request_id"),
+        "model_served": meta.get("model_served"),
+        "usage": meta.get("usage"),
+        "attempts": attempts,
+        "prompt_version": settings["prompt_version"],
+        "decoder_version": settings["decoder_version"],
+        "input_decode_audit": case.get("_input_decode_audit"),
+    }
+    response = meta.get("content")
+    base = {"case_id": case["case_id"], "workflow": "intake"}
+    if not (response or "").strip():
+        return base | {"error": meta.get("error") or "api_failure", "raw_response": response} | record
+    if meta.get("finish_reason") == "length":
+        # Truncated after the retry: keep the text and try to parse it, but mark it.
+        record["truncated"] = True
+    try:
+        try:
+            prediction = json.loads(response)
+        except json.JSONDecodeError:
+            prediction = json.loads(clean_model_json(response))
+        if not isinstance(prediction, dict):
+            raise json.JSONDecodeError("top-level JSON is not an object", response, 0)
+    except json.JSONDecodeError as e:
+        print(f"Failed to parse JSON for case {case['case_id']}: {e}")
+        return base | {"error": "json_parse_failure", "raw_response": response} | record
+    return prediction | base | {"raw_response": response} | record
 
 
 def run_inference_on_case(
@@ -222,6 +378,24 @@ def run_inference_on_case(
         }
 
 
+def acquire_output_lock(output_path: Path):
+    """Take an exclusive lock on <output>.lock, or exit if another run holds it."""
+    lock_path = output_path.with_name(output_path.name + ".lock")
+    fd = open(lock_path, "w")
+    try:
+        fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        print(
+            f"ERROR: another inference run is writing {output_path} (lock {lock_path} is held). "
+            "Wait for it to finish; do not start a second run on the same output.",
+            file=sys.stderr,
+        )
+        raise SystemExit(2)
+    fd.write(f"pid {os.getpid()}\n")
+    fd.flush()
+    return fd
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -260,8 +434,8 @@ def main():
     parser.add_argument(
         "--max-tokens",
         type=int,
-        default=2000,
-        help="Output token cap. Reasoning models spend this budget on chain-of-thought first; a 2000 cap can starve content and cause spurious format failures (see docs/RUNS.md 2026-09-08).",
+        default=None,
+        help="Output token cap (v4 default 2000; v5 takes it from the run config, 16000). Reasoning models spend this budget on chain-of-thought first; a 2000 cap can starve content and cause spurious format failures (see docs/RUNS.md 2026-09-08). Under v5 a value that differs from the config flags the row.",
     )
     parser.add_argument(
         "--backend",
@@ -277,11 +451,42 @@ def main():
     )
     parser.add_argument(
         "--reasoning-effort",
-        default="medium",
-        help="codex backend only: model_reasoning_effort (low|medium|high|xhigh)",
+        default=None,
+        help="v4: codex backend only, model_reasoning_effort (low|medium|high|xhigh; default medium). "
+        "v5: taken per model from the run config; a different value here flags the row.",
     )
-    
+    parser.add_argument(
+        "--prompt-version",
+        choices=["v4", "v5"],
+        default="v4",
+        help="v4 (v0 benchmark, default) or v5 (v0.2: probabilities, p_serious, v0.2 decoder, run config)",
+    )
+    parser.add_argument(
+        "--run-config",
+        default=str(DEFAULT_RUN_CONFIG_V02),
+        help="v5 only: run configuration JSON (max_tokens, reasoning effort per model, retry rule)",
+    )
+
     args = parser.parse_args()
+
+    v5_settings = None
+    if args.prompt_version == "v5":
+        if args.workflow != "intake":
+            parser.error("--prompt-version v5 supports the intake workflow only")
+        v5_settings = resolve_run_settings(
+            load_run_config(args.run_config),
+            args.model,
+            max_tokens=args.max_tokens,
+            reasoning_effort=args.reasoning_effort,
+            temperature=args.temperature,
+        )
+        if v5_settings["config_overridden"]:
+            print(f"WARNING: run config overridden ({', '.join(v5_settings['config_overridden'])}); the row will carry a flag")
+    else:
+        if args.max_tokens is None:
+            args.max_tokens = 2000
+        if args.reasoning_effort is None:
+            args.reasoning_effort = "medium"
     
     # Load cases
     print(f"Loading cases from {args.cases}...")
@@ -305,7 +510,33 @@ def main():
     output_path = Path(args.out)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
+    # One writer per output file. Two runs on the same --out each keep their own
+    # prediction list and overwrite the file at every checkpoint, so the last one
+    # to finish silently replaces the file the other run's evaluator already hashed
+    # (GPT-5.4 Mini and GPT-5.6 Luna, run-2026-09). We hold an exclusive lock for
+    # the whole run; a second run exits, and evaluator.cli refuses to score while
+    # the lock is held.
+    lock_fd = acquire_output_lock(output_path)  # noqa: F841 - held until exit
+
     def build_output_metadata(preds, n_successful):
+        if v5_settings is not None:
+            m = {
+                "model": args.model,
+                "workflow": args.workflow,
+                "backend": args.backend,
+                **{k: v5_settings[k] for k in (
+                    "prompt_version", "decoder_version", "temperature", "max_tokens", "reasoning_effort",
+                    "empty_or_truncated_retries", "config_version", "config_overridden",
+                )},
+                "run_config_path": args.run_config,
+                "total_cases": len(preds),
+                "successful_predictions": n_successful,
+                "failed_predictions": len(preds) - n_successful,
+                "git_commit": os.environ.get("MEDSAFE_GIT_COMMIT") or None,
+            }
+            if metadata:
+                m["test_set_metadata"] = metadata
+            return m
         m = {
             "model": args.model,
             "temperature": args.temperature,
@@ -343,6 +574,7 @@ def main():
 
             same_run = (
                 existing_metadata.get("model") == args.model
+                and existing_metadata.get("prompt_version", "v4") == args.prompt_version
                 and existing_metadata.get("workflow") == args.workflow
                 and existing_metadata.get("test_set_metadata") == metadata
             )
@@ -376,6 +608,10 @@ def main():
     total = len(cases)
 
     def _infer(case):
+        if v5_settings is not None:
+            pred = run_inference_on_case_v5(case, model=args.model, settings=v5_settings, backend=args.backend)
+            time.sleep(0.5)
+            return pred
         pred = run_inference_on_case(
             case,
             model=args.model,
