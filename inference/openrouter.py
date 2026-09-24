@@ -30,6 +30,25 @@ def call_openrouter(
     )["content"]
 
 
+def build_payload(
+    model: str,
+    messages: list[Dict[str, str]],
+    temperature: float = 0.0,
+    max_tokens: int = 500,
+    reasoning_effort: Optional[str] = None,
+) -> Dict[str, Any]:
+    """The request body we POST to OpenRouter. The v0.2 dry run renders it without sending it."""
+    payload: Dict[str, Any] = {
+        "model": model,
+        "messages": messages,
+        "temperature": temperature,
+        "max_tokens": max_tokens,
+    }
+    if reasoning_effort:
+        payload["reasoning"] = {"effort": reasoning_effort}
+    return payload
+
+
 def call_openrouter_detailed(
     model: str,
     messages: list[Dict[str, str]],
@@ -57,14 +76,7 @@ def call_openrouter_detailed(
         "Content-Type": "application/json",
     }
 
-    payload = {
-        "model": model,
-        "messages": messages,
-        "temperature": temperature,
-        "max_tokens": max_tokens,
-    }
-    if reasoning_effort:
-        payload["reasoning"] = {"effort": reasoning_effort}
+    payload = build_payload(model, messages, temperature, max_tokens, reasoning_effort)
 
     result: Dict[str, Any] = {
         "content": None,

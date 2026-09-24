@@ -7,6 +7,7 @@ import json
 import os
 import re
 import argparse
+import copy
 from pathlib import Path
 from typing import Dict, Any
 import fcntl
@@ -378,6 +379,43 @@ def run_inference_on_case(
         }
 
 
+def write_dry_run(out: Path, cases, model: str, settings: Dict[str, Any], metadata, run_config: str) -> Path:
+    """Render each v5 request body exactly as call_openrouter_detailed would send it, with no API call.
+
+    We write <out>.dryrun.json, never <out>, so a dry run cannot be mistaken for
+    predictions. The token counts are estimates (characters / 4), for cost planning only.
+    """
+    from inference.openrouter import build_payload
+
+    requests_out = []
+    for case in cases:
+        messages = build_messages_v5(copy.deepcopy(case), settings["decoder_version"])
+        payload = build_payload(model, messages, settings["temperature"], settings["max_tokens"],
+                                settings["reasoning_effort"])
+        chars = sum(len(m["content"]) for m in messages)
+        requests_out.append({"case_id": case["case_id"], "prompt_chars": chars,
+                             "est_prompt_tokens": round(chars / 4), "payload": payload})
+    path = out.with_name(out.stem + ".dryrun.json")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    n = len(requests_out)
+    meta = {
+        "model": model, "dry_run": True, "cases": n,
+        **{k: settings[k] for k in ("prompt_version", "decoder_version", "temperature", "max_tokens",
+                                     "reasoning_effort", "empty_or_truncated_retries", "config_version",
+                                     "config_overridden")},
+        "run_config_path": run_config,
+        "est_prompt_tokens_total": sum(r["est_prompt_tokens"] for r in requests_out),
+        "est_prompt_tokens_mean": round(sum(r["est_prompt_tokens"] for r in requests_out) / max(n, 1), 1),
+        "token_estimate_rule": "characters / 4 over system and user messages",
+        "test_set_metadata": metadata,
+    }
+    with open(path, "w") as f:
+        json.dump({"metadata": meta, "requests": requests_out}, f, indent=1)
+    print(f"Dry run: rendered {n} request(s) to {path}; no API call made. "
+          f"Estimated prompt tokens: {meta['est_prompt_tokens_mean']} per case, {meta['est_prompt_tokens_total']} total")
+    return path
+
+
 def acquire_output_lock(output_path: Path):
     """Take an exclusive lock on <output>.lock, or exit if another run holds it."""
     lock_path = output_path.with_name(output_path.name + ".lock")
@@ -467,6 +505,12 @@ def main():
         help="v5 only: run configuration JSON (max_tokens, reasoning effort per model, retry rule)",
     )
 
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="v5 only: render every request body to <out>.dryrun.json and exit without calling any API",
+    )
+
     args = parser.parse_args()
 
     v5_settings = None
@@ -505,6 +549,12 @@ def main():
         cases = cases[:args.limit]
         print(f"Limited to {args.limit} cases")
     
+    if args.dry_run:
+        if v5_settings is None:
+            parser.error("--dry-run supports --prompt-version v5 only")
+        write_dry_run(Path(args.out), cases, args.model, v5_settings, metadata, args.run_config)
+        return
+
     print(f"Running inference on {len(cases)} cases...")
 
     output_path = Path(args.out)
