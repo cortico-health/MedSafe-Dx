@@ -246,6 +246,16 @@ async def triage_scores():
         return JSONResponse(content={"error": "triage-scores.json not built"}, status_code=404)
     return FileResponse(p, media_type="application/json")
 
+@app.get("/v02-scores.json")
+async def v02_scores():
+    # Built by `python3 -m evaluator.v02_score`. Until the paid run exists we serve the
+    # SYNTHETIC preview, which carries provenance.any_synthetic so the page labels it.
+    for name in ("v02-scores.json", "v02-scores.SYNTHETIC-preview.json"):
+        p = os.path.join(LEADERBOARD_DIR, name)
+        if os.path.exists(p):
+            return FileResponse(p, media_type="application/json")
+    return JSONResponse(content={"error": "v0.2 scores not built"}, status_code=404)
+
 @app.get("/")
 async def read_index():
     return FileResponse('static/leaderboard.html')
