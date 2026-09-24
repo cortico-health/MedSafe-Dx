@@ -1,0 +1,48 @@
+condition,ddxplus_adult_rows,nhamcs_n_primary_all_ages,nhamcs_covered,nhamcs_weighted_adult_visits_2016_2022
+Acute COPD exacerbation / infection,2153,579,1,4732585.4
+Acute dystonic reactions,2566,1,0,0
+Acute laryngitis,2501,29,0,0
+Acute otitis media,2726,1091,1,1776613.8
+Acute pulmonary edema,2598,36,1,301985.2
+Acute rhinosinusitis,1510,264,1,2038086.8
+Allergic sinusitis,1878,116,1,470961.7
+Anaphylaxis,2928,76,1,476711.6
+Anemia,5337,612,1,4458520.1
+Atrial fibrillation,2208,479,1,3861490.4
+Boerhaave,1850,0,0,0
+Bronchiectasis,2170,3,0,0
+Bronchitis,2809,1045,1,7120747.4
+Bronchospasm / acute asthma exacerbation,1695,1371,1,6606174.7
+Chagas,873,0,0,0
+Chronic rhinosinusitis,2313,182,1,1257081.6
+Cluster headache,2425,17,0,0
+Ebola,71,0,0,0
+Epiglottitis,1545,1,0,0
+GERD,2745,286,1,1913485.4
+Guillain-Barré syndrome,1986,0,0,0
+HIV (initial infection),3046,37,1,137849.7
+Influenza,2653,851,1,3697041.2
+Inguinal hernia,2175,105,1,699030.5
+Larygospasm,629,0,0,0
+Localized edema,2907,155,1,1195428.1
+Myasthenia gravis,1745,3,0,0
+Myocarditis,1155,1,0,0
+PSVT,2003,88,1,698648.9
+Pancreatic neoplasm,2585,6,0,0
+Panic attack,2926,901,1,6727474.2
+Pericarditis,2783,7,0,0
+Pneumonia,2753,1186,1,8714494.3
+Possible NSTEMI / STEMI,2911,258,1,2273639.0
+Pulmonary embolism,2864,117,1,913805.1
+Pulmonary neoplasm,1918,28,0,0
+SLE,1198,17,0,0
+Sarcoidosis,2291,1,0,0
+Scombroid food poisoning,1893,1,0,0
+Spontaneous pneumothorax,1124,30,1,190774.8
+Spontaneous rib fracture,703,225,1,1755531.0
+Stable angina,2386,86,1,786571.3
+Tuberculosis,1592,0,0,0
+URTI,6754,2527,1,9103065.6
+Unstable angina,2880,84,1,677959.3
+Viral pharyngitis,6746,1131,1,5415443.4
+Whooping cough,431,1,0,0
