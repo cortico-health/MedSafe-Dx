@@ -9,7 +9,7 @@
   "cases_path": "data/test_sets/eval-250-v0.json",
   "predictions_path": "results/artifacts/openai-gpt-5.4-mini-250cases.json",
   "cases_sha256": "0a279e99708e64bba21e66f1b720a7d0b199a9e5bfdf8a04244802d863be4ab3",
-  "predictions_sha256": "5e37aabb44613091aaf6fd1477e211b163cd2cd1676d9b099c2ac92672e20d61",
+  "predictions_sha256": "c5930f9e2ecaeb37ec4a99c746934283522a35a860cb378145147e38db8c894d",
   "cases_metadata": {
     "source_file": "data/ddxplus_v0/cases.json",
     "total_available_cases": 109938,
@@ -39,19 +39,19 @@
       "test_set_name": "eval-250-v0"
     }
   },
-  "git_commit": "9596346",
-  "expected_harm": 3.332,
-  "expected_harm_total": 833.0,
+  "git_commit": "8161cae32faada040c49ccd9b7df6032ad5bb8d3",
+  "expected_harm": 4.464,
+  "expected_harm_total": 1116.0,
   "expected_harm_breakdown_total": {
-    "missed_escalation": 700.0,
+    "missed_escalation": 1000.0,
     "invalid_or_missing_output": 0.0,
-    "over_escalation_patient": 60.0,
-    "over_escalation_system": 60.0,
-    "overconfident_wrong": 10.0,
-    "confident_when_ambiguous": 3.0
+    "over_escalation_patient": 58.0,
+    "over_escalation_system": 58.0,
+    "overconfident_wrong": 0.0,
+    "confident_when_ambiguous": 0.0
   },
-  "safety_pass_rate": 0.964,
-  "safety_pass_rate_on_valid": 0.964,
+  "safety_pass_rate": 0.96,
+  "safety_pass_rate_on_valid": 0.96,
   "coverage_rate": 1.0,
   "cases_expected": 250,
   "predictions_in_file": 250,
@@ -60,26 +60,26 @@
   "extra_predictions": 0,
   "duplicate_predictions": 0,
   "safety": {
-    "missed_escalations": 7,
-    "overconfident_wrong": 1,
-    "unsafe_reassurance": 1
+    "missed_escalations": 10,
+    "overconfident_wrong": 0,
+    "unsafe_reassurance": 0
   },
   "effectiveness": {
-    "top1_recall": 0.6390041493775933,
-    "top3_recall": 0.8049792531120332,
-    "top1_exact_recall": 0.2863070539419087,
-    "top1_prefix_broad_recall": 0.03734439834024896,
-    "top1_prefix_narrow_recall": 0.2697095435684647,
-    "top1_category_only_recall": 0.04564315352697095,
-    "top3_exact_recall": 0.36929460580912865,
-    "top3_prefix_broad_recall": 0.03734439834024896,
-    "top3_prefix_narrow_recall": 0.3651452282157676,
-    "top3_category_only_recall": 0.03319502074688797,
-    "over_escalation": 60,
-    "over_escalation_rate": 0.24
+    "top1_recall": 0.5916666666666667,
+    "top3_recall": 0.8208333333333333,
+    "top1_exact_recall": 0.25416666666666665,
+    "top1_prefix_broad_recall": 0.03333333333333333,
+    "top1_prefix_narrow_recall": 0.25833333333333336,
+    "top1_category_only_recall": 0.04583333333333333,
+    "top3_exact_recall": 0.3375,
+    "top3_prefix_broad_recall": 0.03333333333333333,
+    "top3_prefix_narrow_recall": 0.3958333333333333,
+    "top3_category_only_recall": 0.05416666666666667,
+    "over_escalation": 58,
+    "over_escalation_rate": 0.232
   },
   "informational": {
-    "overdiagnosis": 60
+    "overdiagnosis": 58
   },
   "format_failures": 0,
   "format_failure_details": [],
@@ -93,6 +93,6 @@
   },
   "harm_reference_policy": "always_escalate_now_and_uncertain",
   "harm_reference_expected_harm": 0.752,
-  "relative_harm_reduction_pct": -343.0851063829787,
-  "timestamp": "2026-09-12T20:04:00.672145Z"
+  "relative_harm_reduction_pct": -493.6170212765958,
+  "timestamp": "2026-09-23T17:43:54.362833Z"
 }

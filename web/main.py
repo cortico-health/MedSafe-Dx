@@ -238,6 +238,14 @@ def _render_markdown_file(path: str, title: str) -> Response:
 async def leaderboard_data():
     return JSONResponse(content=get_leaderboard_data())
 
+@app.get("/triage-scores.json")
+async def triage_scores():
+    # Built by scripts/build_triage_board.py; the board ranks by the triage score in it.
+    p = os.path.join(LEADERBOARD_DIR, "triage-scores.json")
+    if not os.path.exists(p):
+        return JSONResponse(content={"error": "triage-scores.json not built"}, status_code=404)
+    return FileResponse(p, media_type="application/json")
+
 @app.get("/")
 async def read_index():
     return FileResponse('static/leaderboard.html')

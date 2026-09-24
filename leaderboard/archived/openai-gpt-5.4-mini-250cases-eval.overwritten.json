@@ -1,5 +1,5 @@
 {
-  "model": "openai-gpt-5.6-luna",
+  "model": "openai-gpt-5.4-mini",
   "version": "2026-09",
   "cases": 250,
   "valid_predictions": 250,
@@ -7,9 +7,9 @@
   "strict": false,
   "benchmark_version": "eval-250-v0",
   "cases_path": "data/test_sets/eval-250-v0.json",
-  "predictions_path": "results/artifacts/openai-gpt-5.6-luna-250cases.json",
+  "predictions_path": "results/artifacts/openai-gpt-5.4-mini-250cases.json",
   "cases_sha256": "0a279e99708e64bba21e66f1b720a7d0b199a9e5bfdf8a04244802d863be4ab3",
-  "predictions_sha256": "c28bb100449ec63bf861059c2e213825d02f31e6028713a61451b78063ba6f56",
+  "predictions_sha256": "5e37aabb44613091aaf6fd1477e211b163cd2cd1676d9b099c2ac92672e20d61",
   "cases_metadata": {
     "source_file": "data/ddxplus_v0/cases.json",
     "total_available_cases": 109938,
@@ -19,7 +19,7 @@
     "test_set_name": "eval-250-v0"
   },
   "predictions_metadata": {
-    "model": "openai/gpt-5.6-luna",
+    "model": "openai/gpt-5.4-mini",
     "temperature": 0.0,
     "max_tokens": 16000,
     "workflow": "intake",
@@ -39,19 +39,19 @@
       "test_set_name": "eval-250-v0"
     }
   },
-  "git_commit": "8161cae32faada040c49ccd9b7df6032ad5bb8d3",
-  "expected_harm": 5.72,
-  "expected_harm_total": 1430.0,
+  "git_commit": "9596346",
+  "expected_harm": 3.332,
+  "expected_harm_total": 833.0,
   "expected_harm_breakdown_total": {
-    "missed_escalation": 1300.0,
+    "missed_escalation": 700.0,
     "invalid_or_missing_output": 0.0,
-    "over_escalation_patient": 55.0,
-    "over_escalation_system": 55.0,
-    "overconfident_wrong": 20.0,
-    "confident_when_ambiguous": 0.0
+    "over_escalation_patient": 60.0,
+    "over_escalation_system": 60.0,
+    "overconfident_wrong": 10.0,
+    "confident_when_ambiguous": 3.0
   },
-  "safety_pass_rate": 0.94,
-  "safety_pass_rate_on_valid": 0.94,
+  "safety_pass_rate": 0.964,
+  "safety_pass_rate_on_valid": 0.964,
   "coverage_rate": 1.0,
   "cases_expected": 250,
   "predictions_in_file": 250,
@@ -60,26 +60,26 @@
   "extra_predictions": 0,
   "duplicate_predictions": 0,
   "safety": {
-    "missed_escalations": 13,
-    "overconfident_wrong": 2,
-    "unsafe_reassurance": 0
+    "missed_escalations": 7,
+    "overconfident_wrong": 1,
+    "unsafe_reassurance": 1
   },
   "effectiveness": {
-    "top1_recall": 0.502127659574468,
-    "top3_recall": 0.7319148936170212,
-    "top1_exact_recall": 0.1829787234042553,
-    "top1_prefix_broad_recall": 0.0,
-    "top1_prefix_narrow_recall": 0.2680851063829787,
-    "top1_category_only_recall": 0.05106382978723404,
-    "top3_exact_recall": 0.28936170212765955,
-    "top3_prefix_broad_recall": 0.0,
-    "top3_prefix_narrow_recall": 0.3829787234042553,
-    "top3_category_only_recall": 0.059574468085106386,
-    "over_escalation": 55,
-    "over_escalation_rate": 0.22
+    "top1_recall": 0.6390041493775933,
+    "top3_recall": 0.8049792531120332,
+    "top1_exact_recall": 0.2863070539419087,
+    "top1_prefix_broad_recall": 0.03734439834024896,
+    "top1_prefix_narrow_recall": 0.2697095435684647,
+    "top1_category_only_recall": 0.04564315352697095,
+    "top3_exact_recall": 0.36929460580912865,
+    "top3_prefix_broad_recall": 0.03734439834024896,
+    "top3_prefix_narrow_recall": 0.3651452282157676,
+    "top3_category_only_recall": 0.03319502074688797,
+    "over_escalation": 60,
+    "over_escalation_rate": 0.24
   },
   "informational": {
-    "overdiagnosis": 55
+    "overdiagnosis": 60
   },
   "format_failures": 0,
   "format_failure_details": [],
@@ -93,6 +93,6 @@
   },
   "harm_reference_policy": "always_escalate_now_and_uncertain",
   "harm_reference_expected_harm": 0.752,
-  "relative_harm_reduction_pct": -660.6382978723404,
-  "timestamp": "2026-09-23T17:43:54.613076Z"
+  "relative_harm_reduction_pct": -343.0851063829787,
+  "timestamp": "2026-09-12T20:04:00.672145Z"
 }

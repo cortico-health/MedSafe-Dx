@@ -1,0 +1,1853 @@
+{
+ "meta": {
+  "generated": "2026-09-23T19:58:25.903434Z",
+  "eval_set": "eval-250-v0",
+  "cases": 250,
+  "U": 0.05,
+  "O": 0.35,
+  "sensitivity_U": [
+   0.025,
+   0.1
+  ],
+  "sensitivity_O": [
+   0.25,
+   0.5
+  ],
+  "tolerances_status": "provisional pending clinician confirmation",
+  "tolerances_source": "spec/triage_tolerances.md",
+  "severe_max": 2,
+  "T": 0.15,
+  "sensitivity_T": [
+   0.1,
+   0.2
+  ],
+  "urgent_cases": 188,
+  "nonurgent_cases": 62,
+  "urgent_rule": "urgent = P(severe) >= T, P(severe) = DDXPlus probability mass on severity 1-2 diagnoses across the whole differential",
+  "v0_label": "escalation_required in the eval set: a severity 1-2 diagnosis in the DDXPlus top 3",
+  "sensitivity_T_grid": {
+   "T=0.1": {
+    "urgent_cases": 193,
+    "spearman_vs_default": 0.9855200597708041,
+    "max_rank_move": 2,
+    "ranks": {
+     "anthropic-claude-fable-5": 2,
+     "anthropic-claude-haiku-4.5": 12,
+     "anthropic-claude-opus-5": 1,
+     "anthropic-claude-sonnet-4.6": 10,
+     "deepseek-deepseek-r1": 8,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 17,
+     "moonshotai-kimi-k3": 14,
+     "openai-gpt-5-chat": 3,
+     "openai-gpt-5-mini": 15,
+     "openai-gpt-5.2": 4,
+     "openai-gpt-5.4-mini": 9,
+     "openai-gpt-5.6-luna": 7,
+     "openai-gpt-5.6-sol": 13,
+     "openai-gpt-5.6-terra": 11,
+     "openai-gpt-6-astra": 6,
+     "openai-gpt-oss-120b": 16,
+     "x-ai-grok-4.6": 18,
+     "z-ai-glm-5.3": 5
+    },
+    "always_escalate_score": 19.67871485943775,
+    "always_escalate_would_rank": 17
+   },
+   "T=0.15": {
+    "urgent_cases": 188,
+    "spearman_vs_default": 0.9999999999999999,
+    "max_rank_move": 0,
+    "ranks": {
+     "anthropic-claude-fable-5": 3,
+     "anthropic-claude-haiku-4.5": 12,
+     "anthropic-claude-opus-5": 2,
+     "anthropic-claude-sonnet-4.6": 11,
+     "deepseek-deepseek-r1": 7,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 17,
+     "moonshotai-kimi-k3": 14,
+     "openai-gpt-5-chat": 1,
+     "openai-gpt-5-mini": 15,
+     "openai-gpt-5.2": 5,
+     "openai-gpt-5.4-mini": 8,
+     "openai-gpt-5.6-luna": 9,
+     "openai-gpt-5.6-sol": 13,
+     "openai-gpt-5.6-terra": 10,
+     "openai-gpt-6-astra": 6,
+     "openai-gpt-oss-120b": 15,
+     "x-ai-grok-4.6": 18,
+     "z-ai-glm-5.3": 4
+    },
+    "always_escalate_score": 19.67871485943775,
+    "always_escalate_would_rank": 18
+   },
+   "T=0.2": {
+    "urgent_cases": 185,
+    "spearman_vs_default": 0.9929762949956101,
+    "max_rank_move": 2,
+    "ranks": {
+     "anthropic-claude-fable-5": 3,
+     "anthropic-claude-haiku-4.5": 12,
+     "anthropic-claude-opus-5": 2,
+     "anthropic-claude-sonnet-4.6": 11,
+     "deepseek-deepseek-r1": 7,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 17,
+     "moonshotai-kimi-k3": 14,
+     "openai-gpt-5-chat": 1,
+     "openai-gpt-5-mini": 15,
+     "openai-gpt-5.2": 4,
+     "openai-gpt-5.4-mini": 9,
+     "openai-gpt-5.6-luna": 10,
+     "openai-gpt-5.6-sol": 13,
+     "openai-gpt-5.6-terra": 8,
+     "openai-gpt-6-astra": 6,
+     "openai-gpt-oss-120b": 15,
+     "x-ai-grok-4.6": 18,
+     "z-ai-glm-5.3": 5
+    },
+    "always_escalate_score": 19.67871485943775,
+    "always_escalate_would_rank": 17
+   }
+  },
+  "p_severe_sum": 94.46251220466272,
+  "p_severe_mean": 0.37785004881865086,
+  "n_bootstrap": 2000,
+  "bootstrap_seed": 20260923,
+  "scored_models": 19,
+  "sensitivity": {
+   "U=0.025,O=0.25,T=0.15": {
+    "spearman_vs_default": 0.9613696224758559,
+    "ranks": {
+     "anthropic-claude-fable-5": 5,
+     "anthropic-claude-haiku-4.5": 11,
+     "anthropic-claude-opus-5": 1,
+     "anthropic-claude-sonnet-4.6": 9,
+     "deepseek-deepseek-r1": 4,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 18,
+     "moonshotai-kimi-k3": 14,
+     "openai-gpt-5-chat": 3,
+     "openai-gpt-5-mini": 15,
+     "openai-gpt-5.2": 2,
+     "openai-gpt-5.4-mini": 8,
+     "openai-gpt-5.6-luna": 10,
+     "openai-gpt-5.6-sol": 13,
+     "openai-gpt-5.6-terra": 12,
+     "openai-gpt-6-astra": 7,
+     "openai-gpt-oss-120b": 15,
+     "x-ai-grok-4.6": 17,
+     "z-ai-glm-5.3": 6
+    },
+    "always_escalate_score": 11.11111111111111,
+    "always_escalate_would_rank": 13
+   },
+   "U=0.025,O=0.35,T=0.15": {
+    "spearman_vs_default": 0.9367866549604915,
+    "ranks": {
+     "anthropic-claude-fable-5": 6,
+     "anthropic-claude-haiku-4.5": 10,
+     "anthropic-claude-opus-5": 1,
+     "anthropic-claude-sonnet-4.6": 9,
+     "deepseek-deepseek-r1": 3,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 18,
+     "moonshotai-kimi-k3": 14,
+     "openai-gpt-5-chat": 4,
+     "openai-gpt-5-mini": 15,
+     "openai-gpt-5.2": 2,
+     "openai-gpt-5.4-mini": 8,
+     "openai-gpt-5.6-luna": 11,
+     "openai-gpt-5.6-sol": 13,
+     "openai-gpt-5.6-terra": 12,
+     "openai-gpt-6-astra": 5,
+     "openai-gpt-oss-120b": 15,
+     "x-ai-grok-4.6": 17,
+     "z-ai-glm-5.3": 7
+    },
+    "always_escalate_score": 19.67871485943775,
+    "always_escalate_would_rank": 8
+   },
+   "U=0.025,O=0.5,T=0.15": {
+    "spearman_vs_default": 0.9280070237050043,
+    "ranks": {
+     "anthropic-claude-fable-5": 6,
+     "anthropic-claude-haiku-4.5": 10,
+     "anthropic-claude-opus-5": 1,
+     "anthropic-claude-sonnet-4.6": 9,
+     "deepseek-deepseek-r1": 3,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 18,
+     "moonshotai-kimi-k3": 14,
+     "openai-gpt-5-chat": 5,
+     "openai-gpt-5-mini": 15,
+     "openai-gpt-5.2": 2,
+     "openai-gpt-5.4-mini": 8,
+     "openai-gpt-5.6-luna": 11,
+     "openai-gpt-5.6-sol": 13,
+     "openai-gpt-5.6-terra": 12,
+     "openai-gpt-6-astra": 4,
+     "openai-gpt-oss-120b": 15,
+     "x-ai-grok-4.6": 17,
+     "z-ai-glm-5.3": 7
+    },
+    "always_escalate_score": 33.333333333333336,
+    "always_escalate_would_rank": 4
+   },
+   "U=0.05,O=0.25,T=0.15": {
+    "spearman_vs_default": 0.8946444249341527,
+    "ranks": {
+     "anthropic-claude-fable-5": 2,
+     "anthropic-claude-haiku-4.5": 14,
+     "anthropic-claude-opus-5": 4,
+     "anthropic-claude-sonnet-4.6": 12,
+     "deepseek-deepseek-r1": 13,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 17,
+     "moonshotai-kimi-k3": 11,
+     "openai-gpt-5-chat": 1,
+     "openai-gpt-5-mini": 15,
+     "openai-gpt-5.2": 9,
+     "openai-gpt-5.4-mini": 7,
+     "openai-gpt-5.6-luna": 6,
+     "openai-gpt-5.6-sol": 10,
+     "openai-gpt-5.6-terra": 5,
+     "openai-gpt-6-astra": 8,
+     "openai-gpt-oss-120b": 15,
+     "x-ai-grok-4.6": 18,
+     "z-ai-glm-5.3": 3
+    },
+    "always_escalate_score": 11.11111111111111,
+    "always_escalate_would_rank": 19
+   },
+   "U=0.05,O=0.35,T=0.15": {
+    "spearman_vs_default": 0.9999999999999999,
+    "ranks": {
+     "anthropic-claude-fable-5": 3,
+     "anthropic-claude-haiku-4.5": 12,
+     "anthropic-claude-opus-5": 2,
+     "anthropic-claude-sonnet-4.6": 11,
+     "deepseek-deepseek-r1": 7,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 17,
+     "moonshotai-kimi-k3": 14,
+     "openai-gpt-5-chat": 1,
+     "openai-gpt-5-mini": 15,
+     "openai-gpt-5.2": 5,
+     "openai-gpt-5.4-mini": 8,
+     "openai-gpt-5.6-luna": 9,
+     "openai-gpt-5.6-sol": 13,
+     "openai-gpt-5.6-terra": 10,
+     "openai-gpt-6-astra": 6,
+     "openai-gpt-oss-120b": 15,
+     "x-ai-grok-4.6": 18,
+     "z-ai-glm-5.3": 4
+    },
+    "always_escalate_score": 19.67871485943775,
+    "always_escalate_would_rank": 18
+   },
+   "U=0.05,O=0.5,T=0.15": {
+    "spearman_vs_default": 0.9613696224758559,
+    "ranks": {
+     "anthropic-claude-fable-5": 5,
+     "anthropic-claude-haiku-4.5": 11,
+     "anthropic-claude-opus-5": 1,
+     "anthropic-claude-sonnet-4.6": 9,
+     "deepseek-deepseek-r1": 4,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 18,
+     "moonshotai-kimi-k3": 14,
+     "openai-gpt-5-chat": 3,
+     "openai-gpt-5-mini": 15,
+     "openai-gpt-5.2": 2,
+     "openai-gpt-5.4-mini": 8,
+     "openai-gpt-5.6-luna": 10,
+     "openai-gpt-5.6-sol": 13,
+     "openai-gpt-5.6-terra": 12,
+     "openai-gpt-6-astra": 7,
+     "openai-gpt-oss-120b": 15,
+     "x-ai-grok-4.6": 17,
+     "z-ai-glm-5.3": 6
+    },
+    "always_escalate_score": 33.333333333333336,
+    "always_escalate_would_rank": 13
+   },
+   "U=0.1,O=0.25,T=0.15": {
+    "spearman_vs_default": 0.06584723441615452,
+    "ranks": {
+     "anthropic-claude-fable-5": 7,
+     "anthropic-claude-haiku-4.5": 16,
+     "anthropic-claude-opus-5": 13,
+     "anthropic-claude-sonnet-4.6": 15,
+     "deepseek-deepseek-r1": 18,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 8,
+     "moonshotai-kimi-k3": 3,
+     "openai-gpt-5-chat": 2,
+     "openai-gpt-5-mini": 4,
+     "openai-gpt-5.2": 17,
+     "openai-gpt-5.4-mini": 11,
+     "openai-gpt-5.6-luna": 6,
+     "openai-gpt-5.6-sol": 10,
+     "openai-gpt-5.6-terra": 1,
+     "openai-gpt-6-astra": 12,
+     "openai-gpt-oss-120b": 4,
+     "x-ai-grok-4.6": 14,
+     "z-ai-glm-5.3": 9
+    },
+    "always_escalate_score": 11.11111111111111,
+    "always_escalate_would_rank": 20
+   },
+   "U=0.1,O=0.35,T=0.15": {
+    "spearman_vs_default": 0.4117647058823529,
+    "ranks": {
+     "anthropic-claude-fable-5": 4,
+     "anthropic-claude-haiku-4.5": 16,
+     "anthropic-claude-opus-5": 11,
+     "anthropic-claude-sonnet-4.6": 13,
+     "deepseek-deepseek-r1": 17,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 14,
+     "moonshotai-kimi-k3": 5,
+     "openai-gpt-5-chat": 1,
+     "openai-gpt-5-mini": 7,
+     "openai-gpt-5.2": 15,
+     "openai-gpt-5.4-mini": 9,
+     "openai-gpt-5.6-luna": 3,
+     "openai-gpt-5.6-sol": 10,
+     "openai-gpt-5.6-terra": 2,
+     "openai-gpt-6-astra": 12,
+     "openai-gpt-oss-120b": 7,
+     "x-ai-grok-4.6": 18,
+     "z-ai-glm-5.3": 6
+    },
+    "always_escalate_score": 19.67871485943775,
+    "always_escalate_would_rank": 19
+   },
+   "U=0.1,O=0.5,T=0.15": {
+    "spearman_vs_default": 0.8946444249341527,
+    "ranks": {
+     "anthropic-claude-fable-5": 2,
+     "anthropic-claude-haiku-4.5": 14,
+     "anthropic-claude-opus-5": 4,
+     "anthropic-claude-sonnet-4.6": 12,
+     "deepseek-deepseek-r1": 13,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 17,
+     "moonshotai-kimi-k3": 11,
+     "openai-gpt-5-chat": 1,
+     "openai-gpt-5-mini": 15,
+     "openai-gpt-5.2": 9,
+     "openai-gpt-5.4-mini": 7,
+     "openai-gpt-5.6-luna": 6,
+     "openai-gpt-5.6-sol": 10,
+     "openai-gpt-5.6-terra": 5,
+     "openai-gpt-6-astra": 8,
+     "openai-gpt-oss-120b": 15,
+     "x-ai-grok-4.6": 18,
+     "z-ai-glm-5.3": 3
+    },
+    "always_escalate_score": 33.333333333333336,
+    "always_escalate_would_rank": 19
+   },
+   "U=0.025,O=0.25,T=0.1": {
+    "ranks": {
+     "anthropic-claude-fable-5": 3,
+     "anthropic-claude-haiku-4.5": 11,
+     "anthropic-claude-opus-5": 1,
+     "anthropic-claude-sonnet-4.6": 8,
+     "deepseek-deepseek-r1": 6,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 18,
+     "moonshotai-kimi-k3": 14,
+     "openai-gpt-5-chat": 7,
+     "openai-gpt-5-mini": 15,
+     "openai-gpt-5.2": 2,
+     "openai-gpt-5.4-mini": 9,
+     "openai-gpt-5.6-luna": 10,
+     "openai-gpt-5.6-sol": 13,
+     "openai-gpt-5.6-terra": 12,
+     "openai-gpt-6-astra": 5,
+     "openai-gpt-oss-120b": 16,
+     "x-ai-grok-4.6": 17,
+     "z-ai-glm-5.3": 4
+    }
+   },
+   "U=0.025,O=0.5,T=0.1": {
+    "ranks": {
+     "anthropic-claude-fable-5": 5,
+     "anthropic-claude-haiku-4.5": 10,
+     "anthropic-claude-opus-5": 1,
+     "anthropic-claude-sonnet-4.6": 8,
+     "deepseek-deepseek-r1": 3,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 18,
+     "moonshotai-kimi-k3": 14,
+     "openai-gpt-5-chat": 7,
+     "openai-gpt-5-mini": 15,
+     "openai-gpt-5.2": 2,
+     "openai-gpt-5.4-mini": 9,
+     "openai-gpt-5.6-luna": 11,
+     "openai-gpt-5.6-sol": 13,
+     "openai-gpt-5.6-terra": 12,
+     "openai-gpt-6-astra": 4,
+     "openai-gpt-oss-120b": 16,
+     "x-ai-grok-4.6": 17,
+     "z-ai-glm-5.3": 6
+    }
+   },
+   "U=0.1,O=0.25,T=0.1": {
+    "ranks": {
+     "anthropic-claude-fable-5": 7,
+     "anthropic-claude-haiku-4.5": 15,
+     "anthropic-claude-opus-5": 13,
+     "anthropic-claude-sonnet-4.6": 14,
+     "deepseek-deepseek-r1": 18,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 9,
+     "moonshotai-kimi-k3": 5,
+     "openai-gpt-5-chat": 2,
+     "openai-gpt-5-mini": 1,
+     "openai-gpt-5.2": 17,
+     "openai-gpt-5.4-mini": 11,
+     "openai-gpt-5.6-luna": 4,
+     "openai-gpt-5.6-sol": 10,
+     "openai-gpt-5.6-terra": 3,
+     "openai-gpt-6-astra": 12,
+     "openai-gpt-oss-120b": 6,
+     "x-ai-grok-4.6": 16,
+     "z-ai-glm-5.3": 8
+    }
+   },
+   "U=0.1,O=0.5,T=0.1": {
+    "ranks": {
+     "anthropic-claude-fable-5": 2,
+     "anthropic-claude-haiku-4.5": 11,
+     "anthropic-claude-opus-5": 4,
+     "anthropic-claude-sonnet-4.6": 10,
+     "deepseek-deepseek-r1": 14,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 17,
+     "moonshotai-kimi-k3": 13,
+     "openai-gpt-5-chat": 1,
+     "openai-gpt-5-mini": 15,
+     "openai-gpt-5.2": 8,
+     "openai-gpt-5.4-mini": 9,
+     "openai-gpt-5.6-luna": 5,
+     "openai-gpt-5.6-sol": 12,
+     "openai-gpt-5.6-terra": 7,
+     "openai-gpt-6-astra": 6,
+     "openai-gpt-oss-120b": 16,
+     "x-ai-grok-4.6": 18,
+     "z-ai-glm-5.3": 3
+    }
+   },
+   "U=0.05,O=0.35,T=0.1": {
+    "ranks": {
+     "anthropic-claude-fable-5": 2,
+     "anthropic-claude-haiku-4.5": 12,
+     "anthropic-claude-opus-5": 1,
+     "anthropic-claude-sonnet-4.6": 10,
+     "deepseek-deepseek-r1": 8,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 17,
+     "moonshotai-kimi-k3": 14,
+     "openai-gpt-5-chat": 3,
+     "openai-gpt-5-mini": 15,
+     "openai-gpt-5.2": 4,
+     "openai-gpt-5.4-mini": 9,
+     "openai-gpt-5.6-luna": 7,
+     "openai-gpt-5.6-sol": 13,
+     "openai-gpt-5.6-terra": 11,
+     "openai-gpt-6-astra": 6,
+     "openai-gpt-oss-120b": 16,
+     "x-ai-grok-4.6": 18,
+     "z-ai-glm-5.3": 5
+    }
+   },
+   "U=0.025,O=0.25,T=0.2": {
+    "ranks": {
+     "anthropic-claude-fable-5": 5,
+     "anthropic-claude-haiku-4.5": 12,
+     "anthropic-claude-opus-5": 1,
+     "anthropic-claude-sonnet-4.6": 9,
+     "deepseek-deepseek-r1": 4,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 18,
+     "moonshotai-kimi-k3": 14,
+     "openai-gpt-5-chat": 3,
+     "openai-gpt-5-mini": 15,
+     "openai-gpt-5.2": 2,
+     "openai-gpt-5.4-mini": 8,
+     "openai-gpt-5.6-luna": 11,
+     "openai-gpt-5.6-sol": 13,
+     "openai-gpt-5.6-terra": 10,
+     "openai-gpt-6-astra": 7,
+     "openai-gpt-oss-120b": 15,
+     "x-ai-grok-4.6": 17,
+     "z-ai-glm-5.3": 6
+    }
+   },
+   "U=0.025,O=0.5,T=0.2": {
+    "ranks": {
+     "anthropic-claude-fable-5": 6,
+     "anthropic-claude-haiku-4.5": 10,
+     "anthropic-claude-opus-5": 1,
+     "anthropic-claude-sonnet-4.6": 9,
+     "deepseek-deepseek-r1": 3,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 18,
+     "moonshotai-kimi-k3": 14,
+     "openai-gpt-5-chat": 5,
+     "openai-gpt-5-mini": 15,
+     "openai-gpt-5.2": 2,
+     "openai-gpt-5.4-mini": 8,
+     "openai-gpt-5.6-luna": 12,
+     "openai-gpt-5.6-sol": 13,
+     "openai-gpt-5.6-terra": 11,
+     "openai-gpt-6-astra": 4,
+     "openai-gpt-oss-120b": 15,
+     "x-ai-grok-4.6": 17,
+     "z-ai-glm-5.3": 7
+    }
+   },
+   "U=0.1,O=0.25,T=0.2": {
+    "ranks": {
+     "anthropic-claude-fable-5": 7,
+     "anthropic-claude-haiku-4.5": 16,
+     "anthropic-claude-opus-5": 13,
+     "anthropic-claude-sonnet-4.6": 15,
+     "deepseek-deepseek-r1": 18,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 8,
+     "moonshotai-kimi-k3": 3,
+     "openai-gpt-5-chat": 2,
+     "openai-gpt-5-mini": 4,
+     "openai-gpt-5.2": 17,
+     "openai-gpt-5.4-mini": 11,
+     "openai-gpt-5.6-luna": 6,
+     "openai-gpt-5.6-sol": 10,
+     "openai-gpt-5.6-terra": 1,
+     "openai-gpt-6-astra": 12,
+     "openai-gpt-oss-120b": 4,
+     "x-ai-grok-4.6": 14,
+     "z-ai-glm-5.3": 9
+    }
+   },
+   "U=0.1,O=0.5,T=0.2": {
+    "ranks": {
+     "anthropic-claude-fable-5": 3,
+     "anthropic-claude-haiku-4.5": 14,
+     "anthropic-claude-opus-5": 5,
+     "anthropic-claude-sonnet-4.6": 12,
+     "deepseek-deepseek-r1": 13,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 17,
+     "moonshotai-kimi-k3": 11,
+     "openai-gpt-5-chat": 1,
+     "openai-gpt-5-mini": 15,
+     "openai-gpt-5.2": 9,
+     "openai-gpt-5.4-mini": 7,
+     "openai-gpt-5.6-luna": 6,
+     "openai-gpt-5.6-sol": 10,
+     "openai-gpt-5.6-terra": 2,
+     "openai-gpt-6-astra": 8,
+     "openai-gpt-oss-120b": 15,
+     "x-ai-grok-4.6": 18,
+     "z-ai-glm-5.3": 4
+    }
+   },
+   "U=0.05,O=0.35,T=0.2": {
+    "ranks": {
+     "anthropic-claude-fable-5": 3,
+     "anthropic-claude-haiku-4.5": 12,
+     "anthropic-claude-opus-5": 2,
+     "anthropic-claude-sonnet-4.6": 11,
+     "deepseek-deepseek-r1": 7,
+     "google-gemini-3-pro-preview": 19,
+     "google-gemini-3.1-pro-preview": 17,
+     "moonshotai-kimi-k3": 14,
+     "openai-gpt-5-chat": 1,
+     "openai-gpt-5-mini": 15,
+     "openai-gpt-5.2": 4,
+     "openai-gpt-5.4-mini": 9,
+     "openai-gpt-5.6-luna": 10,
+     "openai-gpt-5.6-sol": 13,
+     "openai-gpt-5.6-terra": 8,
+     "openai-gpt-6-astra": 6,
+     "openai-gpt-oss-120b": 15,
+     "x-ai-grok-4.6": 18,
+     "z-ai-glm-5.3": 5
+    }
+   }
+  }
+ },
+ "ceiling": {
+  "variant": "differential/reference",
+  "urgent_cases": 191,
+  "under": 0.010638297872340425,
+  "over": 0.08064516129032258,
+  "score": 95.31251579175101,
+  "ci": {
+   "under": [
+    0.0,
+    0.02717391304347826
+   ],
+   "over": [
+    0.017857142857142856,
+    0.15517241379310345
+   ],
+   "score": [
+    83.70366539714728,
+    99.31296759263057
+   ]
+  },
+  "kappa": 0.9236940786605041,
+  "kappa_ci": [
+   0.8615704443099075,
+   0.9750116737094763
+  ],
+  "counts": {
+   "missed_escalations": 2,
+   "urgent_cases": 188,
+   "over_escalations": 5,
+   "nonurgent_cases": 62
+  },
+  "all_labels": {
+   "differential/reference": {
+    "urgent_cases": 191,
+    "under": 0.010638297872340425,
+    "over": 0.08064516129032258,
+    "score": 95.31251579175101,
+    "ci": {
+     "under": [
+      0.0,
+      0.02717391304347826
+     ],
+     "over": [
+      0.017857142857142856,
+      0.15517241379310345
+     ],
+     "score": [
+      83.70366539714728,
+      99.31296759263057
+     ]
+    },
+    "kappa": 0.9236940786605041,
+    "kappa_ci": [
+     0.8615704443099075,
+     0.9750116737094763
+    ],
+    "counts": {
+     "missed_escalations": 2,
+     "urgent_cases": 188,
+     "over_escalations": 5,
+     "nonurgent_cases": 62
+    }
+   },
+   "pathology/ddxplus": {
+    "urgent_cases": 77,
+    "under": 0.5904255319148937,
+    "over": 0.0,
+    "score": 1.4140179168680365,
+    "ci": {
+     "under": [
+      0.5203923094661594,
+      0.6629917543518697
+     ],
+     "over": [
+      0.0,
+      0.0
+     ],
+     "score": [
+      1.1247124883014703,
+      1.8128544848059798
+     ]
+    },
+    "kappa": 0.25599227840634886,
+    "kappa_ci": [
+     0.18941219462155306,
+     0.32896467764801374
+    ],
+    "counts": {
+     "missed_escalations": 111,
+     "urgent_cases": 188,
+     "over_escalations": 0,
+     "nonurgent_cases": 62
+    }
+   },
+   "pathology/reference": {
+    "urgent_cases": 102,
+    "under": 0.4574468085106383,
+    "over": 0.0,
+    "score": 2.3336396961725776,
+    "ci": {
+     "under": [
+      0.38859345717120497,
+      0.5314323308270676
+     ],
+     "over": [
+      0.0,
+      0.0
+     ],
+     "score": [
+      1.7396125607880428,
+      3.205028181198252
+     ]
+    },
+    "kappa": 0.3703877240248331,
+    "kappa_ci": [
+     0.28891578333405155,
+     0.45501995701565867
+    ],
+    "counts": {
+     "missed_escalations": 86,
+     "urgent_cases": 188,
+     "over_escalations": 0,
+     "nonurgent_cases": 62
+    }
+   }
+  },
+  "ordinal_inter_label_qwk": 0.766,
+  "source": "docs/ddxplus-severity-validation.md",
+  "at_limit_rule": "model kappa 95% interval upper bound >= label-vs-label kappa 95% interval lower bound"
+ },
+ "rows": {
+  "anthropic-claude-fable-5": {
+   "status": "scored",
+   "note": null,
+   "label": {
+    "missed_escalations": 9,
+    "urgent_cases": 156,
+    "over_escalations": 58,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 11,
+    "urgent_cases": 188,
+    "over_escalations": 28,
+    "nonurgent_cases": 62
+   },
+   "predictions_file": "results/artifacts/anthropic-claude-fable-5-250cases.json",
+   "escalate_rate": 0.82,
+   "under": 0.05851063829787234,
+   "over": 0.45161290322580644,
+   "distance": 1.741932914819789,
+   "score": 39.72723061201785,
+   "rank": 3,
+   "ci": {
+    "under": [
+     0.026455026455026454,
+     0.09574468085106383
+    ],
+    "over": [
+     0.32726398601398604,
+     0.5692307692307692
+    ],
+    "score": [
+     26.63675705908219,
+     55.822058041439014
+    ],
+    "rank": [
+     1,
+     10
+    ]
+   },
+   "rank_range_sensitivity": [
+    2,
+    7
+   ],
+   "kappa": {
+    "kappa": 0.5394426074633916,
+    "ci": [
+     0.41031097685494267,
+     0.6668877207086945
+    ],
+    "at_limit": false
+   }
+  },
+  "anthropic-claude-haiku-4.5": {
+   "status": "scored",
+   "note": null,
+   "label": {
+    "missed_escalations": 11,
+    "urgent_cases": 156,
+    "over_escalations": 62,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 14,
+    "urgent_cases": 188,
+    "over_escalations": 33,
+    "nonurgent_cases": 62
+   },
+   "predictions_file": "leaderboard/anthropic-claude-haiku-4.5-250cases.json",
+   "escalate_rate": 0.828,
+   "under": 0.07446808510638298,
+   "over": 0.532258064516129,
+   "distance": 2.1285770594625792,
+   "score": 30.623930592682406,
+   "rank": 12,
+   "ci": {
+    "under": [
+     0.038461538461538464,
+     0.1139931572426222
+    ],
+    "over": [
+     0.4084435182523714,
+     0.6557377049180327
+    ],
+    "score": [
+     20.478966744163145,
+     43.66296567191852
+    ],
+    "rank": [
+     6,
+     16
+    ]
+   },
+   "rank_range_sensitivity": [
+    10,
+    16
+   ],
+   "kappa": {
+    "kappa": 0.43828281862510754,
+    "ci": [
+     0.29950965675973185,
+     0.5663902848777528
+    ],
+    "at_limit": false
+   }
+  },
+  "anthropic-claude-opus-4.7": {
+   "status": "unavailable",
+   "note": "Per-case data unavailable: no prediction file on disk or in git history.",
+   "label": {
+    "missed_escalations": 5,
+    "urgent_cases": 156,
+    "over_escalations": 60,
+    "nonurgent_cases": 94
+   }
+  },
+  "anthropic-claude-opus-5": {
+   "status": "scored",
+   "note": null,
+   "label": {
+    "missed_escalations": 3,
+    "urgent_cases": 156,
+    "over_escalations": 64,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 5,
+    "urgent_cases": 188,
+    "over_escalations": 34,
+    "nonurgent_cases": 62
+   },
+   "predictions_file": "results/artifacts/anthropic-claude-opus-5-250cases.json",
+   "escalate_rate": 0.868,
+   "under": 0.026595744680851064,
+   "over": 0.5483870967741935,
+   "distance": 1.6546477670174768,
+   "score": 42.21315791979619,
+   "rank": 2,
+   "ci": {
+    "under": [
+     0.0053475935828877,
+     0.05000628140703514
+    ],
+    "over": [
+     0.41935483870967744,
+     0.6666666666666666
+    ],
+    "score": [
+     32.50032521118455,
+     54.10372680045861
+    ],
+    "rank": [
+     1,
+     8
+    ]
+   },
+   "rank_range_sensitivity": [
+    1,
+    13
+   ],
+   "kappa": {
+    "kappa": 0.5040187201139485,
+    "ci": [
+     0.37002519182767873,
+     0.6288433839245107
+    ],
+    "at_limit": false
+   }
+  },
+  "anthropic-claude-sonnet-4.6": {
+   "status": "proxy",
+   "note": "Proxy: scored from the N=500 run (2026-03) restricted to these 250 cases. It reproduces the published missed (11) and over-escalation (63) counts.",
+   "label": {
+    "missed_escalations": 11,
+    "urgent_cases": 156,
+    "over_escalations": 63,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 13,
+    "urgent_cases": 188,
+    "over_escalations": 33,
+    "nonurgent_cases": 62
+   },
+   "predictions_file": "results/artifacts/anthropic-claude-sonnet-4.6-500cases.json",
+   "escalate_rate": 0.832,
+   "under": 0.06914893617021277,
+   "over": 0.532258064516129,
+   "distance": 2.05554668341408,
+   "score": 32.127109403807005,
+   "rank": 11,
+   "ci": {
+    "under": [
+     0.036458333333333336,
+     0.10880829015544041
+    ],
+    "over": [
+     0.4126984126984127,
+     0.6551724137931034
+    ],
+    "score": [
+     21.62692169245467,
+     45.047564328121126
+    ],
+    "rank": [
+     4,
+     15
+    ]
+   },
+   "rank_range_sensitivity": [
+    8,
+    15
+   ],
+   "kappa": {
+    "kappa": 0.44690265486725655,
+    "ci": [
+     0.3166062516074582,
+     0.5713849717263279
+    ],
+    "at_limit": false
+   }
+  },
+  "deepseek-deepseek-r1": {
+   "status": "scored",
+   "note": null,
+   "label": {
+    "missed_escalations": 6,
+    "urgent_cases": 156,
+    "over_escalations": 69,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 7,
+    "urgent_cases": 188,
+    "over_escalations": 38,
+    "nonurgent_cases": 62
+   },
+   "predictions_file": "results/artifacts/deepseek-deepseek-r1-250cases-mt16000.json",
+   "escalate_rate": 0.876,
+   "under": 0.03723404255319149,
+   "over": 0.6129032258064516,
+   "distance": 1.9029143846425547,
+   "score": 35.58033113460557,
+   "rank": 7,
+   "ci": {
+    "under": [
+     0.011296278761480925,
+     0.0655827778778598
+    ],
+    "over": [
+     0.48385752688172046,
+     0.7291666666666666
+    ],
+    "score": [
+     27.16936402240768,
+     45.755620931514095
+    ],
+    "rank": [
+     2,
+     15
+    ]
+   },
+   "rank_range_sensitivity": [
+    3,
+    18
+   ],
+   "kappa": {
+    "kappa": 0.42028238689065234,
+    "ci": [
+     0.2857088175680601,
+     0.5512536788131223
+    ],
+    "at_limit": false
+   }
+  },
+  "google-gemini-3-pro-preview": {
+   "status": "scored",
+   "note": null,
+   "label": {
+    "missed_escalations": 50,
+    "urgent_cases": 156,
+    "over_escalations": 38,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 57,
+    "urgent_cases": 188,
+    "over_escalations": 13,
+    "nonurgent_cases": 62
+   },
+   "predictions_file": "results/artifacts/google-gemini-3-pro-preview-250cases.json",
+   "escalate_rate": 0.576,
+   "under": 0.30319148936170215,
+   "over": 0.20967741935483872,
+   "distance": 6.0933510113252725,
+   "score": 5.11130812031479,
+   "rank": 19,
+   "ci": {
+    "under": [
+     0.2391304347826087,
+     0.37501586294416234
+    ],
+    "over": [
+     0.11290322580645161,
+     0.3181818181818182
+    ],
+    "score": [
+     3.406294148269048,
+     7.878988411421457
+    ],
+    "rank": [
+     19,
+     19
+    ]
+   },
+   "rank_range_sensitivity": [
+    19,
+    19
+   ],
+   "kappa": {
+    "kappa": 0.39354033823121704,
+    "ci": [
+     0.27330275821975325,
+     0.4984311515671295
+    ],
+    "at_limit": false
+   }
+  },
+  "google-gemini-3.1-pro-preview": {
+   "status": "scored",
+   "note": null,
+   "label": {
+    "missed_escalations": 23,
+    "urgent_cases": 156,
+    "over_escalations": 52,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 25,
+    "urgent_cases": 188,
+    "over_escalations": 22,
+    "nonurgent_cases": 62
+   },
+   "predictions_file": "results/artifacts/google-gemini-3.1-pro-preview-250cases.json",
+   "escalate_rate": 0.74,
+   "under": 0.13297872340425532,
+   "over": 0.3548387096774194,
+   "distance": 2.8462567080843146,
+   "score": 19.799672363274613,
+   "rank": 17,
+   "ci": {
+    "under": [
+     0.0860100051750906,
+     0.1808864374803478
+    ],
+    "over": [
+     0.2340248226950355,
+     0.4789384454877409
+    ],
+    "score": [
+     12.264436990104203,
+     33.86760866071327
+    ],
+    "rank": [
+     13,
+     18
+    ]
+   },
+   "rank_range_sensitivity": [
+    8,
+    18
+   ],
+   "kappa": {
+    "kappa": 0.5040101308569016,
+    "ci": [
+     0.37307523097228334,
+     0.6295715181572296
+    ],
+    "at_limit": false
+   }
+  },
+  "meta-llama-llama-4-maverick": {
+   "status": "unavailable",
+   "note": "Per-case data unavailable: no prediction file on disk or in git history.",
+   "label": {
+    "missed_escalations": 7,
+    "urgent_cases": 156,
+    "over_escalations": 64,
+    "nonurgent_cases": 94
+   }
+  },
+  "moonshotai-kimi-k3": {
+   "status": "scored",
+   "note": null,
+   "label": {
+    "missed_escalations": 18,
+    "urgent_cases": 156,
+    "over_escalations": 51,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 20,
+    "urgent_cases": 188,
+    "over_escalations": 21,
+    "nonurgent_cases": 62
+   },
+   "predictions_file": "results/artifacts/moonshotai-kimi-k3-250cases.json",
+   "escalate_rate": 0.756,
+   "under": 0.10638297872340426,
+   "over": 0.3387096774193548,
+   "distance": 2.3374044832933345,
+   "score": 26.797223746477965,
+   "rank": 14,
+   "ci": {
+    "under": [
+     0.06382134414049309,
+     0.15301696153221875
+    ],
+    "over": [
+     0.2285588972431078,
+     0.4648069451189897
+    ],
+    "score": [
+     16.198709653026917,
+     44.04553968270941
+    ],
+    "rank": [
+     5,
+     16
+    ]
+   },
+   "rank_range_sensitivity": [
+    3,
+    14
+   ],
+   "kappa": {
+    "kappa": 0.5579228844992667,
+    "ci": [
+     0.4226706303168558,
+     0.6765894209323933
+    ],
+    "at_limit": false
+   }
+  },
+  "openai-gpt-5-chat": {
+   "status": "scored",
+   "note": null,
+   "label": {
+    "missed_escalations": 8,
+    "urgent_cases": 156,
+    "over_escalations": 54,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 11,
+    "urgent_cases": 188,
+    "over_escalations": 25,
+    "nonurgent_cases": 62
+   },
+   "predictions_file": "results/artifacts/openai-gpt-5-chat-250cases.json",
+   "escalate_rate": 0.808,
+   "under": 0.05851063829787234,
+   "over": 0.4032258064516129,
+   "distance": 1.6421546222054193,
+   "score": 42.583345905164,
+   "rank": 1,
+   "ci": {
+    "under": [
+     0.026041666666666668,
+     0.09497276536312849
+    ],
+    "over": [
+     0.2903225806451613,
+     0.5254237288135594
+    ],
+    "score": [
+     28.128650782074082,
+     59.88228218027264
+    ],
+    "rank": [
+     1,
+     8
+    ]
+   },
+   "rank_range_sensitivity": [
+    1,
+    7
+   ],
+   "kappa": {
+    "kappa": 0.5823278262483756,
+    "ci": [
+     0.4554379589169802,
+     0.7007158172706508
+    ],
+    "at_limit": false
+   }
+  },
+  "openai-gpt-5-mini": {
+   "status": "scored",
+   "note": null,
+   "label": {
+    "missed_escalations": 20,
+    "urgent_cases": 156,
+    "over_escalations": 48,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 23,
+    "urgent_cases": 188,
+    "over_escalations": 19,
+    "nonurgent_cases": 62
+   },
+   "predictions_file": "results/artifacts/openai-gpt-5-mini-250cases-mt16000.json",
+   "escalate_rate": 0.736,
+   "under": 0.12234042553191489,
+   "over": 0.3064516129032258,
+   "distance": 2.5987507160300325,
+   "score": 22.84798986344888,
+   "rank": 15,
+   "ci": {
+    "under": [
+     0.07731958762886598,
+     0.16939890710382513
+    ],
+    "over": [
+     0.1969634873323398,
+     0.423728813559322
+    ],
+    "score": [
+     14.004151788630328,
+     38.89504415356829
+    ],
+    "rank": [
+     9,
+     18
+    ]
+   },
+   "rank_range_sensitivity": [
+    1,
+    15
+   ],
+   "kappa": {
+    "kappa": 0.5591199193819282,
+    "ci": [
+     0.43231015457840705,
+     0.6757556085274657
+    ],
+    "at_limit": false
+   }
+  },
+  "openai-gpt-5.2": {
+   "status": "scored",
+   "note": null,
+   "label": {
+    "missed_escalations": 5,
+    "urgent_cases": 156,
+    "over_escalations": 67,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 6,
+    "urgent_cases": 188,
+    "over_escalations": 36,
+    "nonurgent_cases": 62
+   },
+   "predictions_file": "results/artifacts/openai-gpt-5.2-250cases.json",
+   "escalate_rate": 0.872,
+   "under": 0.031914893617021274,
+   "over": 0.5806451612903226,
+   "distance": 1.7775430523781133,
+   "score": 38.76224925965106,
+   "rank": 5,
+   "ci": {
+    "under": [
+     0.010362694300518135,
+     0.05946753819036424
+    ],
+    "over": [
+     0.45450994318181825,
+     0.6984126984126984
+    ],
+    "score": [
+     29.706311093319698,
+     50.02304624068921
+    ],
+    "rank": [
+     1,
+     12
+    ]
+   },
+   "rank_range_sensitivity": [
+    2,
+    17
+   ],
+   "kappa": {
+    "kappa": 0.462420643047307,
+    "ci": [
+     0.3316715338480843,
+     0.5938877542573608
+    ],
+    "at_limit": false
+   }
+  },
+  "openai-gpt-5.4-mini": {
+   "status": "scored",
+   "note": null,
+   "label": {
+    "missed_escalations": 10,
+    "urgent_cases": 156,
+    "over_escalations": 58,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 13,
+    "urgent_cases": 188,
+    "over_escalations": 29,
+    "nonurgent_cases": 62
+   },
+   "predictions_file": "results/artifacts/openai-gpt-5.4-mini-250cases.json",
+   "escalate_rate": 0.816,
+   "under": 0.06914893617021277,
+   "over": 0.46774193548387094,
+   "distance": 1.923177030301754,
+   "score": 35.09627854245028,
+   "rank": 8,
+   "ci": {
+    "under": [
+     0.03462511753968698,
+     0.10770270270270266
+    ],
+    "over": [
+     0.3437383395522388,
+     0.5882352941176471
+    ],
+    "score": [
+     23.269424717200426,
+     49.79620150974166
+    ],
+    "rank": [
+     2,
+     13
+    ]
+   },
+   "rank_range_sensitivity": [
+    7,
+    11
+   ],
+   "kappa": {
+    "kappa": 0.5069496619083396,
+    "ci": [
+     0.37474158234280197,
+     0.6334319404217492
+    ],
+    "at_limit": false
+   }
+  },
+  "openai-gpt-5.6-luna": {
+   "status": "scored",
+   "note": null,
+   "label": {
+    "missed_escalations": 13,
+    "urgent_cases": 156,
+    "over_escalations": 55,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 15,
+    "urgent_cases": 188,
+    "over_escalations": 25,
+    "nonurgent_cases": 62
+   },
+   "predictions_file": "results/artifacts/openai-gpt-5.6-luna-250cases.json",
+   "escalate_rate": 0.792,
+   "under": 0.0797872340425532,
+   "over": 0.4032258064516129,
+   "distance": 1.9681653823003058,
+   "score": 34.05023276747551,
+   "rank": 9,
+   "ci": {
+    "under": [
+     0.041445435607072284,
+     0.12041884816753927
+    ],
+    "over": [
+     0.2833333333333333,
+     0.5224052812858782
+    ],
+    "score": [
+     21.834526562231694,
+     51.91271581708384
+    ],
+    "rank": [
+     1,
+     14
+    ]
+   },
+   "rank_range_sensitivity": [
+    3,
+    12
+   ],
+   "kappa": {
+    "kappa": 0.546526392163976,
+    "ci": [
+     0.42267458893873705,
+     0.6698136312276285
+    ],
+    "at_limit": false
+   }
+  },
+  "openai-gpt-5.6-sol": {
+   "status": "scored",
+   "note": null,
+   "label": {
+    "missed_escalations": 15,
+    "urgent_cases": 156,
+    "over_escalations": 57,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 17,
+    "urgent_cases": 188,
+    "over_escalations": 27,
+    "nonurgent_cases": 62
+   },
+   "predictions_file": "results/artifacts/openai-gpt-5.6-sol-250cases.json",
+   "escalate_rate": 0.792,
+   "under": 0.09042553191489362,
+   "over": 0.43548387096774194,
+   "distance": 2.19518632216601,
+   "score": 29.33048910524996,
+   "rank": 13,
+   "ci": {
+    "under": [
+     0.05102040816326531,
+     0.13513513513513514
+    ],
+    "over": [
+     0.3125,
+     0.5606060606060606
+    ],
+    "score": [
+     18.24923452259876,
+     44.66604585257205
+    ],
+    "rank": [
+     5,
+     16
+    ]
+   },
+   "rank_range_sensitivity": [
+    10,
+    13
+   ],
+   "kappa": {
+    "kappa": 0.5011790313803737,
+    "ci": [
+     0.36569687983841753,
+     0.6274897747193297
+    ],
+    "at_limit": false
+   }
+  },
+  "openai-gpt-5.6-terra": {
+   "status": "scored",
+   "note": null,
+   "label": {
+    "missed_escalations": 14,
+    "urgent_cases": 156,
+    "over_escalations": 53,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 16,
+    "urgent_cases": 188,
+    "over_escalations": 23,
+    "nonurgent_cases": 62
+   },
+   "predictions_file": "results/artifacts/openai-gpt-5.6-terra-250cases.json",
+   "escalate_rate": 0.78,
+   "under": 0.0851063829787234,
+   "over": 0.3709677419354839,
+   "distance": 2.005154155240424,
+   "score": 33.2190421873586,
+   "rank": 10,
+   "ci": {
+    "under": [
+     0.047350013635124116,
+     0.13089005235602094
+    ],
+    "over": [
+     0.25,
+     0.49122807017543857
+    ],
+    "score": [
+     20.11677519099847,
+     52.196214271377066
+    ],
+    "rank": [
+     1,
+     15
+    ]
+   },
+   "rank_range_sensitivity": [
+    1,
+    12
+   ],
+   "kappa": {
+    "kappa": 0.56531431119037,
+    "ci": [
+     0.4382482970668829,
+     0.6850917344964095
+    ],
+    "at_limit": false
+   }
+  },
+  "openai-gpt-6-astra": {
+   "status": "scored",
+   "note": null,
+   "label": {
+    "missed_escalations": 8,
+    "urgent_cases": 156,
+    "over_escalations": 63,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 10,
+    "urgent_cases": 188,
+    "over_escalations": 33,
+    "nonurgent_cases": 62
+   },
+   "predictions_file": "results/artifacts/openai-gpt-6-astra-250cases.json",
+   "escalate_rate": 0.844,
+   "under": 0.05319148936170213,
+   "over": 0.532258064516129,
+   "distance": 1.8559029701232201,
+   "score": 36.73515680754244,
+   "rank": 6,
+   "ci": {
+    "under": [
+     0.022096411875417405,
+     0.08522727272727272
+    ],
+    "over": [
+     0.405357989568516,
+     0.6551865460712266
+    ],
+    "score": [
+     26.20926088442739,
+     49.97317006058212
+    ],
+    "rank": [
+     2,
+     12
+    ]
+   },
+   "rank_range_sensitivity": [
+    4,
+    12
+   ],
+   "kappa": {
+    "kappa": 0.4734006074262761,
+    "ci": [
+     0.34402228416425656,
+     0.6089503064358066
+    ],
+    "at_limit": false
+   }
+  },
+  "openai-gpt-oss-120b": {
+   "status": "scored",
+   "note": null,
+   "label": {
+    "missed_escalations": 18,
+    "urgent_cases": 156,
+    "over_escalations": 46,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 23,
+    "urgent_cases": 188,
+    "over_escalations": 19,
+    "nonurgent_cases": 62
+   },
+   "predictions_file": "results/artifacts/openai-gpt-oss-120b-250cases.json",
+   "escalate_rate": 0.736,
+   "under": 0.12234042553191489,
+   "over": 0.3064516129032258,
+   "distance": 2.5987507160300325,
+   "score": 22.84798986344888,
+   "rank": 15,
+   "ci": {
+    "under": [
+     0.07652991524478645,
+     0.1702127659574468
+    ],
+    "over": [
+     0.1896551724137931,
+     0.42592592592592593
+    ],
+    "score": [
+     13.756274184897514,
+     39.34285606245044
+    ],
+    "rank": [
+     8,
+     18
+    ]
+   },
+   "rank_range_sensitivity": [
+    4,
+    16
+   ],
+   "kappa": {
+    "kappa": 0.5591199193819282,
+    "ci": [
+     0.42822494601920613,
+     0.6712961939028698
+    ],
+    "at_limit": false
+   }
+  },
+  "openai-o3-pro": {
+   "status": "unavailable",
+   "note": "Per-case data unavailable: no prediction file on disk or in git history.",
+   "label": {
+    "missed_escalations": 13,
+    "urgent_cases": 156,
+    "over_escalations": 55,
+    "nonurgent_cases": 94
+   }
+  },
+  "x-ai-grok-4.20": {
+   "status": "unavailable",
+   "note": "Per-case data unavailable: no prediction file on disk or in git history.",
+   "label": {
+    "missed_escalations": 26,
+    "urgent_cases": 156,
+    "over_escalations": 46,
+    "nonurgent_cases": 94
+   }
+  },
+  "x-ai-grok-4.6": {
+   "status": "scored",
+   "note": null,
+   "label": {
+    "missed_escalations": 21,
+    "urgent_cases": 156,
+    "over_escalations": 57,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 24,
+    "urgent_cases": 188,
+    "over_escalations": 28,
+    "nonurgent_cases": 62
+   },
+   "predictions_file": "results/artifacts/x-ai-grok-4.6-250cases.json",
+   "escalate_rate": 0.768,
+   "under": 0.1276595744680851,
+   "over": 0.45161290322580644,
+   "distance": 2.8607200393383154,
+   "score": 19.639190474749917,
+   "rank": 18,
+   "ci": {
+    "under": [
+     0.08020323700079647,
+     0.1773480283063689
+    ],
+    "over": [
+     0.3275862068965517,
+     0.5774812940140844
+    ],
+    "score": [
+     12.238595768332216,
+     33.14284916504494
+    ],
+    "rank": [
+     14,
+     18
+    ]
+   },
+   "rank_range_sensitivity": [
+    14,
+    18
+   ],
+   "kappa": {
+    "kappa": 0.4300245527884953,
+    "ci": [
+     0.2933637520006263,
+     0.5674810050323968
+    ],
+    "at_limit": false
+   }
+  },
+  "z-ai-glm-5.3": {
+   "status": "scored",
+   "note": null,
+   "label": {
+    "missed_escalations": 9,
+    "urgent_cases": 156,
+    "over_escalations": 59,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 11,
+    "urgent_cases": 188,
+    "over_escalations": 29,
+    "nonurgent_cases": 62
+   },
+   "predictions_file": "results/artifacts/z-ai-glm-5.3-250cases.json",
+   "escalate_rate": 0.824,
+   "under": 0.05851063829787234,
+   "over": 0.46774193548387094,
+   "distance": 1.776338272430448,
+   "score": 38.7944420881987,
+   "rank": 4,
+   "ci": {
+    "under": [
+     0.026592226725205455,
+     0.09473684210526316
+    ],
+    "over": [
+     0.34545454545454546,
+     0.5857142857142857
+    ],
+    "score": [
+     26.30523578810941,
+     54.78131508804558
+    ],
+    "rank": [
+     1,
+     12
+    ]
+   },
+   "rank_range_sensitivity": [
+    3,
+    9
+   ],
+   "kappa": {
+    "kappa": 0.5248051701197491,
+    "ci": [
+     0.39635823932006153,
+     0.6475972291926119
+    ],
+    "at_limit": false
+   }
+  }
+ },
+ "baselines": [
+  {
+   "id": "always-escalate",
+   "name": "Always escalate",
+   "under": 0.0,
+   "over": 1.0,
+   "distance": 2.857142857142857,
+   "score": 19.67871485943775,
+   "ci": {
+    "under": [
+     0.0,
+     0.0
+    ],
+    "over": [
+     1.0,
+     1.0
+    ],
+    "score": [
+     19.67871485943775,
+     19.67871485943775
+    ]
+   },
+   "would_rank": 18,
+   "label": {
+    "missed_escalations": 0,
+    "urgent_cases": 156,
+    "over_escalations": 94,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 0,
+    "urgent_cases": 188,
+    "over_escalations": 62,
+    "nonurgent_cases": 62
+   },
+   "kappa": {
+    "kappa": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ],
+    "at_limit": false
+   }
+  },
+  {
+   "id": "never-escalate",
+   "name": "Never escalate",
+   "under": 1.0,
+   "over": 0.0,
+   "distance": 20.0,
+   "score": 0.4975124378109453,
+   "ci": {
+    "under": [
+     1.0,
+     1.0
+    ],
+    "over": [
+     0.0,
+     0.0
+    ],
+    "score": [
+     0.4975124378109453,
+     0.4975124378109453
+    ]
+   },
+   "would_rank": 20,
+   "label": {
+    "missed_escalations": 156,
+    "urgent_cases": 156,
+    "over_escalations": 0,
+    "nonurgent_cases": 94
+   },
+   "threshold": {
+    "missed_escalations": 188,
+    "urgent_cases": 188,
+    "over_escalations": 0,
+    "nonurgent_cases": 62
+   },
+   "kappa": {
+    "kappa": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ],
+    "at_limit": false
+   }
+  }
+ ]
+}
