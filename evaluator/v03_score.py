@@ -66,6 +66,7 @@ from typing import Callable, Iterable, Mapping, Optional, Sequence
 import numpy as np
 
 from evaluator import answer_key_v03 as ak
+from evaluator import v03_anchors, v03_diagnosis, v03_stats
 from evaluator.condition_match import FlagMatcher
 from evaluator.schemas_v03 import ParsedV03, parse_v03
 from evaluator.v03_measures import (NO_WITH_TIER1_FLAG, YES_WITHOUT_FLAGS, YES_WITHOUT_TIER1_FLAG,
@@ -450,6 +451,7 @@ def row_stats(o: Outcomes, key: SetKey, matcher: FlagMatcher, variants: Mapping[
     }
     ps = [p.p_serious for p in o.parsed if p.readable and p.p_serious is not None]
     counts["p_serious_mean"] = float(np.mean(ps)) if ps else None
+    v03_diagnosis.extend_row(st, counts, o, key, matcher)  # D1 without empty forecasts, D2 all, substitutes, bounds
 
     if not sensitivity:
         return st, counts
@@ -496,6 +498,7 @@ def row_stats(o: Outcomes, key: SetKey, matcher: FlagMatcher, variants: Mapping[
     # Mixes.
     for name, w in (mixes or {}).items():
         s(f"mix:{name}", MIX_LABELS.get(name, name), (cost, n, 100.0, w))
+    s(*v03_stats.weak_fit_row(yes, key, clr))
     counts["sensitivity"] = sens
     return st, counts
 
@@ -539,13 +542,15 @@ def score_set(name: str, key: SetKey, rows: Mapping[str, dict], matcher: FlagMat
               mixes: Mapping[str, np.ndarray] = None, sensitivity: bool = True) -> dict:
     """Score every row of one set. `rows` is {name: {"predictions": [...], "kind": ..., ...meta}}."""
     M = cluster_draws(key.k, n_boot, seed)
-    scored, boots = {}, {}
+    W, ckey, cmixes = v03_stats.within_setup(key, mixes, n_boot, seed)  # primary: resample within each condition
+    scored, boots, boots_c = {}, {}, {}
     for rname, spec in rows.items():
         o = outcomes(spec["predictions"], key, matcher)
         st, counts = row_stats(o, key, matcher, variants, mixes, sensitivity)
-        point, draws = st.evaluate(M)
-        boots[rname] = draws
-        row = {"point": point, "ci": {k: interval(v) for k, v in draws.items()}, "counts": counts}
+        point, boots_c[rname] = st.evaluate(M)
+        draws = boots[rname] = row_stats(o, ckey, matcher, variants, cmixes, sensitivity)[0].evaluate(W)[1]
+        row = {"point": point, "ci": {k: interval(v) for k, v in draws.items()},
+               "ci_condition": {k: interval(v) for k, v in boots_c[rname].items()}, "counts": counts}
         row.update({k: v for k, v in spec.items() if k != "predictions"})
         scored[rname] = row
     models = [r for r, s in rows.items() if s.get("kind") == "model"]
@@ -553,6 +558,7 @@ def score_set(name: str, key: SetKey, rows: Mapping[str, dict], matcher: FlagMat
     paired = {}
     for a, b in combinations(models, 2):
         paired[f"{a}|{b}"] = paired_diff(scored, boots, a, b)
+        paired[f"{a}|{b}"]["condition_bootstrap"] = paired_diff(scored, boots_c, a, b)
     vs_yes = {}
     if ALWAYS_YES in scored:
         for r in rows:
@@ -732,16 +738,18 @@ def score_board(files: Sequence[Path], n_boot: int = N_BOOTSTRAP, seed: int = BO
                     variants[v] = set_key(v, key.case_ids, ak.load_key(kp, sp), tiers=_variant_tiers(v))
             mixes = mix_weights(key)
         board_sets[s] = score_set(s, key, rr, matcher, n_boot, seed, variants, mixes, sensitivity=(s == "main"))
+        board_sets[s]["anchors"] = v03_anchors.anchors_for_set(key, loaded[s][1], rr, matcher, variants)
     return {
         "spec": "spec/v0.3-scoring.md draft 2",
         "constants": {"miss": MISS, "concern": CONCERN, "ratio_sensitivity": list(RATIO_SENSITIVITY),
                       "target_sensitivity": list(TARGET_SENSITIVITY), "D2_thresholds": list(D2_THRESHOLDS),
                       "D2_tier_gap": D2_TIER_GAP, "flag_policy": FLAG_POLICY, "dx_policy": DX_POLICY,
                       "n_boot": n_boot, "seed": seed, "level": LEVEL,
-                      "bootstrap": "cluster (true condition) resampling, paired across rows within a set"},
+                      "bootstrap": v03_stats.INTERVAL_NOTE},
         "reading": ("Cost points per 100 patients seen: missing a patient with a serious concern costs 7, an unneeded "
                     "concern on a clearly low-risk patient costs 1, and every other answer is free. Lower is better."),
         "sets": board_sets,
+        "power": v03_anchors.power(board_sets),
         "sources": sources,
         "inputs": {s: {k: {"path": str(Path(sets[s][k]).relative_to(ROOT)), "sha256": _sha256(Path(sets[s][k]))}
                        for k in ("cases", "key", "refs")} for s in loaded},
