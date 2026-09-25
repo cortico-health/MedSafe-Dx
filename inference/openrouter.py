@@ -1,6 +1,7 @@
 import json
 import os
 import sys
+import random
 import time
 import requests
 from typing import Dict, Any, Optional
@@ -12,6 +13,7 @@ load_dotenv('.env')
 
 # Support both OPENROUTER_API_KEY and OPENROUTER_KEY
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY") or os.getenv("OPENROUTER_KEY")
+IN_FLIGHT_WAITS = 10  # waits on a 402 in-flight-budget response before giving up
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 
@@ -93,7 +95,10 @@ def call_openrouter_detailed(
     backoffs = [1, 2, 4]  # seconds, one per retry attempt
     empties = 0
 
-    for attempt in range(max_retries + 1):
+    in_flight_waits = 0
+    attempt = -1
+    while attempt < max_retries:
+        attempt += 1
         try:
             response = requests.post(
                 OPENROUTER_BASE_URL,
@@ -151,6 +156,22 @@ def call_openrouter_detailed(
                     body = e.response.text[:500]
                 except Exception:
                     body = "<unreadable body>"
+
+            # OpenRouter answers 402 "in_flight_budget_exhausted" when the output tokens that concurrent
+            # requests may still spend (max_tokens x price) exceed the account's credit. It clears as those
+            # requests finish, so we wait Retry-After (capped) and try again without using up a retry.
+            if status == 402 and "in_flight_budget_exhausted" in body and in_flight_waits < IN_FLIGHT_WAITS:
+                in_flight_waits += 1
+                try:
+                    delay = min(float(e.response.headers.get("Retry-After", 30)), 120.0)
+                except (TypeError, ValueError):
+                    delay = 30.0
+                delay += random.uniform(0, 10)
+                print(f"In-flight budget exhausted for {model}; waiting {delay:.0f}s "
+                      f"({in_flight_waits}/{IN_FLIGHT_WAITS})", file=sys.stderr)
+                time.sleep(delay)
+                attempt -= 1
+                continue
 
             if retryable and attempt < max_retries:
                 delay = backoffs[attempt]
