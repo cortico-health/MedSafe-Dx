@@ -33,6 +33,7 @@ RUN_CONFIG="inference/run_config_v03.json"
 OUT_DIR="${OUT_DIR:-results/v03/runs}"
 PARALLEL="${PARALLEL:-6}"
 export INFERENCE_WORKERS="${INFERENCE_WORKERS:-8}"
+export PYTHONUNBUFFERED=1  # progress lines reach the per-run logs as they happen
 RUNNER="${RUNNER:-local}"
 DRY_RUN="${DRY_RUN:-0}"
 NO_SCORE="${NO_SCORE:-0}"
@@ -81,7 +82,7 @@ run_py() {
     if [ "$RUNNER" = "local" ]; then
         python3 "$@"
     else
-        docker compose run --rm -e INFERENCE_WORKERS inference python3 "$@"
+        docker compose run --rm -e INFERENCE_WORKERS -e PYTHONUNBUFFERED inference python3 "$@"
     fi
 }
 
