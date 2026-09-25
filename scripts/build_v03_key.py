@@ -54,6 +54,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from evaluator import answer_key_v02 as ak2  # noqa: E402
 from evaluator import answer_key_v03 as ak  # noqa: E402
+from evaluator.v03_anchors import dxa_reader_conditions  # noqa: E402
 from evaluator.condition_match import FlagMatcher, multiplicity_summary  # noqa: E402
 from evaluator.v02_references import NaiveBayes, train_counts  # noqa: E402
 from prep_v02_sample import build_case, read_rows  # noqa: E402
@@ -235,13 +236,12 @@ def references(rows_idx, rows, ref, det, tiers, nb, always_yes_codes, canonical)
         out["always-no"].append({"case_id": cid, "serious_concern": "NO", "flags": []})
         lookup = det.lookup_for(r, bool(ref[i]))
         ranked = sorted(r["dxa"].items(), key=lambda x: -x[1])
-        ok = []
-        for c in t1:
-            p = r["dxa"].get(c, 0.0)
-            if p >= READER_T:
-                cs = lookup(c, p)
-                if ak.rh_status(p, cs.n, cs.k) != ak.RED_HERRING:
-                    ok.append((c, p))
+
+        def red_herring(c, p, lookup=lookup):
+            cs = lookup(c, p)
+            return ak.rh_status(p, cs.n, cs.k) == ak.RED_HERRING
+
+        ok = [(c, r["dxa"][c]) for c in dxa_reader_conditions(r["dxa"], tiers, red_herring, READER_T)]
         out["dxa"].append(reader_answer(cid, ranked, ok, sum(r["dxa"].get(c, 0.0) for c in t1), canonical))
         post = nb.posterior(r["evidences"])
         nbp = {c: 100.0 * float(p) for c, p in zip(nb.conditions, post)}
