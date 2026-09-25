@@ -122,8 +122,10 @@ class TestHeadline(ToyBase):
         for t in ("60", "70", "80"):
             self.assertEqual(c["DX"]["D2"][t]["events"], 1)
             self.assertEqual(c["DX"]["D2"][t]["milder_named"], 0)
-        brier = ((0.8 - 1) ** 2 + 0.7 ** 2 + 0.9 ** 2) / 6
+        # D1 covers the 3 cases with a forecast (c1-c3); the 3 without one count against completeness.
+        brier = ((0.8 - 1) ** 2 + 0.7 ** 2 + 0.9 ** 2) / 3
         self.assertAlmostEqual(p["D1_brier"], brier)
+        self.assertAlmostEqual(p["D1_completeness"], 3 / 6)
 
 
 class TestSensitivity(ToyBase):

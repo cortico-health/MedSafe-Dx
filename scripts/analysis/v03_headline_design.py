@@ -39,6 +39,7 @@ from v03_review_gaming import CHEST_PAIN, COUGH, DYSPNOEA, WHEEZE, greedy_cover,
 
 sys.path.insert(0, str(ROOT / "scripts"))
 from evaluator import v02_references as refs  # noqa: E402
+from evaluator.v03_anchors import dxa_reader_conditions  # noqa: E402
 from v03_review_models import load_rows  # noqa: E402
 
 OUT = ROOT / "results/analysis/v03_headline"
@@ -145,17 +146,20 @@ def nb_answers(nb, key, tiers, canon, t: float, cap: int = 5, flag_rule: str = "
 
 
 def dxa_answers(key, tiers, rh, canon, t: float, rule: str = "max", cap: int = 5):
-    """rule 'max': YES when some tier-1 condition has p >= t and is not a red herring (spec section 8).
-    rule 'mass': YES when the red-herring-filtered tier-1 mass is >= t (the v0.2 at-risk rule under the v0.3 filter)."""
+    """rule 'max': the DXA reader of spec section 8 at threshold t (evaluator/v03_anchors.py
+    `dxa_reader_conditions`, the one rule every script uses): YES when some tier-1 condition has p >= t and is
+    not a red herring; flags = those conditions.
+    rule 'mass': YES when the red-herring-filtered tier-1 mass (DXA p >= 5%) is >= t (the v0.2 at-risk rule
+    under the v0.3 filter); flags = the reader's conditions at 5%, the ones the mass counts."""
     out = []
     for k in key:
-        live = [(c, p) for c, p in k["dxa"].items() if tiers.get(c) == 1 and p >= 5.0 and not rh.label(c, p, k["evf"])[0]]
-        t1 = sorted([(c, p) for c, p in k["dxa"].items() if tiers.get(c) == 1], key=lambda x: -x[1])
-        if rule == "max":
-            yes = any(p >= t for _, p in live)
-        else:
-            yes = sum(p for _, p in live) >= t
-        out.append({"yes": bool(yes), "flags": [canon[c] for c, _ in t1[:cap]], "mass": float(sum(p for _, p in live))})
+        def red_herring(c, p, evf=k["evf"]):
+            return rh.label(c, p, evf)[0]
+        live5 = dxa_reader_conditions(k["dxa"], tiers, red_herring, 5.0, cap=len(k["dxa"]))
+        mass = sum(k["dxa"][c] for c in live5)
+        flags = dxa_reader_conditions(k["dxa"], tiers, red_herring, t, cap) if rule == "max" else live5[:cap]
+        yes = bool(flags) if rule == "max" else mass >= t
+        out.append({"yes": bool(yes), "flags": [canon[c] for c in flags], "mass": float(mass)})
     return out
 
 

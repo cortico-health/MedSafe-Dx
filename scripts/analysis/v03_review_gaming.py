@@ -14,6 +14,8 @@ from collections import Counter
 from v03_review_common import (LENIENT, OUT, Matcher, RedHerring, build_key, cluster_bootstrap_h, fmt,
                                load_adults, load_tiers, sample_ids, score, write_csv)
 
+from evaluator.v03_anchors import dxa_reader_conditions  # v03_review_common puts the repository root on sys.path
+
 CHEST_PAIN = {"E_55_@_V_29", "E_55_@_V_101", "E_55_@_V_55", "E_55_@_V_56", "E_14"}
 DYSPNOEA = {"E_66", "E_64"}
 COUGH = {"E_201"}
@@ -72,13 +74,12 @@ def main() -> None:
     def fixed(yes_rule, flags):
         return [{"yes": yes_rule(c), "flags": code(flags)} for c in key]
 
-    def dxa_reader(t, tier1_only=True, cap=5):
+    def dxa_reader(t, cap=5):
+        """The spec section 8 reader at threshold t (evaluator/v03_anchors.py, the one rule every script uses)."""
         out = []
         for c in key:
-            cands = [(cond, p) for cond, p in c["dxa"].items() if p >= t and (tiers.get(cond) == 1 or not tier1_only)]
-            live = [(cond, p) for cond, p in cands if tiers.get(cond) == 1 and not rh.label(cond, p, c["evf"])[0]]
-            cands = sorted(cands, key=lambda x: -x[1])[:cap]
-            out.append({"yes": bool(live), "flags": code([cond for cond, _ in cands])})
+            raised = dxa_reader_conditions(c["dxa"], tiers, lambda cond, p, evf=c["evf"]: rh.label(cond, p, evf)[0], t, cap)
+            out.append({"yes": bool(raised), "flags": code(raised)})
         return out
 
     policies = {

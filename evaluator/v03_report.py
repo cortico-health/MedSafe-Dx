@@ -12,6 +12,8 @@ from __future__ import annotations
 
 from typing import Mapping, Optional
 
+from evaluator import v03_anchors
+
 
 def _f(x: Optional[float], d: int = 1, pct: bool = False) -> str:
     if x is None:
@@ -63,8 +65,8 @@ def render_report(board: Mapping) -> str:
          f"Spec: {board['spec']}. Scorer: evaluator/v03_score.py"
          + (f" at {board.get('provenance', {}).get('git_commit')}" if board.get("provenance") else "") + ".",
          "", board["reading"], "",
-         f"Intervals: 95%, {board['constants']['n_boot']} draws of a bootstrap that resamples true conditions "
-         "(clusters); paired differences use the same draws. Flags match under equivalent, narrower and broader codes; "
+         f"Intervals: {board['constants']['n_boot']} draws. {board['constants']['bootstrap']} "
+         "Paired differences use the same draws. Flags match under equivalent, narrower and broader codes; "
          "diagnosis under equivalent and narrower. Unreadable output scores as NO.", ""]
     for s, b in board["sets"].items():
         smp, k = b["sample"], b["constants"]
@@ -141,6 +143,7 @@ def render_report(board: Mapping) -> str:
                      f"{con['yes_without_tier1_flag']} / {con['no_with_tier1_flag']} | "
                      f"{c['red_flag']['yes']}/{c['red_flag']['cases']} | {c['p_serious_present']}/{c['cases']} |")
         L.append("")
+        L += v03_anchors.render_set(b)
         memo = {r: b["rows"][r].get("memorisation") for r in b["models"] if b["rows"][r].get("memorisation")}
         if memo:
             L += ["Memorisation flag (section 11, top-1 diagnosis): "
@@ -158,6 +161,7 @@ def render_report(board: Mapping) -> str:
                          f"{u['truncated']} | {u['completion_tokens'] / n:.0f} / {u['completion_tokens_max']} | "
                          f"{u['reasoning_tokens']} | {u['cost_usd']:.2f} | {rules or 'none'} |")
             L.append("")
+    L += v03_anchors.render_board(board)
     L += ["## Limits", "", "Every result carries the limits of spec/v0.3-scoring.md section 11: memorisation (naive Bayes "
           "reads the DDXPlus truth at about 98%), a closed world of 49 conditions, one condition per synthetic patient, "
           "DDXPlus probabilities that are not real-world probabilities, provisional tiers, a provisional 7:1 ratio, and "
