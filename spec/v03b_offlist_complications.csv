@@ -1,0 +1,7 @@
+condition,complication,rate,kind,source
+Acute rhinosinusitis,orbital or intracranial complication,about 1 per 1000,complication,DeMuri and Wald 2012 NEJM doi:10.1056/NEJMcp1106638 (docs/ddxplus-severity-validation.md)
+Acute otitis media,suppurative complication,"rare, rate not verified",complication,AAP 2013/2022 guideline (docs/ddxplus-severity-validation.md)
+Pericarditis,tamponade or constriction,3.1% and 1.5%,complication,Imazio 2007 Circulation doi:10.1161/circulationaha.106.662114 (docs/ddxplus-severity-validation.md)
+Localized edema,deep vein thrombosis behind the swelling,12% of low-risk Wells primary-care patients,hidden_cause,Oudega 2005 Ann Intern Med doi:10.7326/0003-4819-143-2-200507190-00008 (docs/ddxplus-severity-validation.md)
+Sarcoidosis,death in the first year after diagnosis,adjusted hazard ratio 2.99,mortality,Patt 2024 Medicina PMC11596794 (docs/ddxplus-severity-validation.md)
+Panic attack,suicide attempt,12% with panic attacks,complication,Weissman 1989 NEJM doi:10.1056/NEJM198911023211801 (docs/ddxplus-severity-validation.md)
