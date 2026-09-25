@@ -117,6 +117,7 @@ from inference.prompt import (
     V7_SCHEMAS,
     system_prompt_v7,
 )
+from inference.rendering import RENDERINGS, render_strings
 from inference.symptom_decoder import decode_symptoms, decode_symptoms_with_audit, decode_symptoms_versioned
 
 DEFAULT_RUN_CONFIG_V02 = Path(__file__).parent / "run_config_v02.json"
@@ -182,12 +183,22 @@ def format_case_for_prompt(case: Dict[str, Any], workflow: str) -> str:
 # ---------------------------------------------------------------------------
 
 
-def format_case_for_prompt_v5(case: Dict[str, Any], decoder_version: str = "v02") -> str:
-    """Render one case as the v5 user prompt, with the v0.2 decoder by default."""
+def decode_for_prompt(case: Dict[str, Any], decoder_version: str = "v02",
+                      rendering: str = "standard") -> tuple[list[str], list[str]]:
+    """The case's symptom and history strings for the prompt: decoded with the chosen
+    decoder, then rendered (inference/rendering.py: standard, shuffled or paraphrased).
+    The decode audit, with the rendering, is left on the case for the prediction record."""
     active, antecedents, audit = decode_symptoms_versioned(
         case.get("presenting_symptoms", []), version=decoder_version, sex=case.get("sex")
     )
-    case["_input_decode_audit"] = {"symptoms": audit}
+    active, antecedents = render_strings(active, antecedents, str(case.get("case_id")), rendering)
+    case["_input_decode_audit"] = {"symptoms": audit, "rendering": rendering}
+    return active, antecedents
+
+
+def format_case_for_prompt_v5(case: Dict[str, Any], decoder_version: str = "v02", rendering: str = "standard") -> str:
+    """Render one case as the v5 user prompt, with the v0.2 decoder by default."""
+    active, antecedents = decode_for_prompt(case, decoder_version, rendering)
     return USER_PROMPT_TEMPLATE_INTAKE_V5.format(
         age=case.get("age", "unknown"),
         sex=case.get("sex", "unknown"),
@@ -197,19 +208,16 @@ def format_case_for_prompt_v5(case: Dict[str, Any], decoder_version: str = "v02"
     )
 
 
-def build_messages_v5(case: Dict[str, Any], decoder_version: str = "v02") -> list[Dict[str, str]]:
+def build_messages_v5(case: Dict[str, Any], decoder_version: str = "v02", rendering: str = "standard") -> list[Dict[str, str]]:
     return [
         {"role": "system", "content": SYSTEM_PROMPT_INTAKE_V5},
-        {"role": "user", "content": format_case_for_prompt_v5(case, decoder_version)},
+        {"role": "user", "content": format_case_for_prompt_v5(case, decoder_version, rendering)},
     ]
 
 
-def format_case_for_prompt_v6(case: Dict[str, Any], decoder_version: str = "v02") -> str:
+def format_case_for_prompt_v6(case: Dict[str, Any], decoder_version: str = "v02", rendering: str = "standard") -> str:
     """Render one case as the v6 user prompt: the v5 intake rendering with the v6 schema."""
-    active, antecedents, audit = decode_symptoms_versioned(
-        case.get("presenting_symptoms", []), version=decoder_version, sex=case.get("sex")
-    )
-    case["_input_decode_audit"] = {"symptoms": audit}
+    active, antecedents = decode_for_prompt(case, decoder_version, rendering)
     return USER_PROMPT_TEMPLATE_V6.format(
         age=case.get("age", "unknown"),
         sex=case.get("sex", "unknown"),
@@ -219,20 +227,18 @@ def format_case_for_prompt_v6(case: Dict[str, Any], decoder_version: str = "v02"
     )
 
 
-def build_messages_v6(case: Dict[str, Any], decoder_version: str = "v02") -> list[Dict[str, str]]:
+def build_messages_v6(case: Dict[str, Any], decoder_version: str = "v02", rendering: str = "standard") -> list[Dict[str, str]]:
     return [
         {"role": "system", "content": SYSTEM_PROMPT_V6},
-        {"role": "user", "content": format_case_for_prompt_v6(case, decoder_version)},
+        {"role": "user", "content": format_case_for_prompt_v6(case, decoder_version, rendering)},
     ]
 
 
-def format_case_for_prompt_v7(case: Dict[str, Any], arm: str, decoder_version: str = "v02") -> str:
+def format_case_for_prompt_v7(case: Dict[str, Any], arm: str, decoder_version: str = "v02",
+                              rendering: str = "standard") -> str:
     """Render one case as the v7 user prompt of one arm: the v5 intake rendering, then the arm's
     working-diagnosis line (arms 2, 3 and 4b; from the case's `working_diagnosis_name`), then the schema."""
-    active, antecedents, audit = decode_symptoms_versioned(
-        case.get("presenting_symptoms", []), version=decoder_version, sex=case.get("sex")
-    )
-    case["_input_decode_audit"] = {"symptoms": audit}
+    active, antecedents = decode_for_prompt(case, decoder_version, rendering)
     _, anchor = V7_ARMS[arm]
     if anchor:
         name = case.get("working_diagnosis_name")
@@ -249,20 +255,22 @@ def format_case_for_prompt_v7(case: Dict[str, Any], arm: str, decoder_version: s
     )
 
 
-def build_messages_v7(case: Dict[str, Any], arm: str, decoder_version: str = "v02") -> list[Dict[str, str]]:
+def build_messages_v7(case: Dict[str, Any], arm: str, decoder_version: str = "v02",
+                      rendering: str = "standard") -> list[Dict[str, str]]:
     return [
         {"role": "system", "content": system_prompt_v7(arm)},
-        {"role": "user", "content": format_case_for_prompt_v7(case, arm, decoder_version)},
+        {"role": "user", "content": format_case_for_prompt_v7(case, arm, decoder_version, rendering)},
     ]
 
 
 def build_messages_for(case: Dict[str, Any], settings: Dict[str, Any]) -> list[Dict[str, str]]:
-    """Messages for the run's prompt version (v5, v6 or a v7 arm)."""
+    """Messages for the run's prompt version (v5, v6 or a v7 arm) and rendering."""
     version = settings.get("prompt_version")
+    rendering = settings.get("rendering", "standard")
     if version in V7_ARMS:
-        return build_messages_v7(case, version, settings["decoder_version"])
+        return build_messages_v7(case, version, settings["decoder_version"], rendering)
     build = build_messages_v6 if version == "v6" else build_messages_v5
-    return build(case, settings["decoder_version"])
+    return build(case, settings["decoder_version"], rendering)
 
 
 def load_run_config(path) -> Dict[str, Any]:
@@ -276,11 +284,15 @@ def resolve_run_settings(
     max_tokens: int | None = None,
     reasoning_effort: str | None = None,
     temperature: float | None = None,
+    rendering: str | None = None,
 ) -> Dict[str, Any]:
     """
     Settings for one model under the v0.2 run config. A CLI value that differs from
     the config, or a model the config does not list, sets config_overridden, so the
     row carries a flag (spec section 9: same configuration for every row, or a flag).
+    `rendering` (inference/rendering.py) defaults to the config's, else "standard"; a
+    rendering-variant run is a deliberate departure from the shared config, so it
+    carries the flag like any other override.
     """
     overridden = []
     models = config.get("models", {})
@@ -297,8 +309,10 @@ def resolve_run_settings(
         "max_tokens": config["max_tokens"],
         "reasoning_effort": effort,
         "empty_or_truncated_retries": int(config.get("empty_or_truncated_retries", 1)),
+        "rendering": config.get("rendering", "standard"),
     }
-    for key, value in (("max_tokens", max_tokens), ("reasoning_effort", reasoning_effort), ("temperature", temperature)):
+    for key, value in (("max_tokens", max_tokens), ("reasoning_effort", reasoning_effort), ("temperature", temperature),
+                       ("rendering", rendering)):
         if value is not None and value != settings[key]:
             settings[key] = value
             overridden.append(key)
@@ -365,6 +379,7 @@ def run_inference_on_case_v5(
         "attempts": attempts,
         "prompt_version": settings["prompt_version"],
         "decoder_version": settings["decoder_version"],
+        "rendering": settings.get("rendering", "standard"),
         "input_decode_audit": case.get("_input_decode_audit"),
     }
     response = meta.get("content")
@@ -473,7 +488,7 @@ def write_dry_run(out: Path, cases, model: str, settings: Dict[str, Any], metada
     n = len(requests_out)
     meta = {
         "model": model, "dry_run": True, "cases": n,
-        **{k: settings[k] for k in ("prompt_version", "decoder_version", "temperature", "max_tokens",
+        **{k: settings[k] for k in ("prompt_version", "decoder_version", "rendering", "temperature", "max_tokens",
                                      "reasoning_effort", "empty_or_truncated_retries", "config_version",
                                      "config_overridden")},
         "run_config_path": run_config,
@@ -582,6 +597,14 @@ def main():
     )
 
     parser.add_argument(
+        "--rendering",
+        choices=list(RENDERINGS),
+        default=None,
+        help="v5, v6 and v7: how the decoded findings are rendered (inference/rendering.py): standard (the config's "
+        "default), shuffled (symptom order shuffled with a fixed per-case seed) or paraphrased (fixed alternative "
+        "phrases for the 40 most frequent strings). A value that differs from the config flags the row.",
+    )
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="v5 only: render every request body to <out>.dryrun.json and exit without calling any API",
@@ -590,6 +613,8 @@ def main():
     args = parser.parse_args()
 
     v5_settings = None
+    if args.rendering is not None and args.prompt_version not in CONFIG_PROMPTS:
+        parser.error("--rendering needs --prompt-version v5, v6 or a v7 arm")
     if args.prompt_version in CONFIG_PROMPTS:
         if args.workflow != "intake":
             parser.error(f"--prompt-version {args.prompt_version} supports the intake workflow only")
@@ -601,6 +626,7 @@ def main():
             max_tokens=args.max_tokens,
             reasoning_effort=args.reasoning_effort,
             temperature=args.temperature,
+            rendering=args.rendering,
         )
         if args.prompt_version in V7_ARMS and v5_settings["prompt_version"] == "v7":
             v5_settings["prompt_version"] = args.prompt_version  # one config serves every v7 arm
@@ -657,7 +683,7 @@ def main():
                 "workflow": args.workflow,
                 "backend": args.backend,
                 **{k: v5_settings[k] for k in (
-                    "prompt_version", "decoder_version", "temperature", "max_tokens", "reasoning_effort",
+                    "prompt_version", "decoder_version", "rendering", "temperature", "max_tokens", "reasoning_effort",
                     "empty_or_truncated_retries", "config_version", "config_overridden",
                 )},
                 "run_config_path": args.run_config,
