@@ -1,0 +1,6612 @@
+{
+ "spec": "spec/v0.3-scoring.md draft 2",
+ "constants": {
+  "miss": 7.0,
+  "concern": 1.0,
+  "ratio_sensitivity": [
+   5.0,
+   10.0
+  ],
+  "target_sensitivity": [
+   12.5,
+   20.0
+  ],
+  "D2_thresholds": [
+   60,
+   70,
+   80
+  ],
+  "D2_tier_gap": 2,
+  "flag_policy": "standard",
+  "dx_policy": "strict",
+  "n_boot": 2000,
+  "seed": 20260923,
+  "level": 0.95,
+  "bootstrap": "cluster (true condition) resampling, paired across rows within a set"
+ },
+ "reading": "Cost points per 100 patients seen: missing a patient with a serious concern costs 7, an unneeded concern on a clearly low-risk patient costs 1, and every other answer is free. Lower is better.",
+ "sets": {
+  "main": {
+   "label": "Main sample (470; 10 per condition)",
+   "sample": {
+    "cases": 470,
+    "conditions": 47,
+    "r10_cases": 234,
+    "r5_cases": 269,
+    "clearly_low_risk": 118,
+    "intermediate": 118,
+    "red_flag": 73,
+    "tier1_truths": 200,
+    "r10_targets": 284,
+    "r5_targets": 414,
+    "r10_undetermined": 2
+   },
+   "constants": {
+    "perfect": 0.0,
+    "always_yes": 25.106383,
+    "always_no": 348.510638,
+    "always_yes_by_mix": {
+     "ddxplus": 28.797777,
+     "nhamcs": 35.77264
+    },
+    "always_no_by_mix": {
+     "ddxplus": 305.827375,
+     "nhamcs": 254.452049
+    },
+    "r10_share_by_mix": {
+     "ddxplus": 0.436896,
+     "nhamcs": 0.363503
+    },
+    "always_yes_by_tiers": {
+     "severity": 25.531915,
+     "one-source": 22.340426
+    },
+    "always_no_by_tiers": {
+     "severity": 278.510638,
+     "one-source": 394.680851
+    }
+   },
+   "rows": {
+    "openai/gpt-5.6-terra": {
+     "point": {
+      "SC": 20.425532,
+      "miss_part": 0.0,
+      "concern_part": 20.425532,
+      "H": 0.0,
+      "OC": 0.813559,
+      "SC_readable": 20.425532,
+      "unreadable_share": 0.0,
+      "yes_rate": 0.948936,
+      "COV": 0.608116,
+      "MT_truth": 0.18,
+      "MT_dxa": 0.583333,
+      "MT": 0.299296,
+      "top1": 0.585106,
+      "top5": 0.808511,
+      "D1_brier": 0.23299,
+      "E": 0.22,
+      "sens:ratio_1/5": 20.425532,
+      "sens:ratio_1/10": 20.425532,
+      "sens:truth_only": 20.425532,
+      "sens:R12.5": 20.425532,
+      "sens:R20": 20.425532,
+      "sens:H_prime": 42.765957,
+      "sens:rate_form": 81.355932,
+      "sens:concern_tier2": 35.531915,
+      "map:strict:COV": 0.52881,
+      "map:strict:MT": 0.387324,
+      "map:strict:SC_H_prime": 50.212766,
+      "map:lenient:COV": 0.887546,
+      "map:lenient:MT": 0.052817,
+      "map:lenient:SC_H_prime": 21.914894,
+      "sens:tiers:severity": 20.851064,
+      "sens:tiers:one-source": 17.659574,
+      "sens:mix:ddxplus": 22.678692,
+      "sens:mix:nhamcs": 29.476224
+     },
+     "ci": {
+      "SC": [
+       11.276596,
+       30.638298
+      ],
+      "miss_part": [
+       0.0,
+       0.0
+      ],
+      "concern_part": [
+       11.276596,
+       30.638298
+      ],
+      "H": [
+       0.0,
+       0.0
+      ],
+      "OC": [
+       0.68931,
+       0.931828
+      ],
+      "SC_readable": [
+       11.276596,
+       30.638298
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       0.908511,
+       0.980851
+      ],
+      "COV": [
+       0.491456,
+       0.7161
+      ],
+      "MT_truth": [
+       0.05,
+       0.336859
+      ],
+      "MT_dxa": [
+       0.397846,
+       0.76001
+      ],
+      "MT": [
+       0.17931,
+       0.423081
+      ],
+      "top1": [
+       0.480851,
+       0.691489
+      ],
+      "top5": [
+       0.725479,
+       0.889362
+      ],
+      "D1_brier": [
+       0.210546,
+       0.256032
+      ],
+      "E": [
+       0.087479,
+       0.368762
+      ],
+      "sens:ratio_1/5": [
+       11.276596,
+       30.638298
+      ],
+      "sens:ratio_1/10": [
+       11.276596,
+       30.638298
+      ],
+      "sens:truth_only": [
+       11.276596,
+       30.638298
+      ],
+      "sens:R12.5": [
+       11.276596,
+       30.638298
+      ],
+      "sens:R20": [
+       11.276596,
+       30.638298
+      ],
+      "sens:H_prime": [
+       21.276596,
+       73.191489
+      ],
+      "sens:rate_form": [
+       68.93096,
+       93.182781
+      ],
+      "sens:concern_tier2": [
+       24.680851,
+       47.446809
+      ],
+      "map:strict:COV": [
+       0.401192,
+       0.644005
+      ],
+      "map:strict:MT": [
+       0.251023,
+       0.519064
+      ],
+      "map:strict:SC_H_prime": [
+       27.228723,
+       81.489362
+      ],
+      "map:lenient:COV": [
+       0.829665,
+       0.936554
+      ],
+      "map:lenient:MT": [
+       0.013752,
+       0.103128
+      ],
+      "map:lenient:SC_H_prime": [
+       12.335106,
+       32.345745
+      ],
+      "sens:tiers:severity": [
+       11.489362,
+       31.281915
+      ],
+      "sens:tiers:one-source": [
+       8.93617,
+       27.021277
+      ],
+      "sens:mix:ddxplus": [
+       11.917319,
+       34.389456
+      ],
+      "sens:mix:nhamcs": [
+       10.35271,
+       48.186889
+      ]
+     },
+     "counts": {
+      "cases": 470,
+      "readable": 470,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 446,
+      "no": 24,
+      "misses": 0,
+      "r10_cases": 234,
+      "concerns": 96,
+      "clearly_low_risk": 118,
+      "intermediate": 118,
+      "intermediate_yes": 116,
+      "cov_cases": 269,
+      "MT": {
+       "truth_targets": 200,
+       "truth_missed": 36,
+       "dxa_targets": 84,
+       "dxa_missed": 49
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 120,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 73,
+       "yes": 73,
+       "no_r5_tier3": 10,
+       "no_r5_tier3_yes": 10
+      },
+      "DX": {
+       "top1": 275,
+       "top5": 380,
+       "E_events": 44,
+       "E_den": 200,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 79,
+         "offlist": 1
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 43,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 18,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 470,
+      "flags_status": {
+       "ok": 446,
+       "empty": 24
+      },
+      "parse_rules": {
+       "p_serious:fraction_scaled": 5,
+       "differential:rescaled_to_100": 2,
+       "differential:invalid_code": 1
+      },
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": 56.070213,
+      "maps": {
+       "strict": {
+        "CON": {
+         "yes_without_flags": 0,
+         "yes_without_tier1_flag": 126,
+         "no_with_tier1_flag": 0
+        },
+        "MT": {
+         "truth_targets": 200,
+         "truth_missed": 48,
+         "dxa_targets": 84,
+         "dxa_missed": 62
+        }
+       },
+       "lenient": {
+        "CON": {
+         "yes_without_flags": 0,
+         "yes_without_tier1_flag": 58,
+         "no_with_tier1_flag": 0
+        },
+        "MT": {
+         "truth_targets": 200,
+         "truth_missed": 1,
+         "dxa_targets": 84,
+         "dxa_missed": 14
+        }
+       }
+      },
+      "sensitivity": {
+       "ratio_1/5": {
+        "description": "miss costs 5, concern 1"
+       },
+       "ratio_1/10": {
+        "description": "miss costs 10, concern 1"
+       },
+       "truth_only": {
+        "description": "targets: tier-1 true conditions only"
+       },
+       "R12.5": {
+        "description": "targets at DXA >= 12.5% (truth always)"
+       },
+       "R20": {
+        "description": "targets at DXA >= 20% (truth always)"
+       },
+       "H_prime": {
+        "description": "a YES whose flags name no tier-1 condition counts as reassurance"
+       },
+       "rate_form": {
+        "description": "7 x H + OC, percentage points (the tolerance distance)"
+       },
+       "concern_tier2": {
+        "description": "concern also charged on tier-2 truths with no R5 target"
+       },
+       "tiers:severity": {
+        "description": "tiers from DDXPlus severity only",
+        "r10_cases": 187,
+        "clearly_low_risk": 120
+       },
+       "tiers:one-source": {
+        "description": "one-source upgrade rule (adds AF, anemia, HIV, SLE)",
+        "r10_cases": 265,
+        "clearly_low_risk": 105
+       },
+       "mix:ddxplus": {
+        "description": "DDXPlus mix (adult test split; synthetic too)"
+       },
+       "mix:nhamcs": {
+        "description": "ED visit mix, not intake prevalence (CDC NHAMCS 2016-2022, adults)"
+       }
+      }
+     },
+     "kind": "model",
+     "label": "openai/gpt-5.6-terra",
+     "source": {
+      "path": "results/v03/runs/openai-gpt-5.6-terra-v03-470cases.json",
+      "sha256": "73b55a13510cfa7cb388f4f70a488f00bbc606651d3d14ae04b1980dced2ca55",
+      "set": "main",
+      "prompt_version": "v6",
+      "decoder_version": "v02",
+      "max_tokens": 16000,
+      "reasoning_effort": "medium",
+      "config_version": "v03-2026-09-25",
+      "config_overridden": [],
+      "backend": "openrouter",
+      "git_commit": "81c3803"
+     },
+     "run": {
+      "predictions": 470,
+      "errors": {},
+      "finish_reasons": {
+       "stop": 470
+      },
+      "retried": 0,
+      "truncated": 0,
+      "providers": {
+       "OpenAI": 470
+      },
+      "prompt_tokens": 300164,
+      "completion_tokens": 158958,
+      "completion_tokens_max": 652,
+      "reasoning_tokens": 112317,
+      "cost_usd": 2.5078
+     },
+     "memorisation": {
+      "flag": false,
+      "reasons": [],
+      "minus_nb": [
+       -0.519149,
+       -0.302128
+      ],
+      "minus_dxa": [
+       -0.231915,
+       0.008564
+      ]
+     }
+    },
+    "openai/gpt-oss-120b": {
+     "point": {
+      "SC": 22.765957,
+      "miss_part": 0.0,
+      "concern_part": 22.765957,
+      "H": 0.0,
+      "OC": 0.90678,
+      "SC_readable": 22.765957,
+      "unreadable_share": 0.0,
+      "yes_rate": 0.976596,
+      "COV": 0.562268,
+      "MT_truth": 0.29,
+      "MT_dxa": 0.607143,
+      "MT": 0.383803,
+      "top1": 0.47234,
+      "top5": 0.704255,
+      "D1_brier": 0.235436,
+      "E": 0.345,
+      "sens:ratio_1/5": 22.765957,
+      "sens:ratio_1/10": 22.765957,
+      "sens:truth_only": 22.765957,
+      "sens:R12.5": 22.765957,
+      "sens:R20": 22.765957,
+      "sens:H_prime": 45.106383,
+      "sens:rate_form": 90.677966,
+      "sens:concern_tier2": 38.297872,
+      "map:strict:COV": 0.513321,
+      "map:strict:MT": 0.429577,
+      "map:strict:SC_H_prime": 58.510638,
+      "map:lenient:COV": 0.921623,
+      "map:lenient:MT": 0.045775,
+      "map:lenient:SC_H_prime": 24.255319,
+      "sens:tiers:severity": 23.191489,
+      "sens:tiers:one-source": 20.0,
+      "sens:mix:ddxplus": 26.34212,
+      "sens:mix:nhamcs": 34.367566
+     },
+     "ci": {
+      "SC": [
+       12.553191,
+       34.042553
+      ],
+      "miss_part": [
+       0.0,
+       0.0
+      ],
+      "concern_part": [
+       12.553191,
+       34.042553
+      ],
+      "H": [
+       0.0,
+       0.0
+      ],
+      "OC": [
+       0.751729,
+       0.991597
+      ],
+      "SC_readable": [
+       12.553191,
+       34.042553
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       0.93617,
+       0.997872
+      ],
+      "COV": [
+       0.443819,
+       0.672684
+      ],
+      "MT_truth": [
+       0.131579,
+       0.452993
+      ],
+      "MT_dxa": [
+       0.388052,
+       0.814825
+      ],
+      "MT": [
+       0.237067,
+       0.523653
+      ],
+      "top1": [
+       0.357447,
+       0.583032
+      ],
+      "top5": [
+       0.597872,
+       0.802128
+      ],
+      "D1_brier": [
+       0.207792,
+       0.260338
+      ],
+      "E": [
+       0.165212,
+       0.529187
+      ],
+      "sens:ratio_1/5": [
+       12.553191,
+       34.042553
+      ],
+      "sens:ratio_1/10": [
+       12.553191,
+       34.042553
+      ],
+      "sens:truth_only": [
+       12.553191,
+       34.042553
+      ],
+      "sens:R12.5": [
+       12.553191,
+       34.042553
+      ],
+      "sens:R20": [
+       12.553191,
+       34.042553
+      ],
+      "sens:H_prime": [
+       26.808511,
+       65.111702
+      ],
+      "sens:rate_form": [
+       75.172872,
+       99.159664
+      ],
+      "sens:concern_tier2": [
+       26.595745,
+       50.638298
+      ],
+      "map:strict:COV": [
+       0.389853,
+       0.636837
+      ],
+      "map:strict:MT": [
+       0.274893,
+       0.576005
+      ],
+      "map:strict:SC_H_prime": [
+       31.276596,
+       92.340426
+      ],
+      "map:lenient:COV": [
+       0.874558,
+       0.959304
+      ],
+      "map:lenient:MT": [
+       0.006733,
+       0.097283
+      ],
+      "map:lenient:SC_H_prime": [
+       13.611702,
+       35.744681
+      ],
+      "sens:tiers:severity": [
+       12.765957,
+       34.680851
+      ],
+      "sens:tiers:one-source": [
+       10.0,
+       30.638298
+      ],
+      "sens:mix:ddxplus": [
+       13.786538,
+       39.987192
+      ],
+      "sens:mix:nhamcs": [
+       12.895297,
+       56.053469
+      ]
+     },
+     "counts": {
+      "cases": 470,
+      "readable": 470,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 459,
+      "no": 11,
+      "misses": 0,
+      "r10_cases": 234,
+      "concerns": 107,
+      "clearly_low_risk": 118,
+      "intermediate": 118,
+      "intermediate_yes": 118,
+      "cov_cases": 269,
+      "MT": {
+       "truth_targets": 200,
+       "truth_missed": 58,
+       "dxa_targets": 84,
+       "dxa_missed": 51
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 115,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 73,
+       "yes": 73,
+       "no_r5_tier3": 10,
+       "no_r5_tier3_yes": 10
+      },
+      "DX": {
+       "top1": 222,
+       "top5": 331,
+       "E_events": 69,
+       "E_den": 200,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 18,
+         "offlist": 3
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 6,
+         "offlist": 2
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 470,
+      "flags_status": {
+       "ok": 459,
+       "empty": 11
+      },
+      "parse_rules": {},
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": 65.861702,
+      "maps": {
+       "strict": {
+        "CON": {
+         "yes_without_flags": 0,
+         "yes_without_tier1_flag": 126,
+         "no_with_tier1_flag": 0
+        },
+        "MT": {
+         "truth_targets": 200,
+         "truth_missed": 68,
+         "dxa_targets": 84,
+         "dxa_missed": 54
+        }
+       },
+       "lenient": {
+        "CON": {
+         "yes_without_flags": 0,
+         "yes_without_tier1_flag": 45,
+         "no_with_tier1_flag": 0
+        },
+        "MT": {
+         "truth_targets": 200,
+         "truth_missed": 1,
+         "dxa_targets": 84,
+         "dxa_missed": 12
+        }
+       }
+      },
+      "sensitivity": {
+       "ratio_1/5": {
+        "description": "miss costs 5, concern 1"
+       },
+       "ratio_1/10": {
+        "description": "miss costs 10, concern 1"
+       },
+       "truth_only": {
+        "description": "targets: tier-1 true conditions only"
+       },
+       "R12.5": {
+        "description": "targets at DXA >= 12.5% (truth always)"
+       },
+       "R20": {
+        "description": "targets at DXA >= 20% (truth always)"
+       },
+       "H_prime": {
+        "description": "a YES whose flags name no tier-1 condition counts as reassurance"
+       },
+       "rate_form": {
+        "description": "7 x H + OC, percentage points (the tolerance distance)"
+       },
+       "concern_tier2": {
+        "description": "concern also charged on tier-2 truths with no R5 target"
+       },
+       "tiers:severity": {
+        "description": "tiers from DDXPlus severity only",
+        "r10_cases": 187,
+        "clearly_low_risk": 120
+       },
+       "tiers:one-source": {
+        "description": "one-source upgrade rule (adds AF, anemia, HIV, SLE)",
+        "r10_cases": 265,
+        "clearly_low_risk": 105
+       },
+       "mix:ddxplus": {
+        "description": "DDXPlus mix (adult test split; synthetic too)"
+       },
+       "mix:nhamcs": {
+        "description": "ED visit mix, not intake prevalence (CDC NHAMCS 2016-2022, adults)"
+       }
+      }
+     },
+     "kind": "model",
+     "label": "openai/gpt-oss-120b",
+     "source": {
+      "path": "results/v03/runs/openai-gpt-oss-120b-v03-470cases.json",
+      "sha256": "1cf2acf770af8ba9f53f0c1f0af74c4ed01d90b3845e4f613f0fe71e59246485",
+      "set": "main",
+      "prompt_version": "v6",
+      "decoder_version": "v02",
+      "max_tokens": 16000,
+      "reasoning_effort": "medium",
+      "config_version": "v03-2026-09-25",
+      "config_overridden": [],
+      "backend": "openrouter",
+      "git_commit": "6fb50e5"
+     },
+     "run": {
+      "predictions": 470,
+      "errors": {},
+      "finish_reasons": {
+       "stop": 470
+      },
+      "retried": 0,
+      "truncated": 0,
+      "providers": {
+       "CoreWeave": 78,
+       "Mancer 2": 29,
+       "DekaLLM": 52,
+       "Novita": 43,
+       "Crusoe": 32,
+       "Nebius": 5,
+       "DeepInfra": 100,
+       "SambaNova": 12,
+       "AkashML": 81,
+       "Amazon Bedrock": 3,
+       "Groq": 4,
+       "BaseTen": 19,
+       "Together": 7,
+       "Phala": 2,
+       "Mara": 2,
+       "Cerebras": 1
+      },
+      "prompt_tokens": 328629,
+      "completion_tokens": 363958,
+      "completion_tokens_max": 1371,
+      "reasoning_tokens": 252804,
+      "cost_usd": 0.1097
+     },
+     "memorisation": {
+      "flag": false,
+      "reasons": [],
+      "minus_nb": [
+       -0.63617,
+       -0.410638
+      ],
+      "minus_dxa": [
+       -0.33617,
+       -0.102074
+      ]
+     }
+    },
+    "perfect": {
+     "point": {
+      "SC": 0.0,
+      "miss_part": 0.0,
+      "concern_part": 0.0,
+      "H": 0.0,
+      "OC": 0.0,
+      "SC_readable": 0.0,
+      "unreadable_share": 0.0,
+      "yes_rate": 0.497872,
+      "COV": 1.0,
+      "MT_truth": 0.0,
+      "MT_dxa": 0.0,
+      "MT": 0.0,
+      "top1": 1.0,
+      "top5": 1.0,
+      "D1_brier": 0.0,
+      "E": 0.0,
+      "sens:ratio_1/5": 0.0,
+      "sens:ratio_1/10": 0.0,
+      "sens:truth_only": 0.0,
+      "sens:R12.5": 0.0,
+      "sens:R20": 0.0,
+      "sens:H_prime": 0.0,
+      "sens:rate_form": 0.0,
+      "sens:concern_tier2": 0.0,
+      "map:strict:COV": 1.0,
+      "map:strict:MT": 0.0,
+      "map:strict:SC_H_prime": 0.0,
+      "map:lenient:COV": 1.0,
+      "map:lenient:MT": 0.0,
+      "map:lenient:SC_H_prime": 0.0,
+      "sens:tiers:severity": 0.0,
+      "sens:tiers:one-source": 46.170213,
+      "sens:mix:ddxplus": 0.0,
+      "sens:mix:nhamcs": 0.0
+     },
+     "ci": {
+      "SC": [
+       0.0,
+       0.0
+      ],
+      "miss_part": [
+       0.0,
+       0.0
+      ],
+      "concern_part": [
+       0.0,
+       0.0
+      ],
+      "H": [
+       0.0,
+       0.0
+      ],
+      "OC": [
+       0.0,
+       0.0
+      ],
+      "SC_readable": [
+       0.0,
+       0.0
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       0.361649,
+       0.62984
+      ],
+      "COV": [
+       1.0,
+       1.0
+      ],
+      "MT_truth": [
+       0.0,
+       0.0
+      ],
+      "MT_dxa": [
+       0.0,
+       0.0
+      ],
+      "MT": [
+       0.0,
+       0.0
+      ],
+      "top1": [
+       1.0,
+       1.0
+      ],
+      "top5": [
+       1.0,
+       1.0
+      ],
+      "D1_brier": [
+       0.0,
+       0.0
+      ],
+      "E": [
+       0.0,
+       0.0
+      ],
+      "sens:ratio_1/5": [
+       0.0,
+       0.0
+      ],
+      "sens:ratio_1/10": [
+       0.0,
+       0.0
+      ],
+      "sens:truth_only": [
+       0.0,
+       0.0
+      ],
+      "sens:R12.5": [
+       0.0,
+       0.0
+      ],
+      "sens:R20": [
+       0.0,
+       0.0
+      ],
+      "sens:H_prime": [
+       0.0,
+       0.0
+      ],
+      "sens:rate_form": [
+       0.0,
+       0.0
+      ],
+      "sens:concern_tier2": [
+       0.0,
+       0.0
+      ],
+      "map:strict:COV": [
+       1.0,
+       1.0
+      ],
+      "map:strict:MT": [
+       0.0,
+       0.0
+      ],
+      "map:strict:SC_H_prime": [
+       0.0,
+       0.0
+      ],
+      "map:lenient:COV": [
+       1.0,
+       1.0
+      ],
+      "map:lenient:MT": [
+       0.0,
+       0.0
+      ],
+      "map:lenient:SC_H_prime": [
+       0.0,
+       0.0
+      ],
+      "sens:tiers:severity": [
+       0.0,
+       0.0
+      ],
+      "sens:tiers:one-source": [
+       2.978723,
+       101.31383
+      ],
+      "sens:mix:ddxplus": [
+       0.0,
+       0.0
+      ],
+      "sens:mix:nhamcs": [
+       0.0,
+       0.0
+      ]
+     },
+     "counts": {
+      "cases": 470,
+      "readable": 470,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 234,
+      "no": 236,
+      "misses": 0,
+      "r10_cases": 234,
+      "concerns": 0,
+      "clearly_low_risk": 118,
+      "intermediate": 118,
+      "intermediate_yes": 0,
+      "cov_cases": 269,
+      "MT": {
+       "truth_targets": 200,
+       "truth_missed": 0,
+       "dxa_targets": 84,
+       "dxa_missed": 0
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 0,
+       "no_with_tier1_flag": 35
+      },
+      "red_flag": {
+       "cases": 73,
+       "yes": 37,
+       "no_r5_tier3": 10,
+       "no_r5_tier3_yes": 0
+      },
+      "DX": {
+       "top1": 470,
+       "top5": 470,
+       "E_events": 0,
+       "E_den": 200,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 470,
+         "offlist": 0
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 470,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 470,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 0,
+      "flags_status": {
+       "empty": 201,
+       "ok": 269
+      },
+      "parse_rules": {
+       "p_serious:missing": 470
+      },
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": null,
+      "maps": {
+       "strict": {
+        "CON": {
+         "yes_without_flags": 0,
+         "yes_without_tier1_flag": 0,
+         "no_with_tier1_flag": 35
+        },
+        "MT": {
+         "truth_targets": 200,
+         "truth_missed": 0,
+         "dxa_targets": 84,
+         "dxa_missed": 0
+        }
+       },
+       "lenient": {
+        "CON": {
+         "yes_without_flags": 0,
+         "yes_without_tier1_flag": 0,
+         "no_with_tier1_flag": 35
+        },
+        "MT": {
+         "truth_targets": 200,
+         "truth_missed": 0,
+         "dxa_targets": 84,
+         "dxa_missed": 0
+        }
+       }
+      },
+      "sensitivity": {
+       "ratio_1/5": {
+        "description": "miss costs 5, concern 1"
+       },
+       "ratio_1/10": {
+        "description": "miss costs 10, concern 1"
+       },
+       "truth_only": {
+        "description": "targets: tier-1 true conditions only"
+       },
+       "R12.5": {
+        "description": "targets at DXA >= 12.5% (truth always)"
+       },
+       "R20": {
+        "description": "targets at DXA >= 20% (truth always)"
+       },
+       "H_prime": {
+        "description": "a YES whose flags name no tier-1 condition counts as reassurance"
+       },
+       "rate_form": {
+        "description": "7 x H + OC, percentage points (the tolerance distance)"
+       },
+       "concern_tier2": {
+        "description": "concern also charged on tier-2 truths with no R5 target"
+       },
+       "tiers:severity": {
+        "description": "tiers from DDXPlus severity only",
+        "r10_cases": 187,
+        "clearly_low_risk": 120
+       },
+       "tiers:one-source": {
+        "description": "one-source upgrade rule (adds AF, anemia, HIV, SLE)",
+        "r10_cases": 265,
+        "clearly_low_risk": 105
+       },
+       "mix:ddxplus": {
+        "description": "DDXPlus mix (adult test split; synthetic too)"
+       },
+       "mix:nhamcs": {
+        "description": "ED visit mix, not intake prevalence (CDC NHAMCS 2016-2022, adults)"
+       }
+      }
+     },
+     "kind": "constant",
+     "label": "Perfect (YES iff an R10 target; flags = R5 targets)"
+    },
+    "always-yes": {
+     "point": {
+      "SC": 25.106383,
+      "miss_part": 0.0,
+      "concern_part": 25.106383,
+      "H": 0.0,
+      "OC": 1.0,
+      "SC_readable": 25.106383,
+      "unreadable_share": 0.0,
+      "yes_rate": 1.0,
+      "COV": 0.356258,
+      "MT_truth": 0.75,
+      "MT_dxa": 0.321429,
+      "MT": 0.623239,
+      "top1": 0.0,
+      "top5": 0.0,
+      "D1_brier": 0.0,
+      "E": 1.0,
+      "sens:ratio_1/5": 25.106383,
+      "sens:ratio_1/10": 25.106383,
+      "sens:truth_only": 25.106383,
+      "sens:R12.5": 25.106383,
+      "sens:R20": 25.106383,
+      "sens:H_prime": 25.106383,
+      "sens:rate_form": 100.0,
+      "sens:concern_tier2": 40.638298,
+      "map:strict:COV": 0.356258,
+      "map:strict:MT": 0.623239,
+      "map:strict:SC_H_prime": 25.106383,
+      "map:lenient:COV": 0.524164,
+      "map:lenient:MT": 0.415493,
+      "map:lenient:SC_H_prime": 25.106383,
+      "sens:tiers:severity": 25.531915,
+      "sens:tiers:one-source": 22.340426,
+      "sens:mix:ddxplus": 28.797777,
+      "sens:mix:nhamcs": 35.77264
+     },
+     "ci": {
+      "SC": [
+       14.042553,
+       37.234043
+      ],
+      "miss_part": [
+       0.0,
+       0.0
+      ],
+      "concern_part": [
+       14.042553,
+       37.234043
+      ],
+      "H": [
+       0.0,
+       0.0
+      ],
+      "OC": [
+       1.0,
+       1.0
+      ],
+      "SC_readable": [
+       14.042553,
+       37.234043
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       1.0,
+       1.0
+      ],
+      "COV": [
+       0.230531,
+       0.503108
+      ],
+      "MT_truth": [
+       0.538462,
+       0.937592
+      ],
+      "MT_dxa": [
+       0.141156,
+       0.547997
+      ],
+      "MT": [
+       0.448201,
+       0.790008
+      ],
+      "top1": [
+       0.0,
+       0.0
+      ],
+      "top5": [
+       0.0,
+       0.0
+      ],
+      "D1_brier": [
+       0.0,
+       0.0
+      ],
+      "E": [
+       1.0,
+       1.0
+      ],
+      "sens:ratio_1/5": [
+       14.042553,
+       37.234043
+      ],
+      "sens:ratio_1/10": [
+       14.042553,
+       37.234043
+      ],
+      "sens:truth_only": [
+       14.042553,
+       37.234043
+      ],
+      "sens:R12.5": [
+       14.042553,
+       37.234043
+      ],
+      "sens:R20": [
+       14.042553,
+       37.234043
+      ],
+      "sens:H_prime": [
+       14.042553,
+       37.234043
+      ],
+      "sens:rate_form": [
+       100.0,
+       100.0
+      ],
+      "sens:concern_tier2": [
+       28.505319,
+       53.404255
+      ],
+      "map:strict:COV": [
+       0.230531,
+       0.503108
+      ],
+      "map:strict:MT": [
+       0.448201,
+       0.790008
+      ],
+      "map:strict:SC_H_prime": [
+       14.042553,
+       37.234043
+      ],
+      "map:lenient:COV": [
+       0.368993,
+       0.677389
+      ],
+      "map:lenient:MT": [
+       0.242833,
+       0.592962
+      ],
+      "map:lenient:SC_H_prime": [
+       14.042553,
+       37.234043
+      ],
+      "sens:tiers:severity": [
+       14.462766,
+       37.452128
+      ],
+      "sens:tiers:one-source": [
+       11.696809,
+       33.617021
+      ],
+      "sens:mix:ddxplus": [
+       15.802152,
+       42.444174
+      ],
+      "sens:mix:nhamcs": [
+       13.957528,
+       57.291846
+      ]
+     },
+     "counts": {
+      "cases": 470,
+      "readable": 470,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 470,
+      "no": 0,
+      "misses": 0,
+      "r10_cases": 234,
+      "concerns": 118,
+      "clearly_low_risk": 118,
+      "intermediate": 118,
+      "intermediate_yes": 118,
+      "cov_cases": 269,
+      "MT": {
+       "truth_targets": 200,
+       "truth_missed": 150,
+       "dxa_targets": 84,
+       "dxa_missed": 27
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 0,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 73,
+       "yes": 73,
+       "no_r5_tier3": 10,
+       "no_r5_tier3_yes": 10
+      },
+      "DX": {
+       "top1": 0,
+       "top5": 0,
+       "E_events": 200,
+       "E_den": 200,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 0,
+      "flags_status": {
+       "ok": 470
+      },
+      "parse_rules": {
+       "p_serious:missing": 470
+      },
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": null,
+      "maps": {
+       "strict": {
+        "CON": {
+         "yes_without_flags": 0,
+         "yes_without_tier1_flag": 0,
+         "no_with_tier1_flag": 0
+        },
+        "MT": {
+         "truth_targets": 200,
+         "truth_missed": 150,
+         "dxa_targets": 84,
+         "dxa_missed": 27
+        }
+       },
+       "lenient": {
+        "CON": {
+         "yes_without_flags": 0,
+         "yes_without_tier1_flag": 0,
+         "no_with_tier1_flag": 0
+        },
+        "MT": {
+         "truth_targets": 200,
+         "truth_missed": 100,
+         "dxa_targets": 84,
+         "dxa_missed": 18
+        }
+       }
+      },
+      "sensitivity": {
+       "ratio_1/5": {
+        "description": "miss costs 5, concern 1"
+       },
+       "ratio_1/10": {
+        "description": "miss costs 10, concern 1"
+       },
+       "truth_only": {
+        "description": "targets: tier-1 true conditions only"
+       },
+       "R12.5": {
+        "description": "targets at DXA >= 12.5% (truth always)"
+       },
+       "R20": {
+        "description": "targets at DXA >= 20% (truth always)"
+       },
+       "H_prime": {
+        "description": "a YES whose flags name no tier-1 condition counts as reassurance"
+       },
+       "rate_form": {
+        "description": "7 x H + OC, percentage points (the tolerance distance)"
+       },
+       "concern_tier2": {
+        "description": "concern also charged on tier-2 truths with no R5 target"
+       },
+       "tiers:severity": {
+        "description": "tiers from DDXPlus severity only",
+        "r10_cases": 187,
+        "clearly_low_risk": 120
+       },
+       "tiers:one-source": {
+        "description": "one-source upgrade rule (adds AF, anemia, HIV, SLE)",
+        "r10_cases": 265,
+        "clearly_low_risk": 105
+       },
+       "mix:ddxplus": {
+        "description": "DDXPlus mix (adult test split; synthetic too)"
+       },
+       "mix:nhamcs": {
+        "description": "ED visit mix, not intake prevalence (CDC NHAMCS 2016-2022, adults)"
+       }
+      }
+     },
+     "kind": "reference",
+     "label": "Always YES (fixed 5 tier-1 flags)",
+     "rule": "serious_concern YES for every case; flags = the 5 tier-1 conditions with the most R10 targets in the 470 key (ties: more R5 targets, then name), as canonical codes: I47.1 (PSVT), I21 (Possible NSTEMI / STEMI), C34 (Pulmonary neoplasm), I20.9 (Stable angina), I20.0 (Unstable angina)"
+    },
+    "always-no": {
+     "point": {
+      "SC": 348.510638,
+      "miss_part": 348.510638,
+      "concern_part": 0.0,
+      "H": 1.0,
+      "OC": 0.0,
+      "SC_readable": 348.510638,
+      "unreadable_share": 0.0,
+      "yes_rate": 0.0,
+      "COV": 0.0,
+      "MT_truth": 1.0,
+      "MT_dxa": 1.0,
+      "MT": 1.0,
+      "top1": 0.0,
+      "top5": 0.0,
+      "D1_brier": 0.0,
+      "E": 1.0,
+      "sens:ratio_1/5": 248.93617,
+      "sens:ratio_1/10": 497.87234,
+      "sens:truth_only": 297.87234,
+      "sens:R12.5": 329.148936,
+      "sens:R20": 305.319149,
+      "sens:H_prime": 348.510638,
+      "sens:rate_form": 700.0,
+      "sens:concern_tier2": 348.510638,
+      "map:strict:COV": 0.0,
+      "map:strict:MT": 1.0,
+      "map:strict:SC_H_prime": 348.510638,
+      "map:lenient:COV": 0.0,
+      "map:lenient:MT": 1.0,
+      "map:lenient:SC_H_prime": 348.510638,
+      "sens:tiers:severity": 278.510638,
+      "sens:tiers:one-source": 394.680851,
+      "sens:mix:ddxplus": 305.827375,
+      "sens:mix:nhamcs": 254.452049
+     },
+     "ci": {
+      "SC": [
+       253.154255,
+       440.888298
+      ],
+      "miss_part": [
+       253.154255,
+       440.888298
+      ],
+      "concern_part": [
+       0.0,
+       0.0
+      ],
+      "H": [
+       1.0,
+       1.0
+      ],
+      "OC": [
+       0.0,
+       0.0
+      ],
+      "SC_readable": [
+       253.154255,
+       440.888298
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       0.0,
+       0.0
+      ],
+      "COV": [
+       0.0,
+       0.0
+      ],
+      "MT_truth": [
+       1.0,
+       1.0
+      ],
+      "MT_dxa": [
+       1.0,
+       1.0
+      ],
+      "MT": [
+       1.0,
+       1.0
+      ],
+      "top1": [
+       0.0,
+       0.0
+      ],
+      "top5": [
+       0.0,
+       0.0
+      ],
+      "D1_brier": [
+       0.0,
+       0.0
+      ],
+      "E": [
+       1.0,
+       1.0
+      ],
+      "sens:ratio_1/5": [
+       180.824468,
+       314.920213
+      ],
+      "sens:ratio_1/10": [
+       361.648936,
+       629.840426
+      ],
+      "sens:truth_only": [
+       193.617021,
+       402.12766
+      ],
+      "sens:R12.5": [
+       230.851064,
+       424.468085
+      ],
+      "sens:R20": [
+       204.042553,
+       405.106383
+      ],
+      "sens:H_prime": [
+       253.154255,
+       440.888298
+      ],
+      "sens:rate_form": [
+       700.0,
+       700.0
+      ],
+      "sens:concern_tier2": [
+       253.154255,
+       440.888298
+      ],
+      "map:strict:COV": [
+       0.0,
+       0.0
+      ],
+      "map:strict:MT": [
+       1.0,
+       1.0
+      ],
+      "map:strict:SC_H_prime": [
+       253.154255,
+       440.888298
+      ],
+      "map:lenient:COV": [
+       0.0,
+       0.0
+      ],
+      "map:lenient:MT": [
+       1.0,
+       1.0
+      ],
+      "map:lenient:SC_H_prime": [
+       253.154255,
+       440.888298
+      ],
+      "sens:tiers:severity": [
+       189.148936,
+       369.361702
+      ],
+      "sens:tiers:one-source": [
+       305.319149,
+       485.531915
+      ],
+      "sens:mix:ddxplus": [
+       207.264159,
+       415.531418
+      ],
+      "sens:mix:nhamcs": [
+       102.018951,
+       430.191621
+      ]
+     },
+     "counts": {
+      "cases": 470,
+      "readable": 470,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 0,
+      "no": 470,
+      "misses": 234,
+      "r10_cases": 234,
+      "concerns": 0,
+      "clearly_low_risk": 118,
+      "intermediate": 118,
+      "intermediate_yes": 0,
+      "cov_cases": 269,
+      "MT": {
+       "truth_targets": 200,
+       "truth_missed": 200,
+       "dxa_targets": 84,
+       "dxa_missed": 84
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 0,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 73,
+       "yes": 0,
+       "no_r5_tier3": 10,
+       "no_r5_tier3_yes": 0
+      },
+      "DX": {
+       "top1": 0,
+       "top5": 0,
+       "E_events": 200,
+       "E_den": 200,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 0,
+      "flags_status": {
+       "empty": 470
+      },
+      "parse_rules": {
+       "p_serious:missing": 470
+      },
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": null,
+      "maps": {
+       "strict": {
+        "CON": {
+         "yes_without_flags": 0,
+         "yes_without_tier1_flag": 0,
+         "no_with_tier1_flag": 0
+        },
+        "MT": {
+         "truth_targets": 200,
+         "truth_missed": 200,
+         "dxa_targets": 84,
+         "dxa_missed": 84
+        }
+       },
+       "lenient": {
+        "CON": {
+         "yes_without_flags": 0,
+         "yes_without_tier1_flag": 0,
+         "no_with_tier1_flag": 0
+        },
+        "MT": {
+         "truth_targets": 200,
+         "truth_missed": 200,
+         "dxa_targets": 84,
+         "dxa_missed": 84
+        }
+       }
+      },
+      "sensitivity": {
+       "ratio_1/5": {
+        "description": "miss costs 5, concern 1"
+       },
+       "ratio_1/10": {
+        "description": "miss costs 10, concern 1"
+       },
+       "truth_only": {
+        "description": "targets: tier-1 true conditions only"
+       },
+       "R12.5": {
+        "description": "targets at DXA >= 12.5% (truth always)"
+       },
+       "R20": {
+        "description": "targets at DXA >= 20% (truth always)"
+       },
+       "H_prime": {
+        "description": "a YES whose flags name no tier-1 condition counts as reassurance"
+       },
+       "rate_form": {
+        "description": "7 x H + OC, percentage points (the tolerance distance)"
+       },
+       "concern_tier2": {
+        "description": "concern also charged on tier-2 truths with no R5 target"
+       },
+       "tiers:severity": {
+        "description": "tiers from DDXPlus severity only",
+        "r10_cases": 187,
+        "clearly_low_risk": 120
+       },
+       "tiers:one-source": {
+        "description": "one-source upgrade rule (adds AF, anemia, HIV, SLE)",
+        "r10_cases": 265,
+        "clearly_low_risk": 105
+       },
+       "mix:ddxplus": {
+        "description": "DDXPlus mix (adult test split; synthetic too)"
+       },
+       "mix:nhamcs": {
+        "description": "ED visit mix, not intake prevalence (CDC NHAMCS 2016-2022, adults)"
+       }
+      }
+     },
+     "kind": "reference",
+     "label": "Always NO",
+     "rule": "serious_concern NO for every case; no flags"
+    },
+    "dxa": {
+     "point": {
+      "SC": 67.021277,
+      "miss_part": 67.021277,
+      "concern_part": 0.0,
+      "H": 0.192308,
+      "OC": 0.0,
+      "SC_readable": 67.021277,
+      "unreadable_share": 0.0,
+      "yes_rate": 0.402128,
+      "COV": 0.621747,
+      "MT_truth": 0.25,
+      "MT_dxa": 0.0,
+      "MT": 0.176056,
+      "top1": 0.693617,
+      "top5": 0.965957,
+      "D1_brier": 0.375441,
+      "E": 0.045,
+      "sens:ratio_1/5": 47.87234,
+      "sens:ratio_1/10": 95.744681,
+      "sens:truth_only": 67.021277,
+      "sens:R12.5": 67.021277,
+      "sens:R20": 67.021277,
+      "sens:H_prime": 67.021277,
+      "sens:rate_form": 134.615385,
+      "sens:concern_tier2": 67.021277,
+      "map:strict:COV": 0.621747,
+      "map:strict:MT": 0.176056,
+      "map:strict:SC_H_prime": 67.021277,
+      "map:lenient:COV": 0.636617,
+      "map:lenient:MT": 0.169014,
+      "map:lenient:SC_H_prime": 67.021277,
+      "sens:tiers:severity": 44.680851,
+      "sens:tiers:one-source": 113.191489,
+      "sens:mix:ddxplus": 67.72499,
+      "sens:mix:nhamcs": 93.454168
+     },
+     "ci": {
+      "SC": [
+       32.765957,
+       108.723404
+      ],
+      "miss_part": [
+       32.765957,
+       108.723404
+      ],
+      "concern_part": [
+       0.0,
+       0.0
+      ],
+      "H": [
+       0.108312,
+       0.283109
+      ],
+      "OC": [
+       0.0,
+       0.0
+      ],
+      "SC_readable": [
+       32.765957,
+       108.723404
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       0.287234,
+       0.508511
+      ],
+      "COV": [
+       0.516137,
+       0.721489
+      ],
+      "MT_truth": [
+       0.153824,
+       0.360028
+      ],
+      "MT_dxa": [
+       0.0,
+       0.0
+      ],
+      "MT": [
+       0.10588,
+       0.25
+      ],
+      "top1": [
+       0.599947,
+       0.778723
+      ],
+      "top5": [
+       0.946755,
+       0.985106
+      ],
+      "D1_brier": [
+       0.313237,
+       0.434369
+      ],
+      "E": [
+       0.016667,
+       0.077273
+      ],
+      "sens:ratio_1/5": [
+       23.404255,
+       77.659574
+      ],
+      "sens:ratio_1/10": [
+       46.808511,
+       155.319149
+      ],
+      "sens:truth_only": [
+       32.765957,
+       108.723404
+      ],
+      "sens:R12.5": [
+       32.765957,
+       108.723404
+      ],
+      "sens:R20": [
+       32.765957,
+       108.723404
+      ],
+      "sens:H_prime": [
+       32.765957,
+       108.723404
+      ],
+      "sens:rate_form": [
+       75.818341,
+       198.17626
+      ],
+      "sens:concern_tier2": [
+       32.765957,
+       108.723404
+      ],
+      "map:strict:COV": [
+       0.516137,
+       0.721489
+      ],
+      "map:strict:MT": [
+       0.10588,
+       0.25
+      ],
+      "map:strict:SC_H_prime": [
+       32.765957,
+       108.723404
+      ],
+      "map:lenient:COV": [
+       0.532289,
+       0.734824
+      ],
+      "map:lenient:MT": [
+       0.099348,
+       0.245297
+      ],
+      "map:lenient:SC_H_prime": [
+       32.765957,
+       108.723404
+      ],
+      "sens:tiers:severity": [
+       17.835106,
+       78.93617
+      ],
+      "sens:tiers:one-source": [
+       62.553191,
+       171.276596
+      ],
+      "sens:mix:ddxplus": [
+       31.649235,
+       112.709723
+      ],
+      "sens:mix:nhamcs": [
+       12.101594,
+       187.744308
+      ]
+     },
+     "counts": {
+      "cases": 470,
+      "readable": 470,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 189,
+      "no": 281,
+      "misses": 45,
+      "r10_cases": 234,
+      "concerns": 0,
+      "clearly_low_risk": 118,
+      "intermediate": 118,
+      "intermediate_yes": 0,
+      "cov_cases": 269,
+      "MT": {
+       "truth_targets": 200,
+       "truth_missed": 50,
+       "dxa_targets": 84,
+       "dxa_missed": 0
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 0,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 73,
+       "yes": 32,
+       "no_r5_tier3": 10,
+       "no_r5_tier3_yes": 0
+      },
+      "DX": {
+       "top1": 326,
+       "top5": 454,
+       "E_events": 9,
+       "E_den": 200,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 68,
+         "offlist": 0
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 47,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 45,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 470,
+      "flags_status": {
+       "empty": 281,
+       "ok": 189
+      },
+      "parse_rules": {
+       "differential:non_integer": 425,
+       "p_serious:non_integer": 373,
+       "p_serious:fraction_scaled": 76,
+       "differential:rescaled_to_100": 6
+      },
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": 46.929575,
+      "maps": {
+       "strict": {
+        "CON": {
+         "yes_without_flags": 0,
+         "yes_without_tier1_flag": 0,
+         "no_with_tier1_flag": 0
+        },
+        "MT": {
+         "truth_targets": 200,
+         "truth_missed": 50,
+         "dxa_targets": 84,
+         "dxa_missed": 0
+        }
+       },
+       "lenient": {
+        "CON": {
+         "yes_without_flags": 0,
+         "yes_without_tier1_flag": 0,
+         "no_with_tier1_flag": 0
+        },
+        "MT": {
+         "truth_targets": 200,
+         "truth_missed": 48,
+         "dxa_targets": 84,
+         "dxa_missed": 0
+        }
+       }
+      },
+      "sensitivity": {
+       "ratio_1/5": {
+        "description": "miss costs 5, concern 1"
+       },
+       "ratio_1/10": {
+        "description": "miss costs 10, concern 1"
+       },
+       "truth_only": {
+        "description": "targets: tier-1 true conditions only"
+       },
+       "R12.5": {
+        "description": "targets at DXA >= 12.5% (truth always)"
+       },
+       "R20": {
+        "description": "targets at DXA >= 20% (truth always)"
+       },
+       "H_prime": {
+        "description": "a YES whose flags name no tier-1 condition counts as reassurance"
+       },
+       "rate_form": {
+        "description": "7 x H + OC, percentage points (the tolerance distance)"
+       },
+       "concern_tier2": {
+        "description": "concern also charged on tier-2 truths with no R5 target"
+       },
+       "tiers:severity": {
+        "description": "tiers from DDXPlus severity only",
+        "r10_cases": 187,
+        "clearly_low_risk": 120
+       },
+       "tiers:one-source": {
+        "description": "one-source upgrade rule (adds AF, anemia, HIV, SLE)",
+        "r10_cases": 265,
+        "clearly_low_risk": 105
+       },
+       "mix:ddxplus": {
+        "description": "DDXPlus mix (adult test split; synthetic too)"
+       },
+       "mix:nhamcs": {
+        "description": "ED visit mix, not intake prevalence (CDC NHAMCS 2016-2022, adults)"
+       }
+      }
+     },
+     "kind": "reference",
+     "label": "DXA at the target threshold (reference for COV and DX only)",
+     "rule": "YES when a tier-1 condition has DXA p >= 10% and is not a red herring (undetermined kept); flags = the top 5 such by p; differential = DXA's top 5; p_serious = DXA mass on tier-1 conditions. At the key's own threshold, not a ceiling"
+    },
+    "naive-bayes": {
+     "point": {
+      "SC": 50.638298,
+      "miss_part": 50.638298,
+      "concern_part": 0.0,
+      "H": 0.145299,
+      "OC": 0.0,
+      "SC_readable": 50.638298,
+      "unreadable_share": 0.0,
+      "yes_rate": 0.425532,
+      "COV": 0.5728,
+      "MT_truth": 0.0,
+      "MT_dxa": 0.940476,
+      "MT": 0.278169,
+      "top1": 0.993617,
+      "top5": 1.0,
+      "D1_brier": 0.005182,
+      "E": 0.0,
+      "sens:ratio_1/5": 36.170213,
+      "sens:ratio_1/10": 72.340426,
+      "sens:truth_only": 0.0,
+      "sens:R12.5": 31.276596,
+      "sens:R20": 7.446809,
+      "sens:H_prime": 50.638298,
+      "sens:rate_form": 101.709402,
+      "sens:concern_tier2": 50.638298,
+      "map:strict:COV": 0.560409,
+      "map:strict:MT": 0.299296,
+      "map:strict:SC_H_prime": 50.638298,
+      "map:lenient:COV": 0.61803,
+      "map:lenient:MT": 0.21831,
+      "map:lenient:SC_H_prime": 50.638298,
+      "sens:tiers:severity": 40.212766,
+      "sens:tiers:one-source": 96.808511,
+      "sens:mix:ddxplus": 48.973512,
+      "sens:mix:nhamcs": 60.243052
+     },
+     "ci": {
+      "SC": [
+       19.361702,
+       92.340426
+      ],
+      "miss_part": [
+       19.361702,
+       92.340426
+      ],
+      "concern_part": [
+       0.0,
+       0.0
+      ],
+      "H": [
+       0.053486,
+       0.285805
+      ],
+      "OC": [
+       0.0,
+       0.0
+      ],
+      "SC_readable": [
+       19.361702,
+       92.340426
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       0.276596,
+       0.574468
+      ],
+      "COV": [
+       0.431408,
+       0.685592
+      ],
+      "MT_truth": [
+       0.0,
+       0.0
+      ],
+      "MT_dxa": [
+       0.827586,
+       1.0
+      ],
+      "MT": [
+       0.187272,
+       0.395435
+      ],
+      "top1": [
+       0.982979,
+       1.0
+      ],
+      "top5": [
+       1.0,
+       1.0
+      ],
+      "D1_brier": [
+       0.000312,
+       0.011542
+      ],
+      "E": [
+       0.0,
+       0.0
+      ],
+      "sens:ratio_1/5": [
+       13.829787,
+       65.957447
+      ],
+      "sens:ratio_1/10": [
+       27.659574,
+       131.914894
+      ],
+      "sens:truth_only": [
+       0.0,
+       0.0
+      ],
+      "sens:R12.5": [
+       8.93617,
+       59.574468
+      ],
+      "sens:R20": [
+       0.0,
+       19.361702
+      ],
+      "sens:H_prime": [
+       19.361702,
+       92.340426
+      ],
+      "sens:rate_form": [
+       37.440376,
+       200.063452
+      ],
+      "sens:concern_tier2": [
+       19.361702,
+       92.340426
+      ],
+      "map:strict:COV": [
+       0.41807,
+       0.673721
+      ],
+      "map:strict:MT": [
+       0.201498,
+       0.418315
+      ],
+      "map:strict:SC_H_prime": [
+       19.361702,
+       92.340426
+      ],
+      "map:lenient:COV": [
+       0.469748,
+       0.732722
+      ],
+      "map:lenient:MT": [
+       0.124527,
+       0.342105
+      ],
+      "map:lenient:SC_H_prime": [
+       19.361702,
+       92.340426
+      ],
+      "sens:tiers:severity": [
+       11.87766,
+       80.425532
+      ],
+      "sens:tiers:one-source": [
+       44.680851,
+       159.398936
+      ],
+      "sens:mix:ddxplus": [
+       19.707373,
+       88.887569
+      ],
+      "sens:mix:nhamcs": [
+       13.008683,
+       144.415009
+      ]
+     },
+     "counts": {
+      "cases": 470,
+      "readable": 470,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 200,
+      "no": 270,
+      "misses": 34,
+      "r10_cases": 234,
+      "concerns": 0,
+      "clearly_low_risk": 118,
+      "intermediate": 118,
+      "intermediate_yes": 0,
+      "cov_cases": 269,
+      "MT": {
+       "truth_targets": 200,
+       "truth_missed": 0,
+       "dxa_targets": 84,
+       "dxa_missed": 79
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 0,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 73,
+       "yes": 30,
+       "no_r5_tier3": 10,
+       "no_r5_tier3_yes": 0
+      },
+      "DX": {
+       "top1": 467,
+       "top5": 470,
+       "E_events": 0,
+       "E_den": 200,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 470,
+         "offlist": 0
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 468,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 463,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 470,
+      "flags_status": {
+       "empty": 270,
+       "ok": 200
+      },
+      "parse_rules": {
+       "p_serious:fraction_scaled": 270,
+       "differential:non_integer": 70,
+       "p_serious:non_integer": 12,
+       "differential:rescaled_to_100": 1
+      },
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": 42.561229,
+      "maps": {
+       "strict": {
+        "CON": {
+         "yes_without_flags": 0,
+         "yes_without_tier1_flag": 0,
+         "no_with_tier1_flag": 0
+        },
+        "MT": {
+         "truth_targets": 200,
+         "truth_missed": 1,
+         "dxa_targets": 84,
+         "dxa_missed": 84
+        }
+       },
+       "lenient": {
+        "CON": {
+         "yes_without_flags": 0,
+         "yes_without_tier1_flag": 0,
+         "no_with_tier1_flag": 0
+        },
+        "MT": {
+         "truth_targets": 200,
+         "truth_missed": 0,
+         "dxa_targets": 84,
+         "dxa_missed": 62
+        }
+       }
+      },
+      "sensitivity": {
+       "ratio_1/5": {
+        "description": "miss costs 5, concern 1"
+       },
+       "ratio_1/10": {
+        "description": "miss costs 10, concern 1"
+       },
+       "truth_only": {
+        "description": "targets: tier-1 true conditions only"
+       },
+       "R12.5": {
+        "description": "targets at DXA >= 12.5% (truth always)"
+       },
+       "R20": {
+        "description": "targets at DXA >= 20% (truth always)"
+       },
+       "H_prime": {
+        "description": "a YES whose flags name no tier-1 condition counts as reassurance"
+       },
+       "rate_form": {
+        "description": "7 x H + OC, percentage points (the tolerance distance)"
+       },
+       "concern_tier2": {
+        "description": "concern also charged on tier-2 truths with no R5 target"
+       },
+       "tiers:severity": {
+        "description": "tiers from DDXPlus severity only",
+        "r10_cases": 187,
+        "clearly_low_risk": 120
+       },
+       "tiers:one-source": {
+        "description": "one-source upgrade rule (adds AF, anemia, HIV, SLE)",
+        "r10_cases": 265,
+        "clearly_low_risk": 105
+       },
+       "mix:ddxplus": {
+        "description": "DDXPlus mix (adult test split; synthetic too)"
+       },
+       "mix:nhamcs": {
+        "description": "ED visit mix, not intake prevalence (CDC NHAMCS 2016-2022, adults)"
+       }
+      }
+     },
+     "kind": "reference",
+     "label": "Naive Bayes (dataset-knowledge ceiling, not a clinical target)",
+     "rule": "naive Bayes over base evidence codes (evaluator/v02_references.py), trained on the DDXPlus test split with the 470 sample and both pools held out; YES when a tier-1 posterior is >= 10%; flags = the top 5 such; differential = its top 5; p_serious = posterior mass on tier-1 conditions. Dataset-knowledge ceiling, not a clinical target"
+    }
+   },
+   "models": [
+    "openai/gpt-5.6-terra",
+    "openai/gpt-oss-120b"
+   ],
+   "references": [
+    "perfect",
+    "always-yes",
+    "always-no",
+    "dxa",
+    "naive-bayes"
+   ],
+   "paired": {
+    "openai/gpt-5.6-terra|openai/gpt-oss-120b": {
+     "SC": {
+      "diff": -2.340426,
+      "ci": [
+       -5.319149,
+       0.0
+      ]
+     },
+     "miss_part": {
+      "diff": 0.0,
+      "ci": [
+       0.0,
+       0.0
+      ]
+     },
+     "concern_part": {
+      "diff": -2.340426,
+      "ci": [
+       -5.319149,
+       0.0
+      ]
+     },
+     "H": {
+      "diff": 0.0,
+      "ci": [
+       0.0,
+       0.0
+      ]
+     },
+     "OC": {
+      "diff": -0.09322,
+      "ci": [
+       -0.198281,
+       0.0
+      ]
+     },
+     "COV": {
+      "diff": 0.045849,
+      "ci": [
+       -0.043392,
+       0.130964
+      ]
+     }
+    }
+   },
+   "vs_always_yes": {
+    "openai/gpt-5.6-terra": {
+     "SC": {
+      "diff": -4.680851,
+      "ci": [
+       -8.93617,
+       -1.276596
+      ]
+     },
+     "beats_blanket_concern": true
+    },
+    "openai/gpt-oss-120b": {
+     "SC": {
+      "diff": -2.340426,
+      "ci": [
+       -6.382979,
+       -0.212766
+      ]
+     },
+     "beats_blanket_concern": true
+    },
+    "perfect": {
+     "SC": {
+      "diff": -25.106383,
+      "ci": [
+       -37.234043,
+       -14.042553
+      ]
+     },
+     "beats_blanket_concern": true
+    },
+    "always-no": {
+     "SC": {
+      "diff": 323.404255,
+      "ci": [
+       219.569149,
+       423.202128
+      ]
+     },
+     "beats_blanket_concern": false
+    },
+    "dxa": {
+     "SC": {
+      "diff": 41.914894,
+      "ci": [
+       1.914894,
+       87.021277
+      ]
+     },
+     "beats_blanket_concern": false
+    },
+    "naive-bayes": {
+     "SC": {
+      "diff": 25.531915,
+      "ci": [
+       -9.154255,
+       70.218085
+      ]
+     },
+     "beats_blanket_concern": false
+    }
+   },
+   "per_condition": {
+    "openai/gpt-5.6-terra": [
+     {
+      "condition": "Acute COPD exacerbation / infection",
+      "cases": 10,
+      "r10_cases": 1,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Acute dystonic reactions",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Acute laryngitis",
+      "cases": 10,
+      "r10_cases": 2,
+      "misses": 0,
+      "concerns": 6,
+      "cost": 6.0
+     },
+     {
+      "condition": "Acute otitis media",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 4,
+      "cost": 4.0
+     },
+     {
+      "condition": "Acute pulmonary edema",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Acute rhinosinusitis",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 8,
+      "cost": 8.0
+     },
+     {
+      "condition": "Allergic sinusitis",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 4,
+      "cost": 4.0
+     },
+     {
+      "condition": "Anaphylaxis",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Anemia",
+      "cases": 10,
+      "r10_cases": 1,
+      "misses": 0,
+      "concerns": 3,
+      "cost": 3.0
+     },
+     {
+      "condition": "Atrial fibrillation",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Boerhaave",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Bronchiectasis",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Bronchitis",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 9,
+      "cost": 9.0
+     },
+     {
+      "condition": "Bronchospasm / acute asthma exacerbation",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Chagas",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Chronic rhinosinusitis",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 8,
+      "cost": 8.0
+     },
+     {
+      "condition": "Cluster headache",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Ebola",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Epiglottitis",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "GERD",
+      "cases": 10,
+      "r10_cases": 1,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Guillain-Barr\u00e9 syndrome",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "HIV (initial infection)",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Influenza",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Inguinal hernia",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Larygospasm",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Localized edema",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 10,
+      "cost": 10.0
+     },
+     {
+      "condition": "Myasthenia gravis",
+      "cases": 10,
+      "r10_cases": 5,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Myocarditis",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "PSVT",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Pancreatic neoplasm",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Panic attack",
+      "cases": 10,
+      "r10_cases": 1,
+      "misses": 0,
+      "concerns": 4,
+      "cost": 4.0
+     },
+     {
+      "condition": "Pericarditis",
+      "cases": 10,
+      "r10_cases": 4,
+      "misses": 0,
+      "concerns": 2,
+      "cost": 2.0
+     },
+     {
+      "condition": "Pneumonia",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Possible NSTEMI / STEMI",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Pulmonary embolism",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Pulmonary neoplasm",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "SLE",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 10,
+      "cost": 10.0
+     },
+     {
+      "condition": "Sarcoidosis",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 9,
+      "cost": 9.0
+     },
+     {
+      "condition": "Scombroid food poisoning",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Spontaneous pneumothorax",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Spontaneous rib fracture",
+      "cases": 10,
+      "r10_cases": 3,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Stable angina",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Tuberculosis",
+      "cases": 10,
+      "r10_cases": 5,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "URTI",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 8,
+      "cost": 8.0
+     },
+     {
+      "condition": "Unstable angina",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Viral pharyngitis",
+      "cases": 10,
+      "r10_cases": 1,
+      "misses": 0,
+      "concerns": 1,
+      "cost": 1.0
+     },
+     {
+      "condition": "Whooping cough",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 10,
+      "cost": 10.0
+     }
+    ],
+    "openai/gpt-oss-120b": [
+     {
+      "condition": "Acute COPD exacerbation / infection",
+      "cases": 10,
+      "r10_cases": 1,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Acute dystonic reactions",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Acute laryngitis",
+      "cases": 10,
+      "r10_cases": 2,
+      "misses": 0,
+      "concerns": 7,
+      "cost": 7.0
+     },
+     {
+      "condition": "Acute otitis media",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 9,
+      "cost": 9.0
+     },
+     {
+      "condition": "Acute pulmonary edema",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Acute rhinosinusitis",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 10,
+      "cost": 10.0
+     },
+     {
+      "condition": "Allergic sinusitis",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 2,
+      "cost": 2.0
+     },
+     {
+      "condition": "Anaphylaxis",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Anemia",
+      "cases": 10,
+      "r10_cases": 1,
+      "misses": 0,
+      "concerns": 3,
+      "cost": 3.0
+     },
+     {
+      "condition": "Atrial fibrillation",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Boerhaave",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Bronchiectasis",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Bronchitis",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 9,
+      "cost": 9.0
+     },
+     {
+      "condition": "Bronchospasm / acute asthma exacerbation",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Chagas",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Chronic rhinosinusitis",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 10,
+      "cost": 10.0
+     },
+     {
+      "condition": "Cluster headache",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Ebola",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Epiglottitis",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "GERD",
+      "cases": 10,
+      "r10_cases": 1,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Guillain-Barr\u00e9 syndrome",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "HIV (initial infection)",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Influenza",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Inguinal hernia",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Larygospasm",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Localized edema",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 10,
+      "cost": 10.0
+     },
+     {
+      "condition": "Myasthenia gravis",
+      "cases": 10,
+      "r10_cases": 5,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Myocarditis",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "PSVT",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Pancreatic neoplasm",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Panic attack",
+      "cases": 10,
+      "r10_cases": 1,
+      "misses": 0,
+      "concerns": 4,
+      "cost": 4.0
+     },
+     {
+      "condition": "Pericarditis",
+      "cases": 10,
+      "r10_cases": 4,
+      "misses": 0,
+      "concerns": 2,
+      "cost": 2.0
+     },
+     {
+      "condition": "Pneumonia",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Possible NSTEMI / STEMI",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Pulmonary embolism",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Pulmonary neoplasm",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "SLE",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 10,
+      "cost": 10.0
+     },
+     {
+      "condition": "Sarcoidosis",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 9,
+      "cost": 9.0
+     },
+     {
+      "condition": "Scombroid food poisoning",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Spontaneous pneumothorax",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Spontaneous rib fracture",
+      "cases": 10,
+      "r10_cases": 3,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Stable angina",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Tuberculosis",
+      "cases": 10,
+      "r10_cases": 5,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "URTI",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 10,
+      "cost": 10.0
+     },
+     {
+      "condition": "Unstable angina",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Viral pharyngitis",
+      "cases": 10,
+      "r10_cases": 1,
+      "misses": 0,
+      "concerns": 2,
+      "cost": 2.0
+     },
+     {
+      "condition": "Whooping cough",
+      "cases": 10,
+      "r10_cases": 0,
+      "misses": 0,
+      "concerns": 10,
+      "cost": 10.0
+     }
+    ]
+   }
+  },
+  "pool-atypical": {
+   "label": "Atypical serious pool (tier-1 truth, DXA top diagnosis tier 3)",
+   "sample": {
+    "cases": 150,
+    "conditions": 17,
+    "r10_cases": 150,
+    "r5_cases": 150,
+    "clearly_low_risk": 0,
+    "intermediate": 0,
+    "red_flag": 24,
+    "tier1_truths": 150,
+    "r10_targets": 178,
+    "r5_targets": 212,
+    "r10_undetermined": 3
+   },
+   "constants": {
+    "perfect": 0.0,
+    "always_yes": 0.0,
+    "always_no": 700.0
+   },
+   "rows": {
+    "openai/gpt-5.6-terra": {
+     "point": {
+      "SC": 0.0,
+      "miss_part": 0.0,
+      "concern_part": 0.0,
+      "H": 0.0,
+      "OC": null,
+      "SC_readable": 0.0,
+      "unreadable_share": 0.0,
+      "yes_rate": 1.0,
+      "COV": 0.787778,
+      "MT_truth": 0.133333,
+      "MT_dxa": 0.714286,
+      "MT": 0.224719,
+      "top1": 0.44,
+      "top5": 0.746667,
+      "D1_brier": 0.214428,
+      "E": 0.253333
+     },
+     "ci": {
+      "SC": [
+       0.0,
+       0.0
+      ],
+      "miss_part": [
+       0.0,
+       0.0
+      ],
+      "concern_part": [
+       0.0,
+       0.0
+      ],
+      "H": [
+       0.0,
+       0.0
+      ],
+      "OC": [
+       null,
+       null
+      ],
+      "SC_readable": [
+       0.0,
+       0.0
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       1.0,
+       1.0
+      ],
+      "COV": [
+       0.679938,
+       0.877956
+      ],
+      "MT_truth": [
+       0.027967,
+       0.282619
+      ],
+      "MT_dxa": [
+       0.37931,
+       1.0
+      ],
+      "MT": [
+       0.123441,
+       0.346154
+      ],
+      "top1": [
+       0.242852,
+       0.640038
+      ],
+      "top5": [
+       0.57961,
+       0.891574
+      ],
+      "D1_brier": [
+       0.181234,
+       0.250928
+      ],
+      "E": [
+       0.108426,
+       0.42039
+      ]
+     },
+     "counts": {
+      "cases": 150,
+      "readable": 150,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 150,
+      "no": 0,
+      "misses": 0,
+      "r10_cases": 150,
+      "concerns": 0,
+      "clearly_low_risk": 0,
+      "intermediate": 0,
+      "intermediate_yes": 0,
+      "cov_cases": 150,
+      "MT": {
+       "truth_targets": 150,
+       "truth_missed": 20,
+       "dxa_targets": 28,
+       "dxa_missed": 20
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 0,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 24,
+       "yes": 24,
+       "no_r5_tier3": 0,
+       "no_r5_tier3_yes": 0
+      },
+      "DX": {
+       "top1": 66,
+       "top5": 112,
+       "E_events": 38,
+       "E_den": 150,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 17,
+         "offlist": 0
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 6,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 2,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 150,
+      "flags_status": {
+       "ok": 150
+      },
+      "parse_rules": {},
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": 65.153333
+     },
+     "kind": "model",
+     "label": "openai/gpt-5.6-terra",
+     "source": {
+      "path": "results/v03/runs/openai-gpt-5.6-terra-v03-pool-atypical.json",
+      "sha256": "735f9dbd32d08dc90b7c0837729f7bf78754a601460bfc24df8f4deb13c7875a",
+      "set": "pool-atypical",
+      "prompt_version": "v6",
+      "decoder_version": "v02",
+      "max_tokens": 16000,
+      "reasoning_effort": "medium",
+      "config_version": "v03-2026-09-25",
+      "config_overridden": [],
+      "backend": "openrouter",
+      "git_commit": "6fb50e5"
+     },
+     "run": {
+      "predictions": 150,
+      "errors": {},
+      "finish_reasons": {
+       "stop": 150
+      },
+      "retried": 0,
+      "truncated": 0,
+      "providers": {
+       "OpenAI": 150
+      },
+      "prompt_tokens": 97730,
+      "completion_tokens": 49244,
+      "completion_tokens_max": 622,
+      "reasoning_tokens": 33920,
+      "cost_usd": 0.7864
+     },
+     "memorisation": {
+      "flag": false,
+      "reasons": [],
+      "minus_nb": [
+       -0.736212,
+       -0.355548
+      ],
+      "minus_dxa": [
+       0.242852,
+       0.640038
+      ]
+     }
+    },
+    "openai/gpt-oss-120b": {
+     "point": {
+      "SC": 0.0,
+      "miss_part": 0.0,
+      "concern_part": 0.0,
+      "H": 0.0,
+      "OC": null,
+      "SC_readable": 0.0,
+      "unreadable_share": 0.0,
+      "yes_rate": 1.0,
+      "COV": 0.667778,
+      "MT_truth": 0.293333,
+      "MT_dxa": 0.714286,
+      "MT": 0.359551,
+      "top1": 0.426667,
+      "top5": 0.626667,
+      "D1_brier": 0.226083,
+      "E": 0.373333
+     },
+     "ci": {
+      "SC": [
+       0.0,
+       0.0
+      ],
+      "miss_part": [
+       0.0,
+       0.0
+      ],
+      "concern_part": [
+       0.0,
+       0.0
+      ],
+      "H": [
+       0.0,
+       0.0
+      ],
+      "OC": [
+       null,
+       null
+      ],
+      "SC_readable": [
+       0.0,
+       0.0
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       1.0,
+       1.0
+      ],
+      "COV": [
+       0.506277,
+       0.813073
+      ],
+      "MT_truth": [
+       0.136357,
+       0.481546
+      ],
+      "MT_dxa": [
+       0.37931,
+       1.0
+      ],
+      "MT": [
+       0.198827,
+       0.536326
+      ],
+      "top1": [
+       0.224984,
+       0.625873
+      ],
+      "top5": [
+       0.426526,
+       0.804078
+      ],
+      "D1_brier": [
+       0.178492,
+       0.273656
+      ],
+      "E": [
+       0.195922,
+       0.573474
+      ]
+     },
+     "counts": {
+      "cases": 150,
+      "readable": 150,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 150,
+      "no": 0,
+      "misses": 0,
+      "r10_cases": 150,
+      "concerns": 0,
+      "clearly_low_risk": 0,
+      "intermediate": 0,
+      "intermediate_yes": 0,
+      "cov_cases": 150,
+      "MT": {
+       "truth_targets": 150,
+       "truth_missed": 44,
+       "dxa_targets": 28,
+       "dxa_missed": 20
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 3,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 24,
+       "yes": 24,
+       "no_r5_tier3": 0,
+       "no_r5_tier3_yes": 0
+      },
+      "DX": {
+       "top1": 64,
+       "top5": 94,
+       "E_events": 56,
+       "E_den": 150,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 1,
+         "offlist": 0
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 1,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 150,
+      "flags_status": {
+       "ok": 150
+      },
+      "parse_rules": {},
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": 74.1
+     },
+     "kind": "model",
+     "label": "openai/gpt-oss-120b",
+     "source": {
+      "path": "results/v03/runs/openai-gpt-oss-120b-v03-pool-atypical.json",
+      "sha256": "6acf493bb19545f3157876f8cb282e71cfb9943220f15776c3b5d77a4b6192a1",
+      "set": "pool-atypical",
+      "prompt_version": "v6",
+      "decoder_version": "v02",
+      "max_tokens": 16000,
+      "reasoning_effort": "medium",
+      "config_version": "v03-2026-09-25",
+      "config_overridden": [],
+      "backend": "openrouter",
+      "git_commit": "6fb50e5"
+     },
+     "run": {
+      "predictions": 150,
+      "errors": {},
+      "finish_reasons": {
+       "stop": 150
+      },
+      "retried": 0,
+      "truncated": 0,
+      "providers": {
+       "CoreWeave": 31,
+       "AkashML": 29,
+       "Crusoe": 7,
+       "DekaLLM": 21,
+       "Mancer 2": 13,
+       "DeepInfra": 23,
+       "Amazon Bedrock": 1,
+       "Novita": 10,
+       "Phala": 1,
+       "SambaNova": 2,
+       "Nebius": 4,
+       "BaseTen": 4,
+       "Groq": 2,
+       "Cerebras": 1,
+       "Together": 1
+      },
+      "prompt_tokens": 106917,
+      "completion_tokens": 110353,
+      "completion_tokens_max": 1291,
+      "reasoning_tokens": 71693,
+      "cost_usd": 0.0328
+     },
+     "memorisation": {
+      "flag": false,
+      "reasons": [],
+      "minus_nb": [
+       -0.754839,
+       -0.368372
+      ],
+      "minus_dxa": [
+       0.224984,
+       0.625873
+      ]
+     }
+    },
+    "perfect": {
+     "point": {
+      "SC": 0.0,
+      "miss_part": 0.0,
+      "concern_part": 0.0,
+      "H": 0.0,
+      "OC": null,
+      "SC_readable": 0.0,
+      "unreadable_share": 0.0,
+      "yes_rate": 1.0,
+      "COV": 1.0,
+      "MT_truth": 0.0,
+      "MT_dxa": 0.0,
+      "MT": 0.0,
+      "top1": 1.0,
+      "top5": 1.0,
+      "D1_brier": 0.0,
+      "E": 0.0
+     },
+     "ci": {
+      "SC": [
+       0.0,
+       0.0
+      ],
+      "miss_part": [
+       0.0,
+       0.0
+      ],
+      "concern_part": [
+       0.0,
+       0.0
+      ],
+      "H": [
+       0.0,
+       0.0
+      ],
+      "OC": [
+       null,
+       null
+      ],
+      "SC_readable": [
+       0.0,
+       0.0
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       1.0,
+       1.0
+      ],
+      "COV": [
+       1.0,
+       1.0
+      ],
+      "MT_truth": [
+       0.0,
+       0.0
+      ],
+      "MT_dxa": [
+       0.0,
+       0.0
+      ],
+      "MT": [
+       0.0,
+       0.0
+      ],
+      "top1": [
+       1.0,
+       1.0
+      ],
+      "top5": [
+       1.0,
+       1.0
+      ],
+      "D1_brier": [
+       0.0,
+       0.0
+      ],
+      "E": [
+       0.0,
+       0.0
+      ]
+     },
+     "counts": {
+      "cases": 150,
+      "readable": 150,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 150,
+      "no": 0,
+      "misses": 0,
+      "r10_cases": 150,
+      "concerns": 0,
+      "clearly_low_risk": 0,
+      "intermediate": 0,
+      "intermediate_yes": 0,
+      "cov_cases": 150,
+      "MT": {
+       "truth_targets": 150,
+       "truth_missed": 0,
+       "dxa_targets": 28,
+       "dxa_missed": 0
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 0,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 24,
+       "yes": 24,
+       "no_r5_tier3": 0,
+       "no_r5_tier3_yes": 0
+      },
+      "DX": {
+       "top1": 150,
+       "top5": 150,
+       "E_events": 0,
+       "E_den": 150,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 150,
+         "offlist": 0
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 150,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 150,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 0,
+      "flags_status": {
+       "ok": 150
+      },
+      "parse_rules": {
+       "p_serious:missing": 150
+      },
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": null
+     },
+     "kind": "constant",
+     "label": "Perfect (YES iff an R10 target; flags = R5 targets)"
+    },
+    "always-yes": {
+     "point": {
+      "SC": 0.0,
+      "miss_part": 0.0,
+      "concern_part": 0.0,
+      "H": 0.0,
+      "OC": null,
+      "SC_readable": 0.0,
+      "unreadable_share": 0.0,
+      "yes_rate": 1.0,
+      "COV": 0.376667,
+      "MT_truth": 0.666667,
+      "MT_dxa": 0.464286,
+      "MT": 0.634831,
+      "top1": 0.0,
+      "top5": 0.0,
+      "D1_brier": 0.0,
+      "E": 1.0
+     },
+     "ci": {
+      "SC": [
+       0.0,
+       0.0
+      ],
+      "miss_part": [
+       0.0,
+       0.0
+      ],
+      "concern_part": [
+       0.0,
+       0.0
+      ],
+      "H": [
+       0.0,
+       0.0
+      ],
+      "OC": [
+       null,
+       null
+      ],
+      "SC_readable": [
+       0.0,
+       0.0
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       1.0,
+       1.0
+      ],
+      "COV": [
+       0.16346,
+       0.580782
+      ],
+      "MT_truth": [
+       0.430335,
+       0.92312
+      ],
+      "MT_dxa": [
+       0.09358,
+       0.857143
+      ],
+      "MT": [
+       0.411166,
+       0.871523
+      ],
+      "top1": [
+       0.0,
+       0.0
+      ],
+      "top5": [
+       0.0,
+       0.0
+      ],
+      "D1_brier": [
+       0.0,
+       0.0
+      ],
+      "E": [
+       1.0,
+       1.0
+      ]
+     },
+     "counts": {
+      "cases": 150,
+      "readable": 150,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 150,
+      "no": 0,
+      "misses": 0,
+      "r10_cases": 150,
+      "concerns": 0,
+      "clearly_low_risk": 0,
+      "intermediate": 0,
+      "intermediate_yes": 0,
+      "cov_cases": 150,
+      "MT": {
+       "truth_targets": 150,
+       "truth_missed": 100,
+       "dxa_targets": 28,
+       "dxa_missed": 13
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 0,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 24,
+       "yes": 24,
+       "no_r5_tier3": 0,
+       "no_r5_tier3_yes": 0
+      },
+      "DX": {
+       "top1": 0,
+       "top5": 0,
+       "E_events": 150,
+       "E_den": 150,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 0,
+      "flags_status": {
+       "ok": 150
+      },
+      "parse_rules": {
+       "p_serious:missing": 150
+      },
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": null
+     },
+     "kind": "reference",
+     "label": "Always YES (fixed 5 tier-1 flags)",
+     "rule": "serious_concern YES for every case; flags = the 5 tier-1 conditions with the most R10 targets in the 470 key (ties: more R5 targets, then name), as canonical codes: I47.1 (PSVT), I21 (Possible NSTEMI / STEMI), C34 (Pulmonary neoplasm), I20.9 (Stable angina), I20.0 (Unstable angina)"
+    },
+    "always-no": {
+     "point": {
+      "SC": 700.0,
+      "miss_part": 700.0,
+      "concern_part": 0.0,
+      "H": 1.0,
+      "OC": null,
+      "SC_readable": 700.0,
+      "unreadable_share": 0.0,
+      "yes_rate": 0.0,
+      "COV": 0.0,
+      "MT_truth": 1.0,
+      "MT_dxa": 1.0,
+      "MT": 1.0,
+      "top1": 0.0,
+      "top5": 0.0,
+      "D1_brier": 0.0,
+      "E": 1.0
+     },
+     "ci": {
+      "SC": [
+       700.0,
+       700.0
+      ],
+      "miss_part": [
+       700.0,
+       700.0
+      ],
+      "concern_part": [
+       0.0,
+       0.0
+      ],
+      "H": [
+       1.0,
+       1.0
+      ],
+      "OC": [
+       null,
+       null
+      ],
+      "SC_readable": [
+       700.0,
+       700.0
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       0.0,
+       0.0
+      ],
+      "COV": [
+       0.0,
+       0.0
+      ],
+      "MT_truth": [
+       1.0,
+       1.0
+      ],
+      "MT_dxa": [
+       1.0,
+       1.0
+      ],
+      "MT": [
+       1.0,
+       1.0
+      ],
+      "top1": [
+       0.0,
+       0.0
+      ],
+      "top5": [
+       0.0,
+       0.0
+      ],
+      "D1_brier": [
+       0.0,
+       0.0
+      ],
+      "E": [
+       1.0,
+       1.0
+      ]
+     },
+     "counts": {
+      "cases": 150,
+      "readable": 150,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 0,
+      "no": 150,
+      "misses": 150,
+      "r10_cases": 150,
+      "concerns": 0,
+      "clearly_low_risk": 0,
+      "intermediate": 0,
+      "intermediate_yes": 0,
+      "cov_cases": 150,
+      "MT": {
+       "truth_targets": 150,
+       "truth_missed": 150,
+       "dxa_targets": 28,
+       "dxa_missed": 28
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 0,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 24,
+       "yes": 0,
+       "no_r5_tier3": 0,
+       "no_r5_tier3_yes": 0
+      },
+      "DX": {
+       "top1": 0,
+       "top5": 0,
+       "E_events": 150,
+       "E_den": 150,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 0,
+      "flags_status": {
+       "empty": 150
+      },
+      "parse_rules": {
+       "p_serious:missing": 150
+      },
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": null
+     },
+     "kind": "reference",
+     "label": "Always NO",
+     "rule": "serious_concern NO for every case; no flags"
+    },
+    "dxa": {
+     "point": {
+      "SC": 224.0,
+      "miss_part": 224.0,
+      "concern_part": 0.0,
+      "H": 0.32,
+      "OC": null,
+      "SC_readable": 224.0,
+      "unreadable_share": 0.0,
+      "yes_rate": 0.68,
+      "COV": 0.58,
+      "MT_truth": 0.446667,
+      "MT_dxa": 0.0,
+      "MT": 0.376404,
+      "top1": 0.0,
+      "top5": 0.76,
+      "D1_brier": 0.06041,
+      "E": 0.24
+     },
+     "ci": {
+      "SC": [
+       130.125,
+       327.979624
+      ],
+      "miss_part": [
+       130.125,
+       327.979624
+      ],
+      "concern_part": [
+       0.0,
+       0.0
+      ],
+      "H": [
+       0.185893,
+       0.468542
+      ],
+      "OC": [
+       null,
+       null
+      ],
+      "SC_readable": [
+       130.125,
+       327.979624
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       0.531458,
+       0.814107
+      ],
+      "COV": [
+       0.424819,
+       0.724029
+      ],
+      "MT_truth": [
+       0.282413,
+       0.618089
+      ],
+      "MT_dxa": [
+       0.0,
+       0.0
+      ],
+      "MT": [
+       0.244985,
+       0.507542
+      ],
+      "top1": [
+       0.0,
+       0.0
+      ],
+      "top5": [
+       0.565528,
+       0.92382
+      ],
+      "D1_brier": [
+       0.038293,
+       0.083466
+      ],
+      "E": [
+       0.07618,
+       0.434472
+      ]
+     },
+     "counts": {
+      "cases": 150,
+      "readable": 150,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 102,
+      "no": 48,
+      "misses": 48,
+      "r10_cases": 150,
+      "concerns": 0,
+      "clearly_low_risk": 0,
+      "intermediate": 0,
+      "intermediate_yes": 0,
+      "cov_cases": 150,
+      "MT": {
+       "truth_targets": 150,
+       "truth_missed": 67,
+       "dxa_targets": 28,
+       "dxa_missed": 0
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 0,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 24,
+       "yes": 20,
+       "no_r5_tier3": 0,
+       "no_r5_tier3_yes": 0
+      },
+      "DX": {
+       "top1": 0,
+       "top5": 114,
+       "E_events": 36,
+       "E_den": 150,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 150,
+      "flags_status": {
+       "empty": 48,
+       "ok": 102
+      },
+      "parse_rules": {
+       "differential:non_integer": 150,
+       "p_serious:non_integer": 150,
+       "differential:rescaled_to_100": 1
+      },
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": 55.283609
+     },
+     "kind": "reference",
+     "label": "DXA at the target threshold (reference for COV and DX only)",
+     "rule": "YES when a tier-1 condition has DXA p >= 10% and is not a red herring (undetermined kept); flags = the top 5 such by p; differential = DXA's top 5; p_serious = DXA mass on tier-1 conditions. At the key's own threshold, not a ceiling"
+    },
+    "naive-bayes": {
+     "point": {
+      "SC": 0.0,
+      "miss_part": 0.0,
+      "concern_part": 0.0,
+      "H": 0.0,
+      "OC": null,
+      "SC_readable": 0.0,
+      "unreadable_share": 0.0,
+      "yes_rate": 1.0,
+      "COV": 0.795556,
+      "MT_truth": 0.0,
+      "MT_dxa": 1.0,
+      "MT": 0.157303,
+      "top1": 0.986667,
+      "top5": 1.0,
+      "D1_brier": 0.006172,
+      "E": 0.0
+     },
+     "ci": {
+      "SC": [
+       0.0,
+       0.0
+      ],
+      "miss_part": [
+       0.0,
+       0.0
+      ],
+      "concern_part": [
+       0.0,
+       0.0
+      ],
+      "H": [
+       0.0,
+       0.0
+      ],
+      "OC": [
+       null,
+       null
+      ],
+      "SC_readable": [
+       0.0,
+       0.0
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       1.0,
+       1.0
+      ],
+      "COV": [
+       0.703822,
+       0.880635
+      ],
+      "MT_truth": [
+       0.0,
+       0.0
+      ],
+      "MT_dxa": [
+       1.0,
+       1.0
+      ],
+      "MT": [
+       0.083333,
+       0.228272
+      ],
+      "top1": [
+       0.956522,
+       1.0
+      ],
+      "top5": [
+       1.0,
+       1.0
+      ],
+      "D1_brier": [
+       1e-06,
+       0.019178
+      ],
+      "E": [
+       0.0,
+       0.0
+      ]
+     },
+     "counts": {
+      "cases": 150,
+      "readable": 150,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 150,
+      "no": 0,
+      "misses": 0,
+      "r10_cases": 150,
+      "concerns": 0,
+      "clearly_low_risk": 0,
+      "intermediate": 0,
+      "intermediate_yes": 0,
+      "cov_cases": 150,
+      "MT": {
+       "truth_targets": 150,
+       "truth_missed": 0,
+       "dxa_targets": 28,
+       "dxa_missed": 28
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 0,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 24,
+       "yes": 24,
+       "no_r5_tier3": 0,
+       "no_r5_tier3_yes": 0
+      },
+      "DX": {
+       "top1": 148,
+       "top5": 150,
+       "E_events": 0,
+       "E_den": 150,
+       "D2": {
+        "60": {
+         "events": 2,
+         "milder_named": 2,
+         "confident": 150,
+         "offlist": 0
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 148,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 148,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 150,
+      "flags_status": {
+       "ok": 150
+      },
+      "parse_rules": {
+       "differential:non_integer": 33,
+       "p_serious:non_integer": 14,
+       "differential:rescaled_to_100": 1
+      },
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": 98.974156
+     },
+     "kind": "reference",
+     "label": "Naive Bayes (dataset-knowledge ceiling, not a clinical target)",
+     "rule": "naive Bayes over base evidence codes (evaluator/v02_references.py), trained on the DDXPlus test split with the 470 sample and both pools held out; YES when a tier-1 posterior is >= 10%; flags = the top 5 such; differential = its top 5; p_serious = posterior mass on tier-1 conditions. Dataset-knowledge ceiling, not a clinical target"
+    }
+   },
+   "models": [
+    "openai/gpt-5.6-terra",
+    "openai/gpt-oss-120b"
+   ],
+   "references": [
+    "perfect",
+    "always-yes",
+    "always-no",
+    "dxa",
+    "naive-bayes"
+   ],
+   "paired": {
+    "openai/gpt-5.6-terra|openai/gpt-oss-120b": {
+     "SC": {
+      "diff": 0.0,
+      "ci": [
+       0.0,
+       0.0
+      ]
+     },
+     "miss_part": {
+      "diff": 0.0,
+      "ci": [
+       0.0,
+       0.0
+      ]
+     },
+     "concern_part": {
+      "diff": 0.0,
+      "ci": [
+       0.0,
+       0.0
+      ]
+     },
+     "H": {
+      "diff": 0.0,
+      "ci": [
+       0.0,
+       0.0
+      ]
+     },
+     "OC": {
+      "diff": null,
+      "ci": [
+       null,
+       null
+      ]
+     },
+     "COV": {
+      "diff": 0.12,
+      "ci": [
+       0.029407,
+       0.232639
+      ]
+     }
+    }
+   },
+   "vs_always_yes": {
+    "openai/gpt-5.6-terra": {
+     "SC": {
+      "diff": 0.0,
+      "ci": [
+       0.0,
+       0.0
+      ]
+     },
+     "beats_blanket_concern": false
+    },
+    "openai/gpt-oss-120b": {
+     "SC": {
+      "diff": 0.0,
+      "ci": [
+       0.0,
+       0.0
+      ]
+     },
+     "beats_blanket_concern": false
+    },
+    "perfect": {
+     "SC": {
+      "diff": 0.0,
+      "ci": [
+       0.0,
+       0.0
+      ]
+     },
+     "beats_blanket_concern": false
+    },
+    "always-no": {
+     "SC": {
+      "diff": 700.0,
+      "ci": [
+       700.0,
+       700.0
+      ]
+     },
+     "beats_blanket_concern": false
+    },
+    "dxa": {
+     "SC": {
+      "diff": 224.0,
+      "ci": [
+       130.125,
+       327.979624
+      ]
+     },
+     "beats_blanket_concern": false
+    },
+    "naive-bayes": {
+     "SC": {
+      "diff": 0.0,
+      "ci": [
+       0.0,
+       0.0
+      ]
+     },
+     "beats_blanket_concern": false
+    }
+   },
+   "per_condition": {
+    "openai/gpt-5.6-terra": [
+     {
+      "condition": "Acute dystonic reactions",
+      "cases": 1,
+      "r10_cases": 1,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Acute pulmonary edema",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Boerhaave",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Bronchospasm / acute asthma exacerbation",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Ebola",
+      "cases": 6,
+      "r10_cases": 6,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Epiglottitis",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Guillain-Barr\u00e9 syndrome",
+      "cases": 9,
+      "r10_cases": 9,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Myocarditis",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "PSVT",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Pancreatic neoplasm",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Pneumonia",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Possible NSTEMI / STEMI",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Pulmonary embolism",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Pulmonary neoplasm",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Scombroid food poisoning",
+      "cases": 4,
+      "r10_cases": 4,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Stable angina",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Unstable angina",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     }
+    ],
+    "openai/gpt-oss-120b": [
+     {
+      "condition": "Acute dystonic reactions",
+      "cases": 1,
+      "r10_cases": 1,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Acute pulmonary edema",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Boerhaave",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Bronchospasm / acute asthma exacerbation",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Ebola",
+      "cases": 6,
+      "r10_cases": 6,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Epiglottitis",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Guillain-Barr\u00e9 syndrome",
+      "cases": 9,
+      "r10_cases": 9,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Myocarditis",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "PSVT",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Pancreatic neoplasm",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Pneumonia",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Possible NSTEMI / STEMI",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Pulmonary embolism",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Pulmonary neoplasm",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Scombroid food poisoning",
+      "cases": 4,
+      "r10_cases": 4,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Stable angina",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Unstable angina",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     }
+    ]
+   }
+  },
+  "pool-high-risk": {
+   "label": "High-risk pool (non-truth tier-1 condition at DXA p >= 10%, truth not tier 1)",
+   "sample": {
+    "cases": 100,
+    "conditions": 14,
+    "r10_cases": 100,
+    "r5_cases": 100,
+    "clearly_low_risk": 0,
+    "intermediate": 0,
+    "red_flag": 20,
+    "tier1_truths": 0,
+    "r10_targets": 110,
+    "r5_targets": 124,
+    "r10_undetermined": 0
+   },
+   "constants": {
+    "perfect": 0.0,
+    "always_yes": 0.0,
+    "always_no": 700.0
+   },
+   "rows": {
+    "openai/gpt-5.6-terra": {
+     "point": {
+      "SC": 14.0,
+      "miss_part": 14.0,
+      "concern_part": 0.0,
+      "H": 0.02,
+      "OC": null,
+      "SC_readable": 14.0,
+      "unreadable_share": 0.0,
+      "yes_rate": 0.98,
+      "COV": 0.34,
+      "MT_truth": null,
+      "MT_dxa": 0.672727,
+      "MT": 0.672727,
+      "top1": 0.68,
+      "top5": 0.96,
+      "D1_brier": 0.268583,
+      "E": null
+     },
+     "ci": {
+      "SC": [
+       0.0,
+       44.222284
+      ],
+      "miss_part": [
+       0.0,
+       44.222284
+      ],
+      "concern_part": [
+       0.0,
+       0.0
+      ],
+      "H": [
+       0.0,
+       0.063175
+      ],
+      "OC": [
+       null,
+       null
+      ],
+      "SC_readable": [
+       0.0,
+       44.222284
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       0.936825,
+       1.0
+      ],
+      "COV": [
+       0.171041,
+       0.505321
+      ],
+      "MT_truth": [
+       null,
+       null
+      ],
+      "MT_dxa": [
+       0.486235,
+       0.85127
+      ],
+      "MT": [
+       0.486235,
+       0.85127
+      ],
+      "top1": [
+       0.462345,
+       0.826673
+      ],
+      "top5": [
+       0.883328,
+       1.0
+      ],
+      "D1_brier": [
+       0.219492,
+       0.31043
+      ],
+      "E": [
+       null,
+       null
+      ]
+     },
+     "counts": {
+      "cases": 100,
+      "readable": 100,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 98,
+      "no": 2,
+      "misses": 2,
+      "r10_cases": 100,
+      "concerns": 0,
+      "clearly_low_risk": 0,
+      "intermediate": 0,
+      "intermediate_yes": 0,
+      "cov_cases": 100,
+      "MT": {
+       "truth_targets": 0,
+       "truth_missed": 0,
+       "dxa_targets": 110,
+       "dxa_missed": 74
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 21,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 20,
+       "yes": 20,
+       "no_r5_tier3": 0,
+       "no_r5_tier3_yes": 0
+      },
+      "DX": {
+       "top1": 68,
+       "top5": 96,
+       "E_events": 0,
+       "E_den": 0,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 8,
+         "offlist": 0
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 2,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 100,
+      "flags_status": {
+       "ok": 98,
+       "empty": 2
+      },
+      "parse_rules": {},
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": 56.99
+     },
+     "kind": "model",
+     "label": "openai/gpt-5.6-terra",
+     "source": {
+      "path": "results/v03/runs/openai-gpt-5.6-terra-v03-pool-high-risk.json",
+      "sha256": "439dc8001c18068f59669a1786aaf0f70e93a91abe7482190bf9873249f40ea7",
+      "set": "pool-high-risk",
+      "prompt_version": "v6",
+      "decoder_version": "v02",
+      "max_tokens": 16000,
+      "reasoning_effort": "medium",
+      "config_version": "v03-2026-09-25",
+      "config_overridden": [],
+      "backend": "openrouter",
+      "git_commit": "6fb50e5"
+     },
+     "run": {
+      "predictions": 100,
+      "errors": {},
+      "finish_reasons": {
+       "stop": 100
+      },
+      "retried": 0,
+      "truncated": 0,
+      "providers": {
+       "OpenAI": 100
+      },
+      "prompt_tokens": 62250,
+      "completion_tokens": 33565,
+      "completion_tokens_max": 625,
+      "reasoning_tokens": 23459,
+      "cost_usd": 0.5273
+     },
+     "memorisation": {
+      "flag": false,
+      "reasons": [],
+      "minus_nb": [
+       -0.537655,
+       -0.173327
+      ],
+      "minus_dxa": [
+       -0.186305,
+       0.266771
+      ]
+     }
+    },
+    "openai/gpt-oss-120b": {
+     "point": {
+      "SC": 0.0,
+      "miss_part": 0.0,
+      "concern_part": 0.0,
+      "H": 0.0,
+      "OC": null,
+      "SC_readable": 0.0,
+      "unreadable_share": 0.0,
+      "yes_rate": 1.0,
+      "COV": 0.415,
+      "MT_truth": null,
+      "MT_dxa": 0.590909,
+      "MT": 0.590909,
+      "top1": 0.55,
+      "top5": 0.88,
+      "D1_brier": 0.270725,
+      "E": null
+     },
+     "ci": {
+      "SC": [
+       0.0,
+       0.0
+      ],
+      "miss_part": [
+       0.0,
+       0.0
+      ],
+      "concern_part": [
+       0.0,
+       0.0
+      ],
+      "H": [
+       0.0,
+       0.0
+      ],
+      "OC": [
+       null,
+       null
+      ],
+      "SC_readable": [
+       0.0,
+       0.0
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       1.0,
+       1.0
+      ],
+      "COV": [
+       0.191165,
+       0.633062
+      ],
+      "MT_truth": [
+       null,
+       null
+      ],
+      "MT_dxa": [
+       0.338788,
+       0.827403
+      ],
+      "MT": [
+       0.338788,
+       0.827403
+      ],
+      "top1": [
+       0.393912,
+       0.706531
+      ],
+      "top5": [
+       0.740729,
+       0.964051
+      ],
+      "D1_brier": [
+       0.229441,
+       0.310847
+      ],
+      "E": [
+       null,
+       null
+      ]
+     },
+     "counts": {
+      "cases": 100,
+      "readable": 100,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 100,
+      "no": 0,
+      "misses": 0,
+      "r10_cases": 100,
+      "concerns": 0,
+      "clearly_low_risk": 0,
+      "intermediate": 0,
+      "intermediate_yes": 0,
+      "cov_cases": 100,
+      "MT": {
+       "truth_targets": 0,
+       "truth_missed": 0,
+       "dxa_targets": 110,
+       "dxa_missed": 65
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 12,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 20,
+       "yes": 20,
+       "no_r5_tier3": 0,
+       "no_r5_tier3_yes": 0
+      },
+      "DX": {
+       "top1": 55,
+       "top5": 88,
+       "E_events": 0,
+       "E_den": 0,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 1,
+         "offlist": 0
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 100,
+      "flags_status": {
+       "ok": 100
+      },
+      "parse_rules": {},
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": 68.9
+     },
+     "kind": "model",
+     "label": "openai/gpt-oss-120b",
+     "source": {
+      "path": "results/v03/runs/openai-gpt-oss-120b-v03-pool-high-risk.json",
+      "sha256": "fe03aaf3e4dda9d6eaa24caa4562fb450dd16ac925ea3f3465592e3d0e4262fa",
+      "set": "pool-high-risk",
+      "prompt_version": "v6",
+      "decoder_version": "v02",
+      "max_tokens": 16000,
+      "reasoning_effort": "medium",
+      "config_version": "v03-2026-09-25",
+      "config_overridden": [],
+      "backend": "openrouter",
+      "git_commit": "6fb50e5"
+     },
+     "run": {
+      "predictions": 100,
+      "errors": {},
+      "finish_reasons": {
+       "stop": 100
+      },
+      "retried": 0,
+      "truncated": 0,
+      "providers": {
+       "Novita": 10,
+       "DekaLLM": 17,
+       "AkashML": 16,
+       "Crusoe": 7,
+       "Groq": 2,
+       "BaseTen": 6,
+       "CoreWeave": 13,
+       "DeepInfra": 20,
+       "Mancer 2": 7,
+       "Together": 1,
+       "SambaNova": 1
+      },
+      "prompt_tokens": 68306,
+      "completion_tokens": 75973,
+      "completion_tokens_max": 1330,
+      "reasoning_tokens": 51773,
+      "cost_usd": 0.0214
+     },
+     "memorisation": {
+      "flag": false,
+      "reasons": [],
+      "minus_nb": [
+       -0.606088,
+       -0.293469
+      ],
+      "minus_dxa": [
+       -0.298462,
+       0.169845
+      ]
+     }
+    },
+    "perfect": {
+     "point": {
+      "SC": 0.0,
+      "miss_part": 0.0,
+      "concern_part": 0.0,
+      "H": 0.0,
+      "OC": null,
+      "SC_readable": 0.0,
+      "unreadable_share": 0.0,
+      "yes_rate": 1.0,
+      "COV": 1.0,
+      "MT_truth": null,
+      "MT_dxa": 0.0,
+      "MT": 0.0,
+      "top1": 1.0,
+      "top5": 1.0,
+      "D1_brier": 0.0,
+      "E": null
+     },
+     "ci": {
+      "SC": [
+       0.0,
+       0.0
+      ],
+      "miss_part": [
+       0.0,
+       0.0
+      ],
+      "concern_part": [
+       0.0,
+       0.0
+      ],
+      "H": [
+       0.0,
+       0.0
+      ],
+      "OC": [
+       null,
+       null
+      ],
+      "SC_readable": [
+       0.0,
+       0.0
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       1.0,
+       1.0
+      ],
+      "COV": [
+       1.0,
+       1.0
+      ],
+      "MT_truth": [
+       null,
+       null
+      ],
+      "MT_dxa": [
+       0.0,
+       0.0
+      ],
+      "MT": [
+       0.0,
+       0.0
+      ],
+      "top1": [
+       1.0,
+       1.0
+      ],
+      "top5": [
+       1.0,
+       1.0
+      ],
+      "D1_brier": [
+       0.0,
+       0.0
+      ],
+      "E": [
+       null,
+       null
+      ]
+     },
+     "counts": {
+      "cases": 100,
+      "readable": 100,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 100,
+      "no": 0,
+      "misses": 0,
+      "r10_cases": 100,
+      "concerns": 0,
+      "clearly_low_risk": 0,
+      "intermediate": 0,
+      "intermediate_yes": 0,
+      "cov_cases": 100,
+      "MT": {
+       "truth_targets": 0,
+       "truth_missed": 0,
+       "dxa_targets": 110,
+       "dxa_missed": 0
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 0,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 20,
+       "yes": 20,
+       "no_r5_tier3": 0,
+       "no_r5_tier3_yes": 0
+      },
+      "DX": {
+       "top1": 100,
+       "top5": 100,
+       "E_events": 0,
+       "E_den": 0,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 100,
+         "offlist": 0
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 100,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 100,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 0,
+      "flags_status": {
+       "ok": 100
+      },
+      "parse_rules": {
+       "p_serious:missing": 100
+      },
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": null
+     },
+     "kind": "constant",
+     "label": "Perfect (YES iff an R10 target; flags = R5 targets)"
+    },
+    "always-yes": {
+     "point": {
+      "SC": 0.0,
+      "miss_part": 0.0,
+      "concern_part": 0.0,
+      "H": 0.0,
+      "OC": null,
+      "SC_readable": 0.0,
+      "unreadable_share": 0.0,
+      "yes_rate": 1.0,
+      "COV": 0.31,
+      "MT_truth": null,
+      "MT_dxa": 0.663636,
+      "MT": 0.663636,
+      "top1": 0.0,
+      "top5": 0.0,
+      "D1_brier": 0.0,
+      "E": null
+     },
+     "ci": {
+      "SC": [
+       0.0,
+       0.0
+      ],
+      "miss_part": [
+       0.0,
+       0.0
+      ],
+      "concern_part": [
+       0.0,
+       0.0
+      ],
+      "H": [
+       0.0,
+       0.0
+      ],
+      "OC": [
+       null,
+       null
+      ],
+      "SC_readable": [
+       0.0,
+       0.0
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       1.0,
+       1.0
+      ],
+      "COV": [
+       0.12787,
+       0.470618
+      ],
+      "MT_truth": [
+       null,
+       null
+      ],
+      "MT_dxa": [
+       0.483136,
+       0.875069
+      ],
+      "MT": [
+       0.483136,
+       0.875069
+      ],
+      "top1": [
+       0.0,
+       0.0
+      ],
+      "top5": [
+       0.0,
+       0.0
+      ],
+      "D1_brier": [
+       0.0,
+       0.0
+      ],
+      "E": [
+       null,
+       null
+      ]
+     },
+     "counts": {
+      "cases": 100,
+      "readable": 100,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 100,
+      "no": 0,
+      "misses": 0,
+      "r10_cases": 100,
+      "concerns": 0,
+      "clearly_low_risk": 0,
+      "intermediate": 0,
+      "intermediate_yes": 0,
+      "cov_cases": 100,
+      "MT": {
+       "truth_targets": 0,
+       "truth_missed": 0,
+       "dxa_targets": 110,
+       "dxa_missed": 73
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 0,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 20,
+       "yes": 20,
+       "no_r5_tier3": 0,
+       "no_r5_tier3_yes": 0
+      },
+      "DX": {
+       "top1": 0,
+       "top5": 0,
+       "E_events": 0,
+       "E_den": 0,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 0,
+      "flags_status": {
+       "ok": 100
+      },
+      "parse_rules": {
+       "p_serious:missing": 100
+      },
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": null
+     },
+     "kind": "reference",
+     "label": "Always YES (fixed 5 tier-1 flags)",
+     "rule": "serious_concern YES for every case; flags = the 5 tier-1 conditions with the most R10 targets in the 470 key (ties: more R5 targets, then name), as canonical codes: I47.1 (PSVT), I21 (Possible NSTEMI / STEMI), C34 (Pulmonary neoplasm), I20.9 (Stable angina), I20.0 (Unstable angina)"
+    },
+    "always-no": {
+     "point": {
+      "SC": 700.0,
+      "miss_part": 700.0,
+      "concern_part": 0.0,
+      "H": 1.0,
+      "OC": null,
+      "SC_readable": 700.0,
+      "unreadable_share": 0.0,
+      "yes_rate": 0.0,
+      "COV": 0.0,
+      "MT_truth": null,
+      "MT_dxa": 1.0,
+      "MT": 1.0,
+      "top1": 0.0,
+      "top5": 0.0,
+      "D1_brier": 0.0,
+      "E": null
+     },
+     "ci": {
+      "SC": [
+       700.0,
+       700.0
+      ],
+      "miss_part": [
+       700.0,
+       700.0
+      ],
+      "concern_part": [
+       0.0,
+       0.0
+      ],
+      "H": [
+       1.0,
+       1.0
+      ],
+      "OC": [
+       null,
+       null
+      ],
+      "SC_readable": [
+       700.0,
+       700.0
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       0.0,
+       0.0
+      ],
+      "COV": [
+       0.0,
+       0.0
+      ],
+      "MT_truth": [
+       null,
+       null
+      ],
+      "MT_dxa": [
+       1.0,
+       1.0
+      ],
+      "MT": [
+       1.0,
+       1.0
+      ],
+      "top1": [
+       0.0,
+       0.0
+      ],
+      "top5": [
+       0.0,
+       0.0
+      ],
+      "D1_brier": [
+       0.0,
+       0.0
+      ],
+      "E": [
+       null,
+       null
+      ]
+     },
+     "counts": {
+      "cases": 100,
+      "readable": 100,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 0,
+      "no": 100,
+      "misses": 100,
+      "r10_cases": 100,
+      "concerns": 0,
+      "clearly_low_risk": 0,
+      "intermediate": 0,
+      "intermediate_yes": 0,
+      "cov_cases": 100,
+      "MT": {
+       "truth_targets": 0,
+       "truth_missed": 0,
+       "dxa_targets": 110,
+       "dxa_missed": 110
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 0,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 20,
+       "yes": 0,
+       "no_r5_tier3": 0,
+       "no_r5_tier3_yes": 0
+      },
+      "DX": {
+       "top1": 0,
+       "top5": 0,
+       "E_events": 0,
+       "E_den": 0,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 0,
+      "flags_status": {
+       "empty": 100
+      },
+      "parse_rules": {
+       "p_serious:missing": 100
+      },
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": null
+     },
+     "kind": "reference",
+     "label": "Always NO",
+     "rule": "serious_concern NO for every case; no flags"
+    },
+    "dxa": {
+     "point": {
+      "SC": 0.0,
+      "miss_part": 0.0,
+      "concern_part": 0.0,
+      "H": 0.0,
+      "OC": null,
+      "SC_readable": 0.0,
+      "unreadable_share": 0.0,
+      "yes_rate": 1.0,
+      "COV": 0.93,
+      "MT_truth": null,
+      "MT_dxa": 0.0,
+      "MT": 0.0,
+      "top1": 0.63,
+      "top5": 0.96,
+      "D1_brier": 0.405919,
+      "E": null
+     },
+     "ci": {
+      "SC": [
+       0.0,
+       0.0
+      ],
+      "miss_part": [
+       0.0,
+       0.0
+      ],
+      "concern_part": [
+       0.0,
+       0.0
+      ],
+      "H": [
+       0.0,
+       0.0
+      ],
+      "OC": [
+       null,
+       null
+      ],
+      "SC_readable": [
+       0.0,
+       0.0
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       1.0,
+       1.0
+      ],
+      "COV": [
+       0.858326,
+       0.985714
+      ],
+      "MT_truth": [
+       null,
+       null
+      ],
+      "MT_dxa": [
+       0.0,
+       0.0
+      ],
+      "MT": [
+       0.0,
+       0.0
+      ],
+      "top1": [
+       0.476176,
+       0.75
+      ],
+      "top5": [
+       0.918919,
+       1.0
+      ],
+      "D1_brier": [
+       0.315344,
+       0.471263
+      ],
+      "E": [
+       null,
+       null
+      ]
+     },
+     "counts": {
+      "cases": 100,
+      "readable": 100,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 100,
+      "no": 0,
+      "misses": 0,
+      "r10_cases": 100,
+      "concerns": 0,
+      "clearly_low_risk": 0,
+      "intermediate": 0,
+      "intermediate_yes": 0,
+      "cov_cases": 100,
+      "MT": {
+       "truth_targets": 0,
+       "truth_missed": 0,
+       "dxa_targets": 110,
+       "dxa_missed": 0
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 0,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 20,
+       "yes": 20,
+       "no_r5_tier3": 0,
+       "no_r5_tier3_yes": 0
+      },
+      "DX": {
+       "top1": 63,
+       "top5": 96,
+       "E_events": 0,
+       "E_den": 0,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 0,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 100,
+      "flags_status": {
+       "ok": 100
+      },
+      "parse_rules": {
+       "differential:non_integer": 100,
+       "p_serious:non_integer": 100,
+       "differential:rescaled_to_100": 3
+      },
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": 48.900177
+     },
+     "kind": "reference",
+     "label": "DXA at the target threshold (reference for COV and DX only)",
+     "rule": "YES when a tier-1 condition has DXA p >= 10% and is not a red herring (undetermined kept); flags = the top 5 such by p; differential = DXA's top 5; p_serious = DXA mass on tier-1 conditions. At the key's own threshold, not a ceiling"
+    },
+    "naive-bayes": {
+     "point": {
+      "SC": 700.0,
+      "miss_part": 700.0,
+      "concern_part": 0.0,
+      "H": 1.0,
+      "OC": null,
+      "SC_readable": 700.0,
+      "unreadable_share": 0.0,
+      "yes_rate": 0.0,
+      "COV": 0.0,
+      "MT_truth": null,
+      "MT_dxa": 1.0,
+      "MT": 1.0,
+      "top1": 1.0,
+      "top5": 1.0,
+      "D1_brier": 0.0,
+      "E": null
+     },
+     "ci": {
+      "SC": [
+       700.0,
+       700.0
+      ],
+      "miss_part": [
+       700.0,
+       700.0
+      ],
+      "concern_part": [
+       0.0,
+       0.0
+      ],
+      "H": [
+       1.0,
+       1.0
+      ],
+      "OC": [
+       null,
+       null
+      ],
+      "SC_readable": [
+       700.0,
+       700.0
+      ],
+      "unreadable_share": [
+       0.0,
+       0.0
+      ],
+      "yes_rate": [
+       0.0,
+       0.0
+      ],
+      "COV": [
+       0.0,
+       0.0
+      ],
+      "MT_truth": [
+       null,
+       null
+      ],
+      "MT_dxa": [
+       1.0,
+       1.0
+      ],
+      "MT": [
+       1.0,
+       1.0
+      ],
+      "top1": [
+       1.0,
+       1.0
+      ],
+      "top5": [
+       1.0,
+       1.0
+      ],
+      "D1_brier": [
+       0.0,
+       0.0
+      ],
+      "E": [
+       null,
+       null
+      ]
+     },
+     "counts": {
+      "cases": 100,
+      "readable": 100,
+      "unreadable": 0,
+      "unreadable_in_r10": 0,
+      "unreadable_reasons": {},
+      "yes": 0,
+      "no": 100,
+      "misses": 100,
+      "r10_cases": 100,
+      "concerns": 0,
+      "clearly_low_risk": 0,
+      "intermediate": 0,
+      "intermediate_yes": 0,
+      "cov_cases": 100,
+      "MT": {
+       "truth_targets": 0,
+       "truth_missed": 0,
+       "dxa_targets": 110,
+       "dxa_missed": 110
+      },
+      "CON": {
+       "yes_without_flags": 0,
+       "yes_without_tier1_flag": 0,
+       "no_with_tier1_flag": 0
+      },
+      "red_flag": {
+       "cases": 20,
+       "yes": 0,
+       "no_r5_tier3": 0,
+       "no_r5_tier3_yes": 0
+      },
+      "DX": {
+       "top1": 100,
+       "top5": 100,
+       "E_events": 0,
+       "E_den": 0,
+       "D2": {
+        "60": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 100,
+         "offlist": 0
+        },
+        "70": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 100,
+         "offlist": 0
+        },
+        "80": {
+         "events": 0,
+         "milder_named": 0,
+         "confident": 100,
+         "offlist": 0
+        }
+       }
+      },
+      "p_serious_present": 100,
+      "flags_status": {
+       "empty": 100
+      },
+      "parse_rules": {
+       "p_serious:fraction_scaled": 100,
+       "differential:non_integer": 9,
+       "p_serious:non_integer": 5
+      },
+      "duplicate_predictions": 0,
+      "predictions_for_other_cases": 0,
+      "p_serious_mean": 0.0296
+     },
+     "kind": "reference",
+     "label": "Naive Bayes (dataset-knowledge ceiling, not a clinical target)",
+     "rule": "naive Bayes over base evidence codes (evaluator/v02_references.py), trained on the DDXPlus test split with the 470 sample and both pools held out; YES when a tier-1 posterior is >= 10%; flags = the top 5 such; differential = its top 5; p_serious = posterior mass on tier-1 conditions. Dataset-knowledge ceiling, not a clinical target"
+    }
+   },
+   "models": [
+    "openai/gpt-5.6-terra",
+    "openai/gpt-oss-120b"
+   ],
+   "references": [
+    "perfect",
+    "always-yes",
+    "always-no",
+    "dxa",
+    "naive-bayes"
+   ],
+   "paired": {
+    "openai/gpt-5.6-terra|openai/gpt-oss-120b": {
+     "SC": {
+      "diff": 14.0,
+      "ci": [
+       0.0,
+       44.222284
+      ]
+     },
+     "miss_part": {
+      "diff": 14.0,
+      "ci": [
+       0.0,
+       44.222284
+      ]
+     },
+     "concern_part": {
+      "diff": 0.0,
+      "ci": [
+       0.0,
+       0.0
+      ]
+     },
+     "H": {
+      "diff": 0.02,
+      "ci": [
+       0.0,
+       0.063175
+      ]
+     },
+     "OC": {
+      "diff": null,
+      "ci": [
+       null,
+       null
+      ]
+     },
+     "COV": {
+      "diff": -0.075,
+      "ci": [
+       -0.156257,
+       0.0
+      ]
+     }
+    }
+   },
+   "vs_always_yes": {
+    "openai/gpt-5.6-terra": {
+     "SC": {
+      "diff": 14.0,
+      "ci": [
+       0.0,
+       44.222284
+      ]
+     },
+     "beats_blanket_concern": false
+    },
+    "openai/gpt-oss-120b": {
+     "SC": {
+      "diff": 0.0,
+      "ci": [
+       0.0,
+       0.0
+      ]
+     },
+     "beats_blanket_concern": false
+    },
+    "perfect": {
+     "SC": {
+      "diff": 0.0,
+      "ci": [
+       0.0,
+       0.0
+      ]
+     },
+     "beats_blanket_concern": false
+    },
+    "always-no": {
+     "SC": {
+      "diff": 700.0,
+      "ci": [
+       700.0,
+       700.0
+      ]
+     },
+     "beats_blanket_concern": false
+    },
+    "dxa": {
+     "SC": {
+      "diff": 0.0,
+      "ci": [
+       0.0,
+       0.0
+      ]
+     },
+     "beats_blanket_concern": false
+    },
+    "naive-bayes": {
+     "SC": {
+      "diff": 700.0,
+      "ci": [
+       700.0,
+       700.0
+      ]
+     },
+     "beats_blanket_concern": false
+    }
+   },
+   "per_condition": {
+    "openai/gpt-5.6-terra": [
+     {
+      "condition": "Acute COPD exacerbation / infection",
+      "cases": 5,
+      "r10_cases": 5,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Acute laryngitis",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 2,
+      "concerns": 0,
+      "cost": 14.0
+     },
+     {
+      "condition": "Atrial fibrillation",
+      "cases": 13,
+      "r10_cases": 13,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Bronchiectasis",
+      "cases": 2,
+      "r10_cases": 2,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Bronchitis",
+      "cases": 5,
+      "r10_cases": 5,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Chagas",
+      "cases": 2,
+      "r10_cases": 2,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "GERD",
+      "cases": 18,
+      "r10_cases": 18,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "HIV (initial infection)",
+      "cases": 8,
+      "r10_cases": 8,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Myasthenia gravis",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Panic attack",
+      "cases": 4,
+      "r10_cases": 4,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Pericarditis",
+      "cases": 13,
+      "r10_cases": 13,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Spontaneous rib fracture",
+      "cases": 2,
+      "r10_cases": 2,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Tuberculosis",
+      "cases": 6,
+      "r10_cases": 6,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Viral pharyngitis",
+      "cases": 2,
+      "r10_cases": 2,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     }
+    ],
+    "openai/gpt-oss-120b": [
+     {
+      "condition": "Acute COPD exacerbation / infection",
+      "cases": 5,
+      "r10_cases": 5,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Acute laryngitis",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Atrial fibrillation",
+      "cases": 13,
+      "r10_cases": 13,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Bronchiectasis",
+      "cases": 2,
+      "r10_cases": 2,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Bronchitis",
+      "cases": 5,
+      "r10_cases": 5,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Chagas",
+      "cases": 2,
+      "r10_cases": 2,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "GERD",
+      "cases": 18,
+      "r10_cases": 18,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "HIV (initial infection)",
+      "cases": 8,
+      "r10_cases": 8,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Myasthenia gravis",
+      "cases": 10,
+      "r10_cases": 10,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Panic attack",
+      "cases": 4,
+      "r10_cases": 4,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Pericarditis",
+      "cases": 13,
+      "r10_cases": 13,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Spontaneous rib fracture",
+      "cases": 2,
+      "r10_cases": 2,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Tuberculosis",
+      "cases": 6,
+      "r10_cases": 6,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     },
+     {
+      "condition": "Viral pharyngitis",
+      "cases": 2,
+      "r10_cases": 2,
+      "misses": 0,
+      "concerns": 0,
+      "cost": 0.0
+     }
+    ]
+   }
+  }
+ },
+ "sources": [
+  {
+   "path": "results/v03/runs/openai-gpt-5.6-terra-v03-470cases.json",
+   "sha256": "73b55a13510cfa7cb388f4f70a488f00bbc606651d3d14ae04b1980dced2ca55",
+   "set": "main",
+   "prompt_version": "v6",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-2026-09-25",
+   "config_overridden": [],
+   "backend": "openrouter",
+   "git_commit": "81c3803"
+  },
+  {
+   "path": "results/v03/runs/openai-gpt-5.6-terra-v03-pool-atypical.json",
+   "sha256": "735f9dbd32d08dc90b7c0837729f7bf78754a601460bfc24df8f4deb13c7875a",
+   "set": "pool-atypical",
+   "prompt_version": "v6",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-2026-09-25",
+   "config_overridden": [],
+   "backend": "openrouter",
+   "git_commit": "6fb50e5"
+  },
+  {
+   "path": "results/v03/runs/openai-gpt-5.6-terra-v03-pool-high-risk.json",
+   "sha256": "439dc8001c18068f59669a1786aaf0f70e93a91abe7482190bf9873249f40ea7",
+   "set": "pool-high-risk",
+   "prompt_version": "v6",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-2026-09-25",
+   "config_overridden": [],
+   "backend": "openrouter",
+   "git_commit": "6fb50e5"
+  },
+  {
+   "path": "results/v03/runs/openai-gpt-oss-120b-v03-470cases.json",
+   "sha256": "1cf2acf770af8ba9f53f0c1f0af74c4ed01d90b3845e4f613f0fe71e59246485",
+   "set": "main",
+   "prompt_version": "v6",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-2026-09-25",
+   "config_overridden": [],
+   "backend": "openrouter",
+   "git_commit": "6fb50e5"
+  },
+  {
+   "path": "results/v03/runs/openai-gpt-oss-120b-v03-pool-atypical.json",
+   "sha256": "6acf493bb19545f3157876f8cb282e71cfb9943220f15776c3b5d77a4b6192a1",
+   "set": "pool-atypical",
+   "prompt_version": "v6",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-2026-09-25",
+   "config_overridden": [],
+   "backend": "openrouter",
+   "git_commit": "6fb50e5"
+  },
+  {
+   "path": "results/v03/runs/openai-gpt-oss-120b-v03-pool-high-risk.json",
+   "sha256": "fe03aaf3e4dda9d6eaa24caa4562fb450dd16ac925ea3f3465592e3d0e4262fa",
+   "set": "pool-high-risk",
+   "prompt_version": "v6",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-2026-09-25",
+   "config_overridden": [],
+   "backend": "openrouter",
+   "git_commit": "6fb50e5"
+  }
+ ],
+ "inputs": {
+  "main": {
+   "cases": {
+    "path": "data/test_sets/eval-v02-adult.json",
+    "sha256": "f0c3009cd347b483f6d7a961c6bfb417840260f303a481acd258b3e084839a9f"
+   },
+   "key": {
+    "path": "data/test_sets/eval-v03-key.csv",
+    "sha256": "30be9788b41c87daa54624fd2d2c9607d4ad3baf1cc54a779c66e2cbf240bd59"
+   },
+   "refs": {
+    "path": "data/test_sets/eval-v03-adult.refs.json",
+    "sha256": "af8f76efba7eec11fd9f08ee83f4488b56bdc808e7cf8c60e25b1cb623f81007"
+   }
+  },
+  "pool-atypical": {
+   "cases": {
+    "path": "data/test_sets/eval-v03-pool-atypical.json",
+    "sha256": "857d6fe06207ece4a91d61b62d3425d29de347d3f6901bca7caacf7d6f5f7a0e"
+   },
+   "key": {
+    "path": "data/test_sets/eval-v03-pool-atypical.key.csv",
+    "sha256": "64fb6885f6fe1bfe0824c4b97137527e43c6370cadcdc8c3cb516669ba648e53"
+   },
+   "refs": {
+    "path": "data/test_sets/eval-v03-pool-atypical.refs.json",
+    "sha256": "4052eda4726c9ae74f82c95118fc8590a00363d218602815d93ebff7d1385514"
+   }
+  },
+  "pool-high-risk": {
+   "cases": {
+    "path": "data/test_sets/eval-v03-pool-high-risk.json",
+    "sha256": "5819e421f2fff6cd8e06837bbbe1a381dd7052e525e06f006c2b67c2a17cda08"
+   },
+   "key": {
+    "path": "data/test_sets/eval-v03-pool-high-risk.key.csv",
+    "sha256": "9c22ca78c140a2f5c1c5fa6b638b474bdd21374bfcaf1c56cd7a8941bc0a40da"
+   },
+   "refs": {
+    "path": "data/test_sets/eval-v03-pool-high-risk.refs.json",
+    "sha256": "eef9ddfd104479692ba5da2771950065876974901aad5447a27f3738b9617ccf"
+   }
+  }
+ },
+ "provenance": {
+  "generated_at": "2026-09-25T18:05:02+00:00",
+  "git_commit": "81c3803",
+  "scorer": "evaluator/v03_score.py",
+  "icd10_map": {
+   "path": "spec/ddxplus_icd10_map.csv",
+   "sha256": "774ebee74195a84e0f19f9c8975b800795fe343dff4b395dc62c394355e23535"
+  },
+  "tiers": {
+   "path": "spec/dangerous_if_missed_tiers_v03.csv",
+   "sha256": "6e9cc7c5bfba1519d10b454d64caa00bbd8ebf873675eaf2a96ecde0e6128637"
+  }
+ }
+}

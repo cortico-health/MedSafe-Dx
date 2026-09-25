@@ -1,0 +1,238 @@
+{
+ "run": "v0.3 test",
+ "spec": "spec/v0.3-scoring.md draft 2",
+ "started": "2026-09-25T17:28:36Z",
+ "finished": "2026-09-25T18:05:01Z",
+ "git_commit": "81c3803d6f06d67972638c3b2dab99b0650f97a4",
+ "git_dirty": true,
+ "test_sets": {
+  "470cases": {
+   "path": "data/test_sets/eval-v02-adult.json",
+   "sha256": "f0c3009cd347b483f6d7a961c6bfb417840260f303a481acd258b3e084839a9f",
+   "case_ids_sha256": "39fa7e7ec83b3497097d7467343dfc52fb47da7470e501c525cd5d66e423c419"
+  },
+  "pool-atypical": {
+   "path": "data/test_sets/eval-v03-pool-atypical.json",
+   "sha256": "857d6fe06207ece4a91d61b62d3425d29de347d3f6901bca7caacf7d6f5f7a0e",
+   "case_ids_sha256": "89d9fa47a79389ad30f1687298b8f123b554f8c6423428da9abd1b71a586afa4"
+  },
+  "pool-high-risk": {
+   "path": "data/test_sets/eval-v03-pool-high-risk.json",
+   "sha256": "5819e421f2fff6cd8e06837bbbe1a381dd7052e525e06f006c2b67c2a17cda08",
+   "case_ids_sha256": "cf950d604a5e18166b6d952e5eab8e61bd6aefb01322c49249c29e6f05a1b749"
+  }
+ },
+ "run_config": {
+  "path": "inference/run_config_v03.json",
+  "sha256": "3b35b9e06000d5494bf222c06089ce582bcb5dcf701fa8dcab11de3c62a1643d",
+  "content": {
+   "_about": "MedSafe-Dx v0.3 run configuration (spec/v0.3-scoring.md section 9, 'as in v0.2 section 9'). The values match run_config_v02.json; only the prompt (v6) and config_version differ, so a v6 row records the prompt it ran. inference/run_inference.py --prompt-version v6 reads it. A run that overrides any value carries config_overridden in its metadata. reasoning_effort null means we send no reasoning parameter. Reasoning effort 'medium' is provisional.",
+   "config_version": "v03-2026-09-25",
+   "prompt_version": "v6",
+   "decoder_version": "v02",
+   "temperature": 0.0,
+   "max_tokens": 16000,
+   "empty_or_truncated_retries": 1,
+   "default_reasoning_effort": null,
+   "models": {
+    "anthropic/claude-fable-5": {
+     "reasoning_effort": "medium"
+    },
+    "anthropic/claude-opus-5": {
+     "reasoning_effort": "medium"
+    },
+    "anthropic/claude-sonnet-4.6": {
+     "reasoning_effort": "medium"
+    },
+    "anthropic/claude-haiku-4.5": {
+     "reasoning_effort": "medium"
+    },
+    "openai/gpt-6-astra": {
+     "reasoning_effort": "medium"
+    },
+    "openai/gpt-5.6-sol": {
+     "reasoning_effort": "medium"
+    },
+    "openai/gpt-5.6-terra": {
+     "reasoning_effort": "medium"
+    },
+    "openai/gpt-5.6-luna": {
+     "reasoning_effort": "medium"
+    },
+    "openai/gpt-5.4-mini": {
+     "reasoning_effort": "medium"
+    },
+    "openai/gpt-oss-120b": {
+     "reasoning_effort": "medium"
+    },
+    "google/gemini-3.1-pro-preview": {
+     "reasoning_effort": "medium"
+    },
+    "moonshotai/kimi-k3": {
+     "reasoning_effort": "medium"
+    },
+    "z-ai/glm-5.3": {
+     "reasoning_effort": "medium"
+    },
+    "x-ai/grok-4.6": {
+     "reasoning_effort": "medium"
+    },
+    "deepseek/deepseek-r1": {
+     "reasoning_effort": "medium"
+    },
+    "anthropic/claude-opus-4.7": {
+     "reasoning_effort": "medium"
+    },
+    "openai/gpt-5.2": {
+     "reasoning_effort": "medium"
+    },
+    "openai/gpt-5-mini": {
+     "reasoning_effort": "medium"
+    },
+    "openai/o3-pro": {
+     "reasoning_effort": "medium"
+    },
+    "x-ai/grok-4.20": {
+     "reasoning_effort": "medium"
+    },
+    "openai/gpt-5-chat": {
+     "reasoning_effort": null
+    },
+    "meta-llama/llama-4-maverick": {
+     "reasoning_effort": null
+    }
+   }
+  }
+ },
+ "skipped_not_on_openrouter": [],
+ "incomplete": [],
+ "account_spend_usd": [
+  {
+   "started": "2026-09-25T17:28:36Z",
+   "finished": "2026-09-25T18:04:15Z",
+   "usd": 3.9468
+  },
+  {
+   "started": "2026-09-25T18:04:50Z",
+   "finished": "2026-09-25T18:05:01Z",
+   "usd": 0.0015
+  }
+ ],
+ "predictions": [
+  {
+   "path": "results/v03/runs/openai-gpt-5.6-terra-v03-470cases.json",
+   "sha256": "73b55a13510cfa7cb388f4f70a488f00bbc606651d3d14ae04b1980dced2ca55",
+   "model": "openai/gpt-5.6-terra",
+   "prompt_version": "v6",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-2026-09-25",
+   "config_overridden": [],
+   "backend": "openrouter",
+   "git_commit": "81c3803",
+   "successful_predictions": 470,
+   "failed_predictions": 0,
+   "test_set": "eval-v02-adult",
+   "cost_usd": 2.5078,
+   "prompt_tokens": 300164,
+   "completion_tokens": 158958
+  },
+  {
+   "path": "results/v03/runs/openai-gpt-5.6-terra-v03-pool-atypical.json",
+   "sha256": "735f9dbd32d08dc90b7c0837729f7bf78754a601460bfc24df8f4deb13c7875a",
+   "model": "openai/gpt-5.6-terra",
+   "prompt_version": "v6",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-2026-09-25",
+   "config_overridden": [],
+   "backend": "openrouter",
+   "git_commit": "6fb50e5",
+   "successful_predictions": 150,
+   "failed_predictions": 0,
+   "test_set": "eval-v03-pool-atypical",
+   "cost_usd": 0.7864,
+   "prompt_tokens": 97730,
+   "completion_tokens": 49244
+  },
+  {
+   "path": "results/v03/runs/openai-gpt-5.6-terra-v03-pool-high-risk.json",
+   "sha256": "439dc8001c18068f59669a1786aaf0f70e93a91abe7482190bf9873249f40ea7",
+   "model": "openai/gpt-5.6-terra",
+   "prompt_version": "v6",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-2026-09-25",
+   "config_overridden": [],
+   "backend": "openrouter",
+   "git_commit": "6fb50e5",
+   "successful_predictions": 100,
+   "failed_predictions": 0,
+   "test_set": "eval-v03-pool-high-risk",
+   "cost_usd": 0.5273,
+   "prompt_tokens": 62250,
+   "completion_tokens": 33565
+  },
+  {
+   "path": "results/v03/runs/openai-gpt-oss-120b-v03-470cases.json",
+   "sha256": "1cf2acf770af8ba9f53f0c1f0af74c4ed01d90b3845e4f613f0fe71e59246485",
+   "model": "openai/gpt-oss-120b",
+   "prompt_version": "v6",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-2026-09-25",
+   "config_overridden": [],
+   "backend": "openrouter",
+   "git_commit": "6fb50e5",
+   "successful_predictions": 470,
+   "failed_predictions": 0,
+   "test_set": "eval-v02-adult",
+   "cost_usd": 0.1097,
+   "prompt_tokens": 328629,
+   "completion_tokens": 363958
+  },
+  {
+   "path": "results/v03/runs/openai-gpt-oss-120b-v03-pool-atypical.json",
+   "sha256": "6acf493bb19545f3157876f8cb282e71cfb9943220f15776c3b5d77a4b6192a1",
+   "model": "openai/gpt-oss-120b",
+   "prompt_version": "v6",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-2026-09-25",
+   "config_overridden": [],
+   "backend": "openrouter",
+   "git_commit": "6fb50e5",
+   "successful_predictions": 150,
+   "failed_predictions": 0,
+   "test_set": "eval-v03-pool-atypical",
+   "cost_usd": 0.0328,
+   "prompt_tokens": 106917,
+   "completion_tokens": 110353
+  },
+  {
+   "path": "results/v03/runs/openai-gpt-oss-120b-v03-pool-high-risk.json",
+   "sha256": "fe03aaf3e4dda9d6eaa24caa4562fb450dd16ac925ea3f3465592e3d0e4262fa",
+   "model": "openai/gpt-oss-120b",
+   "prompt_version": "v6",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-2026-09-25",
+   "config_overridden": [],
+   "backend": "openrouter",
+   "git_commit": "6fb50e5",
+   "successful_predictions": 100,
+   "failed_predictions": 0,
+   "test_set": "eval-v03-pool-high-risk",
+   "cost_usd": 0.0214,
+   "prompt_tokens": 68306,
+   "completion_tokens": 75973
+  }
+ ],
+ "python": "3.12.3"
+}
