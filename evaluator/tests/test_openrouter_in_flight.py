@@ -27,7 +27,7 @@ class TestInFlightBudget(unittest.TestCase):
     def call(self, responses):
         with mock.patch.object(openrouter.requests, "post", side_effect=responses), \
                 mock.patch.object(openrouter.time, "sleep") as sleep, \
-                mock.patch.dict("os.environ", {"OPENROUTER_API_KEY": "k"}):
+                mock.patch.object(openrouter, "OPENROUTER_API_KEY", "k"):  # read once at import, not from os.environ
             out = openrouter.call_openrouter_detailed(model="m", messages=[{"role": "user", "content": "x"}])
         return out, sleep
 
