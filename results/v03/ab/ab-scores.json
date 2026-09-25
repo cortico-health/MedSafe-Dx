@@ -1,0 +1,4232 @@
+{
+ "spec": "spec/v0.3-scoring.md draft 3, section 12",
+ "sample": {
+  "cases": 150,
+  "conditions": 47,
+  "classes": {
+   "serious": 90,
+   "benign": 40,
+   "middle": 20
+  },
+  "headline_cases": 130,
+  "anchor_cost_per_100": 30.77,
+  "points_per_under_escalation": 17.5,
+  "points_per_over_escalation": 2.5,
+  "working_diagnosis_is_truth": 46,
+  "working_diagnosis_fallback": 11,
+  "limit": null,
+  "bootstrap": {
+   "draws": 2000,
+   "seed": 20260923,
+   "clusters": "truth conditions"
+  }
+ },
+ "rows": {
+  "meta-llama/llama-3.1-8b-instruct|v7a1": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "arm": "v7a1",
+   "arm_label": "1",
+   "file": "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a1.json",
+   "measures": {
+    "cost": {
+     "value": 62.31,
+     "ci": [
+      29.84,
+      99.26
+     ]
+    },
+    "anchor": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "U": {
+     "value": 10.0,
+     "ci": [
+      3.49,
+      17.44
+     ]
+    },
+    "O": {
+     "value": 45.0,
+     "ci": [
+      27.5,
+      63.27
+     ]
+    },
+    "esc": {
+     "value": 77.33,
+     "ci": [
+      68.71,
+      85.62
+     ]
+    },
+    "TL": {
+     "value": 42.22,
+     "ci": [
+      28.36,
+      56.19
+     ]
+    },
+    "TL_truth": {
+     "value": 45.0,
+     "ci": [
+      26.66,
+      65.0
+     ]
+    },
+    "TL_dxa": {
+     "value": 43.9,
+     "ci": [
+      24.24,
+      63.42
+     ]
+    },
+    "T1L": {
+     "value": 44.44,
+     "ci": [
+      30.68,
+      58.67
+     ]
+    },
+    "top1": {
+     "value": 9.33,
+     "ci": [
+      2.84,
+      16.78
+     ]
+    },
+    "top5": {
+     "value": 25.33,
+     "ci": [
+      14.57,
+      36.24
+     ]
+    },
+    "mid_esc": {
+     "value": 85.0,
+     "ci": [
+      70.0,
+      100.0
+     ]
+    },
+    "mid_truth": {
+     "value": 15.0,
+     "ci": [
+      0.0,
+      38.89
+     ]
+    },
+    "other_esc": {
+     "value": null,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "unreadable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score": {
+     "value": -102.5,
+     "ci": [
+      -300.09,
+      9.53
+     ]
+    },
+    "score_readable": {
+     "value": -102.5,
+     "ci": [
+      -300.09,
+      9.53
+     ]
+    }
+   },
+   "counts": {
+    "cases": 150,
+    "serious": 90,
+    "benign": 40,
+    "middle": 20,
+    "other": 0,
+    "under_escalations": 9,
+    "over_escalations": 18,
+    "escalations": 116,
+    "unreadable": 0,
+    "unreadable_reasons": {},
+    "parse_rules": {
+     "differential:rescaled_to_100": 4,
+     "differential:invalid_code": 1
+    }
+   },
+   "usage": {
+    "cost_usd": 0.0035,
+    "prompt_tokens": 78302,
+    "completion_tokens": 15244,
+    "retries": 0,
+    "finish_reasons": {
+     "stop": 150
+    }
+   },
+   "config": {
+    "config_version": "v03-ab-2026-09-25",
+    "config_overridden": [],
+    "reasoning_effort": null,
+    "max_tokens": 16000,
+    "git_commit": "e6bc313"
+   }
+  },
+  "meta-llama/llama-3.1-8b-instruct|v7a2": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "arm": "v7a2",
+   "arm_label": "2",
+   "file": "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a2.json",
+   "measures": {
+    "cost": {
+     "value": 49.23,
+     "ci": [
+      23.33,
+      80.32
+     ]
+    },
+    "anchor": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "U": {
+     "value": 5.56,
+     "ci": [
+      1.05,
+      11.77
+     ]
+    },
+    "O": {
+     "value": 72.5,
+     "ci": [
+      53.85,
+      87.8
+     ]
+    },
+    "esc": {
+     "value": 88.67,
+     "ci": [
+      81.82,
+      94.41
+     ]
+    },
+    "TL": {
+     "value": 47.78,
+     "ci": [
+      33.7,
+      62.5
+     ]
+    },
+    "TL_truth": {
+     "value": 48.33,
+     "ci": [
+      29.69,
+      68.25
+     ]
+    },
+    "TL_dxa": {
+     "value": 51.22,
+     "ci": [
+      30.55,
+      72.23
+     ]
+    },
+    "T1L": {
+     "value": 51.11,
+     "ci": [
+      37.04,
+      65.34
+     ]
+    },
+    "top1": {
+     "value": 21.33,
+     "ci": [
+      12.18,
+      31.88
+     ]
+    },
+    "top5": {
+     "value": 44.0,
+     "ci": [
+      31.79,
+      56.0
+     ]
+    },
+    "mid_esc": {
+     "value": 95.0,
+     "ci": [
+      81.48,
+      100.0
+     ]
+    },
+    "mid_truth": {
+     "value": 35.0,
+     "ci": [
+      15.38,
+      56.54
+     ]
+    },
+    "other_esc": {
+     "value": null,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "unreadable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score": {
+     "value": -60.0,
+     "ci": [
+      -189.29,
+      18.0
+     ]
+    },
+    "score_readable": {
+     "value": -60.0,
+     "ci": [
+      -189.29,
+      18.0
+     ]
+    }
+   },
+   "counts": {
+    "cases": 150,
+    "serious": 90,
+    "benign": 40,
+    "middle": 20,
+    "other": 0,
+    "under_escalations": 5,
+    "over_escalations": 29,
+    "escalations": 133,
+    "unreadable": 0,
+    "unreadable_reasons": {},
+    "parse_rules": {
+     "differential:rescaled_to_100": 3,
+     "differential:invalid_code": 3
+    }
+   },
+   "usage": {
+    "cost_usd": 0.0049,
+    "prompt_tokens": 89964,
+    "completion_tokens": 15472,
+    "retries": 0,
+    "finish_reasons": {
+     "stop": 150
+    }
+   },
+   "config": {
+    "config_version": "v03-ab-2026-09-25",
+    "config_overridden": [],
+    "reasoning_effort": null,
+    "max_tokens": 16000,
+    "git_commit": "e6bc313"
+   }
+  },
+  "meta-llama/llama-3.1-8b-instruct|v7a3": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "arm": "v7a3",
+   "arm_label": "3",
+   "file": "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a3.json",
+   "measures": {
+    "cost": {
+     "value": 100.0,
+     "ci": [
+      61.29,
+      142.4
+     ]
+    },
+    "anchor": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "U": {
+     "value": 17.78,
+     "ci": [
+      9.67,
+      27.19
+     ]
+    },
+    "O": {
+     "value": 45.0,
+     "ci": [
+      27.5,
+      63.41
+     ]
+    },
+    "esc": {
+     "value": 73.33,
+     "ci": [
+      64.38,
+      82.43
+     ]
+    },
+    "TL": {
+     "value": 45.56,
+     "ci": [
+      30.49,
+      61.54
+     ]
+    },
+    "TL_truth": {
+     "value": 48.33,
+     "ci": [
+      27.27,
+      68.92
+     ]
+    },
+    "TL_dxa": {
+     "value": 43.9,
+     "ci": [
+      23.52,
+      64.15
+     ]
+    },
+    "T1L": {
+     "value": 47.78,
+     "ci": [
+      32.26,
+      63.73
+     ]
+    },
+    "top1": {
+     "value": 29.33,
+     "ci": [
+      17.11,
+      41.78
+     ]
+    },
+    "top5": {
+     "value": 40.67,
+     "ci": [
+      27.81,
+      52.95
+     ]
+    },
+    "mid_esc": {
+     "value": 90.0,
+     "ci": [
+      76.92,
+      100.0
+     ]
+    },
+    "mid_truth": {
+     "value": 10.0,
+     "ci": [
+      0.0,
+      25.02
+     ]
+    },
+    "other_esc": {
+     "value": null,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "unreadable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score": {
+     "value": -225.0,
+     "ci": [
+      -492.02,
+      -78.81
+     ]
+    },
+    "score_readable": {
+     "value": -225.0,
+     "ci": [
+      -492.02,
+      -78.81
+     ]
+    }
+   },
+   "counts": {
+    "cases": 150,
+    "serious": 90,
+    "benign": 40,
+    "middle": 20,
+    "other": 0,
+    "under_escalations": 16,
+    "over_escalations": 18,
+    "escalations": 110,
+    "unreadable": 0,
+    "unreadable_reasons": {},
+    "parse_rules": {
+     "differential:rescaled_to_100": 1,
+     "differential:invalid_code": 3
+    },
+    "safety_notes": 110
+   },
+   "usage": {
+    "cost_usd": 0.0063,
+    "prompt_tokens": 89846,
+    "completion_tokens": 18065,
+    "retries": 0,
+    "finish_reasons": {
+     "stop": 150
+    }
+   },
+   "config": {
+    "config_version": "v03-ab-2026-09-25",
+    "config_overridden": [],
+    "reasoning_effort": null,
+    "max_tokens": 16000,
+    "git_commit": "e6bc313"
+   }
+  },
+  "meta-llama/llama-3.1-8b-instruct|v7a4a": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "arm": "v7a4a",
+   "arm_label": "4a",
+   "file": "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a4a.json",
+   "measures": {
+    "cost": {
+     "value": 293.08,
+     "ci": [
+      200.75,
+      385.66
+     ]
+    },
+    "anchor": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "U": {
+     "value": 60.0,
+     "ci": [
+      44.44,
+      74.45
+     ]
+    },
+    "O": {
+     "value": 7.5,
+     "ci": [
+      0.0,
+      15.79
+     ]
+    },
+    "esc": {
+     "value": 28.0,
+     "ci": [
+      18.47,
+      38.67
+     ]
+    },
+    "TL": {
+     "value": 41.11,
+     "ci": [
+      27.08,
+      56.25
+     ]
+    },
+    "TL_truth": {
+     "value": 45.0,
+     "ci": [
+      28.0,
+      63.27
+     ]
+    },
+    "TL_dxa": {
+     "value": 41.46,
+     "ci": [
+      19.04,
+      64.1
+     ]
+    },
+    "T1L": {
+     "value": 41.11,
+     "ci": [
+      27.08,
+      56.25
+     ]
+    },
+    "top1": {
+     "value": 8.67,
+     "ci": [
+      2.92,
+      15.86
+     ]
+    },
+    "top5": {
+     "value": 21.33,
+     "ci": [
+      12.24,
+      31.47
+     ]
+    },
+    "mid_esc": {
+     "value": 15.0,
+     "ci": [
+      0.0,
+      33.33
+     ]
+    },
+    "mid_truth": {
+     "value": 25.0,
+     "ci": [
+      5.56,
+      50.0
+     ]
+    },
+    "other_esc": {
+     "value": null,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "unreadable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score": {
+     "value": -852.5,
+     "ci": [
+      -1803.45,
+      -410.04
+     ]
+    },
+    "score_readable": {
+     "value": -852.5,
+     "ci": [
+      -1803.45,
+      -410.04
+     ]
+    }
+   },
+   "counts": {
+    "cases": 150,
+    "serious": 90,
+    "benign": 40,
+    "middle": 20,
+    "other": 0,
+    "under_escalations": 54,
+    "over_escalations": 3,
+    "escalations": 42,
+    "unreadable": 0,
+    "unreadable_reasons": {},
+    "parse_rules": {
+     "differential:rescaled_to_100": 5
+    },
+    "flags": {
+     "null_or_invalid": 0,
+     "tier1": 35,
+     "onlist_not_tier1": 17,
+     "offlist_escalating": 7,
+     "offlist_not_escalating": 91,
+     "invalid": 0,
+     "not_in_own_list": 0,
+     "offlist_codes": {
+      "J020": 9,
+      "M545": 5,
+      "M542": 4,
+      "J840": 3,
+      "A690": 3,
+      "F452": 2,
+      "I630": 2,
+      "R534": 2,
+      "G730": 2,
+      "K140": 2,
+      "G479": 2,
+      "M549": 2,
+      "R519": 2,
+      "F329": 2,
+      "J300": 2
+     }
+    }
+   },
+   "usage": {
+    "cost_usd": 0.0056,
+    "prompt_tokens": 83329,
+    "completion_tokens": 15535,
+    "retries": 0,
+    "finish_reasons": {
+     "stop": 150
+    }
+   },
+   "config": {
+    "config_version": "v03-ab-2026-09-25",
+    "config_overridden": [],
+    "reasoning_effort": null,
+    "max_tokens": 16000,
+    "git_commit": "e6bc313"
+   },
+   "offlist_bounds": {
+    "escalate": {
+     "score": {
+      "value": -145.0,
+      "ci": [
+       -376.5,
+       -35.54
+      ]
+     },
+     "U": {
+      "value": 10.0,
+      "ci": [
+       3.61,
+       18.18
+      ]
+     },
+     "O": {
+      "value": 87.5,
+      "ci": [
+       69.44,
+       100.0
+      ]
+     },
+     "esc": {
+      "value": 88.67,
+      "ci": [
+       80.82,
+       94.67
+      ]
+     }
+    },
+    "routine": {
+     "score": {
+      "value": -975.0,
+      "ci": [
+       -2112.07,
+       -488.99
+      ]
+     },
+     "U": {
+      "value": 67.78,
+      "ci": [
+       52.17,
+       82.22
+      ]
+     },
+     "O": {
+      "value": 7.5,
+      "ci": [
+       0.0,
+       15.79
+      ]
+     },
+     "esc": {
+      "value": 23.33,
+      "ci": [
+       14.28,
+       33.78
+      ]
+     }
+    }
+   }
+  },
+  "meta-llama/llama-3.1-8b-instruct|v7a4b": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "arm": "v7a4b",
+   "arm_label": "4b",
+   "file": "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a4b.json",
+   "measures": {
+    "cost": {
+     "value": 264.62,
+     "ci": [
+      190.59,
+      344.81
+     ]
+    },
+    "anchor": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "U": {
+     "value": 53.33,
+     "ci": [
+      40.45,
+      66.68
+     ]
+    },
+    "O": {
+     "value": 20.0,
+     "ci": [
+      5.26,
+      36.67
+     ]
+    },
+    "esc": {
+     "value": 36.0,
+     "ci": [
+      25.49,
+      46.54
+     ]
+    },
+    "TL": {
+     "value": 41.11,
+     "ci": [
+      26.59,
+      57.14
+     ]
+    },
+    "TL_truth": {
+     "value": 43.33,
+     "ci": [
+      23.86,
+      63.64
+     ]
+    },
+    "TL_dxa": {
+     "value": 43.9,
+     "ci": [
+      22.22,
+      65.22
+     ]
+    },
+    "T1L": {
+     "value": 44.44,
+     "ci": [
+      29.41,
+      60.47
+     ]
+    },
+    "top1": {
+     "value": 26.67,
+     "ci": [
+      15.17,
+      37.89
+     ]
+    },
+    "top5": {
+     "value": 39.33,
+     "ci": [
+      26.67,
+      51.88
+     ]
+    },
+    "mid_esc": {
+     "value": 20.0,
+     "ci": [
+      0.0,
+      46.15
+     ]
+    },
+    "mid_truth": {
+     "value": 10.0,
+     "ci": [
+      0.0,
+      25.02
+     ]
+    },
+    "other_esc": {
+     "value": null,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "unreadable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score": {
+     "value": -760.0,
+     "ci": [
+      -1622.47,
+      -373.2
+     ]
+    },
+    "score_readable": {
+     "value": -760.0,
+     "ci": [
+      -1622.47,
+      -373.2
+     ]
+    }
+   },
+   "counts": {
+    "cases": 150,
+    "serious": 90,
+    "benign": 40,
+    "middle": 20,
+    "other": 0,
+    "under_escalations": 48,
+    "over_escalations": 8,
+    "escalations": 54,
+    "unreadable": 0,
+    "unreadable_reasons": {},
+    "parse_rules": {
+     "differential:truncated": 8,
+     "differential:rescaled_to_100": 4,
+     "differential:invalid_code": 1
+    },
+    "flags": {
+     "null_or_invalid": 0,
+     "tier1": 50,
+     "onlist_not_tier1": 32,
+     "offlist_escalating": 4,
+     "offlist_not_escalating": 64,
+     "invalid": 0,
+     "not_in_own_list": 0,
+     "offlist_codes": {
+      "J020": 7,
+      "B19": 3,
+      "G479": 2,
+      "M543": 2,
+      "M545": 2,
+      "M792": 2,
+      "T900": 1,
+      "C793": 1,
+      "F452": 1,
+      "A501": 1,
+      "I10": 1,
+      "R534": 1,
+      "J370": 1,
+      "I23": 1,
+      "L500": 1
+     }
+    }
+   },
+   "usage": {
+    "cost_usd": 0.0044,
+    "prompt_tokens": 88104,
+    "completion_tokens": 15467,
+    "retries": 0,
+    "finish_reasons": {
+     "stop": 150
+    }
+   },
+   "config": {
+    "config_version": "v03-ab-2026-09-25",
+    "config_overridden": [],
+    "reasoning_effort": null,
+    "max_tokens": 16000,
+    "git_commit": "e6bc313"
+   },
+   "offlist_bounds": {
+    "escalate": {
+     "score": {
+      "value": -150.0,
+      "ci": [
+       -366.67,
+       -37.74
+      ]
+     },
+     "U": {
+      "value": 12.22,
+      "ci": [
+       6.25,
+       19.51
+      ]
+     },
+     "O": {
+      "value": 57.5,
+      "ci": [
+       38.23,
+       76.0
+      ]
+     },
+     "esc": {
+      "value": 78.67,
+      "ci": [
+       69.28,
+       86.79
+      ]
+     }
+    },
+    "routine": {
+     "score": {
+      "value": -830.0,
+      "ci": [
+       -1768.22,
+       -412.22
+      ]
+     },
+     "U": {
+      "value": 57.78,
+      "ci": [
+       43.43,
+       71.25
+      ]
+     },
+     "O": {
+      "value": 20.0,
+      "ci": [
+       5.26,
+       36.67
+      ]
+     },
+     "esc": {
+      "value": 33.33,
+      "ci": [
+       22.66,
+       44.23
+      ]
+     }
+    }
+   }
+  },
+  "openai/gpt-5.6-terra|v7a1": {
+   "model": "openai/gpt-5.6-terra",
+   "arm": "v7a1",
+   "arm_label": "1",
+   "file": "results/v03/ab/runs/openai-gpt-5.6-terra-v7a1.json",
+   "measures": {
+    "cost": {
+     "value": 34.62,
+     "ci": [
+      13.43,
+      59.6
+     ]
+    },
+    "anchor": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "U": {
+     "value": 3.33,
+     "ci": [
+      0.0,
+      8.64
+     ]
+    },
+    "O": {
+     "value": 60.0,
+     "ci": [
+      36.11,
+      83.33
+     ]
+    },
+    "esc": {
+     "value": 87.33,
+     "ci": [
+      78.67,
+      95.3
+     ]
+    },
+    "TL": {
+     "value": 76.67,
+     "ci": [
+      64.47,
+      86.46
+     ]
+    },
+    "TL_truth": {
+     "value": 95.0,
+     "ci": [
+      89.36,
+      100.0
+     ]
+    },
+    "TL_dxa": {
+     "value": 46.34,
+     "ci": [
+      28.12,
+      64.29
+     ]
+    },
+    "T1L": {
+     "value": 81.11,
+     "ci": [
+      70.21,
+      90.1
+     ]
+    },
+    "top1": {
+     "value": 60.67,
+     "ci": [
+      50.0,
+      71.53
+     ]
+    },
+    "top5": {
+     "value": 85.33,
+     "ci": [
+      74.83,
+      93.92
+     ]
+    },
+    "mid_esc": {
+     "value": 100.0,
+     "ci": [
+      100.0,
+      100.0
+     ]
+    },
+    "mid_truth": {
+     "value": 75.0,
+     "ci": [
+      47.83,
+      100.0
+     ]
+    },
+    "other_esc": {
+     "value": null,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "unreadable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score": {
+     "value": -12.5,
+     "ci": [
+      -100.0,
+      47.83
+     ]
+    },
+    "score_readable": {
+     "value": -12.5,
+     "ci": [
+      -100.0,
+      47.83
+     ]
+    }
+   },
+   "counts": {
+    "cases": 150,
+    "serious": 90,
+    "benign": 40,
+    "middle": 20,
+    "other": 0,
+    "under_escalations": 3,
+    "over_escalations": 24,
+    "escalations": 131,
+    "unreadable": 0,
+    "unreadable_reasons": {},
+    "parse_rules": {}
+   },
+   "usage": {
+    "cost_usd": 0.692,
+    "prompt_tokens": 77516,
+    "completion_tokens": 44745,
+    "retries": 0,
+    "finish_reasons": {
+     "stop": 150
+    }
+   },
+   "config": {
+    "config_version": "v03-ab-2026-09-25",
+    "config_overridden": [],
+    "reasoning_effort": "medium",
+    "max_tokens": 16000,
+    "git_commit": "e6bc313"
+   }
+  },
+  "openai/gpt-5.6-terra|v7a2": {
+   "model": "openai/gpt-5.6-terra",
+   "arm": "v7a2",
+   "arm_label": "2",
+   "file": "results/v03/ab/runs/openai-gpt-5.6-terra-v7a2.json",
+   "measures": {
+    "cost": {
+     "value": 21.54,
+     "ci": [
+      9.77,
+      34.29
+     ]
+    },
+    "anchor": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "U": {
+     "value": 1.11,
+     "ci": [
+      0.0,
+      3.49
+     ]
+    },
+    "O": {
+     "value": 52.5,
+     "ci": [
+      30.3,
+      75.0
+     ]
+    },
+    "esc": {
+     "value": 86.67,
+     "ci": [
+      78.08,
+      94.63
+     ]
+    },
+    "TL": {
+     "value": 80.0,
+     "ci": [
+      69.47,
+      89.01
+     ]
+    },
+    "TL_truth": {
+     "value": 93.33,
+     "ci": [
+      87.75,
+      98.39
+     ]
+    },
+    "TL_dxa": {
+     "value": 58.54,
+     "ci": [
+      37.5,
+      77.5
+     ]
+    },
+    "T1L": {
+     "value": 83.33,
+     "ci": [
+      74.44,
+      91.03
+     ]
+    },
+    "top1": {
+     "value": 59.33,
+     "ci": [
+      46.66,
+      70.92
+     ]
+    },
+    "top5": {
+     "value": 83.33,
+     "ci": [
+      73.25,
+      91.61
+     ]
+    },
+    "mid_esc": {
+     "value": 100.0,
+     "ci": [
+      100.0,
+      100.0
+     ]
+    },
+    "mid_truth": {
+     "value": 75.0,
+     "ci": [
+      53.32,
+      94.74
+     ]
+    },
+    "other_esc": {
+     "value": null,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "unreadable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score": {
+     "value": 30.0,
+     "ci": [
+      -2.0,
+      59.46
+     ]
+    },
+    "score_readable": {
+     "value": 30.0,
+     "ci": [
+      -2.0,
+      59.46
+     ]
+    }
+   },
+   "counts": {
+    "cases": 150,
+    "serious": 90,
+    "benign": 40,
+    "middle": 20,
+    "other": 0,
+    "under_escalations": 1,
+    "over_escalations": 21,
+    "escalations": 130,
+    "unreadable": 0,
+    "unreadable_reasons": {},
+    "parse_rules": {}
+   },
+   "usage": {
+    "cost_usd": 0.7636,
+    "prompt_tokens": 88761,
+    "completion_tokens": 48838,
+    "retries": 0,
+    "finish_reasons": {
+     "stop": 150
+    }
+   },
+   "config": {
+    "config_version": "v03-ab-2026-09-25",
+    "config_overridden": [],
+    "reasoning_effort": "medium",
+    "max_tokens": 16000,
+    "git_commit": "e6bc313"
+   }
+  },
+  "openai/gpt-5.6-terra|v7a3": {
+   "model": "openai/gpt-5.6-terra",
+   "arm": "v7a3",
+   "arm_label": "3",
+   "file": "results/v03/ab/runs/openai-gpt-5.6-terra-v7a3.json",
+   "measures": {
+    "cost": {
+     "value": 29.23,
+     "ci": [
+      17.69,
+      41.61
+     ]
+    },
+    "anchor": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "U": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "O": {
+     "value": 95.0,
+     "ci": [
+      87.5,
+      100.0
+     ]
+    },
+    "esc": {
+     "value": 98.67,
+     "ci": [
+      96.6,
+      100.0
+     ]
+    },
+    "TL": {
+     "value": 80.0,
+     "ci": [
+      68.89,
+      89.47
+     ]
+    },
+    "TL_truth": {
+     "value": 93.33,
+     "ci": [
+      87.75,
+      98.39
+     ]
+    },
+    "TL_dxa": {
+     "value": 58.54,
+     "ci": [
+      37.04,
+      78.18
+     ]
+    },
+    "T1L": {
+     "value": 84.44,
+     "ci": [
+      75.0,
+      92.77
+     ]
+    },
+    "top1": {
+     "value": 58.0,
+     "ci": [
+      45.91,
+      69.48
+     ]
+    },
+    "top5": {
+     "value": 81.33,
+     "ci": [
+      71.14,
+      90.21
+     ]
+    },
+    "mid_esc": {
+     "value": 100.0,
+     "ci": [
+      100.0,
+      100.0
+     ]
+    },
+    "mid_truth": {
+     "value": 75.0,
+     "ci": [
+      53.32,
+      94.74
+     ]
+    },
+    "other_esc": {
+     "value": null,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "unreadable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score": {
+     "value": 5.0,
+     "ci": [
+      0.0,
+      12.5
+     ]
+    },
+    "score_readable": {
+     "value": 5.0,
+     "ci": [
+      0.0,
+      12.5
+     ]
+    }
+   },
+   "counts": {
+    "cases": 150,
+    "serious": 90,
+    "benign": 40,
+    "middle": 20,
+    "other": 0,
+    "under_escalations": 0,
+    "over_escalations": 38,
+    "escalations": 148,
+    "unreadable": 0,
+    "unreadable_reasons": {},
+    "parse_rules": {
+     "differential:rescaled_to_100": 1
+    },
+    "safety_notes": 148
+   },
+   "usage": {
+    "cost_usd": 0.75,
+    "prompt_tokens": 88461,
+    "completion_tokens": 47759,
+    "retries": 0,
+    "finish_reasons": {
+     "stop": 150
+    }
+   },
+   "config": {
+    "config_version": "v03-ab-2026-09-25",
+    "config_overridden": [],
+    "reasoning_effort": "medium",
+    "max_tokens": 16000,
+    "git_commit": "e6bc313"
+   }
+  },
+  "openai/gpt-5.6-terra|v7a4a": {
+   "model": "openai/gpt-5.6-terra",
+   "arm": "v7a4a",
+   "arm_label": "4a",
+   "file": "results/v03/ab/runs/openai-gpt-5.6-terra-v7a4a.json",
+   "measures": {
+    "cost": {
+     "value": 90.77,
+     "ci": [
+      50.83,
+      141.15
+     ]
+    },
+    "anchor": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "U": {
+     "value": 16.67,
+     "ci": [
+      8.42,
+      27.45
+     ]
+    },
+    "O": {
+     "value": 32.5,
+     "ci": [
+      11.11,
+      55.27
+     ]
+    },
+    "esc": {
+     "value": 65.33,
+     "ci": [
+      53.55,
+      76.47
+     ]
+    },
+    "TL": {
+     "value": 80.0,
+     "ci": [
+      68.29,
+      89.74
+     ]
+    },
+    "TL_truth": {
+     "value": 95.0,
+     "ci": [
+      89.04,
+      100.0
+     ]
+    },
+    "TL_dxa": {
+     "value": 53.66,
+     "ci": [
+      33.33,
+      72.98
+     ]
+    },
+    "T1L": {
+     "value": 84.44,
+     "ci": [
+      75.0,
+      92.79
+     ]
+    },
+    "top1": {
+     "value": 56.67,
+     "ci": [
+      44.66,
+      69.34
+     ]
+    },
+    "top5": {
+     "value": 79.33,
+     "ci": [
+      67.88,
+      88.89
+     ]
+    },
+    "mid_esc": {
+     "value": 50.0,
+     "ci": [
+      26.92,
+      73.91
+     ]
+    },
+    "mid_truth": {
+     "value": 75.0,
+     "ci": [
+      53.32,
+      94.74
+     ]
+    },
+    "other_esc": {
+     "value": null,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "unreadable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score": {
+     "value": -195.0,
+     "ci": [
+      -496.31,
+      -50.0
+     ]
+    },
+    "score_readable": {
+     "value": -195.0,
+     "ci": [
+      -496.31,
+      -50.0
+     ]
+    }
+   },
+   "counts": {
+    "cases": 150,
+    "serious": 90,
+    "benign": 40,
+    "middle": 20,
+    "other": 0,
+    "under_escalations": 15,
+    "over_escalations": 13,
+    "escalations": 98,
+    "unreadable": 0,
+    "unreadable_reasons": {},
+    "parse_rules": {
+     "differential:rescaled_to_100": 2
+    },
+    "flags": {
+     "null_or_invalid": 19,
+     "tier1": 91,
+     "onlist_not_tier1": 18,
+     "offlist_escalating": 7,
+     "offlist_not_escalating": 15,
+     "invalid": 0,
+     "not_in_own_list": 0,
+     "offlist_codes": {
+      "M316": 4,
+      "K274": 2,
+      "I609": 1,
+      "L519": 1,
+      "K922": 1,
+      "M029": 1,
+      "R569": 1,
+      "H7091": 1,
+      "C329": 1,
+      "H40212": 1,
+      "K56609": 1,
+      "G009": 1,
+      "G039": 1,
+      "K921": 1,
+      "C569": 1
+     }
+    }
+   },
+   "usage": {
+    "cost_usd": 0.8966,
+    "prompt_tokens": 82166,
+    "completion_tokens": 61026,
+    "retries": 0,
+    "finish_reasons": {
+     "stop": 150
+    }
+   },
+   "config": {
+    "config_version": "v03-ab-2026-09-25",
+    "config_overridden": [],
+    "reasoning_effort": "medium",
+    "max_tokens": 16000,
+    "git_commit": "e6bc313"
+   },
+   "offlist_bounds": {
+    "escalate": {
+     "score": {
+      "value": -115.0,
+      "ci": [
+       -357.2,
+       14.01
+      ]
+     },
+     "U": {
+      "value": 11.11,
+      "ci": [
+       3.41,
+       21.57
+      ]
+     },
+     "O": {
+      "value": 40.0,
+      "ci": [
+       19.44,
+       63.16
+      ]
+     },
+     "esc": {
+      "value": 75.33,
+      "ci": [
+       64.51,
+       85.8
+      ]
+     }
+    },
+    "routine": {
+     "score": {
+      "value": -227.5,
+      "ci": [
+       -557.92,
+       -65.95
+      ]
+     },
+     "U": {
+      "value": 18.89,
+      "ci": [
+       10.11,
+       30.26
+      ]
+     },
+     "O": {
+      "value": 30.0,
+      "ci": [
+       8.57,
+       53.57
+      ]
+     },
+     "esc": {
+      "value": 60.67,
+      "ci": [
+       47.65,
+       72.79
+      ]
+     }
+    }
+   }
+  },
+  "openai/gpt-5.6-terra|v7a4b": {
+   "model": "openai/gpt-5.6-terra",
+   "arm": "v7a4b",
+   "arm_label": "4b",
+   "file": "results/v03/ab/runs/openai-gpt-5.6-terra-v7a4b.json",
+   "measures": {
+    "cost": {
+     "value": 73.85,
+     "ci": [
+      37.69,
+      121.1
+     ]
+    },
+    "anchor": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "U": {
+     "value": 13.33,
+     "ci": [
+      6.17,
+      22.92
+     ]
+    },
+    "O": {
+     "value": 30.0,
+     "ci": [
+      11.11,
+      52.09
+     ]
+    },
+    "esc": {
+     "value": 68.0,
+     "ci": [
+      56.49,
+      78.43
+     ]
+    },
+    "TL": {
+     "value": 73.33,
+     "ci": [
+      60.24,
+      84.15
+     ]
+    },
+    "TL_truth": {
+     "value": 95.0,
+     "ci": [
+      90.0,
+      100.0
+     ]
+    },
+    "TL_dxa": {
+     "value": 41.46,
+     "ci": [
+      23.4,
+      60.47
+     ]
+    },
+    "T1L": {
+     "value": 76.67,
+     "ci": [
+      64.71,
+      86.61
+     ]
+    },
+    "top1": {
+     "value": 60.0,
+     "ci": [
+      48.25,
+      71.13
+     ]
+    },
+    "top5": {
+     "value": 82.67,
+     "ci": [
+      71.43,
+      92.31
+     ]
+    },
+    "mid_esc": {
+     "value": 60.0,
+     "ci": [
+      35.71,
+      83.33
+     ]
+    },
+    "mid_truth": {
+     "value": 75.0,
+     "ci": [
+      47.83,
+      100.0
+     ]
+    },
+    "other_esc": {
+     "value": null,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "unreadable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score": {
+     "value": -140.0,
+     "ci": [
+      -400.12,
+      -9.83
+     ]
+    },
+    "score_readable": {
+     "value": -140.0,
+     "ci": [
+      -400.12,
+      -9.83
+     ]
+    }
+   },
+   "counts": {
+    "cases": 150,
+    "serious": 90,
+    "benign": 40,
+    "middle": 20,
+    "other": 0,
+    "under_escalations": 12,
+    "over_escalations": 12,
+    "escalations": 102,
+    "unreadable": 0,
+    "unreadable_reasons": {},
+    "parse_rules": {},
+    "flags": {
+     "null_or_invalid": 21,
+     "tier1": 90,
+     "onlist_not_tier1": 17,
+     "offlist_escalating": 12,
+     "offlist_not_escalating": 10,
+     "invalid": 0,
+     "not_in_own_list": 0,
+     "offlist_codes": {
+      "I639": 3,
+      "G039": 3,
+      "K274": 2,
+      "M316": 2,
+      "I609": 1,
+      "L519": 1,
+      "K922": 1,
+      "I7101": 1,
+      "K852": 1,
+      "C189": 1,
+      "H209": 1,
+      "R569": 1,
+      "H40212": 1,
+      "C562": 1,
+      "I7100": 1
+     }
+    }
+   },
+   "usage": {
+    "cost_usd": 0.9142,
+    "prompt_tokens": 86511,
+    "completion_tokens": 61768,
+    "retries": 0,
+    "finish_reasons": {
+     "stop": 150
+    }
+   },
+   "config": {
+    "config_version": "v03-ab-2026-09-25",
+    "config_overridden": [],
+    "reasoning_effort": "medium",
+    "max_tokens": 16000,
+    "git_commit": "e6bc313"
+   },
+   "offlist_bounds": {
+    "escalate": {
+     "score": {
+      "value": -75.0,
+      "ci": [
+       -282.67,
+       35.57
+      ]
+     },
+     "U": {
+      "value": 8.89,
+      "ci": [
+       2.25,
+       18.28
+      ]
+     },
+     "O": {
+      "value": 35.0,
+      "ci": [
+       14.58,
+       57.14
+      ]
+     },
+     "esc": {
+      "value": 74.67,
+      "ci": [
+       63.46,
+       85.32
+      ]
+     }
+    },
+    "routine": {
+     "score": {
+      "value": -245.0,
+      "ci": [
+       -595.57,
+       -75.54
+      ]
+     },
+     "U": {
+      "value": 20.0,
+      "ci": [
+       11.11,
+       30.78
+      ]
+     },
+     "O": {
+      "value": 30.0,
+      "ci": [
+       11.11,
+       52.09
+      ]
+     },
+     "esc": {
+      "value": 60.0,
+      "ci": [
+       47.33,
+       71.61
+      ]
+     }
+    }
+   }
+  },
+  "openai/gpt-oss-120b|v7a1": {
+   "model": "openai/gpt-oss-120b",
+   "arm": "v7a1",
+   "arm_label": "1",
+   "file": "results/v03/ab/runs/openai-gpt-oss-120b-v7a1.json",
+   "measures": {
+    "cost": {
+     "value": 36.92,
+     "ci": [
+      19.2,
+      56.26
+     ]
+    },
+    "anchor": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "U": {
+     "value": 3.33,
+     "ci": [
+      0.0,
+      7.29
+     ]
+    },
+    "O": {
+     "value": 67.5,
+     "ci": [
+      48.48,
+      83.67
+     ]
+    },
+    "esc": {
+     "value": 89.33,
+     "ci": [
+      82.61,
+      94.77
+     ]
+    },
+    "TL": {
+     "value": 75.56,
+     "ci": [
+      64.56,
+      85.57
+     ]
+    },
+    "TL_truth": {
+     "value": 86.67,
+     "ci": [
+      75.0,
+      96.23
+     ]
+    },
+    "TL_dxa": {
+     "value": 56.1,
+     "ci": [
+      36.95,
+      74.19
+     ]
+    },
+    "T1L": {
+     "value": 78.89,
+     "ci": [
+      69.62,
+      87.21
+     ]
+    },
+    "top1": {
+     "value": 49.33,
+     "ci": [
+      38.36,
+      60.4
+     ]
+    },
+    "top5": {
+     "value": 72.67,
+     "ci": [
+      61.69,
+      82.88
+     ]
+    },
+    "mid_esc": {
+     "value": 100.0,
+     "ci": [
+      100.0,
+      100.0
+     ]
+    },
+    "mid_truth": {
+     "value": 80.0,
+     "ci": [
+      56.23,
+      100.0
+     ]
+    },
+    "other_esc": {
+     "value": null,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "unreadable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score": {
+     "value": -20.0,
+     "ci": [
+      -120.85,
+      35.49
+     ]
+    },
+    "score_readable": {
+     "value": -20.0,
+     "ci": [
+      -120.85,
+      35.49
+     ]
+    }
+   },
+   "counts": {
+    "cases": 150,
+    "serious": 90,
+    "benign": 40,
+    "middle": 20,
+    "other": 0,
+    "under_escalations": 3,
+    "over_escalations": 27,
+    "escalations": 134,
+    "unreadable": 0,
+    "unreadable_reasons": {},
+    "parse_rules": {}
+   },
+   "usage": {
+    "cost_usd": 0.0291,
+    "prompt_tokens": 86651,
+    "completion_tokens": 98702,
+    "retries": 0,
+    "finish_reasons": {
+     "stop": 150
+    }
+   },
+   "config": {
+    "config_version": "v03-ab-2026-09-25",
+    "config_overridden": [],
+    "reasoning_effort": "medium",
+    "max_tokens": 16000,
+    "git_commit": "e6bc313"
+   }
+  },
+  "openai/gpt-oss-120b|v7a2": {
+   "model": "openai/gpt-oss-120b",
+   "arm": "v7a2",
+   "arm_label": "2",
+   "file": "results/v03/ab/runs/openai-gpt-oss-120b-v7a2.json",
+   "measures": {
+    "cost": {
+     "value": 33.08,
+     "ci": [
+      15.99,
+      52.0
+     ]
+    },
+    "anchor": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "U": {
+     "value": 3.33,
+     "ci": [
+      0.0,
+      7.37
+     ]
+    },
+    "O": {
+     "value": 55.0,
+     "ci": [
+      34.62,
+      75.0
+     ]
+    },
+    "esc": {
+     "value": 85.33,
+     "ci": [
+      77.42,
+      93.01
+     ]
+    },
+    "TL": {
+     "value": 78.89,
+     "ci": [
+      68.29,
+      88.89
+     ]
+    },
+    "TL_truth": {
+     "value": 90.0,
+     "ci": [
+      78.79,
+      98.36
+     ]
+    },
+    "TL_dxa": {
+     "value": 56.1,
+     "ci": [
+      37.49,
+      73.81
+     ]
+    },
+    "T1L": {
+     "value": 83.33,
+     "ci": [
+      73.68,
+      91.49
+     ]
+    },
+    "top1": {
+     "value": 54.67,
+     "ci": [
+      42.47,
+      66.01
+     ]
+    },
+    "top5": {
+     "value": 77.33,
+     "ci": [
+      67.12,
+      86.59
+     ]
+    },
+    "mid_esc": {
+     "value": 95.0,
+     "ci": [
+      83.33,
+      100.0
+     ]
+    },
+    "mid_truth": {
+     "value": 70.0,
+     "ci": [
+      46.67,
+      91.3
+     ]
+    },
+    "other_esc": {
+     "value": null,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "unreadable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score": {
+     "value": -7.5,
+     "ci": [
+      -84.37,
+      43.6
+     ]
+    },
+    "score_readable": {
+     "value": -7.5,
+     "ci": [
+      -84.37,
+      43.6
+     ]
+    }
+   },
+   "counts": {
+    "cases": 150,
+    "serious": 90,
+    "benign": 40,
+    "middle": 20,
+    "other": 0,
+    "under_escalations": 3,
+    "over_escalations": 22,
+    "escalations": 128,
+    "unreadable": 0,
+    "unreadable_reasons": {},
+    "parse_rules": {}
+   },
+   "usage": {
+    "cost_usd": 0.0262,
+    "prompt_tokens": 97879,
+    "completion_tokens": 88040,
+    "retries": 0,
+    "finish_reasons": {
+     "stop": 150
+    }
+   },
+   "config": {
+    "config_version": "v03-ab-2026-09-25",
+    "config_overridden": [],
+    "reasoning_effort": "medium",
+    "max_tokens": 16000,
+    "git_commit": "e6bc313"
+   }
+  },
+  "openai/gpt-oss-120b|v7a3": {
+   "model": "openai/gpt-oss-120b",
+   "arm": "v7a3",
+   "arm_label": "3",
+   "file": "results/v03/ab/runs/openai-gpt-oss-120b-v7a3.json",
+   "measures": {
+    "cost": {
+     "value": 24.62,
+     "ci": [
+      14.88,
+      35.44
+     ]
+    },
+    "anchor": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "U": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "O": {
+     "value": 80.0,
+     "ci": [
+      67.74,
+      91.18
+     ]
+    },
+    "esc": {
+     "value": 94.67,
+     "ci": [
+      90.57,
+      98.04
+     ]
+    },
+    "TL": {
+     "value": 74.44,
+     "ci": [
+      62.82,
+      84.85
+     ]
+    },
+    "TL_truth": {
+     "value": 86.67,
+     "ci": [
+      75.0,
+      96.15
+     ]
+    },
+    "TL_dxa": {
+     "value": 53.66,
+     "ci": [
+      36.0,
+      71.11
+     ]
+    },
+    "T1L": {
+     "value": 76.67,
+     "ci": [
+      65.69,
+      86.42
+     ]
+    },
+    "top1": {
+     "value": 56.67,
+     "ci": [
+      44.36,
+      67.67
+     ]
+    },
+    "top5": {
+     "value": 78.67,
+     "ci": [
+      68.18,
+      88.11
+     ]
+    },
+    "mid_esc": {
+     "value": 100.0,
+     "ci": [
+      100.0,
+      100.0
+     ]
+    },
+    "mid_truth": {
+     "value": 75.0,
+     "ci": [
+      52.94,
+      95.24
+     ]
+    },
+    "other_esc": {
+     "value": null,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "unreadable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score": {
+     "value": 20.0,
+     "ci": [
+      8.82,
+      32.26
+     ]
+    },
+    "score_readable": {
+     "value": 20.0,
+     "ci": [
+      8.82,
+      32.26
+     ]
+    }
+   },
+   "counts": {
+    "cases": 150,
+    "serious": 90,
+    "benign": 40,
+    "middle": 20,
+    "other": 0,
+    "under_escalations": 0,
+    "over_escalations": 32,
+    "escalations": 142,
+    "unreadable": 0,
+    "unreadable_reasons": {},
+    "parse_rules": {},
+    "safety_notes": 142
+   },
+   "usage": {
+    "cost_usd": 0.0282,
+    "prompt_tokens": 97609,
+    "completion_tokens": 86321,
+    "retries": 0,
+    "finish_reasons": {
+     "stop": 150
+    }
+   },
+   "config": {
+    "config_version": "v03-ab-2026-09-25",
+    "config_overridden": [],
+    "reasoning_effort": "medium",
+    "max_tokens": 16000,
+    "git_commit": "e6bc313"
+   }
+  },
+  "openai/gpt-oss-120b|v7a4a": {
+   "model": "openai/gpt-oss-120b",
+   "arm": "v7a4a",
+   "arm_label": "4a",
+   "file": "results/v03/ab/runs/openai-gpt-oss-120b-v7a4a.json",
+   "measures": {
+    "cost": {
+     "value": 90.77,
+     "ci": [
+      52.34,
+      137.99
+     ]
+    },
+    "anchor": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "U": {
+     "value": 15.56,
+     "ci": [
+      7.78,
+      25.25
+     ]
+    },
+    "O": {
+     "value": 50.0,
+     "ci": [
+      30.0,
+      70.84
+     ]
+    },
+    "esc": {
+     "value": 72.67,
+     "ci": [
+      63.38,
+      81.82
+     ]
+    },
+    "TL": {
+     "value": 80.0,
+     "ci": [
+      68.54,
+      90.28
+     ]
+    },
+    "TL_truth": {
+     "value": 86.67,
+     "ci": [
+      73.77,
+      96.97
+     ]
+    },
+    "TL_dxa": {
+     "value": 65.85,
+     "ci": [
+      46.87,
+      83.87
+     ]
+    },
+    "T1L": {
+     "value": 84.44,
+     "ci": [
+      74.23,
+      93.33
+     ]
+    },
+    "top1": {
+     "value": 48.67,
+     "ci": [
+      37.32,
+      60.0
+     ]
+    },
+    "top5": {
+     "value": 71.33,
+     "ci": [
+      60.52,
+      81.38
+     ]
+    },
+    "mid_esc": {
+     "value": 65.0,
+     "ci": [
+      45.45,
+      84.21
+     ]
+    },
+    "mid_truth": {
+     "value": 85.0,
+     "ci": [
+      62.5,
+      100.0
+     ]
+    },
+    "other_esc": {
+     "value": null,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "unreadable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score": {
+     "value": -195.0,
+     "ci": [
+      -518.52,
+      -48.81
+     ]
+    },
+    "score_readable": {
+     "value": -195.0,
+     "ci": [
+      -518.52,
+      -48.81
+     ]
+    }
+   },
+   "counts": {
+    "cases": 150,
+    "serious": 90,
+    "benign": 40,
+    "middle": 20,
+    "other": 0,
+    "under_escalations": 14,
+    "over_escalations": 20,
+    "escalations": 109,
+    "unreadable": 0,
+    "unreadable_reasons": {},
+    "parse_rules": {},
+    "flags": {
+     "null_or_invalid": 0,
+     "tier1": 87,
+     "onlist_not_tier1": 17,
+     "offlist_escalating": 22,
+     "offlist_not_escalating": 24,
+     "invalid": 0,
+     "not_in_own_list": 0,
+     "offlist_codes": {
+      "I710": 5,
+      "G500": 3,
+      "A419": 2,
+      "I639": 2,
+      "M315": 2,
+      "U071": 2,
+      "C300": 2,
+      "J020": 2,
+      "C859": 2,
+      "M316": 2,
+      "A351": 1,
+      "B260": 1,
+      "M313": 1,
+      "L510": 1,
+      "A35": 1
+     }
+    }
+   },
+   "usage": {
+    "cost_usd": 0.0331,
+    "prompt_tokens": 91341,
+    "completion_tokens": 112407,
+    "retries": 0,
+    "finish_reasons": {
+     "stop": 150
+    }
+   },
+   "config": {
+    "config_version": "v03-ab-2026-09-25",
+    "config_overridden": [],
+    "reasoning_effort": "medium",
+    "max_tokens": 16000,
+    "git_commit": "e6bc313"
+   },
+   "offlist_bounds": {
+    "escalate": {
+     "score": {
+      "value": -65.0,
+      "ci": [
+       -217.4,
+       10.2
+      ]
+     },
+     "U": {
+      "value": 5.56,
+      "ci": [
+       1.09,
+       12.16
+      ]
+     },
+     "O": {
+      "value": 77.5,
+      "ci": [
+       57.49,
+       94.12
+      ]
+     },
+     "esc": {
+      "value": 88.67,
+      "ci": [
+       81.51,
+       94.81
+      ]
+     }
+    },
+    "routine": {
+     "score": {
+      "value": -377.5,
+      "ci": [
+       -837.76,
+       -150.0
+      ]
+     },
+     "U": {
+      "value": 27.78,
+      "ci": [
+       17.04,
+       39.13
+      ]
+     },
+     "O": {
+      "value": 40.0,
+      "ci": [
+       20.0,
+       62.5
+      ]
+     },
+     "esc": {
+      "value": 58.0,
+      "ci": [
+       46.76,
+       69.57
+      ]
+     }
+    }
+   }
+  },
+  "openai/gpt-oss-120b|v7a4b": {
+   "model": "openai/gpt-oss-120b",
+   "arm": "v7a4b",
+   "arm_label": "4b",
+   "file": "results/v03/ab/runs/openai-gpt-oss-120b-v7a4b.json",
+   "measures": {
+    "cost": {
+     "value": 81.54,
+     "ci": [
+      40.94,
+      127.36
+     ]
+    },
+    "anchor": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "U": {
+     "value": 13.33,
+     "ci": [
+      5.05,
+      22.73
+     ]
+    },
+    "O": {
+     "value": 55.0,
+     "ci": [
+      31.7,
+      78.58
+     ]
+    },
+    "esc": {
+     "value": 74.67,
+     "ci": [
+      63.7,
+      84.31
+     ]
+    },
+    "TL": {
+     "value": 75.56,
+     "ci": [
+      63.53,
+      85.59
+     ]
+    },
+    "TL_truth": {
+     "value": 88.33,
+     "ci": [
+      77.08,
+      97.73
+     ]
+    },
+    "TL_dxa": {
+     "value": 56.1,
+     "ci": [
+      37.84,
+      74.29
+     ]
+    },
+    "T1L": {
+     "value": 77.78,
+     "ci": [
+      66.67,
+      87.23
+     ]
+    },
+    "top1": {
+     "value": 54.67,
+     "ci": [
+      42.28,
+      66.23
+     ]
+    },
+    "top5": {
+     "value": 80.0,
+     "ci": [
+      70.0,
+      89.34
+     ]
+    },
+    "mid_esc": {
+     "value": 60.0,
+     "ci": [
+      33.3,
+      86.36
+     ]
+    },
+    "mid_truth": {
+     "value": 75.0,
+     "ci": [
+      53.32,
+      94.74
+     ]
+    },
+    "other_esc": {
+     "value": null,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "unreadable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score": {
+     "value": -165.0,
+     "ci": [
+      -446.91,
+      -21.55
+     ]
+    },
+    "score_readable": {
+     "value": -165.0,
+     "ci": [
+      -446.91,
+      -21.55
+     ]
+    }
+   },
+   "counts": {
+    "cases": 150,
+    "serious": 90,
+    "benign": 40,
+    "middle": 20,
+    "other": 0,
+    "under_escalations": 12,
+    "over_escalations": 22,
+    "escalations": 112,
+    "unreadable": 0,
+    "unreadable_reasons": {},
+    "parse_rules": {},
+    "flags": {
+     "null_or_invalid": 0,
+     "tier1": 97,
+     "onlist_not_tier1": 14,
+     "offlist_escalating": 15,
+     "offlist_not_escalating": 24,
+     "invalid": 0,
+     "not_in_own_list": 0,
+     "offlist_codes": {
+      "I710": 4,
+      "G500": 4,
+      "C320": 2,
+      "U071": 2,
+      "M316": 2,
+      "I639": 2,
+      "G210": 1,
+      "I160": 1,
+      "L510": 1,
+      "A350": 1,
+      "E275": 1,
+      "K85": 1,
+      "A360": 1,
+      "I63": 1,
+      "K922": 1
+     }
+    }
+   },
+   "usage": {
+    "cost_usd": 0.0299,
+    "prompt_tokens": 95690,
+    "completion_tokens": 104129,
+    "retries": 0,
+    "finish_reasons": {
+     "stop": 150
+    }
+   },
+   "config": {
+    "config_version": "v03-ab-2026-09-25",
+    "config_overridden": [],
+    "reasoning_effort": "medium",
+    "max_tokens": 16000,
+    "git_commit": "e6bc313"
+   },
+   "offlist_bounds": {
+    "escalate": {
+     "score": {
+      "value": -32.5,
+      "ci": [
+       -117.26,
+       20.84
+      ]
+     },
+     "U": {
+      "value": 3.33,
+      "ci": [
+       0.0,
+       8.11
+      ]
+     },
+     "O": {
+      "value": 80.0,
+      "ci": [
+       57.69,
+       96.88
+      ]
+     },
+     "esc": {
+      "value": 90.67,
+      "ci": [
+       82.93,
+       96.73
+      ]
+     }
+    },
+    "routine": {
+     "score": {
+      "value": -320.0,
+      "ci": [
+       -718.93,
+       -117.62
+      ]
+     },
+     "U": {
+      "value": 23.33,
+      "ci": [
+       13.26,
+       33.75
+      ]
+     },
+     "O": {
+      "value": 52.5,
+      "ci": [
+       29.41,
+       75.0
+      ]
+     },
+     "esc": {
+      "value": 64.67,
+      "ci": [
+       53.84,
+       75.16
+      ]
+     }
+    }
+   }
+  }
+ },
+ "references": {
+  "always-escalate": {
+   "label": "Always escalate (committed five tier-1 codes)",
+   "measures": {
+    "cost": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "anchor": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "U": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "O": {
+     "value": 100.0,
+     "ci": [
+      100.0,
+      100.0
+     ]
+    },
+    "esc": {
+     "value": 100.0,
+     "ci": [
+      100.0,
+      100.0
+     ]
+    },
+    "TL": {
+     "value": 35.56,
+     "ci": [
+      20.69,
+      51.58
+     ]
+    },
+    "TL_truth": {
+     "value": 26.67,
+     "ci": [
+      7.32,
+      47.95
+     ]
+    },
+    "TL_dxa": {
+     "value": 53.66,
+     "ci": [
+      30.55,
+      76.47
+     ]
+    },
+    "T1L": {
+     "value": 42.22,
+     "ci": [
+      27.66,
+      58.14
+     ]
+    },
+    "top1": {
+     "value": 2.0,
+     "ci": [
+      0.0,
+      6.29
+     ]
+    },
+    "top5": {
+     "value": 10.67,
+     "ci": [
+      2.1,
+      20.53
+     ]
+    },
+    "mid_esc": {
+     "value": 100.0,
+     "ci": [
+      100.0,
+      100.0
+     ]
+    },
+    "mid_truth": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "other_esc": {
+     "value": null,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "unreadable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score_readable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "counts": {
+    "cases": 150,
+    "serious": 90,
+    "benign": 40,
+    "middle": 20,
+    "other": 0,
+    "under_escalations": 0,
+    "over_escalations": 40,
+    "escalations": 150,
+    "unreadable": 0,
+    "unreadable_reasons": {},
+    "parse_rules": {}
+   }
+  },
+  "always-routine": {
+   "label": "Always routine",
+   "measures": {
+    "cost": {
+     "value": 484.62,
+     "ci": [
+      397.6,
+      570.77
+     ]
+    },
+    "anchor": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "U": {
+     "value": 100.0,
+     "ci": [
+      100.0,
+      100.0
+     ]
+    },
+    "O": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "esc": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "TL": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "TL_truth": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "TL_dxa": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "T1L": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "top1": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "top5": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "mid_esc": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "mid_truth": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "other_esc": {
+     "value": null,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "unreadable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score": {
+     "value": -1475.0,
+     "ci": [
+      -2991.67,
+      -820.35
+     ]
+    },
+    "score_readable": {
+     "value": -1475.0,
+     "ci": [
+      -2991.67,
+      -820.35
+     ]
+    }
+   },
+   "counts": {
+    "cases": 150,
+    "serious": 90,
+    "benign": 40,
+    "middle": 20,
+    "other": 0,
+    "under_escalations": 90,
+    "over_escalations": 0,
+    "escalations": 0,
+    "unreadable": 0,
+    "unreadable_reasons": {},
+    "parse_rules": {}
+   }
+  },
+  "dxa": {
+   "label": "DXA reader (tier-1 DXA p >= 10%, not a red herring)",
+   "measures": {
+    "cost": {
+     "value": 96.92,
+     "ci": [
+      41.48,
+      164.71
+     ]
+    },
+    "anchor": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "U": {
+     "value": 20.0,
+     "ci": [
+      8.99,
+      32.95
+     ]
+    },
+    "O": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "esc": {
+     "value": 48.0,
+     "ci": [
+      36.96,
+      57.76
+     ]
+    },
+    "TL": {
+     "value": 91.11,
+     "ci": [
+      81.44,
+      98.67
+     ]
+    },
+    "TL_truth": {
+     "value": 91.67,
+     "ci": [
+      82.61,
+      98.48
+     ]
+    },
+    "TL_dxa": {
+     "value": 90.24,
+     "ci": [
+      73.52,
+      100.0
+     ]
+    },
+    "T1L": {
+     "value": 92.22,
+     "ci": [
+      83.5,
+      98.78
+     ]
+    },
+    "top1": {
+     "value": 65.33,
+     "ci": [
+      55.94,
+      73.83
+     ]
+    },
+    "top5": {
+     "value": 94.67,
+     "ci": [
+      90.48,
+      98.15
+     ]
+    },
+    "mid_esc": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "mid_truth": {
+     "value": 100.0,
+     "ci": [
+      100.0,
+      100.0
+     ]
+    },
+    "other_esc": {
+     "value": null,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "unreadable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score": {
+     "value": -215.0,
+     "ci": [
+      -630.47,
+      -14.53
+     ]
+    },
+    "score_readable": {
+     "value": -215.0,
+     "ci": [
+      -630.47,
+      -14.53
+     ]
+    }
+   },
+   "counts": {
+    "cases": 150,
+    "serious": 90,
+    "benign": 40,
+    "middle": 20,
+    "other": 0,
+    "under_escalations": 18,
+    "over_escalations": 0,
+    "escalations": 72,
+    "unreadable": 0,
+    "unreadable_reasons": {},
+    "parse_rules": {}
+   }
+  },
+  "naive-bayes": {
+   "label": "Naive Bayes (tier-1 posterior >= 10%; dataset-knowledge ceiling)",
+   "measures": {
+    "cost": {
+     "value": 161.54,
+     "ci": [
+      95.72,
+      240.01
+     ]
+    },
+    "anchor": {
+     "value": 30.77,
+     "ci": [
+      18.46,
+      43.2
+     ]
+    },
+    "U": {
+     "value": 33.33,
+     "ci": [
+      19.6,
+      50.57
+     ]
+    },
+    "O": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "esc": {
+     "value": 40.0,
+     "ci": [
+      25.77,
+      54.67
+     ]
+    },
+    "TL": {
+     "value": 87.78,
+     "ci": [
+      78.31,
+      95.51
+     ]
+    },
+    "TL_truth": {
+     "value": 100.0,
+     "ci": [
+      100.0,
+      100.0
+     ]
+    },
+    "TL_dxa": {
+     "value": 63.41,
+     "ci": [
+      44.44,
+      80.0
+     ]
+    },
+    "T1L": {
+     "value": 90.0,
+     "ci": [
+      80.55,
+      97.26
+     ]
+    },
+    "top1": {
+     "value": 98.67,
+     "ci": [
+      95.86,
+      100.0
+     ]
+    },
+    "top5": {
+     "value": 100.0,
+     "ci": [
+      100.0,
+      100.0
+     ]
+    },
+    "mid_esc": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "mid_truth": {
+     "value": 100.0,
+     "ci": [
+      100.0,
+      100.0
+     ]
+    },
+    "other_esc": {
+     "value": null,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "unreadable": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score": {
+     "value": -425.0,
+     "ci": [
+      -926.74,
+      -171.43
+     ]
+    },
+    "score_readable": {
+     "value": -425.0,
+     "ci": [
+      -926.74,
+      -171.43
+     ]
+    }
+   },
+   "counts": {
+    "cases": 150,
+    "serious": 90,
+    "benign": 40,
+    "middle": 20,
+    "other": 0,
+    "under_escalations": 30,
+    "over_escalations": 0,
+    "escalations": 60,
+    "unreadable": 0,
+    "unreadable_reasons": {},
+    "parse_rules": {}
+   }
+  },
+  "random": {
+   "label": "Random (escalate 1/2, five random codes; mean of 200 draws)",
+   "measures": {
+    "score": {
+     "value": -747.08,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "U": {
+     "value": 50.64,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "O": {
+     "value": 49.51,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "esc": {
+     "value": 49.53,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "TL": {
+     "value": 17.22,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "top1": {
+     "value": 1.95,
+     "ci": [
+      null,
+      null
+     ]
+    },
+    "top5": {
+     "value": 10.19,
+     "ci": [
+      null,
+      null
+     ]
+    }
+   }
+  }
+ },
+ "paired": {
+  "meta-llama/llama-3.1-8b-instruct: arm 1 - arm 2": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "a": "v7a1",
+   "b": "v7a2",
+   "score": {
+    "value": -42.5,
+    "ci": [
+     -190.0,
+     46.17
+    ]
+   },
+   "U": {
+    "value": 4.44,
+    "ci": [
+     -1.22,
+     10.67
+    ]
+   },
+   "O": {
+    "value": -27.5,
+    "ci": [
+     -42.42,
+     -10.53
+    ]
+   },
+   "esc": {
+    "value": -11.33,
+    "ci": [
+     -17.9,
+     -5.16
+    ]
+   }
+  },
+  "meta-llama/llama-3.1-8b-instruct: arm 2 - arm 3": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "a": "v7a2",
+   "b": "v7a3",
+   "score": {
+    "value": 165.0,
+    "ci": [
+     54.99,
+     360.73
+    ]
+   },
+   "U": {
+    "value": -12.22,
+    "ci": [
+     -19.78,
+     -5.94
+    ]
+   },
+   "O": {
+    "value": 27.5,
+    "ci": [
+     5.12,
+     48.92
+    ]
+   },
+   "esc": {
+    "value": 15.33,
+    "ci": [
+     7.59,
+     22.82
+    ]
+   }
+  },
+  "meta-llama/llama-3.1-8b-instruct: arm 4a - arm 1": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "a": "v7a4a",
+   "b": "v7a1",
+   "score": {
+    "value": -750.0,
+    "ci": [
+     -1607.22,
+     -359.42
+    ]
+   },
+   "U": {
+    "value": 50.0,
+    "ci": [
+     32.95,
+     67.07
+    ]
+   },
+   "O": {
+    "value": -37.5,
+    "ci": [
+     -55.56,
+     -20.51
+    ]
+   },
+   "esc": {
+    "value": -49.33,
+    "ci": [
+     -60.78,
+     -37.58
+    ]
+   }
+  },
+  "meta-llama/llama-3.1-8b-instruct: arm 4b - arm 2": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "a": "v7a4b",
+   "b": "v7a2",
+   "score": {
+    "value": -700.0,
+    "ci": [
+     -1521.49,
+     -332.04
+    ]
+   },
+   "U": {
+    "value": 47.78,
+    "ci": [
+     32.46,
+     62.86
+    ]
+   },
+   "O": {
+    "value": -52.5,
+    "ci": [
+     -70.38,
+     -34.21
+    ]
+   },
+   "esc": {
+    "value": -52.67,
+    "ci": [
+     -64.08,
+     -40.84
+    ]
+   }
+  },
+  "meta-llama/llama-3.1-8b-instruct: arm 4a - arm 4b": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "a": "v7a4a",
+   "b": "v7a4b",
+   "score": {
+    "value": -92.5,
+    "ci": [
+     -350.16,
+     104.17
+    ]
+   },
+   "U": {
+    "value": 6.67,
+    "ci": [
+     -5.75,
+     19.28
+    ]
+   },
+   "O": {
+    "value": -12.5,
+    "ci": [
+     -29.63,
+     3.33
+    ]
+   },
+   "esc": {
+    "value": -8.0,
+    "ci": [
+     -17.88,
+     1.46
+    ]
+   }
+  },
+  "openai/gpt-5.6-terra: arm 1 - arm 2": {
+   "model": "openai/gpt-5.6-terra",
+   "a": "v7a1",
+   "b": "v7a2",
+   "score": {
+    "value": -42.5,
+    "ci": [
+     -110.82,
+     3.35
+    ]
+   },
+   "U": {
+    "value": 2.22,
+    "ci": [
+     0.0,
+     5.68
+    ]
+   },
+   "O": {
+    "value": 7.5,
+    "ci": [
+     -8.82,
+     28.89
+    ]
+   },
+   "esc": {
+    "value": 0.67,
+    "ci": [
+     -3.52,
+     6.29
+    ]
+   }
+  },
+  "openai/gpt-5.6-terra: arm 2 - arm 3": {
+   "model": "openai/gpt-5.6-terra",
+   "a": "v7a2",
+   "b": "v7a3",
+   "score": {
+    "value": 25.0,
+    "ci": [
+     -6.45,
+     54.84
+    ]
+   },
+   "U": {
+    "value": 1.11,
+    "ci": [
+     0.0,
+     3.49
+    ]
+   },
+   "O": {
+    "value": -42.5,
+    "ci": [
+     -65.22,
+     -20.4
+    ]
+   },
+   "esc": {
+    "value": -12.0,
+    "ci": [
+     -20.43,
+     -4.51
+    ]
+   }
+  },
+  "openai/gpt-5.6-terra: arm 4a - arm 1": {
+   "model": "openai/gpt-5.6-terra",
+   "a": "v7a4a",
+   "b": "v7a1",
+   "score": {
+    "value": -182.5,
+    "ci": [
+     -458.64,
+     -55.55
+    ]
+   },
+   "U": {
+    "value": 13.33,
+    "ci": [
+     5.95,
+     23.08
+    ]
+   },
+   "O": {
+    "value": -27.5,
+    "ci": [
+     -51.16,
+     -7.5
+    ]
+   },
+   "esc": {
+    "value": -22.0,
+    "ci": [
+     -32.85,
+     -13.19
+    ]
+   }
+  },
+  "openai/gpt-5.6-terra: arm 4b - arm 2": {
+   "model": "openai/gpt-5.6-terra",
+   "a": "v7a4b",
+   "b": "v7a2",
+   "score": {
+    "value": -170.0,
+    "ci": [
+     -423.59,
+     -47.8
+    ]
+   },
+   "U": {
+    "value": 12.22,
+    "ci": [
+     5.55,
+     21.35
+    ]
+   },
+   "O": {
+    "value": -22.5,
+    "ci": [
+     -46.88,
+     -2.63
+    ]
+   },
+   "esc": {
+    "value": -18.67,
+    "ci": [
+     -28.19,
+     -10.56
+    ]
+   }
+  },
+  "openai/gpt-5.6-terra: arm 4a - arm 4b": {
+   "model": "openai/gpt-5.6-terra",
+   "a": "v7a4a",
+   "b": "v7a4b",
+   "score": {
+    "value": -55.0,
+    "ci": [
+     -132.14,
+     -4.65
+    ]
+   },
+   "U": {
+    "value": 3.33,
+    "ci": [
+     0.0,
+     7.69
+    ]
+   },
+   "O": {
+    "value": 2.5,
+    "ci": [
+     -5.56,
+     12.5
+    ]
+   },
+   "esc": {
+    "value": -2.67,
+    "ci": [
+     -6.57,
+     0.68
+    ]
+   }
+  },
+  "openai/gpt-oss-120b: arm 1 - arm 2": {
+   "model": "openai/gpt-oss-120b",
+   "a": "v7a1",
+   "b": "v7a2",
+   "score": {
+    "value": -12.5,
+    "ci": [
+     -73.35,
+     28.95
+    ]
+   },
+   "U": {
+    "value": 0.0,
+    "ci": [
+     -2.99,
+     3.26
+    ]
+   },
+   "O": {
+    "value": 12.5,
+    "ci": [
+     -9.76,
+     33.33
+    ]
+   },
+   "esc": {
+    "value": 4.0,
+    "ci": [
+     -2.55,
+     10.26
+    ]
+   }
+  },
+  "openai/gpt-oss-120b: arm 2 - arm 3": {
+   "model": "openai/gpt-oss-120b",
+   "a": "v7a2",
+   "b": "v7a3",
+   "score": {
+    "value": -27.5,
+    "ci": [
+     -104.35,
+     22.42
+    ]
+   },
+   "U": {
+    "value": 3.33,
+    "ci": [
+     0.0,
+     7.37
+    ]
+   },
+   "O": {
+    "value": -25.0,
+    "ci": [
+     -40.0,
+     -10.41
+    ]
+   },
+   "esc": {
+    "value": -9.33,
+    "ci": [
+     -15.13,
+     -4.0
+    ]
+   }
+  },
+  "openai/gpt-oss-120b: arm 4a - arm 1": {
+   "model": "openai/gpt-oss-120b",
+   "a": "v7a4a",
+   "b": "v7a1",
+   "score": {
+    "value": -175.0,
+    "ci": [
+     -453.59,
+     -36.36
+    ]
+   },
+   "U": {
+    "value": 12.22,
+    "ci": [
+     4.0,
+     22.45
+    ]
+   },
+   "O": {
+    "value": -17.5,
+    "ci": [
+     -37.5,
+     3.23
+    ]
+   },
+   "esc": {
+    "value": -16.67,
+    "ci": [
+     -25.81,
+     -8.33
+    ]
+   }
+  },
+  "openai/gpt-oss-120b: arm 4b - arm 2": {
+   "model": "openai/gpt-oss-120b",
+   "a": "v7a4b",
+   "b": "v7a2",
+   "score": {
+    "value": -157.5,
+    "ci": [
+     -391.64,
+     -29.72
+    ]
+   },
+   "U": {
+    "value": 10.0,
+    "ci": [
+     2.2,
+     19.18
+    ]
+   },
+   "O": {
+    "value": 0.0,
+    "ci": [
+     -29.17,
+     28.89
+    ]
+   },
+   "esc": {
+    "value": -10.67,
+    "ci": [
+     -21.62,
+     -0.64
+    ]
+   }
+  },
+  "openai/gpt-oss-120b: arm 4a - arm 4b": {
+   "model": "openai/gpt-oss-120b",
+   "a": "v7a4a",
+   "b": "v7a4b",
+   "score": {
+    "value": -30.0,
+    "ci": [
+     -195.67,
+     87.1
+    ]
+   },
+   "U": {
+    "value": 2.22,
+    "ci": [
+     -4.65,
+     10.42
+    ]
+   },
+   "O": {
+    "value": -5.0,
+    "ci": [
+     -22.73,
+     14.29
+    ]
+   },
+   "esc": {
+    "value": -2.0,
+    "ci": [
+     -8.64,
+     4.17
+    ]
+   }
+  }
+ },
+ "within_arm": {
+  "v7a1": {
+   "meta-llama/llama-3.1-8b-instruct - openai/gpt-5.6-terra": {
+    "value": -90.0,
+    "ci": [
+     -272.0,
+     10.26
+    ]
+   },
+   "meta-llama/llama-3.1-8b-instruct - openai/gpt-oss-120b": {
+    "value": -82.5,
+    "ci": [
+     -210.01,
+     -3.92
+    ]
+   },
+   "openai/gpt-5.6-terra - openai/gpt-oss-120b": {
+    "value": 7.5,
+    "ci": [
+     -72.5,
+     103.03
+    ]
+   }
+  },
+  "v7a2": {
+   "meta-llama/llama-3.1-8b-instruct - openai/gpt-5.6-terra": {
+    "value": -90.0,
+    "ci": [
+     -216.03,
+     -18.51
+    ]
+   },
+   "meta-llama/llama-3.1-8b-instruct - openai/gpt-oss-120b": {
+    "value": -52.5,
+    "ci": [
+     -151.35,
+     15.91
+    ]
+   },
+   "openai/gpt-5.6-terra - openai/gpt-oss-120b": {
+    "value": 37.5,
+    "ci": [
+     -2.86,
+     114.3
+    ]
+   }
+  },
+  "v7a3": {
+   "meta-llama/llama-3.1-8b-instruct - openai/gpt-5.6-terra": {
+    "value": -230.0,
+    "ci": [
+     -496.78,
+     -81.39
+    ]
+   },
+   "meta-llama/llama-3.1-8b-instruct - openai/gpt-oss-120b": {
+    "value": -245.0,
+    "ci": [
+     -513.07,
+     -98.18
+    ]
+   },
+   "openai/gpt-5.6-terra - openai/gpt-oss-120b": {
+    "value": -15.0,
+    "ci": [
+     -24.39,
+     -6.06
+    ]
+   }
+  },
+  "v7a4a": {
+   "meta-llama/llama-3.1-8b-instruct - openai/gpt-5.6-terra": {
+    "value": -657.5,
+    "ci": [
+     -1404.24,
+     -281.17
+    ]
+   },
+   "meta-llama/llama-3.1-8b-instruct - openai/gpt-oss-120b": {
+    "value": -657.5,
+    "ci": [
+     -1388.56,
+     -306.23
+    ]
+   },
+   "openai/gpt-5.6-terra - openai/gpt-oss-120b": {
+    "value": 0.0,
+    "ci": [
+     -156.67,
+     174.19
+    ]
+   }
+  },
+  "v7a4b": {
+   "meta-llama/llama-3.1-8b-instruct - openai/gpt-5.6-terra": {
+    "value": -620.0,
+    "ci": [
+     -1308.76,
+     -302.17
+    ]
+   },
+   "meta-llama/llama-3.1-8b-instruct - openai/gpt-oss-120b": {
+    "value": -595.0,
+    "ci": [
+     -1282.76,
+     -296.15
+    ]
+   },
+   "openai/gpt-5.6-terra - openai/gpt-oss-120b": {
+    "value": 25.0,
+    "ci": [
+     -167.58,
+     204.88
+    ]
+   }
+  }
+ },
+ "checks": {
+  "v7a1": {
+   "best_model": "openai/gpt-5.6-terra",
+   "best_score": -12.5,
+   "best_score_ci": [
+    -100.0,
+    47.83
+   ],
+   "best_esc": 87.33,
+   "not_saturated": true,
+   "separating_pairs": [
+    "meta-llama/llama-3.1-8b-instruct - openai/gpt-oss-120b"
+   ],
+   "separates_models": true
+  },
+  "v7a2": {
+   "best_model": "openai/gpt-5.6-terra",
+   "best_score": 30.0,
+   "best_score_ci": [
+    -2.0,
+    59.46
+   ],
+   "best_esc": 86.67,
+   "not_saturated": true,
+   "separating_pairs": [
+    "meta-llama/llama-3.1-8b-instruct - openai/gpt-5.6-terra"
+   ],
+   "separates_models": true
+  },
+  "v7a3": {
+   "best_model": "openai/gpt-oss-120b",
+   "best_score": 20.0,
+   "best_score_ci": [
+    8.82,
+    32.26
+   ],
+   "best_esc": 94.67,
+   "not_saturated": false,
+   "separating_pairs": [
+    "meta-llama/llama-3.1-8b-instruct - openai/gpt-5.6-terra",
+    "meta-llama/llama-3.1-8b-instruct - openai/gpt-oss-120b",
+    "openai/gpt-5.6-terra - openai/gpt-oss-120b"
+   ],
+   "separates_models": true
+  },
+  "v7a4a": {
+   "best_model": "openai/gpt-5.6-terra",
+   "best_score": -195.0,
+   "best_score_ci": [
+    -496.31,
+    -50.0
+   ],
+   "best_esc": 65.33,
+   "not_saturated": true,
+   "separating_pairs": [
+    "meta-llama/llama-3.1-8b-instruct - openai/gpt-5.6-terra",
+    "meta-llama/llama-3.1-8b-instruct - openai/gpt-oss-120b"
+   ],
+   "separates_models": true
+  },
+  "v7a4b": {
+   "best_model": "openai/gpt-5.6-terra",
+   "best_score": -140.0,
+   "best_score_ci": [
+    -400.12,
+    -9.83
+   ],
+   "best_esc": 68.0,
+   "not_saturated": true,
+   "separating_pairs": [
+    "meta-llama/llama-3.1-8b-instruct - openai/gpt-5.6-terra",
+    "meta-llama/llama-3.1-8b-instruct - openai/gpt-oss-120b"
+   ],
+   "separates_models": true
+  }
+ },
+ "inputs": {
+  "cases_sha256": "d5a0b2863fb2ca698996ea8e19db53335d5431a30c420027c7d5b4942a784f9d",
+  "design_sha256": "b86595c79058907285d116b2e7275f940e0206815f7703a9f91ca3ecb07d378c",
+  "map_sha256": "d55f4331ac4ee3ec0524c49d29e5e969c4bcf15a8d922e7036ea8e49b4a4d1d6",
+  "predictions": {
+   "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a1.json": "c252a90dacb6b8b82d6d0e152df26d7861bd13ffe940d78336fb53d0bbf224d2",
+   "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a2.json": "b1a0e78cf54c7a0499172b7b4b1cd8fed68a1689ce722ac4056f9d8954b9a9c2",
+   "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a3.json": "1687d84356bad85ce8e4648b1d21698a41c4e0adb2e0c3d44892d0b6797930cc",
+   "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a4a.json": "d72ea15b983e8eb4516af801722f0cae41bee0a34d3fe8a5412663a949fcfa83",
+   "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a4b.json": "3d0c4ef49937733303b19f5142b9f1b3ae9fe720d2cf083360f6c3ecb1595c06",
+   "results/v03/ab/runs/openai-gpt-5.6-terra-v7a1.json": "ff215276c37f0ac156761a6d28f5774b9f9e21e42461cd215701485ca0a0bf50",
+   "results/v03/ab/runs/openai-gpt-5.6-terra-v7a2.json": "c58146c0190d8145716c5d26d49e226b9c5d882f63ac639b56d4d10b468f138c",
+   "results/v03/ab/runs/openai-gpt-5.6-terra-v7a3.json": "f536b50904ba5bd699ae3364666edeff9217e6a39069e6ac1be2ec207d68aca7",
+   "results/v03/ab/runs/openai-gpt-5.6-terra-v7a4a.json": "cf27c7756639858da2315f4ef11c28bdbab978be90e2afdf3217ca9e99274fe7",
+   "results/v03/ab/runs/openai-gpt-5.6-terra-v7a4b.json": "9bcb783a2c52a7de8d8f4da180f3516d7d47870638a95ccc1fc3ea7af4a82063",
+   "results/v03/ab/runs/openai-gpt-oss-120b-v7a1.json": "adf93560807dbf6627bcd0e249ac83229bf3aa0291591ebd447cc077070eebf6",
+   "results/v03/ab/runs/openai-gpt-oss-120b-v7a2.json": "a91e1697b8905ca88f3ed09dd2ea71a1b228aeb6a6447c600fbb59d461d21cb3",
+   "results/v03/ab/runs/openai-gpt-oss-120b-v7a3.json": "f400d599be727aed0dcba6bc6c2eb6cacc6235f7e1f44646e3c02e2a36749b75",
+   "results/v03/ab/runs/openai-gpt-oss-120b-v7a4a.json": "962c9447d9d41804d2cc4fb5cf3464c5e62c1234eb071de62dde1e9009152d3c",
+   "results/v03/ab/runs/openai-gpt-oss-120b-v7a4b.json": "fa0611823687be13a78902934898d971abaa5254473ca75e4d8489758ce4789c"
+  }
+ }
+}
