@@ -1,0 +1,94 @@
+initial_evidence,reference_adults,with_tier3,hypothesis,hypothesis_count,runner_up,runner_up_count
+E_103,781,781,Acute rhinosinusitis,375,Bronchitis,238
+E_111,319,319,Panic attack,319,,0
+E_112,92,92,Bronchitis,50,Whooping cough,42
+E_114,406,406,Acute otitis media,249,Bronchitis,109
+E_127,564,305,Anemia,305,,0
+E_128,296,148,Anemia,147,SLE,1
+E_129,2872,2457,Bronchitis,786,Anemia,601
+E_13,384,374,Panic attack,154,Anemia,97
+E_14,522,482,Panic attack,230,Pericarditis,129
+E_140,678,667,Anemia,549,Bronchitis,96
+E_144,1391,1362,URTI,760,Bronchitis,395
+E_145,218,218,Anemia,218,,0
+E_148,2218,1917,Anemia,671,Panic attack,648
+E_150,247,137,Bronchitis,136,SLE,1
+E_151,2558,2549,Localized edema,1540,Panic attack,416
+E_154,516,516,Anemia,516,,0
+E_155,1947,1797,Anemia,788,Panic attack,579
+E_156,211,115,Anemia,62,Panic attack,53
+E_157,598,494,Panic attack,449,Anemia,43
+E_159,610,599,Panic attack,234,Localized edema,201
+E_161,1015,968,Bronchitis,368,Anemia,173
+E_162,1060,911,Bronchitis,520,Anemia,281
+E_163,233,233,Sarcoidosis,233,,0
+E_164,514,362,Anemia,236,Panic attack,126
+E_166,223,223,Bronchitis,123,Whooping cough,100
+E_168,350,186,Anemia,184,SLE,2
+E_169,490,490,Allergic sinusitis,402,Bronchitis,88
+E_170,425,425,Allergic sinusitis,287,Bronchitis,138
+E_171,288,288,Panic attack,285,Anemia,3
+E_172,521,266,Anemia,264,SLE,2
+E_173,456,371,Bronchitis,278,Pericarditis,67
+E_174,109,61,Anemia,28,Sarcoidosis,15
+E_175,731,659,Pericarditis,273,Bronchitis,173
+E_176,416,214,Anemia,136,Panic attack,76
+E_177,403,314,Panic attack,246,Anemia,68
+E_178,7,4,Bronchitis,3,Anemia,1
+E_179,513,513,Anemia,513,,0
+E_180,303,162,Anemia,162,,0
+E_181,4954,4898,Viral pharyngitis,1573,URTI,1222
+E_182,685,685,Acute rhinosinusitis,524,Bronchitis,161
+E_188,387,290,Bronchitis,172,Anemia,85
+E_190,185,175,Acute laryngitis,138,Viral pharyngitis,17
+E_192,336,176,Anemia,175,Panic attack,1
+E_193,316,183,Anemia,182,SLE,1
+E_194,1024,394,Acute laryngitis,142,Localized edema,92
+E_201,7829,7827,Bronchitis,5223,URTI,917
+E_203,568,568,Bronchitis,464,Whooping cough,102
+E_205,352,180,Anemia,179,SLE,1
+E_206,208,208,SLE,201,Localized edema,6
+E_210,495,328,Panic attack,136,Bronchitis,106
+E_211,365,279,Panic attack,124,Pericarditis,82
+E_212,912,912,Acute laryngitis,789,Bronchitis,123
+E_214,1950,1894,Bronchitis,1279,Anemia,407
+E_215,462,356,Bronchitis,267,Pericarditis,62
+E_216,160,160,Bronchitis,150,Pericarditis,10
+E_217,1376,1324,Pericarditis,968,Bronchitis,268
+E_218,2022,1869,Pericarditis,663,Panic attack,628
+E_219,414,414,Bronchitis,374,URTI,36
+E_220,1554,1484,Pericarditis,739,Panic attack,338
+E_221,309,162,Bronchitis,162,,0
+E_30,300,184,Bronchitis,183,SLE,1
+E_33,149,141,Acute laryngitis,107,Viral pharyngitis,13
+E_38,186,93,Anemia,92,SLE,1
+E_39,7,7,Bronchitis,3,Panic attack,3
+E_42,266,266,Localized edema,121,Panic attack,55
+E_43,296,296,Sarcoidosis,277,SLE,17
+E_45,2602,2548,Bronchitis,1277,Viral pharyngitis,783
+E_50,2342,2326,URTI,786,Panic attack,567
+E_51,975,757,Anemia,394,Bronchitis,134
+E_52,242,120,Anemia,112,SLE,8
+E_53,21159,19488,Bronchitis,3640,Anemia,3146
+E_63,243,116,Anemia,113,SLE,3
+E_64,147,136,Pericarditis,80,Panic attack,37
+E_65,386,265,Acute laryngitis,134,Anemia,99
+E_66,9478,9261,Anemia,2499,Bronchitis,2289
+E_67,313,297,Pericarditis,192,Panic attack,56
+E_74,305,305,Sarcoidosis,286,SLE,17
+E_75,199,199,Panic attack,195,Anemia,3
+E_76,1282,1268,Anemia,1192,Panic attack,76
+E_77,2278,2278,Bronchitis,1989,URTI,289
+E_82,1585,1578,Anemia,1093,Panic attack,402
+E_83,266,161,Anemia,96,Panic attack,65
+E_84,451,247,Anemia,156,Panic attack,86
+E_88,1074,1070,Anemia,771,URTI,220
+E_89,2235,2204,Anemia,1292,SLE,311
+E_9,793,774,Sarcoidosis,508,Anemia,195
+E_90,130,123,Anemia,119,SLE,3
+E_91,4302,4187,Bronchitis,1305,URTI,1105
+E_92,404,282,Anemia,260,Panic attack,22
+E_93,222,135,Panic attack,77,Anemia,58
+E_94,404,403,Bronchitis,240,URTI,141
+E_96,581,581,Localized edema,581,,0
+E_97,1518,1501,URTI,1072,Bronchitis,303
