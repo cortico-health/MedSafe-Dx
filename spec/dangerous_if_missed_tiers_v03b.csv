@@ -1,0 +1,50 @@
+condition,icd10,ddxplus_severity,base_tier,final_tier,evidence_level,nt_row,independent_sources_named,source_rows,category_exception,final_tier_formal,evidence_level_formal,tier_change_formal,final_tier_count_floor,count_floor_sensitive
+Acute pulmonary edema,J81.0,1,1,1,DDXPlus-severity-only,,0,S1 'Decompensated congestive heart failure' category n=12,"S1 'Decompensated congestive heart failure' (disease_family): v0.3 no, formal counts",1,DDXPlus-severity-only,False,1,False
+Anaphylaxis,T78.0,1,1,1,DDXPlus-severity-only,,0,,,1,DDXPlus-severity-only,False,1,False
+Ebola,A98.4,1,1,1,DDXPlus-severity-only,,0,,,1,DDXPlus-severity-only,False,1,False
+Larygospasm,J38.5,1,1,1,DDXPlus-severity-only,,0,,,1,DDXPlus-severity-only,False,1,False
+Possible NSTEMI / STEMI,I21,1,1,1,Newman-Toker named row,Myocardial Infarction (named),3,NT2023 'Myocardial Infarction' named | S1 'Angina/myocardial infarction/acute coronary syndrome' named | S2 'MI' named n=161 | S3 'AMI' named n=5,,1,Newman-Toker named row,False,1,False
+Acute dystonic reactions,G24.02,2,1,1,DDXPlus-severity-only,,0,,,1,DDXPlus-severity-only,False,1,False
+Boerhaave,K22.3,2,1,1,DDXPlus-severity-only,,0,,,1,DDXPlus-severity-only,False,1,False
+Croup,J05.0,2,1,1,DDXPlus-severity-only,,0,,,1,DDXPlus-severity-only,False,1,False
+Epiglottitis,J05.1,2,1,1,DDXPlus-severity-only,,1,S3 'Epiglottitis' named n=4,,1,DDXPlus-severity-only,False,1,False
+Guillain-Barré syndrome,G61.0,2,1,1,DDXPlus-severity-only,,0,,,1,DDXPlus-severity-only,False,1,False
+Myocarditis,I51.4,2,1,1,DDXPlus-severity-only,,0,,,1,DDXPlus-severity-only,False,1,False
+PSVT,I47.1,2,1,1,DDXPlus-severity-only,,0,S1 'Cardiac dysrhythmia' category n=3,"S1 'Cardiac dysrhythmia' (disease_family): v0.3 no, formal counts",1,DDXPlus-severity-only,False,1,False
+Pulmonary embolism,I26,2,1,1,Newman-Toker named row,Venous Thromboembolism (named),2,NT2023 'Venous Thromboembolism' named | S1 'Pulmonary embolism' named | S2 'PE' named n=34,,1,Newman-Toker named row,False,1,False
+Scombroid food poisoning,T61.1,2,1,1,DDXPlus-severity-only,,0,,,1,DDXPlus-severity-only,False,1,False
+Spontaneous pneumothorax,J93,2,1,1,DDXPlus-severity-only,,0,,,1,DDXPlus-severity-only,False,1,False
+Stable angina,I20.9,2,1,1,DDXPlus-severity-only,,1,S1 'Angina/myocardial infarction/acute coronary syndrome' named,,1,DDXPlus-severity-only,False,1,False
+Unstable angina,I20.0,2,1,1,DDXPlus-severity-only,,1,S1 'Angina/myocardial infarction/acute coronary syndrome' named,,1,DDXPlus-severity-only,False,1,False
+Acute COPD exacerbation / infection,J44.1,3,2,2,DDXPlus-severity-only,,0,,,2,DDXPlus-severity-only,False,2,False
+Atrial fibrillation,I48.91,3,2,2,DDXPlus-severity-only,,1,S1 'Atrial fibrillation (new onset)' named n=1 | S1 'Cardiac dysrhythmia' category n=3,"S1 'Cardiac dysrhythmia' (disease_family): v0.3 no, formal no",2,DDXPlus-severity-only,False,2,False
+Bronchiectasis,J47,3,2,2,DDXPlus-severity-only,,0,,,2,DDXPlus-severity-only,False,2,False
+Bronchiolitis,J21,3,2,2,DDXPlus-severity-only,,0,,,2,DDXPlus-severity-only,False,2,False
+Bronchospasm / acute asthma exacerbation,J45,3,2,1,2-of-3 sources,,2,S1 'Asthma exacerbation' named n=1 | S3 'Bronchial asthma' named n=2,,1,2-of-3 sources,False,2,True
+Chagas,B57,3,2,2,DDXPlus-severity-only,,0,,,2,DDXPlus-severity-only,False,2,False
+Cluster headache,G44.009,3,2,2,DDXPlus-severity-only,,0,,,2,DDXPlus-severity-only,False,2,False
+GERD,K21,3,2,2,DDXPlus-severity-only,,0,,,2,DDXPlus-severity-only,False,2,False
+HIV (initial infection),B20,3,2,2,DDXPlus-severity-only,,1,S1 'HIV' named n=1,,2,DDXPlus-severity-only,False,2,False
+Influenza,J11.1,3,2,2,DDXPlus-severity-only,,0,S1 'Viral syndrome' category n=1,"S1 'Viral syndrome' (not_a_family): v0.3 no, formal no",2,DDXPlus-severity-only,False,2,False
+Inguinal hernia,K40,3,2,2,DDXPlus-severity-only,,0,,,2,DDXPlus-severity-only,False,2,False
+Myasthenia gravis,G70.0,3,2,2,DDXPlus-severity-only,,0,,,2,DDXPlus-severity-only,False,2,False
+Pancreatic neoplasm,C25,3,2,1,Newman-Toker category row,Other Cancers (category),0,NT2023 'Other Cancers' category | S1 'Cancer (primary)' category n=11,"NT2023 'Other Cancers' (cancer): v0.3 counts, formal counts; S1 'Cancer (primary)' (cancer): v0.3 no, formal counts",1,Newman-Toker category row,False,1,False
+Pneumonia,J17/J18,3,2,1,Newman-Toker named row,Pneumonia (named),3,NT2023 'Pneumonia' named | S1 'Pneumonia' named n=14 | S2 'Pneumonia' named n=8 | S3 'pneumonia (Table 4 final diagnosis)' named n=1,,1,Newman-Toker named row,False,1,False
+Pulmonary neoplasm,C34,3,2,1,Newman-Toker named row,Lung Cancer (named),0,NT2023 'Lung Cancer' named | S1 'Cancer (primary)' category n=11,"S1 'Cancer (primary)' (cancer): v0.3 no, formal counts",1,Newman-Toker named row,False,1,False
+Spontaneous rib fracture,S22.9,3,2,2,DDXPlus-severity-only,,0,S1 'Fracture' category n=2 | S2 'Fracture' category n=1007,"S1 'Fracture' (disease_family): v0.3 no, formal counts; S2 'Fracture' (disease_family): v0.3 no, formal counts",1,2-of-3 sources,True,2,False
+Tuberculosis,A15,3,2,2,DDXPlus-severity-only,,0,,,2,DDXPlus-severity-only,False,2,False
+Acute laryngitis,J04.0,4,3,3,DDXPlus-severity-only,,0,,,3,DDXPlus-severity-only,False,3,False
+Acute otitis media,H66.90,4,3,3,DDXPlus-severity-only,,0,S1 'Otitis' category n=3,"S1 'Otitis' (disease_family): v0.3 no, formal counts",3,DDXPlus-severity-only,False,3,False
+Acute rhinosinusitis,J01,4,3,3,DDXPlus-severity-only,,0,,,3,DDXPlus-severity-only,False,3,False
+Allergic sinusitis,J30,4,3,3,DDXPlus-severity-only,,0,,,3,DDXPlus-severity-only,False,3,False
+Anemia,D64.9,4,3,3,DDXPlus-severity-only,,1,S1 'Symptomatic anemia' named n=9,,3,DDXPlus-severity-only,False,3,False
+Bronchitis,J40,4,3,3,DDXPlus-severity-only,,0,,,3,DDXPlus-severity-only,False,3,False
+Localized edema,R60.0,4,3,3,DDXPlus-severity-only,,0,,,3,DDXPlus-severity-only,False,3,False
+Pericarditis,I30,4,3,3,DDXPlus-severity-only,,0,,,3,DDXPlus-severity-only,False,3,False
+SLE,M32,4,3,3,DDXPlus-severity-only,,1,S1 'Complicated lupus' named n=1,,3,DDXPlus-severity-only,False,3,False
+Sarcoidosis,D86,4,3,3,DDXPlus-severity-only,,0,,,3,DDXPlus-severity-only,False,3,False
+Viral pharyngitis,J02.9,4,3,3,DDXPlus-severity-only,,0,,,3,DDXPlus-severity-only,False,3,False
+Whooping cough,A37,4,3,3,DDXPlus-severity-only,,0,,,3,DDXPlus-severity-only,False,3,False
+Chronic rhinosinusitis,J32,5,3,3,DDXPlus-severity-only,,0,,,3,DDXPlus-severity-only,False,3,False
+Panic attack,F41,5,3,3,DDXPlus-severity-only,,0,S1 'Psychiatric disorder' category n=2,"S1 'Psychiatric disorder' (not_a_family): v0.3 no, formal no",3,DDXPlus-severity-only,False,3,False
+URTI,J06.9,5,3,3,DDXPlus-severity-only,,0,S1 'Viral syndrome' category n=1,"S1 'Viral syndrome' (not_a_family): v0.3 no, formal no",3,DDXPlus-severity-only,False,3,False
