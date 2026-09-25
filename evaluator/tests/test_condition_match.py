@@ -75,8 +75,8 @@ class TestRealMap(unittest.TestCase):
     def test_related_codes_stop_counting(self):
         self.assertFalse(self.m.matches("K21.9", MI))  # GERD is related to MI
         self.assertTrue(self.m.matches("K21.9", MI, "lenient"))
-        self.assertFalse(self.m.matches("I48.91", "PSVT"))  # AF
         self.assertFalse(self.m.matches("F41.0", "PSVT"))  # panic attack
+        self.assertFalse(self.m.matches("K21.9", "Stable angina"))
 
     def test_broader_calls_count(self):
         self.assertTrue(self.m.matches("I49.9", "PSVT"))
@@ -84,9 +84,41 @@ class TestRealMap(unittest.TestCase):
         self.assertTrue(self.m.matches("I20.9", "Unstable angina"))
         self.assertFalse(self.m.matches("I20.9", "Unstable angina", "strict"))
 
-    def test_mi_code_matches_only_mi_under_standard(self):
-        self.assertEqual(self.m.tier1_hit(["I21.9"], TIERS), {MI})
+    def test_mi_code_matches_the_ischaemia_family_under_standard(self):
+        # draft 3 family rows: an MI code names the three ischaemia conditions; strict still names MI alone
+        self.assertEqual(self.m.tier1_hit(["I21.9"], TIERS), {MI, "Stable angina", "Unstable angina"})
+        self.assertEqual(self.m.tier1_hit(["I21.9"], TIERS, "strict"), {MI})
         self.assertEqual(len(self.m.tier1_hit(["I21.9"], TIERS, "lenient")), 8)
+
+    def test_family_rows(self):
+        """docs/v0.3-validity-review.md section 1.1, added as broader relations (spec draft 3 section 4)."""
+        cases = [("I50.9", "Acute pulmonary edema"), ("I48.91", "PSVT"), ("R00.0", "PSVT"),
+                 ("T78.2", "Scombroid food poisoning"), ("T61.1", "Anaphylaxis"), ("R06.1", "Larygospasm"),
+                 ("J38.4", "Larygospasm"), ("J05.1", "Croup"), ("J44.1", "Bronchospasm / acute asthma exacerbation"),
+                 ("I30.9", "Myocarditis"), ("G24.01", "Acute dystonic reactions"), ("I82.4", "Pulmonary embolism")]
+        for code, cond in cases:
+            with self.subTest(code=code, cond=cond):
+                self.assertEqual(self.m.relation(code, cond), "broader")
+                self.assertTrue(self.m.matches(code, cond))
+                self.assertFalse(self.m.matches(code, cond, "strict"))
+
+    def test_family_exceptions_stay_related(self):
+        # haemopericardium is related to pericarditis, so pericarditis's broader I31 row does not carry it to myocarditis
+        self.assertEqual(self.m.relation("I31.2", "Myocarditis"), "related")
+        self.assertFalse(self.m.matches("I31.2", "Myocarditis"))
+
+    def test_family_rows_are_idempotent(self):
+        """Running the builder on the committed map (in a temporary copy) changes nothing."""
+        import importlib.util
+        import shutil
+        spec = importlib.util.spec_from_file_location("add_fam", ROOT / "scripts/add_v03_family_rows.py")
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        with tempfile.TemporaryDirectory() as d:
+            copy = Path(d) / "map.csv"
+            shutil.copy(ROOT / "spec/ddxplus_icd10_map.csv", copy)
+            mod.main(copy)
+            self.assertEqual(copy.read_bytes(), (ROOT / "spec/ddxplus_icd10_map.csv").read_bytes())
 
     def test_strict_codes_are_unambiguous(self):
         s = multiplicity_summary(self.m, TIERS)

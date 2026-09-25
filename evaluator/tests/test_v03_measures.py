@@ -22,7 +22,7 @@ class TestHPrimeAndConsistency(unittest.TestCase):
 
     def test_yes_with_tier1_flag(self):
         _, hit, h, hp, con = self.judge("YES", ["I21.9", "J01.90"])
-        self.assertEqual(hit, {MI})
+        self.assertEqual(hit, {MI, "Stable angina", "Unstable angina"})  # the ischaemia family rows
         self.assertEqual((h, hp, con), (False, False, []))
 
     def test_yes_with_only_benign_flags_counts_in_h_prime(self):
