@@ -112,12 +112,19 @@ from inference.prompt import (
     USER_PROMPT_TEMPLATE_INTAKE_V3,
     USER_PROMPT_TEMPLATE_INTAKE_V5,
     USER_PROMPT_TEMPLATE_V6,
+    USER_PROMPT_TEMPLATE_V7,
+    V7_ARMS,
+    V7_SCHEMAS,
+    system_prompt_v7,
 )
 from inference.symptom_decoder import decode_symptoms, decode_symptoms_with_audit, decode_symptoms_versioned
 
 DEFAULT_RUN_CONFIG_V02 = Path(__file__).parent / "run_config_v02.json"
 DEFAULT_RUN_CONFIG_V03 = Path(__file__).parent / "run_config_v03.json"
-DEFAULT_RUN_CONFIG = {"v5": DEFAULT_RUN_CONFIG_V02, "v6": DEFAULT_RUN_CONFIG_V03}
+DEFAULT_RUN_CONFIG_V03_AB = Path(__file__).parent / "run_config_v03_ab.json"
+DEFAULT_RUN_CONFIG = {"v5": DEFAULT_RUN_CONFIG_V02, "v6": DEFAULT_RUN_CONFIG_V03,
+                      **{arm: DEFAULT_RUN_CONFIG_V03_AB for arm in V7_ARMS}}
+CONFIG_PROMPTS = ("v5", "v6") + tuple(V7_ARMS)  # prompt versions that take a run config
 
 
 def get_system_prompt(workflow: str) -> str:
@@ -219,9 +226,42 @@ def build_messages_v6(case: Dict[str, Any], decoder_version: str = "v02") -> lis
     ]
 
 
+def format_case_for_prompt_v7(case: Dict[str, Any], arm: str, decoder_version: str = "v02") -> str:
+    """Render one case as the v7 user prompt of one arm: the v5 intake rendering, then the arm's
+    working-diagnosis line (arms 2, 3 and 4b; from the case's `working_diagnosis_name`), then the schema."""
+    active, antecedents, audit = decode_symptoms_versioned(
+        case.get("presenting_symptoms", []), version=decoder_version, sex=case.get("sex")
+    )
+    case["_input_decode_audit"] = {"symptoms": audit}
+    _, anchor = V7_ARMS[arm]
+    if anchor:
+        name = case.get("working_diagnosis_name")
+        if not name:
+            raise ValueError(f"{case.get('case_id')}: arm {arm} needs working_diagnosis_name (scripts/build_v03_ab_set.py)")
+        anchor = "\n" + anchor.format(working_diagnosis=name) + "\n"
+    return USER_PROMPT_TEMPLATE_V7.format(
+        age=case.get("age", "unknown"),
+        sex=case.get("sex", "unknown"),
+        symptoms=", ".join(active) if active else "none",
+        history=", ".join(antecedents) if antecedents else "none",
+        anchor=anchor or "",
+        schema=V7_SCHEMAS[arm],
+    )
+
+
+def build_messages_v7(case: Dict[str, Any], arm: str, decoder_version: str = "v02") -> list[Dict[str, str]]:
+    return [
+        {"role": "system", "content": system_prompt_v7(arm)},
+        {"role": "user", "content": format_case_for_prompt_v7(case, arm, decoder_version)},
+    ]
+
+
 def build_messages_for(case: Dict[str, Any], settings: Dict[str, Any]) -> list[Dict[str, str]]:
-    """Messages for the run's prompt version (v5 or v6), as the run config names it."""
-    build = build_messages_v6 if settings.get("prompt_version") == "v6" else build_messages_v5
+    """Messages for the run's prompt version (v5, v6 or a v7 arm)."""
+    version = settings.get("prompt_version")
+    if version in V7_ARMS:
+        return build_messages_v7(case, version, settings["decoder_version"])
+    build = build_messages_v6 if version == "v6" else build_messages_v5
     return build(case, settings["decoder_version"])
 
 
@@ -528,10 +568,11 @@ def main():
     )
     parser.add_argument(
         "--prompt-version",
-        choices=["v4", "v5", "v6"],
+        choices=["v4", "v5", "v6", *V7_ARMS],
         default="v4",
         help="v4 (v0 benchmark, default), v5 (v0.2: probabilities, p_serious, v0.2 decoder, run config) "
-        "or v6 (v0.3: serious_concern, flags, differential, p_serious; run_config_v03.json)",
+        "or v6 (v0.3: serious_concern, flags, differential, p_serious; run_config_v03.json), "
+        "or a v7 arm (v0.3 draft 3 prompt test: v7a1, v7a2, v7a3, v7a4a, v7a4b; run_config_v03_ab.json)",
     )
     parser.add_argument(
         "--run-config",
@@ -549,7 +590,7 @@ def main():
     args = parser.parse_args()
 
     v5_settings = None
-    if args.prompt_version in ("v5", "v6"):
+    if args.prompt_version in CONFIG_PROMPTS:
         if args.workflow != "intake":
             parser.error(f"--prompt-version {args.prompt_version} supports the intake workflow only")
         if args.run_config is None:
@@ -561,6 +602,8 @@ def main():
             reasoning_effort=args.reasoning_effort,
             temperature=args.temperature,
         )
+        if args.prompt_version in V7_ARMS and v5_settings["prompt_version"] == "v7":
+            v5_settings["prompt_version"] = args.prompt_version  # one config serves every v7 arm
         if v5_settings["prompt_version"] != args.prompt_version:
             parser.error(f"{args.run_config} is for prompt {v5_settings['prompt_version']}, not {args.prompt_version}")
         if v5_settings["config_overridden"]:

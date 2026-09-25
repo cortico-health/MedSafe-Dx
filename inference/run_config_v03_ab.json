@@ -1,0 +1,27 @@
+{
+  "_about": "MedSafe-Dx v0.3 draft-3 prompt test (spec/v0.3-scoring.md section 12). The values are run_config_v03.json's (spec section 9: max_tokens 16000, reasoning effort 'medium' where the model supports it, one retry on an empty or truncated response); only the prompt (v7, five arms) and config_version differ. inference/run_inference.py --prompt-version v7a1|v7a2|v7a3|v7a4a|v7a4b reads it and records the arm as the row's prompt_version. reasoning_effort null means we send no reasoning parameter (the Llama models take none).",
+  "config_version": "v03-ab-2026-09-25",
+  "prompt_version": "v7",
+  "decoder_version": "v02",
+  "temperature": 0.0,
+  "max_tokens": 16000,
+  "empty_or_truncated_retries": 1,
+  "default_reasoning_effort": null,
+  "models": {
+    "openai/gpt-5.6-terra": {
+      "reasoning_effort": "medium"
+    },
+    "openai/gpt-oss-120b": {
+      "reasoning_effort": "medium"
+    },
+    "anthropic/claude-haiku-4.5": {
+      "reasoning_effort": "medium"
+    },
+    "meta-llama/llama-3.1-8b-instruct": {
+      "reasoning_effort": null
+    },
+    "meta-llama/llama-3.3-70b-instruct": {
+      "reasoning_effort": null
+    }
+  }
+}
