@@ -1,0 +1,78 @@
+{
+  "_about": "MedSafe-Dx v0.3 run configuration (spec/v0.3-scoring.md section 9, 'as in v0.2 section 9'). The values match run_config_v02.json; only the prompt (v6) and config_version differ, so a v6 row records the prompt it ran. inference/run_inference.py --prompt-version v6 reads it. A run that overrides any value carries config_overridden in its metadata. reasoning_effort null means we send no reasoning parameter. Reasoning effort 'medium' is provisional.",
+  "config_version": "v03-2026-09-25",
+  "prompt_version": "v6",
+  "decoder_version": "v02",
+  "temperature": 0.0,
+  "max_tokens": 16000,
+  "empty_or_truncated_retries": 1,
+  "default_reasoning_effort": null,
+  "models": {
+    "anthropic/claude-fable-5": {
+      "reasoning_effort": "medium"
+    },
+    "anthropic/claude-opus-5": {
+      "reasoning_effort": "medium"
+    },
+    "anthropic/claude-sonnet-4.6": {
+      "reasoning_effort": "medium"
+    },
+    "anthropic/claude-haiku-4.5": {
+      "reasoning_effort": "medium"
+    },
+    "openai/gpt-6-astra": {
+      "reasoning_effort": "medium"
+    },
+    "openai/gpt-5.6-sol": {
+      "reasoning_effort": "medium"
+    },
+    "openai/gpt-5.6-terra": {
+      "reasoning_effort": "medium"
+    },
+    "openai/gpt-5.6-luna": {
+      "reasoning_effort": "medium"
+    },
+    "openai/gpt-5.4-mini": {
+      "reasoning_effort": "medium"
+    },
+    "openai/gpt-oss-120b": {
+      "reasoning_effort": "medium"
+    },
+    "google/gemini-3.1-pro-preview": {
+      "reasoning_effort": "medium"
+    },
+    "moonshotai/kimi-k3": {
+      "reasoning_effort": "medium"
+    },
+    "z-ai/glm-5.3": {
+      "reasoning_effort": "medium"
+    },
+    "x-ai/grok-4.6": {
+      "reasoning_effort": "medium"
+    },
+    "deepseek/deepseek-r1": {
+      "reasoning_effort": "medium"
+    },
+    "anthropic/claude-opus-4.7": {
+      "reasoning_effort": "medium"
+    },
+    "openai/gpt-5.2": {
+      "reasoning_effort": "medium"
+    },
+    "openai/gpt-5-mini": {
+      "reasoning_effort": "medium"
+    },
+    "openai/o3-pro": {
+      "reasoning_effort": "medium"
+    },
+    "x-ai/grok-4.20": {
+      "reasoning_effort": "medium"
+    },
+    "openai/gpt-5-chat": {
+      "reasoning_effort": null
+    },
+    "meta-llama/llama-4-maverick": {
+      "reasoning_effort": null
+    }
+  }
+}

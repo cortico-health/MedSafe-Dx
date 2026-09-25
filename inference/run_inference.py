@@ -103,16 +103,21 @@ from inference.codex_cli import call_codex
 from inference.prompt import (
     OUTPUT_SCHEMA_V4,
     OUTPUT_SCHEMA_V5,
+    OUTPUT_SCHEMA_V6,
     SYSTEM_PROMPT_CHART_REVIEW_V3,
     SYSTEM_PROMPT_INTAKE_V3,
     SYSTEM_PROMPT_INTAKE_V5,
+    SYSTEM_PROMPT_V6,
     USER_PROMPT_TEMPLATE_CHART_REVIEW_V3,
     USER_PROMPT_TEMPLATE_INTAKE_V3,
     USER_PROMPT_TEMPLATE_INTAKE_V5,
+    USER_PROMPT_TEMPLATE_V6,
 )
 from inference.symptom_decoder import decode_symptoms, decode_symptoms_with_audit, decode_symptoms_versioned
 
 DEFAULT_RUN_CONFIG_V02 = Path(__file__).parent / "run_config_v02.json"
+DEFAULT_RUN_CONFIG_V03 = Path(__file__).parent / "run_config_v03.json"
+DEFAULT_RUN_CONFIG = {"v5": DEFAULT_RUN_CONFIG_V02, "v6": DEFAULT_RUN_CONFIG_V03}
 
 
 def get_system_prompt(workflow: str) -> str:
@@ -190,6 +195,34 @@ def build_messages_v5(case: Dict[str, Any], decoder_version: str = "v02") -> lis
         {"role": "system", "content": SYSTEM_PROMPT_INTAKE_V5},
         {"role": "user", "content": format_case_for_prompt_v5(case, decoder_version)},
     ]
+
+
+def format_case_for_prompt_v6(case: Dict[str, Any], decoder_version: str = "v02") -> str:
+    """Render one case as the v6 user prompt: the v5 intake rendering with the v6 schema."""
+    active, antecedents, audit = decode_symptoms_versioned(
+        case.get("presenting_symptoms", []), version=decoder_version, sex=case.get("sex")
+    )
+    case["_input_decode_audit"] = {"symptoms": audit}
+    return USER_PROMPT_TEMPLATE_V6.format(
+        age=case.get("age", "unknown"),
+        sex=case.get("sex", "unknown"),
+        symptoms=", ".join(active) if active else "none",
+        history=", ".join(antecedents) if antecedents else "none",
+        schema=OUTPUT_SCHEMA_V6,
+    )
+
+
+def build_messages_v6(case: Dict[str, Any], decoder_version: str = "v02") -> list[Dict[str, str]]:
+    return [
+        {"role": "system", "content": SYSTEM_PROMPT_V6},
+        {"role": "user", "content": format_case_for_prompt_v6(case, decoder_version)},
+    ]
+
+
+def build_messages_for(case: Dict[str, Any], settings: Dict[str, Any]) -> list[Dict[str, str]]:
+    """Messages for the run's prompt version (v5 or v6), as the run config names it."""
+    build = build_messages_v6 if settings.get("prompt_version") == "v6" else build_messages_v5
+    return build(case, settings["decoder_version"])
 
 
 def load_run_config(path) -> Dict[str, Any]:
@@ -279,8 +312,8 @@ def run_inference_on_case_v5(
     settings: Dict[str, Any],
     backend: str = "openrouter",
 ) -> Dict[str, Any]:
-    """Run one case with prompt v5 and record the response metadata beside the prediction."""
-    messages = build_messages_v5(case, settings["decoder_version"])
+    """Run one case with prompt v5 or v6 (settings["prompt_version"]) and record the response metadata beside the prediction."""
+    messages = build_messages_for(case, settings)
     meta, attempts = call_model_v5(messages, model, settings, backend)
     record = {
         "finish_reason": meta.get("finish_reason"),
@@ -389,7 +422,7 @@ def write_dry_run(out: Path, cases, model: str, settings: Dict[str, Any], metada
 
     requests_out = []
     for case in cases:
-        messages = build_messages_v5(copy.deepcopy(case), settings["decoder_version"])
+        messages = build_messages_for(copy.deepcopy(case), settings)
         payload = build_payload(model, messages, settings["temperature"], settings["max_tokens"],
                                 settings["reasoning_effort"])
         chars = sum(len(m["content"]) for m in messages)
@@ -495,14 +528,16 @@ def main():
     )
     parser.add_argument(
         "--prompt-version",
-        choices=["v4", "v5"],
+        choices=["v4", "v5", "v6"],
         default="v4",
-        help="v4 (v0 benchmark, default) or v5 (v0.2: probabilities, p_serious, v0.2 decoder, run config)",
+        help="v4 (v0 benchmark, default), v5 (v0.2: probabilities, p_serious, v0.2 decoder, run config) "
+        "or v6 (v0.3: serious_concern, flags, differential, p_serious; run_config_v03.json)",
     )
     parser.add_argument(
         "--run-config",
-        default=str(DEFAULT_RUN_CONFIG_V02),
-        help="v5 only: run configuration JSON (max_tokens, reasoning effort per model, retry rule)",
+        default=None,
+        help="v5 and v6: run configuration JSON (max_tokens, reasoning effort per model, retry rule); "
+        "default run_config_v02.json for v5 and run_config_v03.json for v6",
     )
 
     parser.add_argument(
@@ -514,9 +549,11 @@ def main():
     args = parser.parse_args()
 
     v5_settings = None
-    if args.prompt_version == "v5":
+    if args.prompt_version in ("v5", "v6"):
         if args.workflow != "intake":
-            parser.error("--prompt-version v5 supports the intake workflow only")
+            parser.error(f"--prompt-version {args.prompt_version} supports the intake workflow only")
+        if args.run_config is None:
+            args.run_config = str(DEFAULT_RUN_CONFIG[args.prompt_version])
         v5_settings = resolve_run_settings(
             load_run_config(args.run_config),
             args.model,
@@ -524,6 +561,8 @@ def main():
             reasoning_effort=args.reasoning_effort,
             temperature=args.temperature,
         )
+        if v5_settings["prompt_version"] != args.prompt_version:
+            parser.error(f"{args.run_config} is for prompt {v5_settings['prompt_version']}, not {args.prompt_version}")
         if v5_settings["config_overridden"]:
             print(f"WARNING: run config overridden ({', '.join(v5_settings['config_overridden'])}); the row will carry a flag")
     else:
@@ -551,7 +590,7 @@ def main():
     
     if args.dry_run:
         if v5_settings is None:
-            parser.error("--dry-run supports --prompt-version v5 only")
+            parser.error("--dry-run supports --prompt-version v5 and v6 only")
         write_dry_run(Path(args.out), cases, args.model, v5_settings, metadata, args.run_config)
         return
 
