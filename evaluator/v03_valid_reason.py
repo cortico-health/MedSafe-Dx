@@ -9,7 +9,15 @@ from the arm-4 flag, or from the differential in arms 1-3, and sort it into four
 | `target`      | one of the case's R10 targets (standard map with the family rows)      |
 | `other_tier1` | a tier-1 DDXPlus condition that is not a target                        |
 | `offlist`     | no DDXPlus condition, and a code whose off-list tier is 1              |
+| `truth`       | the case's own true condition, on a case where a selection rule made  |
+|               | it SERIOUS and the truth is not itself a target (amendment A4)         |
 | `none`        | nothing serious                                                        |
+
+Amendment A4 (spec/v0.3-scoring.md): the caller passes `truth_credit`, one value per case, to
+`outcomes`. PARTIAL_OUT marks a case a layer-a rule or a condition UPGRADE made SERIOUS, where
+naming the truth is an escalation that costs a partial rather than a miss; PASS marks a case where
+the selection rules credit the truth as a target (a tier-2 or upgraded truth); None, the default,
+gives the truth no credit beyond its tier, which is the pre-A4 behaviour.
 
 Off-list tiers come from spec/offlist_tiers_nhamcs.csv (`TierFileRule`): the longest prefix
 of the code in the file gives its tier, 1, 2, 3 or "unscored" (R and Z codes, suppressed
@@ -24,8 +32,8 @@ Per-case cost on the headline cases:
 | Class   | Decision                                        | Cost                                 |
 |---------|-------------------------------------------------|--------------------------------------|
 | SERIOUS | escalates, reason `target`                      | 0 (pass)                             |
-| SERIOUS | escalates, reason `other_tier1` or `offlist`    | `partial` (primary 1; rows at 2, 3.5)|
-|         |                                                 | pair row: Boerhaave under a non-surgical label 3.5 |
+| SERIOUS | escalates, reason `other_tier1`, `offlist` or   | `partial` (primary 1; rows at 2, 3.5)|
+|         | `truth`                                         | pair row: Boerhaave under a non-surgical label 3.5 |
 | SERIOUS | escalates with reason `none`, or does not       | 7 (miss)                             |
 | BENIGN  | escalates, with or without a reason             | 1                                    |
 
@@ -69,8 +77,8 @@ PARTIAL = 1.0  # primary cost of escalating with a different serious condition
 PARTIAL_SENSITIVITY = (2.0, 3.5)
 POLICY = "standard"
 
-TARGET, OTHER_TIER1, OFFLIST, NONE = "target", "other_tier1", "offlist", "none"
-REASONS = (TARGET, OTHER_TIER1, OFFLIST, NONE)
+TARGET, OTHER_TIER1, OFFLIST, TRUTH, NONE = "target", "other_tier1", "offlist", "truth", "none"
+REASONS = (TARGET, OTHER_TIER1, OFFLIST, TRUTH, NONE)
 PASS, PARTIAL_OUT, MISS_OUT, BARE, BENIGN_ESC, BENIGN_OK, NOT_SCORED = (
     "pass", "partial", "miss", "bare", "benign_escalated", "benign_routine", "not_scored")
 
@@ -153,31 +161,42 @@ class Reason:
 
 
 def reason(codes: Sequence[str], targets: Sequence[str], matcher, tiers: Mapping[str, int], rule,
-           offlist: str = "rule") -> Reason:
-    """The strongest reason `codes` name for a case with R10 `targets`: target > other_tier1 > offlist > none.
+           offlist: str = "rule", truth: Optional[str] = None, truth_credit: Optional[str] = None) -> Reason:
+    """The strongest reason `codes` name for a case with R10 `targets`: target > other_tier1 > offlist > truth > none.
     `offlist` is "rule" (valid when `rule` gives tier 1), "escalate" (every off-list code valid) or
-    "routine" (none). `rule` may also be a group mapping, read through `GroupsRule`."""
+    "routine" (none). `rule` may also be a group mapping, read through `GroupsRule`.
+
+    Amendment A4: `truth` is the case's true condition and `truth_credit` what naming it earns: PASS makes it
+    a target, PARTIAL_OUT makes it the `truth` kind (an escalation that costs a partial), None gives it
+    nothing beyond its tier."""
     if isinstance(rule, Mapping):
         rule = GroupsRule(rule)
     tier1: set[str] = set()
     off: list[tuple[str, str]] = []
+    names_truth = False
     for c in codes:
         if not c:
             continue
         hit = matcher.conditions_hit([c], POLICY)
         if hit:
             tier1 |= {h for h in hit if tiers.get(h) == 1}
+            names_truth |= truth is not None and truth in hit
             continue
         t, label = rule.tier(c)
         if offlist == "escalate" or (offlist == "rule" and t == "1"):
             off.append((c, label or f"tier {t}"))
+    truth_as_target = names_truth and truth_credit == PASS
     named = tuple(sorted(tier1 & set(targets))) + tuple(sorted(tier1 - set(targets)))
-    if tier1 & set(targets):
+    if truth_as_target and truth not in named:
+        named = (truth,) + named
+    if tier1 & set(targets) or truth_as_target:
         kind = TARGET
     elif tier1:
         kind = OTHER_TIER1
     elif off:
         kind = OFFLIST
+    elif names_truth and truth_credit == PARTIAL_OUT:
+        kind = TRUTH
     else:
         kind = NONE
     return Reason(kind, named, tuple(off))
@@ -199,14 +218,17 @@ def reason_codes(arm: Optional[str], parsed, codes: Sequence[str]) -> list[str]:
     return list(codes)
 
 
-def outcomes(a, ab, rule, offlist: str = "rule") -> Outcome:
+def outcomes(a, ab, rule, offlist: str = "rule", truth_credit: Optional[Sequence[Optional[str]]] = None) -> Outcome:
     """`a` is an evaluator/v03b_score.py `Answers`; `ab` its `ABSet`. Arm-4 escalation is re-derived from the
-    flag's reason under `rule` (`TierFileRule`, `GroupsRule` or a group mapping)."""
+    flag's reason under `rule` (`TierFileRule`, `GroupsRule` or a group mapping). `truth_credit` (amendment A4)
+    is one value per case, PASS, PARTIAL_OUT or None, for what naming the case's own true condition earns."""
     k = ab.key
     reasons, esc, out = [], [], []
     for i, kk in enumerate(k.keys):
         p = a.parsed[i]
-        r = reason(reason_codes(a.arm, p, a.codes[i]), kk.r10, ab.matcher, k.tiers, rule, offlist)
+        tc = truth_credit[i] if truth_credit is not None else None
+        r = reason(reason_codes(a.arm, p, a.codes[i]), kk.r10, ab.matcher, k.tiers, rule, offlist,
+                   truth=kk.truth if tc else None, truth_credit=tc)
         e = r.kind != NONE if a.arm in FLAG_ARMS else bool(a.esc[i])
         if a.arm in FLAG_ARMS and not a.readable[i]:
             e = False
@@ -303,6 +325,7 @@ def stats(o: Outcome, ab, M: np.ndarray, partials: Sequence[float] = (PARTIAL, *
     st.add("partial", oc == PARTIAL_OUT, s)
     st.add("partial_inlist", (oc == PARTIAL_OUT) & np.array([r.kind == OTHER_TIER1 for r in o.reasons]), s)
     st.add("partial_offlist", (oc == PARTIAL_OUT) & np.array([r.kind == OFFLIST for r in o.reasons]), s)
+    st.add("partial_truth", (oc == PARTIAL_OUT) & np.array([r.kind == TRUTH for r in o.reasons]), s)
     st.add("pass", oc == PASS, s)
     st.add("esc", o.esc, np.ones(ab.key.n))
     costs = [("" if j == 0 else f"@{pc:g}", pc, pc) for j, pc in enumerate(partials)]

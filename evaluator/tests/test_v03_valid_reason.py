@@ -70,6 +70,20 @@ class TestReason(unittest.TestCase):
         with self.assertRaises(ValueError):
             vr.TierFileRule(tier_file("code_x,level\nA00,1\n"))
 
+    def test_truth_credit_a4(self):
+        # SLE (tier 3) named on a case a selection rule made SERIOUS with a PE target
+        sle = ["M32.9"]
+        self.assertEqual(self.kind(sle, targets=(PE,)), vr.NONE)  # no credit: the pre-A4 reading
+        self.assertEqual(self.kind(sle, targets=(PE,), truth="SLE", truth_credit=vr.PARTIAL_OUT), vr.TRUTH)
+        self.assertEqual(self.kind(sle, targets=(PE,), truth="SLE", truth_credit=vr.PASS), vr.TARGET)
+        self.assertEqual(self.kind(sle, targets=(PE,), truth="SLE", truth_credit=None), vr.NONE)
+        # the credit is for the truth only, and a stronger reason still wins
+        self.assertEqual(self.kind(["J40"], targets=(PE,), truth="SLE", truth_credit=vr.PARTIAL_OUT), vr.NONE)
+        self.assertEqual(self.kind(["I26"], targets=(PE,), truth="SLE", truth_credit=vr.PARTIAL_OUT), vr.TARGET)
+        self.assertEqual(self.kind(["I21"], targets=(PE,), truth="SLE", truth_credit=vr.PARTIAL_OUT), vr.OTHER_TIER1)
+        r = vr.reason(sle, [PE], self.m, self.tiers, self.groups, truth="SLE", truth_credit=vr.PASS)
+        self.assertEqual(r.tier1, ("SLE",))
+
 
 class TestCosts(unittest.TestCase):
     def test_case_cost(self):
@@ -145,6 +159,38 @@ class TestOnTheSet(unittest.TestCase):
         self.assertNotIn(vr.PASS, o.outcome)  # the listed MI does not count: the flag is the reason
         o = vr.outcomes(a, self.ab, self.rule, offlist="routine")
         self.assertFalse(o.esc.any())
+
+    def test_a4_truth_flag_on_a_promoted_case(self):
+        # A SERIOUS case with a tier-3 truth (a DXA-derived target under A3) stands in for a case a selection
+        # rule promoted; the flag names the truth. Without A4 that is a miss; with PARTIAL_OUT credit it is an
+        # escalation costing a partial; with PASS credit it passes.
+        n = self.ab.key.n
+        for i, k in enumerate(self.ab.key.keys):
+            if self.ab.klass[i] != "serious" or k.truth_tier != 3:
+                continue
+            preds = [{"case_id": c, "differential_diagnoses": [{"code": "J40", "p": 50}], "flag": self.code_of[k.truth]}
+                     for c in self.ab.key.case_ids]
+            a = sb.row_answers(preds, "v7a4a", self.ab, "x")
+            base = vr.outcomes(a, self.ab, self.rule)
+            if base.outcome[i] == vr.MISS_OUT:  # the truth's code is no reason under the base rule
+                break
+        else:
+            self.fail("no SERIOUS tier-3 case whose truth flag is a miss")
+        self.assertFalse(base.esc[i])
+        credit = [None] * n
+        credit[i] = vr.PARTIAL_OUT
+        o = vr.outcomes(a, self.ab, self.rule, truth_credit=credit)
+        self.assertEqual(o.outcome[i], vr.PARTIAL_OUT)
+        self.assertEqual(o.reasons[i].kind, vr.TRUTH)
+        self.assertTrue(o.esc[i])
+        self.assertEqual(vr.case_cost(o)[i], 1.0)
+        self.assertEqual([x for j, x in enumerate(o.outcome) if j != i], [x for j, x in enumerate(base.outcome) if j != i])
+        p = vr.stats(o, self.ab, self.M)[0]
+        self.assertAlmostEqual(p["partial_truth"], 1 / self.ab.serious.sum())
+        credit[i] = vr.PASS
+        o = vr.outcomes(a, self.ab, self.rule, truth_credit=credit)
+        self.assertEqual(o.outcome[i], vr.PASS)
+        self.assertEqual(o.reasons[i].kind, vr.TARGET)
 
 
 def stub_set(r10s, serious, canonical, tiers):
