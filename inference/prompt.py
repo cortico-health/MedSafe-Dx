@@ -410,6 +410,16 @@ V7_ARMS = {
 }
 V7_ARM_LABELS = {"v7a1": "1", "v7a2": "2", "v7a3": "3", "v7a4a": "4a", "v7a4b": "4b"}
 
+# Arms 4aj and 4bj (spec/v0.3-scoring.md section 12, amendment A1) repeat arms 4a and 4b and add
+# one field last: an unscored "justification" sentence, so the model writes the flag before it.
+V7_ESCALATION_JUSTIFICATION = ('- "justification": One sentence explaining whether this patient needs escalation '
+                               "to the clinician and why.")
+for _arm in ("v7a4a", "v7a4b"):
+    V7_FIELDS[_arm + "j"] = f"{V7_FIELDS[_arm]}\n{V7_ESCALATION_JUSTIFICATION}"
+    V7_SCHEMAS[_arm + "j"] = V7_SCHEMAS[_arm][:-2] + ',\n  "justification": "STRING"\n}'
+    V7_ARMS[_arm + "j"] = V7_ARMS[_arm]
+    V7_ARM_LABELS[_arm + "j"] = V7_ARM_LABELS[_arm] + "j"
+
 
 def system_prompt_v7(arm: str) -> str:
     task, _ = V7_ARMS[arm]

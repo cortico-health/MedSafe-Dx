@@ -13,6 +13,8 @@ and one decision field, which the scorer reads as the escalation decision:
 | 4a  | flag                 | the flag names a tier-1 condition, or an off-list     |
 |     |                      | code in a Newman-Toker group (`flag_escalates`)       |
 | 4b  | flag                 | as 4a                                                 |
+| 4aj | flag                 | as 4a; "justification" is kept, not scored            |
+| 4bj | flag                 | as 4a; "justification" is kept, not scored            |
 
 `parse_v03b` never raises on model output. It keeps every field that parses and logs
 each rule that fires in `rule_log`, so we can count firings per model.
@@ -50,6 +52,11 @@ DECISION_FIELD = {"v7a1": "serious_condition", "v7a2": "escalation_decision", "v
 ESCALATE_VALUE = {"v7a1": "YES", "v7a2": "ESCALATE_NOW", "v7a3": "YES"}
 ROUTINE_VALUE = {"v7a1": "NO", "v7a2": "ROUTINE_CARE", "v7a3": "NO"}
 FLAG_ARMS = ("v7a4a", "v7a4b")
+# Arms 4aj and 4bj (spec section 12, amendment A1): arms 4a and 4b plus the unscored "justification" sentence.
+ARMS += ("v7a4aj", "v7a4bj")
+DECISION_FIELD.update({"v7a4aj": "flag", "v7a4bj": "flag"})
+FLAG_ARMS += ("v7a4aj", "v7a4bj")
+JUSTIFIED_ARMS = ("v7a4aj", "v7a4bj")  # end with an unscored "justification" sentence
 _NO_FLAG = ("", "NULL", "NONE", "N/A", "NA")
 _LEADING_CODE = re.compile(r"^\s*([A-Za-z][0-9][0-9A-Za-z](?:\.?[0-9A-Za-z]{1,4})?)(?![0-9A-Za-z])")
 
@@ -69,6 +76,7 @@ class ParsedV03b:
     flag: Optional[str] = None  # arm 4: normalised code
     flag_status: str = "n/a"  # arm 4: ok | none | invalid
     note: Optional[str] = None  # arm 3's safety_note
+    justification: Optional[str] = None  # JUSTIFIED_ARMS: kept, not scored
     differential: list[DxEntry] = field(default_factory=list)
     differential_p_status: str = "missing"
     rule_log: list[str] = field(default_factory=list)
@@ -133,6 +141,12 @@ def parse_v03b(pred: Any, arm: str) -> ParsedV03b:
         raw_diff = pred.get("differential")
     out.differential, out.differential_p_status = parse_differential(raw_diff, log)
 
+    if arm in JUSTIFIED_ARMS:
+        j = pred.get("justification")
+        if isinstance(j, str) and j.strip():
+            out.justification = j.strip()
+        else:
+            log.append("justification:missing")
     fld = DECISION_FIELD[arm]
     if arm in FLAG_ARMS:
         out.flag, out.flag_status = parse_flag(pred.get(fld), log)
