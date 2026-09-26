@@ -118,14 +118,73 @@ def run(n_boot: int = vs.N_BOOTSTRAP, groups_fallback: bool = False) -> dict:
             "rows": rows, "references": refs, "paired": paired, "within_arm": within, "beats_always_escalate": beats}
 
 
+def _f(m) -> str:
+    return sb._fmt(m)
+
+
+def _v(m) -> str:
+    return sb._v(m)
+
+
+def report(board: dict) -> str:
+    rows = board["rows"]
+    s = board["sample"]
+    arm4 = sorted((r for r in rows.values() if r["arm"] in FLAG_ARMS), key=lambda r: (r["model"], r["arm"]))
+    rest = sorted((r for r in rows.values() if r["arm"] not in FLAG_ARMS), key=lambda r: (r["model"], r["arm"]))
+    L = ["## Arms 4a and 4b", "",
+         "| Model | Arm | SCORE, sample mix [95% CI] | SCORE, balanced [95% CI] | U % | O % | Partial % (in-list / off-list) | ESC % | Draft-3 SCORE |",
+         "|---|---|---|---|---|---|---|---|---|"]
+    for r in arm4:
+        m, c = r["measures"], r["counts"]
+        L.append(f"| {sb.short(r['model'])} | {r['arm_label']} | {_f(m['score_mix'])} | {_f(m['score_bal'])} | {_v(m['U'])} | "
+                 f"{_v(m['O'])} | {_v(m['partial'])} ({c['partial_inlist']} / {c['partial_offlist']}) | {_v(m['esc'])} | "
+                 f"{_f(r['draft3']['score'])} |")
+    L += ["", "### Sensitivity: partial cost and off-list bounds", "",
+          "| Model | Arm | Mix, partial 2 | Balanced, partial 2 | Mix, partial 3.5 | Balanced, partial 3.5 | Balanced, off-list all valid | Balanced, off-list all invalid |",
+          "|---|---|---|---|---|---|---|---|"]
+    for r in arm4:
+        m, b = r["measures"], r["offlist_bounds"]
+        L.append(f"| {sb.short(r['model'])} | {r['arm_label']} | {_f(m['score_mix@2'])} | {_f(m['score_bal@2'])} | "
+                 f"{_f(m['score_mix@3.5'])} | {_f(m['score_bal@3.5'])} | {_f(b['escalate']['score_bal'])} | "
+                 f"{_f(b['routine']['score_bal'])} |")
+    L += ["", "### Arm 4a - arm 4b, paired (same cases and draws)", "",
+          "| Model | SCORE, mix | SCORE, balanced | U (pp) | O (pp) | Partial (pp) | ESC (pp) |", "|---|---|---|---|---|---|---|"]
+    for d in board["paired"].values():
+        if (d["a"], d["b"]) == ("v7a4a", "v7a4b"):
+            L.append(f"| {sb.short(d['model'])} | {_f(d['score_mix'])} | {_f(d['score_bal'])} | {_f(d['U'])} | {_f(d['O'])} | "
+                     f"{_f(d['partial'])} | {_f(d['esc'])} |")
+    L += ["", "### Model pairs within arm 4", "", "| Pair | SCORE, mix | SCORE, balanced |", "|---|---|---|"]
+    for k, d in board["within_arm"].items():
+        if k.startswith("arm 4"):
+            L.append(f"| {k} | {_f(d['score_mix'])} | {_f(d['score_bal'])} |")
+    L += ["", "## Arms 1-3, for comparison", "",
+          "| Model | Arm | SCORE, mix | SCORE, balanced | U % | O % | Partial % | ESC % | Draft-3 SCORE |",
+          "|---|---|---|---|---|---|---|---|---|"]
+    for r in rest:
+        m = r["measures"]
+        L.append(f"| {sb.short(r['model'])} | {r['arm_label']} | {_f(m['score_mix'])} | {_f(m['score_bal'])} | {_v(m['U'])} | "
+                 f"{_v(m['O'])} | {_v(m['partial'])} | {_v(m['esc'])} | {_f(r['draft3']['score'])} |")
+    L += ["", "## Reference rows", "", "| Reference | SCORE, mix | SCORE, balanced | U % | O % | Partial % |", "|---|---|---|---|---|---|"]
+    for r in board["references"].values():
+        m = r["measures"]
+        L.append(f"| {r['label']} | {_f(m['score_mix'])} | {_f(m['score_bal'])} | {_v(m['U'])} | {_v(m['O'])} | {_v(m['partial'])} |")
+    L += ["", "## Off-list partials in arm 4 (flag, off-list label, truth)", "", "| Row | Flag | Label | Truth | n |", "|---|---|---|---|---|"]
+    for r in arm4:
+        for x in r["offlist_partials"]:
+            L.append(f"| {sb.short(r['model'])} {r['arm_label']} | {x['code']} | {x['group']} | {x['truth']} | {x['n']} |")
+    return "\n".join(L) + "\n"
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--out", default=str(AB / "ab-rescore.json"))
     ap.add_argument("--n-boot", type=int, default=vs.N_BOOTSTRAP)
     ap.add_argument("--groups-fallback", action="store_true", help="score off-list flags with the v2 groups")
+    ap.add_argument("--tables", default=str(AB / "ab-rescore-tables.md"), help="generated tables for ab-rescore.md")
     args = ap.parse_args()
     board = run(args.n_boot, args.groups_fallback)
     Path(args.out).write_text(json.dumps(sb._jsonable(board), indent=1) + "\n")
+    Path(args.tables).write_text(report(board))
     for n, r in sorted(board["rows"].items()):
         m = r["measures"]
         print(f"{sb.short(r['model']):24s} {r['arm_label']:3s} mix {sb._fmt(m['score_mix']):28s} bal {sb._fmt(m['score_bal']):28s} "

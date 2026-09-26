@@ -1,0 +1,4713 @@
+{
+ "rule": "valid named reason (evaluator/v03_valid_reason.py)",
+ "partial_cost": 1.0,
+ "partial_sensitivity": [
+  2.0,
+  3.5
+ ],
+ "offlist_source": "spec/offlist_tiers_nhamcs.csv",
+ "offlist_source_sha256": "8ccf443d86e7552abd200a44ef0beaafb5ea81c02d6d64772365167c416c922e",
+ "sample": {
+  "cases": 150,
+  "serious": 90,
+  "benign": 40,
+  "conditions": 47,
+  "bootstrap": {
+   "draws": 2000,
+   "seed": 20260923
+  }
+ },
+ "rows": {
+  "meta-llama/llama-3.1-8b-instruct|v7a1": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "arm": "v7a1",
+   "arm_label": "1",
+   "file": "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a1.json",
+   "measures": {
+    "score_mix": {
+     "value": -457.5,
+     "ci": [
+      -975.0,
+      -191.19
+     ]
+    },
+    "score_bal": {
+     "value": -172.78,
+     "ci": [
+      -250.23,
+      -90.05
+     ]
+    },
+    "U": {
+     "value": 27.78,
+     "ci": [
+      15.66,
+      39.54
+     ]
+    },
+    "O": {
+     "value": 45.0,
+     "ci": [
+      27.5,
+      63.27
+     ]
+    },
+    "partial": {
+     "value": 33.33,
+     "ci": [
+      21.28,
+      46.32
+     ]
+    },
+    "partial_inlist": {
+     "value": 26.67,
+     "ci": [
+      16.28,
+      38.71
+     ]
+    },
+    "partial_offlist": {
+     "value": 6.67,
+     "ci": [
+      1.23,
+      12.9
+     ]
+    },
+    "pass": {
+     "value": 38.89,
+     "ci": [
+      25.33,
+      52.64
+     ]
+    },
+    "bare": {
+     "value": 17.78,
+     "ci": [
+      9.09,
+      27.37
+     ]
+    },
+    "esc": {
+     "value": 77.33,
+     "ci": [
+      68.71,
+      85.62
+     ]
+    },
+    "cost": {
+     "value": 171.54,
+     "ci": [
+      110.47,
+      231.26
+     ]
+    },
+    "score_mix@2": {
+     "value": -532.5,
+     "ci": [
+      -1114.81,
+      -238.97
+     ]
+    },
+    "score_bal@2": {
+     "value": -206.11,
+     "ci": [
+      -281.17,
+      -126.12
+     ]
+    },
+    "score_mix@3.5": {
+     "value": -645.0,
+     "ci": [
+      -1325.16,
+      -315.08
+     ]
+    },
+    "score_bal@3.5": {
+     "value": -256.11,
+     "ci": [
+      -332.29,
+      -175.81
+     ]
+    }
+   },
+   "counts": {
+    "pass": 35,
+    "bare": 16,
+    "miss": 9,
+    "partial": 30,
+    "benign_routine": 22,
+    "benign_escalated": 18,
+    "not_scored": 20,
+    "partial_inlist": 24,
+    "partial_offlist": 6
+   },
+   "offlist_partials": [
+    {
+     "code": "C220",
+     "group": "Malignant neoplasm of liver and intrahepatic bile ducts",
+     "truth": "Pancreatic neoplasm",
+     "n": 1
+    },
+    {
+     "code": "I639",
+     "group": "Cerebral infarction",
+     "truth": "Ebola",
+     "n": 1
+    },
+    {
+     "code": "K560",
+     "group": "Paralytic ileus and intestinal obstruction without hernia",
+     "truth": "Pancreatic neoplasm",
+     "n": 1
+    },
+    {
+     "code": "I630",
+     "group": "Cerebral infarction",
+     "truth": "Guillain-Barr\u00e9 syndrome",
+     "n": 1
+    },
+    {
+     "code": "C011",
+     "group": "Malignant neoplasm of base of tongue",
+     "truth": "HIV (initial infection)",
+     "n": 1
+    },
+    {
+     "code": "C804",
+     "group": "Malignant neoplasm without specification of site",
+     "truth": "Chagas",
+     "n": 1
+    }
+   ],
+   "draft3": {
+    "score": {
+     "value": -102.5,
+     "ci": [
+      -300.09,
+      9.53
+     ]
+    },
+    "U": {
+     "value": 10.0,
+     "ci": [
+      3.49,
+      17.44
+     ]
+    },
+    "O": {
+     "value": 45.0,
+     "ci": [
+      27.5,
+      63.27
+     ]
+    },
+    "esc": {
+     "value": 77.33,
+     "ci": [
+      68.71,
+      85.62
+     ]
+    }
+   }
+  },
+  "meta-llama/llama-3.1-8b-instruct|v7a2": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "arm": "v7a2",
+   "arm_label": "2",
+   "file": "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a2.json",
+   "measures": {
+    "score_mix": {
+     "value": -475.0,
+     "ci": [
+      -970.9,
+      -227.88
+     ]
+    },
+    "score_bal": {
+     "value": -195.83,
+     "ci": [
+      -273.58,
+      -116.22
+     ]
+    },
+    "U": {
+     "value": 27.78,
+     "ci": [
+      16.67,
+      39.03
+     ]
+    },
+    "O": {
+     "value": 72.5,
+     "ci": [
+      53.85,
+      87.8
+     ]
+    },
+    "partial": {
+     "value": 28.89,
+     "ci": [
+      17.57,
+      41.47
+     ]
+    },
+    "partial_inlist": {
+     "value": 24.44,
+     "ci": [
+      13.92,
+      36.37
+     ]
+    },
+    "partial_offlist": {
+     "value": 4.44,
+     "ci": [
+      1.02,
+      9.3
+     ]
+    },
+    "pass": {
+     "value": 43.33,
+     "ci": [
+      29.47,
+      57.75
+     ]
+    },
+    "bare": {
+     "value": 22.22,
+     "ci": [
+      12.34,
+      33.33
+     ]
+    },
+    "esc": {
+     "value": 88.67,
+     "ci": [
+      81.82,
+      94.41
+     ]
+    },
+    "cost": {
+     "value": 176.92,
+     "ci": [
+      122.04,
+      232.82
+     ]
+    },
+    "score_mix@2": {
+     "value": -540.0,
+     "ci": [
+      -1096.52,
+      -272.45
+     ]
+    },
+    "score_bal@2": {
+     "value": -224.72,
+     "ci": [
+      -300.84,
+      -144.56
+     ]
+    },
+    "score_mix@3.5": {
+     "value": -637.5,
+     "ci": [
+      -1292.02,
+      -330.59
+     ]
+    },
+    "score_bal@3.5": {
+     "value": -268.06,
+     "ci": [
+      -348.38,
+      -184.08
+     ]
+    }
+   },
+   "counts": {
+    "pass": 39,
+    "bare": 20,
+    "miss": 5,
+    "partial": 26,
+    "benign_routine": 11,
+    "benign_escalated": 29,
+    "not_scored": 20,
+    "partial_inlist": 22,
+    "partial_offlist": 4
+   },
+   "offlist_partials": [
+    {
+     "code": "C770",
+     "group": "Secondary and unspecified malignant neoplasm of lymph nodes",
+     "truth": "Spontaneous rib fracture",
+     "n": 1
+    },
+    {
+     "code": "C029",
+     "group": "Malignant neoplasm of other and unspecified parts of tongue",
+     "truth": "Scombroid food poisoning",
+     "n": 1
+    },
+    {
+     "code": "B19",
+     "group": "Unspecified viral hepatitis",
+     "truth": "HIV (initial infection)",
+     "n": 1
+    },
+    {
+     "code": "C039",
+     "group": "Malignant neoplasm of gum",
+     "truth": "Chagas",
+     "n": 1
+    }
+   ],
+   "draft3": {
+    "score": {
+     "value": -60.0,
+     "ci": [
+      -189.29,
+      18.0
+     ]
+    },
+    "U": {
+     "value": 5.56,
+     "ci": [
+      1.05,
+      11.77
+     ]
+    },
+    "O": {
+     "value": 72.5,
+     "ci": [
+      53.85,
+      87.8
+     ]
+    },
+    "esc": {
+     "value": 88.67,
+     "ci": [
+      81.82,
+      94.41
+     ]
+    }
+   }
+  },
+  "meta-llama/llama-3.1-8b-instruct|v7a3": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "arm": "v7a3",
+   "arm_label": "3",
+   "file": "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a3.json",
+   "measures": {
+    "score_mix": {
+     "value": -630.0,
+     "ci": [
+      -1246.21,
+      -316.12
+     ]
+    },
+    "score_bal": {
+     "value": -249.44,
+     "ci": [
+      -329.68,
+      -171.05
+     ]
+    },
+    "U": {
+     "value": 40.0,
+     "ci": [
+      28.09,
+      52.18
+     ]
+    },
+    "O": {
+     "value": 45.0,
+     "ci": [
+      27.5,
+      63.41
+     ]
+    },
+    "partial": {
+     "value": 24.44,
+     "ci": [
+      14.29,
+      34.83
+     ]
+    },
+    "partial_inlist": {
+     "value": 15.56,
+     "ci": [
+      7.0,
+      25.27
+     ]
+    },
+    "partial_offlist": {
+     "value": 8.89,
+     "ci": [
+      3.16,
+      15.46
+     ]
+    },
+    "pass": {
+     "value": 35.56,
+     "ci": [
+      22.35,
+      50.0
+     ]
+    },
+    "bare": {
+     "value": 22.22,
+     "ci": [
+      11.76,
+      33.67
+     ]
+    },
+    "esc": {
+     "value": 73.33,
+     "ci": [
+      64.38,
+      82.43
+     ]
+    },
+    "cost": {
+     "value": 224.62,
+     "ci": [
+      163.41,
+      284.56
+     ]
+    },
+    "score_mix@2": {
+     "value": -685.0,
+     "ci": [
+      -1357.91,
+      -349.98
+     ]
+    },
+    "score_bal@2": {
+     "value": -273.89,
+     "ci": [
+      -354.51,
+      -194.3
+     ]
+    },
+    "score_mix@3.5": {
+     "value": -767.5,
+     "ci": [
+      -1525.17,
+      -398.24
+     ]
+    },
+    "score_bal@3.5": {
+     "value": -310.56,
+     "ci": [
+      -391.42,
+      -226.92
+     ]
+    }
+   },
+   "counts": {
+    "pass": 32,
+    "partial": 22,
+    "bare": 20,
+    "miss": 16,
+    "benign_routine": 22,
+    "benign_escalated": 18,
+    "not_scored": 20,
+    "partial_inlist": 14,
+    "partial_offlist": 8
+   },
+   "offlist_partials": [
+    {
+     "code": "C795",
+     "group": "Secondary malignant neoplasm of other and unspecified sites",
+     "truth": "Pancreatic neoplasm",
+     "n": 1
+    },
+    {
+     "code": "A392",
+     "group": "Meningococcal infection",
+     "truth": "Ebola",
+     "n": 1
+    },
+    {
+     "code": "C77",
+     "group": "Secondary and unspecified malignant neoplasm of lymph nodes",
+     "truth": "Spontaneous rib fracture",
+     "n": 1
+    },
+    {
+     "code": "K569",
+     "group": "Paralytic ileus and intestinal obstruction without hernia",
+     "truth": "Boerhaave",
+     "n": 1
+    },
+    {
+     "code": "B19",
+     "group": "Unspecified viral hepatitis",
+     "truth": "Ebola",
+     "n": 1
+    },
+    {
+     "code": "I630",
+     "group": "Cerebral infarction",
+     "truth": "Acute dystonic reactions",
+     "n": 1
+    },
+    {
+     "code": "E8810",
+     "group": "Other and unspecified metabolic disorders",
+     "truth": "Scombroid food poisoning",
+     "n": 1
+    },
+    {
+     "code": "C00-C14",
+     "group": "Malignant neoplasm of lip",
+     "truth": "Chagas",
+     "n": 1
+    }
+   ],
+   "draft3": {
+    "score": {
+     "value": -225.0,
+     "ci": [
+      -492.02,
+      -78.81
+     ]
+    },
+    "U": {
+     "value": 17.78,
+     "ci": [
+      9.67,
+      27.19
+     ]
+    },
+    "O": {
+     "value": 45.0,
+     "ci": [
+      27.5,
+      63.41
+     ]
+    },
+    "esc": {
+     "value": 73.33,
+     "ci": [
+      64.38,
+      82.43
+     ]
+    }
+   }
+  },
+  "meta-llama/llama-3.1-8b-instruct|v7a4a": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "arm": "v7a4a",
+   "arm_label": "4a",
+   "file": "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a4a.json",
+   "measures": {
+    "score_mix": {
+     "value": -892.5,
+     "ci": [
+      -1870.38,
+      -435.18
+     ]
+    },
+    "score_bal": {
+     "value": -345.28,
+     "ci": [
+      -446.07,
+      -239.47
+     ]
+    },
+    "U": {
+     "value": 60.0,
+     "ci": [
+      44.44,
+      74.45
+     ]
+    },
+    "O": {
+     "value": 7.5,
+     "ci": [
+      0.0,
+      15.79
+     ]
+    },
+    "partial": {
+     "value": 17.78,
+     "ci": [
+      7.5,
+      29.69
+     ]
+    },
+    "partial_inlist": {
+     "value": 10.0,
+     "ci": [
+      3.3,
+      18.39
+     ]
+    },
+    "partial_offlist": {
+     "value": 7.78,
+     "ci": [
+      1.08,
+      16.47
+     ]
+    },
+    "pass": {
+     "value": 22.22,
+     "ci": [
+      9.52,
+      36.08
+     ]
+    },
+    "bare": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "esc": {
+     "value": 29.33,
+     "ci": [
+      19.88,
+      39.88
+     ]
+    },
+    "cost": {
+     "value": 305.38,
+     "ci": [
+      214.4,
+      395.87
+     ]
+    },
+    "score_mix@2": {
+     "value": -932.5,
+     "ci": [
+      -1937.05,
+      -467.18
+     ]
+    },
+    "score_bal@2": {
+     "value": -363.06,
+     "ci": [
+      -460.71,
+      -261.83
+     ]
+    },
+    "score_mix@3.5": {
+     "value": -992.5,
+     "ci": [
+      -2046.27,
+      -503.25
+     ]
+    },
+    "score_bal@3.5": {
+     "value": -389.72,
+     "ci": [
+      -480.37,
+      -290.56
+     ]
+    }
+   },
+   "counts": {
+    "miss": 54,
+    "partial": 16,
+    "pass": 20,
+    "benign_routine": 37,
+    "benign_escalated": 3,
+    "not_scored": 20,
+    "partial_inlist": 9,
+    "partial_offlist": 7
+   },
+   "offlist_partials": [
+    {
+     "code": "C730",
+     "group": "Malignant neoplasm of thyroid gland",
+     "truth": "Pancreatic neoplasm",
+     "n": 1
+    },
+    {
+     "code": "I630",
+     "group": "Cerebral infarction",
+     "truth": "Pulmonary embolism",
+     "n": 1
+    },
+    {
+     "code": "I639",
+     "group": "Cerebral infarction",
+     "truth": "Acute pulmonary edema",
+     "n": 1
+    },
+    {
+     "code": "C220",
+     "group": "Malignant neoplasm of liver and intrahepatic bile ducts",
+     "truth": "Pancreatic neoplasm",
+     "n": 1
+    },
+    {
+     "code": "I630",
+     "group": "Cerebral infarction",
+     "truth": "Acute pulmonary edema",
+     "n": 1
+    },
+    {
+     "code": "I632",
+     "group": "Cerebral infarction",
+     "truth": "Anemia",
+     "n": 1
+    },
+    {
+     "code": "C790",
+     "group": "Secondary malignant neoplasm of other and unspecified sites",
+     "truth": "Pancreatic neoplasm",
+     "n": 1
+    }
+   ],
+   "draft3": {
+    "score": {
+     "value": -852.5,
+     "ci": [
+      -1803.45,
+      -410.04
+     ]
+    },
+    "U": {
+     "value": 60.0,
+     "ci": [
+      44.44,
+      74.45
+     ]
+    },
+    "O": {
+     "value": 7.5,
+     "ci": [
+      0.0,
+      15.79
+     ]
+    },
+    "esc": {
+     "value": 28.0,
+     "ci": [
+      18.47,
+      38.67
+     ]
+    }
+   },
+   "offlist_bounds": {
+    "escalate": {
+     "score_mix": {
+      "value": -297.5,
+      "ci": [
+       -644.1,
+       -145.25
+      ]
+     },
+     "score_bal": {
+      "value": -125.28,
+      "ci": [
+       -177.66,
+       -78.47
+      ]
+     },
+     "U": {
+      "value": 10.0,
+      "ci": [
+       3.61,
+       18.18
+      ]
+     },
+     "O": {
+      "value": 87.5,
+      "ci": [
+       69.44,
+       100.0
+      ]
+     }
+    },
+    "routine": {
+     "score_mix": {
+      "value": -997.5,
+      "ci": [
+       -2150.1,
+       -504.85
+      ]
+     },
+     "score_bal": {
+      "value": -391.94,
+      "ci": [
+       -492.61,
+       -283.14
+      ]
+     },
+     "U": {
+      "value": 67.78,
+      "ci": [
+       52.17,
+       82.22
+      ]
+     },
+     "O": {
+      "value": 7.5,
+      "ci": [
+       0.0,
+       15.79
+      ]
+     }
+    }
+   }
+  },
+  "meta-llama/llama-3.1-8b-instruct|v7a4b": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "arm": "v7a4b",
+   "arm_label": "4b",
+   "file": "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a4b.json",
+   "measures": {
+    "score_mix": {
+     "value": -767.5,
+     "ci": [
+      -1589.36,
+      -382.38
+     ]
+    },
+    "score_bal": {
+     "value": -296.67,
+     "ci": [
+      -386.37,
+      -205.46
+     ]
+    },
+    "U": {
+     "value": 50.0,
+     "ci": [
+      35.96,
+      63.51
+     ]
+    },
+    "O": {
+     "value": 20.0,
+     "ci": [
+      5.26,
+      36.67
+     ]
+    },
+    "partial": {
+     "value": 26.67,
+     "ci": [
+      16.48,
+      37.78
+     ]
+    },
+    "partial_inlist": {
+     "value": 18.89,
+     "ci": [
+      10.67,
+      27.28
+     ]
+    },
+    "partial_offlist": {
+     "value": 7.78,
+     "ci": [
+      1.27,
+      15.38
+     ]
+    },
+    "pass": {
+     "value": 23.33,
+     "ci": [
+      11.76,
+      36.77
+     ]
+    },
+    "bare": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "esc": {
+     "value": 40.0,
+     "ci": [
+      28.96,
+      51.35
+     ]
+    },
+    "cost": {
+     "value": 266.92,
+     "ci": [
+      194.07,
+      344.26
+     ]
+    },
+    "score_mix@2": {
+     "value": -827.5,
+     "ci": [
+      -1704.93,
+      -424.94
+     ]
+    },
+    "score_bal@2": {
+     "value": -323.33,
+     "ci": [
+      -407.52,
+      -236.31
+     ]
+    },
+    "score_mix@3.5": {
+     "value": -917.5,
+     "ci": [
+      -1867.97,
+      -477.24
+     ]
+    },
+    "score_bal@3.5": {
+     "value": -363.33,
+     "ci": [
+      -443.54,
+      -275.01
+     ]
+    }
+   },
+   "counts": {
+    "pass": 21,
+    "miss": 45,
+    "partial": 24,
+    "benign_routine": 32,
+    "benign_escalated": 8,
+    "not_scored": 20,
+    "partial_inlist": 17,
+    "partial_offlist": 7
+   },
+   "offlist_partials": [
+    {
+     "code": "C793",
+     "group": "Secondary malignant neoplasm of other and unspecified sites",
+     "truth": "Pancreatic neoplasm",
+     "n": 1
+    },
+    {
+     "code": "C43",
+     "group": "Malignant melanoma of skin",
+     "truth": "Pneumonia",
+     "n": 1
+    },
+    {
+     "code": "E11",
+     "group": "Type 2 diabetes mellitus",
+     "truth": "Pancreatic neoplasm",
+     "n": 1
+    },
+    {
+     "code": "B19",
+     "group": "Unspecified viral hepatitis",
+     "truth": "Ebola",
+     "n": 1
+    },
+    {
+     "code": "I630",
+     "group": "Cerebral infarction",
+     "truth": "PSVT",
+     "n": 1
+    },
+    {
+     "code": "K35",
+     "group": "Acute appendicitis",
+     "truth": "Pancreatic neoplasm",
+     "n": 1
+    },
+    {
+     "code": "C690",
+     "group": "Malignant neoplasm of eye and adnexa",
+     "truth": "Chagas",
+     "n": 1
+    }
+   ],
+   "draft3": {
+    "score": {
+     "value": -760.0,
+     "ci": [
+      -1622.47,
+      -373.2
+     ]
+    },
+    "U": {
+     "value": 53.33,
+     "ci": [
+      40.45,
+      66.68
+     ]
+    },
+    "O": {
+     "value": 20.0,
+     "ci": [
+      5.26,
+      36.67
+     ]
+    },
+    "esc": {
+     "value": 36.0,
+     "ci": [
+      25.49,
+      46.54
+     ]
+    }
+   },
+   "offlist_bounds": {
+    "escalate": {
+     "score_mix": {
+      "value": -295.0,
+      "ci": [
+       -638.14,
+       -138.62
+      ]
+     },
+     "score_bal": {
+      "value": -107.5,
+      "ci": [
+       -156.26,
+       -63.2
+      ]
+     },
+     "U": {
+      "value": 12.22,
+      "ci": [
+       6.25,
+       19.51
+      ]
+     },
+     "O": {
+      "value": 57.5,
+      "ci": [
+       38.23,
+       76.0
+      ]
+     }
+    },
+    "routine": {
+     "score_mix": {
+      "value": -872.5,
+      "ci": [
+       -1832.03,
+       -440.81
+      ]
+     },
+     "score_bal": {
+      "value": -343.33,
+      "ci": [
+       -432.35,
+       -250.19
+      ]
+     },
+     "U": {
+      "value": 57.78,
+      "ci": [
+       43.43,
+       71.25
+      ]
+     },
+     "O": {
+      "value": 20.0,
+      "ci": [
+       5.26,
+       36.67
+      ]
+     }
+    }
+   }
+  },
+  "openai/gpt-5.6-terra|v7a1": {
+   "model": "openai/gpt-5.6-terra",
+   "arm": "v7a1",
+   "arm_label": "1",
+   "file": "results/v03/ab/runs/openai-gpt-5.6-terra-v7a1.json",
+   "measures": {
+    "score_mix": {
+     "value": -72.5,
+     "ci": [
+      -192.61,
+      -2.56
+     ]
+    },
+    "score_bal": {
+     "value": -10.0,
+     "ci": [
+      -52.32,
+      26.68
+     ]
+    },
+    "U": {
+     "value": 4.44,
+     "ci": [
+      0.0,
+      10.53
+     ]
+    },
+    "O": {
+     "value": 60.0,
+     "ci": [
+      36.11,
+      83.33
+     ]
+    },
+    "partial": {
+     "value": 18.89,
+     "ci": [
+      9.47,
+      30.44
+     ]
+    },
+    "partial_inlist": {
+     "value": 12.22,
+     "ci": [
+      4.08,
+      23.17
+     ]
+    },
+    "partial_offlist": {
+     "value": 6.67,
+     "ci": [
+      1.3,
+      13.51
+     ]
+    },
+    "pass": {
+     "value": 76.67,
+     "ci": [
+      64.47,
+      86.46
+     ]
+    },
+    "bare": {
+     "value": 1.11,
+     "ci": [
+      0.0,
+      4.0
+     ]
+    },
+    "esc": {
+     "value": 87.33,
+     "ci": [
+      78.67,
+      95.3
+     ]
+    },
+    "cost": {
+     "value": 53.08,
+     "ci": [
+      30.82,
+      80.15
+     ]
+    },
+    "score_mix@2": {
+     "value": -115.0,
+     "ci": [
+      -254.84,
+      -33.98
+     ]
+    },
+    "score_bal@2": {
+     "value": -28.89,
+     "ci": [
+      -74.31,
+      11.78
+     ]
+    },
+    "score_mix@3.5": {
+     "value": -178.75,
+     "ci": [
+      -378.16,
+      -72.22
+     ]
+    },
+    "score_bal@3.5": {
+     "value": -57.22,
+     "ci": [
+      -112.38,
+      -9.93
+     ]
+    }
+   },
+   "counts": {
+    "pass": 69,
+    "miss": 3,
+    "partial": 17,
+    "benign_routine": 16,
+    "benign_escalated": 24,
+    "not_scored": 20,
+    "bare": 1,
+    "partial_inlist": 11,
+    "partial_offlist": 6
+   },
+   "offlist_partials": [
+    {
+     "code": "I639",
+     "group": "Cerebral infarction",
+     "truth": "Myasthenia gravis",
+     "n": 2
+    },
+    {
+     "code": "C189",
+     "group": "Malignant neoplasm of colon",
+     "truth": "Pancreatic neoplasm",
+     "n": 1
+    },
+    {
+     "code": "C189",
+     "group": "Malignant neoplasm of colon",
+     "truth": "Anemia",
+     "n": 1
+    },
+    {
+     "code": "K8520",
+     "group": "Acute pancreatitis",
+     "truth": "GERD",
+     "n": 1
+    },
+    {
+     "code": "C8590",
+     "group": "Other specified and unspecified types of non-Hodgkin lymphoma",
+     "truth": "Chagas",
+     "n": 1
+    }
+   ],
+   "draft3": {
+    "score": {
+     "value": -12.5,
+     "ci": [
+      -100.0,
+      47.83
+     ]
+    },
+    "U": {
+     "value": 3.33,
+     "ci": [
+      0.0,
+      8.64
+     ]
+    },
+    "O": {
+     "value": 60.0,
+     "ci": [
+      36.11,
+      83.33
+     ]
+    },
+    "esc": {
+     "value": 87.33,
+     "ci": [
+      78.67,
+      95.3
+     ]
+    }
+   }
+  },
+  "openai/gpt-5.6-terra|v7a2": {
+   "model": "openai/gpt-5.6-terra",
+   "arm": "v7a2",
+   "arm_label": "2",
+   "file": "results/v03/ab/runs/openai-gpt-5.6-terra-v7a2.json",
+   "measures": {
+    "score_mix": {
+     "value": -57.5,
+     "ci": [
+      -173.69,
+      11.11
+     ]
+    },
+    "score_bal": {
+     "value": 0.83,
+     "ci": [
+      -36.61,
+      35.32
+     ]
+    },
+    "U": {
+     "value": 4.44,
+     "ci": [
+      0.0,
+      10.53
+     ]
+    },
+    "O": {
+     "value": 52.5,
+     "ci": [
+      30.3,
+      75.0
+     ]
+    },
+    "partial": {
+     "value": 15.56,
+     "ci": [
+      7.5,
+      25.51
+     ]
+    },
+    "partial_inlist": {
+     "value": 11.11,
+     "ci": [
+      3.88,
+      20.79
+     ]
+    },
+    "partial_offlist": {
+     "value": 4.44,
+     "ci": [
+      1.02,
+      8.97
+     ]
+    },
+    "pass": {
+     "value": 80.0,
+     "ci": [
+      69.47,
+      89.01
+     ]
+    },
+    "bare": {
+     "value": 3.33,
+     "ci": [
+      0.0,
+      7.53
+     ]
+    },
+    "esc": {
+     "value": 86.67,
+     "ci": [
+      78.08,
+      94.63
+     ]
+    },
+    "cost": {
+     "value": 48.46,
+     "ci": [
+      27.34,
+      73.61
+     ]
+    },
+    "score_mix@2": {
+     "value": -92.5,
+     "ci": [
+      -234.39,
+      -12.95
+     ]
+    },
+    "score_bal@2": {
+     "value": -14.72,
+     "ci": [
+      -55.51,
+      22.09
+     ]
+    },
+    "score_mix@3.5": {
+     "value": -145.0,
+     "ci": [
+      -337.53,
+      -44.0
+     ]
+    },
+    "score_bal@3.5": {
+     "value": -38.06,
+     "ci": [
+      -86.35,
+      5.13
+     ]
+    }
+   },
+   "counts": {
+    "pass": 72,
+    "bare": 3,
+    "partial": 14,
+    "benign_routine": 19,
+    "benign_escalated": 21,
+    "not_scored": 20,
+    "miss": 1,
+    "partial_inlist": 10,
+    "partial_offlist": 4
+   },
+   "offlist_partials": [
+    {
+     "code": "K920",
+     "group": "Other diseases of digestive system",
+     "truth": "Boerhaave",
+     "n": 1
+    },
+    {
+     "code": "K859",
+     "group": "Acute pancreatitis",
+     "truth": "Pancreatic neoplasm",
+     "n": 1
+    },
+    {
+     "code": "C189",
+     "group": "Malignant neoplasm of colon",
+     "truth": "Anemia",
+     "n": 1
+    },
+    {
+     "code": "C859",
+     "group": "Other specified and unspecified types of non-Hodgkin lymphoma",
+     "truth": "Chagas",
+     "n": 1
+    }
+   ],
+   "draft3": {
+    "score": {
+     "value": 30.0,
+     "ci": [
+      -2.0,
+      59.46
+     ]
+    },
+    "U": {
+     "value": 1.11,
+     "ci": [
+      0.0,
+      3.49
+     ]
+    },
+    "O": {
+     "value": 52.5,
+     "ci": [
+      30.3,
+      75.0
+     ]
+    },
+    "esc": {
+     "value": 86.67,
+     "ci": [
+      78.08,
+      94.63
+     ]
+    }
+   }
+  },
+  "openai/gpt-5.6-terra|v7a3": {
+   "model": "openai/gpt-5.6-terra",
+   "arm": "v7a3",
+   "arm_label": "3",
+   "file": "results/v03/ab/runs/openai-gpt-5.6-terra-v7a3.json",
+   "measures": {
+    "score_mix": {
+     "value": -130.0,
+     "ci": [
+      -259.26,
+      -46.87
+     ]
+    },
+    "score_bal": {
+     "value": -55.0,
+     "ci": [
+      -101.54,
+      -18.17
+     ]
+    },
+    "U": {
+     "value": 6.67,
+     "ci": [
+      1.15,
+      13.58
+     ]
+    },
+    "O": {
+     "value": 95.0,
+     "ci": [
+      87.5,
+      100.0
+     ]
+    },
+    "partial": {
+     "value": 13.33,
+     "ci": [
+      5.56,
+      22.98
+     ]
+    },
+    "partial_inlist": {
+     "value": 10.0,
+     "ci": [
+      2.88,
+      19.36
+     ]
+    },
+    "partial_offlist": {
+     "value": 3.33,
+     "ci": [
+      0.0,
+      7.22
+     ]
+    },
+    "pass": {
+     "value": 80.0,
+     "ci": [
+      68.89,
+      89.47
+     ]
+    },
+    "bare": {
+     "value": 6.67,
+     "ci": [
+      1.15,
+      13.58
+     ]
+    },
+    "esc": {
+     "value": 98.67,
+     "ci": [
+      96.6,
+      100.0
+     ]
+    },
+    "cost": {
+     "value": 70.77,
+     "ci": [
+      40.6,
+      103.18
+     ]
+    },
+    "score_mix@2": {
+     "value": -160.0,
+     "ci": [
+      -307.72,
+      -67.46
+     ]
+    },
+    "score_bal@2": {
+     "value": -68.33,
+     "ci": [
+      -116.33,
+      -27.95
+     ]
+    },
+    "score_mix@3.5": {
+     "value": -205.0,
+     "ci": [
+      -398.16,
+      -91.99
+     ]
+    },
+    "score_bal@3.5": {
+     "value": -88.33,
+     "ci": [
+      -144.14,
+      -41.71
+     ]
+    }
+   },
+   "counts": {
+    "pass": 72,
+    "bare": 6,
+    "partial": 12,
+    "benign_routine": 2,
+    "benign_escalated": 38,
+    "not_scored": 20,
+    "partial_inlist": 9,
+    "partial_offlist": 3
+   },
+   "offlist_partials": [
+    {
+     "code": "K920",
+     "group": "Other diseases of digestive system",
+     "truth": "Boerhaave",
+     "n": 1
+    },
+    {
+     "code": "K859",
+     "group": "Acute pancreatitis",
+     "truth": "Pancreatic neoplasm",
+     "n": 1
+    },
+    {
+     "code": "C859",
+     "group": "Other specified and unspecified types of non-Hodgkin lymphoma",
+     "truth": "Chagas",
+     "n": 1
+    }
+   ],
+   "draft3": {
+    "score": {
+     "value": 5.0,
+     "ci": [
+      0.0,
+      12.5
+     ]
+    },
+    "U": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "O": {
+     "value": 95.0,
+     "ci": [
+      87.5,
+      100.0
+     ]
+    },
+    "esc": {
+     "value": 98.67,
+     "ci": [
+      96.6,
+      100.0
+     ]
+    }
+   }
+  },
+  "openai/gpt-5.6-terra|v7a4a": {
+   "model": "openai/gpt-5.6-terra",
+   "arm": "v7a4a",
+   "arm_label": "4a",
+   "file": "results/v03/ab/runs/openai-gpt-5.6-terra-v7a4a.json",
+   "measures": {
+    "score_mix": {
+     "value": -220.0,
+     "ci": [
+      -537.06,
+      -68.88
+     ]
+    },
+    "score_bal": {
+     "value": -60.28,
+     "ci": [
+      -132.85,
+      -2.03
+     ]
+    },
+    "U": {
+     "value": 14.44,
+     "ci": [
+      6.59,
+      25.0
+     ]
+    },
+    "O": {
+     "value": 32.5,
+     "ci": [
+      11.11,
+      55.27
+     ]
+    },
+    "partial": {
+     "value": 26.67,
+     "ci": [
+      15.29,
+      39.76
+     ]
+    },
+    "partial_inlist": {
+     "value": 22.22,
+     "ci": [
+      11.11,
+      35.37
+     ]
+    },
+    "partial_offlist": {
+     "value": 4.44,
+     "ci": [
+      1.03,
+      9.41
+     ]
+    },
+    "pass": {
+     "value": 58.89,
+     "ci": [
+      44.71,
+      71.43
+     ]
+    },
+    "bare": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "esc": {
+     "value": 67.33,
+     "ci": [
+      56.0,
+      77.85
+     ]
+    },
+    "cost": {
+     "value": 98.46,
+     "ci": [
+      60.56,
+      147.59
+     ]
+    },
+    "score_mix@2": {
+     "value": -280.0,
+     "ci": [
+      -633.36,
+      -112.72
+     ]
+    },
+    "score_bal@2": {
+     "value": -86.94,
+     "ci": [
+      -160.72,
+      -25.24
+     ]
+    },
+    "score_mix@3.5": {
+     "value": -370.0,
+     "ci": [
+      -787.05,
+      -172.94
+     ]
+    },
+    "score_bal@3.5": {
+     "value": -126.94,
+     "ci": [
+      -206.16,
+      -60.01
+     ]
+    }
+   },
+   "counts": {
+    "pass": 53,
+    "partial": 24,
+    "miss": 13,
+    "benign_routine": 27,
+    "benign_escalated": 13,
+    "not_scored": 20,
+    "partial_inlist": 20,
+    "partial_offlist": 4
+   },
+   "offlist_partials": [
+    {
+     "code": "I609",
+     "group": "Nontraumatic subarachnoid hemorrhage",
+     "truth": "PSVT",
+     "n": 1
+    },
+    {
+     "code": "K922",
+     "group": "Other diseases of digestive system",
+     "truth": "Anemia",
+     "n": 1
+    },
+    {
+     "code": "K852",
+     "group": "Acute pancreatitis",
+     "truth": "GERD",
+     "n": 1
+    },
+    {
+     "code": "C8591",
+     "group": "Other specified and unspecified types of non-Hodgkin lymphoma",
+     "truth": "Chagas",
+     "n": 1
+    }
+   ],
+   "draft3": {
+    "score": {
+     "value": -195.0,
+     "ci": [
+      -496.31,
+      -50.0
+     ]
+    },
+    "U": {
+     "value": 16.67,
+     "ci": [
+      8.42,
+      27.45
+     ]
+    },
+    "O": {
+     "value": 32.5,
+     "ci": [
+      11.11,
+      55.27
+     ]
+    },
+    "esc": {
+     "value": 65.33,
+     "ci": [
+      53.55,
+      76.47
+     ]
+    }
+   },
+   "offlist_bounds": {
+    "escalate": {
+     "score_mix": {
+      "value": -182.5,
+      "ci": [
+       -462.1,
+       -44.12
+      ]
+     },
+     "score_bal": {
+      "value": -47.78,
+      "ci": [
+       -123.77,
+       7.7
+      ]
+     },
+     "U": {
+      "value": 11.11,
+      "ci": [
+       3.41,
+       21.57
+      ]
+     },
+     "O": {
+      "value": 40.0,
+      "ci": [
+       19.44,
+       63.16
+      ]
+     }
+    },
+    "routine": {
+     "score_mix": {
+      "value": -277.5,
+      "ci": [
+       -633.33,
+       -106.0
+      ]
+     },
+     "score_bal": {
+      "value": -84.44,
+      "ci": [
+       -162.81,
+       -25.37
+      ]
+     },
+     "U": {
+      "value": 18.89,
+      "ci": [
+       10.11,
+       30.26
+      ]
+     },
+     "O": {
+      "value": 30.0,
+      "ci": [
+       8.57,
+       53.57
+      ]
+     }
+    }
+   }
+  },
+  "openai/gpt-5.6-terra|v7a4b": {
+   "model": "openai/gpt-5.6-terra",
+   "arm": "v7a4b",
+   "arm_label": "4b",
+   "file": "results/v03/ab/runs/openai-gpt-5.6-terra-v7a4b.json",
+   "measures": {
+    "score_mix": {
+     "value": -192.5,
+     "ci": [
+      -475.87,
+      -59.6
+     ]
+    },
+    "score_bal": {
+     "value": -46.67,
+     "ci": [
+      -117.32,
+      6.07
+     ]
+    },
+    "U": {
+     "value": 11.11,
+     "ci": [
+      4.08,
+      20.64
+     ]
+    },
+    "O": {
+     "value": 30.0,
+     "ci": [
+      11.11,
+      52.09
+     ]
+    },
+    "partial": {
+     "value": 38.89,
+     "ci": [
+      25.0,
+      54.55
+     ]
+    },
+    "partial_inlist": {
+     "value": 30.0,
+     "ci": [
+      17.02,
+      45.95
+     ]
+    },
+    "partial_offlist": {
+     "value": 8.89,
+     "ci": [
+      3.16,
+      15.79
+     ]
+    },
+    "pass": {
+     "value": 50.0,
+     "ci": [
+      34.25,
+      64.48
+     ]
+    },
+    "bare": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "esc": {
+     "value": 69.33,
+     "ci": [
+      58.22,
+      79.73
+     ]
+    },
+    "cost": {
+     "value": 90.0,
+     "ci": [
+      56.45,
+      135.04
+     ]
+    },
+    "score_mix@2": {
+     "value": -280.0,
+     "ci": [
+      -613.73,
+      -119.02
+     ]
+    },
+    "score_bal@2": {
+     "value": -85.56,
+     "ci": [
+      -157.09,
+      -29.84
+     ]
+    },
+    "score_mix@3.5": {
+     "value": -411.25,
+     "ci": [
+      -860.04,
+      -204.75
+     ]
+    },
+    "score_bal@3.5": {
+     "value": -143.89,
+     "ci": [
+      -221.46,
+      -77.89
+     ]
+    }
+   },
+   "counts": {
+    "pass": 45,
+    "partial": 35,
+    "miss": 10,
+    "benign_routine": 28,
+    "benign_escalated": 12,
+    "not_scored": 20,
+    "partial_inlist": 27,
+    "partial_offlist": 8
+   },
+   "offlist_partials": [
+    {
+     "code": "I609",
+     "group": "Nontraumatic subarachnoid hemorrhage",
+     "truth": "PSVT",
+     "n": 1
+    },
+    {
+     "code": "K922",
+     "group": "Other diseases of digestive system",
+     "truth": "Boerhaave",
+     "n": 1
+    },
+    {
+     "code": "I7101",
+     "group": "Aortic aneurysm and dissection",
+     "truth": "Spontaneous pneumothorax",
+     "n": 1
+    },
+    {
+     "code": "I639",
+     "group": "Cerebral infarction",
+     "truth": "Guillain-Barr\u00e9 syndrome",
+     "n": 1
+    },
+    {
+     "code": "K852",
+     "group": "Acute pancreatitis",
+     "truth": "GERD",
+     "n": 1
+    },
+    {
+     "code": "C189",
+     "group": "Malignant neoplasm of colon",
+     "truth": "Anemia",
+     "n": 1
+    },
+    {
+     "code": "I7100",
+     "group": "Aortic aneurysm and dissection",
+     "truth": "Boerhaave",
+     "n": 1
+    },
+    {
+     "code": "C859",
+     "group": "Other specified and unspecified types of non-Hodgkin lymphoma",
+     "truth": "Chagas",
+     "n": 1
+    }
+   ],
+   "draft3": {
+    "score": {
+     "value": -140.0,
+     "ci": [
+      -400.12,
+      -9.83
+     ]
+    },
+    "U": {
+     "value": 13.33,
+     "ci": [
+      6.17,
+      22.92
+     ]
+    },
+    "O": {
+     "value": 30.0,
+     "ci": [
+      11.11,
+      52.09
+     ]
+    },
+    "esc": {
+     "value": 68.0,
+     "ci": [
+      56.49,
+      78.43
+     ]
+    }
+   },
+   "offlist_bounds": {
+    "escalate": {
+     "score_mix": {
+      "value": -167.5,
+      "ci": [
+       -414.31,
+       -43.1
+      ]
+     },
+     "score_bal": {
+      "value": -38.33,
+      "ci": [
+       -108.28,
+       12.75
+      ]
+     },
+     "U": {
+      "value": 8.89,
+      "ci": [
+       2.25,
+       18.28
+      ]
+     },
+     "O": {
+      "value": 35.0,
+      "ci": [
+       14.58,
+       57.14
+      ]
+     }
+    },
+    "routine": {
+     "score_mix": {
+      "value": -312.5,
+      "ci": [
+       -700.0,
+       -130.76
+      ]
+     },
+     "score_bal": {
+      "value": -100.0,
+      "ci": [
+       -173.35,
+       -37.78
+      ]
+     },
+     "U": {
+      "value": 20.0,
+      "ci": [
+       11.11,
+       30.78
+      ]
+     },
+     "O": {
+      "value": 30.0,
+      "ci": [
+       11.11,
+       52.09
+      ]
+     }
+    }
+   }
+  },
+  "openai/gpt-oss-120b|v7a1": {
+   "model": "openai/gpt-oss-120b",
+   "arm": "v7a1",
+   "arm_label": "1",
+   "file": "results/v03/ab/runs/openai-gpt-oss-120b-v7a1.json",
+   "measures": {
+    "score_mix": {
+     "value": -87.5,
+     "ci": [
+      -227.59,
+      -13.55
+     ]
+    },
+    "score_bal": {
+     "value": -20.83,
+     "ci": [
+      -58.07,
+      12.75
+     ]
+    },
+    "U": {
+     "value": 4.44,
+     "ci": [
+      1.01,
+      9.0
+     ]
+    },
+    "O": {
+     "value": 67.5,
+     "ci": [
+      48.48,
+      83.67
+     ]
+    },
+    "partial": {
+     "value": 22.22,
+     "ci": [
+      12.16,
+      33.33
+     ]
+    },
+    "partial_inlist": {
+     "value": 18.89,
+     "ci": [
+      9.21,
+      29.86
+     ]
+    },
+    "partial_offlist": {
+     "value": 3.33,
+     "ci": [
+      0.0,
+      7.69
+     ]
+    },
+    "pass": {
+     "value": 73.33,
+     "ci": [
+      62.1,
+      83.52
+     ]
+    },
+    "bare": {
+     "value": 1.11,
+     "ci": [
+      0.0,
+      4.0
+     ]
+    },
+    "esc": {
+     "value": 89.33,
+     "ci": [
+      82.61,
+      94.77
+     ]
+    },
+    "cost": {
+     "value": 57.69,
+     "ci": [
+      36.84,
+      81.03
+     ]
+    },
+    "score_mix@2": {
+     "value": -137.5,
+     "ci": [
+      -313.34,
+      -45.3
+     ]
+    },
+    "score_bal@2": {
+     "value": -43.06,
+     "ci": [
+      -82.26,
+      -5.69
+     ]
+    },
+    "score_mix@3.5": {
+     "value": -212.5,
+     "ci": [
+      -456.53,
+      -88.88
+     ]
+    },
+    "score_bal@3.5": {
+     "value": -76.39,
+     "ci": [
+      -126.66,
+      -30.67
+     ]
+    }
+   },
+   "counts": {
+    "pass": 66,
+    "miss": 3,
+    "partial": 20,
+    "benign_routine": 13,
+    "benign_escalated": 27,
+    "not_scored": 20,
+    "bare": 1,
+    "partial_inlist": 17,
+    "partial_offlist": 3
+   },
+   "offlist_partials": [
+    {
+     "code": "K922",
+     "group": "Other diseases of digestive system",
+     "truth": "Anemia",
+     "n": 1
+    },
+    {
+     "code": "I609",
+     "group": "Nontraumatic subarachnoid hemorrhage",
+     "truth": "PSVT",
+     "n": 1
+    },
+    {
+     "code": "C859",
+     "group": "Other specified and unspecified types of non-Hodgkin lymphoma",
+     "truth": "Chagas",
+     "n": 1
+    }
+   ],
+   "draft3": {
+    "score": {
+     "value": -20.0,
+     "ci": [
+      -120.85,
+      35.49
+     ]
+    },
+    "U": {
+     "value": 3.33,
+     "ci": [
+      0.0,
+      7.29
+     ]
+    },
+    "O": {
+     "value": 67.5,
+     "ci": [
+      48.48,
+      83.67
+     ]
+    },
+    "esc": {
+     "value": 89.33,
+     "ci": [
+      82.61,
+      94.77
+     ]
+    }
+   }
+  },
+  "openai/gpt-oss-120b|v7a2": {
+   "model": "openai/gpt-oss-120b",
+   "arm": "v7a2",
+   "arm_label": "2",
+   "file": "results/v03/ab/runs/openai-gpt-oss-120b-v7a2.json",
+   "measures": {
+    "score_mix": {
+     "value": -70.0,
+     "ci": [
+      -193.34,
+      -4.35
+     ]
+    },
+    "score_bal": {
+     "value": -6.11,
+     "ci": [
+      -37.56,
+      23.76
+     ]
+    },
+    "U": {
+     "value": 4.44,
+     "ci": [
+      1.03,
+      8.86
+     ]
+    },
+    "O": {
+     "value": 55.0,
+     "ci": [
+      34.62,
+      75.0
+     ]
+    },
+    "partial": {
+     "value": 20.0,
+     "ci": [
+      10.0,
+      30.95
+     ]
+    },
+    "partial_inlist": {
+     "value": 15.56,
+     "ci": [
+      6.32,
+      26.47
+     ]
+    },
+    "partial_offlist": {
+     "value": 4.44,
+     "ci": [
+      0.99,
+      9.47
+     ]
+    },
+    "pass": {
+     "value": 75.56,
+     "ci": [
+      64.63,
+      85.23
+     ]
+    },
+    "bare": {
+     "value": 1.11,
+     "ci": [
+      0.0,
+      3.67
+     ]
+    },
+    "esc": {
+     "value": 85.33,
+     "ci": [
+      77.42,
+      93.01
+     ]
+    },
+    "cost": {
+     "value": 52.31,
+     "ci": [
+      33.86,
+      71.74
+     ]
+    },
+    "score_mix@2": {
+     "value": -115.0,
+     "ci": [
+      -268.98,
+      -32.2
+     ]
+    },
+    "score_bal@2": {
+     "value": -26.11,
+     "ci": [
+      -59.67,
+      6.63
+     ]
+    },
+    "score_mix@3.5": {
+     "value": -182.5,
+     "ci": [
+      -393.11,
+      -72.43
+     ]
+    },
+    "score_bal@3.5": {
+     "value": -56.11,
+     "ci": [
+      -98.78,
+      -13.48
+     ]
+    }
+   },
+   "counts": {
+    "pass": 68,
+    "partial": 18,
+    "bare": 1,
+    "miss": 3,
+    "benign_routine": 18,
+    "benign_escalated": 22,
+    "not_scored": 20,
+    "partial_inlist": 14,
+    "partial_offlist": 4
+   },
+   "offlist_partials": [
+    {
+     "code": "K81",
+     "group": "Cholecystitis",
+     "truth": "Pancreatic neoplasm",
+     "n": 1
+    },
+    {
+     "code": "K922",
+     "group": "Other diseases of digestive system",
+     "truth": "Anemia",
+     "n": 1
+    },
+    {
+     "code": "B182",
+     "group": "Chronic viral hepatitis C",
+     "truth": "HIV (initial infection)",
+     "n": 1
+    },
+    {
+     "code": "C859",
+     "group": "Other specified and unspecified types of non-Hodgkin lymphoma",
+     "truth": "Chagas",
+     "n": 1
+    }
+   ],
+   "draft3": {
+    "score": {
+     "value": -7.5,
+     "ci": [
+      -84.37,
+      43.6
+     ]
+    },
+    "U": {
+     "value": 3.33,
+     "ci": [
+      0.0,
+      7.37
+     ]
+    },
+    "O": {
+     "value": 55.0,
+     "ci": [
+      34.62,
+      75.0
+     ]
+    },
+    "esc": {
+     "value": 85.33,
+     "ci": [
+      77.42,
+      93.01
+     ]
+    }
+   }
+  },
+  "openai/gpt-oss-120b|v7a3": {
+   "model": "openai/gpt-oss-120b",
+   "arm": "v7a3",
+   "arm_label": "3",
+   "file": "results/v03/ab/runs/openai-gpt-oss-120b-v7a3.json",
+   "measures": {
+    "score_mix": {
+     "value": -52.5,
+     "ci": [
+      -139.13,
+      -10.81
+     ]
+    },
+    "score_bal": {
+     "value": -12.22,
+     "ci": [
+      -32.43,
+      7.52
+     ]
+    },
+    "U": {
+     "value": 1.11,
+     "ci": [
+      0.0,
+      3.67
+     ]
+    },
+    "O": {
+     "value": 80.0,
+     "ci": [
+      67.74,
+      91.18
+     ]
+    },
+    "partial": {
+     "value": 24.44,
+     "ci": [
+      13.68,
+      35.97
+     ]
+    },
+    "partial_inlist": {
+     "value": 18.89,
+     "ci": [
+      8.89,
+      30.77
+     ]
+    },
+    "partial_offlist": {
+     "value": 5.56,
+     "ci": [
+      1.19,
+      10.96
+     ]
+    },
+    "pass": {
+     "value": 74.44,
+     "ci": [
+      62.82,
+      84.85
+     ]
+    },
+    "bare": {
+     "value": 1.11,
+     "ci": [
+      0.0,
+      3.67
+     ]
+    },
+    "esc": {
+     "value": 94.67,
+     "ci": [
+      90.57,
+      98.04
+     ]
+    },
+    "cost": {
+     "value": 46.92,
+     "ci": [
+      33.6,
+      60.63
+     ]
+    },
+    "score_mix@2": {
+     "value": -107.5,
+     "ci": [
+      -236.84,
+      -41.86
+     ]
+    },
+    "score_bal@2": {
+     "value": -36.67,
+     "ci": [
+      -63.34,
+      -10.42
+     ]
+    },
+    "score_mix@3.5": {
+     "value": -190.0,
+     "ci": [
+      -407.14,
+      -84.98
+     ]
+    },
+    "score_bal@3.5": {
+     "value": -73.33,
+     "ci": [
+      -114.64,
+      -35.42
+     ]
+    }
+   },
+   "counts": {
+    "pass": 67,
+    "partial": 22,
+    "bare": 1,
+    "benign_routine": 8,
+    "benign_escalated": 32,
+    "not_scored": 20,
+    "partial_inlist": 17,
+    "partial_offlist": 5
+   },
+   "offlist_partials": [
+    {
+     "code": "K810",
+     "group": "Cholecystitis",
+     "truth": "Pancreatic neoplasm",
+     "n": 1
+    },
+    {
+     "code": "I639",
+     "group": "Cerebral infarction",
+     "truth": "Myasthenia gravis",
+     "n": 1
+    },
+    {
+     "code": "K922",
+     "group": "Other diseases of digestive system",
+     "truth": "Anemia",
+     "n": 1
+    },
+    {
+     "code": "B182",
+     "group": "Chronic viral hepatitis C",
+     "truth": "HIV (initial infection)",
+     "n": 1
+    },
+    {
+     "code": "C859",
+     "group": "Other specified and unspecified types of non-Hodgkin lymphoma",
+     "truth": "Chagas",
+     "n": 1
+    }
+   ],
+   "draft3": {
+    "score": {
+     "value": 20.0,
+     "ci": [
+      8.82,
+      32.26
+     ]
+    },
+    "U": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "O": {
+     "value": 80.0,
+     "ci": [
+      67.74,
+      91.18
+     ]
+    },
+    "esc": {
+     "value": 94.67,
+     "ci": [
+      90.57,
+      98.04
+     ]
+    }
+   }
+  },
+  "openai/gpt-oss-120b|v7a4a": {
+   "model": "openai/gpt-oss-120b",
+   "arm": "v7a4a",
+   "arm_label": "4a",
+   "file": "results/v03/ab/runs/openai-gpt-oss-120b-v7a4a.json",
+   "measures": {
+    "score_mix": {
+     "value": -260.0,
+     "ci": [
+      -603.34,
+      -100.0
+     ]
+    },
+    "score_bal": {
+     "value": -87.78,
+     "ci": [
+      -153.25,
+      -31.22
+     ]
+    },
+    "U": {
+     "value": 14.44,
+     "ci": [
+      6.58,
+      24.18
+     ]
+    },
+    "O": {
+     "value": 50.0,
+     "ci": [
+      30.0,
+      70.84
+     ]
+    },
+    "partial": {
+     "value": 36.67,
+     "ci": [
+      23.17,
+      51.9
+     ]
+    },
+    "partial_inlist": {
+     "value": 23.33,
+     "ci": [
+      11.83,
+      37.09
+     ]
+    },
+    "partial_offlist": {
+     "value": 13.33,
+     "ci": [
+      5.19,
+      23.17
+     ]
+    },
+    "pass": {
+     "value": 48.89,
+     "ci": [
+      34.52,
+      62.35
+     ]
+    },
+    "bare": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "esc": {
+     "value": 73.33,
+     "ci": [
+      64.0,
+      82.43
+     ]
+    },
+    "cost": {
+     "value": 110.77,
+     "ci": [
+      73.02,
+      156.82
+     ]
+    },
+    "score_mix@2": {
+     "value": -342.5,
+     "ci": [
+      -725.99,
+      -159.59
+     ]
+    },
+    "score_bal@2": {
+     "value": -124.44,
+     "ci": [
+      -190.86,
+      -64.81
+     ]
+    },
+    "score_mix@3.5": {
+     "value": -466.25,
+     "ci": [
+      -963.07,
+      -231.7
+     ]
+    },
+    "score_bal@3.5": {
+     "value": -179.44,
+     "ci": [
+      -250.0,
+      -111.21
+     ]
+    }
+   },
+   "counts": {
+    "pass": 44,
+    "miss": 13,
+    "partial": 33,
+    "benign_routine": 20,
+    "benign_escalated": 20,
+    "not_scored": 20,
+    "partial_inlist": 21,
+    "partial_offlist": 12
+   },
+   "offlist_partials": [
+    {
+     "code": "I710",
+     "group": "Aortic aneurysm and dissection",
+     "truth": "Boerhaave",
+     "n": 3
+    },
+    {
+     "code": "A419",
+     "group": "Other sepsis",
+     "truth": "Ebola",
+     "n": 1
+    },
+    {
+     "code": "C320",
+     "group": "Malignant neoplasm of larynx",
+     "truth": "Larygospasm",
+     "n": 1
+    },
+    {
+     "code": "I710",
+     "group": "Aortic aneurysm and dissection",
+     "truth": "Spontaneous pneumothorax",
+     "n": 1
+    },
+    {
+     "code": "C189",
+     "group": "Malignant neoplasm of colon",
+     "truth": "Pancreatic neoplasm",
+     "n": 1
+    },
+    {
+     "code": "I639",
+     "group": "Cerebral infarction",
+     "truth": "Guillain-Barr\u00e9 syndrome",
+     "n": 1
+    },
+    {
+     "code": "K859",
+     "group": "Acute pancreatitis",
+     "truth": "GERD",
+     "n": 1
+    },
+    {
+     "code": "C099",
+     "group": "Malignant neoplasm of tonsil",
+     "truth": "Viral pharyngitis",
+     "n": 1
+    },
+    {
+     "code": "C329",
+     "group": "Malignant neoplasm of larynx",
+     "truth": "Viral pharyngitis",
+     "n": 1
+    },
+    {
+     "code": "C859",
+     "group": "Other specified and unspecified types of non-Hodgkin lymphoma",
+     "truth": "Chagas",
+     "n": 1
+    }
+   ],
+   "draft3": {
+    "score": {
+     "value": -195.0,
+     "ci": [
+      -518.52,
+      -48.81
+     ]
+    },
+    "U": {
+     "value": 15.56,
+     "ci": [
+      7.78,
+      25.25
+     ]
+    },
+    "O": {
+     "value": 50.0,
+     "ci": [
+      30.0,
+      70.84
+     ]
+    },
+    "esc": {
+     "value": 72.67,
+     "ci": [
+      63.38,
+      81.82
+     ]
+    }
+   },
+   "offlist_bounds": {
+    "escalate": {
+     "score_mix": {
+      "value": -167.5,
+      "ci": [
+       -386.97,
+       -67.31
+      ]
+     },
+     "score_bal": {
+      "value": -61.94,
+      "ci": [
+       -107.9,
+       -24.89
+      ]
+     },
+     "U": {
+      "value": 5.56,
+      "ci": [
+       1.09,
+       12.16
+      ]
+     },
+     "O": {
+      "value": 77.5,
+      "ci": [
+       57.49,
+       94.12
+      ]
+     }
+    },
+    "routine": {
+     "score_mix": {
+      "value": -430.0,
+      "ci": [
+       -935.43,
+       -195.55
+      ]
+     },
+     "score_bal": {
+      "value": -157.78,
+      "ci": [
+       -235.06,
+       -83.04
+      ]
+     },
+     "U": {
+      "value": 27.78,
+      "ci": [
+       17.04,
+       39.13
+      ]
+     },
+     "O": {
+      "value": 40.0,
+      "ci": [
+       20.0,
+       62.5
+      ]
+     }
+    }
+   }
+  },
+  "openai/gpt-oss-120b|v7a4b": {
+   "model": "openai/gpt-oss-120b",
+   "arm": "v7a4b",
+   "arm_label": "4b",
+   "file": "results/v03/ab/runs/openai-gpt-oss-120b-v7a4b.json",
+   "measures": {
+    "score_mix": {
+     "value": -210.0,
+     "ci": [
+      -496.39,
+      -69.09
+     ]
+    },
+    "score_bal": {
+     "value": -68.33,
+     "ci": [
+      -132.95,
+      -12.01
+     ]
+    },
+    "U": {
+     "value": 10.0,
+     "ci": [
+      2.83,
+      19.23
+     ]
+    },
+    "O": {
+     "value": 55.0,
+     "ci": [
+      31.7,
+      78.58
+     ]
+    },
+    "partial": {
+     "value": 43.33,
+     "ci": [
+      29.29,
+      58.67
+     ]
+    },
+    "partial_inlist": {
+     "value": 30.0,
+     "ci": [
+      17.07,
+      44.87
+     ]
+    },
+    "partial_offlist": {
+     "value": 13.33,
+     "ci": [
+      5.95,
+      21.79
+     ]
+    },
+    "pass": {
+     "value": 46.67,
+     "ci": [
+      32.47,
+      61.11
+     ]
+    },
+    "bare": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "esc": {
+     "value": 77.33,
+     "ci": [
+      67.27,
+      86.62
+     ]
+    },
+    "cost": {
+     "value": 95.38,
+     "ci": [
+      59.66,
+      138.69
+     ]
+    },
+    "score_mix@2": {
+     "value": -307.5,
+     "ci": [
+      -682.17,
+      -133.33
+     ]
+    },
+    "score_bal@2": {
+     "value": -111.67,
+     "ci": [
+      -173.61,
+      -50.55
+     ]
+    },
+    "score_mix@3.5": {
+     "value": -453.75,
+     "ci": [
+      -944.16,
+      -226.6
+     ]
+    },
+    "score_bal@3.5": {
+     "value": -176.67,
+     "ci": [
+      -246.32,
+      -107.12
+     ]
+    }
+   },
+   "counts": {
+    "pass": 42,
+    "miss": 9,
+    "partial": 39,
+    "benign_escalated": 22,
+    "benign_routine": 18,
+    "not_scored": 20,
+    "partial_inlist": 27,
+    "partial_offlist": 12
+   },
+   "offlist_partials": [
+    {
+     "code": "I710",
+     "group": "Aortic aneurysm and dissection",
+     "truth": "Boerhaave",
+     "n": 2
+    },
+    {
+     "code": "I160",
+     "group": "Hypertensive crisis",
+     "truth": "PSVT",
+     "n": 1
+    },
+    {
+     "code": "I710",
+     "group": "Aortic aneurysm and dissection",
+     "truth": "Spontaneous pneumothorax",
+     "n": 1
+    },
+    {
+     "code": "C320",
+     "group": "Malignant neoplasm of larynx",
+     "truth": "Larygospasm",
+     "n": 1
+    },
+    {
+     "code": "K85",
+     "group": "Acute pancreatitis",
+     "truth": "Pancreatic neoplasm",
+     "n": 1
+    },
+    {
+     "code": "I63",
+     "group": "Cerebral infarction",
+     "truth": "Guillain-Barr\u00e9 syndrome",
+     "n": 1
+    },
+    {
+     "code": "K922",
+     "group": "Other diseases of digestive system",
+     "truth": "Anemia",
+     "n": 1
+    },
+    {
+     "code": "C109",
+     "group": "Malignant neoplasm of oropharynx",
+     "truth": "Viral pharyngitis",
+     "n": 1
+    },
+    {
+     "code": "I639",
+     "group": "Cerebral infarction",
+     "truth": "Myasthenia gravis",
+     "n": 1
+    },
+    {
+     "code": "C320",
+     "group": "Malignant neoplasm of larynx",
+     "truth": "Viral pharyngitis",
+     "n": 1
+    },
+    {
+     "code": "C859",
+     "group": "Other specified and unspecified types of non-Hodgkin lymphoma",
+     "truth": "Chagas",
+     "n": 1
+    }
+   ],
+   "draft3": {
+    "score": {
+     "value": -165.0,
+     "ci": [
+      -446.91,
+      -21.55
+     ]
+    },
+    "U": {
+     "value": 13.33,
+     "ci": [
+      5.05,
+      22.73
+     ]
+    },
+    "O": {
+     "value": 55.0,
+     "ci": [
+      31.7,
+      78.58
+     ]
+    },
+    "esc": {
+     "value": 74.67,
+     "ci": [
+      63.7,
+      84.31
+     ]
+    }
+   },
+   "offlist_bounds": {
+    "escalate": {
+     "score_mix": {
+      "value": -145.0,
+      "ci": [
+       -296.85,
+       -65.45
+      ]
+     },
+     "score_bal": {
+      "value": -53.33,
+      "ci": [
+       -90.0,
+       -18.89
+      ]
+     },
+     "U": {
+      "value": 3.33,
+      "ci": [
+       0.0,
+       8.11
+      ]
+     },
+     "O": {
+      "value": 80.0,
+      "ci": [
+       57.69,
+       96.88
+      ]
+     }
+    },
+    "routine": {
+     "score_mix": {
+      "value": -387.5,
+      "ci": [
+       -819.52,
+       -172.86
+      ]
+     },
+     "score_bal": {
+      "value": -145.83,
+      "ci": [
+       -219.47,
+       -72.83
+      ]
+     },
+     "U": {
+      "value": 23.33,
+      "ci": [
+       13.26,
+       33.75
+      ]
+     },
+     "O": {
+      "value": 52.5,
+      "ci": [
+       29.41,
+       75.0
+      ]
+     }
+    }
+   }
+  }
+ },
+ "references": {
+  "always-escalate": {
+   "label": "Always escalate (committed five tier-1 codes)",
+   "measures": {
+    "score_mix": {
+     "value": -145.0,
+     "ci": [
+      -291.32,
+      -76.92
+     ]
+    },
+    "score_bal": {
+     "value": -64.44,
+     "ci": [
+      -79.31,
+      -48.42
+     ]
+    },
+    "U": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "O": {
+     "value": 100.0,
+     "ci": [
+      100.0,
+      100.0
+     ]
+    },
+    "partial": {
+     "value": 64.44,
+     "ci": [
+      48.42,
+      79.31
+     ]
+    },
+    "partial_inlist": {
+     "value": 64.44,
+     "ci": [
+      48.42,
+      79.31
+     ]
+    },
+    "partial_offlist": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "pass": {
+     "value": 35.56,
+     "ci": [
+      20.69,
+      51.58
+     ]
+    },
+    "bare": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "esc": {
+     "value": 100.0,
+     "ci": [
+      100.0,
+      100.0
+     ]
+    },
+    "cost": {
+     "value": 75.38,
+     "ci": [
+      63.24,
+      86.26
+     ]
+    },
+    "score_mix@2": {
+     "value": -290.0,
+     "ci": [
+      -582.64,
+      -153.85
+     ]
+    },
+    "score_bal@2": {
+     "value": -128.89,
+     "ci": [
+      -158.62,
+      -96.84
+     ]
+    },
+    "score_mix@3.5": {
+     "value": -507.5,
+     "ci": [
+      -1019.63,
+      -269.23
+     ]
+    },
+    "score_bal@3.5": {
+     "value": -225.56,
+     "ci": [
+      -277.59,
+      -169.47
+     ]
+    }
+   }
+  },
+  "always-routine": {
+   "label": "Always routine",
+   "measures": {
+    "score_mix": {
+     "value": -1475.0,
+     "ci": [
+      -2991.67,
+      -820.35
+     ]
+    },
+    "score_bal": {
+     "value": -600.0,
+     "ci": [
+      -600.0,
+      -600.0
+     ]
+    },
+    "U": {
+     "value": 100.0,
+     "ci": [
+      100.0,
+      100.0
+     ]
+    },
+    "O": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "partial": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "partial_inlist": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "partial_offlist": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "pass": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "bare": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "esc": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "cost": {
+     "value": 484.62,
+     "ci": [
+      397.6,
+      570.77
+     ]
+    },
+    "score_mix@2": {
+     "value": -1475.0,
+     "ci": [
+      -2991.67,
+      -820.35
+     ]
+    },
+    "score_bal@2": {
+     "value": -600.0,
+     "ci": [
+      -600.0,
+      -600.0
+     ]
+    },
+    "score_mix@3.5": {
+     "value": -1475.0,
+     "ci": [
+      -2991.67,
+      -820.35
+     ]
+    },
+    "score_bal@3.5": {
+     "value": -600.0,
+     "ci": [
+      -600.0,
+      -600.0
+     ]
+    }
+   }
+  },
+  "dxa": {
+   "label": "DXA reader (tier-1 DXA p >= 10%, not a red herring)",
+   "measures": {
+    "score_mix": {
+     "value": -225.0,
+     "ci": [
+      -654.91,
+      -24.0
+     ]
+    },
+    "score_bal": {
+     "value": -44.44,
+     "ci": [
+      -133.35,
+      31.87
+     ]
+    },
+    "U": {
+     "value": 20.0,
+     "ci": [
+      8.99,
+      32.95
+     ]
+    },
+    "O": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "partial": {
+     "value": 4.44,
+     "ci": [
+      0.0,
+      12.77
+     ]
+    },
+    "partial_inlist": {
+     "value": 4.44,
+     "ci": [
+      0.0,
+      12.77
+     ]
+    },
+    "partial_offlist": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "pass": {
+     "value": 75.56,
+     "ci": [
+      61.61,
+      87.76
+     ]
+    },
+    "bare": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "esc": {
+     "value": 48.0,
+     "ci": [
+      36.96,
+      57.76
+     ]
+    },
+    "cost": {
+     "value": 100.0,
+     "ci": [
+      44.75,
+      166.42
+     ]
+    },
+    "score_mix@2": {
+     "value": -235.0,
+     "ci": [
+      -679.22,
+      -27.27
+     ]
+    },
+    "score_bal@2": {
+     "value": -48.89,
+     "ci": [
+      -138.18,
+      26.89
+     ]
+    },
+    "score_mix@3.5": {
+     "value": -250.0,
+     "ci": [
+      -708.72,
+      -33.0
+     ]
+    },
+    "score_bal@3.5": {
+     "value": -55.56,
+     "ci": [
+      -144.47,
+      20.97
+     ]
+    }
+   }
+  },
+  "naive-bayes": {
+   "label": "Naive Bayes (tier-1 posterior >= 10%; dataset-knowledge ceiling)",
+   "measures": {
+    "score_mix": {
+     "value": -425.0,
+     "ci": [
+      -926.74,
+      -171.43
+     ]
+    },
+    "score_bal": {
+     "value": -133.33,
+     "ci": [
+      -254.02,
+      -37.21
+     ]
+    },
+    "U": {
+     "value": 33.33,
+     "ci": [
+      19.6,
+      50.57
+     ]
+    },
+    "O": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "partial": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "partial_inlist": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "partial_offlist": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "pass": {
+     "value": 66.67,
+     "ci": [
+      49.43,
+      80.4
+     ]
+    },
+    "bare": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "esc": {
+     "value": 40.0,
+     "ci": [
+      25.77,
+      54.67
+     ]
+    },
+    "cost": {
+     "value": 161.54,
+     "ci": [
+      95.72,
+      240.01
+     ]
+    },
+    "score_mix@2": {
+     "value": -425.0,
+     "ci": [
+      -926.74,
+      -171.43
+     ]
+    },
+    "score_bal@2": {
+     "value": -133.33,
+     "ci": [
+      -254.02,
+      -37.21
+     ]
+    },
+    "score_mix@3.5": {
+     "value": -425.0,
+     "ci": [
+      -926.74,
+      -171.43
+     ]
+    },
+    "score_bal@3.5": {
+     "value": -133.33,
+     "ci": [
+      -254.02,
+      -37.21
+     ]
+    }
+   }
+  }
+ },
+ "paired": {
+  "meta-llama/llama-3.1-8b-instruct: arm 1 - arm 2": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "a": "v7a1",
+   "b": "v7a2",
+   "score_mix": {
+    "value": 17.5,
+    "ci": [
+     -177.57,
+     205.64
+    ]
+   },
+   "score_bal": {
+    "value": 23.06,
+    "ci": [
+     -55.34,
+     103.86
+    ]
+   },
+   "U": {
+    "value": 0.0,
+    "ci": [
+     -12.35,
+     11.69
+    ]
+   },
+   "O": {
+    "value": -27.5,
+    "ci": [
+     -42.42,
+     -10.53
+    ]
+   },
+   "partial": {
+    "value": 4.44,
+    "ci": [
+     -5.75,
+     15.66
+    ]
+   },
+   "esc": {
+    "value": -11.33,
+    "ci": [
+     -17.9,
+     -5.16
+    ]
+   }
+  },
+  "meta-llama/llama-3.1-8b-instruct: arm 2 - arm 3": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "a": "v7a2",
+   "b": "v7a3",
+   "score_mix": {
+    "value": 155.0,
+    "ci": [
+     2.03,
+     405.28
+    ]
+   },
+   "score_bal": {
+    "value": 53.61,
+    "ci": [
+     -19.39,
+     124.3
+    ]
+   },
+   "U": {
+    "value": -12.22,
+    "ci": [
+     -23.0,
+     -1.19
+    ]
+   },
+   "O": {
+    "value": 27.5,
+    "ci": [
+     5.12,
+     48.92
+    ]
+   },
+   "partial": {
+    "value": 4.44,
+    "ci": [
+     -6.32,
+     15.19
+    ]
+   },
+   "esc": {
+    "value": 15.33,
+    "ci": [
+     7.59,
+     22.82
+    ]
+   }
+  },
+  "meta-llama/llama-3.1-8b-instruct: arm 4a - arm 1": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "a": "v7a4a",
+   "b": "v7a1",
+   "score_mix": {
+    "value": -435.0,
+    "ci": [
+     -990.03,
+     -168.95
+    ]
+   },
+   "score_bal": {
+    "value": -172.5,
+    "ci": [
+     -275.62,
+     -72.87
+    ]
+   },
+   "U": {
+    "value": 32.22,
+    "ci": [
+     16.84,
+     48.04
+    ]
+   },
+   "O": {
+    "value": -37.5,
+    "ci": [
+     -55.56,
+     -20.51
+    ]
+   },
+   "partial": {
+    "value": -15.56,
+    "ci": [
+     -30.86,
+     -1.01
+    ]
+   },
+   "esc": {
+    "value": -48.0,
+    "ci": [
+     -59.33,
+     -36.24
+    ]
+   }
+  },
+  "meta-llama/llama-3.1-8b-instruct: arm 4b - arm 2": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "a": "v7a4b",
+   "b": "v7a2",
+   "score_mix": {
+    "value": -292.5,
+    "ci": [
+     -713.22,
+     -90.23
+    ]
+   },
+   "score_bal": {
+    "value": -100.83,
+    "ci": [
+     -180.43,
+     -25.32
+    ]
+   },
+   "U": {
+    "value": 22.22,
+    "ci": [
+     10.2,
+     35.0
+    ]
+   },
+   "O": {
+    "value": -52.5,
+    "ci": [
+     -70.38,
+     -34.21
+    ]
+   },
+   "partial": {
+    "value": -2.22,
+    "ci": [
+     -17.2,
+     11.5
+    ]
+   },
+   "esc": {
+    "value": -48.67,
+    "ci": [
+     -59.86,
+     -36.71
+    ]
+   }
+  },
+  "meta-llama/llama-3.1-8b-instruct: arm 4a - arm 4b": {
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "a": "v7a4a",
+   "b": "v7a4b",
+   "score_mix": {
+    "value": -125.0,
+    "ci": [
+     -376.71,
+     54.93
+    ]
+   },
+   "score_bal": {
+    "value": -48.61,
+    "ci": [
+     -129.41,
+     36.76
+    ]
+   },
+   "U": {
+    "value": 10.0,
+    "ci": [
+     -2.47,
+     22.47
+    ]
+   },
+   "O": {
+    "value": -12.5,
+    "ci": [
+     -29.63,
+     3.33
+    ]
+   },
+   "partial": {
+    "value": -8.89,
+    "ci": [
+     -19.51,
+     2.22
+    ]
+   },
+   "esc": {
+    "value": -10.67,
+    "ci": [
+     -20.0,
+     -1.35
+    ]
+   }
+  },
+  "openai/gpt-5.6-terra: arm 1 - arm 2": {
+   "model": "openai/gpt-5.6-terra",
+   "a": "v7a1",
+   "b": "v7a2",
+   "score_mix": {
+    "value": -15.0,
+    "ci": [
+     -43.75,
+     10.0
+    ]
+   },
+   "score_bal": {
+    "value": -10.83,
+    "ci": [
+     -33.33,
+     7.77
+    ]
+   },
+   "U": {
+    "value": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ]
+   },
+   "O": {
+    "value": 7.5,
+    "ci": [
+     -8.82,
+     28.89
+    ]
+   },
+   "partial": {
+    "value": 3.33,
+    "ci": [
+     -3.61,
+     11.77
+    ]
+   },
+   "esc": {
+    "value": 0.67,
+    "ci": [
+     -3.52,
+     6.29
+    ]
+   }
+  },
+  "openai/gpt-5.6-terra: arm 2 - arm 3": {
+   "model": "openai/gpt-5.6-terra",
+   "a": "v7a2",
+   "b": "v7a3",
+   "score_mix": {
+    "value": 72.5,
+    "ci": [
+     31.82,
+     119.05
+    ]
+   },
+   "score_bal": {
+    "value": 55.83,
+    "ci": [
+     29.58,
+     81.1
+    ]
+   },
+   "U": {
+    "value": -2.22,
+    "ci": [
+     -6.1,
+     0.0
+    ]
+   },
+   "O": {
+    "value": -42.5,
+    "ci": [
+     -65.22,
+     -20.4
+    ]
+   },
+   "partial": {
+    "value": 2.22,
+    "ci": [
+     0.0,
+     6.06
+    ]
+   },
+   "esc": {
+    "value": -12.0,
+    "ci": [
+     -20.43,
+     -4.51
+    ]
+   }
+  },
+  "openai/gpt-5.6-terra: arm 4a - arm 1": {
+   "model": "openai/gpt-5.6-terra",
+   "a": "v7a4a",
+   "b": "v7a1",
+   "score_mix": {
+    "value": -147.5,
+    "ci": [
+     -408.34,
+     -26.0
+    ]
+   },
+   "score_bal": {
+    "value": -50.28,
+    "ci": [
+     -114.72,
+     2.14
+    ]
+   },
+   "U": {
+    "value": 10.0,
+    "ci": [
+     2.78,
+     19.23
+    ]
+   },
+   "O": {
+    "value": -27.5,
+    "ci": [
+     -51.16,
+     -7.5
+    ]
+   },
+   "partial": {
+    "value": 7.78,
+    "ci": [
+     -2.53,
+     18.52
+    ]
+   },
+   "esc": {
+    "value": -20.0,
+    "ci": [
+     -29.73,
+     -11.56
+    ]
+   }
+  },
+  "openai/gpt-5.6-terra: arm 4b - arm 2": {
+   "model": "openai/gpt-5.6-terra",
+   "a": "v7a4b",
+   "b": "v7a2",
+   "score_mix": {
+    "value": -135.0,
+    "ci": [
+     -354.61,
+     -31.12
+    ]
+   },
+   "score_bal": {
+    "value": -47.5,
+    "ci": [
+     -110.51,
+     -0.6
+    ]
+   },
+   "U": {
+    "value": 6.67,
+    "ci": [
+     1.09,
+     15.12
+    ]
+   },
+   "O": {
+    "value": -22.5,
+    "ci": [
+     -46.88,
+     -2.63
+    ]
+   },
+   "partial": {
+    "value": 23.33,
+    "ci": [
+     11.69,
+     37.63
+    ]
+   },
+   "esc": {
+    "value": -17.33,
+    "ci": [
+     -26.45,
+     -9.52
+    ]
+   }
+  },
+  "openai/gpt-5.6-terra: arm 4a - arm 4b": {
+   "model": "openai/gpt-5.6-terra",
+   "a": "v7a4a",
+   "b": "v7a4b",
+   "score_mix": {
+    "value": -27.5,
+    "ci": [
+     -100.0,
+     18.44
+    ]
+   },
+   "score_bal": {
+    "value": -13.61,
+    "ci": [
+     -40.7,
+     8.64
+    ]
+   },
+   "U": {
+    "value": 3.33,
+    "ci": [
+     0.0,
+     7.45
+    ]
+   },
+   "O": {
+    "value": 2.5,
+    "ci": [
+     -5.56,
+     12.5
+    ]
+   },
+   "partial": {
+    "value": -12.22,
+    "ci": [
+     -20.01,
+     -5.62
+    ]
+   },
+   "esc": {
+    "value": -2.0,
+    "ci": [
+     -5.88,
+     1.92
+    ]
+   }
+  },
+  "openai/gpt-oss-120b: arm 1 - arm 2": {
+   "model": "openai/gpt-oss-120b",
+   "a": "v7a1",
+   "b": "v7a2",
+   "score_mix": {
+    "value": -17.5,
+    "ci": [
+     -71.44,
+     23.41
+    ]
+   },
+   "score_bal": {
+    "value": -14.72,
+    "ci": [
+     -41.71,
+     9.17
+    ]
+   },
+   "U": {
+    "value": 0.0,
+    "ci": [
+     -3.03,
+     3.33
+    ]
+   },
+   "O": {
+    "value": 12.5,
+    "ci": [
+     -9.76,
+     33.33
+    ]
+   },
+   "partial": {
+    "value": 2.22,
+    "ci": [
+     -2.82,
+     7.59
+    ]
+   },
+   "esc": {
+    "value": 4.0,
+    "ci": [
+     -2.55,
+     10.26
+    ]
+   }
+  },
+  "openai/gpt-oss-120b: arm 2 - arm 3": {
+   "model": "openai/gpt-oss-120b",
+   "a": "v7a2",
+   "b": "v7a3",
+   "score_mix": {
+    "value": -17.5,
+    "ci": [
+     -90.01,
+     30.95
+    ]
+   },
+   "score_bal": {
+    "value": 6.11,
+    "ci": [
+     -21.3,
+     30.51
+    ]
+   },
+   "U": {
+    "value": 3.33,
+    "ci": [
+     0.0,
+     7.37
+    ]
+   },
+   "O": {
+    "value": -25.0,
+    "ci": [
+     -40.0,
+     -10.41
+    ]
+   },
+   "partial": {
+    "value": -4.44,
+    "ci": [
+     -10.0,
+     0.97
+    ]
+   },
+   "esc": {
+    "value": -9.33,
+    "ci": [
+     -15.13,
+     -4.0
+    ]
+   }
+  },
+  "openai/gpt-oss-120b: arm 4a - arm 1": {
+   "model": "openai/gpt-oss-120b",
+   "a": "v7a4a",
+   "b": "v7a1",
+   "score_mix": {
+    "value": -172.5,
+    "ci": [
+     -432.17,
+     -39.62
+    ]
+   },
+   "score_bal": {
+    "value": -66.94,
+    "ci": [
+     -135.21,
+     -8.33
+    ]
+   },
+   "U": {
+    "value": 10.0,
+    "ci": [
+     2.35,
+     19.74
+    ]
+   },
+   "O": {
+    "value": -17.5,
+    "ci": [
+     -37.5,
+     3.23
+    ]
+   },
+   "partial": {
+    "value": 14.44,
+    "ci": [
+     3.61,
+     26.81
+    ]
+   },
+   "esc": {
+    "value": -16.0,
+    "ci": [
+     -25.0,
+     -7.59
+    ]
+   }
+  },
+  "openai/gpt-oss-120b: arm 4b - arm 2": {
+   "model": "openai/gpt-oss-120b",
+   "a": "v7a4b",
+   "b": "v7a2",
+   "score_mix": {
+    "value": -140.0,
+    "ci": [
+     -352.05,
+     -32.35
+    ]
+   },
+   "score_bal": {
+    "value": -62.22,
+    "ci": [
+     -122.1,
+     -10.39
+    ]
+   },
+   "U": {
+    "value": 5.56,
+    "ci": [
+     -1.01,
+     14.0
+    ]
+   },
+   "O": {
+    "value": 0.0,
+    "ci": [
+     -29.17,
+     28.89
+    ]
+   },
+   "partial": {
+    "value": 23.33,
+    "ci": [
+     10.47,
+     37.65
+    ]
+   },
+   "esc": {
+    "value": -8.0,
+    "ci": [
+     -18.42,
+     1.95
+    ]
+   }
+  },
+  "openai/gpt-oss-120b: arm 4a - arm 4b": {
+   "model": "openai/gpt-oss-120b",
+   "a": "v7a4a",
+   "b": "v7a4b",
+   "score_mix": {
+    "value": -50.0,
+    "ci": [
+     -200.0,
+     50.03
+    ]
+   },
+   "score_bal": {
+    "value": -19.44,
+    "ci": [
+     -74.7,
+     29.19
+    ]
+   },
+   "U": {
+    "value": 4.44,
+    "ci": [
+     -2.02,
+     11.69
+    ]
+   },
+   "O": {
+    "value": -5.0,
+    "ci": [
+     -22.73,
+     14.29
+    ]
+   },
+   "partial": {
+    "value": -6.67,
+    "ci": [
+     -14.95,
+     1.05
+    ]
+   },
+   "esc": {
+    "value": -4.0,
+    "ci": [
+     -9.59,
+     1.46
+    ]
+   }
+  }
+ },
+ "within_arm": {
+  "arm 1: llama-3.1-8b-instruct - gpt-5.6-terra": {
+   "score_mix": {
+    "value": -385.0,
+    "ci": [
+     -839.33,
+     -151.02
+    ]
+   },
+   "score_bal": {
+    "value": -162.78,
+    "ci": [
+     -241.8,
+     -81.69
+    ]
+   }
+  },
+  "arm 1: llama-3.1-8b-instruct - gpt-oss-120b": {
+   "score_mix": {
+    "value": -370.0,
+    "ci": [
+     -796.3,
+     -147.8
+    ]
+   },
+   "score_bal": {
+    "value": -151.94,
+    "ci": [
+     -226.39,
+     -74.69
+    ]
+   }
+  },
+  "arm 1: gpt-5.6-terra - gpt-oss-120b": {
+   "score_mix": {
+    "value": 15.0,
+    "ci": [
+     -70.74,
+     116.68
+    ]
+   },
+   "score_bal": {
+    "value": 10.83,
+    "ci": [
+     -31.66,
+     50.38
+    ]
+   }
+  },
+  "arm 2: llama-3.1-8b-instruct - gpt-5.6-terra": {
+   "score_mix": {
+    "value": -417.5,
+    "ci": [
+     -868.05,
+     -200.0
+    ]
+   },
+   "score_bal": {
+    "value": -196.67,
+    "ci": [
+     -274.66,
+     -120.15
+    ]
+   }
+  },
+  "arm 2: llama-3.1-8b-instruct - gpt-oss-120b": {
+   "score_mix": {
+    "value": -405.0,
+    "ci": [
+     -821.74,
+     -191.49
+    ]
+   },
+   "score_bal": {
+    "value": -189.72,
+    "ci": [
+     -269.95,
+     -109.8
+    ]
+   }
+  },
+  "arm 2: gpt-5.6-terra - gpt-oss-120b": {
+   "score_mix": {
+    "value": 12.5,
+    "ci": [
+     -55.01,
+     95.06
+    ]
+   },
+   "score_bal": {
+    "value": 6.94,
+    "ci": [
+     -25.56,
+     39.03
+    ]
+   }
+  },
+  "arm 3: llama-3.1-8b-instruct - gpt-5.6-terra": {
+   "score_mix": {
+    "value": -500.0,
+    "ci": [
+     -1076.92,
+     -215.54
+    ]
+   },
+   "score_bal": {
+    "value": -194.44,
+    "ci": [
+     -275.46,
+     -114.05
+    ]
+   }
+  },
+  "arm 3: llama-3.1-8b-instruct - gpt-oss-120b": {
+   "score_mix": {
+    "value": -577.5,
+    "ci": [
+     -1143.53,
+     -285.7
+    ]
+   },
+   "score_bal": {
+    "value": -237.22,
+    "ci": [
+     -317.57,
+     -160.95
+    ]
+   }
+  },
+  "arm 3: gpt-5.6-terra - gpt-oss-120b": {
+   "score_mix": {
+    "value": -77.5,
+    "ci": [
+     -170.59,
+     0.0
+    ]
+   },
+   "score_bal": {
+    "value": -42.78,
+    "ci": [
+     -89.25,
+     -8.1
+    ]
+   }
+  },
+  "arm 4a: llama-3.1-8b-instruct - gpt-5.6-terra": {
+   "score_mix": {
+    "value": -672.5,
+    "ci": [
+     -1393.04,
+     -310.71
+    ]
+   },
+   "score_bal": {
+    "value": -285.0,
+    "ci": [
+     -381.93,
+     -180.99
+    ]
+   }
+  },
+  "arm 4a: llama-3.1-8b-instruct - gpt-oss-120b": {
+   "score_mix": {
+    "value": -632.5,
+    "ci": [
+     -1321.08,
+     -300.0
+    ]
+   },
+   "score_bal": {
+    "value": -257.5,
+    "ci": [
+     -345.21,
+     -166.15
+    ]
+   }
+  },
+  "arm 4a: gpt-5.6-terra - gpt-oss-120b": {
+   "score_mix": {
+    "value": 40.0,
+    "ci": [
+     -110.01,
+     224.34
+    ]
+   },
+   "score_bal": {
+    "value": 27.5,
+    "ci": [
+     -41.18,
+     99.53
+    ]
+   }
+  },
+  "arm 4b: llama-3.1-8b-instruct - gpt-5.6-terra": {
+   "score_mix": {
+    "value": -575.0,
+    "ci": [
+     -1222.0,
+     -276.05
+    ]
+   },
+   "score_bal": {
+    "value": -250.0,
+    "ci": [
+     -342.43,
+     -160.19
+    ]
+   }
+  },
+  "arm 4b: llama-3.1-8b-instruct - gpt-oss-120b": {
+   "score_mix": {
+    "value": -557.5,
+    "ci": [
+     -1177.31,
+     -279.66
+    ]
+   },
+   "score_bal": {
+    "value": -228.33,
+    "ci": [
+     -310.09,
+     -148.49
+    ]
+   }
+  },
+  "arm 4b: gpt-5.6-terra - gpt-oss-120b": {
+   "score_mix": {
+    "value": 17.5,
+    "ci": [
+     -155.89,
+     181.84
+    ]
+   },
+   "score_bal": {
+    "value": 21.67,
+    "ci": [
+     -48.62,
+     84.42
+    ]
+   }
+  }
+ },
+ "beats_always_escalate": {
+  "meta-llama/llama-3.1-8b-instruct|v7a1": {
+   "score_mix": false,
+   "score_bal": false
+  },
+  "meta-llama/llama-3.1-8b-instruct|v7a2": {
+   "score_mix": false,
+   "score_bal": false
+  },
+  "meta-llama/llama-3.1-8b-instruct|v7a3": {
+   "score_mix": false,
+   "score_bal": false
+  },
+  "meta-llama/llama-3.1-8b-instruct|v7a4a": {
+   "score_mix": false,
+   "score_bal": false
+  },
+  "meta-llama/llama-3.1-8b-instruct|v7a4b": {
+   "score_mix": false,
+   "score_bal": false
+  },
+  "openai/gpt-5.6-terra|v7a1": {
+   "score_mix": false,
+   "score_bal": false
+  },
+  "openai/gpt-5.6-terra|v7a2": {
+   "score_mix": false,
+   "score_bal": false
+  },
+  "openai/gpt-5.6-terra|v7a3": {
+   "score_mix": false,
+   "score_bal": false
+  },
+  "openai/gpt-5.6-terra|v7a4a": {
+   "score_mix": false,
+   "score_bal": false
+  },
+  "openai/gpt-5.6-terra|v7a4b": {
+   "score_mix": false,
+   "score_bal": false
+  },
+  "openai/gpt-oss-120b|v7a1": {
+   "score_mix": false,
+   "score_bal": false
+  },
+  "openai/gpt-oss-120b|v7a2": {
+   "score_mix": false,
+   "score_bal": false
+  },
+  "openai/gpt-oss-120b|v7a3": {
+   "score_mix": false,
+   "score_bal": false
+  },
+  "openai/gpt-oss-120b|v7a4a": {
+   "score_mix": false,
+   "score_bal": false
+  },
+  "openai/gpt-oss-120b|v7a4b": {
+   "score_mix": false,
+   "score_bal": false
+  }
+ }
+}
