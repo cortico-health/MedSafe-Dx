@@ -26,6 +26,10 @@ Amendment A4 (spec/v0.3-scoring.md): on a case a layer-a rule or a condition UPG
 flag naming the case's own true condition costs a partial (1) where the rules do not already credit
 the truth as a target; `a4` in the per-case output marks those cases.
 
+Amendment A5 (spec/v0.3-scoring.md, a scoring-layer change after the freeze): the headline reads the
+off-list tiers NHAMCS rated (`vr.TierFileRule()`); two sensitivity rows rescore the 150 with the CCSR
+tiers included (`include_ccsr=True`) and with the zero reference pinned to I21.
+
 The Phase 2 draw (`PHASE2_STRATA`, `RULE_MIN`, `PHASE2_SEED`) takes never-reviewed cases by stratum,
 filling each named rule's minimum first, so every rule under test has enough fresh cases.
 
@@ -380,17 +384,22 @@ def audited(rules, tiers, codes):
     class_tables = {"before": tab("class_before"), "after": tab("class_after")}
 
     # Benchmark verdicts on the 7 x 2 outputs, before (the audit's own rules) and after.
-    rule = vr.TierFileRule()
+    rule = vr.TierFileRule()  # amendment A5: NHAMCS-rated off-list tiers
     rm = fa.RefMatcher(ab)
     runs = fa.load_rows(ab, rule)
     base = fa.audit(ab, rule, runs, ref, rm)
-    after = rescore(ab, runs, ref, rm, sel, vr, fa)
+    after = rescore(ab, runs, ref, rm, sel, vr, fa, rule)
     effect = {"before": fa.rates(base), "after": fa.rates(after)}
     per_model = {}
     for m in sorted({r["model"] for r in after}):
         per_model[m] = {"before": fa.rates([r for r in base if r["model"] == m]),
                         "after": fa.rates([r for r in after if r["model"] == m])}
     scores = kept_scores(ab, sel, after, rm, vr)
+    # Amendment A5 sensitivity rows: the CCSR tiers included, and the zero reference pinned to I21.
+    rule_c = vr.TierFileRule(include_ccsr=True)
+    after_c = rescore(ab, fa.load_rows(ab, rule_c), ref, rm, sel, vr, fa, rule_c)
+    sensitivity = {"ccsr": {"effect": fa.rates(after_c), "scores": kept_scores(ab, sel, after_c, rm, vr)},
+                   "zero_I21": {"scores": kept_scores(ab, sel, after, rm, vr, zero_code="I21")}}
     # The excluded cases against the rest: the reference's own unsafe rate per model (the benchmark plays no part).
     def unsafe_rate(rs):
         judged = [r for r in rs if r["ref_verdict"] != "not_judged"]
@@ -403,7 +412,7 @@ def audited(rules, tiers, codes):
                        "included_or_patched": unsafe_rate([r for r in rs if r["class"] != EXCLUDED])}
     return {"per_case": per_case, "class_tables": class_tables, "resolved": resolved, "effect": effect,
             "per_model": per_model, "selection": sel, "after_rows": after, "per_rule": per_rule,
-            "per_fired": per_fired, "weakness": weakness, "scores": scores}
+            "per_fired": per_fired, "weakness": weakness, "scores": scores, "sensitivity": sensitivity}
 
 
 def verdict_under_rules(s: dict, flag: str | None, esc: bool, reason_kind: str, truth: str, rm, vr) -> tuple[str, bool, str]:
@@ -427,8 +436,10 @@ def verdict_under_rules(s: dict, flag: str | None, esc: bool, reason_kind: str, 
     return vr.NOT_SCORED, esc, reason_kind
 
 
-def rescore(ab, runs, ref, rm, sel, vr, fa) -> list[dict]:
-    """The audit's verdict logic under the new classes (`verdict_under_rules`), one record per model x arm x case."""
+def rescore(ab, runs, ref, rm, sel, vr, fa, rule=None) -> list[dict]:
+    """The audit's verdict logic under the new classes (`verdict_under_rules`), one record per model x arm x case.
+    `rule` is the off-list tier rule the runs were read with; it also labels each flag's tier."""
+    rule = rule if rule is not None else vr.TierFileRule()
     recs = []
     mism = {cid: fa.mismatch_cause(r) for cid, r in ref.items()}
     for (model, arm), (a, o, just) in runs.items():
@@ -449,7 +460,7 @@ def rescore(ab, runs, ref, rm, sel, vr, fa) -> list[dict]:
                                    else "FN" if not penalised and verdict != "safe" else "TP" if penalised else "TN"),
                    "benchmark": bench, "cost": fa.COST.get(bench, 0.0), "reason_kind": reason.kind,
                    "reason_after": kind_after, "esc_after": esc_after, "flag": flag or "",
-                   "flag_tier": fa.flag_tier(flag, ab, vr.TierFileRule()), "truth_tier": int(k.truth_tier),
+                   "flag_tier": fa.flag_tier(flag, ab, rule), "truth_tier": int(k.truth_tier),
                    "ref_verdict": verdict, "ref_detail": detail, "mismatch_cause": mism[k.case_id],
                    "class": s["class"], "bucket": s["bucket"], "reason": s["reason"], "a4": s["a4"],
                    "unsafe_kind": "" if safe or verdict == "not_judged" else
@@ -459,11 +470,13 @@ def rescore(ab, runs, ref, rm, sel, vr, fa) -> list[dict]:
     return recs
 
 
-def kept_scores(ab, sel, recs, rm, vr) -> dict:
+def kept_scores(ab, sel, recs, rm, vr, zero_code: str | None = None) -> dict:
     """The seven models' scores on the kept cases, per arm, under the selection rules' classes and credits, with the
     zero reference (amendment A2) recomputed on the credited targets: the tier-1 condition that is a target on the
-    most SERIOUS cases, ties by name. Also the anchor check: the arm 4aj minus 4bj difference in cost counted on
-    reference-agreed penalties only (kind TP), paired on the same cases and bootstrap draws."""
+    most SERIOUS cases, ties by name. `zero_code` pins the zero reference's flag instead (the A5 sensitivity row
+    pins I21). Also the anchor check: the arm 4aj minus 4bj difference in cost counted on reference-agreed
+    penalties only (kind TP), paired on the same cases and bootstrap draws; records without a `kind` (no
+    reference yet) skip it."""
     import dataclasses
 
     from evaluator import v03_score as vs
@@ -473,8 +486,12 @@ def kept_scores(ab, sel, recs, rm, vr) -> dict:
     ab2 = dataclasses.replace(ab, klass=np.array([cls[sel[k.case_id]["class"]] for k in keys]))
     counts = Counter(t for k in keys if sel[k.case_id]["class"] == SERIOUS
                      for t in sel[k.case_id]["targets"] if ab.key.tiers.get(t) == 1)
-    cond = min(counts, key=lambda c: (-counts[c], c.casefold(), c))
-    code = normalise_code(ab.matcher.cmap.canonical[cond])
+    if zero_code is None:
+        cond = min(counts, key=lambda c: (-counts[c], c.casefold(), c))
+        code = normalise_code(ab.matcher.cmap.canonical[cond])
+    else:
+        code = normalise_code(zero_code)
+        cond = next(c for c, k in ab.matcher.cmap.canonical.items() if normalise_code(k) == code)
     zero = vr.Outcome(np.ones(ab.key.n, bool), [vr.Reason(vr.OTHER_TIER1)] * ab.key.n,
                       [verdict_under_rules(sel[k.case_id], code, True, vr.OTHER_TIER1, k.truth, rm, vr)[0] for k in keys])
     M = vs.cluster_draws(ab.key.k, vs.N_BOOTSTRAP, vs.BOOTSTRAP_SEED)
@@ -491,6 +508,8 @@ def kept_scores(ab, sel, recs, rm, vr) -> dict:
         point, draws = vr.stats(o, ab2, M, zero=zero)
         raw[(model, arm)] = (point, draws)
         rows[f"{model}|{arm}"] = {m: vr.summarise(point, draws)[m] for m in measures}
+        if any("kind" not in r for r in rs):
+            continue
         st = vs.Stats(ab.key)
         st.add("cost_agreed", np.array([r["cost"] if r["kind"] == "TP" else 0.0 for r in rs]) * head, head)
         agreed[(model, arm)] = st.evaluate(M)
@@ -499,12 +518,13 @@ def kept_scores(ab, sel, recs, rm, vr) -> dict:
         a, b = (model, "4aj"), (model, "4bj")
         if a in raw and b in raw:
             paired[model] = vr.diff(raw[a][1], raw[b][1], raw[a][0], raw[b][0], ("score_z_bal", "U", "O", "esc"))
+        if a in agreed and b in agreed:
             d = vr.diff(agreed[a][1], agreed[b][1], agreed[a][0], agreed[b][0], ("cost_agreed",))["cost_agreed"]
             anchor[model] = {"cost_agreed_4aj": round(100 * float(agreed[a][0]["cost_agreed"]), 2),
                              "cost_agreed_4bj": round(100 * float(agreed[b][0]["cost_agreed"]), 2),
                              "diff_per_100": d["value"], "ci": d["ci"],
                              "excludes_zero": d["ci"][0] is not None and (d["ci"][0] > 0 or d["ci"][1] < 0)}
-    return {"zero_reference": {"code": code, "condition": cond, "serious_cases": counts[cond]},
+    return {"zero_reference": {"code": code, "condition": cond, "serious_cases": counts.get(cond, 0)},
             "headline_cases": int(head.sum()), "bootstrap": {"draws": vs.N_BOOTSTRAP, "seed": vs.BOOTSTRAP_SEED},
             "rows": rows, "paired_4aj_minus_4bj": paired, "anchor_check": anchor}
 
@@ -598,7 +618,8 @@ def main() -> None:
                                   "per_fired": {k: dict(v) for k, v in sorted(a["per_fired"].items())},
                                   "a4_cases": sorted(r["case_id"] for r in a["per_case"] if r["a4"]),
                                   "excluded_weakness": a["weakness"],
-                                  "effect": a["effect"], "per_model": a["per_model"], "scores": a["scores"]}
+                                  "effect": a["effect"], "per_model": a["per_model"], "scores": a["scores"],
+                                  "sensitivity": a["sensitivity"]}
         e = a["effect"]
         print(f"150: class agreement {agree_before}/{dec_before} -> {agree_after}/{dec_after}; "
               f"classes after {summary['audited_150']['classes_after']}")
@@ -613,6 +634,15 @@ def main() -> None:
             print(f"  {name:28s} score_z_bal {m['score_z_bal']['value']:7.2f} {m['score_z_bal']['ci']} "
                   f"U {m['U']['value']:5.1f} O {m['O']['value']:5.1f} partial {m['partial']['value']:5.1f} "
                   f"(truth {m['partial_truth']['value']:4.1f})")
+        for name, sens in a["sensitivity"].items():
+            if "effect" in sens:
+                r = sens["effect"]
+                print(f"  sensitivity {name}: safety (cost-7) precision {r['precision_full_cost'][0]:.3f} "
+                      f"point-weighted precision {1 - r['fp_cost_share'][0]:.3f} FN rate {r['fn_rate'][0]:.3f}")
+            z = sens["scores"]["zero_reference"]
+            print(f"  sensitivity {name}: zero reference {z['code']} ({z['condition']}, {z['serious_cases']} SERIOUS cases)")
+            for rn, m in sens["scores"]["rows"].items():
+                print(f"    {rn:28s} score_z_bal {m['score_z_bal']['value']:7.2f} {m['score_z_bal']['ci']}")
 
     # 2. The 470 main sample.
     main_ids = [l.strip() for l in MAIN_IDS.read_text().splitlines() if l.strip()]

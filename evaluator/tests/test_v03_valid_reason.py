@@ -66,6 +66,19 @@ class TestReason(unittest.TestCase):
         self.assertEqual(self.kind(["K86.1"], rule=weak), vr.NONE)
         self.assertEqual(self.kind(["K85.9"], rule=weak), vr.OFFLIST)
 
+    def test_tier_source_filter_a5(self):
+        p = tier_file("icd10_prefix,tier,tier_source\nK92,1,nhamcs\nK92.2,1,ccsr\nM31,2,ccsr\nA41,1,nhamcs_pooled\n"
+                      "I71,1,override\nR07,unscored,unscored\n")
+        head, sens = vr.TierFileRule(p), vr.TierFileRule(p, include_ccsr=True)
+        # a CCSR row is unscored in the headline and stops the lookup: K92.2 does not fall back to K92
+        self.assertEqual([head.tier(c)[0] for c in ("K92.0", "K92.2", "M31.6", "A41.9", "I71.0", "R07.9")],
+                         ["1", vr.UNSCORED, vr.UNSCORED, "1", "1", vr.UNSCORED])
+        self.assertEqual([sens.tier(c)[0] for c in ("K92.2", "M31.6")], ["1", "2"])
+        self.assertEqual(self.kind(["K92.2"], rule=head), vr.NONE)
+        self.assertEqual(self.kind(["K92.2"], rule=sens), vr.OFFLIST)
+        # a file without tier_source reads as it stands
+        self.assertEqual(vr.TierFileRule(tier_file("icd10_prefix,tier\nK92.2,1\n")).tier("K92.2")[0], "1")
+
     def test_tier_file_needs_columns(self):
         with self.assertRaises(ValueError):
             vr.TierFileRule(tier_file("code_x,level\nA00,1\n"))

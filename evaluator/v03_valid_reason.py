@@ -24,7 +24,13 @@ of the code in the file gives its tier, 1, 2, 3 or "unscored" (R and Z codes, su
 rows), and only tier 1 is a serious reason. A code no prefix covers is "unlisted", which
 is no reason either. `TierFileRule(exclude_weak=True)` reads a tier-1 row marked
 `weak_evidence` (tier 1 by the ICU clause on fewer than 5 critical-care visits) as "weak",
-which is no reason: the sensitivity row without the weak rows. `GroupsRule` reads the older group files
+which is no reason: the sensitivity row without the weak rows.
+
+Amendment A5 (spec/v0.3-scoring.md): the headline reads only the rows NHAMCS rated, whose
+`tier_source` is `nhamcs`, `nhamcs_pooled` or `override` (`HEADLINE_SOURCES`). A row the CCSR
+category rated (`tier_source` `ccsr`) reads as UNSCORED, so the lookup stops at it and it names no
+danger. `TierFileRule(include_ccsr=True)` reads the CCSR tiers as well: the CCSR sensitivity row.
+A file without a `tier_source` column is read as it stands. `GroupsRule` reads the older group files
 (spec/offlist_escalation_groups*.csv) as tier 1 inside a group and "unlisted" outside.
 
 Per-case cost on the headline cases:
@@ -85,6 +91,8 @@ PASS, PARTIAL_OUT, MISS_OUT, BARE, BENIGN_ESC, BENIGN_OK, NOT_SCORED = (
 
 OFFLIST_TIERS_CSV = ROOT / "spec" / "offlist_tiers_nhamcs.csv"
 UNSCORED, UNLISTED, WEAK = "unscored", "unlisted", "weak"
+HEADLINE_SOURCES = ("nhamcs", "nhamcs_pooled", "override")  # amendment A5: NHAMCS-rated rows only
+CCSR = "ccsr"
 _PREFIX_COLUMNS = ("icd10_prefix", "prefix", "code_prefix", "icd10", "code")
 _TIER_COLUMNS = ("tier", "final_tier", "offlist_tier")
 
@@ -105,9 +113,12 @@ class GroupsRule:
 
 
 class TierFileRule:
-    """Off-list tier from spec/offlist_tiers_nhamcs.csv by longest prefix: "1", "2", "3", UNSCORED or UNLISTED."""
+    """Off-list tier from spec/offlist_tiers_nhamcs.csv by longest prefix: "1", "2", "3", UNSCORED or UNLISTED.
 
-    def __init__(self, path: Path = OFFLIST_TIERS_CSV, exclude_weak: bool = False):
+    Amendment A5: a row whose `tier_source` is not in HEADLINE_SOURCES reads as UNSCORED, unless it is a CCSR
+    row and `include_ccsr` is set (the sensitivity row)."""
+
+    def __init__(self, path: Path = OFFLIST_TIERS_CSV, exclude_weak: bool = False, include_ccsr: bool = False):
         with open(path, newline="", encoding="utf-8") as f:
             reader = csv.DictReader(f)
             cols = reader.fieldnames or []
@@ -123,12 +134,15 @@ class TierFileRule:
                 if not pre:
                     continue
                 t = self.norm_tier(r[tc])
+                src = (r.get("tier_source") or "").strip().lower()
+                if src and src not in HEADLINE_SOURCES and not (include_ccsr and src == CCSR):
+                    t = UNSCORED
                 if t == "1" and (r.get("weak_evidence") or "").strip().lower() == "true":
                     self.weak.add(pre)
                     if exclude_weak:
                         t = WEAK
                 self.rows[pre] = (t, r.get(self.label_col) if self.label_col else None)
-        self.path, self.exclude_weak = path, exclude_weak
+        self.path, self.exclude_weak, self.include_ccsr = path, exclude_weak, include_ccsr
 
     @staticmethod
     def norm_tier(v: str) -> str:

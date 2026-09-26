@@ -129,12 +129,25 @@ class TestFilledTierFile(unittest.TestCase):
         self.assertEqual(rule.tier("R07.9")[0], vr.UNSCORED)
 
     def test_examples(self):
-        rule, pre = vr.TierFileRule(), vr.TierFileRule(ROOT / "spec" / "offlist_tiers_nhamcs_pre_fill.csv")
+        rule, pre = vr.TierFileRule(include_ccsr=True), vr.TierFileRule(ROOT / "spec" / "offlist_tiers_nhamcs_pre_fill.csv")
         self.assertEqual(pre.tier("M31.6")[0], vr.UNSCORED)
         self.assertEqual(rule.tier("M31.6")[0], "2")
         self.assertEqual(rule.tier("M47.0")[0], "3")
         self.assertEqual(rule.tier("B44.1")[0], "1")
         self.assertEqual(rule.tier("E11.9")[0], "2")
+
+    def test_headline_reads_nhamcs_rows_only(self):
+        # amendment A5: CCSR-rated rows read as unscored in the headline; NHAMCS, pooled and override rows keep their tier
+        head, ccsr = vr.TierFileRule(), vr.TierFileRule(include_ccsr=True)
+        self.assertEqual((head.tier("M31.6")[0], ccsr.tier("M31.6")[0]), (vr.UNSCORED, "2"))  # ccsr
+        self.assertEqual((head.tier("B44.1")[0], ccsr.tier("B44.1")[0]), (vr.UNSCORED, "1"))  # ccsr, tier 1
+        self.assertEqual(head.tier("M47.0")[0], "3")  # nhamcs_pooled
+        self.assertEqual(head.tier("E11.10")[0], "1")  # nhamcs
+        self.assertEqual(head.tier("I71")[0], "1")  # override
+        post = pd.read_csv(ROOT / "spec" / "offlist_tiers_nhamcs.csv", dtype=str)
+        for _, r in post.iterrows():
+            want = r["tier"] if r["tier_source"] in vr.HEADLINE_SOURCES else vr.UNSCORED
+            self.assertEqual(head.rows[vr.normalise_code(r["icd10_prefix"])][0], want, r["icd10_prefix"])
 
 
 if __name__ == "__main__":
