@@ -20,14 +20,18 @@
 #   LIMIT=10 OUT_DIR=results/v03/ab/smoke CONFIRM=yes ./scripts/run_v03_ab.sh   # the smoke
 #   CONFIRM=yes ./scripts/run_v03_ab.sh                                          # the 150 x arms x models
 #   ARMS_OVERRIDE="v7a4a v7a4b" MODELS_OVERRIDE="a/b" NO_SCORE=1 ...
+#   RUN_CONFIG=inference/run_config_v03_abj.json PROVENANCE=results/v03/ab/runs/provenance-4j.json \
+#     ARMS_OVERRIDE="v7a4aj v7a4bj" MODELS_OVERRIDE="..." NO_SCORE=1 CONFIRM=yes ./scripts/run_v03_ab.sh
+#   (amendment A1; a separate provenance file keeps the five-arm run's record)
 
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export MEDSAFE_GIT_COMMIT=$(git rev-parse --short HEAD 2>/dev/null || echo unknown)
 
-RUN_CONFIG="inference/run_config_v03_ab.json"
+RUN_CONFIG="${RUN_CONFIG:-inference/run_config_v03_ab.json}"
 CASES="data/test_sets/eval-v03-ab150.json"
 OUT_DIR="${OUT_DIR:-results/v03/ab/runs}"
+PROVENANCE="${PROVENANCE:-$OUT_DIR/provenance.json}"
 PARALLEL="${PARALLEL:-8}"
 export INFERENCE_WORKERS="${INFERENCE_WORKERS:-8}"
 export PYTHONUNBUFFERED=1
@@ -114,7 +118,7 @@ for m in "${MODELS[@]}"; do for a in "${ARMS[@]}"; do
 done; done
 [ ${#INCOMPLETE[@]} -gt 0 ] && echo "Incomplete (re-run to resume): ${INCOMPLETE[*]}"
 
-python3 - "$OUT_DIR/provenance.json" "$START" "$END" "$RUN_CONFIG" "$CASES" "${LIMIT:-}" "${INCOMPLETE[*]:-}" \
+python3 - "$PROVENANCE" "$START" "$END" "$RUN_CONFIG" "$CASES" "${LIMIT:-}" "${INCOMPLETE[*]:-}" \
     "$USAGE_BEFORE" "$USAGE_AFTER" "${ROSTER[*]}" "${MODELS[*]}" "${FILES[@]}" <<'PY'
 import hashlib, json, os, platform, subprocess, sys
 out, start, end, cfg, cases, limit, incomplete, u0, u1, roster, models, *files = sys.argv[1:]
