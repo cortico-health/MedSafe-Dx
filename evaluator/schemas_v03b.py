@@ -13,8 +13,11 @@ and one decision field, which the scorer reads as the escalation decision:
 | 4a  | flag                 | the flag names a tier-1 condition, or an off-list     |
 |     |                      | code in a Newman-Toker group (`flag_escalates`)       |
 | 4b  | flag                 | as 4a                                                 |
+| 4c  | flag                 | as 4a; the flag may come from outside the list, and   |
+|     |                      | "justification" is kept, not scored                   |
 | 4aj | flag                 | as 4a; "justification" is kept, not scored            |
 | 4bj | flag                 | as 4a; "justification" is kept, not scored            |
+| 2j  | escalation_decision  | as 2; "justification" is kept, not scored             |
 
 `parse_v03b` never raises on model output. It keeps every field that parses and logs
 each rule that fires in `rule_log`, so we can count firings per model.
@@ -46,17 +49,18 @@ from typing import Any, Mapping, Optional
 
 from evaluator.schemas_v02 import DxEntry, _code_valid, parse_differential
 
-ARMS = ("v7a1", "v7a2", "v7a3", "v7a4a", "v7a4b")
+ARMS = ("v7a1", "v7a2", "v7a3", "v7a4a", "v7a4b", "v7a4c", "v7a2j")
 DECISION_FIELD = {"v7a1": "serious_condition", "v7a2": "escalation_decision", "v7a3": "safety_flag",
-                  "v7a4a": "flag", "v7a4b": "flag"}
-ESCALATE_VALUE = {"v7a1": "YES", "v7a2": "ESCALATE_NOW", "v7a3": "YES"}
-ROUTINE_VALUE = {"v7a1": "NO", "v7a2": "ROUTINE_CARE", "v7a3": "NO"}
-FLAG_ARMS = ("v7a4a", "v7a4b")
+                  "v7a4a": "flag", "v7a4b": "flag", "v7a4c": "flag", "v7a2j": "escalation_decision"}
+ESCALATE_VALUE = {"v7a1": "YES", "v7a2": "ESCALATE_NOW", "v7a3": "YES", "v7a2j": "ESCALATE_NOW"}
+ROUTINE_VALUE = {"v7a1": "NO", "v7a2": "ROUTINE_CARE", "v7a3": "NO", "v7a2j": "ROUTINE_CARE"}
+FLAG_ARMS = ("v7a4a", "v7a4b", "v7a4c")
+JUSTIFIED_ARMS = ("v7a4c", "v7a2j")  # end with an unscored "justification" sentence
 # Arms 4aj and 4bj (spec section 12, amendment A1): arms 4a and 4b plus the unscored "justification" sentence.
 ARMS += ("v7a4aj", "v7a4bj")
 DECISION_FIELD.update({"v7a4aj": "flag", "v7a4bj": "flag"})
 FLAG_ARMS += ("v7a4aj", "v7a4bj")
-JUSTIFIED_ARMS = ("v7a4aj", "v7a4bj")  # end with an unscored "justification" sentence
+JUSTIFIED_ARMS += ("v7a4aj", "v7a4bj")
 _NO_FLAG = ("", "NULL", "NONE", "N/A", "NA")
 _LEADING_CODE = re.compile(r"^\s*([A-Za-z][0-9][0-9A-Za-z](?:\.?[0-9A-Za-z]{1,4})?)(?![0-9A-Za-z])")
 

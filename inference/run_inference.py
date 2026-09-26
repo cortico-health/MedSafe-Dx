@@ -587,7 +587,8 @@ def main():
         default="v4",
         help="v4 (v0 benchmark, default), v5 (v0.2: probabilities, p_serious, v0.2 decoder, run config) "
         "or v6 (v0.3: serious_concern, flags, differential, p_serious; run_config_v03.json), "
-        "or a v7 arm (v0.3 draft 3 prompt test: v7a1, v7a2, v7a3, v7a4a, v7a4b; run_config_v03_ab.json)",
+        "or a v7 arm (v0.3 draft 3 prompt test: v7a1, v7a2, v7a3, v7a4a, v7a4b; arm 4c v7a4c and the arm-2 "
+        "variant v7a2j, which add a justification sentence; run_config_v03_ab.json)",
     )
     parser.add_argument(
         "--run-config",

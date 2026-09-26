@@ -57,7 +57,7 @@ TL_POLICY = "standard"  # the map carries the family rows
 DX_POLICY = "strict"
 COMMITTED_FIVE = ("I47.1", "I21", "C34", "I20.9", "I20.0")  # draft 2's always-YES flags: the anchor's differential
 N_RANDOM = 200
-ARM_LABELS = {"v7a1": "1", "v7a2": "2", "v7a3": "3", "v7a4a": "4a", "v7a4b": "4b"}
+ARM_LABELS = {"v7a1": "1", "v7a2": "2", "v7a3": "3", "v7a4a": "4a", "v7a4b": "4b", "v7a4c": "4c", "v7a2j": "2j"}
 # (a, b): the pre-registered paired comparisons a - b (spec section 12)
 COMPARISONS = (("v7a1", "v7a2"), ("v7a2", "v7a3"), ("v7a4a", "v7a1"), ("v7a4b", "v7a2"), ("v7a4a", "v7a4b"))
 PAIRED = ("score", "U", "O", "esc")

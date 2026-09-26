@@ -127,5 +127,19 @@ class TestOnTheSet(unittest.TestCase):
         self.assertFalse(o.esc.any())
 
 
+class TestArm4cAnd2j(unittest.TestCase):
+    """Arm 4c and variant 2j are kept in the repo, unused; their parser still reads them."""
+
+    def test_parse(self):
+        from evaluator.schemas_v03b import parse_v03b
+        d = [{"code": "J20.9", "p": 60}]
+        p = parse_v03b({"case_id": "c", "differential_diagnoses": d, "flag": "I26.99",
+                        "justification": " PE must be excluded. "}, "v7a4c")
+        self.assertEqual((p.flag, p.justification, p.flag_in_list), ("I2699", "PE must be excluded.", False))
+        p = parse_v03b({"case_id": "c", "differential_diagnoses": d, "escalation_decision": "ROUTINE_CARE"}, "v7a2j")
+        self.assertFalse(p.escalate)
+        self.assertIn("justification:missing", p.rule_log)
+
+
 if __name__ == "__main__":
     unittest.main()

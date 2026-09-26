@@ -337,6 +337,9 @@ OUTPUT_SCHEMA_V6 = """{
 # | 3   | working diagnosis + "note ... safety flags"   | safety_flag YES / NO (+ note)      |
 # | 4a  | none                                          | flag: one listed code or null      |
 # | 4b  | working diagnosis                             | flag: one listed code or null      |
+# | 4c  | working diagnosis                             | flag: one condition to rule out,   |
+# |     |                                               | or null; then a justification      |
+# | 2j  | working diagnosis                             | as arm 2, then a justification     |
 #
 # The wording is neutral: no cost ratio, no urgency or timeframe, and no safety
 # emphasis beyond the arm's own field (arm 3's hint; arm 4's "flag to the clinician
@@ -382,6 +385,17 @@ V7_FIELDS = {
 }
 V7_FIELDS["v7a4b"] = V7_FIELDS["v7a4a"]
 
+# Arm 4c and the arm-2 variant 2j (docs/v0.3-arm4-audit.md). Both end the answer with an
+# unscored "justification" sentence, placed last so the decision is written before it.
+# Arm 4c keeps arm 4b's anchor and 2% list and asks for the one condition to rule out,
+# which may come from outside the model's list.
+V7_JUSTIFICATION = '- "justification": one sentence explaining {what}.'
+V7_FIELDS["v7a4c"] = f"""{V7_DIFFERENTIAL_2PCT}
+- "flag": Name the one condition you would most want the clinician to rule out for this patient, or none. Give its ICD-10 code; null if none.
+{V7_JUSTIFICATION.format(what="your flag choice")}"""
+V7_FIELDS["v7a2j"] = f"""{V7_FIELDS["v7a2"]}
+{V7_JUSTIFICATION.format(what="your escalation decision")}"""
+
 V7_ANCHOR_LINE = "The clinician's working diagnosis is {working_diagnosis}."
 V7_HINT = "Note if there may be any patient safety flags with this case."
 
@@ -399,6 +413,8 @@ V7_SCHEMAS = {
     "v7a4a": "{\n" + _DIFF_SCHEMA + '\n  "flag": "ICD10_CODE | null"\n}',
 }
 V7_SCHEMAS["v7a4b"] = V7_SCHEMAS["v7a4a"]
+V7_SCHEMAS["v7a4c"] = "{\n" + _DIFF_SCHEMA + '\n  "flag": "ICD10_CODE | null",\n  "justification": "STRING"\n}'
+V7_SCHEMAS["v7a2j"] = "{\n" + _DIFF_SCHEMA + '\n  "escalation_decision": "ESCALATE_NOW | ROUTINE_CARE",\n  "justification": "STRING"\n}'
 
 # arm -> (task line, anchor line or None)
 V7_ARMS = {
@@ -407,8 +423,10 @@ V7_ARMS = {
     "v7a3": (V7_ANCHOR_TASK, f"{V7_ANCHOR_LINE} {V7_HINT}"),
     "v7a4a": (V7_INTAKE_TASK, None),
     "v7a4b": (V7_ANCHOR_TASK, V7_ANCHOR_LINE),
+    "v7a4c": (V7_ANCHOR_TASK, V7_ANCHOR_LINE),
+    "v7a2j": (V7_ANCHOR_TASK, V7_ANCHOR_LINE),
 }
-V7_ARM_LABELS = {"v7a1": "1", "v7a2": "2", "v7a3": "3", "v7a4a": "4a", "v7a4b": "4b"}
+V7_ARM_LABELS = {"v7a1": "1", "v7a2": "2", "v7a3": "3", "v7a4a": "4a", "v7a4b": "4b", "v7a4c": "4c", "v7a2j": "2j"}
 
 # Arms 4aj and 4bj (spec/v0.3-scoring.md section 12, amendment A1) repeat arms 4a and 4b and add
 # one field last: an unscored "justification" sentence, so the model writes the flag before it.
