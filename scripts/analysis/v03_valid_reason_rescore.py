@@ -57,7 +57,10 @@ def run(n_boot: int = vs.N_BOOTSTRAP, groups_fallback: bool = False) -> dict:
     M = vs.cluster_draws(ab.key.k, n_boot, vs.BOOTSTRAP_SEED)
     draft3 = json.loads((AB / "ab-scores.json").read_text())
     rows, raw = {}, {}
+    scored = {Path(r["file"]).name for r in draft3["rows"].values()}  # the draft-3 rows only
     for f in sorted((AB / "runs").glob("*-v7a*.json")):
+        if f.name not in scored:
+            continue
         preds, meta = sb.load_predictions(f)
         arm, model = meta["prompt_version"], meta["model"]
         if arm not in ARMS:

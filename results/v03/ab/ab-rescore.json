@@ -6,7 +6,7 @@
   3.5
  ],
  "offlist_source": "spec/offlist_tiers_nhamcs.csv",
- "offlist_source_sha256": "8ccf443d86e7552abd200a44ef0beaafb5ea81c02d6d64772365167c416c922e",
+ "offlist_source_sha256": "3d4f73d04064edea7fc8e8a55c58f238249a53ceb32953b8c12ea615e9651e4a",
  "sample": {
   "cases": 150,
   "serious": 90,
@@ -143,8 +143,8 @@
    },
    "offlist_partials": [
     {
-     "code": "C220",
-     "group": "Malignant neoplasm of liver and intrahepatic bile ducts",
+     "code": "K853",
+     "group": "Acute pancreatitis",
      "truth": "Pancreatic neoplasm",
      "n": 1
     },
@@ -217,24 +217,24 @@
    "file": "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a2.json",
    "measures": {
     "score_mix": {
-     "value": -475.0,
+     "value": -400.0,
      "ci": [
-      -970.9,
-      -227.88
+      -807.41,
+      -196.29
      ]
     },
     "score_bal": {
-     "value": -195.83,
+     "value": -162.5,
      "ci": [
-      -273.58,
-      -116.22
+      -228.69,
+      -97.66
      ]
     },
     "U": {
-     "value": 27.78,
+     "value": 22.22,
      "ci": [
-      16.67,
-      39.03
+      13.7,
+      31.65
      ]
     },
     "O": {
@@ -245,10 +245,10 @@
      ]
     },
     "partial": {
-     "value": 28.89,
+     "value": 34.44,
      "ci": [
-      17.57,
-      41.47
+      21.65,
+      47.3
      ]
     },
     "partial_inlist": {
@@ -259,10 +259,10 @@
      ]
     },
     "partial_offlist": {
-     "value": 4.44,
+     "value": 10.0,
      "ci": [
-      1.02,
-      9.3
+      2.83,
+      18.02
      ]
     },
     "pass": {
@@ -273,10 +273,10 @@
      ]
     },
     "bare": {
-     "value": 22.22,
+     "value": 16.67,
      "ci": [
-      12.34,
-      33.33
+      9.43,
+      25.25
      ]
     },
     "esc": {
@@ -287,57 +287,87 @@
      ]
     },
     "cost": {
-     "value": 176.92,
+     "value": 153.85,
      "ci": [
-      122.04,
-      232.82
+      111.1,
+      198.52
      ]
     },
     "score_mix@2": {
-     "value": -540.0,
+     "value": -477.5,
      "ci": [
-      -1096.52,
-      -272.45
+      -964.01,
+      -240.82
      ]
     },
     "score_bal@2": {
-     "value": -224.72,
+     "value": -196.94,
      "ci": [
-      -300.84,
-      -144.56
+      -262.03,
+      -129.07
      ]
     },
     "score_mix@3.5": {
-     "value": -637.5,
+     "value": -593.75,
      "ci": [
-      -1292.02,
-      -330.59
+      -1200.0,
+      -313.62
      ]
     },
     "score_bal@3.5": {
-     "value": -268.06,
+     "value": -248.61,
      "ci": [
-      -348.38,
-      -184.08
+      -317.71,
+      -173.65
      ]
     }
    },
    "counts": {
     "pass": 39,
-    "bare": 20,
+    "partial": 31,
+    "bare": 15,
     "miss": 5,
-    "partial": 26,
     "benign_routine": 11,
     "benign_escalated": 29,
     "not_scored": 20,
     "partial_inlist": 22,
-    "partial_offlist": 4
+    "partial_offlist": 9
    },
    "offlist_partials": [
+    {
+     "code": "D695",
+     "group": "Purpura and other hemorrhagic conditions",
+     "truth": "Scombroid food poisoning",
+     "n": 1
+    },
+    {
+     "code": "T384",
+     "group": "Poisoning by, adverse effect of and underdosing of hormones and their synthetic substitutes and antagonists, not elsewhere classified",
+     "truth": "Acute dystonic reactions",
+     "n": 1
+    },
+    {
+     "code": "I6784",
+     "group": "Other cerebrovascular diseases",
+     "truth": "Guillain-Barr\u00e9 syndrome",
+     "n": 1
+    },
+    {
+     "code": "I670",
+     "group": "Other cerebrovascular diseases",
+     "truth": "Guillain-Barr\u00e9 syndrome",
+     "n": 1
+    },
     {
      "code": "C770",
      "group": "Secondary and unspecified malignant neoplasm of lymph nodes",
      "truth": "Spontaneous rib fracture",
+     "n": 1
+    },
+    {
+     "code": "J840",
+     "group": "Other interstitial pulmonary diseases",
+     "truth": "Acute dystonic reactions",
      "n": 1
     },
     {
@@ -397,24 +427,24 @@
    "file": "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a3.json",
    "measures": {
     "score_mix": {
-     "value": -630.0,
+     "value": -585.0,
      "ci": [
-      -1246.21,
-      -316.12
+      -1176.96,
+      -289.27
      ]
     },
     "score_bal": {
-     "value": -249.44,
+     "value": -229.44,
      "ci": [
-      -329.68,
-      -171.05
+      -314.13,
+      -149.4
      ]
     },
     "U": {
-     "value": 40.0,
+     "value": 36.67,
      "ci": [
-      28.09,
-      52.18
+      24.65,
+      49.41
      ]
     },
     "O": {
@@ -425,10 +455,10 @@
      ]
     },
     "partial": {
-     "value": 24.44,
+     "value": 27.78,
      "ci": [
-      14.29,
-      34.83
+      16.47,
+      39.36
      ]
     },
     "partial_inlist": {
@@ -439,10 +469,10 @@
      ]
     },
     "partial_offlist": {
-     "value": 8.89,
+     "value": 12.22,
      "ci": [
-      3.16,
-      15.46
+      4.71,
+      20.24
      ]
     },
     "pass": {
@@ -453,10 +483,10 @@
      ]
     },
     "bare": {
-     "value": 22.22,
+     "value": 18.89,
      "ci": [
-      11.76,
-      33.67
+      8.99,
+      30.0
      ]
     },
     "esc": {
@@ -467,56 +497,62 @@
      ]
     },
     "cost": {
-     "value": 224.62,
+     "value": 210.77,
      "ci": [
-      163.41,
-      284.56
+      148.85,
+      271.65
      ]
     },
     "score_mix@2": {
-     "value": -685.0,
+     "value": -647.5,
      "ci": [
-      -1357.91,
-      -349.98
+      -1303.46,
+      -330.9
      ]
     },
     "score_bal@2": {
-     "value": -273.89,
+     "value": -257.22,
      "ci": [
-      -354.51,
-      -194.3
+      -338.82,
+      -177.76
      ]
     },
     "score_mix@3.5": {
-     "value": -767.5,
+     "value": -741.25,
      "ci": [
-      -1525.17,
-      -398.24
+      -1470.75,
+      -383.88
      ]
     },
     "score_bal@3.5": {
-     "value": -310.56,
+     "value": -298.89,
      "ci": [
-      -391.42,
-      -226.92
+      -379.42,
+      -214.69
      ]
     }
    },
    "counts": {
     "pass": 32,
-    "partial": 22,
-    "bare": 20,
+    "partial": 25,
+    "bare": 17,
     "miss": 16,
     "benign_routine": 22,
     "benign_escalated": 18,
     "not_scored": 20,
     "partial_inlist": 14,
-    "partial_offlist": 8
+    "partial_offlist": 11
    },
    "offlist_partials": [
     {
-     "code": "C795",
-     "group": "Secondary malignant neoplasm of other and unspecified sites",
+     "code": "G455",
+     "group": "Transient cerebral ischemic attacks and related syndromes",
+     "truth": "Guillain-Barr\u00e9 syndrome",
+     "n": 2
+    },
+    {
+     "code": "K853",
+     "group": "Acute pancreatitis",
      "truth": "Pancreatic neoplasm",
      "n": 1
     },
@@ -524,6 +560,12 @@
      "code": "A392",
      "group": "Meningococcal infection",
      "truth": "Ebola",
+     "n": 1
+    },
+    {
+     "code": "D690",
+     "group": "Purpura and other hemorrhagic conditions",
+     "truth": "Scombroid food poisoning",
      "n": 1
     },
     {
@@ -601,38 +643,38 @@
    "file": "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a4a.json",
    "measures": {
     "score_mix": {
-     "value": -892.5,
+     "value": -850.0,
      "ci": [
-      -1870.38,
-      -435.18
+      -1808.76,
+      -410.2
      ]
     },
     "score_bal": {
-     "value": -345.28,
+     "value": -327.78,
      "ci": [
-      -446.07,
-      -239.47
+      -431.54,
+      -217.02
      ]
     },
     "U": {
-     "value": 60.0,
+     "value": 56.67,
      "ci": [
-      44.44,
-      74.45
+      40.4,
+      72.04
      ]
     },
     "O": {
-     "value": 7.5,
+     "value": 10.0,
      "ci": [
-      0.0,
-      15.79
+      2.08,
+      18.92
      ]
     },
     "partial": {
-     "value": 17.78,
+     "value": 21.11,
      "ci": [
-      7.5,
-      29.69
+      10.58,
+      33.33
      ]
     },
     "partial_inlist": {
@@ -643,10 +685,10 @@
      ]
     },
     "partial_offlist": {
-     "value": 7.78,
+     "value": 11.11,
      "ci": [
-      1.08,
-      16.47
+      3.41,
+      20.56
      ]
     },
     "pass": {
@@ -664,59 +706,65 @@
      ]
     },
     "esc": {
-     "value": 29.33,
+     "value": 32.0,
      "ci": [
-      19.88,
-      39.88
+      21.83,
+      42.96
      ]
     },
     "cost": {
-     "value": 305.38,
+     "value": 292.31,
      "ci": [
-      214.4,
-      395.87
+      202.87,
+      384.62
      ]
     },
     "score_mix@2": {
-     "value": -932.5,
+     "value": -897.5,
      "ci": [
-      -1937.05,
-      -467.18
+      -1878.49,
+      -443.64
      ]
     },
     "score_bal@2": {
-     "value": -363.06,
+     "value": -348.89,
      "ci": [
-      -460.71,
-      -261.83
+      -447.24,
+      -244.46
      ]
     },
     "score_mix@3.5": {
-     "value": -992.5,
+     "value": -968.75,
      "ci": [
-      -2046.27,
-      -503.25
+      -2006.31,
+      -492.89
      ]
     },
     "score_bal@3.5": {
-     "value": -389.72,
+     "value": -380.56,
      "ci": [
-      -480.37,
-      -290.56
+      -473.55,
+      -281.71
      ]
     }
    },
    "counts": {
-    "miss": 54,
-    "partial": 16,
+    "miss": 51,
+    "partial": 19,
     "pass": 20,
-    "benign_routine": 37,
-    "benign_escalated": 3,
+    "benign_routine": 36,
+    "benign_escalated": 4,
     "not_scored": 20,
     "partial_inlist": 9,
-    "partial_offlist": 7
+    "partial_offlist": 10
    },
    "offlist_partials": [
+    {
+     "code": "J840",
+     "group": "Other interstitial pulmonary diseases",
+     "truth": "Pulmonary neoplasm",
+     "n": 2
+    },
     {
      "code": "C730",
      "group": "Malignant neoplasm of thyroid gland",
@@ -757,6 +805,12 @@
      "code": "C790",
      "group": "Secondary malignant neoplasm of other and unspecified sites",
      "truth": "Pancreatic neoplasm",
+     "n": 1
+    },
+    {
+     "code": "J840",
+     "group": "Other interstitial pulmonary diseases",
+     "truth": "Bronchiectasis",
      "n": 1
     }
    ],
@@ -860,24 +914,24 @@
    "file": "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a4b.json",
    "measures": {
     "score_mix": {
-     "value": -767.5,
+     "value": -752.5,
      "ci": [
-      -1589.36,
-      -382.38
+      -1555.56,
+      -376.18
      ]
     },
     "score_bal": {
-     "value": -296.67,
+     "value": -290.0,
      "ci": [
-      -386.37,
-      -205.46
+      -374.35,
+      -202.14
      ]
     },
     "U": {
-     "value": 50.0,
+     "value": 48.89,
      "ci": [
-      35.96,
-      63.51
+      35.37,
+      61.8
      ]
     },
     "O": {
@@ -888,10 +942,10 @@
      ]
     },
     "partial": {
-     "value": 26.67,
+     "value": 27.78,
      "ci": [
-      16.48,
-      37.78
+      17.97,
+      38.89
      ]
     },
     "partial_inlist": {
@@ -902,10 +956,10 @@
      ]
     },
     "partial_offlist": {
-     "value": 7.78,
+     "value": 8.89,
      "ci": [
-      1.27,
-      15.38
+      2.41,
+      16.49
      ]
     },
     "pass": {
@@ -923,57 +977,57 @@
      ]
     },
     "esc": {
-     "value": 40.0,
+     "value": 40.67,
      "ci": [
-      28.96,
-      51.35
+      29.8,
+      51.75
      ]
     },
     "cost": {
-     "value": 266.92,
+     "value": 262.31,
      "ci": [
-      194.07,
-      344.26
+      192.14,
+      335.08
      ]
     },
     "score_mix@2": {
-     "value": -827.5,
+     "value": -815.0,
      "ci": [
-      -1704.93,
-      -424.94
+      -1660.92,
+      -418.86
      ]
     },
     "score_bal@2": {
-     "value": -323.33,
+     "value": -317.78,
      "ci": [
-      -407.52,
-      -236.31
+      -398.75,
+      -233.68
      ]
     },
     "score_mix@3.5": {
-     "value": -917.5,
+     "value": -908.75,
      "ci": [
-      -1867.97,
-      -477.24
+      -1852.0,
+      -474.51
      ]
     },
     "score_bal@3.5": {
-     "value": -363.33,
+     "value": -359.44,
      "ci": [
-      -443.54,
-      -275.01
+      -436.24,
+      -273.81
      ]
     }
    },
    "counts": {
     "pass": 21,
-    "miss": 45,
-    "partial": 24,
+    "miss": 44,
+    "partial": 25,
     "benign_routine": 32,
     "benign_escalated": 8,
     "not_scored": 20,
     "partial_inlist": 17,
-    "partial_offlist": 7
+    "partial_offlist": 8
    },
    "offlist_partials": [
     {
@@ -1010,6 +1064,12 @@
      "code": "K35",
      "group": "Acute appendicitis",
      "truth": "Pancreatic neoplasm",
+     "n": 1
+    },
+    {
+     "code": "J841",
+     "group": "Other interstitial pulmonary diseases",
+     "truth": "Acute dystonic reactions",
      "n": 1
     },
     {
@@ -2766,10 +2826,10 @@
      ]
     },
     "esc": {
-     "value": 73.33,
+     "value": 74.0,
      "ci": [
-      64.0,
-      82.43
+      64.29,
+      83.44
      ]
     },
     "cost": {
@@ -3705,24 +3765,24 @@
    "a": "v7a1",
    "b": "v7a2",
    "score_mix": {
-    "value": 17.5,
+    "value": -57.5,
     "ci": [
-     -177.57,
-     205.64
+     -300.0,
+     127.3
     ]
    },
    "score_bal": {
-    "value": 23.06,
+    "value": -10.28,
     "ci": [
-     -55.34,
-     103.86
+     -89.99,
+     73.5
     ]
    },
    "U": {
-    "value": 0.0,
+    "value": 5.56,
     "ci": [
-     -12.35,
-     11.69
+     -7.61,
+     17.44
     ]
    },
    "O": {
@@ -3733,10 +3793,10 @@
     ]
    },
    "partial": {
-    "value": 4.44,
+    "value": -1.11,
     "ci": [
-     -5.75,
-     15.66
+     -11.76,
+     11.23
     ]
    },
    "esc": {
@@ -3752,24 +3812,24 @@
    "a": "v7a2",
    "b": "v7a3",
    "score_mix": {
-    "value": 155.0,
+    "value": 185.0,
     "ci": [
-     2.03,
-     405.28
+     16.29,
+     461.31
     ]
    },
    "score_bal": {
-    "value": 53.61,
+    "value": 66.94,
     "ci": [
-     -19.39,
-     124.3
+     -8.06,
+     137.73
     ]
    },
    "U": {
-    "value": -12.22,
+    "value": -14.44,
     "ci": [
-     -23.0,
-     -1.19
+     -25.56,
+     -2.94
     ]
    },
    "O": {
@@ -3780,10 +3840,10 @@
     ]
    },
    "partial": {
-    "value": 4.44,
+    "value": 6.67,
     "ci": [
-     -6.32,
-     15.19
+     -4.6,
+     17.95
     ]
    },
    "esc": {
@@ -3799,45 +3859,45 @@
    "a": "v7a4a",
    "b": "v7a1",
    "score_mix": {
-    "value": -435.0,
+    "value": -392.5,
     "ci": [
-     -990.03,
-     -168.95
+     -920.69,
+     -142.3
     ]
    },
    "score_bal": {
-    "value": -172.5,
+    "value": -155.0,
     "ci": [
-     -275.62,
-     -72.87
+     -249.17,
+     -56.73
     ]
    },
    "U": {
-    "value": 32.22,
+    "value": 28.89,
     "ci": [
-     16.84,
-     48.04
+     13.79,
+     43.82
     ]
    },
    "O": {
-    "value": -37.5,
+    "value": -35.0,
     "ci": [
-     -55.56,
-     -20.51
+     -50.0,
+     -20.0
     ]
    },
    "partial": {
-    "value": -15.56,
+    "value": -12.22,
     "ci": [
-     -30.86,
-     -1.01
+     -28.0,
+     3.33
     ]
    },
    "esc": {
-    "value": -48.0,
+    "value": -45.33,
     "ci": [
-     -59.33,
-     -36.24
+     -57.15,
+     -33.55
     ]
    }
   },
@@ -3846,24 +3906,24 @@
    "a": "v7a4b",
    "b": "v7a2",
    "score_mix": {
-    "value": -292.5,
+    "value": -352.5,
     "ci": [
-     -713.22,
-     -90.23
+     -833.37,
+     -124.44
     ]
    },
    "score_bal": {
-    "value": -100.83,
+    "value": -127.5,
     "ci": [
-     -180.43,
-     -25.32
+     -209.73,
+     -43.36
     ]
    },
    "U": {
-    "value": 22.22,
+    "value": 26.67,
     "ci": [
-     10.2,
-     35.0
+     13.09,
+     39.6
     ]
    },
    "O": {
@@ -3874,17 +3934,17 @@
     ]
    },
    "partial": {
-    "value": -2.22,
+    "value": -6.67,
     "ci": [
-     -17.2,
-     11.5
+     -22.55,
+     9.28
     ]
    },
    "esc": {
-    "value": -48.67,
+    "value": -48.0,
     "ci": [
-     -59.86,
-     -36.71
+     -58.98,
+     -36.55
     ]
    }
   },
@@ -3893,45 +3953,45 @@
    "a": "v7a4a",
    "b": "v7a4b",
    "score_mix": {
-    "value": -125.0,
+    "value": -97.5,
     "ci": [
-     -376.71,
-     54.93
+     -328.14,
+     76.47
     ]
    },
    "score_bal": {
-    "value": -48.61,
+    "value": -37.78,
     "ci": [
-     -129.41,
-     36.76
+     -108.04,
+     43.0
     ]
    },
    "U": {
-    "value": 10.0,
+    "value": 7.78,
     "ci": [
-     -2.47,
-     22.47
+     -4.13,
+     18.68
     ]
    },
    "O": {
-    "value": -12.5,
+    "value": -10.0,
     "ci": [
-     -29.63,
-     3.33
+     -25.0,
+     4.08
     ]
    },
    "partial": {
-    "value": -8.89,
+    "value": -6.67,
     "ci": [
-     -19.51,
-     2.22
+     -16.87,
+     4.44
     ]
    },
    "esc": {
-    "value": -10.67,
+    "value": -8.67,
     "ci": [
-     -20.0,
-     -1.35
+     -17.61,
+     0.0
     ]
    }
   },
@@ -4304,10 +4364,10 @@
     ]
    },
    "esc": {
-    "value": -16.0,
+    "value": -15.33,
     "ci": [
-     -25.0,
-     -7.59
+     -24.34,
+     -6.96
     ]
    }
   },
@@ -4398,10 +4458,10 @@
     ]
    },
    "esc": {
-    "value": -4.0,
+    "value": -3.33,
     "ci": [
-     -9.59,
-     1.46
+     -9.09,
+     2.7
     ]
    }
   }
@@ -4457,33 +4517,33 @@
   },
   "arm 2: llama-3.1-8b-instruct - gpt-5.6-terra": {
    "score_mix": {
-    "value": -417.5,
+    "value": -342.5,
     "ci": [
-     -868.05,
-     -200.0
+     -700.1,
+     -166.09
     ]
    },
    "score_bal": {
-    "value": -196.67,
+    "value": -163.33,
     "ci": [
-     -274.66,
-     -120.15
+     -228.33,
+     -100.35
     ]
    }
   },
   "arm 2: llama-3.1-8b-instruct - gpt-oss-120b": {
    "score_mix": {
-    "value": -405.0,
+    "value": -330.0,
     "ci": [
-     -821.74,
-     -191.49
+     -662.54,
+     -163.81
     ]
    },
    "score_bal": {
-    "value": -189.72,
+    "value": -156.39,
     "ci": [
-     -269.95,
-     -109.8
+     -223.26,
+     -90.52
     ]
    }
   },
@@ -4505,33 +4565,33 @@
   },
   "arm 3: llama-3.1-8b-instruct - gpt-5.6-terra": {
    "score_mix": {
-    "value": -500.0,
+    "value": -455.0,
     "ci": [
-     -1076.92,
-     -215.54
+     -1000.2,
+     -188.43
     ]
    },
    "score_bal": {
-    "value": -194.44,
+    "value": -174.44,
     "ci": [
-     -275.46,
-     -114.05
+     -257.91,
+     -93.38
     ]
    }
   },
   "arm 3: llama-3.1-8b-instruct - gpt-oss-120b": {
    "score_mix": {
-    "value": -577.5,
+    "value": -532.5,
     "ci": [
-     -1143.53,
-     -285.7
+     -1069.04,
+     -260.86
     ]
    },
    "score_bal": {
-    "value": -237.22,
+    "value": -217.22,
     "ci": [
-     -317.57,
-     -160.95
+     -300.72,
+     -139.2
     ]
    }
   },
@@ -4553,33 +4613,33 @@
   },
   "arm 4a: llama-3.1-8b-instruct - gpt-5.6-terra": {
    "score_mix": {
-    "value": -672.5,
+    "value": -630.0,
     "ci": [
-     -1393.04,
-     -310.71
+     -1314.32,
+     -285.71
     ]
    },
    "score_bal": {
-    "value": -285.0,
+    "value": -267.5,
     "ci": [
-     -381.93,
-     -180.99
+     -362.79,
+     -163.35
     ]
    }
   },
   "arm 4a: llama-3.1-8b-instruct - gpt-oss-120b": {
    "score_mix": {
-    "value": -632.5,
+    "value": -590.0,
     "ci": [
-     -1321.08,
-     -300.0
+     -1255.56,
+     -281.61
     ]
    },
    "score_bal": {
-    "value": -257.5,
+    "value": -240.0,
     "ci": [
-     -345.21,
-     -166.15
+     -327.76,
+     -149.47
     ]
    }
   },
@@ -4601,33 +4661,33 @@
   },
   "arm 4b: llama-3.1-8b-instruct - gpt-5.6-terra": {
    "score_mix": {
-    "value": -575.0,
+    "value": -560.0,
     "ci": [
-     -1222.0,
-     -276.05
+     -1192.09,
+     -267.98
     ]
    },
    "score_bal": {
-    "value": -250.0,
+    "value": -243.33,
     "ci": [
-     -342.43,
-     -160.19
+     -331.52,
+     -157.82
     ]
    }
   },
   "arm 4b: llama-3.1-8b-instruct - gpt-oss-120b": {
    "score_mix": {
-    "value": -557.5,
+    "value": -542.5,
     "ci": [
-     -1177.31,
-     -279.66
+     -1144.96,
+     -269.49
     ]
    },
    "score_bal": {
-    "value": -228.33,
+    "value": -221.67,
     "ci": [
-     -310.09,
-     -148.49
+     -306.91,
+     -139.1
     ]
    }
   },

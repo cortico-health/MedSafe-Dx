@@ -1,5 +1,6 @@
 {
  "offlist_source": "spec/offlist_tiers_nhamcs.csv",
+ "offlist_source_sha256": "3d4f73d04064edea7fc8e8a55c58f238249a53ceb32953b8c12ea615e9651e4a",
  "summary": {
   "llama-3.1-8b-instruct|4a": {
    "serious": 90,
@@ -13,16 +14,16 @@
     "v": 1
    },
    "iii_by_tier": {
-    "1": 7,
-    "2": 1,
-    "3": 12,
-    "unscored": 32,
+    "1": 10,
+    "2": 5,
+    "3": 13,
+    "unscored": 24,
     "unlisted": 0
    },
    "target_listed_in_ii": 4,
    "target_listed_in_iii": 11,
    "under_escalations_draft3": 54,
-   "misses_valid_reason": 54
+   "misses_valid_reason": 51
   },
   "llama-3.1-8b-instruct|4b": {
    "serious": 90,
@@ -36,16 +37,16 @@
     "v": 3
    },
    "iii_by_tier": {
-    "1": 7,
-    "2": 3,
-    "3": 8,
-    "unscored": 23,
+    "1": 8,
+    "2": 6,
+    "3": 10,
+    "unscored": 17,
     "unlisted": 0
    },
    "target_listed_in_ii": 9,
    "target_listed_in_iii": 3,
    "under_escalations_draft3": 48,
-   "misses_valid_reason": 45
+   "misses_valid_reason": 44
   },
   "gpt-5.6-terra|4a": {
    "serious": 90,
@@ -60,9 +61,9 @@
    },
    "iii_by_tier": {
     "1": 4,
-    "2": 0,
+    "2": 1,
     "3": 0,
-    "unscored": 3,
+    "unscored": 2,
     "unlisted": 0
    },
    "target_listed_in_ii": 9,
@@ -129,9 +130,9 @@
    },
    "iii_by_tier": {
     "1": 12,
-    "2": 0,
+    "2": 1,
     "3": 0,
-    "unscored": 6,
+    "unscored": 5,
     "unlisted": 0
    },
    "target_listed_in_ii": 17,
@@ -985,7 +986,7 @@
   },
   {
    "flag": "G479 Sleep disorder, unspecified",
-   "tier": "unscored",
+   "tier": "2",
    "n": 4
   },
   {
@@ -1005,7 +1006,7 @@
   },
   {
    "flag": "J840 Alveolar and parieto-alveolar conditions",
-   "tier": "unscored",
+   "tier": "1",
    "n": 3
   },
   {
@@ -1090,7 +1091,7 @@
   },
   {
    "flag": "G4784 Other sleep disorders (nearest parent)",
-   "tier": "unscored",
+   "tier": "2",
    "n": 1
   },
   {
@@ -1135,7 +1136,7 @@
   },
   {
    "flag": "K520 Gastroenteritis and colitis due to radiation",
-   "tier": "unscored",
+   "tier": "2",
    "n": 1
   },
   {
@@ -1190,7 +1191,7 @@
   },
   {
    "flag": "J300 Vasomotor rhinitis",
-   "tier": "unscored",
+   "tier": "3",
    "n": 1
   },
   {
@@ -1290,12 +1291,12 @@
   },
   {
    "flag": "M509 Cervical disc disorder, unspecified",
-   "tier": "unscored",
+   "tier": "2",
    "n": 1
   },
   {
    "flag": "M470 Anterior spinal and vertebral artery compression syndromes",
-   "tier": "unscored",
+   "tier": "3",
    "n": 1
   },
   {
@@ -1310,7 +1311,7 @@
   },
   {
    "flag": "J841 Other interstitial pulmonary diseases with fibrosis",
-   "tier": "unscored",
+   "tier": "1",
    "n": 1
   },
   {
@@ -1325,7 +1326,7 @@
   },
   {
    "flag": "M170 Bilateral primary osteoarthritis of knee",
-   "tier": "unscored",
+   "tier": "3",
    "n": 1
   },
   {
@@ -1345,7 +1346,7 @@
   },
   {
    "flag": "K274 Chronic or unsp peptic ulcer, site unsp, with hemorrhage",
-   "tier": "unscored",
+   "tier": "2",
    "n": 1
   },
   {
@@ -1430,7 +1431,7 @@
   },
   {
    "flag": "E275 Adrenomedullary hyperfunction",
-   "tier": "unscored",
+   "tier": "2",
    "n": 1
   },
   {
@@ -1560,7 +1561,7 @@
    {
     "case_id": "ddxplus_37564",
     "class": "iii",
-    "offlist_tier": "unscored",
+    "offlist_tier": "2",
     "truth": "Guillain-Barr\u00e9 syndrome",
     "truth_tier": 1,
     "targets": [
@@ -1722,7 +1723,7 @@
    {
     "case_id": "ddxplus_103276",
     "class": "iii",
-    "offlist_tier": "unscored",
+    "offlist_tier": "1",
     "truth": "Pulmonary neoplasm",
     "truth_tier": 1,
     "targets": [
@@ -1742,7 +1743,7 @@
     "target_listed": true,
     "top1_truth": false,
     "escalated_draft3": false,
-    "valid_reason_outcome": "miss"
+    "valid_reason_outcome": "partial"
    },
    {
     "case_id": "ddxplus_41515",
@@ -2287,7 +2288,7 @@
    {
     "case_id": "ddxplus_102883",
     "class": "iii",
-    "offlist_tier": "unscored",
+    "offlist_tier": "2",
     "truth": "Pancreatic neoplasm",
     "truth_tier": 1,
     "targets": [
@@ -2337,7 +2338,7 @@
    {
     "case_id": "ddxplus_55496",
     "class": "iii",
-    "offlist_tier": "unscored",
+    "offlist_tier": "2",
     "truth": "Guillain-Barr\u00e9 syndrome",
     "truth_tier": 1,
     "targets": [
@@ -2726,7 +2727,7 @@
    {
     "case_id": "ddxplus_6125",
     "class": "iii",
-    "offlist_tier": "unscored",
+    "offlist_tier": "1",
     "truth": "Pulmonary neoplasm",
     "truth_tier": 1,
     "targets": [
@@ -2746,7 +2747,7 @@
     "target_listed": false,
     "top1_truth": false,
     "escalated_draft3": false,
-    "valid_reason_outcome": "miss"
+    "valid_reason_outcome": "partial"
    },
    {
     "case_id": "ddxplus_100732",
@@ -2776,7 +2777,7 @@
    {
     "case_id": "ddxplus_23676",
     "class": "iii",
-    "offlist_tier": "unscored",
+    "offlist_tier": "2",
     "truth": "PSVT",
     "truth_tier": 1,
     "targets": [
@@ -3030,7 +3031,7 @@
    {
     "case_id": "ddxplus_124721",
     "class": "iii",
-    "offlist_tier": "unscored",
+    "offlist_tier": "3",
     "truth": "Acute laryngitis",
     "truth_tier": 3,
     "targets": [
@@ -3236,7 +3237,7 @@
    {
     "case_id": "ddxplus_126490",
     "class": "iii",
-    "offlist_tier": "unscored",
+    "offlist_tier": "1",
     "truth": "Bronchiectasis",
     "truth_tier": 2,
     "targets": [
@@ -3256,7 +3257,7 @@
     "target_listed": false,
     "top1_truth": false,
     "escalated_draft3": false,
-    "valid_reason_outcome": "miss"
+    "valid_reason_outcome": "partial"
    }
   ],
   "llama-3.1-8b-instruct|4b": [
@@ -3338,7 +3339,7 @@
    {
     "case_id": "ddxplus_37564",
     "class": "iii",
-    "offlist_tier": "unscored",
+    "offlist_tier": "2",
     "truth": "Guillain-Barr\u00e9 syndrome",
     "truth_tier": 1,
     "targets": [
@@ -4094,7 +4095,7 @@
    {
     "case_id": "ddxplus_55496",
     "class": "iii",
-    "offlist_tier": "unscored",
+    "offlist_tier": "2",
     "truth": "Guillain-Barr\u00e9 syndrome",
     "truth_tier": 1,
     "targets": [
@@ -4276,7 +4277,7 @@
    {
     "case_id": "ddxplus_93804",
     "class": "iii",
-    "offlist_tier": "unscored",
+    "offlist_tier": "2",
     "truth": "Spontaneous rib fracture",
     "truth_tier": 2,
     "targets": [
@@ -4409,7 +4410,7 @@
    {
     "case_id": "ddxplus_153",
     "class": "iii",
-    "offlist_tier": "unscored",
+    "offlist_tier": "3",
     "truth": "Spontaneous rib fracture",
     "truth_tier": 2,
     "targets": [
@@ -4641,7 +4642,7 @@
    {
     "case_id": "ddxplus_108567",
     "class": "iii",
-    "offlist_tier": "unscored",
+    "offlist_tier": "1",
     "truth": "Acute dystonic reactions",
     "truth_tier": 1,
     "targets": [
@@ -4661,7 +4662,7 @@
     "target_listed": false,
     "top1_truth": false,
     "escalated_draft3": false,
-    "valid_reason_outcome": "miss"
+    "valid_reason_outcome": "partial"
    },
    {
     "case_id": "ddxplus_55377",
@@ -4907,7 +4908,7 @@
    {
     "case_id": "ddxplus_68142",
     "class": "iii",
-    "offlist_tier": "unscored",
+    "offlist_tier": "3",
     "truth": "Spontaneous rib fracture",
     "truth_tier": 2,
     "targets": [
@@ -5226,7 +5227,7 @@
    {
     "case_id": "ddxplus_1311",
     "class": "iii",
-    "offlist_tier": "unscored",
+    "offlist_tier": "2",
     "truth": "Boerhaave",
     "truth_tier": 1,
     "targets": [
@@ -8943,7 +8944,7 @@
    {
     "case_id": "ddxplus_102864",
     "class": "iii",
-    "offlist_tier": "unscored",
+    "offlist_tier": "2",
     "truth": "Scombroid food poisoning",
     "truth_tier": 1,
     "targets": [

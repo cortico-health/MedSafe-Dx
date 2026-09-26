@@ -111,7 +111,10 @@ def run(groups_fallback: bool = False) -> dict:
         raise SystemExit(f"{vr.OFFLIST_TIERS_CSV} is missing; pass --groups-fallback to use the v2 groups")
     names = icd_names()
     rows, summary = {}, {}
+    scored = {Path(r["file"]).name for r in json.loads((AB / "ab-scores.json").read_text())["rows"].values()}
     for f in sorted((AB / "runs").glob("*-v7a4[ab].json")):
+        if f.name not in scored:  # the draft-3 rows only
+            continue
         preds, meta = sb.load_predictions(f)
         arm, model = meta["prompt_version"], meta["model"]
         a = sb.row_answers(preds, arm, ab, f"{model}|{arm}")
@@ -135,7 +138,8 @@ def run(groups_fallback: bool = False) -> dict:
                 if pool and len(examples[cls]) < N_EXAMPLES:
                     examples[cls].append(pool.pop(0))
     offlist_codes = Counter((x["flag"], x["offlist_tier"]) for cases in rows.values() for x in cases if x["class"] == "iii")
-    return {"offlist_source": str(source.relative_to(ROOT)), "summary": summary, "examples": dict(examples),
+    return {"offlist_source": str(source.relative_to(ROOT)), "offlist_source_sha256": sb.ak.sha256_file(source),
+            "summary": summary, "examples": dict(examples),
             "offlist_flags": [{"flag": f, "tier": t, "n": n} for (f, t), n in offlist_codes.most_common()],
             "cases": rows}
 
