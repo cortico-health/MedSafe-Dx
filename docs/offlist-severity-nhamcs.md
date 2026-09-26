@@ -1,8 +1,52 @@
 # Off-list severity tiers from NHAMCS
 
-Date: 2026-09-26. Scope: ICD-10-CM codes that models emit but that name none of the 49 DDXPlus conditions under the standard map policy (`evaluator/condition_match.py`). Code: `scripts/analysis/offlist_severity_nhamcs.py`. Data outputs under `results/analysis/nhamcs_offlist/`; the tier table the scorer reads is `spec/offlist_tiers_nhamcs.csv`. Every figure below comes from that script run on the NHAMCS files in `data/external/nhamcs/` and the run files present at the time of writing (including arms 4aj and 4bj); the coverage figures move as new runs land.
+Date: 2026-09-26. Scope: ICD-10-CM codes that models emit but that name none of the 49 DDXPlus conditions under the standard map policy (`evaluator/condition_match.py`). Code: `scripts/analysis/offlist_severity_nhamcs.py`, then `scripts/analysis/offlist_tier_fill.py` (the fill, change note three). Data outputs under `results/analysis/nhamcs_offlist/`; the tier table the scorer reads is `spec/offlist_tiers_nhamcs.csv`. Sections 1-6 describe the table before the fill (`spec/offlist_tiers_nhamcs_pre_fill.csv`); every figure in them comes from the build script run on the NHAMCS files in `data/external/nhamcs/` and the run files present at the time of writing (including arms 4aj and 4bj); the coverage figures move as new runs land.
 
 ## Summary
+
+**Change, 2026-09-26 (third): we fill unscored rows from more public data, with the same rule.** 901 of 1,369 prefixes were unscored, most because they had under 30 adult primary-diagnosis visits, and 42% of off-list flags in the A/B runs landed on them. An unscored flag cannot earn a partial credit, so a model that flags giant cell arteritis scores as if it had flagged nothing. `scripts/analysis/offlist_tier_fill.py` now reads the table the build script writes (kept as `spec/offlist_tiers_nhamcs_pre_fill.csv`), keeps every scored row, and tries two sources, in order, on each unscored row that is not an R, Z or V-Y code. The new column `tier_source` names the source that scored the row (`override`, `nhamcs`, `nhamcs_pooled`, `ccsr` or `unscored`). The rule, the 30-visit floor, primary-diagnosis rates, the overrides and the group-tier rule are unchanged.
+
+1. **`nhamcs_pooled`: NHAMCS ED 2011-2022.** CDC's 2011-2015 ED files add 101,765 adult visits to the 96,539 from 2016-2022 (CDC has not released 2023). They code diagnoses in ICD-9-CM, so we map each primary diagnosis with the CMS 2018 General Equivalence Mapping (GEM) to the longest ICD-10-CM prefix every GEM target shares (4 or 3 characters), and drop the visit when the targets fall in different 3-character groups (88,253 of the 2011-2015 visits map). Rates on common groups agree across the two eras, 2011-2015 vs 2016-2022 (pneumonia J18 admission 54% vs 47%, AF I48 53% vs 52%, back pain M54 2.3% vs 2.8%). A 3-character group follows the group-tier rule on the pooled rates.
+2. **`ccsr`: the AHRQ CCSR category.** When the prefix still has under 30 pooled visits, we rate its CCSR category (v2026.1, default outpatient category, since an ED visit is an outpatient encounter) on the pooled primary-diagnosis visits whose code falls in that category, with the same rule and a floor of 30 visits per category. A prefix takes the category most of its ICD-10-CM codes fall in. AHRQ puts codes that cannot be a first-listed diagnosis in placeholder categories (XXX000, XXX111); for those we take the code's first clinical category, because a placeholder mixes unrelated diseases. A finer prefix inside a filled group gets its own row when its category gives a different tier (B44 aspergillosis tier 3 under fungal infections, B44.0 and B44.1 pulmonary aspergillosis tier 1 under lower respiratory disease).
+3. **HCUP NEDS is not used.** HCUPnet is an interactive query builder behind a use agreement, with no public API, so a script cannot pull its admission rates.
+
+| | Before the fill | After |
+|---|---|---|
+| Prefixes (rows) | 1,369 | 1,498 (129 new finer rows) |
+| Tier 1 / 2 / 3 / unscored | 199 / 127 / 142 / 901 | 301 / 437 / 377 / 383 |
+| Rows scored by pooled NHAMCS (tier 1 / 2 / 3) | - | 99 (18 / 36 / 45) |
+| Rows scored by CCSR category (tier 1 / 2 / 3) | - | 548 (84 / 274 / 190) |
+| Weak-evidence tier-1 rows | 9 | 20 |
+| A/B flags tier 1 / 2 / 3 / unscored | 30.5% / 8.0% / 19.1% / 42.4% | 35.7% / 22.1% / 31.5% / 10.6% |
+| All off-list mentions tier 1 / 2 / 3 / unscored | 24.3% / 12.0% / 20.4% / 43.3% | 28.4% / 23.9% / 33.0% / 14.7% |
+| Unscored mentions under 30 visits / symptom / Z | 4,761 / 1,198 / 146 | 732 / 1,198 / 146 |
+
+Most filled rows land in tier 2 or 3, because a CCSR category's rates are mostly those of its common members. On the audited kept cases (`results/analysis/case_selection/audited_150_verdicts.csv`, bucket not EXCLUDE, flag off-list unscored), the fill moves few full misses to a partial:
+
+| Audited full misses | Cases | Now tier 1 (partial, cost 1) | Now tier 2 or 3 (cost 7) | Still unscored |
+|---|---|---|---|---|
+| Disputed (kind FP) | 32 | 7: B44.1 x3, G12.9 x2, G21.01, G21.1 | 22: M31.6 x11 (tier 2); B54 x7, A98.3 x2, J38.3, F40.1 (tier 3) | 3: H40.2 x2, E84.0 |
+| Reference-agreed (kind TP) | 83 | 8: J84.0 x3, J84.1 x2, G08, G21.01, I70.3 | 44 | 31: G73.0 x5, I36.9 x3, 7 R codes, 4 F45 codes and 12 more |
+
+Example codes:
+
+| Code | Row used | Tier | Source | n | Admission / ICU |
+|---|---|---|---|---|---|
+| M31.6 giant cell arteritis | M31 | 2 | CCSR MUS024 connective tissue disorders | 46 | 0.179 / 0.023 |
+| B54 malaria | B54 | 3 | CCSR INF009 parasitic infections | 167 | 0.002 / 0.000 |
+| B44 aspergillosis | B44 (B44.0, B44.1: tier 1) | 3 | CCSR INF004 fungal infections (RSP016 for B44.0-B44.1) | 212 | 0.007 / 0.000 |
+| H40.2 angle-closure glaucoma | H40 | unscored | CCSR EYE003 glaucoma, 15 visits | 15 | - |
+| A98.3 Marburg | A98 | 3 | CCSR INF008 viral infection | 1,337 | 0.016 / 0.001 |
+| G12.9 spinal muscular atrophy | G12 | 1 | CCSR NVS006 other nervous system disorders | 137 | 0.573 / 0.123 |
+| G21.0 neuroleptic malignant syndrome | G21 | 1 | CCSR NVS006 | 137 | 0.573 / 0.123 |
+| E84.0 cystic fibrosis | E84 | unscored | CCSR END012, 2 visits | 2 | - |
+| G73.0 myasthenic syndromes | G73 | unscored | CCSR NVS018, 9 visits | 0 | - |
+| M47.0 spondylosis | M47 | 3 | pooled NHAMCS | 33 | 0.036 / 0.000 |
+| A35 tetanus | A35 | 2 | CCSR INF003 bacterial infections | 102 | 0.141 / 0.043 |
+| I36.9 tricuspid valve disorder | I36 | unscored | CCSR CIR003, 21 visits | 0 | - |
+| J84 interstitial lung disease | J84 | 1 | CCSR RSP016 lower respiratory disease | 215 | 0.314 / 0.060 |
+
+The CCSR fallback inherits the construct gap of section 6 and adds one of its own: a rare, dangerous disease takes the rates of the common diseases it is grouped with. Malaria B54 and Marburg A98.3 come out tier 3 because parasitic and viral infection visits are mostly routine; tetanus A35 is tier 2. We report these rather than override them, as with section 5, because a hand edit would turn the third-party rule back into our judgement. Outputs: `results/analysis/nhamcs_offlist/fill_rates.csv` (pooled rates by code, group and category) and `fill_report.json` (the figures above). Tests: `evaluator/tests/test_offlist_tier_fill.py`. The build script now writes `spec/offlist_tiers_nhamcs_pre_fill.csv`; run the fill after it.
 
 **Change, 2026-09-26 (second): the group-tier rule.** A 3-character group the NHAMCS rule scores now takes the tier of the sub-codes that hold the majority of its primary-diagnosis visits, and sub-codes with a different tier keep rows of their own. We made this change because pooled group rates let a small, severe sub-code set the tier of a group whose visits are mostly routine: type 2 diabetes E11 was tier 1 (ICU 8.7% over 483 visits) because E11.1 ketoacidosis (54 visits, ICU 45%) sits inside it, while E11, E11.6 and E11.9 (396 visits) are tier 2 on their own. A sub-code has a tier of its own when it has an override or 30+ primary visits; a group with no majority tier among those keeps its pooled tier. Override and unscored groups are unchanged. The previous table is kept as `spec/offlist_tiers_nhamcs_pooled.csv`; the new column `pooled_tier` gives the pooled tier on every rule-scored group row. The rule changes 16 of 317 rule-scored groups:
 
@@ -232,6 +276,6 @@ Other notable rows: U07.1 COVID-19 is tier 2 (admission 18.5%) and is the second
 2. **Coding.** NHAMCS codes the ED's own discharge diagnosis, as abstracted from the record, and often a symptom code (R07 chest pain has 4,480 adult primary visits, more than any disease group). A model that emits the disease code gets the disease's tier; the visits where the ED wrote the symptom instead are not in the disease's denominator, which raises the disease's rates. Rare and specialist diagnoses (GCA, botulism, malaria, neuralgia) are unscored because EDs do not close visits with them.
 3. **Weights and variance.** Rates use the visit weight `PATWT` only, without the masked strata and PSUs, so there are no confidence intervals. A 5% ICU threshold on 30-60 visits is one to three sampled visits.
 4. **Four-character codes.** The public file truncates codes to four characters, so I71.00 and I71.01 share one row and any 5- or 6-character emitted code inherits its 4-character parent.
-5. **Small N.** The 30-visit floor on primary diagnoses leaves 901 of 1,380 prefixes unscored and puts 33.8% of off-list mentions outside the tiers. We no longer fall back to any-listed rates, which mixed the code as a secondary diagnosis of an admitted patient with the code as the reason for the visit and leaned high; the price is more unscored rare codes.
+5. **Small N.** The 30-visit floor on primary diagnoses leaves 901 of 1,380 prefixes unscored and puts 33.8% of off-list mentions outside the tiers. We no longer fall back to any-listed rates, which mixed the code as a secondary diagnosis of an admitted patient with the code as the reason for the visit and leaned high; the price is more unscored rare codes. The fill (change note three) cuts this to 383 of 1,498 prefixes and 5.2% of mentions, by pooling NHAMCS 2011-2022 and falling back to the CCSR category.
 6. **Calibration sample.** Twenty-six conditions, 10 of them tier 1 and none rare, set the thresholds. The routine line at 5% is the least stable choice (kappa 0.767 at 10%) and drives the tier-2/tier-3 split for the bulk of emitted codes.
 7. **Adults only.** Age 18+ matches the benchmark's adult sample; the tiers do not apply to paediatric codes such as croup or bronchiolitis.

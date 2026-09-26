@@ -32,11 +32,13 @@ Outputs:
   results/analysis/nhamcs_offlist/calibration.json       step 2: rule search, confusion table, leave-one-out
   results/analysis/nhamcs_offlist/overlap_conditions.csv step 2: per-condition rates and tiers
   results/analysis/nhamcs_offlist/coverage.json          step 4: emitted-code coverage and watchlist checks
-  spec/offlist_tiers_nhamcs.csv                          step 3: the tier table the scorer reads
+  spec/offlist_tiers_nhamcs_pre_fill.csv                 step 3: the tier table before the fill; offlist_tier_fill.py
+                                                         fills its unscored rows and writes spec/offlist_tiers_nhamcs.csv,
+                                                         the table the scorer reads
   (spec/offlist_tiers_nhamcs_anylisted.csv keeps the first version, which fell back to any-listed rates;
    spec/offlist_tiers_nhamcs_pooled.csv keeps the second, which tiered each group on its pooled rates.)
 
-Run: python3 scripts/analysis/offlist_severity_nhamcs.py
+Run: python3 scripts/analysis/offlist_severity_nhamcs.py, then python3 scripts/analysis/offlist_tier_fill.py
 """
 from __future__ import annotations
 
@@ -63,7 +65,7 @@ nu = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(nu)
 
 OUT = ROOT / "results" / "analysis" / "nhamcs_offlist"
-SPEC_OUT = ROOT / "spec" / "offlist_tiers_nhamcs.csv"
+SPEC_OUT = ROOT / "spec" / "offlist_tiers_nhamcs_pre_fill.csv"  # scripts/analysis/offlist_tier_fill.py reads it
 TIERS_CSV = ROOT / "spec" / "dangerous_if_missed_tiers_v03b.csv"
 NT_GROUPS_CSV = ROOT / "spec" / "offlist_escalation_groups.csv"
 ICD_ORDER = ROOT / "data" / "external" / "icd10cm" / "icd10cm_order_2026.txt"
