@@ -1,0 +1,744 @@
+[
+ {
+  "file": "results/v03/ab/smoke-4j/anthropic-claude-haiku-4.5-v7a4aj.json",
+  "model": "anthropic/claude-haiku-4.5",
+  "arm": "v7a4aj",
+  "n": 5,
+  "parse_pct": 100.0,
+  "flag_pct": 100.0,
+  "flags": 5,
+  "tier1_pct_of_flags": 80.0,
+  "onlist_other_pct_of_flags": 0.0,
+  "offlist_pct_of_flags": 20.0,
+  "offlist_in_group": 0,
+  "none": 0,
+  "invalid_flags": 0,
+  "justification_pct": 100.0,
+  "finish_reasons": {
+   "stop": 5
+  },
+  "cost_usd": 0.008,
+  "cost_per_call_usd": 0.00161,
+  "justifications": [
+   {
+    "case_id": "ddxplus_84693",
+    "flag": "I249",
+    "kind": "tier1",
+    "text": "This 48-year-old female with multiple cardiac risk factors (diabetes, hypertension, hyperlipidemia, smoking, family history of early CVD, prior angina) presenting with acute-onset heavy chest pain radiating to bilateral shoulders and arms, associated with dyspnea and exertional pattern requires urgent escalation to rule out acute coronary syndrome."
+   },
+   {
+    "case_id": "ddxplus_43188",
+    "flag": "T781",
+    "kind": "tier1",
+    "text": "This patient presents with acute anaphylaxis or severe allergic reaction (urticaria, dyspnea, wheezing, dizziness, nausea, facial flushing) requiring immediate clinical assessment and potential emergency intervention."
+   },
+   {
+    "case_id": "ddxplus_14238",
+    "flag": "C259",
+    "kind": "tier1",
+    "text": "This 66-year-old with chronic pancreatitis, smoking history, obesity, family history of pancreatic cancer, and new presentation of diarrhea, left flank pain, epigastric yellow lesion, and pale stools with dark urine requires urgent escalation to exclude pancreatic malignancy."
+   },
+   {
+    "case_id": "ddxplus_57683",
+    "flag": "G2101",
+    "kind": "offlist_other",
+    "text": "This patient presents with a classic acute dystonic reaction (oculogyric crisis, trismus, facial spasms, dysphagia, dyspnea) following recent antipsychotic initiation and recent parenteral medication administration, which requires urgent medical evaluation and likely requires immediate treatment with an anticholinergic agent."
+   },
+   {
+    "case_id": "ddxplus_37564",
+    "flag": "G61",
+    "kind": "tier1",
+    "text": "This patient requires urgent escalation due to acute onset of progressive neurological symptoms (facial weakness, bilateral limb weakness, paresthesias, dyspnea) following viral infection, highly suggestive of Guillain-Barr\u00e9 syndrome, which carries risk of respiratory failure and requires immediate specialist evaluation and potential ICU monitoring."
+   }
+  ]
+ },
+ {
+  "file": "results/v03/ab/smoke-4j/anthropic-claude-haiku-4.5-v7a4bj.json",
+  "model": "anthropic/claude-haiku-4.5",
+  "arm": "v7a4bj",
+  "n": 5,
+  "parse_pct": 100.0,
+  "flag_pct": 100.0,
+  "flags": 5,
+  "tier1_pct_of_flags": 60.0,
+  "onlist_other_pct_of_flags": 0.0,
+  "offlist_pct_of_flags": 40.0,
+  "offlist_in_group": 0,
+  "none": 0,
+  "invalid_flags": 0,
+  "justification_pct": 100.0,
+  "finish_reasons": {
+   "stop": 5
+  },
+  "cost_usd": 0.0082,
+  "cost_per_call_usd": 0.00165,
+  "justifications": [
+   {
+    "case_id": "ddxplus_84693",
+    "flag": "I249",
+    "kind": "tier1",
+    "text": "This patient has multiple cardiac risk factors (diabetes, hypertension, hyperlipidemia, smoking, family history of early CAD, prior angina/MI) with acute onset chest pain radiating to shoulders and arms, dyspnea, and exertional pattern\u2014concerning for acute coronary syndrome rather than panic attack, requiring urgent cardiac evaluation."
+   },
+   {
+    "case_id": "ddxplus_43188",
+    "flag": "L509",
+    "kind": "offlist_other",
+    "text": "The clinical presentation of acute urticaria with pruritus, facial flushing, dyspnea, and wheezing suggests an allergic reaction or anaphylaxis rather than anaemia, requiring urgent assessment for anaphylaxis and potential airway compromise."
+   },
+   {
+    "case_id": "ddxplus_14238",
+    "flag": "C259",
+    "kind": "tier1",
+    "text": "This patient requires urgent escalation; the combination of chronic pancreatitis, diarrhea, pale stools, dark urine, left flank pain, epigastric yellow lesion, smoking history, obesity, and family history of pancreatic cancer raises significant concern for pancreatic malignancy or acute pancreatitis exacerbation, not bronchitis."
+   },
+   {
+    "case_id": "ddxplus_57683",
+    "flag": "G211",
+    "kind": "offlist_other",
+    "text": "This patient presents with classic acute dystonia (oculogyric crisis, trismus, facial spasms, tongue protrusion, ptosis, dyspnea) in the context of recent antipsychotic exposure and recent parenteral medication administration, which is a medical emergency requiring immediate intervention with anticholinergic agents."
+   },
+   {
+    "case_id": "ddxplus_37564",
+    "flag": "G61",
+    "kind": "tier1",
+    "text": "This patient requires urgent escalation; the constellation of acute bilateral facial weakness, bilateral limb weakness, paresthesias in extremities and perioral region, and dyspnea following recent viral infection is highly concerning for Guillain-Barr\u00e9 syndrome, which can rapidly progress to respiratory failure and requires immediate hospitalization and specialist evaluation."
+   }
+  ]
+ },
+ {
+  "file": "results/v03/ab/smoke-4j/anthropic-claude-sonnet-4.6-v7a4aj.json",
+  "model": "anthropic/claude-sonnet-4.6",
+  "arm": "v7a4aj",
+  "n": 5,
+  "parse_pct": 100.0,
+  "flag_pct": 100.0,
+  "flags": 5,
+  "tier1_pct_of_flags": 100.0,
+  "onlist_other_pct_of_flags": 0.0,
+  "offlist_pct_of_flags": 0.0,
+  "offlist_in_group": 0,
+  "none": 0,
+  "invalid_flags": 0,
+  "justification_pct": 100.0,
+  "finish_reasons": {
+   "stop": 5
+  },
+  "cost_usd": 0.0959,
+  "cost_per_call_usd": 0.01919,
+  "justifications": [
+   {
+    "case_id": "ddxplus_84693",
+    "flag": "I200",
+    "kind": "tier1",
+    "text": "This 48-year-old female with diabetes, hypertension, hypercholesterolemia, active smoking, prior MI/angina, and family history of early cardiovascular disease presents with exertional heavy chest/breast/epigastric pain with wide radiation (bilateral arms, throat, thoracic spine) and dyspnea relieved by rest \u2014 a pattern highly consistent with unstable angina or evolving ACS requiring immediate clinician escalation."
+   },
+   {
+    "case_id": "ddxplus_43188",
+    "flag": "T782XXA",
+    "kind": "tier1",
+    "text": "This patient requires urgent clinician review due to active respiratory symptoms (wheezing, dyspnoea) and near-syncope alongside urticarial rash and flushing following ingestion of dark-fleshed fish, which together indicate either severe scombroid histamine toxicity or anaphylaxis \u2014 both potentially life-threatening without prompt assessment and treatment."
+   },
+   {
+    "case_id": "ddxplus_14238",
+    "flag": "C259",
+    "kind": "tier1",
+    "text": "This 66-year-old female presents with a classic obstructive jaundice picture (pale stools, dark urine, yellow epigastric skin changes) alongside multiple high-risk features for pancreatic malignancy (chronic pancreatitis, family history of pancreatic cancer, smoking, obesity, diabetes, age), warranting urgent clinician escalation."
+   },
+   {
+    "case_id": "ddxplus_57683",
+    "flag": "G2402",
+    "kind": "tier1",
+    "text": "This patient almost certainly has an acute drug-induced dystonic reaction (oculogyric crisis, trismus, tongue protrusion, laryngospasm) following recent antipsychotic/dopamine-antagonist exposure, and the reported suffocation episodes suggest laryngeal/pharyngeal dystonia which poses an immediate airway risk requiring urgent clinician assessment and likely anticholinergic treatment."
+   },
+   {
+    "case_id": "ddxplus_37564",
+    "flag": "G610",
+    "kind": "tier1",
+    "text": "This 63-year-old female with a recent viral illness presenting with ascending bilateral limb weakness, bilateral perioral and limb paresthesias, cranial nerve involvement (facial/ocular weakness), and \u2014 critically \u2014 shortness of breath has a presentation highly consistent with Guillain-Barr\u00e9 Syndrome with possible respiratory muscle compromise, which is a medical emergency requiring immediate clinician escalation."
+   }
+  ]
+ },
+ {
+  "file": "results/v03/ab/smoke-4j/anthropic-claude-sonnet-4.6-v7a4bj.json",
+  "model": "anthropic/claude-sonnet-4.6",
+  "arm": "v7a4bj",
+  "n": 5,
+  "parse_pct": 100.0,
+  "flag_pct": 100.0,
+  "flags": 5,
+  "tier1_pct_of_flags": 100.0,
+  "onlist_other_pct_of_flags": 0.0,
+  "offlist_pct_of_flags": 0.0,
+  "offlist_in_group": 0,
+  "none": 0,
+  "invalid_flags": 0,
+  "justification_pct": 100.0,
+  "finish_reasons": {
+   "stop": 5
+  },
+  "cost_usd": 0.0936,
+  "cost_per_call_usd": 0.01872,
+  "justifications": [
+   {
+    "case_id": "ddxplus_84693",
+    "flag": "I21",
+    "kind": "tier1",
+    "text": "This patient requires urgent clinician escalation: her exertional chest pain relieved by rest, widespread cardiac radiation pattern (left arm, bilateral shoulders, jaw), dyspnoea, and dense cardiovascular risk profile (diabetes, hypertension, hypercholesterolaemia, smoking, prior MI/angina, family history) make ACS highly probable and the working diagnosis of panic attack potentially dangerous."
+   },
+   {
+    "case_id": "ddxplus_43188",
+    "flag": "T7800XA",
+    "kind": "tier1",
+    "text": "This patient requires urgent clinician review: the combination of flushing, widespread raised itchy lesions, wheezing, dyspnoea, dizziness, and nausea following ingestion of dark-fleshed fish (tuna) is a textbook presentation of scombroid fish poisoning or food-induced anaphylaxis with respiratory involvement \u2014 neither of which is captured by the working diagnosis of anaemia, and both of which may require bronchodilators, antihistamines, or epinephrine."
+   },
+   {
+    "case_id": "ddxplus_14238",
+    "flag": "C25",
+    "kind": "tier1",
+    "text": "This patient requires urgent escalation: the combination of pale stools, dark urine, yellow skin discoloration (likely jaundice rather than an isolated lesion), left flank pain, diarrhea, chronic pancreatitis, smoking, obesity, and a family history of pancreatic cancer constitutes a high-risk presentation for pancreatic malignancy with obstructive jaundice, which is entirely inconsistent with the working diagnosis of acute bronchitis."
+   },
+   {
+    "case_id": "ddxplus_57683",
+    "flag": "G240",
+    "kind": "tier1",
+    "text": "This patient's constellation of oculogyric crisis, trismus, laryngospasm, tongue protrusion, blepharospasm, and acute muscle spasms within days of starting an antipsychotic (and recent parenteral antiemetic/antipsychotic use during hospitalisation) is a textbook acute drug-induced dystonic reaction with laryngeal involvement \u2014 a potential airway emergency \u2014 making the working diagnosis of anaemia almost certainly incorrect and requiring urgent clinician review and likely immediate anticholinergic treatment."
+   },
+   {
+    "case_id": "ddxplus_37564",
+    "flag": "G610",
+    "kind": "tier1",
+    "text": "This patient requires urgent escalation: the combination of post-viral bilateral limb weakness, facial weakness, perioral and limb tingling, and dyspnoea is a classic presentation of Guillain-Barr\u00e9 Syndrome with potential respiratory compromise \u2014 a medical emergency that is inconsistent with the working diagnosis of panic attack."
+   }
+  ]
+ },
+ {
+  "file": "results/v03/ab/smoke-4j/google-gemini-3.1-pro-preview-v7a4aj.json",
+  "model": "google/gemini-3.1-pro-preview",
+  "arm": "v7a4aj",
+  "n": 5,
+  "parse_pct": 100.0,
+  "flag_pct": 100.0,
+  "flags": 5,
+  "tier1_pct_of_flags": 100.0,
+  "onlist_other_pct_of_flags": 0.0,
+  "offlist_pct_of_flags": 0.0,
+  "offlist_in_group": 0,
+  "none": 0,
+  "invalid_flags": 0,
+  "justification_pct": 100.0,
+  "finish_reasons": {
+   "stop": 5
+  },
+  "cost_usd": 0.0432,
+  "cost_per_call_usd": 0.00864,
+  "justifications": [
+   {
+    "case_id": "ddxplus_84693",
+    "flag": "I219",
+    "kind": "tier1",
+    "text": "The patient has multiple significant cardiovascular risk factors and presents with exertional, radiating chest pain and shortness of breath, which is highly concerning for acute coronary syndrome and requires immediate escalation."
+   },
+   {
+    "case_id": "ddxplus_43188",
+    "flag": "T780",
+    "kind": "tier1",
+    "text": "The patient is presenting with signs of anaphylaxis or severe scombroid poisoning, including respiratory distress, wheezing, and lightheadedness, requiring immediate medical evaluation and intervention."
+   },
+   {
+    "case_id": "ddxplus_14238",
+    "flag": "C259",
+    "kind": "tier1",
+    "text": "The patient's presentation of obstructive jaundice (pale stools, dark urine, yellow skin) combined with significant risk factors including age, smoking, chronic pancreatitis, diabetes, and a family history of pancreatic cancer strongly suggests a pancreatic malignancy requiring urgent evaluation."
+   },
+   {
+    "case_id": "ddxplus_57683",
+    "flag": "G240",
+    "kind": "tier1",
+    "text": "The patient is experiencing symptoms of acute drug-induced dystonia, including potential laryngospasm (feeling of suffocating), which is a medical emergency requiring immediate airway assessment and anticholinergic treatment."
+   },
+   {
+    "case_id": "ddxplus_37564",
+    "flag": "G610",
+    "kind": "tier1",
+    "text": "The patient requires immediate escalation due to rapidly progressive bilateral weakness, facial weakness, and shortness of breath, which are highly concerning for Guillain-Barr\u00e9 syndrome with impending respiratory failure."
+   }
+  ]
+ },
+ {
+  "file": "results/v03/ab/smoke-4j/google-gemini-3.1-pro-preview-v7a4bj.json",
+  "model": "google/gemini-3.1-pro-preview",
+  "arm": "v7a4bj",
+  "n": 5,
+  "parse_pct": 100.0,
+  "flag_pct": 100.0,
+  "flags": 5,
+  "tier1_pct_of_flags": 100.0,
+  "onlist_other_pct_of_flags": 0.0,
+  "offlist_pct_of_flags": 0.0,
+  "offlist_in_group": 0,
+  "none": 0,
+  "invalid_flags": 0,
+  "justification_pct": 100.0,
+  "finish_reasons": {
+   "stop": 5
+  },
+  "cost_usd": 0.0513,
+  "cost_per_call_usd": 0.01027,
+  "justifications": [
+   {
+    "case_id": "ddxplus_84693",
+    "flag": "I219",
+    "kind": "tier1",
+    "text": "The patient has classic exertional symptoms of cardiac ischemia and multiple major cardiovascular risk factors, making acute coronary syndrome highly likely and requiring immediate escalation, contrary to the clinician's working diagnosis of a panic attack."
+   },
+   {
+    "case_id": "ddxplus_43188",
+    "flag": "T780",
+    "kind": "tier1",
+    "text": "The patient presents with signs of a severe systemic allergic or histamine reaction, including shortness of breath, wheezing, and lightheadedness, requiring immediate escalation to manage potential anaphylaxis."
+   },
+   {
+    "case_id": "ddxplus_14238",
+    "flag": "C259",
+    "kind": "tier1",
+    "text": "The patient presents with signs of obstructive jaundice (pale stools, dark urine) and has multiple significant risk factors for pancreatic cancer, including age, smoking, chronic pancreatitis, diabetes, and a family history, necessitating urgent investigation."
+   },
+   {
+    "case_id": "ddxplus_57683",
+    "flag": "G240",
+    "kind": "tier1",
+    "text": "The patient is presenting with classic signs of acute drug-induced dystonia, including potentially life-threatening laryngeal spasm, which requires immediate escalation for airway monitoring and administration of anticholinergic medication."
+   },
+   {
+    "case_id": "ddxplus_37564",
+    "flag": "G610",
+    "kind": "tier1",
+    "text": "The combination of bilateral limb weakness, facial weakness, and shortness of breath following a recent viral infection is highly concerning for Guillain-Barr\u00e9 syndrome with impending respiratory failure, requiring immediate medical evaluation."
+   }
+  ]
+ },
+ {
+  "file": "results/v03/ab/smoke-4j/meta-llama-llama-3.1-8b-instruct-v7a4aj.json",
+  "model": "meta-llama/llama-3.1-8b-instruct",
+  "arm": "v7a4aj",
+  "n": 5,
+  "parse_pct": 100.0,
+  "flag_pct": 100.0,
+  "flags": 5,
+  "tier1_pct_of_flags": 20.0,
+  "onlist_other_pct_of_flags": 20.0,
+  "offlist_pct_of_flags": 60.0,
+  "offlist_in_group": 0,
+  "none": 0,
+  "invalid_flags": 0,
+  "justification_pct": 100.0,
+  "finish_reasons": {
+   "stop": 5
+  },
+  "cost_usd": 0.0001,
+  "cost_per_call_usd": 2e-05,
+  "justifications": [
+   {
+    "case_id": "ddxplus_84693",
+    "flag": "I200",
+    "kind": "tier1",
+    "text": "Escalation to the clinician is recommended due to the patient's history of cardiovascular disease in close family members and the presence of chest pain and shortness of breath."
+   },
+   {
+    "case_id": "ddxplus_43188",
+    "flag": "J329",
+    "kind": "onlist_not_tier1",
+    "text": "This patient needs escalation to the clinician due to the presence of wheezing sound when exhaling and shortness of breath, which may indicate a respiratory condition that requires further evaluation."
+   },
+   {
+    "case_id": "ddxplus_14238",
+    "flag": "K359",
+    "kind": "offlist_other",
+    "text": "This patient needs escalation to the clinician due to the presence of yellow skin lesions, which may indicate a pancreatic or biliary issue, and the patient's history of chronic pancreatitis and diabetes."
+   },
+   {
+    "case_id": "ddxplus_57683",
+    "flag": "F452",
+    "kind": "offlist_other",
+    "text": "This patient needs escalation to the clinician due to the presence of symptoms suggestive of a psychotic episode, such as feeling like they were suffocating and being unable to control the direction of their eyes."
+   },
+   {
+    "case_id": "ddxplus_37564",
+    "flag": "G479",
+    "kind": "offlist_other",
+    "text": "This patient needs escalation to the clinician due to the sudden onset of weakness and numbness in multiple areas of the body, which may indicate a neurological condition such as Guillain-Barr\u00e9 syndrome."
+   }
+  ]
+ },
+ {
+  "file": "results/v03/ab/smoke-4j/meta-llama-llama-3.1-8b-instruct-v7a4bj.json",
+  "model": "meta-llama/llama-3.1-8b-instruct",
+  "arm": "v7a4bj",
+  "n": 5,
+  "parse_pct": 100.0,
+  "flag_pct": 100.0,
+  "flags": 5,
+  "tier1_pct_of_flags": 0.0,
+  "onlist_other_pct_of_flags": 0.0,
+  "offlist_pct_of_flags": 100.0,
+  "offlist_in_group": 0,
+  "none": 0,
+  "invalid_flags": 0,
+  "justification_pct": 100.0,
+  "finish_reasons": {
+   "stop": 5
+  },
+  "cost_usd": 0.0001,
+  "cost_per_call_usd": 2e-05,
+  "justifications": [
+   {
+    "case_id": "ddxplus_84693",
+    "flag": "I528",
+    "kind": "offlist_other",
+    "text": "The patient's symptoms of heavy, exhausting pain radiating to multiple areas, and increased with physical exertion but alleviated with rest, suggest a cardiac issue, which warrants further evaluation by the clinician."
+   },
+   {
+    "case_id": "ddxplus_43188",
+    "flag": "T702",
+    "kind": "offlist_other",
+    "text": "This patient's symptoms of shortness of breath, wheezing, and skin lesions are concerning for a systemic reaction, and the clinician's working diagnosis of anaemia may not fully account for these symptoms."
+   },
+   {
+    "case_id": "ddxplus_14238",
+    "flag": "K520",
+    "kind": "offlist_other",
+    "text": "The patient's symptoms of cramping pain, pale stools, and dark urine, along with a history of chronic pancreatitis, suggest a possible diagnosis of pancreatitis, which warrants further evaluation by the clinician."
+   },
+   {
+    "case_id": "ddxplus_57683",
+    "flag": "F4521",
+    "kind": "offlist_other",
+    "text": "The patient's symptoms of suffocation, muscle spasms, and difficulty opening the mouth or eyes suggest a possible acute psychotic episode, which warrants further evaluation by the clinician."
+   },
+   {
+    "case_id": "ddxplus_37564",
+    "flag": "G730",
+    "kind": "offlist_other",
+    "text": "The patient's symptoms suggest a neurological condition, and the high probability of Guillain-Barr\u00e9 syndrome (G73.0) warrants further investigation by the clinician."
+   }
+  ]
+ },
+ {
+  "file": "results/v03/ab/smoke-4j/openai-gpt-5.6-terra-v7a4aj.json",
+  "model": "openai/gpt-5.6-terra",
+  "arm": "v7a4aj",
+  "n": 5,
+  "parse_pct": 100.0,
+  "flag_pct": 100.0,
+  "flags": 5,
+  "tier1_pct_of_flags": 100.0,
+  "onlist_other_pct_of_flags": 0.0,
+  "offlist_pct_of_flags": 0.0,
+  "offlist_in_group": 0,
+  "none": 0,
+  "invalid_flags": 0,
+  "justification_pct": 100.0,
+  "finish_reasons": {
+   "stop": 5
+  },
+  "cost_usd": 0.0339,
+  "cost_per_call_usd": 0.00679,
+  "justifications": [
+   {
+    "case_id": "ddxplus_84693",
+    "flag": "I219",
+    "kind": "tier1",
+    "text": "Immediate clinician escalation is required for possible acute coronary syndrome or myocardial infarction given exertional chest/epigastric pain relieved by rest, significant dyspnea, radiation to both arms/shoulders, and multiple major cardiovascular risk factors with known angina or prior myocardial infarction history."
+   },
+   {
+    "case_id": "ddxplus_43188",
+    "flag": "T782XXA",
+    "kind": "tier1",
+    "text": "Immediate clinician escalation is needed for probable anaphylaxis because pruritic raised skin lesions with flushing, wheeze/shortness of breath, lightheadedness, and nausea indicate possible multisystem allergic reaction with airway or circulatory involvement."
+   },
+   {
+    "case_id": "ddxplus_14238",
+    "flag": "C259",
+    "kind": "tier1",
+    "text": "Urgent clinician assessment is needed because pale stools and dark urine suggest obstructive jaundice, with pancreatic cancer a significant concern given chronic pancreatitis, smoking, diabetes, and family history."
+   },
+   {
+    "case_id": "ddxplus_57683",
+    "flag": "G2402",
+    "kind": "tier1",
+    "text": "Immediate clinician escalation is needed for likely acute drug-induced dystonia, as intermittent inability to breathe or speak may represent potentially life-threatening laryngeal dystonia."
+   },
+   {
+    "case_id": "ddxplus_37564",
+    "flag": "G610",
+    "kind": "tier1",
+    "text": "Immediate clinician/emergency escalation is needed for suspected Guillain-Barr\u00e9 syndrome because recent viral illness followed by progressive bilateral weakness, sensory symptoms, facial weakness, and significant breathing difficulty may indicate impending respiratory failure."
+   }
+  ]
+ },
+ {
+  "file": "results/v03/ab/smoke-4j/openai-gpt-5.6-terra-v7a4bj.json",
+  "model": "openai/gpt-5.6-terra",
+  "arm": "v7a4bj",
+  "n": 5,
+  "parse_pct": 100.0,
+  "flag_pct": 100.0,
+  "flags": 5,
+  "tier1_pct_of_flags": 100.0,
+  "onlist_other_pct_of_flags": 0.0,
+  "offlist_pct_of_flags": 0.0,
+  "offlist_in_group": 0,
+  "none": 0,
+  "invalid_flags": 0,
+  "justification_pct": 100.0,
+  "finish_reasons": {
+   "stop": 5
+  },
+  "cost_usd": 0.0369,
+  "cost_per_call_usd": 0.00738,
+  "justifications": [
+   {
+    "case_id": "ddxplus_84693",
+    "flag": "I209",
+    "kind": "tier1",
+    "text": "Immediate clinician escalation/emergency cardiac assessment is needed because exertional chest, epigastric and arm/shoulder pain with significant dyspnea in a patient with diabetes, hypertension, hyperlipidaemia, smoking and prior angina/MI is highly concerning for myocardial ischemia rather than panic alone."
+   },
+   {
+    "case_id": "ddxplus_43188",
+    "flag": "T782XXA",
+    "kind": "tier1",
+    "text": "Immediate clinician escalation is required because wheeze, significant dyspnoea, dizziness/presyncope, nausea, flushing and pruritic raised skin lesions are concerning for anaphylaxis rather than isolated anaemia."
+   },
+   {
+    "case_id": "ddxplus_14238",
+    "flag": "C259",
+    "kind": "tier1",
+    "text": "Urgent clinician escalation is needed because pale stools and dark urine suggest biliary obstruction, with pancreatic malignancy a significant concern given chronic pancreatitis, diabetes, smoking, and family history of pancreatic cancer."
+   },
+   {
+    "case_id": "ddxplus_57683",
+    "flag": "G2402",
+    "kind": "tier1",
+    "text": "Immediate clinician escalation is required for likely acute drug-induced dystonia, as reported tongue, jaw, eye and neck spasms with transient inability to breathe or speak may represent potentially life-threatening laryngeal dystonia requiring urgent treatment."
+   },
+   {
+    "case_id": "ddxplus_37564",
+    "flag": "G610",
+    "kind": "tier1",
+    "text": "Urgent clinician escalation is needed because recent viral illness followed by progressive bilateral limb paraesthesia/weakness, facial weakness and significant dyspnoea is concerning for Guillain-Barr\u00e9 syndrome with potential respiratory compromise."
+   }
+  ]
+ },
+ {
+  "file": "results/v03/ab/smoke-4j/openai-gpt-oss-120b-v7a4aj.json",
+  "model": "openai/gpt-oss-120b",
+  "arm": "v7a4aj",
+  "n": 5,
+  "parse_pct": 100.0,
+  "flag_pct": 100.0,
+  "flags": 5,
+  "tier1_pct_of_flags": 100.0,
+  "onlist_other_pct_of_flags": 0.0,
+  "offlist_pct_of_flags": 0.0,
+  "offlist_in_group": 0,
+  "none": 0,
+  "invalid_flags": 0,
+  "justification_pct": 100.0,
+  "finish_reasons": {
+   "stop": 5
+  },
+  "cost_usd": 0.0008,
+  "cost_per_call_usd": 0.00016,
+  "justifications": [
+   {
+    "case_id": "ddxplus_84693",
+    "flag": "I209",
+    "kind": "tier1",
+    "text": "Patient has multiple cardiovascular risk factors and exertional chest pain, warranting urgent clinician assessment for possible ischemic heart disease."
+   },
+   {
+    "case_id": "ddxplus_43188",
+    "flag": "T782",
+    "kind": "tier1",
+    "text": "The combination of shortness of breath, lightheadedness, facial flushing, wheezing, and pruritic raised skin lesions suggests a systemic allergic reaction (possible anaphylaxis) that warrants immediate clinician evaluation."
+   },
+   {
+    "case_id": "ddxplus_14238",
+    "flag": "C259",
+    "kind": "tier1",
+    "text": "The combination of painless jaundice signs (pale stools, dark urine) in a high\u2011risk patient warrants urgent evaluation for possible pancreatic cancer."
+   },
+   {
+    "case_id": "ddxplus_57683",
+    "flag": "G240",
+    "kind": "tier1",
+    "text": "Acute facial, ocular, and oral dystonia shortly after recent antipsychotic exposure strongly suggests a drug\u2011induced dystonic reaction that needs urgent clinician review."
+   },
+   {
+    "case_id": "ddxplus_37564",
+    "flag": "G610",
+    "kind": "tier1",
+    "text": "The combination of recent viral infection, progressive limb and facial weakness, sensory changes, and significant dyspnea raises concern for Guillain\u2011Barr\u00e9 syndrome, which requires urgent clinician assessment."
+   }
+  ]
+ },
+ {
+  "file": "results/v03/ab/smoke-4j/openai-gpt-oss-120b-v7a4bj.json",
+  "model": "openai/gpt-oss-120b",
+  "arm": "v7a4bj",
+  "n": 5,
+  "parse_pct": 100.0,
+  "flag_pct": 100.0,
+  "flags": 5,
+  "tier1_pct_of_flags": 80.0,
+  "onlist_other_pct_of_flags": 0.0,
+  "offlist_pct_of_flags": 20.0,
+  "offlist_in_group": 1,
+  "none": 0,
+  "invalid_flags": 0,
+  "justification_pct": 100.0,
+  "finish_reasons": {
+   "stop": 5
+  },
+  "cost_usd": 0.0007,
+  "cost_per_call_usd": 0.00014,
+  "justifications": [
+   {
+    "case_id": "ddxplus_84693",
+    "flag": "I209",
+    "kind": "tier1",
+    "text": "The combination of exertional chest discomfort, radiation to shoulders, shortness of breath, and significant cardiovascular risk factors warrants urgent cardiac evaluation."
+   },
+   {
+    "case_id": "ddxplus_43188",
+    "flag": "T782",
+    "kind": "tier1",
+    "text": "The combination of shortness of breath, wheezing, lightheadedness, facial flushing, and intensely itchy skin lesions suggests possible anaphylaxis, which requires urgent clinician escalation."
+   },
+   {
+    "case_id": "ddxplus_14238",
+    "flag": "C259",
+    "kind": "tier1",
+    "text": "Obstructive jaundice signs in a high\u2011risk patient (age, chronic pancreatitis, smoking, diabetes) warrant urgent evaluation for pancreatic cancer."
+   },
+   {
+    "case_id": "ddxplus_57683",
+    "flag": "I639",
+    "kind": "offlist_group",
+    "text": "The combination of acute facial, ocular, and bulbar muscle dysfunction could represent a stroke or a drug\u2011induced dystonic reaction, both requiring urgent clinician assessment."
+   },
+   {
+    "case_id": "ddxplus_37564",
+    "flag": "G610",
+    "kind": "tier1",
+    "text": "The combination of recent viral infection, progressive limb and facial weakness, and sensory changes raises concern for Guillain\u2011Barr\u00e9 syndrome, which requires urgent assessment."
+   }
+  ]
+ },
+ {
+  "file": "results/v03/ab/smoke-4j/z-ai-glm-5.3-v7a4aj.json",
+  "model": "z-ai/glm-5.3",
+  "arm": "v7a4aj",
+  "n": 5,
+  "parse_pct": 100.0,
+  "flag_pct": 100.0,
+  "flags": 5,
+  "tier1_pct_of_flags": 100.0,
+  "onlist_other_pct_of_flags": 0.0,
+  "offlist_pct_of_flags": 0.0,
+  "offlist_in_group": 0,
+  "none": 0,
+  "invalid_flags": 0,
+  "justification_pct": 100.0,
+  "finish_reasons": {
+   "stop": 5
+  },
+  "cost_usd": 0.0033,
+  "cost_per_call_usd": 0.00066,
+  "justifications": [
+   {
+    "case_id": "ddxplus_84693",
+    "flag": "I200",
+    "kind": "tier1",
+    "text": "This patient has multiple major cardiac risk factors (diabetes, hypertension, hyperlipidemia, smoking, prior MI/angina, strong family history) with exertional chest pain radiating to both arms and dyspnea, so possible acute coronary syndrome requires urgent clinician escalation."
+   },
+   {
+    "case_id": "ddxplus_43188",
+    "flag": "T611",
+    "kind": "tier1",
+    "text": "The combination of fish ingestion, flushing, urticarial itchy lesions, wheeze, dizziness and nausea suggests scombroid poisoning or an allergic reaction with airway involvement, which requires urgent clinician assessment."
+   },
+   {
+    "case_id": "ddxplus_14238",
+    "flag": "C259",
+    "kind": "tier1",
+    "text": "This 66-year-old woman with chronic pancreatitis, new-onset diabetes, smoking history, family history of pancreatic cancer, and obstructive signs (pale stools, dark urine, epigastric yellow lesion) has a concerning profile for pancreatic malignancy and needs urgent clinician escalation."
+   },
+   {
+    "case_id": "ddxplus_57683",
+    "flag": "G2402",
+    "kind": "tier1",
+    "text": "This patient needs urgent clinician review because an acute dystonic reaction (recently started antipsychotic plus recent parenteral antiemetic/sedative exposure) can involve laryngospasm with airway compromise, requiring immediate assessment and treatment (e.g., anticholinergic/antihistamine)."
+   },
+   {
+    "case_id": "ddxplus_37564",
+    "flag": "G610",
+    "kind": "tier1",
+    "text": "This patient needs urgent escalation because post-viral bilateral limb weakness with facial involvement, perioral/distal paresthesias, and significant breathlessness is highly suggestive of Guillain-Barr\u00e9 syndrome, which can rapidly progress to respiratory failure."
+   }
+  ]
+ },
+ {
+  "file": "results/v03/ab/smoke-4j/z-ai-glm-5.3-v7a4bj.json",
+  "model": "z-ai/glm-5.3",
+  "arm": "v7a4bj",
+  "n": 5,
+  "parse_pct": 100.0,
+  "flag_pct": 100.0,
+  "flags": 5,
+  "tier1_pct_of_flags": 100.0,
+  "onlist_other_pct_of_flags": 0.0,
+  "offlist_pct_of_flags": 0.0,
+  "offlist_in_group": 0,
+  "none": 0,
+  "invalid_flags": 0,
+  "justification_pct": 100.0,
+  "finish_reasons": {
+   "stop": 5
+  },
+  "cost_usd": 0.0032,
+  "cost_per_call_usd": 0.00064,
+  "justifications": [
+   {
+    "case_id": "ddxplus_84693",
+    "flag": "I219",
+    "kind": "tier1",
+    "text": "This diabetic woman with multiple cardiac risk factors, prior angina/MI history, exertional chest pain radiating to both arms and dyspnoea requires urgent escalation to rule out acute coronary syndrome before attributing symptoms to panic attack."
+   },
+   {
+    "case_id": "ddxplus_43188",
+    "flag": "T611",
+    "kind": "tier1",
+    "text": "The combination of flushing, widespread itchy weals, wheeze, dizziness and nausea shortly after eating dark-fleshed fish strongly suggests scombroid poisoning or an acute allergic reaction rather than anaemia, and the airway/breathing symptoms warrant prompt clinician review."
+   },
+   {
+    "case_id": "ddxplus_14238",
+    "flag": "C259",
+    "kind": "tier1",
+    "text": "This patient needs urgent escalation: the working diagnosis of acute bronchitis is inconsistent with her presentation of obstructive signs (pale stools, dark urine, epigastric yellowish lesion) in a 66-year-old smoker with chronic pancreatitis, diabetes and a family history of pancreatic cancer, making pancreatic malignancy with biliary obstruction a serious concern requiring expedited investigation."
+   },
+   {
+    "case_id": "ddxplus_57683",
+    "flag": "G240",
+    "kind": "tier1",
+    "text": "The combination of acute-onset dystonic features (trismus, oromandibular spasms, oculogyric/ptosis-like symptoms) with recent antipsychotic initiation and recent parenteral medication strongly suggests an acute drug-induced dystonic reaction, which requires urgent clinician review and treatment rather than the working diagnosis of anaemia; tetanus and myasthenia gravis also need exclusion."
+   },
+   {
+    "case_id": "ddxplus_37564",
+    "flag": "G610",
+    "kind": "tier1",
+    "text": "This patient needs urgent escalation: recent viral illness followed by ascending bilateral weakness, facial weakness, perioral/distal paresthesias and breathlessness is highly suggestive of Guillain-Barr\u00e9 syndrome, which can cause life-threatening respiratory failure and must not be dismissed as a panic attack."
+   }
+  ]
+ }
+]
