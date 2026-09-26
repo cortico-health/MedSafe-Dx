@@ -10,12 +10,14 @@ We score the 7-model roster on the same 150 cases, with:
    docs/wrong-serious-condition-cost.md (Boerhaave escalated under a non-surgical label costs 3.5);
 2. off-list validity from spec/offlist_tiers_nhamcs.csv (primary-diagnosis NHAMCS rates, tier 1
    only), with the all-valid and all-invalid bounds and a row without the weak-evidence tier-1 rows;
-3. both weightings (sample mix and balanced 50/50), U, O, the partial rate split in-list / off-list,
-   and the escalation share, each with a within-condition 95% interval (evaluator/v03_stats.py);
-   the condition bootstrap is kept for the two scores as the superpopulation sensitivity;
-4. the reference rows that could define 0: always escalate with one fixed flag on the most common
-   tier-1 target, the committed-five differential, always routine, the DXA reader and naive Bayes;
-   every row is also rescaled so the fixed single flag scores 0;
+3. the primary score of amendment A2 (0 = always escalate with one fixed flag on the most common
+   tier-1 target, `vr.zero_reference`; 100 = perfect) and draft 3's scale as a secondary column,
+   each under both weightings (sample mix and balanced 50/50); U, O, the partial rate split in-list /
+   off-list, and the escalation share, each with a within-condition 95% interval
+   (evaluator/v03_stats.py); the condition bootstrap is kept for the scores as the superpopulation
+   sensitivity;
+4. the reference rows: the zero reference, the committed-five differential, always routine, the DXA
+   reader, naive Bayes, and draft 3's zero (always escalate naming the case's own target);
 5. paired comparisons: 4aj - 4bj per model, 4aj - 4a and 4bj - 4b for the models that ran both,
    and every model pair within each arm;
 6. a descriptive audit of the justification sentence, which the scorer never reads.
@@ -47,9 +49,10 @@ JARMS = ("v7a4aj", "v7a4bj")
 BASE = {"v7a4aj": "v7a4a", "v7a4bj": "v7a4b"}
 MODELS = ("openai/gpt-5.6-terra", "openai/gpt-oss-120b", "anthropic/claude-sonnet-4.6", "google/gemini-3.1-pro-preview",
           "z-ai/glm-5.3", "anthropic/claude-haiku-4.5", "meta-llama/llama-3.1-8b-instruct")
-MEASURES = ("score_mix", "score_bal", "U", "O", "partial", "partial_inlist", "partial_offlist", "pass", "bare", "esc",
-            "score_mix@2", "score_bal@2", "score_mix@3.5", "score_bal@3.5", "score_mix@pair", "score_bal@pair")
-PAIRED = ("score_mix", "score_bal", "U", "O", "partial", "esc")
+SCORES = ("score_z_bal", "score_z_mix", "score_bal", "score_mix")  # primary (amendment A2) first
+MEASURES = SCORES + ("U", "O", "partial", "partial_inlist", "partial_offlist", "pass", "bare", "esc") + tuple(
+    f"{m}@{t}" for t in ("2", "3.5", "pair") for m in SCORES)
+PAIRED = SCORES + ("U", "O", "partial", "esc")
 ICD_ORDER = ROOT / "data" / "external" / "icd10cm" / "icd10cm_order_2026.txt"
 
 
@@ -60,39 +63,32 @@ def file_for(model: str, arm: str) -> Path:
 # ---------------------------------------------------------------- one row
 
 
-def score_row(a, ab, rule, rules_extra, W, kcase, Mc):
-    """(summary, within draws, point, outcome) for one row, plus bounds and the condition-bootstrap scores."""
+def score_row(a, ab, rule, rules_extra, W, kcase, Mc, zero):
+    """(summary, within draws, point, outcome) for one row, plus bounds and the condition-bootstrap scores.
+    `zero` is the zero reference's outcome (amendment A2)."""
     o = vr.outcomes(a, ab, rule)
-    extra = {"pair": vr.pair_partials(o, ab.key.truth)}
-    point, draws = vr.stats(o, ab, W, extra=extra, key=kcase)
+    extra = {"pair": lambda x: vr.pair_partials(x, ab.key.truth)}
+    point, draws = vr.stats(o, ab, W, extra=extra, key=kcase, zero=zero)
     summ = vr.summarise(point, draws)
     out = {"measures": {m: summ[m] for m in MEASURES}}
-    cp, cd = vr.stats(o, ab, Mc, extra=extra)
+    cp, cd = vr.stats(o, ab, Mc, extra=extra, zero=zero)
     cs = vr.summarise(cp, cd)
-    out["condition_bootstrap"] = {m: cs[m] for m in ("score_mix", "score_bal")}
+    out["condition_bootstrap"] = {m: cs[m] for m in SCORES}
     if a.arm is not None:
         out["bounds"] = {}
         for name, (r, mode) in {"offlist_all_valid": (rule, "escalate"), "offlist_all_invalid": (rule, "routine"),
                                 **{k: (v, "rule") for k, v in rules_extra.items()}}.items():
             bo = vr.outcomes(a, ab, r, offlist=mode)
-            bp, bd = vr.stats(bo, ab, W, partials=(vr.PARTIAL,), key=kcase)
+            bp, bd = vr.stats(bo, ab, W, partials=(vr.PARTIAL,), key=kcase, zero=zero)
             bs = vr.summarise(bp, bd)
-            out["bounds"][name] = {m: bs[m] for m in ("score_mix", "score_bal", "U", "O", "partial", "esc")}
+            out["bounds"][name] = {m: bs[m] for m in SCORES + ("U", "O", "partial", "esc")}
     reasons = o.reasons
     out["counts"] = {**{k: int(v) for k, v in Counter(o.outcome).items()},
                      "partial_inlist": sum(1 for r, x in zip(reasons, o.outcome) if x == vr.PARTIAL_OUT and r.kind == vr.OTHER_TIER1),
                      "partial_offlist": sum(1 for r, x in zip(reasons, o.outcome) if x == vr.PARTIAL_OUT and r.kind == vr.OFFLIST),
-                     "pair_row_cases": int(((extra["pair"] > vr.PARTIAL) & (np.array(o.outcome) == vr.PARTIAL_OUT)).sum()),
+                     "pair_row_cases": int(((extra["pair"](o) > vr.PARTIAL) & (np.array(o.outcome) == vr.PARTIAL_OUT)).sum()),
                      "unreadable": int((~a.readable).sum()), "escalations": int(o.esc.sum())}
     return out, draws, point, o
-
-
-def rescale_draws(d_row, d_ref, m):
-    """SCORE against a reference that defines 0: 100 x (C_ref - C) / C_ref, from each score's own anchor form
-    (C / C_anchor = 1 - score / 100), per draw."""
-    r, f = 1 - d_row[m] / 100.0, 1 - d_ref[m] / 100.0
-    with np.errstate(invalid="ignore", divide="ignore"):
-        return np.where(f > 0, 100.0 * (1 - r / np.where(f > 0, f, 1.0)), np.nan)
 
 
 def ci(x):
@@ -118,20 +114,6 @@ def code_passes(ab, code: str) -> int:
     return sum(1 for k, s in zip(ab.key.keys, ab.serious) if s and t1 & set(k.r10))
 
 
-def best_single_flag(ab) -> tuple[str, str, int]:
-    """(code, condition, SERIOUS cases passed) for the flag on the most common tier-1 target: the condition that is
-    an R10 target on the most SERIOUS cases; ties go to the condition whose code passes the most SERIOUS cases (the
-    family rows let one code name several conditions), then to the shortest code."""
-    counts = Counter(t for k, s in zip(ab.key.keys, ab.serious) if s for t in k.r10)
-    top = max(counts.values())
-    best = None
-    for cond in sorted(c for c, n in counts.items() if n == top):
-        for code in sorted({c for c in ab.matcher.map_codes() if cond in ab.matcher.conditions_hit([c], "strict")}):
-            cand = (code_passes(ab, code), -len(code), code, cond)
-            best = cand if best is None or cand[:2] > best[:2] else best
-    return best[2], best[3], best[0]
-
-
 def max_single_code(ab) -> tuple[str, int]:
     """The map code that names a target on the most SERIOUS cases: the ceiling of any one fixed flag."""
     return max(((c, code_passes(ab, c)) for c in sorted(ab.matcher.map_codes())), key=lambda x: (x[1], -len(x[0])))
@@ -139,10 +121,11 @@ def max_single_code(ab) -> tuple[str, int]:
 
 def reference_rows(ab):
     refs = sb.reference_answers(ab)
-    code, cond, n = best_single_flag(ab)
-    one = sb.fixed_answers("single-flag", ab, np.ones(ab.key.n, bool), [[code]] * ab.key.n)
-    ordered = {"single-flag": (one, f"Always escalate, one fixed flag on the most common target: {code} ({cond}; names "
-                                     f"a target on {n} of {int(ab.serious.sum())} SERIOUS cases)"),
+    code, cond, n = vr.zero_reference(ab)
+    one = sb.fixed_answers("zero", ab, np.ones(ab.key.n, bool), [[code]] * ab.key.n)
+    ordered = {"zero": (one, f"Always escalate, one fixed flag on the most common tier-1 target (the zero): {code} "
+                             f"({cond}; a target on {n} SERIOUS cases, and the code names one on {code_passes(ab, code)} "
+                             f"of {int(ab.serious.sum())})"),
                "always-escalate": (refs["always-escalate"], sb.REFS["always-escalate"]),
                "always-routine": (refs["always-routine"], sb.REFS["always-routine"]),
                "dxa": (refs["dxa"], sb.REFS["dxa"]), "naive-bayes": (refs["naive-bayes"], sb.REFS["naive-bayes"])}
@@ -154,7 +137,7 @@ def reference_rows(ab):
     for k in ab.key.keys:
         ideal_codes.append([code_of[k.r10[0]]] if k.r10 else [])
     ordered["target-named"] = (sb.fixed_answers("target-named", ab, np.ones(ab.key.n, bool), ideal_codes),
-                               "Always escalate, naming a target on every SERIOUS case (the current 0)")
+                               "Always escalate, naming a target on every SERIOUS case (draft 3's 0)")
     return ordered, (code, cond, n)
 
 
@@ -300,6 +283,7 @@ def run(n_boot: int) -> dict:
     W, kcase, _ = st.within_setup(ab.key, None, n_boot, vs.BOOTSTRAP_SEED)
     Mc = vs.cluster_draws(ab.key.k, n_boot, vs.BOOTSTRAP_SEED)
     namer = Namer(ab)
+    zero = vr.zero_outcome(ab)
     rows, raw, audit, examples = {}, {}, {}, {"good": [], "bad": []}
     arms = JARMS + tuple(BASE.values())
     for model in MODELS:
@@ -310,7 +294,7 @@ def run(n_boot: int) -> dict:
             preds, meta = sb.load_predictions(f)
             assert meta["prompt_version"] == arm and meta["model"] == model, f
             a = sb.row_answers(preds, arm, ab, f"{model}|{arm}")
-            out, draws, point, o = score_row(a, ab, rule, rules_extra, W, kcase, Mc)
+            out, draws, point, o = score_row(a, ab, rule, rules_extra, W, kcase, Mc, zero)
             name = f"{model}|{arm}"
             rows[name] = {"model": model, "arm": arm, "arm_label": sb.ARM_LABELS[arm], "file": str(f.relative_to(ROOT)),
                           "sha256": sb.ak.sha256_file(f), **out}
@@ -324,18 +308,9 @@ def run(n_boot: int) -> dict:
     ref_answers, single = reference_rows(ab)
     refs, ref_raw = {}, {}
     for r, (a, label) in ref_answers.items():
-        out, draws, point, _ = score_row(a, ab, rule, {}, W, kcase, Mc)
+        out, draws, point, _ = score_row(a, ab, rule, {}, W, kcase, Mc, zero)
         refs[r] = {"label": label, **out}
         ref_raw[r] = (point, draws)
-
-    # Rescaled against the single fixed flag (the proposed 0).
-    zp, zd = ref_raw["single-flag"]
-    for coll, rr in ((rows, raw), (refs, ref_raw)):
-        for name, (p, d) in rr.items():
-            coll[name]["rescaled_single_flag"] = {}
-            for m in ("score_mix", "score_bal"):
-                pv = float(rescale_draws({m: np.array([p[m]])}, {m: np.array([zp[m]])}, m)[0])
-                coll[name]["rescaled_single_flag"][m] = {"value": round(pv, 2), "ci": ci(rescale_draws(d, zd, m))}
 
     paired = {}
     for model in MODELS:
@@ -349,11 +324,12 @@ def run(n_boot: int) -> dict:
         names = [f"{m}|{arm}" for m in MODELS if f"{m}|{arm}" in raw]
         for i, x in enumerate(names):
             for y in names[i + 1:]:
-                d = pdiff(raw[x][1], raw[y][1], raw[x][0], raw[y][0], ("score_mix", "score_bal", "U", "O"))
+                d = pdiff(raw[x][1], raw[y][1], raw[x][0], raw[y][0], SCORES + ("U", "O"))
                 within[f"{sb.ARM_LABELS[arm]}: {sb.short(x.split('|')[0])} - {sb.short(y.split('|')[0])}"] = {
-                    **d, "separated_bal": excludes0(d["score_bal"]), "separated_mix": excludes0(d["score_mix"])}
+                    **d, "separated": excludes0(d["score_z_bal"]), "separated_mix": excludes0(d["score_z_mix"])}
 
-    return {"spec": "spec/v0.3-scoring.md draft 3, section 12 and amendment A1; valid-reason rule",
+    return {"spec": "spec/v0.3-scoring.md draft 3, section 12, amendments A1 and A2; valid-reason rule",
+            "primary_score": vr.PRIMARY,
             "rule": {"partial_cost": vr.PARTIAL, "partial_sensitivity": list(vr.PARTIAL_SENSITIVITY),
                      "pair_row": f"Boerhaave truth escalated under a non-surgical label costs {vr.PAIR_COST}; "
                                  f"surgical labels are off-list codes under {', '.join(vr.SURGICAL_PREFIXES)}",
@@ -363,7 +339,8 @@ def run(n_boot: int) -> dict:
             "sample": {"cases": int(ab.key.n), "serious": int(ab.serious.sum()), "benign": int(ab.benign.sum()),
                        "middle": int((ab.klass == "middle").sum()), "conditions": int(ab.key.k),
                        "interval": {"primary": st.INTERVAL_NOTE, "draws": n_boot, "seed": vs.BOOTSTRAP_SEED}},
-            "single_flag": {"code": single[0], "condition": single[1], "serious_passed": single[2],
+            "zero_reference": {"code": single[0], "condition": single[1], "serious_target_cases": single[2],
+                               "serious_passed": code_passes(ab, single[0]),
                             "best_any_single_code": dict(zip(("code", "serious_passed"), max_single_code(ab)))},
             "rows": rows, "references": refs, "paired": paired, "within_arm": within,
             "justification_audit": audit, "justification_examples": examples}
@@ -382,21 +359,24 @@ def v(m) -> str:
 
 def tables(b: dict) -> str:
     rows = b["rows"]
-    L = []
+    z = b["zero_reference"]
+    L = [f"Score = amendment A2's primary score, balanced 50/50: 0 = always escalate with one fixed flag, {z['code']} "
+         f"({z['condition']}); 100 = perfect. \"Draft 3\" columns use section 6's 0 (always escalate naming the "
+         "case's own target). Intervals: 95%, within-condition.", ""]
     for arm in JARMS:
         lab = sb.ARM_LABELS[arm]
         L += [f"## Arm {lab}", "",
-              "| Model | Balanced [95% CI] | Sample mix [95% CI] | U % [CI] | O % [CI] | Partial % (in / off) | ESC % | Rescaled, balanced | Rescaled, mix |",
+              "| Model | Score [95% CI] | Score, sample mix [95% CI] | Draft 3, balanced | Draft 3, mix | U % [CI] | O % [CI] | Partial % (in / off) | ESC % |",
               "|---|---|---|---|---|---|---|---|---|"]
         for mdl in MODELS:
             r = rows.get(f"{mdl}|{arm}")
             if not r:
                 continue
-            m, c, z = r["measures"], r["counts"], r["rescaled_single_flag"]
-            L.append(f"| {sb.short(mdl)} | {f(m['score_bal'])} | {f(m['score_mix'])} | {f(m['U'])} | {f(m['O'])} | "
-                     f"{v(m['partial'])} ({c['partial_inlist']} / {c['partial_offlist']}) | {v(m['esc'])} | "
-                     f"{f(z['score_bal'])} | {f(z['score_mix'])} |")
-        L += ["", f"### Arm {lab}: sensitivity rows (balanced; sample mix in the JSON)", "",
+            m, c = r["measures"], r["counts"]
+            L.append(f"| {sb.short(mdl)} | {f(m['score_z_bal'])} | {f(m['score_z_mix'])} | {f(m['score_bal'])} | "
+                     f"{f(m['score_mix'])} | {f(m['U'])} | {f(m['O'])} | "
+                     f"{v(m['partial'])} ({c['partial_inlist']} / {c['partial_offlist']}) | {v(m['esc'])} |")
+        L += ["", f"### Arm {lab}: sensitivity rows (Score, balanced; the zero reference rescored under each row; sample mix in the JSON)", "",
               "| Model | Partial 2 | Partial 3.5 | Boerhaave pair (cases) | Off-list all valid | Off-list all invalid | Weak rows excluded | Condition bootstrap |",
               "|---|---|---|---|---|---|---|---|"]
         for mdl in MODELS:
@@ -404,28 +384,30 @@ def tables(b: dict) -> str:
             if not r:
                 continue
             m, bd = r["measures"], r["bounds"]
-            L.append(f"| {sb.short(mdl)} | {f(m['score_bal@2'])} | {f(m['score_bal@3.5'])} | {f(m['score_bal@pair'])} "
-                     f"({r['counts']['pair_row_cases']}) | {f(bd['offlist_all_valid']['score_bal'])} | "
-                     f"{f(bd['offlist_all_invalid']['score_bal'])} | {f(bd['weak_excluded']['score_bal'])} | "
-                     f"{f(r['condition_bootstrap']['score_bal'])} |")
+            L.append(f"| {sb.short(mdl)} | {f(m['score_z_bal@2'])} | {f(m['score_z_bal@3.5'])} | {f(m['score_z_bal@pair'])} "
+                     f"({r['counts']['pair_row_cases']}) | {f(bd['offlist_all_valid']['score_z_bal'])} | "
+                     f"{f(bd['offlist_all_invalid']['score_z_bal'])} | {f(bd['weak_excluded']['score_z_bal'])} | "
+                     f"{f(r['condition_bootstrap']['score_z_bal'])} |")
         L.append("")
     L += ["## Reference rows (same 150 cases)", "",
-          "| Reference | Balanced [95% CI] | Sample mix [95% CI] | U % | O % | Partial % | Rescaled, balanced | Rescaled, mix |",
+          "| Reference | Score [95% CI] | Score, sample mix [95% CI] | Draft 3, balanced | Draft 3, mix | U % | O % | Partial % |",
           "|---|---|---|---|---|---|---|---|"]
     for r in b["references"].values():
-        m, z = r["measures"], r["rescaled_single_flag"]
-        L.append(f"| {r['label']} | {f(m['score_bal'])} | {f(m['score_mix'])} | {v(m['U'])} | {v(m['O'])} | {v(m['partial'])} | "
-                 f"{f(z['score_bal'])} | {f(z['score_mix'])} |")
+        m = r["measures"]
+        L.append(f"| {r['label']} | {f(m['score_z_bal'])} | {f(m['score_z_mix'])} | {f(m['score_bal'])} | {f(m['score_mix'])} | "
+                 f"{v(m['U'])} | {v(m['O'])} | {v(m['partial'])} |")
     L += ["", "## Paired differences (a - b, same cases and draws)", "",
-          "| Comparison | Balanced | Sample mix | U (pp) | O (pp) | Partial (pp) | ESC (pp) |", "|---|---|---|---|---|---|---|"]
+          "| Comparison | Score | Score, sample mix | Draft 3, balanced | U (pp) | O (pp) | Partial (pp) | ESC (pp) |",
+          "|---|---|---|---|---|---|---|---|"]
     for k, d in b["paired"].items():
-        L.append(f"| {sb.short(d['model'])}: {sb.ARM_LABELS[d['a']]} - {sb.ARM_LABELS[d['b']]} | {f(d['score_bal'])} | "
-                 f"{f(d['score_mix'])} | {f(d['U'])} | {f(d['O'])} | {f(d['partial'])} | {f(d['esc'])} |")
-    L += ["", "## Model pairs within each arm", "", "| Pair | Balanced | Sample mix | U (pp) | O (pp) | Separated (bal / mix) |",
-          "|---|---|---|---|---|---|"]
+        L.append(f"| {sb.short(d['model'])}: {sb.ARM_LABELS[d['a']]} - {sb.ARM_LABELS[d['b']]} | {f(d['score_z_bal'])} | "
+                 f"{f(d['score_z_mix'])} | {f(d['score_bal'])} | {f(d['U'])} | {f(d['O'])} | {f(d['partial'])} | {f(d['esc'])} |")
+    L += ["", "## Model pairs within each arm", "",
+          "| Pair | Score | Score, sample mix | Draft 3, balanced | U (pp) | O (pp) | Separated (Score / mix) |",
+          "|---|---|---|---|---|---|---|"]
     for k, d in b["within_arm"].items():
-        L.append(f"| {k} | {f(d['score_bal'])} | {f(d['score_mix'])} | {f(d['U'])} | {f(d['O'])} | "
-                 f"{'yes' if d['separated_bal'] else 'no'} / {'yes' if d['separated_mix'] else 'no'} |")
+        L.append(f"| {k} | {f(d['score_z_bal'])} | {f(d['score_z_mix'])} | {f(d['score_bal'])} | {f(d['U'])} | {f(d['O'])} | "
+                 f"{'yes' if d['separated'] else 'no'} / {'yes' if d['separated_mix'] else 'no'} |")
     L += ["", "## Justification audit", "",
           "| Model | Arm | Escalating flags | Name the flagged condition | Say no escalation | Tier-2/3 flags | Say \"urgent\" | Urgent, emergency or immediate |",
           "|---|---|---|---|---|---|---|---|"]
@@ -446,10 +428,10 @@ def main() -> None:
     b = run(args.n_boot)
     Path(args.out).write_text(json.dumps(sb._jsonable(b), indent=1, ensure_ascii=False) + "\n")
     Path(args.tables).write_text(tables(b))
-    print(f"single flag: {b['single_flag']}")
+    print(f"zero reference: {b['zero_reference']}")
     for n, r in b["rows"].items():
         m = r["measures"]
-        print(f"{sb.short(r['model']):24s} {r['arm_label']:4s} bal {sb._fmt(m['score_bal']):26s} mix {sb._fmt(m['score_mix']):28s} "
+        print(f"{sb.short(r['model']):24s} {r['arm_label']:4s} score {sb._fmt(m['score_z_bal']):26s} bal {sb._fmt(m['score_bal']):26s} "
               f"U {m['U']['value']:5.1f} O {m['O']['value']:5.1f} part {m['partial']['value']:5.1f} esc {m['esc']['value']:5.1f}")
 
 

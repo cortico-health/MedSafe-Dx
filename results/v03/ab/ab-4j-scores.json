@@ -1,5 +1,6 @@
 {
- "spec": "spec/v0.3-scoring.md draft 3, section 12 and amendment A1; valid-reason rule",
+ "spec": "spec/v0.3-scoring.md draft 3, section 12, amendments A1 and A2; valid-reason rule",
+ "primary_score": "score_z_bal",
  "rule": {
   "partial_cost": 1.0,
   "partial_sensitivity": [
@@ -8,15 +9,14 @@
   ],
   "pair_row": "Boerhaave truth escalated under a non-surgical label costs 3.5; surgical labels are off-list codes under I71, K22, J985",
   "offlist_source": "spec/offlist_tiers_nhamcs.csv",
-  "offlist_source_sha256": "1a521cbbb581439eccee027e5e55ecbe8f84e5f0ffe736d6364b441ad8f6a416",
+  "offlist_source_sha256": "af5e7c32eb8a5d192034aad71e29a232bed69667e53f85ac3bf1ca5bfc2bbf54",
   "weak_rows": [
    "D72",
    "F03",
    "J440",
    "K22",
    "N28",
-   "S220",
-   "S224",
+   "S22",
    "T782",
    "T783",
    "T88"
@@ -35,9 +35,10 @@
    "seed": 20260923
   }
  },
- "single_flag": {
+ "zero_reference": {
   "code": "I21",
   "condition": "Possible NSTEMI / STEMI",
+  "serious_target_cases": 10,
   "serious_passed": 12,
   "best_any_single_code": {
    "code": "I241",
@@ -52,11 +53,18 @@
    "file": "results/v03/ab/runs/openai-gpt-5.6-terra-v7a4aj.json",
    "sha256": "8406c99c7c9061ce3ea6d8dd2a946ff070d5d7d8f5d68669d3ab1a2963682f36",
    "measures": {
-    "score_mix": {
-     "value": -195.0,
+    "score_z_bal": {
+     "value": 17.86,
      "ci": [
-      -302.63,
-      -107.5
+      -0.12,
+      36.63
+     ]
+    },
+    "score_z_mix": {
+     "value": 0.0,
+     "ci": [
+      -25.65,
+      26.09
      ]
     },
     "score_bal": {
@@ -64,6 +72,13 @@
      "ci": [
       -87.02,
       -18.12
+     ]
+    },
+    "score_mix": {
+     "value": -195.0,
+     "ci": [
+      -302.63,
+      -107.5
      ]
     },
     "U": {
@@ -122,11 +137,18 @@
       75.33
      ]
     },
-    "score_mix@2": {
-     "value": -257.5,
+    "score_z_bal@2": {
+     "value": 33.74,
      "ci": [
-      -376.47,
-      -161.35
+      21.58,
+      46.32
+     ]
+    },
+    "score_z_mix@2": {
+     "value": 27.04,
+     "ci": [
+      12.44,
+      42.72
      ]
     },
     "score_bal@2": {
@@ -136,11 +158,25 @@
       -45.98
      ]
     },
-    "score_mix@3.5": {
-     "value": -351.25,
+    "score_mix@2": {
+     "value": -257.5,
      "ci": [
-      -500.0,
-      -235.71
+      -376.47,
+      -161.35
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": 44.77,
+     "ci": [
+      36.3,
+      54.06
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 42.33,
+     "ci": [
+      32.61,
+      52.56
      ]
     },
     "score_bal@3.5": {
@@ -150,11 +186,25 @@
       -84.99
      ]
     },
-    "score_mix@pair": {
-     "value": -195.0,
+    "score_mix@3.5": {
+     "value": -351.25,
      "ci": [
-      -302.63,
-      -107.5
+      -500.0,
+      -235.71
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": 21.37,
+     "ci": [
+      4.17,
+      39.34
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": 5.98,
+     "ci": [
+      -18.16,
+      30.61
      ]
     },
     "score_bal@pair": {
@@ -163,14 +213,28 @@
       -87.02,
       -18.12
      ]
+    },
+    "score_mix@pair": {
+     "value": -195.0,
+     "ci": [
+      -302.63,
+      -107.5
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -195.0,
+    "score_z_bal": {
+     "value": 17.86,
      "ci": [
-      -485.76,
-      -54.71
+      -21.4,
+      49.03
+     ]
+    },
+    "score_z_mix": {
+     "value": 0.0,
+     "ci": [
+      -54.24,
+      40.87
      ]
     },
     "score_bal": {
@@ -179,15 +243,29 @@
       -127.95,
       6.1
      ]
+    },
+    "score_mix": {
+     "value": -195.0,
+     "ci": [
+      -485.76,
+      -54.71
+     ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -172.5,
+     "score_z_bal": {
+      "value": 20.98,
       "ci": [
-       -268.42,
-       -95.35
+       5.69,
+       37.18
+      ]
+     },
+     "score_z_mix": {
+      "value": 7.63,
+      "ci": [
+       -14.75,
+       29.82
       ]
      },
      "score_bal": {
@@ -195,6 +273,13 @@
       "ci": [
        -76.15,
        -17.34
+      ]
+     },
+     "score_mix": {
+      "value": -172.5,
+      "ci": [
+       -268.42,
+       -95.35
       ]
      },
      "U": {
@@ -227,11 +312,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -267.5,
+     "score_z_bal": {
+      "value": 1.34,
       "ci": [
-       -405.13,
-       -156.38
+       -20.36,
+       24.0
+      ]
+     },
+     "score_z_mix": {
+      "value": -24.58,
+      "ci": [
+       -56.67,
+       7.03
       ]
      },
      "score_bal": {
@@ -239,6 +331,13 @@
       "ci": [
        -125.13,
        -40.94
+      ]
+     },
+     "score_mix": {
+      "value": -267.5,
+      "ci": [
+       -405.13,
+       -156.38
       ]
      },
      "U": {
@@ -271,11 +370,18 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -195.0,
+     "score_z_bal": {
+      "value": 17.86,
       "ci": [
-       -302.63,
-       -107.5
+       -0.12,
+       36.63
+      ]
+     },
+     "score_z_mix": {
+      "value": 0.0,
+      "ci": [
+       -25.65,
+       26.09
       ]
      },
      "score_bal": {
@@ -283,6 +389,13 @@
       "ci": [
        -87.02,
        -18.12
+      ]
+     },
+     "score_mix": {
+      "value": -195.0,
+      "ci": [
+       -302.63,
+       -107.5
       ]
      },
      "U": {
@@ -327,22 +440,6 @@
     "pair_row_cases": 0,
     "unreadable": 0,
     "escalations": 107
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": 0.0,
-     "ci": [
-      -25.65,
-      26.09
-     ]
-    },
-    "score_bal": {
-     "value": 17.86,
-     "ci": [
-      -0.12,
-      36.63
-     ]
-    }
    }
   },
   "openai/gpt-5.6-terra|v7a4bj": {
@@ -352,11 +449,18 @@
    "file": "results/v03/ab/runs/openai-gpt-5.6-terra-v7a4bj.json",
    "sha256": "c522f452161977b8d844ff89f3a2ddeb03d528b57fe72a6a31431fb98acf8dce",
    "measures": {
-    "score_mix": {
-     "value": -187.5,
+    "score_z_bal": {
+     "value": 19.64,
      "ci": [
-      -294.75,
-      -95.55
+      0.45,
+      38.98
+     ]
+    },
+    "score_z_mix": {
+     "value": 2.54,
+     "ci": [
+      -25.01,
+      28.7
      ]
     },
     "score_bal": {
@@ -364,6 +468,13 @@
      "ci": [
       -85.89,
       -13.61
+     ]
+    },
+    "score_mix": {
+     "value": -187.5,
+     "ci": [
+      -294.75,
+      -95.55
      ]
     },
     "U": {
@@ -422,11 +533,18 @@
       76.67
      ]
     },
-    "score_mix@2": {
-     "value": -260.0,
+    "score_z_bal@2": {
+     "value": 33.33,
      "ci": [
-      -384.38,
-      -158.14
+      20.06,
+      46.49
+     ]
+    },
+    "score_z_mix@2": {
+     "value": 26.53,
+     "ci": [
+      9.55,
+      42.78
      ]
     },
     "score_bal@2": {
@@ -436,11 +554,25 @@
       -46.59
      ]
     },
-    "score_mix@3.5": {
-     "value": -368.75,
+    "score_mix@2": {
+     "value": -260.0,
      "ci": [
-      -513.21,
-      -246.66
+      -384.38,
+      -158.14
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": 42.84,
+     "ci": [
+      33.22,
+      52.69
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 40.1,
+     "ci": [
+      29.3,
+      51.28
      ]
     },
     "score_bal@3.5": {
@@ -450,11 +582,25 @@
       -90.72
      ]
     },
-    "score_mix@pair": {
-     "value": -193.75,
+    "score_mix@3.5": {
+     "value": -368.75,
      "ci": [
-      -305.89,
-      -102.25
+      -513.21,
+      -246.66
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": 21.65,
+     "ci": [
+      2.7,
+      40.58
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": 6.37,
+     "ci": [
+      -20.08,
+      32.13
      ]
     },
     "score_bal@pair": {
@@ -463,14 +609,28 @@
       -89.04,
       -16.13
      ]
+    },
+    "score_mix@pair": {
+     "value": -193.75,
+     "ci": [
+      -305.89,
+      -102.25
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -187.5,
+    "score_z_bal": {
+     "value": 19.64,
      "ci": [
-      -452.18,
-      -60.37
+      -13.33,
+      44.09
+     ]
+    },
+    "score_z_mix": {
+     "value": 2.54,
+     "ci": [
+      -42.86,
+      35.54
      ]
     },
     "score_bal": {
@@ -479,15 +639,29 @@
       -113.78,
       -3.0
      ]
+    },
+    "score_mix": {
+     "value": -187.5,
+     "ci": [
+      -452.18,
+      -60.37
+     ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -135.0,
+     "score_z_bal": {
+      "value": 29.91,
       "ci": [
-       -213.52,
-       -69.56
+       16.08,
+       44.42
+      ]
+     },
+     "score_z_mix": {
+      "value": 20.34,
+      "ci": [
+       0.85,
+       39.32
       ]
      },
      "score_bal": {
@@ -495,6 +669,13 @@
       "ci": [
        -56.87,
        -3.43
+      ]
+     },
+     "score_mix": {
+      "value": -135.0,
+      "ci": [
+       -213.52,
+       -69.56
       ]
      },
      "U": {
@@ -527,11 +708,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -262.5,
+     "score_z_bal": {
+      "value": 1.79,
       "ci": [
-       -391.68,
-       -159.49
+       -21.45,
+       24.48
+      ]
+     },
+     "score_z_mix": {
+      "value": -22.88,
+      "ci": [
+       -56.1,
+       8.62
       ]
      },
      "score_bal": {
@@ -539,6 +727,13 @@
       "ci": [
        -126.83,
        -40.86
+      ]
+     },
+     "score_mix": {
+      "value": -262.5,
+      "ci": [
+       -391.68,
+       -159.49
       ]
      },
      "U": {
@@ -571,11 +766,18 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -187.5,
+     "score_z_bal": {
+      "value": 19.64,
       "ci": [
-       -294.75,
-       -95.55
+       0.45,
+       38.98
+      ]
+     },
+     "score_z_mix": {
+      "value": 2.54,
+      "ci": [
+       -25.01,
+       28.7
       ]
      },
      "score_bal": {
@@ -583,6 +785,13 @@
       "ci": [
        -85.89,
        -13.61
+      ]
+     },
+     "score_mix": {
+      "value": -187.5,
+      "ci": [
+       -294.75,
+       -95.55
       ]
      },
      "U": {
@@ -627,22 +836,6 @@
     "pair_row_cases": 1,
     "unreadable": 0,
     "escalations": 108
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": 2.54,
-     "ci": [
-      -25.01,
-      28.7
-     ]
-    },
-    "score_bal": {
-     "value": 19.64,
-     "ci": [
-      0.45,
-      38.98
-     ]
-    }
    }
   },
   "openai/gpt-5.6-terra|v7a4a": {
@@ -652,11 +845,18 @@
    "file": "results/v03/ab/runs/openai-gpt-5.6-terra-v7a4a.json",
    "sha256": "cf27c7756639858da2315f4ef11c28bdbab978be90e2afdf3217ca9e99274fe7",
    "measures": {
-    "score_mix": {
-     "value": -220.0,
+    "score_z_bal": {
+     "value": 14.14,
      "ci": [
-      -335.14,
-      -121.94
+      -6.28,
+      35.56
+     ]
+    },
+    "score_z_mix": {
+     "value": -8.47,
+     "ci": [
+      -38.21,
+      21.75
      ]
     },
     "score_bal": {
@@ -664,6 +864,13 @@
      "ci": [
       -98.22,
       -20.42
+     ]
+    },
+    "score_mix": {
+     "value": -220.0,
+     "ci": [
+      -335.14,
+      -121.94
      ]
     },
     "U": {
@@ -722,11 +929,18 @@
       72.0
      ]
     },
-    "score_mix@2": {
-     "value": -280.0,
+    "score_z_bal@2": {
+     "value": 31.61,
      "ci": [
-      -408.57,
-      -173.91
+      17.75,
+      45.92
+     ]
+    },
+    "score_z_mix@2": {
+     "value": 22.45,
+     "ci": [
+      4.52,
+      40.0
      ]
     },
     "score_bal@2": {
@@ -736,11 +950,25 @@
       -47.43
      ]
     },
-    "score_mix@3.5": {
-     "value": -370.0,
+    "score_mix@2": {
+     "value": -280.0,
      "ci": [
-      -521.06,
-      -246.59
+      -408.57,
+      -173.91
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": 43.73,
+     "ci": [
+      34.07,
+      53.53
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 39.94,
+     "ci": [
+      28.41,
+      51.36
      ]
     },
     "score_bal@3.5": {
@@ -750,11 +978,25 @@
       -86.79
      ]
     },
-    "score_mix@pair": {
-     "value": -220.0,
+    "score_mix@3.5": {
+     "value": -370.0,
      "ci": [
-      -335.14,
-      -121.94
+      -521.06,
+      -246.59
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": 17.81,
+     "ci": [
+      -1.89,
+      38.34
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": -1.99,
+     "ci": [
+      -30.2,
+      26.53
      ]
     },
     "score_bal@pair": {
@@ -763,14 +1005,28 @@
       -98.22,
       -20.42
      ]
+    },
+    "score_mix@pair": {
+     "value": -220.0,
+     "ci": [
+      -335.14,
+      -121.94
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -220.0,
+    "score_z_bal": {
+     "value": 14.14,
      "ci": [
-      -537.06,
-      -68.88
+      -23.49,
+      43.75
+     ]
+    },
+    "score_z_mix": {
+     "value": -8.47,
+     "ci": [
+      -62.61,
+      32.21
      ]
     },
     "score_bal": {
@@ -779,15 +1035,29 @@
       -132.85,
       -2.03
      ]
+    },
+    "score_mix": {
+     "value": -220.0,
+     "ci": [
+      -537.06,
+      -68.88
+     ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -182.5,
+     "score_z_bal": {
+      "value": 20.83,
       "ci": [
-       -285.31,
-       -97.56
+       3.16,
+       38.79
+      ]
+     },
+     "score_z_mix": {
+      "value": 4.24,
+      "ci": [
+       -20.83,
+       29.32
       ]
      },
      "score_bal": {
@@ -795,6 +1065,13 @@
       "ci": [
        -81.08,
        -13.65
+      ]
+     },
+     "score_mix": {
+      "value": -182.5,
+      "ci": [
+       -285.31,
+       -97.56
       ]
      },
      "U": {
@@ -827,11 +1104,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -277.5,
+     "score_z_bal": {
+      "value": 1.19,
       "ci": [
-       -421.1,
-       -161.9
+       -21.91,
+       25.29
+      ]
+     },
+     "score_z_mix": {
+      "value": -27.97,
+      "ci": [
+       -64.1,
+       6.9
       ]
      },
      "score_bal": {
@@ -839,6 +1123,13 @@
       "ci": [
        -128.21,
        -39.16
+      ]
+     },
+     "score_mix": {
+      "value": -277.5,
+      "ci": [
+       -421.1,
+       -161.9
       ]
      },
      "U": {
@@ -871,11 +1162,18 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -220.0,
+     "score_z_bal": {
+      "value": 14.14,
       "ci": [
-       -335.14,
-       -121.94
+       -6.28,
+       35.56
+      ]
+     },
+     "score_z_mix": {
+      "value": -8.47,
+      "ci": [
+       -38.21,
+       21.75
       ]
      },
      "score_bal": {
@@ -883,6 +1181,13 @@
       "ci": [
        -98.22,
        -20.42
+      ]
+     },
+     "score_mix": {
+      "value": -220.0,
+      "ci": [
+       -335.14,
+       -121.94
       ]
      },
      "U": {
@@ -927,22 +1232,6 @@
     "pair_row_cases": 0,
     "unreadable": 0,
     "escalations": 101
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -8.47,
-     "ci": [
-      -38.21,
-      21.75
-     ]
-    },
-    "score_bal": {
-     "value": 14.14,
-     "ci": [
-      -6.28,
-      35.56
-     ]
-    }
    }
   },
   "openai/gpt-5.6-terra|v7a4b": {
@@ -952,11 +1241,18 @@
    "file": "results/v03/ab/runs/openai-gpt-5.6-terra-v7a4b.json",
    "sha256": "9bcb783a2c52a7de8d8f4da180f3516d7d47870638a95ccc1fc3ea7af4a82063",
    "measures": {
-    "score_mix": {
-     "value": -192.5,
+    "score_z_bal": {
+     "value": 21.43,
      "ci": [
-      -305.27,
-      -104.6
+      3.01,
+      39.77
+     ]
+    },
+    "score_z_mix": {
+     "value": 0.85,
+     "ci": [
+      -26.05,
+      27.12
      ]
     },
     "score_bal": {
@@ -964,6 +1260,13 @@
      "ci": [
       -81.03,
       -12.38
+     ]
+    },
+    "score_mix": {
+     "value": -192.5,
+     "ci": [
+      -305.27,
+      -104.6
      ]
     },
     "U": {
@@ -1022,11 +1325,18 @@
       74.0
      ]
     },
-    "score_mix@2": {
-     "value": -280.0,
+    "score_z_bal@2": {
+     "value": 32.11,
      "ci": [
-      -410.02,
-      -180.94
+      19.61,
+      44.54
+     ]
+    },
+    "score_z_mix@2": {
+     "value": 22.45,
+     "ci": [
+      6.8,
+      38.1
      ]
     },
     "score_bal@2": {
@@ -1036,11 +1346,25 @@
       -51.42
      ]
     },
-    "score_mix@3.5": {
-     "value": -411.25,
+    "score_mix@2": {
+     "value": -280.0,
      "ci": [
-      -562.51,
-      -289.28
+      -410.02,
+      -180.94
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": 39.53,
+     "ci": [
+      31.05,
+      48.34
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 34.66,
+     "ci": [
+      25.0,
+      44.95
      ]
     },
     "score_bal@3.5": {
@@ -1050,11 +1374,25 @@
       -108.98
      ]
     },
-    "score_mix@pair": {
-     "value": -198.75,
+    "score_mix@3.5": {
+     "value": -411.25,
      "ci": [
-      -313.53,
-      -107.95
+      -562.51,
+      -289.28
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": 23.36,
+     "ci": [
+      5.12,
+      41.22
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": 4.78,
+     "ci": [
+      -20.79,
+      29.8
      ]
     },
     "score_bal@pair": {
@@ -1063,14 +1401,28 @@
       -85.2,
       -14.31
      ]
+    },
+    "score_mix@pair": {
+     "value": -198.75,
+     "ci": [
+      -313.53,
+      -107.95
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -192.5,
+    "score_z_bal": {
+     "value": 21.43,
      "ci": [
-      -475.87,
-      -59.6
+      -14.03,
+      48.82
+     ]
+    },
+    "score_z_mix": {
+     "value": 0.85,
+     "ci": [
+      -48.98,
+      36.59
      ]
     },
     "score_bal": {
@@ -1079,15 +1431,29 @@
       -117.32,
       6.07
      ]
+    },
+    "score_mix": {
+     "value": -192.5,
+     "ci": [
+      -475.87,
+      -59.6
+     ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -167.5,
+     "score_z_bal": {
+      "value": 25.89,
       "ci": [
-       -268.59,
-       -86.66
+       9.69,
+       42.64
+      ]
+     },
+     "score_z_mix": {
+      "value": 9.32,
+      "ci": [
+       -14.76,
+       32.76
       ]
      },
      "score_bal": {
@@ -1095,6 +1461,13 @@
       "ci": [
        -69.24,
        -7.2
+      ]
+     },
+     "score_mix": {
+      "value": -167.5,
+      "ci": [
+       -268.59,
+       -86.66
       ]
      },
      "U": {
@@ -1127,11 +1500,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -312.5,
+     "score_z_bal": {
+      "value": -7.14,
       "ci": [
-       -459.49,
-       -195.35
+       -30.17,
+       15.99
+      ]
+     },
+     "score_z_mix": {
+      "value": -39.83,
+      "ci": [
+       -73.95,
+       -6.03
       ]
      },
      "score_bal": {
@@ -1139,6 +1519,13 @@
       "ci": [
        -143.41,
        -56.61
+      ]
+     },
+     "score_mix": {
+      "value": -312.5,
+      "ci": [
+       -459.49,
+       -195.35
       ]
      },
      "U": {
@@ -1171,11 +1558,18 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -192.5,
+     "score_z_bal": {
+      "value": 21.43,
       "ci": [
-       -305.27,
-       -104.6
+       3.01,
+       39.77
+      ]
+     },
+     "score_z_mix": {
+      "value": 0.85,
+      "ci": [
+       -26.05,
+       27.12
       ]
      },
      "score_bal": {
@@ -1183,6 +1577,13 @@
       "ci": [
        -81.03,
        -12.38
+      ]
+     },
+     "score_mix": {
+      "value": -192.5,
+      "ci": [
+       -305.27,
+       -104.6
       ]
      },
      "U": {
@@ -1227,22 +1628,6 @@
     "pair_row_cases": 1,
     "unreadable": 0,
     "escalations": 104
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": 0.85,
-     "ci": [
-      -26.05,
-      27.12
-     ]
-    },
-    "score_bal": {
-     "value": 21.43,
-     "ci": [
-      3.01,
-      39.77
-     ]
-    }
    }
   },
   "openai/gpt-oss-120b|v7a4aj": {
@@ -1252,18 +1637,32 @@
    "file": "results/v03/ab/runs/openai-gpt-oss-120b-v7a4aj.json",
    "sha256": "844060661a2c35569901ea3861f4af844205ab4fd74021d24c4f2c32430c9733",
    "measures": {
-    "score_mix": {
-     "value": -207.5,
+    "score_z_bal": {
+     "value": 13.99,
      "ci": [
-      -317.16,
-      -122.72
+      -7.37,
+      33.46
+     ]
+    },
+    "score_z_mix": {
+     "value": -3.39,
+     "ci": [
+      -32.76,
+      23.28
      ]
     },
     "score_bal": {
-     "value": -63.06,
+     "value": -60.56,
      "ci": [
-      -103.08,
-      -27.11
+      -100.95,
+      -24.12
+     ]
+    },
+    "score_mix": {
+     "value": -205.0,
+     "ci": [
+      -313.9,
+      -120.45
      ]
     },
     "U": {
@@ -1274,10 +1673,10 @@
      ]
     },
     "O": {
-     "value": 47.5,
+     "value": 45.0,
      "ci": [
-      35.13,
-      57.5
+      31.58,
+      55.82
      ]
     },
     "partial": {
@@ -1316,78 +1715,141 @@
      ]
     },
     "esc": {
-     "value": 75.33,
+     "value": 74.67,
      "ci": [
-      71.33,
-      79.33
+      70.0,
+      78.67
      ]
     },
-    "score_mix@2": {
-     "value": -292.5,
+    "score_z_bal@2": {
+     "value": 27.44,
      "ci": [
-      -415.38,
-      -197.51
+      13.01,
+      41.23
+     ]
+    },
+    "score_z_mix@2": {
+     "value": 20.41,
+     "ci": [
+      3.09,
+      36.41
      ]
     },
     "score_bal@2": {
-     "value": -100.83,
+     "value": -98.33,
      "ci": [
-      -139.5,
-      -64.44
+      -137.16,
+      -60.92
      ]
     },
-    "score_mix@3.5": {
-     "value": -420.0,
+    "score_mix@2": {
+     "value": -290.0,
      "ci": [
-      -569.13,
-      -302.5
+      -412.83,
+      -193.02
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": 36.78,
+     "ci": [
+      26.91,
+      46.68
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 33.87,
+     "ci": [
+      22.48,
+      45.04
      ]
     },
     "score_bal@3.5": {
-     "value": -157.5,
+     "value": -155.0,
      "ci": [
-      -196.97,
-      -118.19
+      -194.5,
+      -115.48
      ]
     },
-    "score_mix@pair": {
-     "value": -207.5,
+    "score_mix@3.5": {
+     "value": -417.5,
      "ci": [
-      -317.16,
-      -122.72
+      -565.79,
+      -300.0
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": 17.66,
+     "ci": [
+      -2.75,
+      36.38
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": 2.79,
+     "ci": [
+      -24.71,
+      27.85
      ]
     },
     "score_bal@pair": {
-     "value": -63.06,
+     "value": -60.56,
      "ci": [
-      -103.08,
-      -27.11
+      -100.95,
+      -24.12
+     ]
+    },
+    "score_mix@pair": {
+     "value": -205.0,
+     "ci": [
+      -313.9,
+      -120.45
      ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -207.5,
+    "score_z_bal": {
+     "value": 13.99,
      "ci": [
-      -496.01,
-      -75.45
+      -12.64,
+      38.56
+     ]
+    },
+    "score_z_mix": {
+     "value": -3.39,
+     "ci": [
+      -42.29,
+      29.28
      ]
     },
     "score_bal": {
-     "value": -63.06,
+     "value": -60.56,
      "ci": [
-      -115.19,
-      -14.75
+      -111.98,
+      -12.29
+     ]
+    },
+    "score_mix": {
+     "value": -205.0,
+     "ci": [
+      -492.93,
+      -71.92
      ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -162.5,
+     "score_z_bal": {
+      "value": 14.43,
       "ci": [
-       -237.86,
-       -97.67
+       -0.86,
+       29.17
+      ]
+     },
+     "score_z_mix": {
+      "value": 11.02,
+      "ci": [
+       -9.92,
+       30.7
       ]
      },
      "score_bal": {
@@ -1395,6 +1857,13 @@
       "ci": [
        -88.38,
        -32.25
+      ]
+     },
+     "score_mix": {
+      "value": -162.5,
+      "ci": [
+       -237.86,
+       -97.67
       ]
      },
      "U": {
@@ -1427,11 +1896,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -362.5,
+     "score_z_bal": {
+      "value": -21.28,
       "ci": [
-       -510.28,
-       -248.78
+       -45.54,
+       2.9
+      ]
+     },
+     "score_z_mix": {
+      "value": -56.78,
+      "ci": [
+       -91.94,
+       -22.41
       ]
      },
      "score_bal": {
@@ -1439,6 +1915,13 @@
       "ci": [
        -171.56,
        -81.71
+      ]
+     },
+     "score_mix": {
+      "value": -362.5,
+      "ci": [
+       -510.28,
+       -248.78
       ]
      },
      "U": {
@@ -1471,18 +1954,32 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -207.5,
+     "score_z_bal": {
+      "value": 13.99,
       "ci": [
-       -317.16,
-       -122.72
+       -7.37,
+       33.46
+      ]
+     },
+     "score_z_mix": {
+      "value": -3.39,
+      "ci": [
+       -32.76,
+       23.28
       ]
      },
      "score_bal": {
-      "value": -63.06,
+      "value": -60.56,
       "ci": [
-       -103.08,
-       -27.11
+       -100.95,
+       -24.12
+      ]
+     },
+     "score_mix": {
+      "value": -205.0,
+      "ci": [
+       -313.9,
+       -120.45
       ]
      },
      "U": {
@@ -1493,10 +1990,10 @@
       ]
      },
      "O": {
-      "value": 47.5,
+      "value": 45.0,
       "ci": [
-       35.13,
-       57.5
+       31.58,
+       55.82
       ]
      },
      "partial": {
@@ -1507,10 +2004,10 @@
       ]
      },
      "esc": {
-      "value": 75.33,
+      "value": 74.67,
       "ci": [
-       71.33,
-       79.33
+       70.0,
+       78.67
       ]
      }
     }
@@ -1519,30 +2016,14 @@
     "pass": 46,
     "partial": 34,
     "miss": 10,
-    "benign_routine": 21,
-    "benign_escalated": 19,
+    "benign_routine": 22,
+    "benign_escalated": 18,
     "not_scored": 20,
     "partial_inlist": 23,
     "partial_offlist": 11,
     "pair_row_cases": 0,
     "unreadable": 0,
-    "escalations": 113
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -4.24,
-     "ci": [
-      -33.62,
-      21.93
-     ]
-    },
-    "score_bal": {
-     "value": 12.65,
-     "ci": [
-      -8.68,
-      31.97
-     ]
-    }
+    "escalations": 112
    }
   },
   "openai/gpt-oss-120b|v7a4bj": {
@@ -1552,11 +2033,18 @@
    "file": "results/v03/ab/runs/openai-gpt-oss-120b-v7a4bj.json",
    "sha256": "20ef2d8e33e5ae4d48818b6fd53c98d209aff2300a6fac980b7ce2e0679d55f2",
    "measures": {
-    "score_mix": {
-     "value": -270.0,
+    "score_z_bal": {
+     "value": -2.98,
      "ci": [
-      -375.0,
-      -182.05
+      -21.46,
+      16.13
+     ]
+    },
+    "score_z_mix": {
+     "value": -25.42,
+     "ci": [
+      -51.74,
+      1.7
      ]
     },
     "score_bal": {
@@ -1564,6 +2052,13 @@
      "ci": [
       -127.3,
       -55.86
+     ]
+    },
+    "score_mix": {
+     "value": -270.0,
+     "ci": [
+      -375.0,
+      -182.05
      ]
     },
     "U": {
@@ -1622,11 +2117,18 @@
       74.67
      ]
     },
-    "score_mix@2": {
-     "value": -362.5,
+    "score_z_bal@2": {
+     "value": 14.63,
      "ci": [
-      -483.8,
-      -264.99
+      2.46,
+      27.55
+     ]
+    },
+    "score_z_mix@2": {
+     "value": 5.61,
+     "ci": [
+      -9.33,
+      21.47
      ]
     },
     "score_bal@2": {
@@ -1636,11 +2138,25 @@
       -96.95
      ]
     },
-    "score_mix@3.5": {
-     "value": -501.25,
+    "score_mix@2": {
+     "value": -362.5,
      "ci": [
-      -656.95,
-      -379.76
+      -483.8,
+      -264.99
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": 26.86,
+     "ci": [
+      18.36,
+      35.82
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 23.16,
+     "ci": [
+      13.45,
+      33.23
      ]
     },
     "score_bal@3.5": {
@@ -1650,11 +2166,25 @@
       -157.76
      ]
     },
-    "score_mix@pair": {
-     "value": -276.25,
+    "score_mix@3.5": {
+     "value": -501.25,
      "ci": [
-      -381.94,
-      -186.58
+      -656.95,
+      -379.76
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": -0.0,
+     "ci": [
+      -17.71,
+      18.62
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": -19.92,
+     "ci": [
+      -45.02,
+      5.49
      ]
     },
     "score_bal@pair": {
@@ -1663,14 +2193,28 @@
       -129.55,
       -58.72
      ]
+    },
+    "score_mix@pair": {
+     "value": -276.25,
+     "ci": [
+      -381.94,
+      -186.58
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -270.0,
+    "score_z_bal": {
+     "value": -2.98,
      "ci": [
-      -618.6,
-      -101.66
+      -37.76,
+      28.46
+     ]
+    },
+    "score_z_mix": {
+     "value": -25.42,
+     "ci": [
+      -75.76,
+      17.25
      ]
     },
     "score_bal": {
@@ -1679,15 +2223,29 @@
       -160.61,
       -30.76
      ]
+    },
+    "score_mix": {
+     "value": -270.0,
+     "ci": [
+      -618.6,
+      -101.66
+     ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -187.5,
+     "score_z_bal": {
+      "value": 9.97,
       "ci": [
-       -263.89,
-       -121.74
+       -3.29,
+       23.38
+      ]
+     },
+     "score_z_mix": {
+      "value": 2.54,
+      "ci": [
+       -15.26,
+       20.52
       ]
      },
      "score_bal": {
@@ -1695,6 +2253,13 @@
       "ci": [
        -93.38,
        -42.59
+      ]
+     },
+     "score_mix": {
+      "value": -187.5,
+      "ci": [
+       -263.89,
+       -121.74
       ]
      },
      "U": {
@@ -1727,11 +2292,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -420.0,
+     "score_z_bal": {
+      "value": -38.69,
       "ci": [
-       -576.5,
-       -295.24
+       -62.33,
+       -14.33
+      ]
+     },
+     "score_z_mix": {
+      "value": -76.27,
+      "ci": [
+       -111.02,
+       -41.59
       ]
      },
      "score_bal": {
@@ -1739,6 +2311,13 @@
       "ci": [
        -203.0,
        -112.99
+      ]
+     },
+     "score_mix": {
+      "value": -420.0,
+      "ci": [
+       -576.5,
+       -295.24
       ]
      },
      "U": {
@@ -1771,11 +2350,18 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -270.0,
+     "score_z_bal": {
+      "value": -2.98,
       "ci": [
-       -375.0,
-       -182.05
+       -21.46,
+       16.13
+      ]
+     },
+     "score_z_mix": {
+      "value": -25.42,
+      "ci": [
+       -51.74,
+       1.7
       ]
      },
      "score_bal": {
@@ -1783,6 +2369,13 @@
       "ci": [
        -127.3,
        -55.86
+      ]
+     },
+     "score_mix": {
+      "value": -270.0,
+      "ci": [
+       -375.0,
+       -182.05
       ]
      },
      "U": {
@@ -1827,22 +2420,6 @@
     "pair_row_cases": 1,
     "unreadable": 0,
     "escalations": 106
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -25.42,
-     "ci": [
-      -51.74,
-      1.7
-     ]
-    },
-    "score_bal": {
-     "value": -2.98,
-     "ci": [
-      -21.46,
-      16.13
-     ]
-    }
    }
   },
   "openai/gpt-oss-120b|v7a4a": {
@@ -1852,11 +2429,18 @@
    "file": "results/v03/ab/runs/openai-gpt-oss-120b-v7a4a.json",
    "sha256": "962c9447d9d41804d2cc4fb5cf3464c5e62c1234eb071de62dde1e9009152d3c",
    "measures": {
-    "score_mix": {
-     "value": -260.0,
+    "score_z_bal": {
+     "value": -0.6,
      "ci": [
-      -375.0,
-      -163.39
+      -21.88,
+      20.47
+     ]
+    },
+    "score_z_mix": {
+     "value": -22.03,
+     "ci": [
+      -51.67,
+      6.78
      ]
     },
     "score_bal": {
@@ -1864,6 +2448,13 @@
      "ci": [
       -127.53,
       -48.27
+     ]
+    },
+    "score_mix": {
+     "value": -260.0,
+     "ci": [
+      -375.0,
+      -163.39
      ]
     },
     "U": {
@@ -1922,11 +2513,18 @@
       78.0
      ]
     },
-    "score_mix@2": {
-     "value": -342.5,
+    "score_z_bal@2": {
+     "value": 17.89,
      "ci": [
-      -470.61,
-      -238.44
+      3.4,
+      32.17
+     ]
+    },
+    "score_z_mix@2": {
+     "value": 9.69,
+     "ci": [
+      -7.85,
+      26.74
      ]
     },
     "score_bal@2": {
@@ -1936,11 +2534,25 @@
       -85.68
      ]
     },
-    "score_mix@3.5": {
-     "value": -466.25,
+    "score_mix@2": {
+     "value": -342.5,
      "ci": [
-      -616.21,
-      -342.21
+      -470.61,
+      -238.44
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": 30.72,
+     "ci": [
+      20.27,
+      40.36
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 27.64,
+     "ci": [
+      15.82,
+      38.51
      ]
     },
     "score_bal@3.5": {
@@ -1950,11 +2562,25 @@
       -139.08
      ]
     },
-    "score_mix@pair": {
-     "value": -260.0,
+    "score_mix@3.5": {
+     "value": -466.25,
      "ci": [
-      -375.0,
-      -163.39
+      -616.21,
+      -342.21
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": 3.7,
+     "ci": [
+      -16.6,
+      24.02
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": -14.74,
+     "ci": [
+      -42.52,
+      12.35
      ]
     },
     "score_bal@pair": {
@@ -1963,14 +2589,28 @@
       -127.53,
       -48.27
      ]
+    },
+    "score_mix@pair": {
+     "value": -260.0,
+     "ci": [
+      -375.0,
+      -163.39
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -260.0,
+    "score_z_bal": {
+     "value": -0.6,
      "ci": [
-      -603.34,
-      -100.0
+      -33.18,
+      27.59
+     ]
+    },
+    "score_z_mix": {
+     "value": -22.03,
+     "ci": [
+      -70.44,
+      17.48
      ]
     },
     "score_bal": {
@@ -1979,15 +2619,29 @@
       -153.25,
       -31.22
      ]
+    },
+    "score_mix": {
+     "value": -260.0,
+     "ci": [
+      -603.34,
+      -100.0
+     ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -167.5,
+     "score_z_bal": {
+      "value": 13.24,
       "ci": [
-       -245.26,
-       -102.27
+       -1.72,
+       27.99
+      ]
+     },
+     "score_z_mix": {
+      "value": 9.32,
+      "ci": [
+       -11.11,
+       29.21
       ]
      },
      "score_bal": {
@@ -1995,6 +2649,13 @@
       "ci": [
        -90.08,
        -34.23
+      ]
+     },
+     "score_mix": {
+      "value": -167.5,
+      "ci": [
+       -245.26,
+       -102.27
       ]
      },
      "U": {
@@ -2027,11 +2688,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -430.0,
+     "score_z_bal": {
+      "value": -38.1,
       "ci": [
-       -594.59,
-       -300.0
+       -65.71,
+       -11.96
+      ]
+     },
+     "score_z_mix": {
+      "value": -79.66,
+      "ci": [
+       -120.17,
+       -42.33
       ]
      },
      "score_bal": {
@@ -2039,6 +2707,13 @@
       "ci": [
        -210.08,
        -108.95
+      ]
+     },
+     "score_mix": {
+      "value": -430.0,
+      "ci": [
+       -594.59,
+       -300.0
       ]
      },
      "U": {
@@ -2071,11 +2746,18 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -260.0,
+     "score_z_bal": {
+      "value": -0.6,
       "ci": [
-       -375.0,
-       -163.39
+       -21.88,
+       20.47
+      ]
+     },
+     "score_z_mix": {
+      "value": -22.03,
+      "ci": [
+       -51.67,
+       6.78
       ]
      },
      "score_bal": {
@@ -2083,6 +2765,13 @@
       "ci": [
        -127.53,
        -48.27
+      ]
+     },
+     "score_mix": {
+      "value": -260.0,
+      "ci": [
+       -375.0,
+       -163.39
       ]
      },
      "U": {
@@ -2127,22 +2816,6 @@
     "pair_row_cases": 0,
     "unreadable": 0,
     "escalations": 110
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -22.03,
-     "ci": [
-      -51.67,
-      6.78
-     ]
-    },
-    "score_bal": {
-     "value": -0.6,
-     "ci": [
-      -21.88,
-      20.47
-     ]
-    }
    }
   },
   "openai/gpt-oss-120b|v7a4b": {
@@ -2152,11 +2825,18 @@
    "file": "results/v03/ab/runs/openai-gpt-oss-120b-v7a4b.json",
    "sha256": "fa0611823687be13a78902934898d971abaa5254473ca75e4d8489758ce4789c",
    "measures": {
-    "score_mix": {
-     "value": -210.0,
+    "score_z_bal": {
+     "value": 9.82,
      "ci": [
-      -300.0,
-      -136.84
+      -7.08,
+      25.92
+     ]
+    },
+    "score_z_mix": {
+     "value": -5.08,
+     "ci": [
+      -28.81,
+      16.95
      ]
     },
     "score_bal": {
@@ -2164,6 +2844,13 @@
      "ci": [
       -99.67,
       -38.51
+     ]
+    },
+    "score_mix": {
+     "value": -210.0,
+     "ci": [
+      -300.0,
+      -136.84
      ]
     },
     "U": {
@@ -2222,11 +2909,18 @@
       81.33
      ]
     },
-    "score_mix@2": {
-     "value": -307.5,
+    "score_z_bal@2": {
+     "value": 22.56,
      "ci": [
-      -415.81,
-      -221.42
+      11.54,
+      33.4
+     ]
+    },
+    "score_z_mix@2": {
+     "value": 16.84,
+     "ci": [
+      3.03,
+      29.9
      ]
     },
     "score_bal@2": {
@@ -2236,11 +2930,25 @@
       -82.2
      ]
     },
-    "score_mix@3.5": {
-     "value": -453.75,
+    "score_mix@2": {
+     "value": -307.5,
      "ci": [
-      -597.3,
-      -341.3
+      -415.81,
+      -221.42
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": 31.4,
+     "ci": [
+      23.89,
+      39.07
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 29.23,
+     "ci": [
+      20.37,
+      38.13
      ]
     },
     "score_bal@3.5": {
@@ -2250,11 +2958,25 @@
       -144.74
      ]
     },
-    "score_mix@pair": {
-     "value": -216.25,
+    "score_mix@3.5": {
+     "value": -453.75,
      "ci": [
-      -305.27,
-      -142.03
+      -597.3,
+      -341.3
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": 12.25,
+     "ci": [
+      -4.16,
+      27.84
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": -0.8,
+     "ci": [
+      -23.11,
+      20.16
      ]
     },
     "score_bal@pair": {
@@ -2263,14 +2985,28 @@
       -102.9,
       -41.19
      ]
+    },
+    "score_mix@pair": {
+     "value": -216.25,
+     "ci": [
+      -305.27,
+      -142.03
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -210.0,
+    "score_z_bal": {
+     "value": 9.82,
      "ci": [
-      -496.39,
-      -69.09
+      -22.91,
+      38.77
+     ]
+    },
+    "score_z_mix": {
+     "value": -5.08,
+     "ci": [
+      -50.86,
+      32.38
      ]
     },
     "score_bal": {
@@ -2279,15 +3015,29 @@
       -132.95,
       -12.01
      ]
+    },
+    "score_mix": {
+     "value": -210.0,
+     "ci": [
+      -496.39,
+      -69.09
+     ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -145.0,
+     "score_z_bal": {
+      "value": 17.86,
       "ci": [
-       -213.53,
-       -90.24
+       6.07,
+       28.89
+      ]
+     },
+     "score_z_mix": {
+      "value": 16.95,
+      "ci": [
+       0.82,
+       32.2
       ]
      },
      "score_bal": {
@@ -2295,6 +3045,13 @@
       "ci": [
        -75.75,
        -32.69
+      ]
+     },
+     "score_mix": {
+      "value": -145.0,
+      "ci": [
+       -213.53,
+       -90.24
       ]
      },
      "U": {
@@ -2327,11 +3084,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -387.5,
+     "score_z_bal": {
+      "value": -31.7,
       "ci": [
-       -543.24,
-       -262.47
+       -55.73,
+       -7.22
+      ]
+     },
+     "score_z_mix": {
+      "value": -65.25,
+      "ci": [
+       -101.67,
+       -30.76
       ]
      },
      "score_bal": {
@@ -2339,6 +3103,13 @@
       "ci": [
        -190.4,
        -100.09
+      ]
+     },
+     "score_mix": {
+      "value": -387.5,
+      "ci": [
+       -543.24,
+       -262.47
       ]
      },
      "U": {
@@ -2371,11 +3142,18 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -210.0,
+     "score_z_bal": {
+      "value": 9.82,
       "ci": [
-       -300.0,
-       -136.84
+       -7.08,
+       25.92
+      ]
+     },
+     "score_z_mix": {
+      "value": -5.08,
+      "ci": [
+       -28.81,
+       16.95
       ]
      },
      "score_bal": {
@@ -2383,6 +3161,13 @@
       "ci": [
        -99.67,
        -38.51
+      ]
+     },
+     "score_mix": {
+      "value": -210.0,
+      "ci": [
+       -300.0,
+       -136.84
       ]
      },
      "U": {
@@ -2427,22 +3212,6 @@
     "pair_row_cases": 1,
     "unreadable": 0,
     "escalations": 116
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -5.08,
-     "ci": [
-      -28.81,
-      16.95
-     ]
-    },
-    "score_bal": {
-     "value": 9.82,
-     "ci": [
-      -7.08,
-      25.92
-     ]
-    }
    }
   },
   "anthropic/claude-sonnet-4.6|v7a4aj": {
@@ -2452,11 +3221,18 @@
    "file": "results/v03/ab/runs/anthropic-claude-sonnet-4.6-v7a4aj.json",
    "sha256": "4a1c55d9c1e51e57540c02c2e9933f7b83b6a889e98a54e6bbd29df405b93c35",
    "measures": {
-    "score_mix": {
-     "value": -242.5,
+    "score_z_bal": {
+     "value": 8.04,
      "ci": [
-      -367.57,
-      -139.13
+      -11.28,
+      28.23
+     ]
+    },
+    "score_z_mix": {
+     "value": -16.1,
+     "ci": [
+      -44.72,
+      13.79
      ]
     },
     "score_bal": {
@@ -2464,6 +3240,13 @@
      "ci": [
       -107.89,
       -33.33
+     ]
+    },
+    "score_mix": {
+     "value": -242.5,
+     "ci": [
+      -367.57,
+      -139.13
      ]
     },
     "U": {
@@ -2522,11 +3305,18 @@
       71.33
      ]
     },
-    "score_mix@2": {
-     "value": -305.0,
+    "score_z_bal@2": {
+     "value": 27.03,
      "ci": [
-      -441.19,
-      -197.56
+      14.21,
+      40.49
+     ]
+    },
+    "score_z_mix@2": {
+     "value": 17.35,
+     "ci": [
+      1.0,
+      34.38
      ]
     },
     "score_bal@2": {
@@ -2536,11 +3326,25 @@
       -61.64
      ]
     },
-    "score_mix@3.5": {
-     "value": -398.75,
+    "score_mix@2": {
+     "value": -305.0,
      "ci": [
-      -555.74,
-      -280.76
+      -441.19,
+      -197.56
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": 40.22,
+     "ci": [
+      31.27,
+      49.34
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 36.26,
+     "ci": [
+      26.05,
+      46.72
      ]
     },
     "score_bal@3.5": {
@@ -2550,11 +3354,25 @@
       -102.97
      ]
     },
-    "score_mix@pair": {
-     "value": -242.5,
+    "score_mix@3.5": {
+     "value": -398.75,
      "ci": [
-      -367.57,
-      -139.13
+      -555.74,
+      -280.76
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": 11.97,
+     "ci": [
+      -6.56,
+      31.37
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": -9.16,
+     "ci": [
+      -36.4,
+      19.03
      ]
     },
     "score_bal@pair": {
@@ -2563,14 +3381,28 @@
       -107.89,
       -33.33
      ]
+    },
+    "score_mix@pair": {
+     "value": -242.5,
+     "ci": [
+      -367.57,
+      -139.13
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -242.5,
+    "score_z_bal": {
+     "value": 8.04,
      "ci": [
-      -578.97,
-      -81.07
+      -34.8,
+      44.15
+     ]
+    },
+    "score_z_mix": {
+     "value": -16.1,
+     "ci": [
+      -74.07,
+      32.08
      ]
     },
     "score_bal": {
@@ -2579,15 +3411,29 @@
       -154.09,
       -2.72
      ]
+    },
+    "score_mix": {
+     "value": -242.5,
+     "ci": [
+      -578.97,
+      -81.07
+     ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -172.5,
+     "score_z_bal": {
+      "value": 14.29,
       "ci": [
-       -247.23,
-       -102.44
+       -0.21,
+       29.04
+      ]
+     },
+     "score_z_mix": {
+      "value": 7.63,
+      "ci": [
+       -11.67,
+       28.07
       ]
      },
      "score_bal": {
@@ -2595,6 +3441,13 @@
       "ci": [
        -86.84,
        -32.15
+      ]
+     },
+     "score_mix": {
+      "value": -172.5,
+      "ci": [
+       -247.23,
+       -102.44
       ]
      },
      "U": {
@@ -2627,11 +3480,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -360.0,
+     "score_z_bal": {
+      "value": -19.2,
       "ci": [
-       -517.16,
-       -235.0
+       -42.31,
+       4.83
+      ]
+     },
+     "score_z_mix": {
+      "value": -55.93,
+      "ci": [
+       -90.76,
+       -21.18
       ]
      },
      "score_bal": {
@@ -2639,6 +3499,13 @@
       "ci": [
        -165.56,
        -77.95
+      ]
+     },
+     "score_mix": {
+      "value": -360.0,
+      "ci": [
+       -517.16,
+       -235.0
       ]
      },
      "U": {
@@ -2671,11 +3538,18 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -242.5,
+     "score_z_bal": {
+      "value": 8.04,
       "ci": [
-       -367.57,
-       -139.13
+       -11.28,
+       28.23
+      ]
+     },
+     "score_z_mix": {
+      "value": -16.1,
+      "ci": [
+       -44.72,
+       13.79
       ]
      },
      "score_bal": {
@@ -2683,6 +3557,13 @@
       "ci": [
        -107.89,
        -33.33
+      ]
+     },
+     "score_mix": {
+      "value": -242.5,
+      "ci": [
+       -367.57,
+       -139.13
       ]
      },
      "U": {
@@ -2727,22 +3608,6 @@
     "pair_row_cases": 0,
     "unreadable": 0,
     "escalations": 101
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -16.1,
-     "ci": [
-      -44.72,
-      13.79
-     ]
-    },
-    "score_bal": {
-     "value": 8.04,
-     "ci": [
-      -11.28,
-      28.23
-     ]
-    }
    }
   },
   "anthropic/claude-sonnet-4.6|v7a4bj": {
@@ -2752,11 +3617,18 @@
    "file": "results/v03/ab/runs/anthropic-claude-sonnet-4.6-v7a4bj.json",
    "sha256": "b2badf403b8515bca428a153d73f01a0eaec1e79ac88dd54fe2e82010003b727",
    "measures": {
-    "score_mix": {
-     "value": -290.0,
+    "score_z_bal": {
+     "value": -5.51,
      "ci": [
-      -425.02,
-      -182.92
+      -24.8,
+      15.27
+     ]
+    },
+    "score_z_mix": {
+     "value": -32.2,
+     "ci": [
+      -61.21,
+      -1.74
      ]
     },
     "score_bal": {
@@ -2764,6 +3636,13 @@
      "ci": [
       -134.07,
       -57.24
+     ]
+    },
+    "score_mix": {
+     "value": -290.0,
+     "ci": [
+      -425.02,
+      -182.92
      ]
     },
     "U": {
@@ -2822,11 +3701,18 @@
       70.0
      ]
     },
-    "score_mix@2": {
-     "value": -357.5,
+    "score_z_bal@2": {
+     "value": 16.97,
      "ci": [
-      -505.56,
-      -242.83
+      4.39,
+      30.95
+     ]
+    },
+    "score_z_mix@2": {
+     "value": 6.63,
+     "ci": [
+      -9.36,
+      24.19
      ]
     },
     "score_bal@2": {
@@ -2836,11 +3722,25 @@
       -87.93
      ]
     },
-    "score_mix@3.5": {
-     "value": -458.75,
+    "score_mix@2": {
+     "value": -357.5,
      "ci": [
-      -630.27,
-      -329.33
+      -505.56,
+      -242.83
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": 32.58,
+     "ci": [
+      24.13,
+      42.18
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 28.59,
+     "ci": [
+      18.8,
+      39.32
      ]
     },
     "score_bal@3.5": {
@@ -2850,11 +3750,25 @@
       -132.55
      ]
     },
-    "score_mix@pair": {
-     "value": -290.0,
+    "score_mix@3.5": {
+     "value": -458.75,
      "ci": [
-      -425.02,
-      -182.92
+      -630.27,
+      -329.33
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": -1.0,
+     "ci": [
+      -19.64,
+      19.07
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": -24.3,
+     "ci": [
+      -51.73,
+      4.49
      ]
     },
     "score_bal@pair": {
@@ -2863,14 +3777,28 @@
       -134.07,
       -57.24
      ]
+    },
+    "score_mix@pair": {
+     "value": -290.0,
+     "ci": [
+      -425.02,
+      -182.92
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -290.0,
+    "score_z_bal": {
+     "value": -5.51,
      "ci": [
-      -654.18,
-      -114.59
+      -49.34,
+      30.43
+     ]
+    },
+    "score_z_mix": {
+     "value": -32.2,
+     "ci": [
+      -91.9,
+      17.25
      ]
     },
     "score_bal": {
@@ -2879,15 +3807,29 @@
       -181.02,
       -27.84
      ]
+    },
+    "score_mix": {
+     "value": -290.0,
+     "ci": [
+      -654.18,
+      -114.59
+     ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -200.0,
+     "score_z_bal": {
+      "value": 6.99,
       "ci": [
-       -285.01,
-       -126.17
+       -7.81,
+       22.84
+      ]
+     },
+     "score_z_mix": {
+      "value": -1.69,
+      "ci": [
+       -22.22,
+       20.69
       ]
      },
      "score_bal": {
@@ -2895,6 +3837,13 @@
       "ci": [
        -101.41,
        -43.42
+      ]
+     },
+     "score_mix": {
+      "value": -200.0,
+      "ci": [
+       -285.01,
+       -126.17
       ]
      },
      "U": {
@@ -2927,11 +3876,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -445.0,
+     "score_z_bal": {
+      "value": -39.43,
       "ci": [
-       -613.51,
-       -309.73
+       -61.62,
+       -15.14
+      ]
+     },
+     "score_z_mix": {
+      "value": -84.75,
+      "ci": [
+       -118.71,
+       -47.79
       ]
      },
      "score_bal": {
@@ -2939,6 +3895,13 @@
       "ci": [
        -201.57,
        -114.66
+      ]
+     },
+     "score_mix": {
+      "value": -445.0,
+      "ci": [
+       -613.51,
+       -309.73
       ]
      },
      "U": {
@@ -2971,11 +3934,18 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -290.0,
+     "score_z_bal": {
+      "value": -5.51,
       "ci": [
-       -425.02,
-       -182.92
+       -24.8,
+       15.27
+      ]
+     },
+     "score_z_mix": {
+      "value": -32.2,
+      "ci": [
+       -61.21,
+       -1.74
       ]
      },
      "score_bal": {
@@ -2983,6 +3953,13 @@
       "ci": [
        -134.07,
        -57.24
+      ]
+     },
+     "score_mix": {
+      "value": -290.0,
+      "ci": [
+       -425.02,
+       -182.92
       ]
      },
      "U": {
@@ -3027,22 +4004,6 @@
     "pair_row_cases": 0,
     "unreadable": 0,
     "escalations": 99
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -32.2,
-     "ci": [
-      -61.21,
-      -1.74
-     ]
-    },
-    "score_bal": {
-     "value": -5.51,
-     "ci": [
-      -24.8,
-      15.27
-     ]
-    }
    }
   },
   "google/gemini-3.1-pro-preview|v7a4aj": {
@@ -3052,11 +4013,18 @@
    "file": "results/v03/ab/runs/google-gemini-3.1-pro-preview-v7a4aj.json",
    "sha256": "15a2cbfd4221978c538b576c29b03e206bdef6f043f013c1cf631cb69be15b4e",
    "measures": {
-    "score_mix": {
-     "value": -222.5,
+    "score_z_bal": {
+     "value": 14.29,
      "ci": [
-      -345.97,
-      -124.99
+      -5.75,
+      34.59
+     ]
+    },
+    "score_z_mix": {
+     "value": -9.32,
+     "ci": [
+      -38.02,
+      19.13
      ]
     },
     "score_bal": {
@@ -3064,6 +4032,13 @@
      "ci": [
       -97.27,
       -22.19
+     ]
+    },
+    "score_mix": {
+     "value": -222.5,
+     "ci": [
+      -345.97,
+      -124.99
      ]
     },
     "U": {
@@ -3122,11 +4097,18 @@
       68.67
      ]
     },
-    "score_mix@2": {
-     "value": -287.5,
+    "score_z_bal@2": {
+     "value": 30.89,
      "ci": [
-      -423.73,
-      -183.32
+      18.03,
+      44.32
+     ]
+    },
+    "score_z_mix@2": {
+     "value": 20.92,
+     "ci": [
+      4.97,
+      37.77
      ]
     },
     "score_bal@2": {
@@ -3136,11 +4118,25 @@
       -51.79
      ]
     },
-    "score_mix@3.5": {
-     "value": -385.0,
+    "score_mix@2": {
+     "value": -287.5,
      "ci": [
-      -543.06,
-      -264.92
+      -423.73,
+      -183.32
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": 42.42,
+     "ci": [
+      33.71,
+      51.75
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 38.02,
+     "ci": [
+      27.8,
+      48.84
      ]
     },
     "score_bal@3.5": {
@@ -3150,11 +4146,25 @@
       -93.42
      ]
     },
-    "score_mix@pair": {
-     "value": -222.5,
+    "score_mix@3.5": {
+     "value": -385.0,
      "ci": [
-      -345.97,
-      -124.99
+      -543.06,
+      -264.92
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": 17.95,
+     "ci": [
+      -1.26,
+      37.38
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": -2.79,
+     "ci": [
+      -29.8,
+      24.05
      ]
     },
     "score_bal@pair": {
@@ -3163,14 +4173,28 @@
       -97.27,
       -22.19
      ]
+    },
+    "score_mix@pair": {
+     "value": -222.5,
+     "ci": [
+      -345.97,
+      -124.99
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -222.5,
+    "score_z_bal": {
+     "value": 14.29,
      "ci": [
-      -531.06,
-      -72.08
+      -25.78,
+      45.09
+     ]
+    },
+    "score_z_mix": {
+     "value": -9.32,
+     "ci": [
+      -63.64,
+      32.78
      ]
     },
     "score_bal": {
@@ -3179,15 +4203,29 @@
       -136.87,
       -0.33
      ]
+    },
+    "score_mix": {
+     "value": -222.5,
+     "ci": [
+      -531.06,
+      -72.08
+     ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -172.5,
+     "score_z_bal": {
+      "value": 23.21,
       "ci": [
-       -274.29,
-       -89.99
+       7.1,
+       40.06
+      ]
+     },
+     "score_z_mix": {
+      "value": 7.63,
+      "ci": [
+       -15.58,
+       31.04
       ]
      },
      "score_bal": {
@@ -3195,6 +4233,13 @@
       "ci": [
        -73.81,
        -11.67
+      ]
+     },
+     "score_mix": {
+      "value": -172.5,
+      "ci": [
+       -274.29,
+       -89.99
       ]
      },
      "U": {
@@ -3227,11 +4272,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -342.5,
+     "score_z_bal": {
+      "value": -14.29,
       "ci": [
-       -489.25,
-       -223.25
+       -36.36,
+       8.96
+      ]
+     },
+     "score_z_mix": {
+      "value": -50.0,
+      "ci": [
+       -83.05,
+       -15.96
       ]
      },
      "score_bal": {
@@ -3239,6 +4291,13 @@
       "ci": [
        -154.99,
        -69.92
+      ]
+     },
+     "score_mix": {
+      "value": -342.5,
+      "ci": [
+       -489.25,
+       -223.25
       ]
      },
      "U": {
@@ -3271,11 +4330,18 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -222.5,
+     "score_z_bal": {
+      "value": 14.29,
       "ci": [
-       -345.97,
-       -124.99
+       -5.75,
+       34.59
+      ]
+     },
+     "score_z_mix": {
+      "value": -9.32,
+      "ci": [
+       -38.02,
+       19.13
       ]
      },
      "score_bal": {
@@ -3283,6 +4349,13 @@
       "ci": [
        -97.27,
        -22.19
+      ]
+     },
+     "score_mix": {
+      "value": -222.5,
+      "ci": [
+       -345.97,
+       -124.99
       ]
      },
      "U": {
@@ -3327,22 +4400,6 @@
     "pair_row_cases": 0,
     "unreadable": 0,
     "escalations": 97
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -9.32,
-     "ci": [
-      -38.02,
-      19.13
-     ]
-    },
-    "score_bal": {
-     "value": 14.29,
-     "ci": [
-      -5.75,
-      34.59
-     ]
-    }
    }
   },
   "google/gemini-3.1-pro-preview|v7a4bj": {
@@ -3352,11 +4409,18 @@
    "file": "results/v03/ab/runs/google-gemini-3.1-pro-preview-v7a4bj.json",
    "sha256": "99a911b6d5a7e85b408fed28213856667caf68448dd06532371c8b473ce8cfd6",
    "measures": {
-    "score_mix": {
-     "value": -210.0,
+    "score_z_bal": {
+     "value": 17.26,
      "ci": [
-      -325.73,
-      -119.05
+      -1.76,
+      36.69
+     ]
+    },
+    "score_z_mix": {
+     "value": -5.08,
+     "ci": [
+      -32.77,
+      22.52
      ]
     },
     "score_bal": {
@@ -3364,6 +4428,13 @@
      "ci": [
       -90.51,
       -17.45
+     ]
+    },
+    "score_mix": {
+     "value": -210.0,
+     "ci": [
+      -325.73,
+      -119.05
      ]
     },
     "U": {
@@ -3422,11 +4493,18 @@
       68.67
      ]
     },
-    "score_mix@2": {
-     "value": -280.0,
+    "score_z_bal@2": {
+     "value": 32.11,
      "ci": [
-      -408.11,
-      -181.38
+      19.34,
+      44.9
+     ]
+    },
+    "score_z_mix@2": {
+     "value": 22.45,
+     "ci": [
+      6.31,
+      38.43
      ]
     },
     "score_bal@2": {
@@ -3436,11 +4514,25 @@
       -50.04
      ]
     },
-    "score_mix@3.5": {
-     "value": -385.0,
+    "score_mix@2": {
+     "value": -280.0,
      "ci": [
-      -537.84,
-      -270.49
+      -408.11,
+      -181.38
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": 42.42,
+     "ci": [
+      33.64,
+      51.39
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 38.02,
+     "ci": [
+      27.78,
+      48.28
      ]
     },
     "score_bal@3.5": {
@@ -3450,11 +4542,25 @@
       -95.53
      ]
     },
-    "score_mix@pair": {
-     "value": -210.0,
+    "score_mix@3.5": {
+     "value": -385.0,
      "ci": [
-      -325.73,
-      -119.05
+      -537.84,
+      -270.49
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": 20.8,
+     "ci": [
+      2.61,
+      39.43
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": 1.2,
+     "ci": [
+      -24.9,
+      27.27
      ]
     },
     "score_bal@pair": {
@@ -3463,14 +4569,28 @@
       -90.51,
       -17.45
      ]
+    },
+    "score_mix@pair": {
+     "value": -210.0,
+     "ci": [
+      -325.73,
+      -119.05
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -210.0,
+    "score_z_bal": {
+     "value": 17.26,
      "ci": [
-      -511.16,
-      -65.78
+      -18.52,
+      46.2
+     ]
+    },
+    "score_z_mix": {
+     "value": -5.08,
+     "ci": [
+      -54.72,
+      33.34
      ]
     },
     "score_bal": {
@@ -3479,15 +4599,29 @@
       -123.49,
       1.9
      ]
+    },
+    "score_mix": {
+     "value": -210.0,
+     "ci": [
+      -511.16,
+      -65.78
+     ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -162.5,
+     "score_z_bal": {
+      "value": 24.85,
       "ci": [
-       -252.78,
-       -88.09
+       8.67,
+       41.58
+      ]
+     },
+     "score_z_mix": {
+      "value": 11.02,
+      "ci": [
+       -11.67,
+       33.04
       ]
      },
      "score_bal": {
@@ -3495,6 +4629,13 @@
       "ci": [
        -70.9,
        -8.93
+      ]
+     },
+     "score_mix": {
+      "value": -162.5,
+      "ci": [
+       -252.78,
+       -88.09
       ]
      },
      "U": {
@@ -3527,11 +4668,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -312.5,
+     "score_z_bal": {
+      "value": -6.4,
       "ci": [
-       -454.06,
-       -200.0
+       -27.53,
+       16.25
+      ]
+     },
+     "score_z_mix": {
+      "value": -39.83,
+      "ci": [
+       -70.1,
+       -7.49
       ]
      },
      "score_bal": {
@@ -3539,6 +4687,13 @@
       "ci": [
        -137.69,
        -55.71
+      ]
+     },
+     "score_mix": {
+      "value": -312.5,
+      "ci": [
+       -454.06,
+       -200.0
       ]
      },
      "U": {
@@ -3571,11 +4726,18 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -210.0,
+     "score_z_bal": {
+      "value": 17.26,
       "ci": [
-       -325.73,
-       -119.05
+       -1.76,
+       36.69
+      ]
+     },
+     "score_z_mix": {
+      "value": -5.08,
+      "ci": [
+       -32.77,
+       22.52
       ]
      },
      "score_bal": {
@@ -3583,6 +4745,13 @@
       "ci": [
        -90.51,
        -17.45
+      ]
+     },
+     "score_mix": {
+      "value": -210.0,
+      "ci": [
+       -325.73,
+       -119.05
       ]
      },
      "U": {
@@ -3627,22 +4796,6 @@
     "pair_row_cases": 0,
     "unreadable": 0,
     "escalations": 97
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -5.08,
-     "ci": [
-      -32.77,
-      22.52
-     ]
-    },
-    "score_bal": {
-     "value": 17.26,
-     "ci": [
-      -1.76,
-      36.69
-     ]
-    }
    }
   },
   "z-ai/glm-5.3|v7a4aj": {
@@ -3652,11 +4805,18 @@
    "file": "results/v03/ab/runs/z-ai-glm-5.3-v7a4aj.json",
    "sha256": "1db66f3ce3b2d17136d073a599d43e3a9e51d44d2d56e7ae31019bdec88fb066",
    "measures": {
-    "score_mix": {
-     "value": -250.0,
+    "score_z_bal": {
+     "value": 8.48,
      "ci": [
-      -373.68,
-      -147.35
+      -12.5,
+      29.93
+     ]
+    },
+    "score_z_mix": {
+     "value": -18.64,
+     "ci": [
+      -48.76,
+      12.07
      ]
     },
     "score_bal": {
@@ -3664,6 +4824,13 @@
      "ci": [
       -110.17,
       -30.77
+     ]
+    },
+    "score_mix": {
+     "value": -250.0,
+     "ci": [
+      -373.68,
+      -147.35
      ]
     },
     "U": {
@@ -3722,11 +4889,18 @@
       67.33
      ]
     },
-    "score_mix@2": {
-     "value": -310.0,
+    "score_z_bal@2": {
+     "value": 27.74,
      "ci": [
-      -444.75,
-      -200.0
+      14.16,
+      41.71
+     ]
+    },
+    "score_z_mix@2": {
+     "value": 16.33,
+     "ci": [
+      -0.95,
+      34.05
      ]
     },
     "score_bal@2": {
@@ -3736,11 +4910,25 @@
       -59.11
      ]
     },
-    "score_mix@3.5": {
-     "value": -400.0,
+    "score_mix@2": {
+     "value": -310.0,
      "ci": [
-      -557.38,
-      -276.19
+      -444.75,
+      -200.0
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": 41.12,
+     "ci": [
+      32.07,
+      50.56
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 36.1,
+     "ci": [
+      25.53,
+      47.12
      ]
     },
     "score_bal@3.5": {
@@ -3750,11 +4938,25 @@
       -98.34
      ]
     },
-    "score_mix@pair": {
-     "value": -256.25,
+    "score_mix@3.5": {
+     "value": -400.0,
      "ci": [
-      -379.49,
-      -153.65
+      -557.38,
+      -276.19
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": 10.97,
+     "ci": [
+      -9.26,
+      31.37
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": -13.55,
+     "ci": [
+      -42.24,
+      15.65
      ]
     },
     "score_bal@pair": {
@@ -3763,14 +4965,28 @@
       -113.16,
       -33.63
      ]
+    },
+    "score_mix@pair": {
+     "value": -256.25,
+     "ci": [
+      -379.49,
+      -153.65
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -250.0,
+    "score_z_bal": {
+     "value": 8.48,
      "ci": [
-      -592.11,
-      -81.23
+      -31.25,
+      42.36
+     ]
+    },
+    "score_z_mix": {
+     "value": -18.64,
+     "ci": [
+      -73.69,
+      28.1
      ]
     },
     "score_bal": {
@@ -3779,15 +4995,29 @@
       -148.75,
       -5.73
      ]
+    },
+    "score_mix": {
+     "value": -250.0,
+     "ci": [
+      -592.11,
+      -81.23
+     ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -187.5,
+     "score_z_bal": {
+      "value": 19.64,
       "ci": [
-       -291.18,
-       -102.44
+       2.12,
+       37.99
+      ]
+     },
+     "score_z_mix": {
+      "value": 2.54,
+      "ci": [
+       -22.14,
+       27.59
       ]
      },
      "score_bal": {
@@ -3795,6 +5025,13 @@
       "ci": [
        -82.94,
        -15.22
+      ]
+     },
+     "score_mix": {
+      "value": -187.5,
+      "ci": [
+       -291.18,
+       -102.44
       ]
      },
      "U": {
@@ -3827,11 +5064,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -397.5,
+     "score_z_bal": {
+      "value": -25.89,
       "ci": [
-       -551.35,
-       -271.43
+       -47.89,
+       -2.35
+      ]
+     },
+     "score_z_mix": {
+      "value": -68.64,
+      "ci": [
+       -102.5,
+       -33.62
       ]
      },
      "score_bal": {
@@ -3839,6 +5083,13 @@
       "ci": [
        -176.46,
        -90.59
+      ]
+     },
+     "score_mix": {
+      "value": -397.5,
+      "ci": [
+       -551.35,
+       -271.43
       ]
      },
      "U": {
@@ -3871,11 +5122,18 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -250.0,
+     "score_z_bal": {
+      "value": 8.48,
       "ci": [
-       -373.68,
-       -147.35
+       -12.5,
+       29.93
+      ]
+     },
+     "score_z_mix": {
+      "value": -18.64,
+      "ci": [
+       -48.76,
+       12.07
       ]
      },
      "score_bal": {
@@ -3883,6 +5141,13 @@
       "ci": [
        -110.17,
        -30.77
+      ]
+     },
+     "score_mix": {
+      "value": -250.0,
+      "ci": [
+       -373.68,
+       -147.35
       ]
      },
      "U": {
@@ -3927,22 +5192,6 @@
     "pair_row_cases": 1,
     "unreadable": 1,
     "escalations": 94
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -18.64,
-     "ci": [
-      -48.76,
-      12.07
-     ]
-    },
-    "score_bal": {
-     "value": 8.48,
-     "ci": [
-      -12.5,
-      29.93
-     ]
-    }
    }
   },
   "z-ai/glm-5.3|v7a4bj": {
@@ -3952,11 +5201,18 @@
    "file": "results/v03/ab/runs/z-ai-glm-5.3-v7a4bj.json",
    "sha256": "0751e06aaa04ad271e68c0ab3cf4b140294fac8b2bdd27e3b15496a87e733850",
    "measures": {
-    "score_mix": {
-     "value": -270.0,
+    "score_z_bal": {
+     "value": 3.72,
      "ci": [
-      -405.41,
-      -160.0
+      -17.24,
+      26.39
+     ]
+    },
+    "score_z_mix": {
+     "value": -25.42,
+     "ci": [
+      -56.56,
+      6.04
      ]
     },
     "score_bal": {
@@ -3964,6 +5220,13 @@
      "ci": [
       -119.05,
       -37.79
+     ]
+    },
+    "score_mix": {
+     "value": -270.0,
+     "ci": [
+      -405.41,
+      -160.0
      ]
     },
     "U": {
@@ -4022,11 +5285,18 @@
       66.67
      ]
     },
-    "score_mix@2": {
-     "value": -332.5,
+    "score_z_bal@2": {
+     "value": 24.09,
      "ci": [
-      -477.16,
-      -215.53
+      10.5,
+      38.71
+     ]
+    },
+    "score_z_mix@2": {
+     "value": 11.73,
+     "ci": [
+      -5.83,
+      29.79
      ]
     },
     "score_bal@2": {
@@ -4036,11 +5306,25 @@
       -67.24
      ]
     },
-    "score_mix@3.5": {
-     "value": -426.25,
+    "score_mix@2": {
+     "value": -332.5,
      "ci": [
-      -592.12,
-      -292.37
+      -477.16,
+      -215.53
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": 38.22,
+     "ci": [
+      29.38,
+      47.96
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 32.75,
+     "ci": [
+      22.13,
+      43.94
      ]
     },
     "score_bal@3.5": {
@@ -4050,11 +5334,25 @@
       -109.73
      ]
     },
-    "score_mix@pair": {
-     "value": -270.0,
+    "score_mix@3.5": {
+     "value": -426.25,
      "ci": [
-      -405.41,
-      -160.0
+      -592.12,
+      -292.37
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": 7.83,
+     "ci": [
+      -12.3,
+      29.63
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": -17.93,
+     "ci": [
+      -47.41,
+      11.74
      ]
     },
     "score_bal@pair": {
@@ -4063,14 +5361,28 @@
       -119.05,
       -37.79
      ]
+    },
+    "score_mix@pair": {
+     "value": -270.0,
+     "ci": [
+      -405.41,
+      -160.0
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -270.0,
+    "score_z_bal": {
+     "value": 3.72,
      "ci": [
-      -613.1,
-      -92.15
+      -34.37,
+      38.28
+     ]
+    },
+    "score_z_mix": {
+     "value": -25.42,
+     "ci": [
+      -80.01,
+      22.5
      ]
     },
     "score_bal": {
@@ -4079,15 +5391,29 @@
       -156.42,
       -12.63
      ]
+    },
+    "score_mix": {
+     "value": -270.0,
+     "ci": [
+      -613.1,
+      -92.15
+     ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -227.5,
+     "score_z_bal": {
+      "value": 8.63,
       "ci": [
-       -344.76,
-       -130.23
+       -11.19,
+       28.46
+      ]
+     },
+     "score_z_mix": {
+      "value": -11.02,
+      "ci": [
+       -38.46,
+       16.1
       ]
      },
      "score_bal": {
@@ -4095,6 +5421,13 @@
       "ci": [
        -108.42,
        -33.18
+      ]
+     },
+     "score_mix": {
+      "value": -227.5,
+      "ci": [
+       -344.76,
+       -130.23
       ]
      },
      "U": {
@@ -4127,11 +5460,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -415.0,
+     "score_z_bal": {
+      "value": -29.32,
       "ci": [
-       -583.79,
-       -280.94
+       -52.22,
+       -4.4
+      ]
+     },
+     "score_z_mix": {
+      "value": -74.58,
+      "ci": [
+       -109.24,
+       -38.46
       ]
      },
      "score_bal": {
@@ -4139,6 +5479,13 @@
       "ci": [
        -184.55,
        -95.17
+      ]
+     },
+     "score_mix": {
+      "value": -415.0,
+      "ci": [
+       -583.79,
+       -280.94
       ]
      },
      "U": {
@@ -4171,11 +5518,18 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -270.0,
+     "score_z_bal": {
+      "value": 3.72,
       "ci": [
-       -405.41,
-       -160.0
+       -17.24,
+       26.39
+      ]
+     },
+     "score_z_mix": {
+      "value": -25.42,
+      "ci": [
+       -56.56,
+       6.04
       ]
      },
      "score_bal": {
@@ -4183,6 +5537,13 @@
       "ci": [
        -119.05,
        -37.79
+      ]
+     },
+     "score_mix": {
+      "value": -270.0,
+      "ci": [
+       -405.41,
+       -160.0
       ]
      },
      "U": {
@@ -4227,22 +5588,6 @@
     "pair_row_cases": 0,
     "unreadable": 2,
     "escalations": 94
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -25.42,
-     "ci": [
-      -56.56,
-      6.04
-     ]
-    },
-    "score_bal": {
-     "value": 3.72,
-     "ci": [
-      -17.24,
-      26.39
-     ]
-    }
    }
   },
   "anthropic/claude-haiku-4.5|v7a4aj": {
@@ -4252,11 +5597,18 @@
    "file": "results/v03/ab/runs/anthropic-claude-haiku-4.5-v7a4aj.json",
    "sha256": "7218616a349e6acef50531e1dc1648980f34d48004173d21a1d2130acc958074",
    "measures": {
-    "score_mix": {
-     "value": -442.5,
+    "score_z_bal": {
+     "value": -38.1,
      "ci": [
-      -622.88,
-      -300.0
+      -63.23,
+      -12.74
+     ]
+    },
+    "score_z_mix": {
+     "value": -83.9,
+     "ci": [
+      -121.95,
+      -46.55
      ]
     },
     "score_bal": {
@@ -4264,6 +5616,13 @@
      "ci": [
       -203.48,
       -110.46
+     ]
+    },
+    "score_mix": {
+     "value": -442.5,
+     "ci": [
+      -622.88,
+      -300.0
      ]
     },
     "U": {
@@ -4322,11 +5681,18 @@
       60.0
      ]
     },
-    "score_mix@2": {
-     "value": -500.0,
+    "score_z_bal@2": {
+     "value": -3.66,
      "ci": [
-      -683.36,
-      -358.53
+      -19.68,
+      12.46
+     ]
+    },
+    "score_z_mix@2": {
+     "value": -22.45,
+     "ci": [
+      -42.71,
+      -2.04
      ]
     },
     "score_bal@2": {
@@ -4336,11 +5702,25 @@
       -139.82
      ]
     },
-    "score_mix@3.5": {
-     "value": -586.25,
+    "score_mix@2": {
+     "value": -500.0,
      "ci": [
-      -775.0,
-      -437.19
+      -683.36,
+      -358.53
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": 20.25,
+     "ci": [
+      10.05,
+      30.78
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 12.3,
+     "ci": [
+      0.77,
+      24.35
      ]
     },
     "score_bal@3.5": {
@@ -4350,11 +5730,25 @@
       -180.74
      ]
     },
-    "score_mix@pair": {
-     "value": -448.75,
+    "score_mix@3.5": {
+     "value": -586.25,
      "ci": [
-      -627.96,
-      -307.14
+      -775.0,
+      -437.19
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": -33.62,
+     "ci": [
+      -57.43,
+      -9.63
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": -74.9,
+     "ci": [
+      -111.16,
+      -39.44
      ]
     },
     "score_bal@pair": {
@@ -4363,14 +5757,28 @@
       -205.92,
       -113.88
      ]
+    },
+    "score_mix@pair": {
+     "value": -448.75,
+     "ci": [
+      -627.96,
+      -307.14
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -442.5,
+    "score_z_bal": {
+     "value": -38.1,
      "ci": [
-      -950.06,
-      -204.34
+      -86.25,
+      5.12
+     ]
+    },
+    "score_z_mix": {
+     "value": -83.9,
+     "ci": [
+      -152.64,
+      -24.97
      ]
     },
     "score_bal": {
@@ -4379,15 +5787,29 @@
       -247.39,
       -75.35
      ]
+    },
+    "score_mix": {
+     "value": -442.5,
+     "ci": [
+      -950.06,
+      -204.34
+     ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -287.5,
+     "score_z_bal": {
+      "value": -8.63,
       "ci": [
-       -418.93,
-       -186.04
+       -27.0,
+       9.61
+      ]
+     },
+     "score_z_mix": {
+      "value": -31.36,
+      "ci": [
+       -59.84,
+       -5.07
       ]
      },
      "score_bal": {
@@ -4395,6 +5817,13 @@
       "ci": [
        -137.19,
        -68.48
+      ]
+     },
+     "score_mix": {
+      "value": -287.5,
+      "ci": [
+       -418.93,
+       -186.04
       ]
      },
      "U": {
@@ -4427,11 +5856,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -487.5,
+     "score_z_bal": {
+      "value": -48.81,
       "ci": [
-       -673.7,
-       -341.45
+       -74.62,
+       -23.15
+      ]
+     },
+     "score_z_mix": {
+      "value": -99.15,
+      "ci": [
+       -138.46,
+       -60.5
       ]
      },
      "score_bal": {
@@ -4439,6 +5875,13 @@
       "ci": [
        -224.92,
        -130.57
+      ]
+     },
+     "score_mix": {
+      "value": -487.5,
+      "ci": [
+       -673.7,
+       -341.45
       ]
      },
      "U": {
@@ -4471,11 +5914,18 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -442.5,
+     "score_z_bal": {
+      "value": -38.1,
       "ci": [
-       -622.88,
-       -300.0
+       -63.23,
+       -12.74
+      ]
+     },
+     "score_z_mix": {
+      "value": -83.9,
+      "ci": [
+       -121.95,
+       -46.55
       ]
      },
      "score_bal": {
@@ -4483,6 +5933,13 @@
       "ci": [
        -203.48,
        -110.46
+      ]
+     },
+     "score_mix": {
+      "value": -442.5,
+      "ci": [
+       -622.88,
+       -300.0
       ]
      },
      "U": {
@@ -4527,22 +5984,6 @@
     "pair_row_cases": 1,
     "unreadable": 0,
     "escalations": 83
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -83.9,
-     "ci": [
-      -121.95,
-      -46.55
-     ]
-    },
-    "score_bal": {
-     "value": -38.1,
-     "ci": [
-      -63.23,
-      -12.74
-     ]
-    }
    }
   },
   "anthropic/claude-haiku-4.5|v7a4bj": {
@@ -4552,11 +5993,18 @@
    "file": "results/v03/ab/runs/anthropic-claude-haiku-4.5-v7a4bj.json",
    "sha256": "1cad68f866ae1358ed171dc29db11277b6fd0c6349e9e39f5f958733a7135ca7",
    "measures": {
-    "score_mix": {
-     "value": -415.0,
+    "score_z_bal": {
+     "value": -28.57,
      "ci": [
-      -591.96,
-      -281.4
+      -51.93,
+      -4.41
+     ]
+    },
+    "score_z_mix": {
+     "value": -74.58,
+     "ci": [
+      -111.57,
+      -37.81
      ]
     },
     "score_bal": {
@@ -4564,6 +6012,13 @@
      "ci": [
       -183.55,
       -94.92
+     ]
+    },
+    "score_mix": {
+     "value": -415.0,
+     "ci": [
+      -591.96,
+      -281.4
      ]
     },
     "U": {
@@ -4622,11 +6077,18 @@
       57.33
      ]
     },
-    "score_mix@2": {
-     "value": -472.5,
+    "score_z_bal@2": {
+     "value": 2.85,
      "ci": [
-      -654.43,
-      -334.09
+      -11.9,
+      18.25
+     ]
+    },
+    "score_z_mix@2": {
+     "value": -16.84,
+     "ci": [
+      -36.32,
+      3.13
      ]
     },
     "score_bal@2": {
@@ -4636,11 +6098,25 @@
       -123.03
      ]
     },
-    "score_mix@3.5": {
-     "value": -558.75,
+    "score_mix@2": {
+     "value": -472.5,
      "ci": [
-      -752.86,
-      -415.07
+      -654.43,
+      -334.09
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": 24.66,
+     "ci": [
+      15.55,
+      34.13
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 15.81,
+     "ci": [
+      4.57,
+      27.24
      ]
     },
     "score_bal@3.5": {
@@ -4650,11 +6126,25 @@
       -164.41
      ]
     },
-    "score_mix@pair": {
-     "value": -421.25,
+    "score_mix@3.5": {
+     "value": -558.75,
      "ci": [
-      -600.0,
-      -286.89
+      -752.86,
+      -415.07
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": -24.5,
+     "ci": [
+      -47.09,
+      -1.27
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": -66.14,
+     "ci": [
+      -100.01,
+      -31.58
      ]
     },
     "score_bal@pair": {
@@ -4663,14 +6153,28 @@
       -186.33,
       -97.28
      ]
+    },
+    "score_mix@pair": {
+     "value": -421.25,
+     "ci": [
+      -600.0,
+      -286.89
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -415.0,
+    "score_z_bal": {
+     "value": -28.57,
      "ci": [
-      -886.72,
-      -179.66
+      -70.98,
+      10.03
+     ]
+    },
+    "score_z_mix": {
+     "value": -74.58,
+     "ci": [
+      -137.51,
+      -16.26
      ]
     },
     "score_bal": {
@@ -4679,15 +6183,29 @@
       -223.77,
       -64.0
      ]
+    },
+    "score_mix": {
+     "value": -415.0,
+     "ci": [
+      -886.72,
+      -179.66
+     ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -207.5,
+     "score_z_bal": {
+      "value": 15.62,
       "ci": [
-       -305.71,
-       -126.83
+       -1.01,
+       32.74
+      ]
+     },
+     "score_z_mix": {
+      "value": -4.24,
+      "ci": [
+       -27.12,
+       18.97
       ]
      },
      "score_bal": {
@@ -4695,6 +6213,13 @@
       "ci": [
        -88.34,
        -25.15
+      ]
+     },
+     "score_mix": {
+      "value": -207.5,
+      "ci": [
+       -305.71,
+       -126.83
       ]
      },
      "U": {
@@ -4727,11 +6252,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -460.0,
+     "score_z_bal": {
+      "value": -39.29,
       "ci": [
-       -650.07,
-       -317.06
+       -63.44,
+       -13.31
+      ]
+     },
+     "score_z_mix": {
+      "value": -89.83,
+      "ci": [
+       -128.09,
+       -51.25
       ]
      },
      "score_bal": {
@@ -4739,6 +6271,13 @@
       "ci": [
        -205.53,
        -111.21
+      ]
+     },
+     "score_mix": {
+      "value": -460.0,
+      "ci": [
+       -650.07,
+       -317.06
       ]
      },
      "U": {
@@ -4771,11 +6310,18 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -415.0,
+     "score_z_bal": {
+      "value": -28.57,
       "ci": [
-       -591.96,
-       -281.4
+       -51.93,
+       -4.41
+      ]
+     },
+     "score_z_mix": {
+      "value": -74.58,
+      "ci": [
+       -111.57,
+       -37.81
       ]
      },
      "score_bal": {
@@ -4783,6 +6329,13 @@
       "ci": [
        -183.55,
        -94.92
+      ]
+     },
+     "score_mix": {
+      "value": -415.0,
+      "ci": [
+       -591.96,
+       -281.4
       ]
      },
      "U": {
@@ -4827,22 +6380,6 @@
     "pair_row_cases": 1,
     "unreadable": 0,
     "escalations": 79
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -74.58,
-     "ci": [
-      -111.57,
-      -37.81
-     ]
-    },
-    "score_bal": {
-     "value": -28.57,
-     "ci": [
-      -51.93,
-      -4.41
-     ]
-    }
    }
   },
   "meta-llama/llama-3.1-8b-instruct|v7a4aj": {
@@ -4852,11 +6389,18 @@
    "file": "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a4aj.json",
    "sha256": "90d074e48cfd267b8e0ead888629a3efac7ac7845cf89129ec1849827e0e4277",
    "measures": {
-    "score_mix": {
-     "value": -727.5,
+    "score_z_bal": {
+     "value": -100.0,
      "ci": [
-      -943.24,
-      -558.14
+      -123.43,
+      -75.02
+     ]
+    },
+    "score_z_mix": {
+     "value": -180.51,
+     "ci": [
+      -218.64,
+      -140.71
      ]
     },
     "score_bal": {
@@ -4864,6 +6408,13 @@
      "ci": [
       -317.07,
       -226.66
+     ]
+    },
+    "score_mix": {
+     "value": -727.5,
+     "ci": [
+      -943.24,
+      -558.14
      ]
     },
     "U": {
@@ -4922,11 +6473,18 @@
       42.0
      ]
     },
-    "score_mix@2": {
-     "value": -792.5,
+    "score_z_bal@2": {
+     "value": -47.15,
      "ci": [
-      -1013.89,
-      -619.49
+      -61.89,
+      -31.3
+     ]
+    },
+    "score_z_mix@2": {
+     "value": -82.14,
+     "ci": [
+      -101.52,
+      -60.93
      ]
     },
     "score_bal@2": {
@@ -4936,11 +6494,25 @@
       -258.87
      ]
     },
-    "score_mix@3.5": {
-     "value": -890.0,
+    "score_mix@2": {
+     "value": -792.5,
      "ci": [
-      -1121.45,
-      -711.59
+      -1013.89,
+      -619.49
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": -10.47,
+     "ci": [
+      -19.84,
+      -0.95
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": -26.52,
+     "ci": [
+      -37.3,
+      -14.94
      ]
     },
     "score_bal@3.5": {
@@ -4950,11 +6522,25 @@
       -306.84
      ]
     },
-    "score_mix@pair": {
-     "value": -733.75,
+    "score_mix@3.5": {
+     "value": -890.0,
      "ci": [
-      -950.0,
-      -566.29
+      -1121.45,
+      -711.59
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": -92.88,
+     "ci": [
+      -115.34,
+      -70.04
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": -165.74,
+     "ci": [
+      -201.2,
+      -128.97
      ]
     },
     "score_bal@pair": {
@@ -4963,14 +6549,28 @@
       -319.75,
       -231.6
      ]
+    },
+    "score_mix@pair": {
+     "value": -733.75,
+     "ci": [
+      -950.0,
+      -566.29
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -727.5,
+    "score_z_bal": {
+     "value": -100.0,
      "ci": [
-      -1561.79,
-      -347.27
+      -142.89,
+      -55.04
+     ]
+    },
+    "score_z_mix": {
+     "value": -180.51,
+     "ci": [
+      -263.69,
+      -101.69
      ]
     },
     "score_bal": {
@@ -4979,15 +6579,29 @@
       -362.93,
       -181.88
      ]
+    },
+    "score_mix": {
+     "value": -727.5,
+     "ci": [
+      -1561.79,
+      -347.27
+     ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -317.5,
+     "score_z_bal": {
+      "value": -23.21,
       "ci": [
-       -427.79,
-       -219.5
+       -41.94,
+       -4.56
+      ]
+     },
+     "score_z_mix": {
+      "value": -41.53,
+      "ci": [
+       -67.5,
+       -15.25
       ]
      },
      "score_bal": {
@@ -4995,6 +6609,13 @@
       "ci": [
        -164.78,
        -94.93
+      ]
+     },
+     "score_mix": {
+      "value": -317.5,
+      "ci": [
+       -427.79,
+       -219.5
       ]
      },
      "U": {
@@ -5027,11 +6648,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -812.5,
+     "score_z_bal": {
+      "value": -118.75,
       "ci": [
-       -1041.67,
-       -635.71
+       -141.04,
+       -94.2
+      ]
+     },
+     "score_z_mix": {
+      "value": -209.32,
+      "ci": [
+       -248.77,
+       -169.49
       ]
      },
      "score_bal": {
@@ -5039,6 +6667,13 @@
       "ci": [
        -349.74,
        -262.67
+      ]
+     },
+     "score_mix": {
+      "value": -812.5,
+      "ci": [
+       -1041.67,
+       -635.71
       ]
      },
      "U": {
@@ -5071,11 +6706,18 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -727.5,
+     "score_z_bal": {
+      "value": -100.0,
       "ci": [
-       -943.24,
-       -558.14
+       -123.43,
+       -75.02
+      ]
+     },
+     "score_z_mix": {
+      "value": -180.51,
+      "ci": [
+       -218.64,
+       -140.71
       ]
      },
      "score_bal": {
@@ -5083,6 +6725,13 @@
       "ci": [
        -317.07,
        -226.66
+      ]
+     },
+     "score_mix": {
+      "value": -727.5,
+      "ci": [
+       -943.24,
+       -558.14
       ]
      },
      "U": {
@@ -5127,22 +6776,6 @@
     "pair_row_cases": 1,
     "unreadable": 0,
     "escalations": 55
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -180.51,
-     "ci": [
-      -218.64,
-      -140.71
-     ]
-    },
-    "score_bal": {
-     "value": -100.0,
-     "ci": [
-      -123.43,
-      -75.02
-     ]
-    }
    }
   },
   "meta-llama/llama-3.1-8b-instruct|v7a4bj": {
@@ -5152,11 +6785,18 @@
    "file": "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a4bj.json",
    "sha256": "978f6cd077ca2ccec48481c02cc90865fc0735b4f6caeebd255c00b64da14be2",
    "measures": {
-    "score_mix": {
-     "value": -747.5,
+    "score_z_bal": {
+     "value": -106.25,
      "ci": [
-      -976.43,
-      -573.8
+      -134.33,
+      -78.79
+     ]
+    },
+    "score_z_mix": {
+     "value": -187.29,
+     "ci": [
+      -231.9,
+      -145.22
      ]
     },
     "score_bal": {
@@ -5164,6 +6804,13 @@
      "ci": [
       -337.45,
       -234.12
+     ]
+    },
+    "score_mix": {
+     "value": -747.5,
+     "ci": [
+      -976.43,
+      -573.8
      ]
     },
     "U": {
@@ -5222,11 +6869,18 @@
       43.33
      ]
     },
-    "score_mix@2": {
-     "value": -810.0,
+    "score_z_bal@2": {
+     "value": -51.02,
      "ci": [
-      -1047.26,
-      -634.13
+      -68.76,
+      -33.84
+     ]
+    },
+    "score_z_mix@2": {
+     "value": -85.71,
+     "ci": [
+      -109.1,
+      -63.31
      ]
     },
     "score_bal@2": {
@@ -5236,11 +6890,25 @@
       -266.74
      ]
     },
-    "score_mix@3.5": {
-     "value": -903.75,
+    "score_mix@2": {
+     "value": -810.0,
      "ci": [
-      -1160.04,
-      -722.62
+      -1047.26,
+      -634.13
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": -12.67,
+     "ci": [
+      -23.44,
+      -2.43
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": -28.27,
+     "ci": [
+      -41.03,
+      -16.19
      ]
     },
     "score_bal@3.5": {
@@ -5250,11 +6918,25 @@
       -314.16
      ]
     },
-    "score_mix@pair": {
-     "value": -747.5,
+    "score_mix@3.5": {
+     "value": -903.75,
      "ci": [
-      -976.43,
-      -573.8
+      -1160.04,
+      -722.62
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": -97.44,
+     "ci": [
+      -125.02,
+      -71.22
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": -170.12,
+     "ci": [
+      -212.06,
+      -130.2
      ]
     },
     "score_bal@pair": {
@@ -5263,14 +6945,28 @@
       -337.45,
       -234.12
      ]
+    },
+    "score_mix@pair": {
+     "value": -747.5,
+     "ci": [
+      -976.43,
+      -573.8
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -747.5,
+    "score_z_bal": {
+     "value": -106.25,
      "ci": [
-      -1556.08,
-      -378.23
+      -146.57,
+      -62.25
+     ]
+    },
+    "score_z_mix": {
+     "value": -187.29,
+     "ci": [
+      -275.01,
+      -107.47
      ]
     },
     "score_bal": {
@@ -5279,15 +6975,29 @@
       -363.06,
       -202.14
      ]
+    },
+    "score_mix": {
+     "value": -747.5,
+     "ci": [
+      -1556.08,
+      -378.23
+     ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -315.0,
+     "score_z_bal": {
+      "value": -17.41,
       "ci": [
-       -444.74,
-       -215.9
+       -38.5,
+       2.73
+      ]
+     },
+     "score_z_mix": {
+      "value": -40.68,
+      "ci": [
+       -71.43,
+       -13.04
       ]
      },
      "score_bal": {
@@ -5295,6 +7005,13 @@
       "ci": [
        -157.84,
        -82.38
+      ]
+     },
+     "score_mix": {
+      "value": -315.0,
+      "ci": [
+       -444.74,
+       -215.9
       ]
      },
      "U": {
@@ -5327,11 +7044,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -865.0,
+     "score_z_bal": {
+      "value": -133.48,
       "ci": [
-       -1121.69,
-       -676.74
+       -160.26,
+       -107.28
+      ]
+     },
+     "score_z_mix": {
+      "value": -227.12,
+      "ci": [
+       -274.14,
+       -184.21
       ]
      },
      "score_bal": {
@@ -5339,6 +7063,13 @@
       "ci": [
        -385.22,
        -286.38
+      ]
+     },
+     "score_mix": {
+      "value": -865.0,
+      "ci": [
+       -1121.69,
+       -676.74
       ]
      },
      "U": {
@@ -5371,11 +7102,18 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -747.5,
+     "score_z_bal": {
+      "value": -106.25,
       "ci": [
-       -976.43,
-       -573.8
+       -134.33,
+       -78.79
+      ]
+     },
+     "score_z_mix": {
+      "value": -187.29,
+      "ci": [
+       -231.9,
+       -145.22
       ]
      },
      "score_bal": {
@@ -5383,6 +7121,13 @@
       "ci": [
        -337.45,
        -234.12
+      ]
+     },
+     "score_mix": {
+      "value": -747.5,
+      "ci": [
+       -976.43,
+       -573.8
       ]
      },
      "U": {
@@ -5427,22 +7172,6 @@
     "pair_row_cases": 0,
     "unreadable": 0,
     "escalations": 57
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -187.29,
-     "ci": [
-      -231.9,
-      -145.22
-     ]
-    },
-    "score_bal": {
-     "value": -106.25,
-     "ci": [
-      -134.33,
-      -78.79
-     ]
-    }
    }
   },
   "meta-llama/llama-3.1-8b-instruct|v7a4a": {
@@ -5452,11 +7181,18 @@
    "file": "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a4a.json",
    "sha256": "d72ea15b983e8eb4516af801722f0cae41bee0a34d3fe8a5412663a949fcfa83",
    "measures": {
-    "score_mix": {
-     "value": -892.5,
+    "score_z_bal": {
+     "value": -138.54,
      "ci": [
-      -1103.01,
-      -720.85
+      -157.95,
+      -118.03
+     ]
+    },
+    "score_z_mix": {
+     "value": -236.44,
+     "ci": [
+      -268.91,
+      -203.54
      ]
     },
     "score_bal": {
@@ -5464,6 +7200,13 @@
      "ci": [
       -380.66,
       -306.98
+     ]
+    },
+    "score_mix": {
+     "value": -892.5,
+     "ci": [
+      -1103.01,
+      -720.85
      ]
     },
     "U": {
@@ -5522,11 +7265,18 @@
       33.33
      ]
     },
-    "score_mix@2": {
-     "value": -932.5,
+    "score_z_bal@2": {
+     "value": -69.41,
      "ci": [
-      -1154.36,
-      -754.76
+      -81.76,
+      -56.37
+     ]
+    },
+    "score_z_mix@2": {
+     "value": -110.71,
+     "ci": [
+      -126.91,
+      -93.75
      ]
     },
     "score_bal@2": {
@@ -5536,11 +7286,25 @@
       -327.2
      ]
     },
-    "score_mix@3.5": {
-     "value": -992.5,
+    "score_mix@2": {
+     "value": -932.5,
      "ci": [
-      -1229.52,
-      -807.95
+      -1154.36,
+      -754.76
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": -21.42,
+     "ci": [
+      -29.28,
+      -13.34
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": -39.62,
+     "ci": [
+      -48.8,
+      -29.98
      ]
     },
     "score_bal@3.5": {
@@ -5550,11 +7314,25 @@
       -358.07
      ]
     },
-    "score_mix@pair": {
-     "value": -892.5,
+    "score_mix@3.5": {
+     "value": -992.5,
      "ci": [
-      -1103.01,
-      -720.85
+      -1229.52,
+      -807.95
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": -128.35,
+     "ci": [
+      -146.71,
+      -108.54
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": -216.33,
+     "ci": [
+      -247.04,
+      -185.26
      ]
     },
     "score_bal@pair": {
@@ -5563,14 +7341,28 @@
       -380.66,
       -306.98
      ]
+    },
+    "score_mix@pair": {
+     "value": -892.5,
+     "ci": [
+      -1103.01,
+      -720.85
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -892.5,
+    "score_z_bal": {
+     "value": -138.54,
      "ci": [
-      -1870.38,
-      -435.18
+      -185.23,
+      -86.12
+     ]
+    },
+    "score_z_mix": {
+     "value": -236.44,
+     "ci": [
+      -337.19,
+      -140.14
      ]
     },
     "score_bal": {
@@ -5579,15 +7371,29 @@
       -446.07,
       -239.47
      ]
+    },
+    "score_mix": {
+     "value": -892.5,
+     "ci": [
+      -1870.38,
+      -435.18
+     ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -297.5,
+     "score_z_bal": {
+      "value": -20.68,
       "ci": [
-       -389.2,
-       -222.47
+       -36.64,
+       -5.0
+      ]
+     },
+     "score_z_mix": {
+      "value": -34.75,
+      "ci": [
+       -57.63,
+       -13.16
       ]
      },
      "score_bal": {
@@ -5595,6 +7401,13 @@
       "ci": [
        -155.18,
        -95.94
+      ]
+     },
+     "score_mix": {
+      "value": -297.5,
+      "ci": [
+       -389.2,
+       -222.47
       ]
      },
      "U": {
@@ -5627,11 +7440,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -997.5,
+     "score_z_bal": {
+      "value": -163.54,
       "ci": [
-       -1236.15,
-       -811.36
+       -182.16,
+       -145.11
+      ]
+     },
+     "score_z_mix": {
+      "value": -272.03,
+      "ci": [
+       -304.4,
+       -239.17
       ]
      },
      "score_bal": {
@@ -5639,6 +7459,13 @@
       "ci": [
        -426.21,
        -357.34
+      ]
+     },
+     "score_mix": {
+      "value": -997.5,
+      "ci": [
+       -1236.15,
+       -811.36
       ]
      },
      "U": {
@@ -5671,11 +7498,18 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -892.5,
+     "score_z_bal": {
+      "value": -138.54,
       "ci": [
-       -1103.01,
-       -720.85
+       -157.95,
+       -118.03
+      ]
+     },
+     "score_z_mix": {
+      "value": -236.44,
+      "ci": [
+       -268.91,
+       -203.54
       ]
      },
      "score_bal": {
@@ -5683,6 +7517,13 @@
       "ci": [
        -380.66,
        -306.98
+      ]
+     },
+     "score_mix": {
+      "value": -892.5,
+      "ci": [
+       -1103.01,
+       -720.85
       ]
      },
      "U": {
@@ -5727,22 +7568,6 @@
     "pair_row_cases": 0,
     "unreadable": 0,
     "escalations": 44
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -236.44,
-     "ci": [
-      -268.91,
-      -203.54
-     ]
-    },
-    "score_bal": {
-     "value": -138.54,
-     "ci": [
-      -157.95,
-      -118.03
-     ]
-    }
    }
   },
   "meta-llama/llama-3.1-8b-instruct|v7a4b": {
@@ -5752,25 +7577,39 @@
    "file": "results/v03/ab/runs/meta-llama-llama-3.1-8b-instruct-v7a4b.json",
    "sha256": "3d0c4ef49937733303b19f5142b9f1b3ae9fe720d2cf083360f6c3ecb1595c06",
    "measures": {
-    "score_mix": {
-     "value": -782.5,
+    "score_z_bal": {
+     "value": -119.64,
      "ci": [
-      -986.49,
-      -610.84
+      -145.68,
+      -91.95
+     ]
+    },
+    "score_z_mix": {
+     "value": -204.24,
+     "ci": [
+      -245.09,
+      -163.71
      ]
     },
     "score_bal": {
-     "value": -303.33,
+     "value": -310.0,
      "ci": [
-      -349.55,
-      -254.04
+      -358.3,
+      -260.07
+     ]
+    },
+    "score_mix": {
+     "value": -797.5,
+     "ci": [
+      -1005.56,
+      -628.86
      ]
     },
     "U": {
-     "value": 51.11,
+     "value": 52.22,
      "ci": [
-      43.68,
-      57.96
+      44.68,
+      59.55
      ]
     },
     "O": {
@@ -5781,10 +7620,10 @@
      ]
     },
     "partial": {
-     "value": 25.56,
+     "value": 24.44,
      "ci": [
-      18.82,
-      32.58
+      17.44,
+      31.76
      ]
     },
     "partial_inlist": {
@@ -5795,10 +7634,10 @@
      ]
     },
     "partial_offlist": {
-     "value": 6.67,
+     "value": 5.56,
      "ci": [
-      3.19,
-      10.11
+      2.08,
+      9.2
      ]
     },
     "pass": {
@@ -5816,78 +7655,141 @@
      ]
     },
     "esc": {
-     "value": 38.0,
+     "value": 37.33,
      "ci": [
-      32.67,
-      42.67
+      32.0,
+      42.0
      ]
     },
-    "score_mix@2": {
-     "value": -840.0,
+    "score_z_bal@2": {
+     "value": -58.94,
      "ci": [
-      -1051.46,
-      -665.1
+      -75.47,
+      -41.77
+     ]
+    },
+    "score_z_mix@2": {
+     "value": -94.39,
+     "ci": [
+      -115.39,
+      -72.59
      ]
     },
     "score_bal@2": {
-     "value": -328.89,
+     "value": -334.44,
      "ci": [
-      -371.65,
-      -283.6
+      -378.89,
+      -288.42
      ]
     },
-    "score_mix@3.5": {
-     "value": -926.25,
+    "score_mix@2": {
+     "value": -852.5,
      "ci": [
-      -1153.06,
-      -743.33
+      -1068.59,
+      -679.98
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": -16.8,
+     "ci": [
+      -26.93,
+      -6.29
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": -32.27,
+     "ci": [
+      -43.64,
+      -20.03
      ]
     },
     "score_bal@3.5": {
-     "value": -367.22,
+     "value": -371.11,
      "ci": [
-      -404.93,
-      -325.65
+      -409.54,
+      -330.16
      ]
     },
-    "score_mix@pair": {
-     "value": -782.5,
+    "score_mix@3.5": {
+     "value": -935.0,
      "ci": [
-      -986.49,
-      -610.84
+      -1168.06,
+      -751.16
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": -110.26,
+     "ci": [
+      -135.15,
+      -83.94
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": -186.06,
+     "ci": [
+      -224.31,
+      -147.84
      ]
     },
     "score_bal@pair": {
-     "value": -303.33,
+     "value": -310.0,
      "ci": [
-      -349.55,
-      -254.04
+      -358.3,
+      -260.07
+     ]
+    },
+    "score_mix@pair": {
+     "value": -797.5,
+     "ci": [
+      -1005.56,
+      -628.86
      ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -782.5,
+    "score_z_bal": {
+     "value": -119.64,
      "ci": [
-      -1622.38,
-      -386.66
+      -163.41,
+      -74.91
+     ]
+    },
+    "score_z_mix": {
+     "value": -204.24,
+     "ci": [
+      -297.53,
+      -122.12
      ]
     },
     "score_bal": {
-     "value": -303.33,
+     "value": -310.0,
      "ci": [
-      -393.94,
-      -213.16
+      -399.18,
+      -223.07
+     ]
+    },
+    "score_mix": {
+     "value": -797.5,
+     "ci": [
+      -1655.87,
+      -398.1
      ]
     }
    },
    "bounds": {
     "offlist_all_valid": {
-     "score_mix": {
-      "value": -295.0,
+     "score_z_bal": {
+      "value": -11.16,
       "ci": [
-       -407.52,
-       -202.44
+       -31.57,
+       8.88
+      ]
+     },
+     "score_z_mix": {
+      "value": -33.9,
+      "ci": [
+       -61.67,
+       -6.84
       ]
      },
      "score_bal": {
@@ -5895,6 +7797,13 @@
       "ci": [
        -145.4,
        -70.03
+      ]
+     },
+     "score_mix": {
+      "value": -295.0,
+      "ci": [
+       -407.52,
+       -202.44
       ]
      },
      "U": {
@@ -5927,11 +7836,18 @@
      }
     },
     "offlist_all_invalid": {
-     "score_mix": {
-      "value": -872.5,
+     "score_z_bal": {
+      "value": -137.5,
       "ci": [
-       -1088.9,
-       -695.64
+       -163.05,
+       -110.84
+      ]
+     },
+     "score_z_mix": {
+      "value": -229.66,
+      "ci": [
+       -268.07,
+       -190.25
       ]
      },
      "score_bal": {
@@ -5939,6 +7855,13 @@
       "ci": [
        -389.49,
        -294.18
+      ]
+     },
+     "score_mix": {
+      "value": -872.5,
+      "ci": [
+       -1088.9,
+       -695.64
       ]
      },
      "U": {
@@ -5971,25 +7894,39 @@
      }
     },
     "weak_excluded": {
-     "score_mix": {
-      "value": -782.5,
+     "score_z_bal": {
+      "value": -119.64,
       "ci": [
-       -986.49,
-       -610.84
+       -145.68,
+       -91.95
+      ]
+     },
+     "score_z_mix": {
+      "value": -204.24,
+      "ci": [
+       -245.09,
+       -163.71
       ]
      },
      "score_bal": {
-      "value": -303.33,
+      "value": -310.0,
       "ci": [
-       -349.55,
-       -254.04
+       -358.3,
+       -260.07
+      ]
+     },
+     "score_mix": {
+      "value": -797.5,
+      "ci": [
+       -1005.56,
+       -628.86
       ]
      },
      "U": {
-      "value": 51.11,
+      "value": 52.22,
       "ci": [
-       43.68,
-       57.96
+       44.68,
+       59.55
       ]
      },
      "O": {
@@ -6000,61 +7937,52 @@
       ]
      },
      "partial": {
-      "value": 25.56,
+      "value": 24.44,
       "ci": [
-       18.82,
-       32.58
+       17.44,
+       31.76
       ]
      },
      "esc": {
-      "value": 38.0,
+      "value": 37.33,
       "ci": [
-       32.67,
-       42.67
+       32.0,
+       42.0
       ]
      }
     }
    },
    "counts": {
     "pass": 21,
-    "miss": 46,
-    "partial": 23,
+    "miss": 47,
+    "partial": 22,
     "benign_routine": 32,
     "benign_escalated": 8,
     "not_scored": 20,
     "partial_inlist": 17,
-    "partial_offlist": 6,
+    "partial_offlist": 5,
     "pair_row_cases": 0,
     "unreadable": 0,
-    "escalations": 57
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -199.15,
-     "ci": [
-      -237.82,
-      -159.84
-     ]
-    },
-    "score_bal": {
-     "value": -116.07,
-     "ci": [
-      -141.4,
-      -89.67
-     ]
-    }
+    "escalations": 56
    }
   }
  },
  "references": {
-  "single-flag": {
-   "label": "Always escalate, one fixed flag on the most common target: I21 (Possible NSTEMI / STEMI; names a target on 12 of 90 SERIOUS cases)",
+  "zero": {
+   "label": "Always escalate, one fixed flag on the most common tier-1 target (the zero): I21 (Possible NSTEMI / STEMI; a target on 10 SERIOUS cases, and the code names one on 12 of 90)",
    "measures": {
-    "score_mix": {
-     "value": -195.0,
+    "score_z_bal": {
+     "value": 0.0,
      "ci": [
-      -237.14,
-      -162.22
+      0.0,
+      0.0
+     ]
+    },
+    "score_z_mix": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
      ]
     },
     "score_bal": {
@@ -6062,6 +7990,13 @@
      "ci": [
       -88.76,
       -84.52
+     ]
+    },
+    "score_mix": {
+     "value": -195.0,
+     "ci": [
+      -237.14,
+      -162.22
      ]
     },
     "U": {
@@ -6120,11 +8055,18 @@
       100.0
      ]
     },
-    "score_mix@2": {
-     "value": -390.0,
+    "score_z_bal@2": {
+     "value": 0.0,
      "ci": [
-      -474.29,
-      -324.44
+      0.0,
+      0.0
+     ]
+    },
+    "score_z_mix@2": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
      ]
     },
     "score_bal@2": {
@@ -6134,11 +8076,25 @@
       -169.04
      ]
     },
-    "score_mix@3.5": {
-     "value": -682.5,
+    "score_mix@2": {
+     "value": -390.0,
      "ci": [
-      -830.0,
-      -567.78
+      -474.29,
+      -324.44
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
      ]
     },
     "score_bal@3.5": {
@@ -6148,11 +8104,25 @@
       -295.83
      ]
     },
-    "score_mix@pair": {
-     "value": -213.75,
+    "score_mix@3.5": {
+     "value": -682.5,
      "ci": [
-      -258.57,
-      -178.89
+      -830.0,
+      -567.78
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
      ]
     },
     "score_bal@pair": {
@@ -6161,14 +8131,28 @@
       -97.16,
       -92.86
      ]
+    },
+    "score_mix@pair": {
+     "value": -213.75,
+     "ci": [
+      -258.57,
+      -178.89
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -195.0,
+    "score_z_bal": {
+     "value": 0.0,
      "ci": [
-      -369.6,
-      -111.64
+      0.0,
+      0.0
+     ]
+    },
+    "score_z_mix": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
      ]
     },
     "score_bal": {
@@ -6176,6 +8160,13 @@
      "ci": [
       -97.25,
       -72.84
+     ]
+    },
+    "score_mix": {
+     "value": -195.0,
+     "ci": [
+      -369.6,
+      -111.64
      ]
     }
    },
@@ -6189,32 +8180,23 @@
     "pair_row_cases": 3,
     "unreadable": 0,
     "escalations": 150
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": 0.0,
-     "ci": [
-      0.0,
-      0.0
-     ]
-    },
-    "score_bal": {
-     "value": 0.0,
-     "ci": [
-      0.0,
-      0.0
-     ]
-    }
    }
   },
   "always-escalate": {
    "label": "Always escalate (committed five tier-1 codes)",
    "measures": {
-    "score_mix": {
-     "value": -145.0,
+    "score_z_bal": {
+     "value": 11.9,
      "ci": [
-      -175.68,
-      -120.44
+      9.15,
+      14.69
+     ]
+    },
+    "score_z_mix": {
+     "value": 16.95,
+     "ci": [
+      12.71,
+      21.31
      ]
     },
     "score_bal": {
@@ -6222,6 +8204,13 @@
      "ci": [
       -69.66,
       -59.09
+     ]
+    },
+    "score_mix": {
+     "value": -145.0,
+     "ci": [
+      -175.68,
+      -120.44
      ]
     },
     "U": {
@@ -6280,11 +8269,18 @@
       100.0
      ]
     },
-    "score_mix@2": {
-     "value": -290.0,
+    "score_z_bal@2": {
+     "value": 16.26,
      "ci": [
-      -351.35,
-      -240.89
+      12.5,
+      20.08
+     ]
+    },
+    "score_z_mix@2": {
+     "value": 20.41,
+     "ci": [
+      15.47,
+      25.38
      ]
     },
     "score_bal@2": {
@@ -6294,11 +8290,25 @@
       -118.18
      ]
     },
-    "score_mix@3.5": {
-     "value": -507.5,
+    "score_mix@2": {
+     "value": -290.0,
      "ci": [
-      -614.86,
-      -421.55
+      -351.35,
+      -240.89
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": 19.28,
+     "ci": [
+      14.83,
+      23.8
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 22.36,
+     "ci": [
+      17.1,
+      27.67
      ]
     },
     "score_bal@3.5": {
@@ -6308,11 +8318,25 @@
       -206.81
      ]
     },
-    "score_mix@pair": {
-     "value": -163.75,
+    "score_mix@3.5": {
+     "value": -507.5,
      "ci": [
-      -195.95,
-      -137.5
+      -614.86,
+      -421.55
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": 11.4,
+     "ci": [
+      8.75,
+      14.06
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": 15.94,
+     "ci": [
+      11.95,
+      20.08
      ]
     },
     "score_bal@pair": {
@@ -6321,14 +8345,28 @@
       -78.09,
       -67.24
      ]
+    },
+    "score_mix@pair": {
+     "value": -163.75,
+     "ci": [
+      -195.95,
+      -137.5
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -145.0,
+    "score_z_bal": {
+     "value": 11.9,
      "ci": [
-      -291.32,
-      -76.92
+      5.36,
+      19.08
+     ]
+    },
+    "score_z_mix": {
+     "value": 16.95,
+     "ci": [
+      7.76,
+      27.64
      ]
     },
     "score_bal": {
@@ -6336,6 +8374,13 @@
      "ci": [
       -79.31,
       -48.42
+     ]
+    },
+    "score_mix": {
+     "value": -145.0,
+     "ci": [
+      -291.32,
+      -76.92
      ]
     }
    },
@@ -6349,32 +8394,23 @@
     "pair_row_cases": 3,
     "unreadable": 0,
     "escalations": 150
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": 16.95,
-     "ci": [
-      12.71,
-      21.31
-     ]
-    },
-    "score_bal": {
-     "value": 11.9,
-     "ci": [
-      9.15,
-      14.69
-     ]
-    }
    }
   },
   "always-routine": {
    "label": "Always routine",
    "measures": {
-    "score_mix": {
-     "value": -1475.0,
+    "score_z_bal": {
+     "value": -275.0,
      "ci": [
-      -1800.0,
-      -1222.18
+      -279.36,
+      -270.83
+     ]
+    },
+    "score_z_mix": {
+     "value": -433.9,
+     "ci": [
+      -464.71,
+      -403.31
      ]
     },
     "score_bal": {
@@ -6382,6 +8418,13 @@
      "ci": [
       -600.0,
       -600.0
+     ]
+    },
+    "score_mix": {
+     "value": -1475.0,
+     "ci": [
+      -1800.0,
+      -1222.18
      ]
     },
     "U": {
@@ -6440,6 +8483,27 @@
       0.0
      ]
     },
+    "score_z_bal@2": {
+     "value": -156.1,
+     "ci": [
+      -160.18,
+      -152.23
+     ]
+    },
+    "score_z_mix@2": {
+     "value": -221.43,
+     "ci": [
+      -232.67,
+      -210.27
+     ]
+    },
+    "score_bal@2": {
+     "value": -600.0,
+     "ci": [
+      -600.0,
+      -600.0
+     ]
+    },
     "score_mix@2": {
      "value": -1475.0,
      "ci": [
@@ -6447,7 +8511,21 @@
       -1222.18
      ]
     },
-    "score_bal@2": {
+    "score_z_bal@3.5": {
+     "value": -73.55,
+     "ci": [
+      -76.85,
+      -70.45
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": -101.28,
+     "ci": [
+      -106.27,
+      -96.26
+     ]
+    },
+    "score_bal@3.5": {
      "value": -600.0,
      "ci": [
       -600.0,
@@ -6461,7 +8539,21 @@
       -1222.18
      ]
     },
-    "score_bal@3.5": {
+    "score_z_bal@pair": {
+     "value": -258.97,
+     "ci": [
+      -262.96,
+      -255.04
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": -401.99,
+     "ci": [
+      -431.23,
+      -373.89
+     ]
+    },
+    "score_bal@pair": {
      "value": -600.0,
      "ci": [
       -600.0,
@@ -6474,21 +8566,21 @@
       -1800.0,
       -1222.18
      ]
-    },
-    "score_bal@pair": {
-     "value": -600.0,
-     "ci": [
-      -600.0,
-      -600.0
-     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -1475.0,
+    "score_z_bal": {
+     "value": -275.0,
      "ci": [
-      -2991.67,
-      -820.35
+      -305.0,
+      -254.88
+     ]
+    },
+    "score_z_mix": {
+     "value": -433.9,
+     "ci": [
+      -565.69,
+      -325.22
      ]
     },
     "score_bal": {
@@ -6496,6 +8588,13 @@
      "ci": [
       -600.0,
       -600.0
+     ]
+    },
+    "score_mix": {
+     "value": -1475.0,
+     "ci": [
+      -2991.67,
+      -820.35
      ]
     }
    },
@@ -6508,32 +8607,23 @@
     "pair_row_cases": 0,
     "unreadable": 0,
     "escalations": 0
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -433.9,
-     "ci": [
-      -464.71,
-      -403.31
-     ]
-    },
-    "score_bal": {
-     "value": -275.0,
-     "ci": [
-      -279.36,
-      -270.83
-     ]
-    }
    }
   },
   "dxa": {
    "label": "DXA reader (tier-1 DXA p >= 10%, not a red herring)",
    "measures": {
-    "score_mix": {
-     "value": -225.0,
+    "score_z_bal": {
+     "value": 22.62,
      "ci": [
-      -308.12,
-      -151.13
+      5.66,
+      39.11
+     ]
+    },
+    "score_z_mix": {
+     "value": -10.17,
+     "ci": [
+      -32.77,
+      13.45
      ]
     },
     "score_bal": {
@@ -6541,6 +8631,13 @@
      "ci": [
       -75.6,
       -13.68
+     ]
+    },
+    "score_mix": {
+     "value": -225.0,
+     "ci": [
+      -308.12,
+      -151.13
      ]
     },
     "U": {
@@ -6599,11 +8696,18 @@
       53.33
      ]
     },
-    "score_mix@2": {
-     "value": -235.0,
+    "score_z_bal@2": {
+     "value": 45.53,
      "ci": [
-      -318.92,
-      -158.53
+      33.87,
+      56.87
+     ]
+    },
+    "score_z_mix@2": {
+     "value": 31.63,
+     "ci": [
+      18.13,
+      45.45
      ]
     },
     "score_bal@2": {
@@ -6613,11 +8717,25 @@
       -18.27
      ]
     },
-    "score_mix@3.5": {
-     "value": -250.0,
+    "score_mix@2": {
+     "value": -235.0,
      "ci": [
-      -335.14,
-      -170.45
+      -318.92,
+      -158.53
+     ]
+    },
+    "score_z_bal@3.5": {
+     "value": 61.43,
+     "ci": [
+      53.4,
+      69.32
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 55.27,
+     "ci": [
+      46.59,
+      64.22
      ]
     },
     "score_bal@3.5": {
@@ -6627,11 +8745,25 @@
       -24.44
      ]
     },
-    "score_mix@pair": {
-     "value": -225.0,
+    "score_mix@3.5": {
+     "value": -250.0,
      "ci": [
-      -308.12,
-      -151.13
+      -335.14,
+      -170.45
+     ]
+    },
+    "score_z_bal@pair": {
+     "value": 25.93,
+     "ci": [
+      9.91,
+      41.55
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": -3.59,
+     "ci": [
+      -24.71,
+      18.58
      ]
     },
     "score_bal@pair": {
@@ -6640,14 +8772,28 @@
       -75.6,
       -13.68
      ]
+    },
+    "score_mix@pair": {
+     "value": -225.0,
+     "ci": [
+      -308.12,
+      -151.13
+     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -225.0,
+    "score_z_bal": {
+     "value": 22.62,
      "ci": [
-      -654.91,
-      -24.0
+      -27.28,
+      64.41
+     ]
+    },
+    "score_z_mix": {
+     "value": -10.17,
+     "ci": [
+      -91.0,
+      51.97
      ]
     },
     "score_bal": {
@@ -6655,6 +8801,13 @@
      "ci": [
       -133.35,
       31.87
+     ]
+    },
+    "score_mix": {
+     "value": -225.0,
+     "ci": [
+      -654.91,
+      -24.0
      ]
     }
    },
@@ -6669,32 +8822,23 @@
     "pair_row_cases": 0,
     "unreadable": 0,
     "escalations": 72
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -10.17,
-     "ci": [
-      -32.77,
-      13.45
-     ]
-    },
-    "score_bal": {
-     "value": 22.62,
-     "ci": [
-      5.66,
-      39.11
-     ]
-    }
    }
   },
   "naive-bayes": {
    "label": "Naive Bayes (tier-1 posterior >= 10%; dataset-knowledge ceiling)",
    "measures": {
-    "score_mix": {
-     "value": -425.0,
+    "score_z_bal": {
+     "value": -25.0,
      "ci": [
-      -619.44,
-      -273.33
+      -43.09,
+      -4.55
+     ]
+    },
+    "score_z_mix": {
+     "value": -77.97,
+     "ci": [
+      -114.05,
+      -42.34
      ]
     },
     "score_bal": {
@@ -6702,6 +8846,13 @@
      "ci": [
       -167.01,
       -93.98
+     ]
+    },
+    "score_mix": {
+     "value": -425.0,
+     "ci": [
+      -619.44,
+      -273.33
      ]
     },
     "U": {
@@ -6760,6 +8911,27 @@
       40.0
      ]
     },
+    "score_z_bal@2": {
+     "value": 14.63,
+     "ci": [
+      2.26,
+      28.44
+     ]
+    },
+    "score_z_mix@2": {
+     "value": -7.14,
+     "ci": [
+      -26.34,
+      12.97
+     ]
+    },
+    "score_bal@2": {
+     "value": -133.33,
+     "ci": [
+      -167.01,
+      -93.98
+     ]
+    },
     "score_mix@2": {
      "value": -425.0,
      "ci": [
@@ -6767,7 +8939,21 @@
       -273.33
      ]
     },
-    "score_bal@2": {
+    "score_z_bal@3.5": {
+     "value": 42.15,
+     "ci": [
+      33.76,
+      51.43
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 32.91,
+     "ci": [
+      21.75,
+      44.74
+     ]
+    },
+    "score_bal@3.5": {
      "value": -133.33,
      "ci": [
       -167.01,
@@ -6781,7 +8967,21 @@
       -273.33
      ]
     },
-    "score_bal@3.5": {
+    "score_z_bal@pair": {
+     "value": -19.66,
+     "ci": [
+      -37.4,
+      0.31
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": -67.33,
+     "ci": [
+      -101.56,
+      -33.59
+     ]
+    },
+    "score_bal@pair": {
      "value": -133.33,
      "ci": [
       -167.01,
@@ -6794,21 +8994,21 @@
       -619.44,
       -273.33
      ]
-    },
-    "score_bal@pair": {
-     "value": -133.33,
-     "ci": [
-      -167.01,
-      -93.98
-     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
-     "value": -425.0,
+    "score_z_bal": {
+     "value": -25.0,
      "ci": [
-      -926.74,
-      -171.43
+      -88.96,
+      26.32
+     ]
+    },
+    "score_z_mix": {
+     "value": -77.97,
+     "ci": [
+      -164.73,
+      -6.25
      ]
     },
     "score_bal": {
@@ -6816,6 +9016,13 @@
      "ci": [
       -254.02,
       -37.21
+     ]
+    },
+    "score_mix": {
+     "value": -425.0,
+     "ci": [
+      -926.74,
+      -171.43
      ]
     }
    },
@@ -6829,35 +9036,33 @@
     "pair_row_cases": 0,
     "unreadable": 0,
     "escalations": 60
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": -77.97,
-     "ci": [
-      -114.05,
-      -42.34
-     ]
-    },
-    "score_bal": {
-     "value": -25.0,
-     "ci": [
-      -43.09,
-      -4.55
-     ]
-    }
    }
   },
   "target-named": {
-   "label": "Always escalate, naming a target on every SERIOUS case (the current 0)",
+   "label": "Always escalate, naming a target on every SERIOUS case (draft 3's 0)",
    "measures": {
-    "score_mix": {
+    "score_z_bal": {
+     "value": 46.43,
+     "ci": [
+      45.81,
+      47.02
+     ]
+    },
+    "score_z_mix": {
+     "value": 66.1,
+     "ci": [
+      61.86,
+      70.34
+     ]
+    },
+    "score_bal": {
      "value": 0.0,
      "ci": [
       0.0,
       0.0
      ]
     },
-    "score_bal": {
+    "score_mix": {
      "value": 0.0,
      "ci": [
       0.0,
@@ -6920,6 +9125,27 @@
       100.0
      ]
     },
+    "score_z_bal@2": {
+     "value": 63.41,
+     "ci": [
+      62.83,
+      63.97
+     ]
+    },
+    "score_z_mix@2": {
+     "value": 79.59,
+     "ci": [
+      76.44,
+      82.59
+     ]
+    },
+    "score_bal@2": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
     "score_mix@2": {
      "value": 0.0,
      "ci": [
@@ -6927,7 +9153,21 @@
       0.0
      ]
     },
-    "score_bal@2": {
+    "score_z_bal@3.5": {
+     "value": 75.21,
+     "ci": [
+      74.74,
+      75.65
+     ]
+    },
+    "score_z_mix@3.5": {
+     "value": 87.22,
+     "ci": [
+      85.02,
+      89.25
+     ]
+    },
+    "score_bal@3.5": {
      "value": 0.0,
      "ci": [
       0.0,
@@ -6941,7 +9181,21 @@
       0.0
      ]
     },
-    "score_bal@3.5": {
+    "score_z_bal@pair": {
+     "value": 48.72,
+     "ci": [
+      48.15,
+      49.28
+     ]
+    },
+    "score_z_mix@pair": {
+     "value": 68.13,
+     "ci": [
+      64.14,
+      72.11
+     ]
+    },
+    "score_bal@pair": {
      "value": 0.0,
      "ci": [
       0.0,
@@ -6954,24 +9208,31 @@
       0.0,
       0.0
      ]
-    },
-    "score_bal@pair": {
-     "value": 0.0,
-     "ci": [
-      0.0,
-      0.0
-     ]
     }
    },
    "condition_bootstrap": {
-    "score_mix": {
+    "score_z_bal": {
+     "value": 46.43,
+     "ci": [
+      42.14,
+      49.3
+     ]
+    },
+    "score_z_mix": {
+     "value": 66.1,
+     "ci": [
+      52.75,
+      78.71
+     ]
+    },
+    "score_bal": {
      "value": 0.0,
      "ci": [
       0.0,
       0.0
      ]
     },
-    "score_bal": {
+    "score_mix": {
      "value": 0.0,
      "ci": [
       0.0,
@@ -6988,22 +9249,6 @@
     "pair_row_cases": 0,
     "unreadable": 0,
     "escalations": 150
-   },
-   "rescaled_single_flag": {
-    "score_mix": {
-     "value": 66.1,
-     "ci": [
-      61.86,
-      70.34
-     ]
-    },
-    "score_bal": {
-     "value": 46.43,
-     "ci": [
-      45.81,
-      47.02
-     ]
-    }
    }
   }
  },
@@ -7012,11 +9257,18 @@
    "model": "openai/gpt-5.6-terra",
    "a": "v7a4aj",
    "b": "v7a4bj",
-   "score_mix": {
-    "value": -7.5,
+   "score_z_bal": {
+    "value": -1.79,
     "ci": [
-     -72.51,
-     56.11
+     -17.82,
+     13.55
+    ]
+   },
+   "score_z_mix": {
+    "value": -2.54,
+    "ci": [
+     -24.37,
+     18.97
     ]
    },
    "score_bal": {
@@ -7024,6 +9276,13 @@
     "ci": [
      -33.21,
      25.46
+    ]
+   },
+   "score_mix": {
+    "value": -7.5,
+    "ci": [
+     -72.51,
+     56.11
     ]
    },
    "U": {
@@ -7059,11 +9318,18 @@
    "model": "openai/gpt-5.6-terra",
    "a": "v7a4aj",
    "b": "v7a4a",
-   "score_mix": {
-    "value": 25.0,
+   "score_z_bal": {
+    "value": 3.72,
     "ci": [
-     -15.01,
-     72.51
+     -6.88,
+     16.09
+    ]
+   },
+   "score_z_mix": {
+    "value": 8.47,
+    "ci": [
+     -5.13,
+     24.14
     ]
    },
    "score_bal": {
@@ -7071,6 +9337,13 @@
     "ci": [
      -12.77,
      30.05
+    ]
+   },
+   "score_mix": {
+    "value": 25.0,
+    "ci": [
+     -15.01,
+     72.51
     ]
    },
    "U": {
@@ -7106,11 +9379,18 @@
    "model": "openai/gpt-5.6-terra",
    "a": "v7a4bj",
    "b": "v7a4b",
-   "score_mix": {
-    "value": 5.0,
+   "score_z_bal": {
+    "value": -1.79,
     "ci": [
-     -53.66,
-     67.5
+     -15.94,
+     13.28
+    ]
+   },
+   "score_z_mix": {
+    "value": 1.69,
+    "ci": [
+     -17.8,
+     22.69
     ]
    },
    "score_bal": {
@@ -7118,6 +9398,13 @@
     "ci": [
      -29.65,
      24.79
+    ]
+   },
+   "score_mix": {
+    "value": 5.0,
+    "ci": [
+     -53.66,
+     67.5
     ]
    },
    "U": {
@@ -7153,18 +9440,32 @@
    "model": "openai/gpt-oss-120b",
    "a": "v7a4aj",
    "b": "v7a4bj",
-   "score_mix": {
-    "value": 62.5,
+   "score_z_bal": {
+    "value": 16.96,
     "ci": [
-     -17.5,
-     145.95
+     -2.79,
+     37.12
+    ]
+   },
+   "score_z_mix": {
+    "value": 22.03,
+    "ci": [
+     -5.22,
+     49.57
     ]
    },
    "score_bal": {
-    "value": 29.17,
+    "value": 31.67,
     "ci": [
-     -7.79,
-     66.96
+     -5.21,
+     69.55
+    ]
+   },
+   "score_mix": {
+    "value": 65.0,
+    "ci": [
+     -15.0,
+     147.64
     ]
    },
    "U": {
@@ -7175,10 +9476,10 @@
     ]
    },
    "O": {
-    "value": -2.5,
+    "value": -5.0,
     "ci": [
-     -14.71,
-     8.11
+     -17.95,
+     5.56
     ]
    },
    "partial": {
@@ -7189,10 +9490,10 @@
     ]
    },
    "esc": {
-    "value": 4.67,
+    "value": 4.0,
     "ci": [
-     0.0,
-     9.33
+     -1.33,
+     8.67
     ]
    }
   },
@@ -7200,18 +9501,32 @@
    "model": "openai/gpt-oss-120b",
    "a": "v7a4aj",
    "b": "v7a4a",
-   "score_mix": {
-    "value": 52.5,
+   "score_z_bal": {
+    "value": 14.58,
     "ci": [
-     -34.21,
-     139.56
+     -6.88,
+     34.97
+    ]
+   },
+   "score_z_mix": {
+    "value": 18.64,
+    "ci": [
+     -11.21,
+     47.01
     ]
    },
    "score_bal": {
-    "value": 24.72,
+    "value": 27.22,
     "ci": [
-     -15.22,
-     62.56
+     -12.74,
+     65.24
+    ]
+   },
+   "score_mix": {
+    "value": 55.0,
+    "ci": [
+     -32.52,
+     141.47
     ]
    },
    "U": {
@@ -7222,10 +9537,10 @@
     ]
    },
    "O": {
-    "value": -2.5,
+    "value": -5.0,
     "ci": [
-     -12.5,
-     7.69
+     -16.22,
+     5.26
     ]
    },
    "partial": {
@@ -7236,10 +9551,10 @@
     ]
    },
    "esc": {
-    "value": 2.0,
+    "value": 1.33,
     "ci": [
-     -2.67,
-     6.67
+     -3.33,
+     6.0
     ]
    }
   },
@@ -7247,11 +9562,18 @@
    "model": "openai/gpt-oss-120b",
    "a": "v7a4bj",
    "b": "v7a4b",
-   "score_mix": {
-    "value": -60.0,
+   "score_z_bal": {
+    "value": -12.8,
     "ci": [
-     -129.28,
-     5.27
+     -29.36,
+     3.78
+    ]
+   },
+   "score_z_mix": {
+    "value": -20.34,
+    "ci": [
+     -43.33,
+     1.74
     ]
    },
    "score_bal": {
@@ -7259,6 +9581,13 @@
     "ci": [
      -54.65,
      6.98
+    ]
+   },
+   "score_mix": {
+    "value": -60.0,
+    "ci": [
+     -129.28,
+     5.27
     ]
    },
    "U": {
@@ -7294,11 +9623,18 @@
    "model": "anthropic/claude-sonnet-4.6",
    "a": "v7a4aj",
    "b": "v7a4bj",
-   "score_mix": {
-    "value": 47.5,
+   "score_z_bal": {
+    "value": 13.54,
     "ci": [
-     13.5,
-     78.95
+     4.79,
+     21.92
+    ]
+   },
+   "score_z_mix": {
+    "value": 16.1,
+    "ci": [
+     4.39,
+     25.64
     ]
    },
    "score_bal": {
@@ -7306,6 +9642,13 @@
     "ci": [
      9.01,
      40.73
+    ]
+   },
+   "score_mix": {
+    "value": 47.5,
+    "ci": [
+     13.5,
+     78.95
     ]
    },
    "U": {
@@ -7341,11 +9684,18 @@
    "model": "google/gemini-3.1-pro-preview",
    "a": "v7a4aj",
    "b": "v7a4bj",
-   "score_mix": {
-    "value": -12.5,
+   "score_z_bal": {
+    "value": -2.98,
     "ci": [
-     -63.16,
-     34.15
+     -14.72,
+     8.28
+    ]
+   },
+   "score_z_mix": {
+    "value": -4.24,
+    "ci": [
+     -21.01,
+     11.76
     ]
    },
    "score_bal": {
@@ -7353,6 +9703,13 @@
     "ci": [
      -27.59,
      15.39
+    ]
+   },
+   "score_mix": {
+    "value": -12.5,
+    "ci": [
+     -63.16,
+     34.15
     ]
    },
    "U": {
@@ -7388,11 +9745,18 @@
    "model": "z-ai/glm-5.3",
    "a": "v7a4aj",
    "b": "v7a4bj",
-   "score_mix": {
-    "value": 20.0,
+   "score_z_bal": {
+    "value": 4.76,
     "ci": [
-     -52.64,
-     97.78
+     -13.48,
+     22.74
+    ]
+   },
+   "score_z_mix": {
+    "value": 6.78,
+    "ci": [
+     -18.18,
+     32.77
     ]
    },
    "score_bal": {
@@ -7400,6 +9764,13 @@
     "ci": [
      -25.15,
      42.49
+    ]
+   },
+   "score_mix": {
+    "value": 20.0,
+    "ci": [
+     -52.64,
+     97.78
     ]
    },
    "U": {
@@ -7435,11 +9806,18 @@
    "model": "anthropic/claude-haiku-4.5",
    "a": "v7a4aj",
    "b": "v7a4bj",
-   "score_mix": {
-    "value": -27.5,
+   "score_z_bal": {
+    "value": -9.52,
     "ci": [
-     -128.58,
-     68.3
+     -33.4,
+     13.38
+    ]
+   },
+   "score_z_mix": {
+    "value": -9.32,
+    "ci": [
+     -42.61,
+     22.5
     ]
    },
    "score_bal": {
@@ -7447,6 +9825,13 @@
     "ci": [
      -62.08,
      24.97
+    ]
+   },
+   "score_mix": {
+    "value": -27.5,
+    "ci": [
+     -128.58,
+     68.3
     ]
    },
    "U": {
@@ -7482,11 +9867,18 @@
    "model": "meta-llama/llama-3.1-8b-instruct",
    "a": "v7a4aj",
    "b": "v7a4bj",
-   "score_mix": {
-    "value": 20.0,
+   "score_z_bal": {
+    "value": 6.25,
     "ci": [
-     -129.33,
-     181.0
+     -29.66,
+     43.63
+    ]
+   },
+   "score_z_mix": {
+    "value": 6.78,
+    "ci": [
+     -43.8,
+     60.35
     ]
    },
    "score_bal": {
@@ -7494,6 +9886,13 @@
     "ci": [
      -55.46,
      80.91
+    ]
+   },
+   "score_mix": {
+    "value": 20.0,
+    "ci": [
+     -129.33,
+     181.0
     ]
    },
    "U": {
@@ -7529,11 +9928,18 @@
    "model": "meta-llama/llama-3.1-8b-instruct",
    "a": "v7a4aj",
    "b": "v7a4a",
-   "score_mix": {
-    "value": 165.0,
+   "score_z_bal": {
+    "value": 38.54,
     "ci": [
-     71.42,
-     268.32
+     15.53,
+     61.7
+    ]
+   },
+   "score_z_mix": {
+    "value": 55.93,
+    "ci": [
+     23.33,
+     88.8
     ]
    },
    "score_bal": {
@@ -7541,6 +9947,13 @@
     "ci": [
      29.06,
      115.17
+    ]
+   },
+   "score_mix": {
+    "value": 165.0,
+    "ci": [
+     71.42,
+     268.32
     ]
    },
    "U": {
@@ -7576,25 +9989,39 @@
    "model": "meta-llama/llama-3.1-8b-instruct",
    "a": "v7a4bj",
    "b": "v7a4b",
-   "score_mix": {
-    "value": 35.0,
+   "score_z_bal": {
+    "value": 13.39,
     "ci": [
-     -100.0,
-     163.05
+     -18.61,
+     45.31
+    ]
+   },
+   "score_z_mix": {
+    "value": 16.95,
+    "ci": [
+     -28.58,
+     61.55
     ]
    },
    "score_bal": {
-    "value": 18.33,
+    "value": 25.0,
     "ci": [
-     -43.06,
-     76.87
+     -34.93,
+     85.17
+    ]
+   },
+   "score_mix": {
+    "value": 50.0,
+    "ci": [
+     -86.84,
+     178.07
     ]
    },
    "U": {
-    "value": -2.22,
+    "value": -3.33,
     "ci": [
-     -11.11,
-     6.74
+     -12.5,
+     5.62
     ]
    },
    "O": {
@@ -7605,35 +10032,49 @@
     ]
    },
    "partial": {
-    "value": 2.22,
+    "value": 3.33,
     "ci": [
-     -5.56,
-     9.76
+     -4.35,
+     10.87
     ]
    },
    "esc": {
-    "value": 0.0,
+    "value": 0.67,
     "ci": [
-     -6.67,
-     6.0
+     -6.0,
+     6.68
     ]
    }
   }
  },
  "within_arm": {
   "4aj: gpt-5.6-terra - gpt-oss-120b": {
-   "score_mix": {
-    "value": 12.5,
+   "score_z_bal": {
+    "value": 3.87,
     "ci": [
-     -64.12,
-     95.6
+     -15.49,
+     25.17
+    ]
+   },
+   "score_z_mix": {
+    "value": 3.39,
+    "ci": [
+     -21.68,
+     31.9
     ]
    },
    "score_bal": {
-    "value": 9.72,
+    "value": 7.22,
     "ci": [
-     -25.85,
-     48.2
+     -28.81,
+     47.07
+    ]
+   },
+   "score_mix": {
+    "value": 10.0,
+    "ci": [
+     -66.69,
+     94.74
     ]
    },
    "U": {
@@ -7644,21 +10085,28 @@
     ]
    },
    "O": {
-    "value": -7.5,
+    "value": -5.0,
     "ci": [
-     -19.05,
-     5.0
+     -17.07,
+     8.11
     ]
    },
-   "separated_bal": false,
+   "separated": false,
    "separated_mix": false
   },
   "4aj: gpt-5.6-terra - claude-sonnet-4.6": {
-   "score_mix": {
-    "value": 47.5,
+   "score_z_bal": {
+    "value": 9.82,
     "ci": [
-     -4.88,
-     107.89
+     -3.28,
+     23.68
+    ]
+   },
+   "score_z_mix": {
+    "value": 16.1,
+    "ci": [
+     -1.7,
+     35.36
     ]
    },
    "score_bal": {
@@ -7666,6 +10114,13 @@
     "ci": [
      -6.14,
      44.3
+    ]
+   },
+   "score_mix": {
+    "value": 47.5,
+    "ci": [
+     -4.88,
+     107.89
     ]
    },
    "U": {
@@ -7682,15 +10137,22 @@
      14.71
     ]
    },
-   "separated_bal": false,
+   "separated": false,
    "separated_mix": false
   },
   "4aj: gpt-5.6-terra - gemini-3.1-pro-preview": {
-   "score_mix": {
-    "value": 27.5,
+   "score_z_bal": {
+    "value": 3.57,
     "ci": [
-     -31.84,
-     94.74
+     -11.04,
+     19.17
+    ]
+   },
+   "score_z_mix": {
+    "value": 9.32,
+    "ci": [
+     -11.02,
+     31.09
     ]
    },
    "score_bal": {
@@ -7698,6 +10160,13 @@
     "ci": [
      -20.64,
      35.92
+    ]
+   },
+   "score_mix": {
+    "value": 27.5,
+    "ci": [
+     -31.84,
+     94.74
     ]
    },
    "U": {
@@ -7714,15 +10183,22 @@
      17.14
     ]
    },
-   "separated_bal": false,
+   "separated": false,
    "separated_mix": false
   },
   "4aj: gpt-5.6-terra - glm-5.3": {
-   "score_mix": {
-    "value": 55.0,
+   "score_z_bal": {
+    "value": 9.38,
     "ci": [
-     2.85,
-     110.53
+     -3.06,
+     22.54
+    ]
+   },
+   "score_z_mix": {
+    "value": 18.64,
+    "ci": [
+     0.91,
+     36.53
     ]
    },
    "score_bal": {
@@ -7730,6 +10206,13 @@
     "ci": [
      -5.76,
      42.11
+    ]
+   },
+   "score_mix": {
+    "value": 55.0,
+    "ci": [
+     2.85,
+     110.53
     ]
    },
    "U": {
@@ -7746,15 +10229,22 @@
      19.51
     ]
    },
-   "separated_bal": false,
+   "separated": false,
    "separated_mix": true
   },
   "4aj: gpt-5.6-terra - claude-haiku-4.5": {
-   "score_mix": {
-    "value": 247.5,
+   "score_z_bal": {
+    "value": 55.95,
     "ci": [
-     135.7,
-     371.47
+     30.81,
+     80.57
+    ]
+   },
+   "score_z_mix": {
+    "value": 83.9,
+    "ci": [
+     47.86,
+     120.17
     ]
    },
    "score_bal": {
@@ -7762,6 +10252,13 @@
     "ci": [
      57.84,
      149.95
+    ]
+   },
+   "score_mix": {
+    "value": 247.5,
+    "ci": [
+     135.7,
+     371.47
     ]
    },
    "U": {
@@ -7778,15 +10275,22 @@
      19.45
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4aj: gpt-5.6-terra - llama-3.1-8b-instruct": {
-   "score_mix": {
-    "value": 532.5,
+   "score_z_bal": {
+    "value": 117.86,
     "ci": [
-     402.27,
-     681.64
+     92.31,
+     143.41
+    ]
+   },
+   "score_z_mix": {
+    "value": 180.51,
+    "ci": [
+     142.61,
+     218.34
     ]
    },
    "score_bal": {
@@ -7794,6 +10298,13 @@
     "ci": [
      172.4,
      266.76
+    ]
+   },
+   "score_mix": {
+    "value": 532.5,
+    "ci": [
+     402.27,
+     681.64
     ]
    },
    "U": {
@@ -7810,22 +10321,36 @@
      42.11
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4aj: gpt-oss-120b - claude-sonnet-4.6": {
-   "score_mix": {
-    "value": 35.0,
+   "score_z_bal": {
+    "value": 5.95,
     "ci": [
-     -51.16,
-     122.88
+     -15.35,
+     26.31
+    ]
+   },
+   "score_z_mix": {
+    "value": 12.71,
+    "ci": [
+     -16.95,
+     41.38
     ]
    },
    "score_bal": {
-    "value": 8.61,
+    "value": 11.11,
     "ci": [
-     -31.3,
-     46.25
+     -28.55,
+     49.47
+    ]
+   },
+   "score_mix": {
+    "value": 37.5,
+    "ci": [
+     -47.75,
+     126.32
     ]
    },
    "U": {
@@ -7836,28 +10361,42 @@
     ]
    },
    "O": {
-    "value": 12.5,
+    "value": 10.0,
     "ci": [
-     2.5,
-     22.5
+     0.0,
+     20.0
     ]
    },
-   "separated_bal": false,
+   "separated": false,
    "separated_mix": false
   },
   "4aj: gpt-oss-120b - gemini-3.1-pro-preview": {
-   "score_mix": {
-    "value": 15.0,
+   "score_z_bal": {
+    "value": -0.3,
     "ci": [
-     -83.72,
-     118.95
+     -25.13,
+     23.96
+    ]
+   },
+   "score_z_mix": {
+    "value": 5.93,
+    "ci": [
+     -27.2,
+     39.83
     ]
    },
    "score_bal": {
-    "value": -3.06,
+    "value": -0.56,
     "ci": [
-     -48.81,
-     42.71
+     -46.45,
+     44.78
+    ]
+   },
+   "score_mix": {
+    "value": 17.5,
+    "ci": [
+     -80.0,
+     121.64
     ]
    },
    "U": {
@@ -7868,28 +10407,42 @@
     ]
    },
    "O": {
-    "value": 17.5,
+    "value": 15.0,
     "ci": [
-     5.0,
-     28.57
+     2.38,
+     26.83
     ]
    },
-   "separated_bal": false,
+   "separated": false,
    "separated_mix": false
   },
   "4aj: gpt-oss-120b - glm-5.3": {
-   "score_mix": {
-    "value": 42.5,
+   "score_z_bal": {
+    "value": 5.51,
     "ci": [
-     -56.1,
-     133.36
+     -18.77,
+     27.09
+    ]
+   },
+   "score_z_mix": {
+    "value": 15.25,
+    "ci": [
+     -18.49,
+     44.63
     ]
    },
    "score_bal": {
-    "value": 7.78,
+    "value": 10.28,
     "ci": [
-     -37.09,
-     47.72
+     -34.96,
+     50.68
+    ]
+   },
+   "score_mix": {
+    "value": 45.0,
+    "ci": [
+     -52.66,
+     136.12
     ]
    },
    "U": {
@@ -7900,28 +10453,42 @@
     ]
    },
    "O": {
-    "value": 20.0,
+    "value": 17.5,
     "ci": [
-     7.89,
-     30.77
+     5.0,
+     28.21
     ]
    },
-   "separated_bal": false,
+   "separated": false,
    "separated_mix": false
   },
   "4aj: gpt-oss-120b - claude-haiku-4.5": {
-   "score_mix": {
-    "value": 235.0,
+   "score_z_bal": {
+    "value": 52.08,
     "ci": [
-     105.4,
-     375.68
+     23.22,
+     80.17
+    ]
+   },
+   "score_z_mix": {
+    "value": 80.51,
+    "ci": [
+     39.16,
+     120.52
     ]
    },
    "score_bal": {
-    "value": 94.72,
+    "value": 97.22,
     "ci": [
-     41.1,
-     145.92
+     43.59,
+     149.39
+    ]
+   },
+   "score_mix": {
+    "value": 237.5,
+    "ci": [
+     110.74,
+     377.17
     ]
    },
    "U": {
@@ -7932,28 +10499,42 @@
     ]
    },
    "O": {
-    "value": 17.5,
+    "value": 15.0,
     "ci": [
-     5.13,
-     28.57
+     2.5,
+     26.32
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4aj: gpt-oss-120b - llama-3.1-8b-instruct": {
-   "score_mix": {
-    "value": 520.0,
+   "score_z_bal": {
+    "value": 113.99,
     "ci": [
-     377.26,
-     692.54
+     83.93,
+     141.74
+    ]
+   },
+   "score_z_mix": {
+    "value": 177.12,
+    "ci": [
+     133.61,
+     218.97
     ]
    },
    "score_bal": {
-    "value": 210.28,
+    "value": 212.78,
     "ci": [
-     154.88,
-     261.9
+     156.74,
+     264.79
+    ]
+   },
+   "score_mix": {
+    "value": 522.5,
+    "ci": [
+     379.01,
+     697.14
     ]
    },
    "U": {
@@ -7964,21 +10545,28 @@
     ]
    },
    "O": {
-    "value": 37.5,
+    "value": 35.0,
     "ci": [
-     24.32,
-     48.72
+     20.0,
+     47.5
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4aj: claude-sonnet-4.6 - gemini-3.1-pro-preview": {
-   "score_mix": {
-    "value": -20.0,
+   "score_z_bal": {
+    "value": -6.25,
     "ci": [
-     -88.1,
-     43.91
+     -22.42,
+     9.3
+    ]
+   },
+   "score_z_mix": {
+    "value": -6.78,
+    "ci": [
+     -29.41,
+     15.13
     ]
    },
    "score_bal": {
@@ -7986,6 +10574,13 @@
     "ci": [
      -41.85,
      17.38
+    ]
+   },
+   "score_mix": {
+    "value": -20.0,
+    "ci": [
+     -88.1,
+     43.91
     ]
    },
    "U": {
@@ -8002,15 +10597,22 @@
      12.82
     ]
    },
-   "separated_bal": false,
+   "separated": false,
    "separated_mix": false
   },
   "4aj: claude-sonnet-4.6 - glm-5.3": {
-   "score_mix": {
-    "value": 7.5,
+   "score_z_bal": {
+    "value": -0.45,
     "ci": [
-     -62.17,
-     71.44
+     -17.01,
+     15.45
+    ]
+   },
+   "score_z_mix": {
+    "value": 2.54,
+    "ci": [
+     -20.34,
+     24.56
     ]
    },
    "score_bal": {
@@ -8018,6 +10620,13 @@
     "ci": [
      -31.67,
      28.85
+    ]
+   },
+   "score_mix": {
+    "value": 7.5,
+    "ci": [
+     -62.17,
+     71.44
     ]
    },
    "U": {
@@ -8034,15 +10643,22 @@
      15.0
     ]
    },
-   "separated_bal": false,
+   "separated": false,
    "separated_mix": false
   },
   "4aj: claude-sonnet-4.6 - claude-haiku-4.5": {
-   "score_mix": {
-    "value": 200.0,
+   "score_z_bal": {
+    "value": 46.13,
     "ci": [
-     86.84,
-     324.32
+     19.41,
+     72.92
+    ]
+   },
+   "score_z_mix": {
+    "value": 67.8,
+    "ci": [
+     30.25,
+     105.22
     ]
    },
    "score_bal": {
@@ -8050,6 +10666,13 @@
     "ci": [
      36.19,
      135.44
+    ]
+   },
+   "score_mix": {
+    "value": 200.0,
+    "ci": [
+     86.84,
+     324.32
     ]
    },
    "U": {
@@ -8066,15 +10689,22 @@
      15.0
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4aj: claude-sonnet-4.6 - llama-3.1-8b-instruct": {
-   "score_mix": {
-    "value": 485.0,
+   "score_z_bal": {
+    "value": 108.04,
     "ci": [
-     361.54,
-     632.45
+     81.28,
+     135.21
+    ]
+   },
+   "score_z_mix": {
+    "value": 164.41,
+    "ci": [
+     126.95,
+     201.72
     ]
    },
    "score_bal": {
@@ -8082,6 +10712,13 @@
     "ci": [
      151.61,
      252.29
+    ]
+   },
+   "score_mix": {
+    "value": 485.0,
+    "ci": [
+     361.54,
+     632.45
     ]
    },
    "U": {
@@ -8098,15 +10735,22 @@
      36.84
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4aj: gemini-3.1-pro-preview - glm-5.3": {
-   "score_mix": {
-    "value": 27.5,
+   "score_z_bal": {
+    "value": 5.8,
     "ci": [
-     -55.56,
-     105.26
+     -13.94,
+     25.15
+    ]
+   },
+   "score_z_mix": {
+    "value": 9.32,
+    "ci": [
+     -18.97,
+     36.14
     ]
    },
    "score_bal": {
@@ -8114,6 +10758,13 @@
     "ci": [
      -26.05,
      47.08
+    ]
+   },
+   "score_mix": {
+    "value": 27.5,
+    "ci": [
+     -55.56,
+     105.26
     ]
    },
    "U": {
@@ -8130,15 +10781,22 @@
      8.11
     ]
    },
-   "separated_bal": false,
+   "separated": false,
    "separated_mix": false
   },
   "4aj: gemini-3.1-pro-preview - claude-haiku-4.5": {
-   "score_mix": {
-    "value": 220.0,
+   "score_z_bal": {
+    "value": 52.38,
     "ci": [
-     108.87,
-     339.49
+     27.2,
+     78.49
+    ]
+   },
+   "score_z_mix": {
+    "value": 74.58,
+    "ci": [
+     38.02,
+     110.43
     ]
    },
    "score_bal": {
@@ -8146,6 +10804,13 @@
     "ci": [
      50.82,
      145.24
+    ]
+   },
+   "score_mix": {
+    "value": 220.0,
+    "ci": [
+     108.87,
+     339.49
     ]
    },
    "U": {
@@ -8162,15 +10827,22 @@
      9.76
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4aj: gemini-3.1-pro-preview - llama-3.1-8b-instruct": {
-   "score_mix": {
-    "value": 505.0,
+   "score_z_bal": {
+    "value": 114.29,
     "ci": [
-     394.96,
-     630.58
+     92.62,
+     135.93
+    ]
+   },
+   "score_z_mix": {
+    "value": 171.19,
+    "ci": [
+     140.17,
+     201.76
     ]
    },
    "score_bal": {
@@ -8178,6 +10850,13 @@
     "ci": [
      172.88,
      253.64
+    ]
+   },
+   "score_mix": {
+    "value": 505.0,
+    "ci": [
+     394.96,
+     630.58
     ]
    },
    "U": {
@@ -8194,15 +10873,22 @@
      30.95
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4aj: glm-5.3 - claude-haiku-4.5": {
-   "score_mix": {
-    "value": 192.5,
+   "score_z_bal": {
+    "value": 46.58,
     "ci": [
-     65.85,
-     325.74
+     16.09,
+     75.66
+    ]
+   },
+   "score_z_mix": {
+    "value": 65.25,
+    "ci": [
+     22.22,
+     106.9
     ]
    },
    "score_bal": {
@@ -8210,6 +10896,13 @@
     "ci": [
      30.16,
      140.85
+    ]
+   },
+   "score_mix": {
+    "value": 192.5,
+    "ci": [
+     65.85,
+     325.74
     ]
    },
    "U": {
@@ -8226,15 +10919,22 @@
      5.0
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4aj: glm-5.3 - llama-3.1-8b-instruct": {
-   "score_mix": {
-    "value": 477.5,
+   "score_z_bal": {
+    "value": 108.48,
     "ci": [
-     341.45,
-     638.49
+     79.76,
+     137.51
+    ]
+   },
+   "score_z_mix": {
+    "value": 161.86,
+    "ci": [
+     120.86,
+     205.13
     ]
    },
    "score_bal": {
@@ -8242,6 +10942,13 @@
     "ci": [
      149.21,
      256.58
+    ]
+   },
+   "score_mix": {
+    "value": 477.5,
+    "ci": [
+     341.45,
+     638.49
     ]
    },
    "U": {
@@ -8258,15 +10965,22 @@
      28.95
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4aj: claude-haiku-4.5 - llama-3.1-8b-instruct": {
-   "score_mix": {
-    "value": 285.0,
+   "score_z_bal": {
+    "value": 61.9,
     "ci": [
-     158.11,
-     413.16
+     32.45,
+     91.4
+    ]
+   },
+   "score_z_mix": {
+    "value": 96.61,
+    "ci": [
+     55.35,
+     137.19
     ]
    },
    "score_bal": {
@@ -8274,6 +10988,13 @@
     "ci": [
      60.69,
      170.76
+    ]
+   },
+   "score_mix": {
+    "value": 285.0,
+    "ci": [
+     158.11,
+     413.16
     ]
    },
    "U": {
@@ -8290,15 +11011,22 @@
      30.0
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4bj: gpt-5.6-terra - gpt-oss-120b": {
-   "score_mix": {
-    "value": 82.5,
+   "score_z_bal": {
+    "value": 22.62,
     "ci": [
-     9.99,
-     153.66
+     5.08,
+     40.45
+    ]
+   },
+   "score_z_mix": {
+    "value": 27.97,
+    "ci": [
+     3.33,
+     52.14
     ]
    },
    "score_bal": {
@@ -8306,6 +11034,13 @@
     "ci": [
      9.55,
      75.56
+    ]
+   },
+   "score_mix": {
+    "value": 82.5,
+    "ci": [
+     9.99,
+     153.66
     ]
    },
    "U": {
@@ -8322,15 +11057,22 @@
      0.0
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4bj: gpt-5.6-terra - claude-sonnet-4.6": {
-   "score_mix": {
-    "value": 102.5,
+   "score_z_bal": {
+    "value": 25.15,
     "ci": [
-     26.81,
-     181.09
+     6.87,
+     43.21
+    ]
+   },
+   "score_z_mix": {
+    "value": 34.75,
+    "ci": [
+     9.24,
+     60.17
     ]
    },
    "score_bal": {
@@ -8338,6 +11080,13 @@
     "ci": [
      12.79,
      80.55
+    ]
+   },
+   "score_mix": {
+    "value": 102.5,
+    "ci": [
+     26.81,
+     181.09
     ]
    },
    "U": {
@@ -8354,15 +11103,22 @@
      5.41
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4bj: gpt-5.6-terra - gemini-3.1-pro-preview": {
-   "score_mix": {
-    "value": 22.5,
+   "score_z_bal": {
+    "value": 2.38,
     "ci": [
-     -39.14,
-     85.39
+     -12.94,
+     17.77
+    ]
+   },
+   "score_z_mix": {
+    "value": 7.63,
+    "ci": [
+     -13.34,
+     29.17
     ]
    },
    "score_bal": {
@@ -8370,6 +11126,13 @@
     "ci": [
      -24.13,
      33.25
+    ]
+   },
+   "score_mix": {
+    "value": 22.5,
+    "ci": [
+     -39.14,
+     85.39
     ]
    },
    "U": {
@@ -8386,15 +11149,22 @@
      18.92
     ]
    },
-   "separated_bal": false,
+   "separated": false,
    "separated_mix": false
   },
   "4bj: gpt-5.6-terra - glm-5.3": {
-   "score_mix": {
-    "value": 82.5,
+   "score_z_bal": {
+    "value": 15.92,
     "ci": [
-     -2.33,
-     177.81
+     -4.91,
+     36.62
+    ]
+   },
+   "score_z_mix": {
+    "value": 27.97,
+    "ci": [
+     -0.83,
+     58.21
     ]
    },
    "score_bal": {
@@ -8402,6 +11172,13 @@
     "ci": [
      -9.18,
      68.15
+    ]
+   },
+   "score_mix": {
+    "value": 82.5,
+    "ci": [
+     -2.33,
+     177.81
     ]
    },
    "U": {
@@ -8418,15 +11195,22 @@
      21.95
     ]
    },
-   "separated_bal": false,
+   "separated": false,
    "separated_mix": false
   },
   "4bj: gpt-5.6-terra - claude-haiku-4.5": {
-   "score_mix": {
-    "value": 227.5,
+   "score_z_bal": {
+    "value": 48.21,
     "ci": [
-     124.96,
-     343.92
+     24.95,
+     71.5
+    ]
+   },
+   "score_z_mix": {
+    "value": 77.12,
+    "ci": [
+     44.07,
+     111.21
     ]
    },
    "score_bal": {
@@ -8434,6 +11218,13 @@
     "ci": [
      46.61,
      133.72
+    ]
+   },
+   "score_mix": {
+    "value": 227.5,
+    "ci": [
+     124.96,
+     343.92
     ]
    },
    "U": {
@@ -8450,15 +11241,22 @@
      32.43
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4bj: gpt-5.6-terra - llama-3.1-8b-instruct": {
-   "score_mix": {
-    "value": 560.0,
+   "score_z_bal": {
+    "value": 125.89,
     "ci": [
-     409.08,
-     748.68
+     92.46,
+     160.24
+    ]
+   },
+   "score_z_mix": {
+    "value": 189.83,
+    "ci": [
+     143.33,
+     240.0
     ]
    },
    "score_bal": {
@@ -8466,6 +11264,13 @@
     "ci": [
      173.56,
      298.54
+    ]
+   },
+   "score_mix": {
+    "value": 560.0,
+    "ci": [
+     409.08,
+     748.68
     ]
    },
    "U": {
@@ -8482,15 +11287,22 @@
      39.53
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4bj: gpt-oss-120b - claude-sonnet-4.6": {
-   "score_mix": {
-    "value": 20.0,
+   "score_z_bal": {
+    "value": 2.53,
     "ci": [
-     -68.89,
-     123.08
+     -19.4,
+     25.52
+    ]
+   },
+   "score_z_mix": {
+    "value": 6.78,
+    "ci": [
+     -24.37,
+     39.69
     ]
    },
    "score_bal": {
@@ -8498,6 +11310,13 @@
     "ci": [
      -36.24,
      47.45
+    ]
+   },
+   "score_mix": {
+    "value": 20.0,
+    "ci": [
+     -68.89,
+     123.08
     ]
    },
    "U": {
@@ -8514,15 +11333,22 @@
      15.38
     ]
    },
-   "separated_bal": false,
+   "separated": false,
    "separated_mix": false
   },
   "4bj: gpt-oss-120b - gemini-3.1-pro-preview": {
-   "score_mix": {
-    "value": -60.0,
+   "score_z_bal": {
+    "value": -20.24,
     "ci": [
-     -151.35,
-     32.52
+     -42.5,
+     1.76
+    ]
+   },
+   "score_z_mix": {
+    "value": -20.34,
+    "ci": [
+     -50.89,
+     10.35
     ]
    },
    "score_bal": {
@@ -8530,6 +11356,13 @@
     "ci": [
      -79.22,
      3.27
+    ]
+   },
+   "score_mix": {
+    "value": -60.0,
+    "ci": [
+     -151.35,
+     32.52
     ]
    },
    "U": {
@@ -8546,15 +11379,22 @@
      27.5
     ]
    },
-   "separated_bal": false,
+   "separated": false,
    "separated_mix": false
   },
   "4bj: gpt-oss-120b - glm-5.3": {
-   "score_mix": {
+   "score_z_bal": {
+    "value": -6.7,
+    "ci": [
+     -31.91,
+     18.51
+    ]
+   },
+   "score_z_mix": {
     "value": 0.0,
     "ci": [
-     -97.73,
-     111.45
+     -34.24,
+     35.4
     ]
    },
    "score_bal": {
@@ -8562,6 +11402,13 @@
     "ci": [
      -59.52,
      34.44
+    ]
+   },
+   "score_mix": {
+    "value": 0.0,
+    "ci": [
+     -97.73,
+     111.45
     ]
    },
    "U": {
@@ -8578,15 +11425,22 @@
      30.77
     ]
    },
-   "separated_bal": false,
+   "separated": false,
    "separated_mix": false
   },
   "4bj: gpt-oss-120b - claude-haiku-4.5": {
-   "score_mix": {
-    "value": 145.0,
+   "score_z_bal": {
+    "value": 25.6,
     "ci": [
-     30.95,
-     283.36
+     -1.63,
+     52.8
+    ]
+   },
+   "score_z_mix": {
+    "value": 49.15,
+    "ci": [
+     11.01,
+     90.6
     ]
    },
    "score_bal": {
@@ -8594,6 +11448,13 @@
     "ci": [
      -3.02,
      98.6
+    ]
+   },
+   "score_mix": {
+    "value": 145.0,
+    "ci": [
+     30.95,
+     283.36
     ]
    },
    "U": {
@@ -8610,15 +11471,22 @@
      40.0
     ]
    },
-   "separated_bal": false,
+   "separated": false,
    "separated_mix": true
   },
   "4bj: gpt-oss-120b - llama-3.1-8b-instruct": {
-   "score_mix": {
-    "value": 477.5,
+   "score_z_bal": {
+    "value": 103.27,
     "ci": [
-     330.93,
-     663.18
+     72.01,
+     134.32
+    ]
+   },
+   "score_z_mix": {
+    "value": 161.86,
+    "ci": [
+     117.79,
+     209.4
     ]
    },
    "score_bal": {
@@ -8626,6 +11494,13 @@
     "ci": [
      134.83,
      250.0
+    ]
+   },
+   "score_mix": {
+    "value": 477.5,
+    "ci": [
+     330.93,
+     663.18
     ]
    },
    "U": {
@@ -8642,15 +11517,22 @@
      47.73
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4bj: claude-sonnet-4.6 - gemini-3.1-pro-preview": {
-   "score_mix": {
-    "value": -80.0,
+   "score_z_bal": {
+    "value": -22.77,
     "ci": [
-     -151.28,
-     -9.75
+     -38.9,
+     -5.61
+    ]
+   },
+   "score_z_mix": {
+    "value": -27.12,
+    "ci": [
+     -50.0,
+     -3.36
     ]
    },
    "score_bal": {
@@ -8658,6 +11540,13 @@
     "ci": [
      -72.82,
      -10.49
+    ]
+   },
+   "score_mix": {
+    "value": -80.0,
+    "ci": [
+     -151.28,
+     -9.75
     ]
    },
    "U": {
@@ -8674,15 +11563,22 @@
      21.05
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4bj: claude-sonnet-4.6 - glm-5.3": {
-   "score_mix": {
-    "value": -20.0,
+   "score_z_bal": {
+    "value": -9.23,
     "ci": [
-     -88.64,
-     50.03
+     -26.19,
+     7.24
+    ]
+   },
+   "score_z_mix": {
+    "value": -6.78,
+    "ci": [
+     -29.92,
+     16.54
     ]
    },
    "score_bal": {
@@ -8690,6 +11586,13 @@
     "ci": [
      -48.84,
      13.66
+    ]
+   },
+   "score_mix": {
+    "value": -20.0,
+    "ci": [
+     -88.64,
+     50.03
     ]
    },
    "U": {
@@ -8706,15 +11609,22 @@
      24.39
     ]
    },
-   "separated_bal": false,
+   "separated": false,
    "separated_mix": false
   },
   "4bj: claude-sonnet-4.6 - claude-haiku-4.5": {
-   "score_mix": {
-    "value": 125.0,
+   "score_z_bal": {
+    "value": 23.07,
     "ci": [
-     14.25,
-     241.88
+     -4.26,
+     49.36
+    ]
+   },
+   "score_z_mix": {
+    "value": 42.37,
+    "ci": [
+     4.98,
+     79.17
     ]
    },
    "score_bal": {
@@ -8722,6 +11632,13 @@
     "ci": [
      -7.98,
      91.99
+    ]
+   },
+   "score_mix": {
+    "value": 125.0,
+    "ci": [
+     14.25,
+     241.88
     ]
    },
    "U": {
@@ -8738,15 +11655,22 @@
      33.33
     ]
    },
-   "separated_bal": false,
+   "separated": false,
    "separated_mix": true
   },
   "4bj: claude-sonnet-4.6 - llama-3.1-8b-instruct": {
-   "score_mix": {
-    "value": 457.5,
+   "score_z_bal": {
+    "value": 100.74,
     "ci": [
-     311.9,
-     635.9
+     67.42,
+     135.54
+    ]
+   },
+   "score_z_mix": {
+    "value": 155.08,
+    "ci": [
+     107.69,
+     204.36
     ]
    },
    "score_bal": {
@@ -8754,6 +11678,13 @@
     "ci": [
      126.12,
      251.88
+    ]
+   },
+   "score_mix": {
+    "value": 457.5,
+    "ci": [
+     311.9,
+     635.9
     ]
    },
    "U": {
@@ -8770,15 +11701,22 @@
      42.11
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4bj: gemini-3.1-pro-preview - glm-5.3": {
-   "score_mix": {
-    "value": 60.0,
+   "score_z_bal": {
+    "value": 13.54,
     "ci": [
-     -20.93,
-     150.06
+     -6.18,
+     33.71
+    ]
+   },
+   "score_z_mix": {
+    "value": 20.34,
+    "ci": [
+     -7.56,
+     49.12
     ]
    },
    "score_bal": {
@@ -8786,6 +11724,13 @@
     "ci": [
      -11.52,
      62.79
+    ]
+   },
+   "score_mix": {
+    "value": 60.0,
+    "ci": [
+     -20.93,
+     150.06
     ]
    },
    "U": {
@@ -8802,15 +11747,22 @@
      7.32
     ]
    },
-   "separated_bal": false,
+   "separated": false,
    "separated_mix": false
   },
   "4bj: gemini-3.1-pro-preview - claude-haiku-4.5": {
-   "score_mix": {
-    "value": 205.0,
+   "score_z_bal": {
+    "value": 45.83,
     "ci": [
-     100.0,
-     321.64
+     21.74,
+     70.47
+    ]
+   },
+   "score_z_mix": {
+    "value": 69.49,
+    "ci": [
+     35.24,
+     104.24
     ]
    },
    "score_bal": {
@@ -8818,6 +11770,13 @@
     "ci": [
      40.68,
      131.44
+    ]
+   },
+   "score_mix": {
+    "value": 205.0,
+    "ci": [
+     100.0,
+     321.64
     ]
    },
    "U": {
@@ -8834,15 +11793,22 @@
      19.45
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4bj: gemini-3.1-pro-preview - llama-3.1-8b-instruct": {
-   "score_mix": {
-    "value": 537.5,
+   "score_z_bal": {
+    "value": 123.51,
     "ci": [
-     387.5,
-     722.27
+     91.38,
+     156.92
+    ]
+   },
+   "score_z_mix": {
+    "value": 182.2,
+    "ci": [
+     136.36,
+     230.84
     ]
    },
    "score_bal": {
@@ -8850,6 +11816,13 @@
     "ci": [
      170.71,
      292.6
+    ]
+   },
+   "score_mix": {
+    "value": 537.5,
+    "ci": [
+     387.5,
+     722.27
     ]
    },
    "U": {
@@ -8866,15 +11839,22 @@
      27.5
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4bj: glm-5.3 - claude-haiku-4.5": {
-   "score_mix": {
-    "value": 145.0,
+   "score_z_bal": {
+    "value": 32.29,
     "ci": [
-     21.43,
-     266.69
+     2.66,
+     59.52
+    ]
+   },
+   "score_z_mix": {
+    "value": 49.15,
+    "ci": [
+     7.43,
+     88.04
     ]
    },
    "score_bal": {
@@ -8882,6 +11862,13 @@
     "ci": [
      4.99,
      110.95
+    ]
+   },
+   "score_mix": {
+    "value": 145.0,
+    "ci": [
+     21.43,
+     266.69
     ]
    },
    "U": {
@@ -8898,15 +11885,22 @@
      16.67
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4bj: glm-5.3 - llama-3.1-8b-instruct": {
-   "score_mix": {
-    "value": 477.5,
+   "score_z_bal": {
+    "value": 109.97,
     "ci": [
-     326.32,
-     660.03
+     74.16,
+     146.89
+    ]
+   },
+   "score_z_mix": {
+    "value": 161.86,
+    "ci": [
+     112.81,
+     213.17
     ]
    },
    "score_bal": {
@@ -8914,6 +11908,13 @@
     "ci": [
      138.72,
      272.93
+    ]
+   },
+   "score_mix": {
+    "value": 477.5,
+    "ci": [
+     326.32,
+     660.03
     ]
    },
    "U": {
@@ -8930,15 +11931,22 @@
      25.64
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   },
   "4bj: claude-haiku-4.5 - llama-3.1-8b-instruct": {
-   "score_mix": {
-    "value": 332.5,
+   "score_z_bal": {
+    "value": 77.68,
     "ci": [
-     200.0,
-     489.53
+     45.95,
+     112.96
+    ]
+   },
+   "score_z_mix": {
+    "value": 112.71,
+    "ci": [
+     68.38,
+     161.61
     ]
    },
    "score_bal": {
@@ -8946,6 +11954,13 @@
     "ci": [
      85.93,
      210.74
+    ]
+   },
+   "score_mix": {
+    "value": 332.5,
+    "ci": [
+     200.0,
+     489.53
     ]
    },
    "U": {
@@ -8962,7 +11977,7 @@
      17.95
     ]
    },
-   "separated_bal": true,
+   "separated": true,
    "separated_mix": true
   }
  },
@@ -8990,15 +12005,15 @@
    "tier23_urgent_broad_pct": 40.0
   },
   "openai/gpt-oss-120b|v7a4aj": {
-   "escalating_flags": 113,
-   "escalating_named": 111,
+   "escalating_flags": 112,
+   "escalating_named": 110,
    "escalating_named_pct": 98.2,
    "escalating_says_no_escalation": 0,
-   "tier23_flags": 25,
+   "tier23_flags": 26,
    "tier23_urgent": 7,
-   "tier23_urgent_pct": 28.0,
+   "tier23_urgent_pct": 26.9,
    "tier23_urgent_broad": 7,
-   "tier23_urgent_broad_pct": 28.0
+   "tier23_urgent_broad_pct": 26.9
   },
   "openai/gpt-oss-120b|v7a4bj": {
    "escalating_flags": 106,
