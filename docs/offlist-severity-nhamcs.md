@@ -4,6 +4,29 @@ Date: 2026-09-26. Scope: ICD-10-CM codes that models emit but that name none of 
 
 ## Summary
 
+**Change, 2026-09-26 (second): the group-tier rule.** A 3-character group the NHAMCS rule scores now takes the tier of the sub-codes that hold the majority of its primary-diagnosis visits, and sub-codes with a different tier keep rows of their own. We made this change because pooled group rates let a small, severe sub-code set the tier of a group whose visits are mostly routine: type 2 diabetes E11 was tier 1 (ICU 8.7% over 483 visits) because E11.1 ketoacidosis (54 visits, ICU 45%) sits inside it, while E11, E11.6 and E11.9 (396 visits) are tier 2 on their own. A sub-code has a tier of its own when it has an override or 30+ primary visits; a group with no majority tier among those keeps its pooled tier. Override and unscored groups are unchanged. The previous table is kept as `spec/offlist_tiers_nhamcs_pooled.csv`; the new column `pooled_tier` gives the pooled tier on every rule-scored group row. The rule changes 16 of 317 rule-scored groups:
+
+| Group | Pooled tier | New tier | Pooled admission / ICU | Majority sub-codes: visits | Sub-code rows (tier) | Off-list mentions changed |
+|---|---|---|---|---|---|---|
+| A08 Viral and other specified intestinal infections | 2 | 3 | 0.057 / 0.023 | A08.4: 104 of 109 | - | 8 |
+| D64 Other anemias | 1 | 2 | 0.500 / 0.048 | D64.9: 278 of 281 | - | 0 |
+| E11 Type 2 diabetes mellitus | 1 | 2 | 0.237 / 0.087 | E11, E11.6, E11.9: 396 of 483 | E11.1 (1) | 21 |
+| F15 Other stimulant related disorders | 2 | 3 | 0.085 / 0.000 | F15.1: 90 of 141 | - | 53 |
+| G47 Sleep disorders | 2 | 3 | 0.098 / 0.041 | G47.0: 40 of 55 | - | 78 |
+| J09 Influenza due to certain identified influenza viruses | 3 | 2 | 0.046 / 0.000 | J09.X: 53 of 71 | - | 0 |
+| J10 Influenza due to other identified influenza virus | 2 | 3 | 0.062 / 0.015 | J10.1: 108 of 121 | - | 0 |
+| K29 Gastritis and duodenitis | 2 | 3 | 0.065 / 0.001 | K29.0, K29.7: 201 of 274 | - | 41 |
+| L02 Cutaneous abscess, furuncle and carbuncle | 2 | 3 | 0.069 / 0.002 | L02, L02.0, L02.3, L02.9: 404 of 758 | L02.2, L02.4, L02.5 (2) | 0 |
+| O21 Excessive vomiting in pregnancy | 2 | 3 | 0.058 / 0.000 | O21.9: 111 of 210 | O21.0 (2) | 0 |
+| O36 Maternal care for other fetal problems | 2 | 3 | 0.181 / 0.006 | O36.8: 39 of 60 | - | 0 |
+| S22 Fracture of rib(s), sternum and thoracic spine | 2 | 1 (weak evidence) | 0.239 / 0.041 | S22.0, S22.4: 140 of 271 | S22.3 (2) | 0 |
+| S43 Dislocation and sprain of shoulder girdle | 3 | 2 | 0.047 / 0.000 | S43.0: 114 of 214 | S43.1, S43.4 (3) | 0 |
+| S52 Fracture of forearm | 3 | 2 | 0.049 / 0.000 | S52.5: 153 of 258 | S52.1 (3) | 0 |
+| S70 Superficial injury of hip and thigh | 2 | 3 | 0.053 / 0.000 | S70.0: 98 of 143 | - | 0 |
+| S81 Open wound of knee and lower leg | 3 | 2 | 0.048 / 0.000 | S81.8: 213 of 253 | S81.0 (3) | 0 |
+
+Every sub-code row with its own tier keeps that tier; only sub-codes without a row of their own (under 30 visits) follow the new group tier. D64, J09, J10 and S22 hold DDXPlus codes, which the map resolves first. S22 is tier 1 because S22.0 and S22.4, both weak-evidence rows, hold 140 of 271 visits, so the group row carries `weak_evidence` in their place (9 weak rows, 65 mentions, as before). Off-list mentions that change tier: 180 from tier 2 to 3 (G47, F15, K29, A08) and 21 from tier 1 to 2 (E11). Rows: 1,369 prefixes; 199 tier 1 (151 override, 48 rule), 127 tier 2, 142 tier 3, 901 unscored. Tests: `evaluator/tests/test_offlist_group_tier.py`.
+
 **Change, 2026-09-26: the rule reads primary-diagnosis rates only.** The first version (commit 9323b23, kept as `spec/offlist_tiers_nhamcs_anylisted.csv`) fell back to any-listed rates when a prefix had under 30 primary visits (208 of 536 rule rows). Any-listed rates count the code as a secondary diagnosis of an admitted patient, so they rate chronic comorbidities as dangerous: unspecified viral hepatitis B19 and interstitial lung disease J84 were tier 1 on 124 and 54 any-listed visits. Now a prefix under 30 primary visits is unscored, and a new column `weak_evidence` marks tier-1 rows that rest on the ICU clause with fewer than 5 critical-care visits (10 rows; new column `n_icu` gives the count). The outcome, on the same emitted codes:
 
 | | Any-listed fallback (old) | Primary only (new) |
@@ -14,12 +37,12 @@ Date: 2026-09-26. Scope: ICD-10-CM codes that models emit but that name none of 
 | Off-list mentions tier 1 / 2 / 3 / unscored | 28.8% / 20.3% / 19.7% / 31.2% | 24.5% / 13.1% / 19.1% / 43.3% |
 | A/B flags tier 1 / unscored | 33.8% / 32.5% | 30.7% / 42.4% |
 
-Mentions that change tier: tier 2 to unscored 1,117; tier 1 to unscored 441; tier 1 to 2 176; tier 3 to unscored 145; tier 2 to 3 67; tier 2 to 1 6. B19 and J84 are now unscored (3 and 9 primary visits). **Type 2 diabetes E11 stays tier 1**: as a primary diagnosis it has 483 visits, 23.7% admission and 8.7% ICU (37 critical-care visits), because ED visits coded E11 as the reason include ketoacidosis and hyperosmolar states; E11.6 and E11.9 are tier 2. The rule is unchanged, so we report E11 rather than override it. Of the 6 new override rows, C17 and C20 are groups the 4aj and 4bj runs emitted for the first time; K25.1, K25.2, K25.5 and K25.6 (gastric ulcer with perforation, an AHRQ group) need rows of their own now that their group K25 is unscored.
+Mentions that change tier: tier 2 to unscored 1,117; tier 1 to unscored 441; tier 1 to 2 176; tier 3 to unscored 145; tier 2 to 3 67; tier 2 to 1 6. B19 and J84 are now unscored (3 and 9 primary visits). **Type 2 diabetes E11 stays tier 1** (the group-tier rule above later moved it to tier 2): as a primary diagnosis it has 483 visits, 23.7% admission and 8.7% ICU (37 critical-care visits), because ED visits coded E11 as the reason include ketoacidosis and hyperosmolar states; E11.6 and E11.9 are tier 2. The rule is unchanged, so we report E11 rather than override it. Of the 6 new override rows, C17 and C20 are groups the 4aj and 4bj runs emitted for the first time; K25.1, K25.2, K25.5 and K25.6 (gastric ulcer with perforation, an AHRQ group) need rows of their own now that their group K25 is unscored.
 
 1. **One rule on ED disposition reproduces our v0.3 tiers well on the conditions NHAMCS covers: tier 1 if critical-care admission >= 5% or admission >= 50%; tier 3 if admission < 5%; else tier 2.** On the 26 DDXPlus conditions with 30+ adult primary-diagnosis visits it agrees with `spec/dangerous_if_missed_tiers_v03b.csv` at quadratic weighted kappa 0.83, 20 of 26 exact, all 26 within one tier. Leave-one-out kappa is 0.72 and 24 of 26 folds pick the same thresholds (section 2).
 2. **The rule's six misses are the known construct gap: ED disposition rates treat-and-release danger low and chronic admission high.** Asthma exacerbation (admission 5.7%) and PSVT (20%) fall to tier 2 against our tier 1; anemia (40%) and localized edema (8%) rise to tier 2 against our tier 3; AF (ICU 10%) rises to tier 1; GERD (2.2%) falls to tier 3 (section 2).
-3. **`spec/offlist_tiers_nhamcs.csv` has 1,380 prefixes: 201 tier 1 (151 by Newman-Toker or AHRQ override, 50 by the rule), 133 tier 2, 145 tier 3, 901 unscored.** Off-list mentions in the A/B and v6 runs land 24% tier 1, 13% tier 2, 19% tier 3, 43% unscored; the unscored share is mostly codes with under 30 primary ED visits (34% of mentions) and symptom codes (8%). Arm-4 flags in the v6 runs are 54% tier 1 (section 4).
-4. **Clinically surprising assignments exist and are reported, not corrected.** Venomous bites T63 and adverse effects T78 are tier 3 (treated and released); shock R57 is unscored as a symptom code despite 45% critical care; ARDS J80 is unscored at 29 visits; sleep disorders G47, cellulitis L03, gastritis K29 and adjustment disorder F43 are tier 2; type 2 diabetes E11 is tier 1; 10 tier-1 rows rest on fewer than five critical-care visits and carry `weak_evidence` (65 off-list mentions) (section 5).
+3. **`spec/offlist_tiers_nhamcs.csv` has 1,369 prefixes: 199 tier 1 (151 by Newman-Toker or AHRQ override, 48 by the rule), 127 tier 2, 142 tier 3, 901 unscored.** Off-list mentions in the A/B and v6 runs land 24% tier 1, 12% tier 2, 20% tier 3, 43% unscored; the unscored share is mostly codes with under 30 primary ED visits (34% of mentions) and symptom codes (8%). Arm-4 flags in the v6 runs are 54% tier 1 (section 4).
+4. **Clinically surprising assignments exist and are reported, not corrected.** Venomous bites T63 and adverse effects T78 are tier 3 (treated and released); shock R57 is unscored as a symptom code despite 45% critical care; ARDS J80 is unscored at 29 visits; cellulitis L03 and adjustment disorder F43 are tier 2; 9 tier-1 rows rest on fewer than five critical-care visits and carry `weak_evidence` (65 off-list mentions) (section 5).
 5. **The tiers measure where US ED patients with a coded diagnosis went, not the harm of missing it.** Coding, visit weights, the 4-character public codes and small counts all shape the result (section 6). The Newman-Toker and AHRQ overrides carry the "dangerous if missed" construct; the NHAMCS rule fills in behind them.
 
 ## 1. Data and outcomes by code
@@ -106,7 +129,7 @@ The script applies three steps in order to every 3-character group that NHAMCS, 
 
 1. **Override, tier 1:** the code falls under a Newman-Toker 2023 Table 1 group (`spec/offlist_escalation_groups.csv`: stroke, VTE, arterial thromboembolism, aortic aneurysm and dissection, MI, sepsis, pneumonia, meningitis and encephalitis, spinal abscess, endocarditis, cancers) or under one of the five AHRQ 2022 ED top-15 groups that Table 1 lacks. The override is upgrade-only: NHAMCS rates are reported beside it but cannot lower it.
 2. **Unscored:** symptom codes R00-R99, factor codes Z00-Z99, external-cause codes V00-Y99, and any prefix with under 30 adult visits both as primary and as any listed diagnosis.
-3. **NHAMCS rule:** the section 2 rule on the prefix's primary-diagnosis rates. A prefix under 30 primary visits is unscored, whatever its any-listed count, because a secondary diagnosis of an admitted patient says little about the code as the reason for the visit. A tier-1 row that the ICU clause alone puts there (admission under 50%) on fewer than 5 critical-care visits carries `weak_evidence = true`; the scorer can read those rows as no reason (`TierFileRule(exclude_weak=True)`).
+3. **NHAMCS rule:** the section 2 rule on the prefix's primary-diagnosis rates. A 3-character group then takes the tier of the sub-codes that hold the majority of its primary visits (the group-tier rule; a sub-code counts when it has an override or 30+ primary visits, and with no majority tier the pooled tier stands). A prefix under 30 primary visits is unscored, whatever its any-listed count, because a secondary diagnosis of an admitted patient says little about the code as the reason for the visit. A tier-1 row that the ICU clause alone puts there (admission under 50%) on fewer than 5 critical-care visits carries `weak_evidence = true`; the scorer can read those rows as no reason (`TierFileRule(exclude_weak=True)`).
 
 AHRQ 2022 prefixes are our reading of the report's condition names; the ten other AHRQ conditions are Table 1 rows already in the spec CSV:
 
@@ -118,9 +141,9 @@ AHRQ 2022 prefixes are our reading of the report's condition names; the ten othe
 | GI perforation and rupture | K63.1; K25-K28 with perforation (.1 .2 .5 .6); K35.2, K35.3; K57.0, K57.2, K57.4, K57.8; K65 |
 | Intestinal obstruction | K56, K31.5, and hernia codes with obstruction (K41.0, K41.3, K42.0, K43.0, K43.3, K43.6, K44.0, K45.0, K46.0) |
 
-`spec/offlist_tiers_nhamcs.csv` columns: `icd10_prefix`, `description` (CMS ICD-10-CM FY2026 order file; "not an ICD-10-CM FY2026 code" for WHO-only codes models emit, such as I64), `tier` (1, 2, 3 or `unscored`), `rule_path` (`override`, `nhamcs`, `unscored`), `admission`, `icu`, `death`, `n` (the NHAMCS rates and unweighted primary-diagnosis count behind the row, blank rates when suppressed), `n_icu` (critical-care visits among them), `weak_evidence` (`true` or `false`), `source`. Rows are 3-character groups plus finer prefixes only where the finer prefix has its own override or 30+ visits and its tier differs from the group's (T78 tier 3 but T78.2 anaphylactic shock and T78.3 angioedema tier 1; R65 unscored but R65.2 severe sepsis tier 1). A consumer takes the longest matching prefix; a subcode with no row of its own inherits its group. The scorer resolves the DDXPlus map first: 107 group rows whose family holds a DDXPlus code say so at the start of `source` ("DDXPlus map first (...)"), because the on-list tier wins there.
+`spec/offlist_tiers_nhamcs.csv` columns: `icd10_prefix`, `description` (CMS ICD-10-CM FY2026 order file; "not an ICD-10-CM FY2026 code" for WHO-only codes models emit, such as I64), `tier` (1, 2, 3 or `unscored`), `rule_path` (`override`, `nhamcs`, `unscored`), `pooled_tier` (on rule-scored group rows, the tier the group's pooled rates give), `admission`, `icu`, `death`, `n` (the NHAMCS rates and unweighted primary-diagnosis count behind the row, blank rates when suppressed), `n_icu` (critical-care visits among them), `weak_evidence` (`true` or `false`), `source`. Rows are 3-character groups plus finer prefixes only where the finer prefix has its own override or 30+ visits and its tier differs from the group's (E11 tier 2 but E11.1 ketoacidosis tier 1; T78 tier 3 but T78.2 anaphylactic shock and T78.3 angioedema tier 1; R65 unscored but R65.2 severe sepsis tier 1). A consumer takes the longest matching prefix; a subcode with no row of its own inherits its group. The scorer resolves the DDXPlus map first: 107 group rows whose family holds a DDXPlus code say so at the start of `source` ("DDXPlus map first (...)"), because the on-list tier wins there.
 
-Row counts: 1,380 prefixes; 201 tier 1 (151 override, 50 rule; 10 weak evidence), 133 tier 2, 145 tier 3, 901 unscored.
+Row counts: 1,369 prefixes; 199 tier 1 (151 override, 48 rule; 9 weak evidence), 127 tier 2, 142 tier 3, 901 unscored.
 
 ## 4. Coverage of emitted off-list codes
 
@@ -128,15 +151,15 @@ Sources: differentials and flags in `results/v03/ab/runs/*v7a*.json` (arms 1-4) 
 
 | Source | Off-list mentions | Unique codes | Tier 1 | Tier 2 | Tier 3 | Unscored |
 |---|---|---|---|---|---|---|
-| A/B differentials | 8,798 | 1,498 | 16.0% | 14.1% | 23.4% | 46.5% |
-| A/B flags (arms 4a, 4b, 4aj, 4bj) | 837 | 318 | 30.7% | 9.0% | 17.9% | 42.4% |
-| v6 differentials | 2,597 | 540 | 29.8% | 13.9% | 17.6% | 38.7% |
+| A/B differentials | 8,798 | 1,498 | 15.9% | 12.5% | 25.1% | 46.5% |
+| A/B flags (arms 4a, 4b, 4aj, 4bj) | 837 | 318 | 30.5% | 8.0% | 19.1% | 42.4% |
+| v6 differentials | 2,597 | 540 | 29.7% | 13.3% | 18.3% | 38.7% |
 | v6 flags | 1,874 | 399 | 53.7% | 9.6% | 1.9% | 34.8% |
-| All | 14,106 | 1,692 | 24.5% | 13.1% | 19.1% | 43.3% |
+| All | 14,106 | 1,692 | 24.3% | 12.0% | 20.4% | 43.3% |
 
 Unscored mentions by reason: under 30 primary ED visits 4,761 (33.8% of all off-list mentions), symptom codes 1,198 (8.5%), Z codes 146 (1.0%).
 
-The prefixes the brief named: I71 and I63 tier 1 by override; K85 pancreatitis tier 1 by rule (admission 62%); U07 COVID-19 tier 2 (admission 18.5%, ICU 4.6%); G47 sleep disorders tier 2; M54 back pain, M79 soft tissue, M94 cartilage, J02 pharyngitis and L50 urticaria tier 3; R07 chest pain and R06 breathing unscored as symptoms. Mention counts per code are in the top-30 table and `coverage.json`.
+The prefixes the brief named: I71 and I63 tier 1 by override; K85 pancreatitis tier 1 by rule (admission 62%); U07 COVID-19 tier 2 (admission 18.5%, ICU 4.6%); G47 sleep disorders, M54 back pain, M79 soft tissue, M94 cartilage, J02 pharyngitis and L50 urticaria tier 3; R07 chest pain and R06 breathing unscored as symptoms. Mention counts per code are in the top-30 table and `coverage.json`.
 
 Top 30 emitted off-list codes:
 
@@ -194,14 +217,12 @@ Routine families that come out tier 1 or 2:
 
 | Prefix | Tier | Why | Off-list mentions |
 |---|---|---|---|
-| G47 sleep disorders | 2 | admission 9.8%, ICU 4.1% over 55 visits (2 critical-care visits) | 91 |
 | L03 cellulitis | 2 | admission 22% over 1,331 visits | 75 |
-| K29 gastritis | 2 | admission 6.5% over 274 visits: just over the 5% line | 64 |
 | M62 muscle disorders (rhabdomyolysis sits here) | 2 | admission 7.5% | 43 |
 | F43 stress and adjustment disorders | 2 | admission 6.0% | 0 |
 | K86.1 chronic pancreatitis | 1 | ICU 5.4% over 59 visits: 3 critical-care visits | 82 |
 
-The last row was the general case under the any-listed fallback (31 weak tier-1 rows, 2.5% of mentions); with primary rates only, K86.1 falls to tier 2 with its group. Now 17 rule rows are tier 1 by the ICU clause alone (admission under 50%), and 10 of them rest on fewer than five critical-care visits: D72, F03, J44.0, K22, N28, S22.0, S22.4, T78.2, T78.3, T88. They carry `weak_evidence = true` and 65 off-list mentions. A stricter rule (ICU >= 10%) would drop most of them at a cost of 0.03 kappa on the overlap; we keep the calibrated rule, mark the rows, and score a sensitivity row without them.
+The last row was the general case under the any-listed fallback (31 weak tier-1 rows, 2.5% of mentions); with primary rates only, K86.1 falls to tier 2 with its group. Now 15 rule rows are tier 1 by the ICU clause alone (admission under 50%), and 9 of them rest on fewer than five critical-care visits: D72, F03, J44.0, K22, N28, S22, T78.2, T78.3, T88. They carry `weak_evidence = true` and 65 off-list mentions. A stricter rule (ICU >= 10%) would drop most of them at a cost of 0.03 kappa on the overlap; we keep the calibrated rule, mark the rows, and score a sensitivity row without them.
 
 Other notable rows: U07.1 COVID-19 is tier 2 (admission 18.5%) and is the second most emitted off-list code; M31.6 giant cell arteritis, A05.1 botulism, B54 malaria and G50.0 trigeminal neuralgia are unscored because US EDs almost never record them as a visit diagnosis, although models emit each 70-150 times.
 

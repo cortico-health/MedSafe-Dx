@@ -16,6 +16,9 @@ Method, in three steps:
      external-cause (V-Y) and under-30-visit codes are "unscored". The rule reads primary-diagnosis
      rates only: a code listed as a secondary diagnosis of an admitted patient says little about the
      code as the reason for the visit, so a prefix under 30 primary visits is unscored.
+     A 3-character group the rule scores takes the tier of the sub-codes that hold the majority of
+     its primary-diagnosis visits (the group-tier rule, `group_tier`); sub-codes with a different
+     tier keep rows of their own.
 
 Inputs:
   data/external/nhamcs/extracted/*.dta, *.sas7bdat   NHAMCS ED microdata (checksums in data/external/nhamcs/SHA256SUMS.txt)
@@ -30,7 +33,8 @@ Outputs:
   results/analysis/nhamcs_offlist/overlap_conditions.csv step 2: per-condition rates and tiers
   results/analysis/nhamcs_offlist/coverage.json          step 4: emitted-code coverage and watchlist checks
   spec/offlist_tiers_nhamcs.csv                          step 3: the tier table the scorer reads
-  (spec/offlist_tiers_nhamcs_anylisted.csv keeps the first version, which fell back to any-listed rates.)
+  (spec/offlist_tiers_nhamcs_anylisted.csv keeps the first version, which fell back to any-listed rates;
+   spec/offlist_tiers_nhamcs_pooled.csv keeps the second, which tiered each group on its pooled rates.)
 
 Run: python3 scripts/analysis/offlist_severity_nhamcs.py
 """
@@ -407,13 +411,61 @@ def tier_for(prefix: str, outcomes: Outcomes, rule: dict, overrides: list) -> di
     if not hit:
         row.update(source=f"unscored: {nh}")
         return row
+    tier, weak = rule_tier(rule, r)
+    row.update(tier=tier, rule_path="nhamcs", weak_evidence=weak, source=f"nhamcs rule; {nh}")
+    return row
+
+
+def rule_tier(rule: dict, r) -> tuple[int, bool]:
+    """(tier, weak) from one NHAMCS row's rates. Weak evidence: tier 1 by the ICU clause alone (the admission
+    clause does not fire) on fewer than `WEAK_ICU_VISITS` critical-care visits."""
     tier = apply_rule(rule, r.admission, r.icu, r.death)
-    # Weak evidence: tier 1 by the ICU clause alone (the admission clause does not fire) on few ICU visits.
     weak = (tier == 1 and not (rule.get("admit_ge") is not None and r.admission >= rule["admit_ge"])
             and not (rule.get("death_ge") is not None and r.death >= rule["death_ge"])
             and int(r.n_icu) < WEAK_ICU_VISITS)
-    row.update(tier=tier, rule_path="nhamcs", weak_evidence=weak, source=f"nhamcs rule; {nh}")
-    return row
+    return tier, weak
+
+
+def subcode_tiers(table: pd.DataFrame, group: str, rule: dict, overrides: list) -> list[tuple[str, int, int, bool]]:
+    """(code, tier, primary visits, weak) for each NHAMCS code in `group` (the 3-character code itself and its
+    4-character codes) with a tier of its own: an override, or the rule on 30+ primary visits."""
+    sub = table[(table["level"] == "code") & (table["scope"] == TIER_SCOPE) & (table["icd10"].str[:3] == group)]
+    out = []
+    for r in sub.sort_values("icd10").itertuples():
+        if override_for(r.icd10, overrides):
+            out.append((r.icd10, 1, int(r.n), False))
+        elif r.n >= MIN_N and not unscored_reason(r.icd10):
+            out.append((r.icd10, *_tier_n(rule, r)))
+    return out
+
+
+def _tier_n(rule: dict, r) -> tuple[int, int, bool]:
+    tier, weak = rule_tier(rule, r)
+    return tier, int(r.n), weak
+
+
+def group_tier(grow: dict, subs: list[tuple[str, int, int, bool]]) -> dict:
+    """The group-tier rule: a group row the NHAMCS rule scored takes the tier of the sub-codes that hold the
+    majority of its primary-diagnosis visits, because the pooled rate can let a small, severe sub-code (E11.1
+    ketoacidosis) set the tier of a group whose visits are mostly routine. With no majority tier the pooled
+    tier stands. Sub-codes with a different tier keep rows of their own (`build_spec`)."""
+    if grow["rule_path"] != "nhamcs":
+        return grow
+    grow = {**grow, "pooled_tier": grow["tier"]}
+    n = int(grow["n"])
+    by_tier: dict[int, list] = defaultdict(list)
+    for s in subs:
+        by_tier[s[1]].append(s)
+    tier, held = max(by_tier.items(), key=lambda kv: (sum(x[2] for x in kv[1]), -kv[0])) if subs else (None, [])
+    visits = sum(x[2] for x in held)
+    if not subs or 2 * visits <= n:
+        return grow
+    pooled = grow["tier"]
+    note = (f"group rule: tier-{tier} sub-codes ({', '.join(x[0] for x in held)}) hold {visits} of {n} primary visits"
+            + (f"; pooled rates give tier {pooled}" if tier != pooled else ""))
+    weak = tier == 1 and all(x[3] for x in held)
+    return {**grow, "tier": tier, "weak_evidence": weak,
+            "source": grow["source"].replace("nhamcs rule; ", f"nhamcs {note}; ", 1)}
 
 
 DESC_FIX = {"U07": "Emergency use of U07 (U07.1 COVID-19; U07.0 vaping-related disorder)",
@@ -438,7 +490,7 @@ def build_spec(table: pd.DataFrame, rule: dict, emitted: dict[str, int], desc: d
     finer |= {c[:5] for c in emitted if len(c) >= 5}
     rows = []
     for g in sorted(groups):
-        grow = tier_for(g, outcomes, rule, overrides)
+        grow = group_tier(tier_for(g, outcomes, rule, overrides), subcode_tiers(table, g, rule, overrides))
         grow["description"] = DESC_FIX.get(g) or describe(g, desc) or NOT_CM
         if g in onlist:
             grow["source"] = f"DDXPlus map first ({', '.join(sorted(onlist[g]))}); " + grow["source"]
@@ -449,9 +501,10 @@ def build_spec(table: pd.DataFrame, rule: dict, emitted: dict[str, int], desc: d
             if frow["rule_path"] in ("override", "nhamcs") and str(frow["tier"]) != str(grow["tier"]):
                 frow["description"] = describe(f, desc) or f"{grow['description']} (subcode)"
                 rows.append(frow)
-    cols = ["icd10_prefix", "description", "tier", "rule_path", "admission", "icu", "death", "n", "n_icu",
-            "weak_evidence", "source"]
-    return [{**{c: r[c] for c in cols}, "weak_evidence": "true" if r["weak_evidence"] else "false"} for r in rows]
+    cols = ["icd10_prefix", "description", "tier", "rule_path", "pooled_tier", "admission", "icu", "death", "n",
+            "n_icu", "weak_evidence", "source"]
+    return [{**{c: r.get(c, "") for c in cols}, "weak_evidence": "true" if r["weak_evidence"] else "false"}
+            for r in rows]
 
 
 # ---------------------------------------------------------------- step 4: coverage of emitted codes
