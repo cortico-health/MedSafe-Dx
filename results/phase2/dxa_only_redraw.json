@@ -1,0 +1,890 @@
+{
+ "original_candidates": [
+  "ddxplus_56727",
+  "ddxplus_17239",
+  "ddxplus_40196",
+  "ddxplus_6563",
+  "ddxplus_7703",
+  "ddxplus_26765",
+  "ddxplus_53176",
+  "ddxplus_113555",
+  "ddxplus_102472",
+  "ddxplus_123578",
+  "ddxplus_83345",
+  "ddxplus_27844",
+  "ddxplus_10022",
+  "ddxplus_129358",
+  "ddxplus_47274",
+  "ddxplus_76704",
+  "ddxplus_55409",
+  "ddxplus_102157",
+  "ddxplus_95174",
+  "ddxplus_115843"
+ ],
+ "reviewed": [
+  "ddxplus_53176",
+  "ddxplus_27844",
+  "ddxplus_103631",
+  "ddxplus_115592",
+  "ddxplus_49506",
+  "ddxplus_30054",
+  "ddxplus_12248",
+  "ddxplus_35900",
+  "ddxplus_18411",
+  "ddxplus_87310",
+  "ddxplus_5213",
+  "ddxplus_77420",
+  "ddxplus_117822",
+  "ddxplus_18367",
+  "ddxplus_93100",
+  "ddxplus_45695",
+  "ddxplus_81398",
+  "ddxplus_4519",
+  "ddxplus_77892",
+  "ddxplus_60530"
+ ],
+ "skipped_in_replay": [
+  {
+   "case_id": "ddxplus_56727",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_17239",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_40196",
+   "truth": "Acute otitis media",
+   "class_key": "BENIGN",
+   "reason_key": "K36",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_6563",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_7703",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_26765",
+   "truth": "Panic attack",
+   "class_key": "BENIGN",
+   "reason_key": "K48",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_113555",
+   "truth": "Sarcoidosis",
+   "class_key": "BENIGN",
+   "reason_key": "K44",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_102472",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_123578",
+   "truth": "Sarcoidosis",
+   "class_key": "BENIGN",
+   "reason_key": "K44",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_83345",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_10022",
+   "truth": "Acute otitis media",
+   "class_key": "BENIGN",
+   "reason_key": "K36",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_129358",
+   "truth": "Sarcoidosis",
+   "class_key": "BENIGN",
+   "reason_key": "K44",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_47274",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_76704",
+   "truth": "Sarcoidosis",
+   "class_key": "BENIGN",
+   "reason_key": "K44",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_55409",
+   "truth": "Panic attack",
+   "class_key": "BENIGN",
+   "reason_key": "K48",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_102157",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_95174",
+   "truth": "Bronchitis",
+   "class_key": "EXCLUDED",
+   "reason_key": "X9",
+   "dropped": [],
+   "key_r5_targets": [
+    "Bronchospasm / acute asthma exacerbation"
+   ]
+  },
+  {
+   "case_id": "ddxplus_115843",
+   "truth": "Panic attack",
+   "class_key": "BENIGN",
+   "reason_key": "K48",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_96504",
+   "truth": "Sarcoidosis",
+   "class_key": "BENIGN",
+   "reason_key": "K44",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_56593",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_80193",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_99461",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_102395",
+   "truth": "Sarcoidosis",
+   "class_key": "BENIGN",
+   "reason_key": "K44",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_126907",
+   "truth": "Bronchitis",
+   "class_key": "EXCLUDED",
+   "reason_key": "X9",
+   "dropped": [],
+   "key_r5_targets": [
+    "Bronchospasm / acute asthma exacerbation"
+   ]
+  },
+  {
+   "case_id": "ddxplus_8214",
+   "truth": "Bronchitis",
+   "class_key": "BENIGN",
+   "reason_key": "K40",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_24655",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_41460",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_117560",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_70903",
+   "truth": "Sarcoidosis",
+   "class_key": "BENIGN",
+   "reason_key": "K44",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_14495",
+   "truth": "Sarcoidosis",
+   "class_key": "BENIGN",
+   "reason_key": "K44",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_80811",
+   "truth": "Panic attack",
+   "class_key": "BENIGN",
+   "reason_key": "K48",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_4061",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_69424",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_56085",
+   "truth": "Bronchitis",
+   "class_key": "BENIGN",
+   "reason_key": "K40",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_77517",
+   "truth": "Panic attack",
+   "class_key": "BENIGN",
+   "reason_key": "K48",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_102527",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_64283",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_113094",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_127291",
+   "truth": "Sarcoidosis",
+   "class_key": "BENIGN",
+   "reason_key": "K44",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_85807",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_114341",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_121886",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_6962",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_33287",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_125216",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_60852",
+   "truth": "Acute otitis media",
+   "class_key": "BENIGN",
+   "reason_key": "K36",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_66628",
+   "truth": "Bronchitis",
+   "class_key": "EXCLUDED",
+   "reason_key": "X9",
+   "dropped": [],
+   "key_r5_targets": [
+    "Bronchospasm / acute asthma exacerbation"
+   ]
+  },
+  {
+   "case_id": "ddxplus_56875",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_61762",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_120015",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_123984",
+   "truth": "Sarcoidosis",
+   "class_key": "BENIGN",
+   "reason_key": "K44",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_40846",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_90129",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_16096",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_76946",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_22418",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_106274",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_133429",
+   "truth": "Bronchitis",
+   "class_key": "BENIGN",
+   "reason_key": "K40",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_127002",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_9624",
+   "truth": "Bronchitis",
+   "class_key": "BENIGN",
+   "reason_key": "K40",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_100803",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_29173",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_14785",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_6483",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_105975",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_29690",
+   "truth": "Bronchitis",
+   "class_key": "BENIGN",
+   "reason_key": "K40",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_35447",
+   "truth": "Panic attack",
+   "class_key": "EXCLUDED",
+   "reason_key": "X9",
+   "dropped": [],
+   "key_r5_targets": [
+    "PSVT"
+   ]
+  },
+  {
+   "case_id": "ddxplus_125244",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_83497",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_10397",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_54666",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_62193",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_124898",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_127452",
+   "truth": "Sarcoidosis",
+   "class_key": "BENIGN",
+   "reason_key": "K44",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_126717",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_105842",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_6120",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_99164",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_127253",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_33995",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_14874",
+   "truth": "Panic attack",
+   "class_key": "BENIGN",
+   "reason_key": "K48",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_99331",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_16905",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_116498",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_111566",
+   "truth": "Bronchitis",
+   "class_key": "BENIGN",
+   "reason_key": "K40",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_59685",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_59214",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_64034",
+   "truth": "Bronchitis",
+   "class_key": "BENIGN",
+   "reason_key": "K40",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_131895",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_83579",
+   "truth": "Acute otitis media",
+   "class_key": "BENIGN",
+   "reason_key": "K36",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_101395",
+   "truth": "Panic attack",
+   "class_key": "EXCLUDED",
+   "reason_key": "X9",
+   "dropped": [],
+   "key_r5_targets": [
+    "PSVT"
+   ]
+  },
+  {
+   "case_id": "ddxplus_12880",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_86351",
+   "truth": "Sarcoidosis",
+   "class_key": "BENIGN",
+   "reason_key": "K44",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_81622",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_48143",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_71335",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_105062",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_132683",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_107713",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_116543",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_51674",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_115793",
+   "truth": "Bronchitis",
+   "class_key": "BENIGN",
+   "reason_key": "K40",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_108642",
+   "truth": "Panic attack",
+   "class_key": "BENIGN",
+   "reason_key": "K48",
+   "dropped": [],
+   "key_r5_targets": []
+  },
+  {
+   "case_id": "ddxplus_17261",
+   "truth": "URTI",
+   "class_key": "BENIGN",
+   "reason_key": "K49",
+   "dropped": [],
+   "key_r5_targets": []
+  }
+ ]
+}

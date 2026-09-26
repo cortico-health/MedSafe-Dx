@@ -1,0 +1,859 @@
+[
+ {
+  "case_id": "ddxplus_42790",
+  "index": 1,
+  "decision": "ESCALATE",
+  "dangers": [
+   "J38.6",
+   "J05.1",
+   "J38.5",
+   "T17.3"
+  ],
+  "confidence": 4,
+  "rationale": "Self-reported inspiratory stridor is not a symptom of adult laryngitis; stridor is an expedited-laryngoscopy indicator in the AAO-HNS 2018 dysphonia guideline (KAS 3), so the airway must be visualised before the label stands."
+ },
+ {
+  "case_id": "ddxplus_120704",
+  "index": 4,
+  "decision": "ESCALATE",
+  "dangers": [
+   "J45.901",
+   "J46",
+   "J18.9"
+  ],
+  "confidence": 3,
+  "rationale": "Hospitalisation for asthma within the past year is a SIGN 158 section 9.1 marker of near-fatal asthma risk; cough and wheeze after a cold in that patient is an exacerbation, and the bronchitis label omits the systemic steroid and peak-flow severity assessment it needs."
+ },
+ {
+  "case_id": "ddxplus_43608",
+  "index": 13,
+  "decision": "ROUTINE",
+  "dangers": [
+   "I47.1",
+   "I49.9",
+   "T43.6",
+   "I26.99"
+  ],
+  "confidence": 3,
+  "rationale": "Palpitations with light-headedness on caffeine, energy drinks and decongestants in a 19-year-old: the ESC 2018 syncope initial evaluation (history, orthostatic blood pressure, 12-lead ECG) is an office check, and no chest pain or high-risk marker mandates troponin or imaging."
+ },
+ {
+  "case_id": "ddxplus_131811",
+  "index": 14,
+  "decision": "ESCALATE",
+  "dangers": [
+   "K86.3",
+   "C25.9",
+   "K83.1",
+   "K86.81"
+  ],
+  "confidence": 3,
+  "rationale": "Weight loss, back-radiating epigastric pain, nausea and diarrhoea in chronic pancreatitis with a family history of pancreatic cancer need pancreatic imaging: NICE NG104 1.3.10 treats pain and weight loss as markers of a symptomatic pseudocyst, and 1.3.22-1.3.23 give hereditary pancreatitis a 40% lifetime cancer risk with monitoring; the anaemia label omits that scan and pathway."
+ },
+ {
+  "case_id": "ddxplus_94250",
+  "index": 18,
+  "decision": "ESCALATE",
+  "dangers": [
+   "J38.6",
+   "C32.9",
+   "J05.1",
+   "J38.5",
+   "T17.3"
+  ],
+  "confidence": 4,
+  "rationale": "Inspiratory stridor in a 55-year-old with daily smoke exposure is an AAO-HNS 2018 expedited-laryngoscopy indicator and, at 45 and over, sits beside the NICE NG12 1.8.1 laryngeal cancer pathway; laryngitis does not cause stridor, so the larynx must be seen."
+ },
+ {
+  "case_id": "ddxplus_7249",
+  "index": 23,
+  "decision": "ROUTINE",
+  "dangers": [
+   "T43.6",
+   "I16.1",
+   "I47.1",
+   "I49.9"
+  ],
+  "confidence": 3,
+  "rationale": "Headache, palpitations and light-headedness on regular stimulants plus decongestants is a sympathomimetic pattern closed by blood pressure and an office ECG; onset speed 3/10 is gradual so the Ottawa SAH rule is not triggered, and with no chest pain NICE CG95 1.2.1.3 does not apply."
+ },
+ {
+  "case_id": "ddxplus_35803",
+  "index": 24,
+  "decision": "ROUTINE",
+  "dangers": [
+   "T43.6",
+   "I16.1",
+   "I48.91",
+   "I49.9"
+  ],
+  "confidence": 3,
+  "rationale": "Same sympathomimetic pattern as index 23 at age 50: blood pressure and an office ECG (higher yield for atrial fibrillation at this age) are the checks; gradual onset (3/10) and no chest pain mean no rule mandates imaging or troponin."
+ },
+ {
+  "case_id": "ddxplus_41611",
+  "index": 25,
+  "decision": "ESCALATE",
+  "dangers": [
+   "J38.6",
+   "J05.1",
+   "J38.5",
+   "T17.3"
+  ],
+  "confidence": 4,
+  "rationale": "Inspiratory stridor as the sole complaint after a cold in a 30-year-old smoker with reflux: stridor is an AAO-HNS 2018 expedited-laryngoscopy indicator and is not a laryngitis symptom, so airway visualisation is mandated before the label stands."
+ },
+ {
+  "case_id": "ddxplus_61816",
+  "index": 31,
+  "decision": "ROUTINE",
+  "dangers": [
+   "I47.1",
+   "T43.6",
+   "I48.91",
+   "I26.99"
+  ],
+  "confidence": 3,
+  "rationale": "Palpitations, light-headedness and breathlessness in a 31-year-old on four sympathomimetic exposures: the ESC 2018 initial syncope evaluation is an office ECG with vitals, PERC completes with pulse and saturation at age under 50, and no chest pain triggers NICE CG95."
+ },
+ {
+  "case_id": "ddxplus_12908",
+  "index": 47,
+  "decision": "ESCALATE",
+  "dangers": [
+   "J38.6",
+   "C32.9",
+   "J05.1",
+   "T17.3",
+   "J69.0"
+  ],
+  "confidence": 4,
+  "rationale": "New inspiratory stridor in a 104-year-old lifelong smoker is an AAO-HNS 2018 expedited-laryngoscopy indicator (stridor, tobacco history) with laryngeal cancer and aspiration on the differential; laryngitis does not explain stridor."
+ },
+ {
+  "case_id": "ddxplus_123355",
+  "index": 51,
+  "decision": "ESCALATE",
+  "dangers": [
+   "C34.90",
+   "J18.9",
+   "A15.0",
+   "J39.0"
+  ],
+  "confidence": 4,
+  "rationale": "Coughing up blood in a 40-year-old smoker: NICE NG12 1.1.1 makes unexplained haemoptysis at 40 and over a suspected-cancer pathway referral and AFP 2015 makes a chest film the first test; viral pharyngitis does not explain it, and 9/10 submandibular pain in an immunosuppressed patient also needs abscess excluded (NG84 1.1.13)."
+ },
+ {
+  "case_id": "ddxplus_34025",
+  "index": 52,
+  "decision": "ESCALATE",
+  "dangers": [
+   "C34.90",
+   "C10.9",
+   "J18.9",
+   "J39.0"
+  ],
+  "confidence": 4,
+  "rationale": "Haemoptysis at 52 with slow-onset severe pharyngeal pain and no coryza or fever: NICE NG12 1.1.1 mandates a suspected-cancer pathway for unexplained haemoptysis at 40 and over and AFP 2015 a chest film; the viral label cannot explain blood."
+ },
+ {
+  "case_id": "ddxplus_114363",
+  "index": 53,
+  "decision": "ESCALATE",
+  "dangers": [
+   "C34.90",
+   "J18.9",
+   "A15.0",
+   "J39.0"
+  ],
+  "confidence": 4,
+  "rationale": "Haemoptysis in an immunosuppressed 56-year-old: NICE NG12 1.1.1 suspected-cancer pathway for unexplained haemoptysis at 40 and over, and a chest film first (AFP 2015) with tuberculosis and pneumonia widened by immunosuppression."
+ },
+ {
+  "case_id": "ddxplus_44039",
+  "index": 56,
+  "decision": "ESCALATE",
+  "dangers": [
+   "J18.9",
+   "A15.0",
+   "B37.0"
+  ],
+  "confidence": 3,
+  "rationale": "Reported haemoptysis in an immunosuppressed smoker needs a chest film as the first test (AFP 2015) once nasal or pharyngeal bleeding is excluded; under 40 no NG12 pathway applies and the coryzal picture is benign, hence confidence 3."
+ },
+ {
+  "case_id": "ddxplus_122346",
+  "index": 70,
+  "decision": "ESCALATE",
+  "dangers": [
+   "D62",
+   "O00.9",
+   "O20.0",
+   "N92.0",
+   "D68.32"
+  ],
+  "confidence": 4,
+  "rationale": "Heavy menstrual bleeding with pallor and significant dyspnoea on a direct oral anticoagulant in a woman who may be pregnant is symptomatic blood loss: same-day haemoglobin, hCG and anticoagulant review are mandatory (a DOAC is contraindicated in pregnancy), and NICE NG126 1.4.5-1.4.7 routes a positive test with symptoms to an early pregnancy service; the anaemia label omits all of that."
+ },
+ {
+  "case_id": "ddxplus_120112",
+  "index": 96,
+  "decision": "ESCALATE",
+  "dangers": [
+   "I31.4",
+   "I40.9",
+   "I21.9",
+   "I26.99",
+   "I30.9"
+  ],
+  "confidence": 4,
+  "rationale": "Chest pain with significant dyspnoea and palpitations in a man with prior pericarditis: the 2015 ESC pericardial guideline makes ECG, troponin and echocardiography part of the diagnosis to exclude effusion and myopericarditis, which is beyond an office ECG."
+ },
+ {
+  "case_id": "ddxplus_17058",
+  "index": 97,
+  "decision": "ESCALATE",
+  "dangers": [
+   "I31.4",
+   "I40.9",
+   "I26.99",
+   "I30.9"
+  ],
+  "confidence": 4,
+  "rationale": "Pleuritic positional chest pain with significant dyspnoea after a viral illness in a woman with prior pericarditis: ESC 2015 requires ECG, troponin and echocardiography before outpatient NSAID care, and dyspnoea is the symptom of effusion or myocardial involvement."
+ },
+ {
+  "case_id": "ddxplus_98531",
+  "index": 100,
+  "decision": "ESCALATE",
+  "dangers": [
+   "J44.1",
+   "J96.00",
+   "J18.9",
+   "I26.99"
+  ],
+  "confidence": 4,
+  "rationale": "Significant dyspnoea with purulent sputum and wheeze in severe COPD with flare-ups is an exacerbation; NICE NG115 table 7 places severe breathlessness in the treat-in-hospital column and GOLD 2025 asks for pneumonia, heart failure and PE (5.9% in the PEP study) to be considered, so bronchitis is not an adequate basis."
+ },
+ {
+  "case_id": "ddxplus_125888",
+  "index": 102,
+  "decision": "ESCALATE",
+  "dangers": [
+   "J44.1",
+   "J96.00",
+   "J18.9",
+   "I26.99"
+  ],
+  "confidence": 3,
+  "rationale": "All three cardinal exacerbation symptoms with significant dyspnoea in COPD with flare-ups in the past year: NICE NG115 table 7 makes severe breathlessness a hospital-assessment factor and the bronchitis label omits steroid and bronchodilator treatment; confidence 3 because COPD severity is not stated."
+ },
+ {
+  "case_id": "ddxplus_18524",
+  "index": 103,
+  "decision": "ESCALATE",
+  "dangers": [
+   "I31.3",
+   "I31.4",
+   "M32.14",
+   "I26.99",
+   "M32.12"
+  ],
+  "confidence": 4,
+  "rationale": "Significant dyspnoea in suspected SLE with prior pericarditis and a new hypertension consultation: ESC 2015 requires ECG and echocardiography for recurrent pericarditis with dyspnoea and EULAR 2023 requires same-visit screening for nephritis and serositis, so routine referral is not enough."
+ },
+ {
+  "case_id": "ddxplus_68058",
+  "index": 105,
+  "decision": "ESCALATE",
+  "dangers": [
+   "M32.14",
+   "I31.3",
+   "I26.99",
+   "M32.13",
+   "I16.1"
+  ],
+  "confidence": 3,
+  "rationale": "Malar rash, oral ulcers and arthralgia satisfy several EULAR/ACR 2019 domains, and significant dyspnoea with new hypertension points to serositis or lupus nephritis, which EULAR 2023 treats as organ-threatening: urinalysis, ECG and echocardiography are needed at this visit, not routine referral."
+ },
+ {
+  "case_id": "ddxplus_43729",
+  "index": 107,
+  "decision": "ESCALATE",
+  "dangers": [
+   "J44.1",
+   "J96.00",
+   "J18.9",
+   "I26.99"
+  ],
+  "confidence": 4,
+  "rationale": "Significant dyspnoea and wheeze in severe COPD with flare-ups is an exacerbation that the anaemia label leaves untreated; NICE NG115 table 7 counts severe breathlessness toward hospital treatment and GOLD 2025 asks for pneumonia, heart failure and PE to be considered."
+ },
+ {
+  "case_id": "ddxplus_119012",
+  "index": 113,
+  "decision": "ESCALATE",
+  "dangers": [
+   "J44.1",
+   "J96.00",
+   "J18.9",
+   "I26.99"
+  ],
+  "confidence": 4,
+  "rationale": "Significant dyspnoea and wheeze in a 59-year-old smoker with COPD is an exacerbation the anaemia label omits treatment for; NICE NG115 table 7 makes severe breathlessness a hospital-treatment factor and GOLD 2025 asks for pneumonia and PE to be considered."
+ },
+ {
+  "case_id": "ddxplus_103631",
+  "index": 122,
+  "decision": "ESCALATE",
+  "dangers": [
+   "I21.9",
+   "I47.1",
+   "I26.99",
+   "F10.239"
+  ],
+  "confidence": 3,
+  "rationale": "Current chest pain with presyncope and palpitations at 55: NICE CG95 1.2.1.3-1.2.1.7 suspects ACS on associated symptoms regardless of sex and refers as an emergency while pain is present, and the HEART age band (45-64) needs troponin, not an office ECG alone, to reach low risk; panic and coronary disease coexist (Fleet 1996)."
+ },
+ {
+  "case_id": "ddxplus_115592",
+  "index": 123,
+  "decision": "ESCALATE",
+  "dangers": [
+   "I21.9",
+   "I47.1",
+   "I26.99"
+  ],
+  "confidence": 3,
+  "rationale": "Chest pain with nausea and presyncope in a 47-year-old is a NICE CG95 1.2.1.3 ACS-suspicion combination with pain currently present (1.2.1.7 emergency referral), and the HEART age band requires troponin; the low pain score and panic features lower confidence to 3."
+ },
+ {
+  "case_id": "ddxplus_30054",
+  "index": 125,
+  "decision": "ROUTINE",
+  "dangers": [
+   "I47.1",
+   "I26.99",
+   "J93.9"
+  ],
+  "confidence": 4,
+  "rationale": "Fear of dying, choking, palpitations, derealisation and peri-oral tingling in a 27-year-old with chronic anxiety and no risk factors: HEART age scores 0, NICE CG113 1.3.6 asks only for the minimum investigations, and an office ECG with vitals closes the visit."
+ },
+ {
+  "case_id": "ddxplus_12248",
+  "index": 126,
+  "decision": "ROUTINE",
+  "dangers": [
+   "I47.1",
+   "I26.99"
+  ],
+  "confidence": 4,
+  "rationale": "Mild non-radiating pain with palpitations and light-headedness in a 28-year-old with chronic anxiety: young age, female sex and atypical pain predict panic (Huffman 2003), the ESC 2018 initial evaluation is an office ECG with vitals, and no feature mandates troponin or imaging."
+ },
+ {
+  "case_id": "ddxplus_18411",
+  "index": 128,
+  "decision": "ROUTINE",
+  "dangers": [
+   "O00.9",
+   "K35.80",
+   "N83.519",
+   "I26.99"
+  ],
+  "confidence": 3,
+  "rationale": "Sudden diffuse abdominal pain with the hyperventilation signature in a 27-year-old with chronic anxiety: abdominal examination, vitals and an office pregnancy test (NICE NG126 1.4.5-1.4.7 routes only a positive test with tenderness to an early pregnancy service) close the visit; bilateral, diffuse pain does not fit torsion."
+ },
+ {
+  "case_id": "ddxplus_87310",
+  "index": 129,
+  "decision": "ROUTINE",
+  "dangers": [
+   "I47.1",
+   "I20.0",
+   "I26.99",
+   "K35.80"
+  ],
+  "confidence": 3,
+  "rationale": "Panic cluster (fear of dying, tingling, derealisation) in a 39-year-old with chronic anxiety and no cardiac risk factors: HEART age scores 0, and NICE CG113 1.3.6 minimum investigations (office ECG, vitals, abdominal examination) are the closing checks; near-syncope is why confidence is 3."
+ },
+ {
+  "case_id": "ddxplus_4519",
+  "index": 137,
+  "decision": "ROUTINE",
+  "dangers": [
+   "I47.1",
+   "F10.239",
+   "I26.99"
+  ],
+  "confidence": 3,
+  "rationale": "Textbook panic attack in a 32-year-old with chronic anxiety and depression: HEART age 0, NICE CG113 1.3.6 minimum investigations (office ECG, glucose, abdominal examination) close it; excess alcohol adds a withdrawal question but no mandated test."
+ },
+ {
+  "case_id": "ddxplus_60530",
+  "index": 139,
+  "decision": "ROUTINE",
+  "dangers": [
+   "J93.11",
+   "I47.1",
+   "J45.901"
+  ],
+  "confidence": 3,
+  "rationale": "Abrupt panic attack with sweating and tingling in an 18-year-old with chronic anxiety: pain is cramping and spreads to the abdomen rather than pleuritic and unilateral, so pneumothorax is excluded by chest examination and saturation (ordinary checks), and HEART age scores 0."
+ },
+ {
+  "case_id": "ddxplus_3445",
+  "index": 143,
+  "decision": "UNCERTAIN",
+  "dangers": [
+   "J36",
+   "J05.1",
+   "J39.0",
+   "C09.9"
+  ],
+  "confidence": 3,
+  "rationale": "Unilateral 9/10 tonsillar pain with submandibular and laryngeal-level pain in a 56-year-old without coryza is the quinsy or supraglottitis pattern, but the deciding features (trismus, drooling, dysphagia, pain out of proportion to the pharynx) reach the intake only as a bare pain score; NICE NG84 1.1.13 referral turns on the examination."
+ },
+ {
+  "case_id": "ddxplus_47363",
+  "index": 152,
+  "decision": "ROUTINE",
+  "dangers": [
+   "H70.90",
+   "H66.90"
+  ],
+  "confidence": 4,
+  "rationale": "Unilateral ear pain with cough after antibiotics for an ear infection is otitis media not yet settled; NICE NG91 1.1.14 refers only for mastoiditis, meningitis or facial palsy, none reported, so otoscopy and an antibiotic review close it."
+ },
+ {
+  "case_id": "ddxplus_97392",
+  "index": 153,
+  "decision": "ROUTINE",
+  "dangers": [
+   "G03.9",
+   "J18.9",
+   "J11.1"
+  ],
+  "confidence": 4,
+  "rationale": "Fever, sore throat, coryza, cough and myalgia after a sick contact is influenza-like illness; the poorly localised 8/10 headache lacks neck stiffness, rash or altered cognition, so NICE NG240 1.1.4-1.1.6 is checked by examination and the working diagnosis stands."
+ },
+ {
+  "case_id": "ddxplus_36175",
+  "index": 154,
+  "decision": "ROUTINE",
+  "dangers": [
+   "A37.90",
+   "J45.901"
+  ],
+  "confidence": 4,
+  "rationale": "Inspiratory whoop and post-tussive vomiting after a pertussis contact (Cornia 2010 likelihood ratios) mean probable pertussis rather than bronchitis; treatment is a macrolide and notification in the community, and no apnoea or breathlessness is reported."
+ },
+ {
+  "case_id": "ddxplus_8111",
+  "index": 165,
+  "decision": "ROUTINE",
+  "dangers": [
+   "H70.90",
+   "G03.9"
+  ],
+  "confidence": 3,
+  "rationale": "Severe unilateral ear pain with coryza and cough on antibiotics is treatment-resistant otitis media; NICE NG91 1.1.14 hospital referral needs mastoiditis or intracranial signs, which are examination findings not reported, so an antibiotic change with review is adequate."
+ },
+ {
+  "case_id": "ddxplus_73934",
+  "index": 172,
+  "decision": "ROUTINE",
+  "dangers": [
+   "J05.1",
+   "J36"
+  ],
+  "confidence": 4,
+  "rationale": "Gradual bilateral throat and tracheal burning with cough and hoarseness after a cold in a daycare worker is viral laryngopharyngitis; AAO-HNS 2018 reserves laryngoscopy for dysphonia past 4 weeks or a suspected serious cause, and no fever, dysphagia or stridor is reported."
+ },
+ {
+  "case_id": "ddxplus_82870",
+  "index": 173,
+  "decision": "ESCALATE",
+  "dangers": [
+   "I82.409",
+   "I50.9",
+   "I26.99",
+   "N04.9"
+  ],
+  "confidence": 4,
+  "rationale": "Painful (7/10) swelling reaching both thighs in a man with a previously documented DVT scores at least 2 on the NICE NG158 table 1 Wells score (prior DVT, entire leg swollen, tenderness), which mandates a proximal leg-vein ultrasound within 4 hours; bilateral oedema with weight gain also needs heart-failure work-up that the localised-oedema label omits."
+ },
+ {
+  "case_id": "ddxplus_118609",
+  "index": 174,
+  "decision": "ROUTINE",
+  "dangers": [
+   "H70.90",
+   "H60.20",
+   "G03.9"
+  ],
+  "confidence": 3,
+  "rationale": "Bilateral ear pain with coryza on antibiotics at 68 is unsettled otitis media or eustachian dysfunction; NICE NG91 1.1.14 referral needs mastoiditis or intracranial signs, which examination checks, and diabetes was asked and is absent, lowering the malignant otitis externa concern."
+ },
+ {
+  "case_id": "ddxplus_58251",
+  "index": 175,
+  "decision": "ROUTINE",
+  "dangers": [
+   "H70.90",
+   "G03.9"
+  ],
+  "confidence": 4,
+  "rationale": "Fever with unilateral ear pain on antibiotics in a 21-year-old is otitis media early in or failing treatment; NICE NG91 1.1.14 hospital referral needs a complication (mastoiditis, meningitis, facial palsy), none reported, so examination and an antibiotic review close it."
+ },
+ {
+  "case_id": "ddxplus_2192",
+  "index": 178,
+  "decision": "ROUTINE",
+  "dangers": [
+   "H70.90",
+   "J18.9"
+  ],
+  "confidence": 4,
+  "rationale": "Fever, unilateral ear pain and cough on antibiotics for an ear infection is otitis media with a viral cough; NICE NG91 1.1.14 complications are examination findings not reported, and NICE NG120 treats the cough as self-limiting."
+ },
+ {
+  "case_id": "ddxplus_30963",
+  "index": 179,
+  "decision": "ROUTINE",
+  "dangers": [
+   "D70.9",
+   "J36",
+   "J05.1"
+  ],
+  "confidence": 3,
+  "rationale": "Bilateral symmetrical 8/10 sore throat with coryza in a 21-year-old fits viral pharyngitis; immunosuppression earns an immediate antibiotic and same-day blood count under NICE NG84 1.1.12 (high-risk tier) but without fever NG253 1.1.10 is not triggered, and no drooling, dysphagia or stridor mandates airway visualisation."
+ },
+ {
+  "case_id": "ddxplus_68301",
+  "index": 182,
+  "decision": "ROUTINE",
+  "dangers": [
+   "O00.9",
+   "I26.99",
+   "I47.1",
+   "N83.519",
+   "J45.901"
+  ],
+  "confidence": 3,
+  "rationale": "Fear of dying, derealisation, palpitations and tingling in a 24-year-old with chronic anxiety is a panic attack with HEART age 0; the pelvic pain and presyncope are closed by an office pregnancy test (NICE NG126 1.4.5-1.4.7 refers only a positive test with tenderness) and PERC completes with pulse and saturation."
+ },
+ {
+  "case_id": "ddxplus_119344",
+  "index": 183,
+  "decision": "ROUTINE",
+  "dangers": [
+   "D70.9",
+   "J36"
+  ],
+  "confidence": 4,
+  "rationale": "Moderate bilateral sore throat with coryza after a sick contact is viral pharyngitis; immunosuppression without fever places him in the NICE NG84 1.1.12 high-risk tier (immediate antibiotic, blood count) but does not trigger NG253 1.1.10 or any airway rule."
+ },
+ {
+  "case_id": "ddxplus_118552",
+  "index": 187,
+  "decision": "ROUTINE",
+  "dangers": [
+   "H70.90",
+   "H66.93"
+  ],
+  "confidence": 4,
+  "rationale": "Severe bilateral ear pain on antibiotics without fever or systemic features is unsettled otitis media or externa; NICE NG91 1.1.14 referral requires a complication found on examination, so otoscopy and an antibiotic change close it."
+ },
+ {
+  "case_id": "ddxplus_65411",
+  "index": 196,
+  "decision": "ROUTINE",
+  "dangers": [
+   "H70.90",
+   "G00.9"
+  ],
+  "confidence": 3,
+  "rationale": "Bilateral ear pain with fever and cough on antibiotics is otitis media not yet responding, mislabelled as bronchitis but still benign; NICE NG91 1.1.9 advises review when symptoms persist past 3 days and 1.1.14 refers only for complications found on examination."
+ },
+ {
+  "case_id": "ddxplus_73470",
+  "index": 197,
+  "decision": "UNCERTAIN",
+  "dangers": [
+   "G06.0",
+   "G03.9",
+   "J01.10"
+  ],
+  "confidence": 3,
+  "rationale": "NICE NG79 1.1.9 lists severe frontal headache verbatim as a hospital-referral sign of intracranial complication, but the intake carries it only as a bare 8/10 score inside a slow-onset (0/10) coryzal febrile illness with no frontal swelling, meningism or neurology; the score alone cannot separate sinus pain from a complication."
+ },
+ {
+  "case_id": "ddxplus_90152",
+  "index": 198,
+  "decision": "ROUTINE",
+  "dangers": [
+   "J93.11",
+   "I26.99",
+   "J45.901",
+   "I47.1"
+  ],
+  "confidence": 3,
+  "rationale": "Instantaneous mild (3/10) pain across both sides of the chest and abdomen with peri-oral and four-limb tingling and fear of dying is hyperventilation; pneumothorax pain is unilateral and pleuritic, so chest examination, saturation and peak flow (ordinary checks) close it and PERC completes with pulse and saturation at 21."
+ },
+ {
+  "case_id": "ddxplus_76348",
+  "index": 205,
+  "decision": "ROUTINE",
+  "dangers": [
+   "K41.30",
+   "K40.30"
+  ],
+  "confidence": 4,
+  "rationale": "A groin lump that hurts on coughing and straining with preserved stool and gas and 2/10 pain is a reducible groin hernia; HerniaSurge 2018 names female sex and femoral site as incarceration risks, which sets the pace of elective referral, not an escalation."
+ },
+ {
+  "case_id": "ddxplus_113140",
+  "index": 206,
+  "decision": "ESCALATE",
+  "dangers": [
+   "I82.409",
+   "I50.9",
+   "I26.99"
+  ],
+  "confidence": 3,
+  "rationale": "Swelling extending into one thigh with 8/10 pain in a man on corticosteroids with heart failure and cirrhosis: NICE NG158 table 1 gives entire-leg swelling and tenderness 2 points, and even with the -2 for an alternative cause the pathway ends in a D-dimer or ultrasound, not an office check; the label also omits decompensation assessment."
+ },
+ {
+  "case_id": "ddxplus_81080",
+  "index": 207,
+  "decision": "ESCALATE",
+  "dangers": [
+   "K41.30",
+   "K56.609",
+   "K40.30"
+  ],
+  "confidence": 4,
+  "rationale": "Abdominal distension with no passage of stool or gas since symptoms increased (asked, absent) beside a groin lump in an obese 73-year-old woman is the obstructed femoral hernia pattern; HerniaSurge 2018 names female sex and femoral site as strangulation risks, and obstruction needs same-day surgical review and imaging, which 1/10 pain does not exclude."
+ },
+ {
+  "case_id": "ddxplus_101779",
+  "index": 211,
+  "decision": "ESCALATE",
+  "dangers": [
+   "J18.9",
+   "I21.9",
+   "I26.99"
+  ],
+  "confidence": 3,
+  "rationale": "Chest pain with significant breathlessness at 56 is a NICE CG95 1.2.1.3 ACS-suspicion combination with pain present (1.2.1.7), and the HEART age band needs troponin; purulent sputum with marked dyspnoea also needs pneumonia excluded by CRB-65 and a chest film, so bronchitis is not an adequate basis."
+ },
+ {
+  "case_id": "ddxplus_54927",
+  "index": 215,
+  "decision": "ROUTINE",
+  "dangers": [
+   "I50.9",
+   "I82.409",
+   "N04.9"
+  ],
+  "confidence": 3,
+  "rationale": "Mild (2/10), symmetrical, poorly localised swelling with weight gain in a 22-year-old with heart failure, nephrotic syndrome and a calcium-channel blocker is systemic oedema; on NICE NG158 table 1 the alternative diagnosis scores -2 and no tenderness is reported, and without dyspnoea the ESC 2021 congestion review is an outpatient adjustment."
+ },
+ {
+  "case_id": "ddxplus_100457",
+  "index": 217,
+  "decision": "ESCALATE",
+  "dangers": [
+   "J18.9",
+   "I26.99",
+   "A15.0"
+  ],
+  "confidence": 3,
+  "rationale": "Coughing up blood with fever needs a chest film as the first test (AFP 2015) before pharyngitis is accepted, and haemoptysis fails PERC; the coryzal sick-contact picture at 18 keeps the probability of pneumonia or PE low, hence confidence 3."
+ },
+ {
+  "case_id": "ddxplus_31391",
+  "index": 220,
+  "decision": "ESCALATE",
+  "dangers": [
+   "A41.9",
+   "D70.9",
+   "J36"
+  ],
+  "confidence": 4,
+  "rationale": "Fever while immunosuppressed: NICE NG253 1.1.10-1.1.11 says suspect neutropenic sepsis in people who become unwell on immunosuppressant treatment and refer immediately for secondary-care assessment; the viral features (cough, coryza, sick contact) do not lift that rule."
+ },
+ {
+  "case_id": "ddxplus_94840",
+  "index": 221,
+  "decision": "ROUTINE",
+  "dangers": [
+   "K41.30",
+   "K40.30"
+  ],
+  "confidence": 3,
+  "rationale": "A raised groin lump that hurts on straining with 1/10 pain, preserved stool and gas and no distension is an uncomplicated hernia; HerniaSurge 2018 incarceration risks (female sex, femoral site, age 89) set a prompt elective referral, and no obstruction feature is present."
+ },
+ {
+  "case_id": "ddxplus_127038",
+  "index": 224,
+  "decision": "UNCERTAIN",
+  "dangers": [
+   "I82.409",
+   "I50.9",
+   "N04.9"
+  ],
+  "confidence": 3,
+  "rationale": "Bilateral slow-onset 3/10 swelling with heart failure, cirrhosis and nephrotic syndrome is systemic oedema, but the one Wells point that would change the NICE NG158 pathway (deep-vein tenderness) reaches the intake only as a left calf site among five scattered pain sites; examination for asymmetry decides."
+ },
+ {
+  "case_id": "ddxplus_44324",
+  "index": 229,
+  "decision": "UNCERTAIN",
+  "dangers": [
+   "I60.9",
+   "H40.20",
+   "G44.001"
+  ],
+  "confidence": 3,
+  "rationale": "Unilateral eye and temple pain with lacrimation, congestion, a family history and alcohol trigger fits cluster headache, but the Ottawa SAH rule turns on whether a 7/10 onset score means peaking within an hour, and that time course reaches the intake only as a bare number; NICE CG150 1.3 makes first-bout cluster imaging a discussion, not a mandate."
+ },
+ {
+  "case_id": "ddxplus_101380",
+  "index": 230,
+  "decision": "UNCERTAIN",
+  "dangers": [
+   "I82.409",
+   "I50.9",
+   "N04.9"
+  ],
+  "confidence": 3,
+  "rationale": "Systemic oedema (heart failure, cirrhosis, nephrotic syndrome, calcium-channel blocker, NSAIDs) explains bilateral 3/10 swelling, but right calf pain with left thigh swelling is a scattered-site pattern, so the NICE NG158 tenderness point cannot be assigned from the intake and examination decides."
+ },
+ {
+  "case_id": "ddxplus_7079",
+  "index": 231,
+  "decision": "ROUTINE",
+  "dangers": [
+   "A39.0",
+   "G00.9",
+   "A41.9",
+   "J10.1"
+  ],
+  "confidence": 3,
+  "rationale": "Slow-onset fever, chills, cough, coryza, myalgia and exhaustion is influenza-like illness; the NICE NG240 red-flag combination needs neck stiffness and altered cognition, and the pink raised painful lesions are not a non-blanching rash, so neck examination, a glass test and mental state (ordinary checks) close it."
+ },
+ {
+  "case_id": "ddxplus_54728",
+  "index": 232,
+  "decision": "ROUTINE",
+  "dangers": [
+   "K40.30",
+   "N44.00",
+   "N45.3"
+  ],
+  "confidence": 3,
+  "rationale": "Bilateral groin lumps worse on straining with slow onset, preserved stool and gas and no distension are inguinal hernias; the 7/10 pain and testicular ache are settled by reducibility and scrotal examination (HerniaSurge 2018 does not list male sex or pain as incarceration risks), so elective referral is adequate."
+ },
+ {
+  "case_id": "ddxplus_39816",
+  "index": 235,
+  "decision": "ESCALATE",
+  "dangers": [
+   "A41.9",
+   "D70.9",
+   "J36"
+  ],
+  "confidence": 4,
+  "rationale": "Fever in an immunosuppressed patient: NICE NG253 1.1.10-1.1.11 mandates suspecting neutropenic sepsis in people who become unwell on immunosuppressant treatment and immediate referral for secondary-care assessment, whatever the likely viral source."
+ },
+ {
+  "case_id": "ddxplus_66308",
+  "index": 236,
+  "decision": "UNCERTAIN",
+  "dangers": [
+   "I60.9",
+   "H40.20",
+   "G44.001"
+  ],
+  "confidence": 3,
+  "rationale": "A 10/10 violent periorbital headache involving both eyes with lacrimation fits cluster headache less well than index 229 (cluster is unilateral), and the Ottawa SAH rule depends on whether a 7/10 onset score means peaking within an hour; the time course reaches the intake only as a bare number, so the case cannot be decided."
+ },
+ {
+  "case_id": "ddxplus_41547",
+  "index": 237,
+  "decision": "ESCALATE",
+  "dangers": [
+   "J44.1",
+   "J18.9",
+   "I26.99",
+   "I21.9"
+  ],
+  "confidence": 3,
+  "rationale": "Significant dyspnoea in COPD is a NICE NG115 table 7 hospital-treatment factor that the URTI label leaves untreated, and chest pain with breathlessness at 51 is a NICE CG95 1.2.1.3 ACS-suspicion combination needing ECG and troponin, not an office ECG alone."
+ },
+ {
+  "case_id": "ddxplus_118493",
+  "index": 239,
+  "decision": "ROUTINE",
+  "dangers": [
+   "G00.9",
+   "J10.1",
+   "J18.9"
+  ],
+  "confidence": 4,
+  "rationale": "Very slow-onset fever, sore throat, myalgia, sweats and exhaustion in a 55-year-old is influenza-like illness; the 4/10 headache with neck pain lacks stiffness, rash or altered cognition, so NICE NG240 1.1.4-1.1.6 is checked by examination and the working diagnosis stands."
+ },
+ {
+  "case_id": "ddxplus_112099",
+  "index": 241,
+  "decision": "UNCERTAIN",
+  "dangers": [
+   "I60.9",
+   "H40.20",
+   "J01.90",
+   "G44.001"
+  ],
+  "confidence": 3,
+  "rationale": "Bilateral 9/10 violent forehead, cheek and eye pain without lacrimation in a woman on a vasodilator fits neither cluster headache nor the bronchitis label; the Ottawa SAH rule depends on whether a 7/10 onset score means peaking within an hour, which the intake gives only as a bare number."
+ },
+ {
+  "case_id": "ddxplus_25226",
+  "index": 243,
+  "decision": "ESCALATE",
+  "dangers": [
+   "K40.30",
+   "K56.609",
+   "N44.00"
+  ],
+  "confidence": 3,
+  "rationale": "Abdominal distension with no passage of stool or gas since symptoms increased (asked, absent) beside a groin lump and testicular pain is the obstructed inguinal hernia pattern needing same-day surgical review and imaging; 2/10 pain and no vomiting keep confidence at 3."
+ },
+ {
+  "case_id": "ddxplus_84953",
+  "index": 244,
+  "decision": "ESCALATE",
+  "dangers": [
+   "I31.3",
+   "I30.9",
+   "A41.9",
+   "N10",
+   "C85.9"
+  ],
+  "confidence": 3,
+  "rationale": "If the pericarditis label holds, fever and a subacute course are two major poor-prognosis predictors in the 2015 ESC pericardial guideline that mandate admission and echocardiography; if it does not, a subacute febrile illness with weight loss, nausea and flank pain needs same-day urine, bloods and a chest film, so outpatient pericarditis care is unsafe either way."
+ },
+ {
+  "case_id": "ddxplus_127081",
+  "index": 248,
+  "decision": "ESCALATE",
+  "dangers": [
+   "J44.1",
+   "J18.9",
+   "I26.99",
+   "I21.9"
+  ],
+  "confidence": 3,
+  "rationale": "Significant dyspnoea with purulent sputum and wheeze in a 49-year-old smoker with COPD is an exacerbation that NICE NG115 table 7 counts toward hospital treatment, and bilateral chest pain with breathlessness is a NICE CG95 1.2.1.3 ACS-suspicion combination needing ECG and troponin."
+ }
+]
