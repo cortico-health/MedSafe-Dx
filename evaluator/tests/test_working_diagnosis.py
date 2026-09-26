@@ -38,6 +38,24 @@ class TestClasses(unittest.TestCase):
         self.assertEqual(wd.case_class(key("URTI", 3, low=True)), "benign")
         self.assertEqual(wd.case_class(key("URTI", 3, r5=["Pneumonia"])), "other")
 
+    def test_a3_tier2_truth_is_middle(self):
+        # amendment A3: a tier-2 truth leaves the headline even with a DXA-derived R10 target
+        k = key("GERD", 2, r10=["Possible NSTEMI / STEMI"])
+        self.assertEqual(wd.case_class(k), "middle")
+        self.assertEqual(wd.case_class(k, wd.DRAFT3), "serious")
+        self.assertEqual(wd.case_class(key("URTI", 3, r10=["Pneumonia"]), wd.DRAFT3), "serious")
+        with self.assertRaises(ValueError):
+            wd.case_class(k, "draft2")
+
+    def test_scorer_uses_a3_design_keeps_draft3(self):
+        from evaluator import v03b_score as sb
+        ab = sb.load_ab()
+        a3 = [wd.case_class(k) for k in ab.key.keys]
+        self.assertEqual(list(ab.klass), a3)
+        self.assertEqual((a3.count("serious"), a3.count("benign"), a3.count("middle")), (71, 40, 39))
+        self.assertEqual([r["class"] for r in ab.design].count("serious"), 90)
+        self.assertFalse(any(k.truth_tier == 2 for k, c in zip(ab.key.keys, a3) if c == "serious"))
+
 
 class TestPromptV7(unittest.TestCase):
     CASE = {"case_id": "c", "age": 40, "sex": "female", "presenting_symptoms": [],

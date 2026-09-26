@@ -12,14 +12,19 @@ spec/v03_working_diagnosis_fallback.csv: the tier-3 condition DXA ranks first mo
 often over the DDXPlus test-split adults outside the main sample who share that
 initial evidence. An initial evidence with no fallback takes bronchitis.
 
-Case classes, from the key alone:
+Case classes, from the key alone (spec/v0.3-scoring.md amendment A3):
 
-| Class   | Rule                                                        | Headline |
-|---------|-------------------------------------------------------------|----------|
-| serious | the case has an R10 target                                  | yes      |
-| benign  | clearly low-risk: tier-3 truth, no R5 target, no red flag   | yes      |
-| middle  | tier-2 truth and no R10 target                              | no       |
-| other   | tier-3 truth with an R5-only target or a red flag           | no       |
+| Class   | Rule                                                              | Headline |
+|---------|-------------------------------------------------------------------|----------|
+| serious | tier-1 truth, or a tier-3 truth with an R10 target (DXA-derived)  | yes      |
+| benign  | clearly low-risk: tier-3 truth, no R5 target, no red flag         | yes      |
+| middle  | every tier-2 truth, with or without an R10 target                 | no       |
+| other   | tier-3 truth with an R5-only target or a red flag, no R10 target  | no       |
+
+A3 moves tier-2 truths with a DXA-derived R10 target from serious to middle, because the tier
+sources say nothing about whether a patient whose true condition is tier 2 needed escalation.
+Draft 3's rule (`case_class(k, DRAFT3)`: serious = any R10 target) is kept, because the committed
+prompt-test design (data/test_sets/eval-v03-ab150.design.csv) was built with it.
 """
 
 from __future__ import annotations
@@ -70,7 +75,16 @@ def choose(dxa: Mapping[str, float], tiers: Mapping[str, int], initial_evidence:
     return fallback.get(initial_evidence, FALLBACK_DEFAULT), 0.0, True
 
 
-def case_class(k: ak.CaseKeyV03) -> str:
+A3, DRAFT3 = "a3", "draft3"
+CLASS_RULE = A3  # the rule the scorer uses
+
+
+def case_class(k: ak.CaseKeyV03, rule: str = CLASS_RULE) -> str:
+    """The case's class under `rule`: A3 (the scorer's) or DRAFT3 (the committed design's)."""
+    if rule not in (A3, DRAFT3):
+        raise ValueError(f"unknown class rule {rule!r}")
+    if k.truth_tier == 2 and rule == A3:
+        return "middle"
     if k.r10:
         return "serious"
     if k.truth_tier == 2:
@@ -105,7 +119,7 @@ class CaseDesign:
 def design_for(k: ak.CaseKeyV03, dxa: Mapping[str, float], initial_evidence: str, tiers: Mapping[str, int],
                fallback: Mapping[str, str], icd10: Mapping[str, str]) -> CaseDesign:
     wd, p, fb = choose(dxa, tiers, initial_evidence, fallback)
-    return CaseDesign(case_id=k.case_id, truth=k.truth, truth_tier=k.truth_tier, klass=case_class(k),
+    return CaseDesign(case_id=k.case_id, truth=k.truth, truth_tier=k.truth_tier, klass=case_class(k, DRAFT3),
                       working_diagnosis=wd, working_diagnosis_icd10=icd10[wd], working_diagnosis_p=p,
                       working_diagnosis_fallback=fb, r10=tuple(k.r10), r5=tuple(k.r5))
 

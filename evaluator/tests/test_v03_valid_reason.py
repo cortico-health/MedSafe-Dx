@@ -170,8 +170,9 @@ class TestZeroReference(unittest.TestCase):
         return vr.stats(vr.outcomes(a, self.ab, vr.default_rule()), self.ab, self.M)
 
     def test_chosen_from_the_key(self):
-        # MI, pulmonary neoplasm and PSVT tie at 10 SERIOUS cases; "Possible NSTEMI / STEMI" sorts first by name
-        self.assertEqual(vr.zero_reference(self.ab), ("I21", MI, 10))
+        # under amendment A3's classes MI and PSVT tie at 8 SERIOUS cases; "Possible NSTEMI / STEMI" sorts first
+        # by name with case ignored ("PSVT" would sort first case-sensitively)
+        self.assertEqual(vr.zero_reference(self.ab), ("I21", MI, 8))
 
     def test_most_cases_then_name_ignoring_case(self):
         tiers = {"b": 1, "A": 1, "C": 1, "t2": 2}
@@ -189,7 +190,7 @@ class TestZeroReference(unittest.TestCase):
         for m in ("score_z_bal", "score_z_mix", "score_z_bal@3.5", "score_z_mix@2"):
             self.assertAlmostEqual(p[m], 0.0)
             self.assertTrue(np.allclose(d[m][np.isfinite(d[m])], 0.0))
-        self.assertLess(p["score_bal"], 0)  # below draft 3's zero: it names the target on 12 of 90 cases only
+        self.assertLess(p["score_bal"], 0)  # below draft 3's zero: it names few SERIOUS cases' targets
 
     def test_perfect_scores_100(self):
         s = self.ab.serious

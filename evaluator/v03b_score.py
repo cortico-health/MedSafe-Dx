@@ -110,10 +110,11 @@ def load_ab(limit: Optional[int] = None, cases_path: Path = CASES, design_path: 
     ids = [c["case_id"] for c in cases]
     key = vs.set_key("ab150", ids, keys)
     rows = [design[c] for c in ids]
-    for r, k in zip(rows, key.keys):  # the design must agree with the key it was built from
-        if r["class"] != wd.case_class(k):
-            raise ValueError(f"{k.case_id}: design class {r['class']} differs from the key's {wd.case_class(k)}")
-    return ABSet(key=key, klass=np.array([r["class"] for r in rows]), design=rows, cases=cases,
+    for r, k in zip(rows, key.keys):  # the design (draft 3's classes) must agree with the key it was built from
+        if r["class"] != wd.case_class(k, wd.DRAFT3):
+            raise ValueError(f"{k.case_id}: design class {r['class']} differs from the key's {wd.case_class(k, wd.DRAFT3)}")
+    # The scorer's classes come from the key under amendment A3, not from the design file.
+    return ABSet(key=key, klass=np.array([wd.case_class(k) for k in key.keys]), design=rows, cases=cases,
                  matcher=FlagMatcher(), groups=load_offlist_groups())
 
 
