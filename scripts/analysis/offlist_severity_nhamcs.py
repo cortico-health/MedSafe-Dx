@@ -13,7 +13,9 @@ Method, in three steps:
      agrees with spec/dangerous_if_missed_tiers_v03b.csv, preferring round thresholds.
   3. We apply that rule to every off-list group, after two overrides: codes in a Newman-Toker 2023
      Table 1 or AHRQ 2022 ED top-15 serious-harm group are tier 1; symptom (R), factor (Z),
-     external-cause (V-Y) and under-30-visit codes are "unscored".
+     external-cause (V-Y) and under-30-visit codes are "unscored". The rule reads primary-diagnosis
+     rates only: a code listed as a secondary diagnosis of an admitted patient says little about the
+     code as the reason for the visit, so a prefix under 30 primary visits is unscored.
 
 Inputs:
   data/external/nhamcs/extracted/*.dta, *.sas7bdat   NHAMCS ED microdata (checksums in data/external/nhamcs/SHA256SUMS.txt)
@@ -28,6 +30,7 @@ Outputs:
   results/analysis/nhamcs_offlist/overlap_conditions.csv step 2: per-condition rates and tiers
   results/analysis/nhamcs_offlist/coverage.json          step 4: emitted-code coverage and watchlist checks
   spec/offlist_tiers_nhamcs.csv                          step 3: the tier table the scorer reads
+  (spec/offlist_tiers_nhamcs_anylisted.csv keeps the first version, which fell back to any-listed rates.)
 
 Run: python3 scripts/analysis/offlist_severity_nhamcs.py
 """
@@ -64,6 +67,8 @@ NYU_XLSX = nu.NYU_XLSX
 RUN_GLOBS = ("results/v03/ab/runs/*v7a*.json", "results/v03/runs/*.json")
 
 MIN_N = 30
+TIER_SCOPE = "primary"  # the tier rule reads primary-diagnosis rates only
+WEAK_ICU_VISITS = 5  # a tier-1 row resting on the ICU clause with fewer critical-care visits is weak evidence
 ADULT_MIN_AGE = 18
 DIAGS = nu.DIAGS
 
@@ -361,32 +366,32 @@ def unscored_reason(prefix: str) -> str | None:
 
 
 class Outcomes:
-    """Lookup of NHAMCS rates by dotless prefix, primary scope first, any-listed as fallback."""
+    """Lookup of NHAMCS rates by dotless prefix, in the `TIER_SCOPE` scope (primary diagnosis) only."""
 
     def __init__(self, table: pd.DataFrame):
         self.t = {(r.icd10.replace(".", ""), r.scope): r for r in table.itertuples()}
 
     def get(self, prefix: str) -> tuple[object, str] | None:
         c = prefix.replace(".", "").upper()
-        for scope in ("primary", "any"):
-            r = self.t.get((c, scope))
-            if r is not None and r.n >= MIN_N:
-                return r, scope
+        r = self.t.get((c, TIER_SCOPE))
+        if r is not None and r.n >= MIN_N:
+            return r, TIER_SCOPE
         return None
 
     def n(self, prefix: str) -> int:
-        c = prefix.replace(".", "").upper()
-        return max((int(r.n) for (k, s), r in self.t.items() if k == c), default=0)
+        r = self.t.get((prefix.replace(".", "").upper(), TIER_SCOPE))
+        return int(r.n) if r is not None else 0
 
 
 def tier_for(prefix: str, outcomes: Outcomes, rule: dict, overrides: list) -> dict:
     """One spec row for a prefix: override, then unscored classes, then the NHAMCS rule."""
     row = {"icd10_prefix": prefix, "tier": "unscored", "rule_path": "unscored", "admission": "", "icu": "",
-           "death": "", "n": "", "source": ""}
+           "death": "", "n": "", "n_icu": "", "weak_evidence": False, "source": ""}
     hit = outcomes.get(prefix)
     if hit:
         r, scope = hit
-        row.update(admission=f"{r.admission:.3f}", icu=f"{r.icu:.3f}", death=f"{r.death:.4f}", n=int(r.n))
+        row.update(admission=f"{r.admission:.3f}", icu=f"{r.icu:.3f}", death=f"{r.death:.4f}", n=int(r.n),
+                   n_icu=int(r.n_icu))
         nh = f"NHAMCS ED 2016-2022 adults, {scope} diagnosis, n={int(r.n)}"
     else:
         row["n"] = outcomes.n(prefix)
@@ -402,7 +407,12 @@ def tier_for(prefix: str, outcomes: Outcomes, rule: dict, overrides: list) -> di
     if not hit:
         row.update(source=f"unscored: {nh}")
         return row
-    row.update(tier=apply_rule(rule, r.admission, r.icu, r.death), rule_path="nhamcs", source=f"nhamcs rule; {nh}")
+    tier = apply_rule(rule, r.admission, r.icu, r.death)
+    # Weak evidence: tier 1 by the ICU clause alone (the admission clause does not fire) on few ICU visits.
+    weak = (tier == 1 and not (rule.get("admit_ge") is not None and r.admission >= rule["admit_ge"])
+            and not (rule.get("death_ge") is not None and r.death >= rule["death_ge"])
+            and int(r.n_icu) < WEAK_ICU_VISITS)
+    row.update(tier=tier, rule_path="nhamcs", weak_evidence=weak, source=f"nhamcs rule; {nh}")
     return row
 
 
@@ -439,8 +449,9 @@ def build_spec(table: pd.DataFrame, rule: dict, emitted: dict[str, int], desc: d
             if frow["rule_path"] in ("override", "nhamcs") and str(frow["tier"]) != str(grow["tier"]):
                 frow["description"] = describe(f, desc) or f"{grow['description']} (subcode)"
                 rows.append(frow)
-    cols = ["icd10_prefix", "description", "tier", "rule_path", "admission", "icu", "death", "n", "source"]
-    return [{c: r[c] for c in cols} for r in rows]
+    cols = ["icd10_prefix", "description", "tier", "rule_path", "admission", "icu", "death", "n", "n_icu",
+            "weak_evidence", "source"]
+    return [{**{c: r[c] for c in cols}, "weak_evidence": "true" if r["weak_evidence"] else "false"} for r in rows]
 
 
 # ---------------------------------------------------------------- step 4: coverage of emitted codes
@@ -533,9 +544,9 @@ def coverage(tallies: dict[str, Counter], spec_rows: list[dict]) -> dict:
             reasons["symptom code (R00-R99)" if "symptom" in src else "Z code" if "Z00-Z99" in src
                     else "external cause" if "V00-Y99" in src else "under 30 visits" if "under" in src else "no row"] += n
     out["unscored_mentions_by_reason"] = dict(reasons.most_common())
-    out["nhamcs_rows_using_any_listed_fallback"] = sum(1 for r in spec_rows if r["rule_path"] == "nhamcs" and "any diagnosis" in r["source"])
+    out["tier_scope"] = TIER_SCOPE
     icu_only = [r for r in spec_rows if r["rule_path"] == "nhamcs" and r["tier"] == 1 and float(r["admission"]) < 0.5]
-    few = [r for r in icu_only if float(r["icu"]) * int(r["n"]) < 5]
+    few = [r for r in spec_rows if r["weak_evidence"] == "true"]
     out["tier1_by_icu_clause_only"] = {"rows": len(icu_only), "rows_under_5_icu_visits": len(few),
                                        "prefixes_under_5_icu_visits": [r["icd10_prefix"] for r in few],
                                        "mentions_under_5_icu_visits": sum(n for c, n in total.items()
