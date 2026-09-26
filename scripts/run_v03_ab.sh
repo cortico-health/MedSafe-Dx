@@ -23,13 +23,16 @@
 #   RUN_CONFIG=inference/run_config_v03_abj.json PROVENANCE=results/v03/ab/runs/provenance-4j.json \
 #     ARMS_OVERRIDE="v7a4aj v7a4bj" MODELS_OVERRIDE="..." NO_SCORE=1 CONFIRM=yes ./scripts/run_v03_ab.sh
 #   (amendment A1; a separate provenance file keeps the five-arm run's record)
+#   CASES=data/test_sets/eval-v03-phase2.json OUT_DIR=results/phase2/runs RUN_CONFIG=inference/run_config_v03_abj.json \
+#     RUN_LABEL="v0.3 Phase 2" ARMS_OVERRIDE="v7a4aj v7a4bj" MODELS_OVERRIDE="..." NO_SCORE=1 CONFIRM=yes ./scripts/run_v03_ab.sh
+#   (the Phase 2 model run, docs/v0.3-case-selection-rules.md section 7; scored by scripts/analysis/v03_phase2_scores.py)
 
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export MEDSAFE_GIT_COMMIT=$(git rev-parse --short HEAD 2>/dev/null || echo unknown)
 
 RUN_CONFIG="${RUN_CONFIG:-inference/run_config_v03_ab.json}"
-CASES="data/test_sets/eval-v03-ab150.json"
+CASES="${CASES:-data/test_sets/eval-v03-ab150.json}"
 OUT_DIR="${OUT_DIR:-results/v03/ab/runs}"
 PROVENANCE="${PROVENANCE:-$OUT_DIR/provenance.json}"
 PARALLEL="${PARALLEL:-8}"
@@ -139,10 +142,11 @@ spend = prev.get("account_spend_usd", [])
 if num(u0) is not None and num(u1) is not None and num(u1) > num(u0):
     spend.append({"started": start, "finished": end, "usd": round(num(u1) - num(u0), 4)})
 design = cases.replace(".json", ".design.csv")
-json.dump({"run": "v0.3 prompt test", "spec": "spec/v0.3-scoring.md draft 3 section 12", "limit": limit or None,
+json.dump({"run": os.getenv("RUN_LABEL", "v0.3 prompt test"), "spec": os.getenv("RUN_SPEC", "spec/v0.3-scoring.md draft 3 section 12"),
+           "limit": limit or None,
            "started": prev.get("started", start), "finished": end,
            "git_commit": git("rev-parse", "HEAD"), "git_dirty": bool(git("status", "--porcelain")),
-           "cases": {"path": cases, "sha256": sha(cases), "design_sha256": sha(design)},
+           "cases": {"path": cases, "sha256": sha(cases), "design_sha256": sha(design) if os.path.exists(design) else None},
            "run_config": {"path": cfg, "sha256": sha(cfg), "content": json.load(open(cfg))},
            "roster": roster.split(), "models_run": models.split(), "incomplete": incomplete.split(),
            "account_spend_usd": spend, "predictions": [{"path": f, "sha256": sha(f), **meta(f)} for f in files],

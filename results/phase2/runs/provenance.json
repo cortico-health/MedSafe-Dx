@@ -1,0 +1,242 @@
+{
+ "run": "v0.3 Phase 2",
+ "spec": "docs/v0.3-case-selection-rules.md section 7; spec/v0.3-scoring.md A1-A5",
+ "limit": null,
+ "started": "2026-09-26T22:37:43Z",
+ "finished": "2026-09-26T23:08:28Z",
+ "git_commit": "378558d5ab5c69ec39b7dcab203bb880551f8b56",
+ "git_dirty": true,
+ "cases": {
+  "path": "data/test_sets/eval-v03-phase2.json",
+  "sha256": "3677ef70626e1bef0d5ca6f9108e790839195f14cd1f6cc179a074ea9a9fdf9b",
+  "design_sha256": null
+ },
+ "run_config": {
+  "path": "inference/run_config_v03_abj.json",
+  "sha256": "3b3c05b1a1dfc518f4547dbf40de0dd61fe84f62847cef8cd1da5322050be989",
+  "content": {
+   "_about": "MedSafe-Dx v0.3 arms 4aj and 4bj (spec/v0.3-scoring.md, amendment A1). The values are run_config_v03_ab.json's (max_tokens 16000, reasoning effort 'medium' where the model supports it, one retry on an empty or truncated response) over a seven-model roster. Claude Haiku 4.5 runs with reasoning off (null: we send no reasoning parameter), as do the Llama models, which take none.",
+   "config_version": "v03-abj-2026-09-26",
+   "prompt_version": "v7",
+   "decoder_version": "v02",
+   "temperature": 0.0,
+   "max_tokens": 16000,
+   "empty_or_truncated_retries": 1,
+   "default_reasoning_effort": null,
+   "models": {
+    "openai/gpt-5.6-terra": {
+     "reasoning_effort": "medium"
+    },
+    "openai/gpt-oss-120b": {
+     "reasoning_effort": "medium"
+    },
+    "anthropic/claude-sonnet-4.6": {
+     "reasoning_effort": "medium"
+    },
+    "google/gemini-3.1-pro-preview": {
+     "reasoning_effort": "medium"
+    },
+    "z-ai/glm-5.3": {
+     "reasoning_effort": "medium"
+    },
+    "anthropic/claude-haiku-4.5": {
+     "reasoning_effort": null
+    },
+    "meta-llama/llama-3.1-8b-instruct": {
+     "reasoning_effort": null
+    },
+    "meta-llama/llama-3.3-70b-instruct": {
+     "reasoning_effort": null
+    }
+   }
+  }
+ },
+ "roster": [
+  "openai/gpt-5.6-terra",
+  "google/gemini-3.1-pro-preview",
+  "anthropic/claude-sonnet-4.6",
+  "z-ai/glm-5.3",
+  "openai/gpt-oss-120b",
+  "anthropic/claude-haiku-4.5",
+  "meta-llama/llama-3.1-8b-instruct"
+ ],
+ "models_run": [
+  "openai/gpt-5.6-terra",
+  "google/gemini-3.1-pro-preview",
+  "anthropic/claude-sonnet-4.6",
+  "z-ai/glm-5.3",
+  "openai/gpt-oss-120b",
+  "anthropic/claude-haiku-4.5",
+  "meta-llama/llama-3.1-8b-instruct"
+ ],
+ "incomplete": [
+  "google/gemini-3.1-pro-preview/v7a4bj",
+  "z-ai/glm-5.3/v7a4aj",
+  "z-ai/glm-5.3/v7a4bj",
+  "openai/gpt-oss-120b/v7a4aj",
+  "openai/gpt-oss-120b/v7a4bj"
+ ],
+ "account_spend_usd": [
+  {
+   "started": "2026-09-26T22:37:43Z",
+   "finished": "2026-09-26T23:08:28Z",
+   "usd": 21.273
+  }
+ ],
+ "predictions": [
+  {
+   "path": "results/phase2/runs/openai-gpt-5.6-terra-v7a4aj.json",
+   "sha256": "2e1d30d54f8bc52eac5947d5554a761467f2479c215b33ca466a8317a01c75cc",
+   "model": "openai/gpt-5.6-terra",
+   "prompt_version": "v7a4aj",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-abj-2026-09-26",
+   "config_overridden": [],
+   "git_commit": "378558d",
+   "successful_predictions": 268,
+   "failed_predictions": 0,
+   "cost_usd": 1.8769,
+   "prompt_tokens": 155516,
+   "completion_tokens": 130488
+  },
+  {
+   "path": "results/phase2/runs/openai-gpt-5.6-terra-v7a4bj.json",
+   "sha256": "e23e1c2a33f3b681ff69e5f299e9a92e671c8de29d1d6b40057a862c19d071a9",
+   "model": "openai/gpt-5.6-terra",
+   "prompt_version": "v7a4bj",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-abj-2026-09-26",
+   "config_overridden": [],
+   "git_commit": "378558d",
+   "successful_predictions": 268,
+   "failed_predictions": 0,
+   "cost_usd": 1.8477,
+   "prompt_tokens": 163313,
+   "completion_tokens": 126753
+  },
+  {
+   "path": "results/phase2/runs/google-gemini-3.1-pro-preview-v7a4aj.json",
+   "sha256": "2c1472beefad214c80e2fcb9dc28f1e0398b97a6bf3d0a0db0903e8aeb4ba220",
+   "model": "google/gemini-3.1-pro-preview",
+   "prompt_version": "v7a4aj",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-abj-2026-09-26",
+   "config_overridden": [],
+   "git_commit": "378558d",
+   "successful_predictions": 268,
+   "failed_predictions": 0,
+   "cost_usd": 2.8941,
+   "prompt_tokens": 162233,
+   "completion_tokens": 214132
+  },
+  {
+   "path": "results/phase2/runs/anthropic-claude-sonnet-4.6-v7a4aj.json",
+   "sha256": "8fbdf8278f3707b1afbb592aa9e9d839d0f3ae4dcc6172be284cc8eecc279411",
+   "model": "anthropic/claude-sonnet-4.6",
+   "prompt_version": "v7a4aj",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-abj-2026-09-26",
+   "config_overridden": [],
+   "git_commit": "378558d",
+   "successful_predictions": 268,
+   "failed_predictions": 0,
+   "cost_usd": 5.3892,
+   "prompt_tokens": 171085,
+   "completion_tokens": 325066
+  },
+  {
+   "path": "results/phase2/runs/anthropic-claude-sonnet-4.6-v7a4bj.json",
+   "sha256": "e22c8ebc8724583d126c250043917f5b905c4439f16a075f5e002f251fbbcec3",
+   "model": "anthropic/claude-sonnet-4.6",
+   "prompt_version": "v7a4bj",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-abj-2026-09-26",
+   "config_overridden": [],
+   "git_commit": "378558d",
+   "successful_predictions": 268,
+   "failed_predictions": 0,
+   "cost_usd": 5.2773,
+   "prompt_tokens": 179792,
+   "completion_tokens": 315861
+  },
+  {
+   "path": "results/phase2/runs/anthropic-claude-haiku-4.5-v7a4aj.json",
+   "sha256": "45aa2d135f49efd8a5ab2d942efd1b2d342a9bca91bce4765c934a5b5498898f",
+   "model": "anthropic/claude-haiku-4.5",
+   "prompt_version": "v7a4aj",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": null,
+   "config_version": "v03-abj-2026-09-26",
+   "config_overridden": [],
+   "git_commit": "378558d",
+   "successful_predictions": 268,
+   "failed_predictions": 0,
+   "cost_usd": 0.4156,
+   "prompt_tokens": 170817,
+   "completion_tokens": 48963
+  },
+  {
+   "path": "results/phase2/runs/anthropic-claude-haiku-4.5-v7a4bj.json",
+   "sha256": "dcfb09d26e362e8bf0ef0e1decfb182d562854153e6dc842a8862dac0752e02f",
+   "model": "anthropic/claude-haiku-4.5",
+   "prompt_version": "v7a4bj",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": null,
+   "config_version": "v03-abj-2026-09-26",
+   "config_overridden": [],
+   "git_commit": "378558d",
+   "successful_predictions": 268,
+   "failed_predictions": 0,
+   "cost_usd": 0.4277,
+   "prompt_tokens": 179524,
+   "completion_tokens": 49630
+  },
+  {
+   "path": "results/phase2/runs/meta-llama-llama-3.1-8b-instruct-v7a4aj.json",
+   "sha256": "69a790a3ee8e3b3d8395182adbe1a997272d8d70bd3dc6a302568cab851d8d85",
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "prompt_version": "v7a4aj",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": null,
+   "config_version": "v03-abj-2026-09-26",
+   "config_overridden": [],
+   "git_commit": "378558d",
+   "successful_predictions": 268,
+   "failed_predictions": 0,
+   "cost_usd": 0.0057,
+   "prompt_tokens": 158068,
+   "completion_tokens": 39412
+  },
+  {
+   "path": "results/phase2/runs/meta-llama-llama-3.1-8b-instruct-v7a4bj.json",
+   "sha256": "33a7ae882cd1fd73cb1760e8951423d109609f84a8871e0b7928c73cc86772a1",
+   "model": "meta-llama/llama-3.1-8b-instruct",
+   "prompt_version": "v7a4bj",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": null,
+   "config_version": "v03-abj-2026-09-26",
+   "config_overridden": [],
+   "git_commit": "378558d",
+   "successful_predictions": 268,
+   "failed_predictions": 0,
+   "cost_usd": 0.0059,
+   "prompt_tokens": 166544,
+   "completion_tokens": 38830
+  }
+ ],
+ "python": "3.12.3"
+}
