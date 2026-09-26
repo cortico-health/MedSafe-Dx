@@ -687,15 +687,18 @@ def main() -> None:
     kap, po = kappa(pairs)
     agree = {"kappa": kap, "po": po, "n": len(pairs), "table": Counter(pairs)}
     ref_rows = build_reference(fable, astra, unblinded)
+    ab = sb.load_ab()
+    assert [k.case_id for k in ab.key.keys] == [r["case_id"] for r in ref_rows]
+    # The review files carry draft 3's classes; the benchmark now scores amendment A3's (evaluator/working_diagnosis.py).
+    for r, cls in zip(ref_rows, ab.klass):
+        r["benchmark_class_draft3"], r["benchmark_class"] = r["benchmark_class"], str(cls)
     with (AUDIT / "reference_adjudicated.jsonl").open("w") as fh:
         for r in ref_rows:
             fh.write(json.dumps({**r, "mismatch_cause": mismatch_cause(r)}, ensure_ascii=False) + "\n")
     ref_by_id = {r["case_id"]: r for r in ref_rows}
 
-    ab = sb.load_ab()
     rule = vr.TierFileRule()
     rm = RefMatcher(ab)
-    assert [k.case_id for k in ab.key.keys] == [r["case_id"] for r in ref_rows]
 
     # Step 2: class against reference.
     table = Counter((r["benchmark_class"], r["decision"]) for r in ref_rows)
