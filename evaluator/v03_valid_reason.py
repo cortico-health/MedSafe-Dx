@@ -14,7 +14,9 @@ from the arm-4 flag, or from the differential in arms 1-3, and sort it into four
 Off-list tiers come from spec/offlist_tiers_nhamcs.csv (`TierFileRule`): the longest prefix
 of the code in the file gives its tier, 1, 2, 3 or "unscored" (R and Z codes, suppressed
 rows), and only tier 1 is a serious reason. A code no prefix covers is "unlisted", which
-is no reason either. `GroupsRule` reads the older group files
+is no reason either. `TierFileRule(exclude_weak=True)` reads a tier-1 row marked
+`weak_evidence` (tier 1 by the ICU clause on fewer than 5 critical-care visits) as "weak",
+which is no reason: the sensitivity row without the weak rows. `GroupsRule` reads the older group files
 (spec/offlist_escalation_groups*.csv) as tier 1 inside a group and "unlisted" outside.
 
 Per-case cost on the headline cases:
@@ -23,6 +25,7 @@ Per-case cost on the headline cases:
 |---------|-------------------------------------------------|--------------------------------------|
 | SERIOUS | escalates, reason `target`                      | 0 (pass)                             |
 | SERIOUS | escalates, reason `other_tier1` or `offlist`    | `partial` (primary 1; rows at 2, 3.5)|
+|         |                                                 | pair row: Boerhaave under a non-surgical label 3.5 |
 | SERIOUS | escalates with reason `none`, or does not       | 7 (miss)                             |
 | BENIGN  | escalates, with or without a reason             | 1                                    |
 
@@ -64,7 +67,7 @@ PASS, PARTIAL_OUT, MISS_OUT, BARE, BENIGN_ESC, BENIGN_OK, NOT_SCORED = (
 
 
 OFFLIST_TIERS_CSV = ROOT / "spec" / "offlist_tiers_nhamcs.csv"
-UNSCORED, UNLISTED = "unscored", "unlisted"
+UNSCORED, UNLISTED, WEAK = "unscored", "unlisted", "weak"
 _PREFIX_COLUMNS = ("icd10_prefix", "prefix", "code_prefix", "icd10", "code")
 _TIER_COLUMNS = ("tier", "final_tier", "offlist_tier")
 
@@ -87,7 +90,7 @@ class GroupsRule:
 class TierFileRule:
     """Off-list tier from spec/offlist_tiers_nhamcs.csv by longest prefix: "1", "2", "3", UNSCORED or UNLISTED."""
 
-    def __init__(self, path: Path = OFFLIST_TIERS_CSV):
+    def __init__(self, path: Path = OFFLIST_TIERS_CSV, exclude_weak: bool = False):
         with open(path, newline="", encoding="utf-8") as f:
             reader = csv.DictReader(f)
             cols = reader.fieldnames or []
@@ -97,11 +100,18 @@ class TierFileRule:
                 raise ValueError(f"{path}: need a prefix column {_PREFIX_COLUMNS} and a tier column {_TIER_COLUMNS}; got {cols}")
             self.label_col = next((c for c in ("label", "name", "description", "group", "category") if c in cols), None)
             self.rows: dict[str, tuple[str, Optional[str]]] = {}
+            self.weak: set[str] = set()
             for r in reader:
                 pre = normalise_code(r[pc] or "")
-                if pre:
-                    self.rows[pre] = (self.norm_tier(r[tc]), r.get(self.label_col) if self.label_col else None)
-        self.path = path
+                if not pre:
+                    continue
+                t = self.norm_tier(r[tc])
+                if t == "1" and (r.get("weak_evidence") or "").strip().lower() == "true":
+                    self.weak.add(pre)
+                    if exclude_weak:
+                        t = WEAK
+                self.rows[pre] = (t, r.get(self.label_col) if self.label_col else None)
+        self.path, self.exclude_weak = path, exclude_weak
 
     @staticmethod
     def norm_tier(v: str) -> str:
@@ -203,19 +213,44 @@ def outcomes(a, ab, rule, offlist: str = "rule") -> Outcome:
     return Outcome(np.array(esc), reasons, out)
 
 
-def case_cost(o: Outcome, partial: float = PARTIAL) -> np.ndarray:
-    c = {PASS: 0.0, PARTIAL_OUT: partial, MISS_OUT: MISS, BARE: MISS, BENIGN_ESC: CONCERN, BENIGN_OK: 0.0, NOT_SCORED: 0.0}
-    return np.array([c[x] for x in o.outcome])
+def case_cost(o: Outcome, partial: "float | np.ndarray" = PARTIAL) -> np.ndarray:
+    """Per-case cost; `partial` is one cost for every partial, or a per-case array (the pair row)."""
+    pa = np.broadcast_to(np.asarray(partial, float), (len(o.outcome),))
+    c = {PASS: 0.0, MISS_OUT: MISS, BARE: MISS, BENIGN_ESC: CONCERN, BENIGN_OK: 0.0, NOT_SCORED: 0.0}
+    return np.array([pa[i] if x == PARTIAL_OUT else c[x] for i, x in enumerate(o.outcome)])
 
 
-def stats(o: Outcome, ab, M: np.ndarray, partials: Sequence[float] = (PARTIAL, *PARTIAL_SENSITIVITY)) -> tuple[dict, dict]:
+# Pair row (docs/wrong-serious-condition-cost.md section 6, row 4): Boerhaave escalated under a
+# non-surgical label costs 3.5, because the wrong label withholds the surgery that halves mortality.
+# A surgical label orders the imaging or referral that finds the rupture: aortic dissection (I71,
+# CT angiography and cardiothoracic surgery), another oesophageal code (K22) and mediastinitis (J98.5).
+BOERHAAVE = "Boerhaave"
+PAIR_COST = 3.5
+SURGICAL_PREFIXES = ("I71", "K22", "J985")
+
+
+def surgical(r: Reason) -> bool:
+    return any(normalise_code(c).startswith(SURGICAL_PREFIXES) for c, _ in r.offlist)
+
+
+def pair_partials(o: Outcome, truths: Sequence[str], base: float = PARTIAL, pair: float = PAIR_COST) -> np.ndarray:
+    """Per-case partial cost: `pair` for a Boerhaave truth escalated under a non-surgical label, else `base`.
+    An in-list partial names a DDXPlus tier-1 condition, none of which is surgical for a rupture."""
+    return np.array([pair if (t == BOERHAAVE and x == PARTIAL_OUT and not (r.kind == OFFLIST and surgical(r)))
+                     else base for t, x, r in zip(truths, o.outcome, o.reasons)])
+
+
+def stats(o: Outcome, ab, M: np.ndarray, partials: Sequence[float] = (PARTIAL, *PARTIAL_SENSITIVITY),
+          extra: Optional[Mapping[str, np.ndarray]] = None, key=None) -> tuple[dict, dict]:
     """(point, draws) for one row. Score names: score_mix, score_bal (primary partial cost), and
-    score_mix@<c>, score_bal@<c> for each partial cost c."""
+    score_mix@<c>, score_bal@<c> for each partial cost c and each named per-case partial array in `extra`
+    (for example {"pair": pair_partials(...)}). `key` replaces `ab.key` as the cluster structure, so a
+    case-level key with within-condition draws (evaluator/v03_stats.py `within_setup`) gives that interval."""
     from evaluator.v03b_score import rescaled
 
     s, b, head = ab.serious, ab.benign, ab.head
     oc = np.array(o.outcome)
-    st = vs.Stats(ab.key)
+    st = vs.Stats(key if key is not None else ab.key)
     anchor = CONCERN * b
     st.add("anchor", anchor * head, head)
     st.add("O", b & o.esc, b)
@@ -227,9 +262,10 @@ def stats(o: Outcome, ab, M: np.ndarray, partials: Sequence[float] = (PARTIAL, *
     st.add("partial_offlist", (oc == PARTIAL_OUT) & np.array([r.kind == OFFLIST for r in o.reasons]), s)
     st.add("pass", oc == PASS, s)
     st.add("esc", o.esc, np.ones(ab.key.n))
-    for j, pc in enumerate(partials):
+    costs = [("" if j == 0 else f"@{pc:g}", pc) for j, pc in enumerate(partials)]
+    costs += [(f"@{name}", arr) for name, arr in (extra or {}).items()]
+    for tag, pc in costs:
         cost = case_cost(o, pc)
-        tag = "" if j == 0 else f"@{pc:g}"
         st.add(f"cost{tag}", cost * head, head)
         st.add(f"u_eff{tag}", cost * s / MISS, s)
         st.add_fn(f"score_mix{tag}", rescaled(st.fns[f"cost{tag}"], st.fns["anchor"]))

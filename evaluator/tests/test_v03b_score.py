@@ -103,6 +103,23 @@ class TestBoard(unittest.TestCase):
         self.assertAlmostEqual(pr["x/m: arm 2 - arm 3"]["O"]["value"], -50.0)
         self.assertIn("| m | 2 | 100.0", sb.report(board))
 
+    def test_justified_arms_score_and_pair(self):
+        ab = toy()
+        with tempfile.TemporaryDirectory() as d:
+            files = []
+            for arm, flags in (("v7a4aj", ["I21.9", None, None, None, None]), ("v7a4bj", ["I21.9", "J18.9", None, None, None])):
+                rows = preds("flag", flags)
+                for r in rows:
+                    r["justification"] = "One sentence."
+                f = Path(d) / f"m-{arm}.json"
+                f.write_text(json.dumps({"metadata": {"model": "x/m", "prompt_version": arm}, "predictions": rows}))
+                files.append(f)
+            board = sb.score_board(files, n_boot=50, ab=ab, references=False)
+        self.assertEqual({r["arm_label"] for r in board["rows"].values()}, {"4aj", "4bj"})
+        pr = board["paired"]["x/m: arm 4aj - arm 4bj"]
+        self.assertAlmostEqual(pr["U"]["value"], 50.0)  # 4aj misses the pneumonia target that 4bj flags
+        self.assertIn("| m | 4aj |", sb.report(board))
+
 
 if __name__ == "__main__":
     unittest.main()

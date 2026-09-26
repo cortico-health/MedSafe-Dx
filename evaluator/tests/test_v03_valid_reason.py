@@ -57,6 +57,14 @@ class TestReason(unittest.TestCase):
         self.assertEqual(self.kind(["R07.9"], rule=rule), vr.NONE)
         self.assertEqual(self.kind(["K92.0"], rule=rule), vr.NONE)
 
+    def test_weak_evidence_rows(self):
+        p = tier_file("icd10_prefix,tier,weak_evidence\nK86,1,true\nK85,1,false\n")
+        self.assertEqual(vr.TierFileRule(p).tier("K86.1")[0], "1")
+        weak = vr.TierFileRule(p, exclude_weak=True)
+        self.assertEqual((weak.tier("K86.1")[0], weak.tier("K85.9")[0]), (vr.WEAK, "1"))
+        self.assertEqual(self.kind(["K86.1"], rule=weak), vr.NONE)
+        self.assertEqual(self.kind(["K85.9"], rule=weak), vr.OFFLIST)
+
     def test_tier_file_needs_columns(self):
         with self.assertRaises(ValueError):
             vr.TierFileRule(tier_file("code_x,level\nA00,1\n"))
@@ -68,6 +76,17 @@ class TestCosts(unittest.TestCase):
                        [vr.PASS, vr.PARTIAL_OUT, vr.MISS_OUT, vr.BARE, vr.BENIGN_ESC, vr.NOT_SCORED])
         self.assertEqual(vr.case_cost(o).tolist(), [0, 1, 7, 7, 1, 0])
         self.assertEqual(vr.case_cost(o, 3.5).tolist(), [0, 3.5, 7, 7, 1, 0])
+        self.assertEqual(vr.case_cost(o, np.array([9, 2, 9, 9, 9, 9])).tolist(), [0, 2, 7, 7, 1, 0])
+
+    def test_boerhaave_pair_row(self):
+        mi = vr.Reason(vr.OTHER_TIER1, (MI,))
+        dissection = vr.Reason(vr.OFFLIST, (), (("I7100", "Aortic aneurysm and dissection"),))
+        stroke = vr.Reason(vr.OFFLIST, (), (("I639", "Cerebral infarction"),))
+        o = vr.Outcome(np.array([True] * 5), [mi, dissection, stroke, mi, vr.Reason(vr.TARGET)],
+                       [vr.PARTIAL_OUT, vr.PARTIAL_OUT, vr.PARTIAL_OUT, vr.PARTIAL_OUT, vr.PASS])
+        truths = [vr.BOERHAAVE, vr.BOERHAAVE, vr.BOERHAAVE, PE, vr.BOERHAAVE]
+        self.assertEqual(vr.pair_partials(o, truths).tolist(), [3.5, 1, 3.5, 1, 1])
+        self.assertEqual(vr.case_cost(o, vr.pair_partials(o, truths)).tolist(), [3.5, 1, 3.5, 1, 0])
 
 
 class TestOnTheSet(unittest.TestCase):
@@ -125,6 +144,18 @@ class TestOnTheSet(unittest.TestCase):
         self.assertNotIn(vr.PASS, o.outcome)  # the listed MI does not count: the flag is the reason
         o = vr.outcomes(a, self.ab, self.rule, offlist="routine")
         self.assertFalse(o.esc.any())
+
+
+class TestJustifiedArmLabels(unittest.TestCase):
+    """Arms 4aj and 4bj (amendment A1) carry labels and paired comparisons in the scorer."""
+
+    def test_labels_and_comparisons(self):
+        self.assertEqual((sb.ARM_LABELS["v7a4aj"], sb.ARM_LABELS["v7a4bj"]), ("4aj", "4bj"))
+        for pair in (("v7a4aj", "v7a4bj"), ("v7a4aj", "v7a4a"), ("v7a4bj", "v7a4b")):
+            self.assertIn(pair, sb.COMPARISONS)
+        from evaluator.schemas_v03b import ARMS, FLAG_ARMS
+        self.assertTrue(set(sb.ARM_LABELS) >= set(ARMS))
+        self.assertIn("v7a4aj", FLAG_ARMS)
 
 
 class TestArm4cAnd2j(unittest.TestCase):
