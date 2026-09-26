@@ -1,6 +1,7 @@
 import tempfile
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 
 import numpy as np
 
@@ -144,6 +145,72 @@ class TestOnTheSet(unittest.TestCase):
         self.assertNotIn(vr.PASS, o.outcome)  # the listed MI does not count: the flag is the reason
         o = vr.outcomes(a, self.ab, self.rule, offlist="routine")
         self.assertFalse(o.esc.any())
+
+
+def stub_set(r10s, serious, canonical, tiers):
+    """The fields of an `ABSet` that `zero_reference` reads."""
+    key = SimpleNamespace(keys=[SimpleNamespace(r10=list(r)) for r in r10s], tiers=tiers)
+    return SimpleNamespace(key=key, serious=np.array(serious), matcher=SimpleNamespace(cmap=SimpleNamespace(canonical=canonical)))
+
+
+class TestZeroReference(unittest.TestCase):
+    """Amendment A2: 0 is always escalate with one fixed flag on the most common tier-1 target; 100 is perfect."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.ab = sb.load_ab()
+        cls.M = vs.cluster_draws(cls.ab.key.k, 50, 1)
+        cls.code_of = {}
+        for code in cls.ab.matcher.map_codes():
+            for c in cls.ab.matcher.conditions_hit([code], "strict"):
+                cls.code_of.setdefault(c, code)
+
+    def score(self, esc, codes):
+        a = sb.fixed_answers("x", self.ab, np.asarray(esc), codes)
+        return vr.stats(vr.outcomes(a, self.ab, vr.default_rule()), self.ab, self.M)
+
+    def test_chosen_from_the_key(self):
+        # MI, pulmonary neoplasm and PSVT tie at 10 SERIOUS cases; "Possible NSTEMI / STEMI" sorts first by name
+        self.assertEqual(vr.zero_reference(self.ab), ("I21", MI, 10))
+
+    def test_most_cases_then_name_ignoring_case(self):
+        tiers = {"b": 1, "A": 1, "C": 1, "t2": 2}
+        canon = {"b": "x01", "A": "y02", "C": "z03", "t2": "w04"}
+        most = stub_set([["C"], ["C", "b"], ["A", "t2"], ["t2"], ["t2"]], [1, 1, 1, 1, 1], canon, tiers)
+        self.assertEqual(vr.zero_reference(most), ("Z03", "C", 2))  # tier-2 targets are never chosen
+        tie = stub_set([["C"], ["b"], ["A"], ["b"]], [1, 1, 1, 0], canon, tiers)
+        self.assertEqual(vr.zero_reference(tie)[1], "A")  # A, b, C: case ignored
+        with self.assertRaises(ValueError):
+            vr.zero_reference(stub_set([["b"]], [0], canon, tiers))
+
+    def test_zero_reference_scores_zero(self):
+        code = vr.zero_reference(self.ab)[0]
+        p, d = self.score(np.ones(self.ab.key.n, bool), [[code]] * self.ab.key.n)
+        for m in ("score_z_bal", "score_z_mix", "score_z_bal@3.5", "score_z_mix@2"):
+            self.assertAlmostEqual(p[m], 0.0)
+            self.assertTrue(np.allclose(d[m][np.isfinite(d[m])], 0.0))
+        self.assertLess(p["score_bal"], 0)  # below draft 3's zero: it names the target on 12 of 90 cases only
+
+    def test_perfect_scores_100(self):
+        s = self.ab.serious
+        codes = [[self.code_of[k.r10[0]]] if (x and k.r10) else [] for k, x in zip(self.ab.key.keys, s)]
+        p, _ = self.score(s, codes)
+        self.assertAlmostEqual(p["score_z_bal"], 100.0)
+        self.assertAlmostEqual(p["score_z_mix"], 100.0)
+
+    def test_rescaling_is_affine_in_cost(self):
+        z, _ = self.score(np.ones(self.ab.key.n, bool), [[vr.zero_reference(self.ab)[0]]] * self.ab.key.n)
+        p, _ = self.score(np.zeros(self.ab.key.n, bool), [[]] * self.ab.key.n)
+        for new, old in (("score_z_bal", "score_bal"), ("score_z_mix", "score_mix")):
+            c, c0 = 1 - p[old] / 100, 1 - z[old] / 100
+            self.assertAlmostEqual(p[new], 100 * (c0 - c) / c0)
+
+    def test_extra_function_applies_to_the_zero_reference(self):
+        code = vr.zero_reference(self.ab)[0]
+        a = sb.fixed_answers("x", self.ab, np.ones(self.ab.key.n, bool), [[code]] * self.ab.key.n)
+        o = vr.outcomes(a, self.ab, vr.default_rule())
+        p, _ = vr.stats(o, self.ab, self.M, extra={"pair": lambda x: vr.pair_partials(x, self.ab.key.truth)})
+        self.assertAlmostEqual(p["score_z_bal@pair"], 0.0)
 
 
 class TestJustifiedArmLabels(unittest.TestCase):

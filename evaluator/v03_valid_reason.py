@@ -33,12 +33,21 @@ Arm 4 escalates exactly when its flag's reason is `target`, `other_tier1` or `of
 flag is its own reason. The two arm-4 bounding rows read every off-list flag as a valid
 reason (`offlist="escalate"`) or as none (`offlist="routine"`).
 
-Two headline weightings, each with always escalate (with a target named) = 0:
+Two weightings of the per-case cost:
 
-- sample mix: SCORE = 100 x (COST_AE - COST) / COST_AE over the SERIOUS + BENIGN cases, where
-  COST_AE is the BENIGN share (evaluator/v03b_score.py);
-- balanced 50/50: SCORE = 100 x (1 - O - 7 x U_eff), where U_eff is the mean SERIOUS cost over 7
-  (a partial at cost 1 counts 1/7 of a miss). Always routine scores -600.
+- sample mix: COST is the mean cost over the SERIOUS + BENIGN cases;
+- balanced 50/50: COST_bal = O + 7 x U_eff, where U_eff is the mean SERIOUS cost over 7
+  (a partial at cost 1 counts 1/7 of a miss).
+
+Primary score (spec/v0.3-scoring.md amendment A2): `score_z_bal` and `score_z_mix`,
+100 x (C_zero - C) / C_zero on each weighting's own cost, per bootstrap draw. The zero reference
+(`zero_reference`) escalates every case with one fixed flag: the DDXPlus code of the tier-1
+condition that is an R10 target on the most SERIOUS cases, ties by name (case ignored). So 0 is
+blanket escalation with one generic serious reason, and 100 is perfect.
+
+Secondary score (draft 3's scale): `score_mix` = 100 x (COST_AE - COST) / COST_AE, where COST_AE is
+the BENIGN share (evaluator/v03b_score.py), and `score_bal` = 100 x (1 - COST_bal). Both put
+"always escalate, naming the case's own target" at 0; always routine scores -600 balanced.
 """
 
 from __future__ import annotations
@@ -240,20 +249,54 @@ def pair_partials(o: Outcome, truths: Sequence[str], base: float = PARTIAL, pair
                      else base for t, x, r in zip(truths, o.outcome, o.reasons)])
 
 
+def zero_reference(ab) -> tuple[str, str, int]:
+    """(code, condition, SERIOUS cases) of the zero reference (amendment A2), from the key alone: the tier-1
+    condition that is an R10 target on the most SERIOUS cases, ties by name with case ignored, flagged by its
+    DDXPlus ICD-10 code. The count is the SERIOUS cases on which the condition is a target."""
+    counts: dict[str, int] = {}
+    for k, s in zip(ab.key.keys, ab.serious):
+        if s:
+            for t in k.r10:
+                if ab.key.tiers.get(t) == 1:
+                    counts[t] = counts.get(t, 0) + 1
+    if not counts:
+        raise ValueError("no SERIOUS case has a tier-1 R10 target")
+    cond = min(counts, key=lambda c: (-counts[c], c.casefold(), c))
+    return normalise_code(ab.matcher.cmap.canonical[cond]), cond, counts[cond]
+
+
+def zero_outcome(ab) -> Outcome:
+    """The zero reference scored on `ab`: escalate every case, the differential is the one fixed code."""
+    from evaluator.v03b_score import fixed_answers
+
+    code = zero_reference(ab)[0]
+    a = fixed_answers("zero", ab, np.ones(ab.key.n, bool), [[code]] * ab.key.n)
+    return outcomes(a, ab, default_rule())
+
+
 def stats(o: Outcome, ab, M: np.ndarray, partials: Sequence[float] = (PARTIAL, *PARTIAL_SENSITIVITY),
-          extra: Optional[Mapping[str, np.ndarray]] = None, key=None) -> tuple[dict, dict]:
-    """(point, draws) for one row. Score names: score_mix, score_bal (primary partial cost), and
-    score_mix@<c>, score_bal@<c> for each partial cost c and each named per-case partial array in `extra`
-    (for example {"pair": pair_partials(...)}). `key` replaces `ab.key` as the cluster structure, so a
-    case-level key with within-condition draws (evaluator/v03_stats.py `within_setup`) gives that interval."""
+          extra: Optional[Mapping[str, object]] = None, key=None, zero: Optional[Outcome] = None) -> tuple[dict, dict]:
+    """(point, draws) for one row. Score names, for the primary partial cost (no suffix), each partial cost c
+    (suffix @<c>) and each named per-case partial cost in `extra` (suffix @<name>):
+
+    - score_z_bal, score_z_mix: the primary score, rescaled so the zero reference scores 0 (amendment A2);
+    - score_bal, score_mix: draft 3's scale, where naming the case's own target on every case scores 0.
+
+    An `extra` value is a per-case array, applied to the row and the zero reference alike, or a function of an
+    `Outcome` that returns one, applied to each (for example {"pair": lambda x: pair_partials(x, truths)}).
+    `zero` is the zero reference's outcome; the default scores `zero_outcome(ab)`, with the tier file's rule.
+    `key` replaces `ab.key` as the cluster structure, so a case-level key with within-condition draws
+    (evaluator/v03_stats.py `within_setup`) gives that interval."""
     from evaluator.v03b_score import rescaled
 
     s, b, head = ab.serious, ab.benign, ab.head
     oc = np.array(o.outcome)
+    z = zero if zero is not None else zero_outcome(ab)
     st = vs.Stats(key if key is not None else ab.key)
     anchor = CONCERN * b
     st.add("anchor", anchor * head, head)
     st.add("O", b & o.esc, b)
+    st.add("O_zero", b & z.esc, b)
     st.add("U", np.isin(oc, (MISS_OUT, BARE)), s)  # SERIOUS cases costing a full miss
     st.add("U_routine", oc == MISS_OUT, s)
     st.add("bare", oc == BARE, s)
@@ -262,24 +305,39 @@ def stats(o: Outcome, ab, M: np.ndarray, partials: Sequence[float] = (PARTIAL, *
     st.add("partial_offlist", (oc == PARTIAL_OUT) & np.array([r.kind == OFFLIST for r in o.reasons]), s)
     st.add("pass", oc == PASS, s)
     st.add("esc", o.esc, np.ones(ab.key.n))
-    costs = [("" if j == 0 else f"@{pc:g}", pc) for j, pc in enumerate(partials)]
-    costs += [(f"@{name}", arr) for name, arr in (extra or {}).items()]
-    for tag, pc in costs:
-        cost = case_cost(o, pc)
+    costs = [("" if j == 0 else f"@{pc:g}", pc, pc) for j, pc in enumerate(partials)]
+    costs += [(f"@{name}", fn(o), fn(z)) if callable(fn) else (f"@{name}", fn, fn) for name, fn in (extra or {}).items()]
+    for tag, pc, pz in costs:
+        cost, zcost = case_cost(o, pc), case_cost(z, pz)
         st.add(f"cost{tag}", cost * head, head)
         st.add(f"u_eff{tag}", cost * s / MISS, s)
+        st.add(f"cost_zero{tag}", zcost * head, head)
+        st.add(f"u_eff_zero{tag}", zcost * s / MISS, s)
         st.add_fn(f"score_mix{tag}", rescaled(st.fns[f"cost{tag}"], st.fns["anchor"]))
         st.add_fn(f"score_bal{tag}", _balanced(st.fns["O"], st.fns[f"u_eff{tag}"]))
+        st.add_fn(f"score_z_mix{tag}", rescaled(st.fns[f"cost{tag}"], st.fns[f"cost_zero{tag}"]))
+        st.add_fn(f"score_z_bal{tag}", rescaled(_balanced_cost(st.fns["O"], st.fns[f"u_eff{tag}"]),
+                                                _balanced_cost(st.fns["O_zero"], st.fns[f"u_eff_zero{tag}"])))
     return st.evaluate(M)
 
 
-def _balanced(o_fn, u_fn):
+def _balanced_cost(o_fn, u_fn):
     def f(Mx):
-        return 100.0 * (1.0 - o_fn(Mx) - MISS * u_fn(Mx))
+        return o_fn(Mx) + MISS * u_fn(Mx)
     return f
 
 
-SCORE_KEYS = ("score_mix", "score_bal")
+def _balanced(o_fn, u_fn):
+    cost = _balanced_cost(o_fn, u_fn)
+
+    def f(Mx):
+        return 100.0 * (1.0 - cost(Mx))
+    return f
+
+
+PRIMARY = "score_z_bal"
+Z_SCORE_KEYS = ("score_z_bal", "score_z_mix")  # amendment A2: the zero reference scores 0
+SCORE_KEYS = ("score_mix", "score_bal")  # draft 3's scale
 
 
 def summarise(point: Mapping[str, float], draws: Mapping[str, np.ndarray]) -> dict:
