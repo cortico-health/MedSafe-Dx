@@ -279,6 +279,18 @@ async def read_report():
     except FileNotFoundError:
         return Response(content="Report not found. Ensure BENCHMARK_REPORT.md is mounted.", status_code=404)
 
+@app.get("/report-v03.html")
+async def read_report_v03():
+    # Preview of the v0.3 methodology page. It replaces /report.html after the
+    # full v0.3 run; until then the v0 report stays at /report.html.
+    try:
+        return _render_markdown_file(
+            str(PROJECT_ROOT / "docs" / "METHODOLOGY-v0.3.md"),
+            "MedSafe-Dx v0.3 Methodology & Results (preview)",
+        )
+    except FileNotFoundError:
+        return Response(content="v0.3 report not found. Ensure docs/METHODOLOGY-v0.3.md is mounted.", status_code=404)
+
 @app.get("/publish-tables.html")
 async def read_publish_tables():
     try:
