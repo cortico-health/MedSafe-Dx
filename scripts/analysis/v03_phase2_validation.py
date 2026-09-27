@@ -1,36 +1,46 @@
 #!/usr/bin/env python3
 """
-Phase 2 label validation of the frozen case-selection rules (docs/v0.3-case-selection-rules.md
-section 7; freeze commit 45a7599). No model is called here; the reviews were produced separately.
+Phase 2 and Phase 2b label validation of the frozen case-selection rules (docs/v0.3-case-selection-rules.md
+section 7). No model is called here; the reviews were produced separately.
 
-Inputs, under results/phase2/: cases_blind.json (scripts/analysis/v03_phase2_cases.py), the two
-blind Fable reviews (reference_fable_A.jsonl for cases 0-124, reference_fable_B.jsonl for 125-249,
-each written in two parts), the Astra review (reference_astra.jsonl, five codex chunks), the
-adjudications (adjudications.json: one entry per case where Fable and Astra disagreed or either said
-UNCERTAIN) and the unblinded key (cases_unblinded.json, kept outside the repo during the review).
+Inputs, under the phase's results directory (results/phase2/ or results/phase2b/): cases_blind.json
+(scripts/analysis/v03_phase2_cases.py), the two blind Fable reviews (reference_fable_A.jsonl for cases
+0-124, reference_fable_B.jsonl for 125-249, each written in two parts), the Astra review
+(reference_astra.jsonl, five codex chunks), the adjudications (adjudications.json: one entry per case
+where Fable and Astra disagreed or either said UNCERTAIN) and the unblinded key (cases_unblinded.json,
+kept outside the repo during the review).
 
-Two stages:
+Stages:
 
-  collect   merge the review parts, parse Astra's JSON Lines into reference_astra.json, report the
-            Fable x Astra agreement and kappa, and write adjudication_queue.json: the intake and both
-            reviews for every case the adjudicator must decide (no truth, stratum or rule in it).
-  finalize  build reference_adjudicated.jsonl the way the audit did (agreed cases adopt the agreed
-            decision, the union of dangers and the lower confidence; queued cases take the
-            adjudication), draw the seeded spot check, evaluate the pre-registered label-level
-            criteria 1-5 and write label_validation.md and label_validation.json.
+  collect    merge the review parts, parse Astra's JSON Lines into reference_astra.json, report the
+             Fable x Astra agreement and kappa, write adjudication_queue.json (the intake and both
+             reviews for every case the adjudicator must decide; no truth, stratum or rule in it) and
+             spot_check_queue.json (the seeded draw of agreed cases, same fields).
+  finalize   build reference_adjudicated.jsonl the way the audit did (agreed cases adopt the agreed
+             decision, the union of dangers and the lower confidence; queued cases take the
+             adjudication), evaluate the pre-registered label-level criteria 1-5 and the reported
+             measures, and write label_validation.md and label_validation.json.
+  pooled     the secondary analysis: Phase 2 (reclassified under the current rules) and Phase 2b as
+             one 500-case set, the same tables, written to results/phase2b/pooled/.
 
-The criteria (section 7, fixed before the review):
+The criteria (section 7, fixed before the review). Label level:
 1. class agreement on decided kept cases >= 90%, Wilson 95% lower bound >= 85%;
 2. BENIGN stratum >= 85% ROUTINE among decided; each SERIOUS stratum >= 92% ESCALATE among decided;
 3. each rule with >= 5 fresh cases it decided: >= 80% agreement, else flagged for demotion;
-4. Cohen's kappa between the two reviewers >= 0.6 on the decision;
+4. Cohen's kappa between the two reviewers >= 0.6 on the three-way decision. Phase 2b adds two
+   reported measures (decision 14): kappa on the cases both reviewers decided (ESCALATE/ROUTINE only),
+   and each reviewer's UNCERTAIN rate;
 5. EXCLUDED stratum, reported only: ESCALATE / ROUTINE / UNCERTAIN / split shares, and any exclusion
    rule whose cases are ESCALATE in >= 80% of draws at confidence >= 4 (a candidate PATCH later).
 
-A case's class is the rules' class under the v0.3b key (`class_key`): two BENIGN candidates whose
-key carries an R5-only target fall to EXCLUDED under X9 and are evaluated there.
+A case's class is the rules' class under the v0.3b key (`class_key`): a BENIGN candidate whose key
+carries an R5-only target falls to EXCLUDED under X9 and is evaluated there. `--reclassify` recomputes
+`class_key` and the deciding rules under the rules file as it stands (the post-hoc Phase 2 rerun after
+rule X11, written with --out results/phase2/post_hoc_x11).
 
-Usage: python3 scripts/analysis/v03_phase2_validation.py collect|finalize [--unblinded PATH]
+Usage: python3 scripts/analysis/v03_phase2_validation.py --phase 2b collect|finalize [--unblinded PATH]
+       python3 scripts/analysis/v03_phase2_validation.py --phase 2 finalize --reclassify --out results/phase2/post_hoc_x11
+       python3 scripts/analysis/v03_phase2_validation.py pooled
 """
 
 from __future__ import annotations
@@ -44,12 +54,15 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-P2 = ROOT / "results" / "phase2"
 ESC, ROU, UNC = "ESCALATE", "ROUTINE", "UNCERTAIN"
 DECISIONS = (ESC, ROU, UNC)
-SPOT_SEED = 20261003
 SPOT_N = 10
-STRATA = ("serious_tier1", "serious_upgrade_or_flag", "serious_dxa_only", "benign", "excluded")
+PHASES = {"2": {"dir": ROOT / "results" / "phase2", "seed": 20261003, "freeze": "45a7599",
+                "strata": ("serious_tier1", "serious_upgrade_or_flag", "serious_dxa_only", "benign", "excluded")},
+          "2b": {"dir": ROOT / "results" / "phase2b", "seed": 20261004, "freeze": "the Phase 2b freeze commit (section 9)",
+                 "strata": ("serious_tier1", "serious_upgrade_or_flag", "benign", "excluded")}}
+POOLED_DIR = ROOT / "results" / "phase2b" / "pooled"
+POST_HOC_DIR = ROOT / "results" / "phase2" / "post_hoc_x11"
 
 
 # ---------------------------------------------------------------- statistics
@@ -65,12 +78,14 @@ def wilson(k: int, n: int, z: float = 1.959964) -> tuple[float, float]:
     return (c - h, c + h)
 
 
-def kappa(pairs) -> tuple[float, float]:
+def kappa(pairs, decisions=DECISIONS) -> tuple[float, float]:
     n = len(pairs)
+    if n == 0:
+        return (float("nan"), float("nan"))
     po = sum(a == b for a, b in pairs) / n
     ca, cb = Counter(a for a, _ in pairs), Counter(b for _, b in pairs)
-    pe = sum(ca[d] * cb[d] for d in DECISIONS) / n / n
-    return (po - pe) / (1 - pe), po
+    pe = sum(ca[d] * cb[d] for d in decisions) / n / n
+    return ((po - pe) / (1 - pe) if pe < 1 else 1.0), po
 
 
 def pct(k: int, n: int) -> str:
@@ -108,18 +123,21 @@ def norm_decision(d: str) -> str:
     return UNC
 
 
-def merge_fable(name: str) -> dict[str, dict]:
+def merge_fable(P2: Path, name: str) -> dict[str, dict]:
     parts = sorted(P2.glob(f"reference_fable_{name}.part*.jsonl"))
     rows: dict[str, dict] = {}
     for p in parts:
         for r in read_jsonl(p):
             rows[r["case_id"]] = r
     merged = P2 / f"reference_fable_{name}.jsonl"
-    merged.write_text("".join(json.dumps(rows[c]) + "\n" for c in sorted(rows, key=lambda c: rows[c]["index"])))
+    if rows:
+        merged.write_text("".join(json.dumps(rows[c]) + "\n" for c in sorted(rows, key=lambda c: rows[c]["index"])))
+    elif merged.exists():  # no parts: the merged file is the source
+        rows = {r["case_id"]: r for r in read_jsonl(merged)}
     return rows
 
 
-def load_astra() -> dict[str, dict]:
+def load_astra(P2: Path) -> dict[str, dict]:
     src = P2 / "reference_astra.jsonl"
     rows = {}
     for r in read_jsonl(src):
@@ -131,7 +149,7 @@ def load_astra() -> dict[str, dict]:
     return rows
 
 
-def load_blind() -> list[dict]:
+def load_blind(P2: Path) -> list[dict]:
     return json.loads((P2 / "cases_blind.json").read_text())
 
 
@@ -139,15 +157,17 @@ def fable_decision(f: dict) -> str:
     return norm_decision(f["partA"]["decision"])
 
 
-def agreement_table(fable: dict, astra: dict, ids: list[str]):
-    table = Counter()
-    pairs = []
-    for cid in ids:
-        a, b = fable_decision(fable[cid]), astra[cid]["decision"]
-        table[(a, b)] += 1
-        pairs.append((a, b))
+def agreement(pairs: list[tuple[str, str]]) -> dict:
+    """The three-way kappa (criterion 4), the kappa on cases both reviewers decided, and each reviewer's UNCERTAIN
+    rate (the Phase 2b reported measures, decision 14)."""
+    table = Counter(pairs)
     k, po = kappa(pairs)
-    return table, k, po
+    decided = [(a, b) for a, b in pairs if UNC not in (a, b)]
+    k2, po2 = kappa(decided, (ESC, ROU))
+    n = len(pairs)
+    return {"n": n, "kappa": k, "raw_agreement": po, "table": table,
+            "decided_both": len(decided), "kappa_decided": k2, "raw_agreement_decided": po2,
+            "uncertain_a": sum(1 for a, _ in pairs if a == UNC), "uncertain_b": sum(1 for _, b in pairs if b == UNC)}
 
 
 def table_md(table: Counter, row_label: str, col_label: str) -> str:
@@ -157,14 +177,24 @@ def table_md(table: Counter, row_label: str, col_label: str) -> str:
     return "\n".join(L)
 
 
+def queue_entry(c: dict, f: dict, a: dict) -> dict:
+    fa = f["partA"]
+    return {"case_id": c["case_id"], "index": f["index"], "intake": c["intake"],
+            "clinician_working_diagnosis": c["clinician_working_diagnosis"],
+            "fable": {"decision": fable_decision(f), "dangers_to_consider": fa["dangers_to_consider"], "red_flags": fa["red_flags"],
+                      "evidence": fa.get("evidence", []), "confidence": fa["confidence"], "reasoning": fa["reasoning"]},
+            "astra": {k2: a.get(k2) for k2 in ("decision", "dangers_to_consider", "red_flags", "evidence", "confidence", "reasoning")}}
+
+
 # ---------------------------------------------------------------- stage: collect
 
 
-def collect(args) -> None:
-    blind = load_blind()
+def collect(args, ph: dict) -> None:
+    P2 = ph["dir"]
+    blind = load_blind(P2)
     ids = [c["case_id"] for c in blind]
-    fable = {**merge_fable("A"), **merge_fable("B")}
-    astra = load_astra()
+    fable = {**merge_fable(P2, "A"), **merge_fable(P2, "B")}
+    astra = load_astra(P2)
     (P2 / "reference_astra.json").write_text(json.dumps([astra[c] for c in ids if c in astra], indent=1) + "\n")
     missing_f = [c for c in ids if c not in fable]
     missing_a = [c for c in ids if c not in astra]
@@ -172,28 +202,30 @@ def collect(args) -> None:
     if missing_f or missing_a:
         print("  missing fable:", missing_f[:10], " missing astra:", missing_a[:10])
     both = [c for c in ids if c in fable and c in astra]
-    table, k, po = agreement_table(fable, astra, both)
-    print(table_md(table, "Fable", "Astra"))
-    print(f"kappa {k:.3f}, raw agreement {po:.3f} on {len(both)} cases")
-    queue = []
+    ag = agreement([(fable_decision(fable[c]), astra[c]["decision"]) for c in both])
+    print(table_md(ag["table"], "Fable", "Astra"))
+    print(f"kappa {ag['kappa']:.3f}, raw agreement {ag['raw_agreement']:.3f} on {ag['n']} cases; "
+          f"decided-only kappa {ag['kappa_decided']:.3f} on {ag['decided_both']}; UNCERTAIN Fable {ag['uncertain_a']}, Astra {ag['uncertain_b']}")
+    by_id = {c["case_id"]: c for c in blind}
+    queue, agreed = [], []
     for c in blind:
         cid = c["case_id"]
         if cid not in fable or cid not in astra:
             continue
         fd, ad = fable_decision(fable[cid]), astra[cid]["decision"]
         if fd == ad != UNC:
+            agreed.append(cid)
             continue
-        fa = fable[cid]["partA"]
-        queue.append({"case_id": cid, "index": fable[cid]["index"], "intake": c["intake"],
-                      "clinician_working_diagnosis": c["clinician_working_diagnosis"],
-                      "fable": {"decision": fd, "dangers_to_consider": fa["dangers_to_consider"], "red_flags": fa["red_flags"],
-                                "evidence": fa.get("evidence", []), "confidence": fa["confidence"], "reasoning": fa["reasoning"]},
-                      "astra": {k2: astra[cid].get(k2) for k2 in ("decision", "dangers_to_consider", "red_flags", "evidence",
-                                                                 "confidence", "reasoning")}})
+        queue.append(queue_entry(c, fable[cid], astra[cid]))
     (P2 / "adjudication_queue.json").write_text(json.dumps(queue, indent=1) + "\n")
     kinds = Counter("split" if q["fable"]["decision"] != q["astra"]["decision"] and UNC not in (q["fable"]["decision"], q["astra"]["decision"])
                     else "uncertain" for q in queue)
     print(f"adjudication queue: {len(queue)} cases ({dict(kinds)}) -> {P2 / 'adjudication_queue.json'}")
+    # The seeded spot check of agreed cases, same fields as the queue, so the adjudicator can read both blind.
+    rng = random.Random(ph["seed"])
+    spot = sorted(rng.sample(agreed, min(SPOT_N, len(agreed))), key=lambda c: fable[c]["index"])
+    (P2 / "spot_check_queue.json").write_text(json.dumps([queue_entry(by_id[c], fable[c], astra[c]) for c in spot], indent=1) + "\n")
+    print(f"spot check: {len(spot)} agreed cases (seed {ph['seed']}) -> {P2 / 'spot_check_queue.json'}")
 
 
 # ---------------------------------------------------------------- stage: finalize
@@ -226,6 +258,20 @@ def build_reference(blind, fable, astra, adjudicated, unblinded, spot: set[str])
     return rows
 
 
+def reclassify(unblinded: dict[str, dict], phase: str) -> dict[str, dict]:
+    """`class_key` and the deciding rules recomputed under the rules file as it stands, from the phase's key."""
+    sys.path.insert(0, str(ROOT / "scripts" / "analysis"))
+    import v03_case_selection as cs
+    import v03_phase2_common as pc
+    s = pc.load_phase2("run_ids.txt", phase)
+    out = {}
+    for cid, u in unblinded.items():
+        sel = s.sel[cid]
+        out[cid] = {**u, "class_key": sel["class"], "rules": "|".join(sorted(cs.class_tags(sel))), "reason": sel["reason"],
+                    "r10_targets": "|".join(sel["targets"])}
+    return out
+
+
 def agrees(r: dict) -> bool | None:
     """True/False for a decided kept case, None for UNCERTAIN or EXCLUDED."""
     if r["benchmark_class"] not in ("serious", "benign") or r["decision"] == UNC:
@@ -233,54 +279,80 @@ def agrees(r: dict) -> bool | None:
     return (r["benchmark_class"] == "serious") == (r["decision"] == ESC)
 
 
-def finalize(args) -> None:
-    blind = load_blind()
+def finalize(args, ph: dict) -> None:
+    P2 = ph["dir"]
+    out_dir = args.out or P2
+    out_dir.mkdir(parents=True, exist_ok=True)
+    blind = load_blind(P2)
     ids = [c["case_id"] for c in blind]
     fable = {**{r["case_id"]: r for r in read_jsonl(P2 / "reference_fable_A.jsonl")},
              **{r["case_id"]: r for r in read_jsonl(P2 / "reference_fable_B.jsonl")}}
     astra = {r["case_id"]: r for r in json.loads((P2 / "reference_astra.json").read_text())}
-    unblinded = {u["case_id"]: u for u in json.loads(Path(args.unblinded).read_text())}
+    unblinded = {u["case_id"]: u for u in json.loads(Path(args.unblinded or P2 / "cases_unblinded.json").read_text())}
+    if args.reclassify:
+        unblinded = reclassify(unblinded, args.phase)
     adjudicated = json.loads((P2 / "adjudications.json").read_text())
     if isinstance(adjudicated, list):
         adjudicated = {a["case_id"]: a for a in adjudicated}
-    table, k, po = agreement_table(fable, astra, ids)
     queue_ids = [cid for cid in ids if not (fable_decision(fable[cid]) == astra[cid]["decision"] != UNC)]
     missing_adj = [cid for cid in queue_ids if cid not in adjudicated]
     assert not missing_adj, f"adjudications missing for {missing_adj}"
     agreed_ids = [cid for cid in ids if cid not in queue_ids]
-    rng = random.Random(SPOT_SEED)
+    rng = random.Random(ph["seed"])
     spot = set(rng.sample(agreed_ids, min(SPOT_N, len(agreed_ids))))
     ref = build_reference(blind, fable, astra, adjudicated, unblinded, spot)
-    (P2 / "reference_adjudicated.jsonl").write_text("".join(json.dumps(r) + "\n" for r in ref))
+    (out_dir / "reference_adjudicated.jsonl").write_text("".join(json.dumps(r) + "\n" for r in ref))
+    head = (f"Freeze commit {ph['freeze']}; draw seed {ph['seed']} (docs/v0.3-case-selection-rules.md section 7). Script: "
+            f"`scripts/analysis/v03_phase2_validation.py`; cases from `scripts/analysis/v03_phase2_cases.py`. "
+            f"Reference: two blind Fable reviews with verified citations (A on cases 0-124, B on 125-249), a blind Astra "
+            f"review from knowledge (all 250), and a blind adjudication of every disagreement and every UNCERTAIN "
+            f"({len(queue_ids)} cases); the {len(agreed_ids)} agreed cases adopt the agreed decision, and {len(spot)} of them "
+            f"were spot-checked (seed {ph['seed']}). No reviewer saw the truth, the stratum, the rules or any model output.")
+    if args.reclassify:
+        head += (" POST HOC: the classes and deciding rules are recomputed under the rules file as it stands (rule X11 added "
+                 "after this phase was unblinded); the pre-registered result is the committed label_validation.md.")
+    title = f"# Phase {args.phase} label validation of the frozen case-selection rules" + (" (post hoc, rule X11)" if args.reclassify else "")
+    report(ref, ph["strata"], title, head, out_dir, phase=args.phase)
 
+
+# ---------------------------------------------------------------- the report (finalize and pooled)
+
+
+def report(ref: list[dict], strata: tuple, title: str, head: str, out_dir: Path, phase: str) -> None:
+    ids = [r["case_id"] for r in ref]
+    ag = agreement([(r["fable"], r["astra"]) for r in ref])
+    table, k, po = ag["table"], ag["kappa"], ag["raw_agreement"]
+    queued = [r for r in ref if r["source"] in ("adjudicated", "spot-check overturned")]
     out: dict = {"n": len(ref), "kappa": k, "raw_agreement": po, "confusion": {f"{a}|{b}": v for (a, b), v in table.items()},
-                 "adjudicated": len(queue_ids), "spot_check": sorted(spot), "decisions": dict(Counter(r["decision"] for r in ref))}
-    L = ["# Phase 2 label validation of the frozen case-selection rules", "",
-         f"Freeze commit 45a7599; draw seed 20261003 (docs/v0.3-case-selection-rules.md section 7). Script: "
-         f"`scripts/analysis/v03_phase2_validation.py`; cases from `scripts/analysis/v03_phase2_cases.py`. "
-         f"Reference: two blind Fable reviews with verified citations (A on cases 0-124, B on 125-249), a blind Astra "
-         f"review from knowledge (all 250), and a blind adjudication of every disagreement and every UNCERTAIN "
-         f"({len(queue_ids)} cases); the {len(agreed_ids)} agreed cases adopt the agreed decision, and {len(spot)} of them "
-         f"were spot-checked (seed {SPOT_SEED}). No reviewer saw the truth, the stratum, the rules or any model output.", ""]
+                 "adjudicated": len(queued), "decisions": dict(Counter(r["decision"] for r in ref))}
+    L = [title, "", head, ""]
 
-    # Criterion 4: reviewer agreement.
-    L += ["## Reviewer agreement (criterion 4: kappa >= 0.6)", "", table_md(table, "Fable", "Astra"), "",
+    # Criterion 4: reviewer agreement, with the Phase 2b reported measures.
+    L += ["## Reviewer agreement (criterion 4: kappa >= 0.6 on the three-way decision)", "", table_md(table, "Fable", "Astra"), "",
           f"Cohen's kappa {k:.3f}, raw agreement {po * 100:.1f}% ({int(round(po * len(ids)))} of {len(ids)}). "
-          f"**{'PASS' if k >= 0.6 else 'FAIL'}.**", ""]
-    out["criterion_4"] = {"kappa": k, "pass": k >= 0.6}
+          f"**{'PASS' if k >= 0.6 else 'FAIL'}.**", "",
+          "Reported measures (decision 14):", "",
+          f"- kappa on the {ag['decided_both']} cases both reviewers decided (ESCALATE/ROUTINE only): {ag['kappa_decided']:.3f}, "
+          f"raw agreement {100 * ag['raw_agreement_decided']:.1f}%;",
+          f"- UNCERTAIN rate: Fable {ag['uncertain_a']} of {len(ids)} ({pct(ag['uncertain_a'], len(ids))}), "
+          f"Astra {ag['uncertain_b']} of {len(ids)} ({pct(ag['uncertain_b'], len(ids))}).", ""]
+    out["criterion_4"] = {"kappa": k, "pass": k >= 0.6, "kappa_decided": ag["kappa_decided"], "decided_both": ag["decided_both"],
+                          "raw_agreement_decided": ag["raw_agreement_decided"],
+                          "uncertain_rate": {"fable": ag["uncertain_a"] / len(ids), "astra": ag["uncertain_b"] / len(ids)},
+                          "uncertain_count": {"fable": ag["uncertain_a"], "astra": ag["uncertain_b"]}}
 
     # Reference by stratum.
     by_stratum = defaultdict(Counter)
     for r in ref:
         by_stratum[r["stratum"]][r["decision"]] += 1
     L += ["## The reference by stratum", "", "| Stratum | n | ESCALATE | ROUTINE | UNCERTAIN | class under the key |", "|---|---|---|---|---|---|"]
-    for s in STRATA:
+    for s in strata:
         rows = [r for r in ref if r["stratum"] == s]
         cls = Counter(r["benchmark_class"] for r in rows)
         L.append(f"| {s} | {len(rows)} | {by_stratum[s][ESC]} | {by_stratum[s][ROU]} | {by_stratum[s][UNC]} | "
                  + ", ".join(f"{c} {n}" for c, n in sorted(cls.items())) + " |")
     L.append("")
-    out["by_stratum"] = {s: dict(by_stratum[s]) for s in STRATA}
+    out["by_stratum"] = {s: dict(by_stratum[s]) for s in strata}
 
     # Criterion 1: class agreement on decided kept cases.
     kept = [r for r in ref if r["benchmark_class"] in ("serious", "benign")]
@@ -303,18 +375,26 @@ def finalize(args) -> None:
     L += ["## Criterion 2: BENIGN >= 85% ROUTINE; each SERIOUS stratum >= 92% ESCALATE (among decided cases)", "",
           "| Stratum | decided | agree | rate [Wilson 95%] | target | result |", "|---|---|---|---|---|---|"]
     c2 = {}
-    for s in STRATA[:4]:
+    empty = []
+    for s in [x for x in strata if x != "excluded"]:
         rows = [r for r in ref if r["stratum"] == s and r["benchmark_class"] in ("serious", "benign")]
+        if not rows:  # a stratum with no kept case (the DXA-only stratum after rule X11) is not judged
+            empty.append(s)
+            continue
         dec = [r for r in rows if r["decision"] != UNC]
-        ag = [r for r in dec if agrees(r)]
+        ag2 = [r for r in dec if agrees(r)]
         target = 0.85 if s == "benign" else 0.92
-        rate = len(ag) / len(dec) if dec else 0.0
-        lo2, hi2 = wilson(len(ag), len(dec))
+        rate = len(ag2) / len(dec) if dec else 0.0
+        lo2, hi2 = wilson(len(ag2), len(dec))
         ok = rate >= target
-        c2[s] = {"decided": len(dec), "agree": len(ag), "rate": rate, "wilson": [lo2, hi2], "target": target, "pass": ok}
-        L.append(f"| {s} | {len(dec)} | {len(ag)} | {pct(len(ag), len(dec))} [{100 * lo2:.1f}, {100 * hi2:.1f}] | >= {int(target * 100)}% | {'PASS' if ok else 'FAIL'} |")
-    L += ["", f"Two BENIGN candidates (ddxplus_23603, ddxplus_68301) carry an R5-only target under the key and fall to EXCLUDED "
-              f"under X9; they are counted in the EXCLUDED stratum below, not here.", ""]
+        c2[s] = {"decided": len(dec), "agree": len(ag2), "rate": rate, "wilson": [lo2, hi2], "target": target, "pass": ok}
+        L.append(f"| {s} | {len(dec)} | {len(ag2)} | {pct(len(ag2), len(dec))} [{100 * lo2:.1f}, {100 * hi2:.1f}] | >= {int(target * 100)}% | {'PASS' if ok else 'FAIL'} |")
+    moved = [r for r in ref if r["stratum"] != "excluded" and r["benchmark_class"] == "excluded"]
+    if empty:
+        L.append(f"| {', '.join(empty)} | 0 | 0 | n/a | | not judged: no kept case (rule X11 excludes the stratum) |")
+    L += ["", (f"{len(moved)} drawn kept case(s) fall to EXCLUDED under the key (" + ", ".join(
+        f"{r['case_id']} by {r['rules'] or 'the key'}" for r in moved) + "); they are counted in the EXCLUDED stratum below, not here."
+        if moved else "Every drawn kept case keeps its class under the key."), ""]
     out["criterion_2"] = c2
 
     # Criterion 3: per rule.
@@ -328,20 +408,20 @@ def finalize(args) -> None:
     c3 = {}
     flagged = []
     for rule in sorted(per_rule, key=lambda x: (x[0] != "P", x)):
-        rows = per_rule[rule]
-        if rows[0]["benchmark_class"] == "excluded":
+        rows = [r for r in per_rule[rule] if r["benchmark_class"] != "excluded"]
+        if not rows:
             continue
         dec = [r for r in rows if r["decision"] != UNC]
-        ag = [r for r in dec if agrees(r)]
+        ag3 = [r for r in dec if agrees(r)]
         cnt = Counter(r["decision"] for r in rows)
-        rate = len(ag) / len(dec) if dec else 0.0
+        rate = len(ag3) / len(dec) if dec else 0.0
         judged = len(rows) >= 5
         ok = rate >= 0.80
         if judged and not ok:
             flagged.append(rule)
-        c3[rule] = {"cases": len(rows), "decided": len(dec), "agree": len(ag), "rate": rate, "judged": judged, "pass": ok,
+        c3[rule] = {"cases": len(rows), "decided": len(dec), "agree": len(ag3), "rate": rate, "judged": judged, "pass": ok,
                     "decisions": dict(cnt)}
-        L.append(f"| {rule} | {len(rows)} | {len(dec)} | {len(ag)} | {pct(len(ag), len(dec))} | {cnt[ESC]} / {cnt[ROU]} / {cnt[UNC]} | "
+        L.append(f"| {rule} | {len(rows)} | {len(dec)} | {len(ag3)} | {pct(len(ag3), len(dec))} | {cnt[ESC]} / {cnt[ROU]} / {cnt[UNC]} | "
                  f"{('PASS' if ok else 'FAIL, flagged for demotion') if judged else 'reported only (< 5 cases)'} |")
     L += ["", ("Rules flagged for demotion to EXCLUDE: " + ", ".join(flagged) + ".") if flagged else
           "No rule with 5 or more fresh cases falls below 80% agreement.", ""]
@@ -377,22 +457,22 @@ def finalize(args) -> None:
         by_cond[(r["true_condition"], r["truth_tier"], r["benchmark_class"])].append(r)
     for (cond, tier, cls), rows in sorted(by_cond.items(), key=lambda kv: (kv[0][2], kv[0][1], kv[0][0])):
         cc = Counter(r["decision"] for r in rows)
-        ag = sum(1 for r in rows if agrees(r))
-        L.append(f"| {cond} | {tier} | {cls} | {len(rows)} | {cc[ESC]} | {cc[ROU]} | {cc[UNC]} | {ag} |")
+        ag4 = sum(1 for r in rows if agrees(r))
+        L.append(f"| {cond} | {tier} | {cls} | {len(rows)} | {cc[ESC]} | {cc[ROU]} | {cc[UNC]} | {ag4} |")
     L.append("")
 
     # The disagreeing kept cases.
     bad = [r for r in kept if agrees(r) is False]
     L += [f"## Kept cases where the reference disagrees with the class ({len(bad)})", "",
           "| Idx | Case | Truth (tier) | Stratum | Rules | Class | Reference (conf.) | Source | Rationale |", "|---|---|---|---|---|---|---|---|---|"]
-    for r in sorted(bad, key=lambda r: r["index"]):
-        L.append(f"| {r['index']} | {r['case_id']} | {r['true_condition']} ({r['truth_tier']}) | {r['stratum']} | {r['rules'] or '-'} | "
+    for r in sorted(bad, key=lambda r: (r.get("phase", ""), r["index"])):
+        L.append(f"| {r.get('phase', '')}{r['index']} | {r['case_id']} | {r['true_condition']} ({r['truth_tier']}) | {r['stratum']} | {r['rules'] or '-'} | "
                  f"{r['benchmark_class'].upper()} | {r['decision']} ({r['confidence']}) | {r['source']} | {r['rationale']} |")
     L.append("")
     unc = [r for r in kept if r["decision"] == UNC]
     L += [f"## Kept cases left UNCERTAIN ({len(unc)})", "", "| Idx | Case | Truth (tier) | Stratum | Rules | Class | Rationale |", "|---|---|---|---|---|---|---|"]
-    for r in sorted(unc, key=lambda r: r["index"]):
-        L.append(f"| {r['index']} | {r['case_id']} | {r['true_condition']} ({r['truth_tier']}) | {r['stratum']} | {r['rules'] or '-'} | "
+    for r in sorted(unc, key=lambda r: (r.get("phase", ""), r["index"])):
+        L.append(f"| {r.get('phase', '')}{r['index']} | {r['case_id']} | {r['true_condition']} ({r['truth_tier']}) | {r['stratum']} | {r['rules'] or '-'} | "
                  f"{r['benchmark_class'].upper()} | {r['rationale']} |")
     L.append("")
 
@@ -402,64 +482,81 @@ def finalize(args) -> None:
           f"| 1. Class agreement on decided kept cases | {'PASS' if passes['1'] else 'FAIL'}: {pct(len(agree), len(decided))} [{100 * lo:.1f}, {100 * hi:.1f}] |",
           f"| 2. Per-stratum agreement | {'PASS' if passes['2'] else 'FAIL'}: " + "; ".join(f"{s} {pct(v['agree'], v['decided'])}" for s, v in c2.items()) + " |",
           f"| 3. Per-rule agreement (>= 5 cases) | {'PASS' if passes['3'] else 'FAIL'}: " + (", ".join(flagged) + " flagged" if flagged else "no rule flagged") + " |",
-          f"| 4. Reviewer kappa | {'PASS' if passes['4'] else 'FAIL'}: {k:.3f} |",
+          f"| 4. Reviewer kappa (three-way) | {'PASS' if passes['4'] else 'FAIL'}: {k:.3f} |",
+          f"| 4 (reported). Kappa on cases both reviewers decided; UNCERTAIN rate | {ag['kappa_decided']:.3f} on {ag['decided_both']}; "
+          f"Fable {pct(ag['uncertain_a'], len(ids))}, Astra {pct(ag['uncertain_b'], len(ids))} |",
           f"| 5. EXCLUDED stratum (reported) | ESCALATE {pct(cnt[ESC], len(exc))}, ROUTINE {pct(cnt[ROU], len(exc))}, UNCERTAIN {pct(cnt[UNC], len(exc))}, split {pct(len(split), len(exc))} |",
-          "", "Section 7 says failing criterion 1 or 2 means the slice is not certified and Phase 2 repeats on seed 20261004; "
-              "a rule flagged under criterion 3 is demoted to EXCLUDE. This document reports; it changes no rule.", ""]
+          "", "Section 7 says failing criterion 1 or 2 means the slice is not certified; a rule flagged under criterion 3 is demoted to "
+              "EXCLUDE. This document reports; it changes no rule.", ""]
     out["passes"] = passes
 
     # Summary, from the numbers above, placed after the heading paragraph.
-    dxa = c2["serious_dxa_only"]
-    dxa_rows = [r for r in ref if r["stratum"] == "serious_dxa_only"]
-    dxa_truths = Counter(r["true_condition"] for r in dxa_rows)
-    dxa_targets = Counter(r["r10_targets"] for r in dxa_rows)
-    tier1_rou = Counter(r["true_condition"] for r in ref if r["stratum"] == "serious_tier1" and r["decision"] == ROU)
-    splits = table[(ESC, ROU)] + table[(ROU, ESC)]
-    f_unc = sum(table[(UNC, b)] for b in DECISIONS)
-    a_unc = sum(table[(a, UNC)] for a in DECISIONS)
-    exc_conf4 = [rule for rule, v in c5["per_rule"].items() if v["candidate_patch"]]
+    worst = min(c2.items(), key=lambda kv: kv[1]["rate"]) if c2 else None
     ben_esc = [r for r in ref if r["benchmark_class"] == "benign" and r["decision"] == ESC]
+    ser_rou = Counter(f"{r['true_condition']} ({r['stratum']})" for r in ref if r["benchmark_class"] == "serious" and r["decision"] == ROU)
+    exc_conf4 = [rule for rule, v in c5["per_rule"].items() if v["candidate_patch"]]
     summary = [
         "## Summary", "",
-        f"1. **Criterion 1 passes: the rules' class agrees with the blind reference on {len(agree)} of {len(decided)} decided kept cases "
-        f"({pct(len(agree), len(decided))}, Wilson lower bound {100 * lo:.1f}%).** The layer-a and UPGRADE rules hold on fresh cases: "
-        f"every rule with 5 or more cases agrees on 100% of them (criterion 3 passes, no rule flagged), and the BENIGN stratum is "
-        f"{pct(c2['benign']['agree'], c2['benign']['decided'])} ROUTINE.",
-        f"2. **Criterion 2 fails on one stratum: SERIOUS by a DXA-only target is {pct(dxa['agree'], dxa['decided'])} ESCALATE against the 92% target.** "
-        f"After the red-herring rule the stratum is " + ", ".join(f"{c} {n}" for c, n in dxa_truths.most_common()) + " with targets "
-        + ", ".join(f"{t} {n}" for t, n in dxa_targets.most_common()) + f"; the reference keeps {dxa['decided'] - dxa['agree']} routine, because a "
-        f"panic attack in a young adult with chronic anxiety and no cardiac risk factor is closed by an office ECG and vitals (HEART age 0; NICE CG113). "
-        f"Section 7 says a failing stratum's rules go back to EXCLUDE and Phase 2 repeats on seed 20261004; this document changes nothing.",
-        f"3. **The tier-1 stratum sits exactly on its 92% target ({pct(c2['serious_tier1']['agree'], c2['serious_tier1']['decided'])}).** "
-        "The reference keeps routine " + ", ".join(f"{n} {c}" for c, n in tier1_rou.most_common()) + " cases: palpitations with light-headedness "
-        "on caffeine, energy drinks, stimulants or decongestants, without chest pain or syncope, which the audit also kept routine (case 36). "
-        "The condition table lists PSVT as INCLUDE; this is the one tier-1 condition the reference does not treat as an escalation by default.",
-        f"4. **Criterion 4 fails: Cohen's kappa is {k:.3f} (raw agreement {100 * po:.1f}%), below 0.6.** The disagreement is almost entirely one "
-        f"reviewer's UNCERTAIN against the other's decision (Fable {f_unc} UNCERTAIN, Astra {a_unc}); only {splits} of {len(ids)} cases are outright "
-        f"ESCALATE/ROUTINE splits. The adjudication decided {len(queue_ids) - out['decisions'].get(UNC, 0)} of the {len(queue_ids)} queued cases; "
-        f"{out['decisions'].get(UNC, 0)} stay UNCERTAIN.",
+        f"1. **Criterion 1 {'passes' if c1 else 'fails'}: the rules' class agrees with the blind reference on {len(agree)} of {len(decided)} "
+        f"decided kept cases ({pct(len(agree), len(decided))}, Wilson lower bound {100 * lo:.1f}%).**",
+        f"2. **Criterion 2 {'passes in every stratum' if passes['2'] else 'fails'}: " + "; ".join(
+            f"{s} {pct(v['agree'], v['decided'])}" for s, v in c2.items()) + "."
+        + (f"** The lowest stratum is {worst[0]} at {pct(worst[1]['agree'], worst[1]['decided'])}." if worst else "**")
+        + (" SERIOUS cases the reference keeps routine: " + ", ".join(f"{n} {c}" for c, n in ser_rou.most_common()) + "." if ser_rou else "")
+        + (" BENIGN cases it escalates: " + ", ".join(f"{r['true_condition']} at index {r['index']}" for r in ben_esc) + "." if ben_esc else ""),
+        f"3. **Criterion 3 {'passes' if passes['3'] else 'fails'}: " + ("no rule with 5 or more fresh cases falls below 80% agreement.**"
+                                                                      if not flagged else ", ".join(flagged) + " flagged for demotion.**"),
+        f"4. **Criterion 4 {'passes' if passes['4'] else 'fails'}: three-way kappa {k:.3f} (raw agreement {100 * po:.1f}%).** On the "
+        f"{ag['decided_both']} cases both reviewers decided, kappa is {ag['kappa_decided']:.3f} (raw agreement "
+        f"{100 * ag['raw_agreement_decided']:.1f}%); Fable said UNCERTAIN on {pct(ag['uncertain_a'], len(ids))} of cases and Astra on "
+        f"{pct(ag['uncertain_b'], len(ids))}. The adjudication decided {len(queued) - out['decisions'].get(UNC, 0)} of the {len(queued)} "
+        f"queued cases; {out['decisions'].get(UNC, 0)} stay UNCERTAIN.",
         f"5. **The EXCLUDED stratum is {pct(cnt[ESC], len(exc))} ESCALATE, {pct(cnt[ROU], len(exc))} ROUTINE, {pct(cnt[UNC], len(exc))} UNCERTAIN, "
         f"and the reviewers split on {pct(len(split), len(exc))}.** " + (
             "Exclusion rules whose cases are ESCALATE at confidence 4 or more in at least 80% of draws (candidate PATCH for a later phase): "
             + ", ".join(f"{r} ({c5['per_rule'][r]['escalate_conf4']} of {c5['per_rule'][r]['cases']})" for r in exc_conf4) + "."
-            if exc_conf4 else "No exclusion rule reaches the 80% ESCALATE-at-confidence-4 mark.")
-        + f" Among BENIGN cases the reference escalates {len(ben_esc)} (listed under the disagreements below): " + ", ".join(
-            f"{r['true_condition']} at index {r['index']}" for r in ben_esc) + ".",
+            if exc_conf4 else "No exclusion rule reaches the 80% ESCALATE-at-confidence-4 mark."),
         "",
     ]
     L[4:4] = summary
-    (P2 / "label_validation.md").write_text("\n".join(L))
-    (P2 / "label_validation.json").write_text(json.dumps(out, indent=1) + "\n")
-    print("\n".join(L[-9:-2]))
-    print(f"wrote {P2 / 'label_validation.md'}")
+    (out_dir / "label_validation.md").write_text("\n".join(L))
+    (out_dir / "label_validation.json").write_text(json.dumps(out, indent=1) + "\n")
+    print("\n".join(summary[2:-1]))
+    print(f"wrote {out_dir / 'label_validation.md'}")
+
+
+# ---------------------------------------------------------------- stage: pooled
+
+
+def pooled(args) -> None:
+    """Phase 2 (post hoc under the current rules) and Phase 2b as one set: the secondary analysis."""
+    srcs = {"2": POST_HOC_DIR / "reference_adjudicated.jsonl", "2b": PHASES["2b"]["dir"] / "reference_adjudicated.jsonl"}
+    ref = []
+    for phase, p in srcs.items():
+        for line in p.read_text().splitlines():
+            if line.strip():
+                ref.append({**json.loads(line), "phase": f"P{phase}:"})
+    strata = tuple(dict.fromkeys(list(PHASES["2"]["strata"]) + list(PHASES["2b"]["strata"])))
+    head = (f"SECONDARY, POOLED: the Phase 2 reference ({srcs['2'].relative_to(ROOT)}, classes recomputed post hoc under rule X11) "
+            f"and the Phase 2b reference ({srcs['2b'].relative_to(ROOT)}) as one set of {len(ref)} cases. The pre-registered "
+            f"result for each phase is its own label_validation.md; this file pools them for precision, not for the verdict. "
+            f"Index prefix P2: or P2b: names the phase.")
+    POOLED_DIR.mkdir(parents=True, exist_ok=True)
+    report(ref, strata, "# Phase 2 and Phase 2b pooled label validation (secondary)", head, POOLED_DIR, phase="pooled")
 
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("stage", choices=("collect", "finalize"))
-    ap.add_argument("--unblinded", default=str(P2 / "cases_unblinded.json"))
+    ap.add_argument("stage", choices=("collect", "finalize", "pooled"))
+    ap.add_argument("--phase", choices=tuple(PHASES), default="2b")
+    ap.add_argument("--unblinded", default=None)
+    ap.add_argument("--reclassify", action="store_true", help="recompute class_key under the current rules (post hoc)")
+    ap.add_argument("--out", type=Path, default=None)
     args = ap.parse_args()
-    (collect if args.stage == "collect" else finalize)(args)
+    if args.stage == "pooled":
+        pooled(args)
+    else:
+        (collect if args.stage == "collect" else finalize)(args, PHASES[args.phase])
 
 
 if __name__ == "__main__":

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Score the Phase 2 model run (docs/v0.3-case-selection-rules.md section 7) without the reference.
+Score the Phase 2 or Phase 2b model run (docs/v0.3-case-selection-rules.md section 7) without the reference.
 
-The seven models x arms 4aj and 4bj on the 250 Phase 2 cases (data/test_sets/eval-v03-phase2.case_ids.txt),
+The seven models x arms 4aj and 4bj on the 250 cases of the phase (data/test_sets/eval-v03-phase2*.case_ids.txt),
 under the selection rules' classes and credits with amendments A3-A5 (scripts/analysis/v03_phase2_common.py).
 We report the primary score (`score_z_bal`, A2: blanket escalation with one fixed flag scores 0, perfect 100)
 with its 95% interval (condition bootstrap, 2,000 draws, seed 20260923), U, O, the partials split by reason
@@ -10,14 +10,16 @@ kind, the paired 4aj minus 4bj differences, every model pair within an arm, and 
 CCSR off-list tiers included, and the zero reference pinned to I21. Precision against the reference is
 scripts/analysis/v03_phase2_precision.py, once the reference exists.
 
-Outputs: results/phase2/model_scores.md and results/phase2/model_scores.json (aggregates only; the model
-outputs stay in results/phase2/runs/, which git ignores).
+Outputs: <out>/model_scores.md and <out>/model_scores.json (aggregates only; the model outputs stay in the
+phase's runs directory, which git ignores). Default <out> is the phase's results directory; --out overrides it
+(the post-hoc Phase 2 rescoring under rule X11 goes to results/phase2/post_hoc_x11/).
 
-Usage: python3 scripts/analysis/v03_phase2_scores.py
+Usage: python3 scripts/analysis/v03_phase2_scores.py --phase 2b [--out DIR]
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 import sys
 from collections import Counter
@@ -28,8 +30,6 @@ sys.path.insert(0, str(ROOT / "scripts" / "analysis"))
 
 import v03_phase2_common as pc  # noqa: E402
 from v03_phase2_common import vr  # noqa: E402
-
-OUT = ROOT / "results" / "phase2"
 
 
 def v(m: dict) -> str:
@@ -43,41 +43,50 @@ def ci(m: dict) -> str:
 
 
 def main() -> None:
-    s = pc.load_phase2()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--phase", choices=tuple(pc.PHASES), default="2b")
+    ap.add_argument("--out", type=Path)
+    ap.add_argument("--label", default="", help="a note for the title, e.g. 'post hoc, rule X11'")
+    args = ap.parse_args()
+    ph = pc.PHASES[args.phase]
+    OUT, RUNS, STEM = args.out or ph["out"], ph["runs"], ph["stem"]
+    s = pc.load_phase2(phase=args.phase)
     head_rule, ccsr_rule = vr.TierFileRule(), vr.TierFileRule(include_ccsr=True)
-    runs = pc.load_runs(s, head_rule, pc.PHASE2_RUNS)
+    runs = pc.load_runs(s, head_rule, RUNS)
     assert len(runs) == len(pc.MODELS) * len(pc.ARMS), f"{len(runs)} prediction files; expected {len(pc.MODELS) * len(pc.ARMS)}"
     recs = pc.records(s, runs, head_rule)
     head = pc.score(s, recs)
-    sens_ccsr = pc.score(s, pc.records(s, pc.load_runs(s, ccsr_rule, pc.PHASE2_RUNS), ccsr_rule))
+    sens_ccsr = pc.score(s, pc.records(s, pc.load_runs(s, ccsr_rule, RUNS), ccsr_rule))
     sens_i21 = pc.score(s, recs, zero_code="I21")
-    prov = json.loads((pc.PHASE2_RUNS / "provenance.json").read_text())
+    prov = json.loads((RUNS / "provenance.json").read_text())
     parse = {f"{pc.sb.short(m)}|{pc.sb.ARM_LABELS[a]}": p for (m, a), (_, _, p) in runs.items()}
     strata = Counter(c["phase2_stratum"] for c in s.ab.cases)
-    meta = json.loads((pc.TS / f"{pc.STEM}.json").read_text())["metadata"]
+    meta = json.loads((pc.TS / f"{STEM}.json").read_text())["metadata"]
 
     rows = head["rows"]
     order = sorted({m for m, _ in rows}, key=lambda m: -(rows[(m, "4aj")]["score_z_bal"]["value"] or -1e9))
     z, zi = head["zero_reference"], sens_i21["zero_reference"]
     spend = sum(x["usd"] for x in prov.get("account_spend_usd", []))
-    files = sorted(pc.PHASE2_RUNS.glob("*-v7a4?j.json"))
+    files = sorted(RUNS.glob("*-v7a4?j.json"))
     tokens_cost = sum(((x.get("usage") or {}).get("cost") or 0) for f in files
                       for x in json.loads(f.read_text())["predictions"] if isinstance(x, dict))
-    L = ["# Phase 2 model scores (arms 4aj and 4bj)", "",
+    replaced = (f" {len(meta['dxa_only_replaced'])} of the 20 drawn DXA-only cases had no DXA-only target left once the key was "
+                f"built (red herrings), so the next cases in the stratum's shuffled pool replaced them (section 7); the models also "
+                f"answered the {len(meta['dxa_only_replaced'])} replaced cases, which are not scored here."
+                if meta.get("dxa_only_replaced") else "")
+    L = [f"# Phase {args.phase} model scores (arms 4aj and 4bj{', ' + args.label if args.label else ''})", "",
          "Blinded to the reference: these are benchmark scores only. Precision against the adjudicated reference comes from "
-         "`scripts/analysis/v03_phase2_precision.py` once `results/phase2/reference_adjudicated.jsonl` exists.", "",
-         f"- **Cases:** the 250 Phase 2 cases (seed 20261003; `data/test_sets/{pc.STEM}.case_ids.txt`, built by "
-         f"`scripts/build_v03_phase2_set.py`). Strata: " + ", ".join(f"{k} {n}" for k, n in strata.items()) + ". "
-         f"{len(meta['dxa_only_replaced'])} of the 20 drawn DXA-only cases had no DXA-only target left once the key was built "
-         f"(red herrings), so the next cases in the stratum's shuffled pool replaced them (section 7); the models also answered the "
-         f"{len(meta['dxa_only_replaced'])} replaced cases, which are not scored here.",
+         f"`scripts/analysis/v03_phase2_precision.py` once `{ph['out'].relative_to(ROOT)}/reference_adjudicated.jsonl` exists.", "",
+         f"- **Cases:** the 250 Phase {args.phase} cases (seed {meta['seed']}; `data/test_sets/{STEM}.case_ids.txt`, built by "
+         f"`scripts/build_v03_phase2_set.py --phase {args.phase}`). Strata: " + ", ".join(f"{k} {n}" for k, n in strata.items()) + "."
+         + replaced,
          f"- **Classes** (selection rules, key targets): {head['serious']} SERIOUS, {head['benign']} BENIGN, "
          f"{s.ab.key.n - head['headline_cases']} EXCLUDED; the headline covers {head['headline_cases']} cases.",
          f"- **Scoring:** amendments A3-A5 with the selection rules' classes and credits (A4 truth partials). Off-list tiers: "
          f"NHAMCS-rated rows only (A5). Zero reference (A2): {z['code']} ({z['condition']}, a target on {z['serious_cases']} "
          f"SERIOUS cases).",
          f"- **Run:** `inference/run_config_v03_abj.json` (as the 4aj and 4bj runs on the 150), prompt v7a4aj and v7a4bj with the "
-         f"justification line, via OpenRouter; provenance in `results/phase2/runs/provenance.json`. Token cost {tokens_cost:.2f} USD "
+         f"justification line, via OpenRouter; provenance in `{RUNS.relative_to(ROOT)}/provenance.json`. Token cost {tokens_cost:.2f} USD "
          f"over {len(files)} files and every case the models answered (account spend delta {spend:.2f} USD). "
          f"A json_parse_failure left after the one retry is scored as unreadable (routine), as on the 150 (spec section 9); "
          f"the runner lists those files as incomplete in the provenance, and we did not re-run them.", "",

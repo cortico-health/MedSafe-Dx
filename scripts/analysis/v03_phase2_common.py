@@ -40,6 +40,9 @@ TS = ROOT / "data" / "test_sets"
 STEM = "eval-v03-phase2"
 PHASE2_RUNS = ROOT / "results" / "phase2" / "runs"
 AUDIT_RUNS = ROOT / "results" / "v03" / "ab" / "runs"
+# Phase 2 (seed 20261003) and Phase 2b (seed 20261004, decision 13): the set stem, the run directory and the results directory.
+PHASES = {"2": {"stem": "eval-v03-phase2", "runs": PHASE2_RUNS, "out": ROOT / "results" / "phase2"},
+          "2b": {"stem": "eval-v03-phase2b", "runs": ROOT / "results" / "phase2b" / "runs", "out": ROOT / "results" / "phase2b"}}
 MODELS = ("openai/gpt-5.6-terra", "google/gemini-3.1-pro-preview", "anthropic/claude-sonnet-4.6", "z-ai/glm-5.3",
           "openai/gpt-oss-120b", "anthropic/claude-haiku-4.5", "meta-llama/llama-3.1-8b-instruct")
 ARMS = ("v7a4aj", "v7a4bj")
@@ -69,12 +72,22 @@ def _scored(name: str, ids: list[str], keys, cases: list[dict]) -> ScoredSet:
     return ScoredSet(ab, sel, fa.RefMatcher(ab), name)
 
 
-def load_phase2(ids_file: str = "case_ids.txt") -> ScoredSet:
-    """The Phase 2 set: the 250 of case_ids.txt, or every case in the file with ids_file="run_ids.txt"."""
-    keys = ak.load_key(TS / f"{STEM}.key.csv", TS / f"{STEM}.key.sha256")
-    ids = (TS / f"{STEM}.{ids_file}").read_text().split()
-    by_id = {c["case_id"]: c for c in json.loads((TS / f"{STEM}.json").read_text())["cases"]}
-    return _scored("phase2", ids, keys, [by_id[c] for c in ids])
+def load_phase2(ids_file: str = "case_ids.txt", phase: str = "2") -> ScoredSet:
+    """The Phase 2 or 2b set: the 250 of case_ids.txt, or every case in the file with ids_file="run_ids.txt"."""
+    stem = PHASES[phase]["stem"]
+    keys = ak.load_key(TS / f"{stem}.key.csv", TS / f"{stem}.key.sha256")
+    ids = (TS / f"{stem}.{ids_file}").read_text().split()
+    by_id = {c["case_id"]: c for c in json.loads((TS / f"{stem}.json").read_text())["cases"]}
+    return _scored(f"phase{phase}", ids, keys, [by_id[c] for c in ids])
+
+
+def merge(a: ScoredSet, b: ScoredSet, name: str = "pooled") -> ScoredSet:
+    """The two sets as one (Phase 2 and Phase 2b pooled, the secondary analysis): the case ids concatenated, the keys
+    and selections joined; records scored per set can be scored against it because `score` keys them by case id."""
+    keys = {k.case_id: k for k in a.ab.key.keys} | {k.case_id: k for k in b.ab.key.keys}
+    ids = list(a.ab.key.case_ids) + [c for c in b.ab.key.case_ids if c not in set(a.ab.key.case_ids)]
+    cases = {c["case_id"]: c for c in a.ab.cases} | {c["case_id"]: c for c in b.ab.cases}
+    return _scored(name, ids, keys, [cases[c] for c in ids])
 
 
 def load_audit150() -> ScoredSet:
@@ -96,16 +109,22 @@ def subset(s: ScoredSet, ids: list[str]) -> ScoredSet:
 # ---------------------------------------------------------------- runs
 
 
-def load_runs(s: ScoredSet, rule, runs_dir: Path, models=MODELS, arms=ARMS) -> dict:
-    """(model, arm) -> (Answers, Outcome, parse stats) for every prediction file present."""
+def load_runs(s: ScoredSet, rule, runs_dir: Path | list[Path], models=MODELS, arms=ARMS) -> dict:
+    """(model, arm) -> (Answers, Outcome, parse stats) for every prediction file present. A list of directories
+    (the pooled analysis) concatenates each model x arm file across them; the first prediction per case wins."""
+    dirs = runs_dir if isinstance(runs_dir, list) else [runs_dir]
     out = {}
     for model in models:
         for arm in arms:
-            f = runs_dir / f"{model.replace('/', '-')}-{arm}.json"
-            if not f.exists():
+            files = [d / f"{model.replace('/', '-')}-{arm}.json" for d in dirs]
+            files = [f for f in files if f.exists()]
+            if len(files) < len(dirs):
                 continue
-            preds, meta = sb.load_predictions(f)
-            assert meta.get("prompt_version") == arm and meta.get("model") == model, f
+            preds = []
+            for f in files:
+                p, meta = sb.load_predictions(f)
+                assert meta.get("prompt_version") == arm and meta.get("model") == model, f
+                preds += p
             a = sb.row_answers(preds, arm, s.ab, f"{model}|{arm}")
             o = vr.outcomes(a, s.ab, rule)
             ids = set(s.ab.key.case_ids)

@@ -30,8 +30,17 @@ Amendment A5 (spec/v0.3-scoring.md, a scoring-layer change after the freeze): th
 off-list tiers NHAMCS rated (`vr.TierFileRule()`); two sensitivity rows rescore the 150 with the CCSR
 tiers included (`include_ccsr=True`) and with the zero reference pinned to I21.
 
-The Phase 2 draw (`PHASE2_STRATA`, `RULE_MIN`, `PHASE2_SEED`) takes never-reviewed cases by stratum,
-filling each named rule's minimum first, so every rule under test has enough fresh cases.
+Rule X11 (decision 12, 2026-09-27, after Phase 2 and before the Phase 2b draw): a tier-3 truth that no
+layer-a rule or UPGRADE reached, whose only serious target is DXA-derived, is EXCLUDED. The Phase 2
+reference kept 8 of the 20 such cases routine (60% ESCALATE against the 92% target), so the class was
+demoted rather than refitted. `dxa_only_target` in the namespace is set after layer b.
+
+The Phase 2b draw (`PHASE2B_STRATA`, `RULE_MIN`, `PHASE2B_SEED`) takes never-reviewed cases by stratum,
+filling each named rule's minimum first, so every rule under test has enough fresh cases. It excludes
+every case Phase 2 reviewed or ran (`PHASE2_RUN_IDS`: the 250 and the 18 replaced DXA-only cases). The
+Phase 2 draw (`PHASE2_STRATA`, seed 20261003) is kept as committed in phase2_candidates.csv; it
+reproduces only under the rules frozen at 45a7599, because X11 moved the DXA-only pool into the
+excluded pool.
 
 Rule triggers are Python boolean expressions over a fixed namespace (`namespace()`): every DDXPlus
 evidence code as a presence flag, `age`, `sex`, `tier`, `truth`, the pain scales `intensity` and
@@ -73,8 +82,13 @@ V0_250 = ROOT / "data" / "test_sets" / "eval-250-v0.json"
 OUT = ROOT / "results" / "analysis" / "case_selection"
 
 SERIOUS, BENIGN, EXCLUDED = "SERIOUS", "BENIGN", "EXCLUDED"
-PHASE2_SEED = 20261003  # 20261001 drew the superseded 200-case design; 20261004 is reserved for a repeat draw
+PHASE2_SEED = 20261003  # 20261001 drew the superseded 200-case design
 PHASE2_STRATA = {"serious_tier1": 50, "serious_upgrade_or_flag": 70, "serious_dxa_only": 20, "benign": 60, "excluded": 50}
+# Phase 2b (decision 13): the DXA-only stratum is gone (rule X11), and its 20 cases go 10 to the tier-1 stratum and
+# 10 to the upgraded-or-flagged stratum. Every case Phase 2 reviewed or ran is excluded from the pool.
+PHASE2B_SEED = 20261004
+PHASE2B_STRATA = {"serious_tier1": 60, "serious_upgrade_or_flag": 80, "benign": 60, "excluded": 50}
+PHASE2_RUN_IDS = "eval-v03-phase2.run_ids.txt"
 # Minimum fresh cases per rule under test, filled first within the stratum the rule's cases fall in (a case
 # counts for every rule that decided its class, so chest-pain cases firing P12 and P13 count for both).
 RULE_MIN = {"P1": 8, "P2": 8, "P5": 8, "P7": 8, "P9": 8, "P12": 8, "P13": 8}
@@ -131,7 +145,7 @@ def namespace(evidences: list[str], age: int, sex: str, truth: str, tier: int, a
         "tearing_pain": "V_71" in ak2.values_of(ev, "E_54"),
         "back_radiation": bool(ak2.values_of(ev, "E_57") & BACK),
         "travel_west_africa": "V_1" in ak2.values_of(ev, "E_204"),
-        "r5_only": r5_only, "cardinal_absent": False,
+        "r5_only": r5_only, "cardinal_absent": False, "dxa_only_target": False,
         "_flags": ak2.red_flags(ev), "_base": base,
     })
     return ns
@@ -182,12 +196,13 @@ def select(rules: dict, tiers: dict, ns: dict, dxa_targets: list[tuple[str, bool
     if dropped:
         fired.append("D1")
     ns["r5_only"] = bool(kept_r5) and not kept_r10
+    ns["dxa_only_target"] = bool(kept_r10)  # rule X11 reads it on a tier-3 truth no layer-a rule or UPGRADE reached
     # Section-7 red flags still unresolved after layer a (a bleeding code a P-rule did not reach).
     flags = set(ns["_flags"])
     if flags & {"bleeding"} and any(p in fired for p in ("P1", "P2", "P3")):
         flags.discard("bleeding")
     ns["spec_red_flag"] = bool(flags)
-    # Layer c: exclusions (a layer-a upgrade wins over X6-X10; X4 and X5 judge the truth's own presentation).
+    # Layer c: exclusions (a layer-a upgrade wins over X6-X11; X4 and X5 judge the truth's own presentation).
     excluded_by = []
     for r in rules["by_layer"]["c"]:
         if in_scope(r, truth) and fires(r, ns):
@@ -218,9 +233,6 @@ def select(rules: dict, tiers: dict, ns: dict, dxa_targets: list[tuple[str, bool
         cls, bucket, why = EXCLUDED, "EXCLUDE", excluded_by[0]
     elif tier == 2:
         cls, bucket, why = EXCLUDED, "EXCLUDE", "X10"
-    elif kept_r10:
-        cls, bucket, why = SERIOUS, ("PATCH" if dropped else "INCLUDE"), "dxa-only"
-        truth_credit = False
     elif ns["spec_red_flag"] or ns["r5_only"]:
         cls, bucket, why = EXCLUDED, "EXCLUDE", "X9"
     else:
@@ -529,6 +541,92 @@ def kept_scores(ab, sel, recs, rm, vr, zero_code: str | None = None) -> dict:
             "rows": rows, "paired_4aj_minus_4bj": paired, "anchor_check": anchor}
 
 
+# ---------------------------------------------------------------- the never-reviewed pool and the stratified draw
+
+
+def reviewed_ids(phase: str = "2b") -> set[str]:
+    """Every case anyone has read or run: the 470, the v0 250, the pools and their controls, the 150, and for Phase 2b
+    the 268 Phase 2 cases (the 250 reviewed and the 18 replaced DXA-only cases the models answered)."""
+    names = list(REVIEWED_ID_FILES) + ([PHASE2_RUN_IDS] if phase == "2b" else [])
+    out = set()
+    for name in names:
+        out |= {l.strip() for l in (ROOT / "data" / "test_sets" / name).read_text().splitlines() if l.strip()}
+    out |= {c["case_id"] for c in json.loads(V0_250.read_text())["cases"]}
+    return out
+
+
+def stratum_of(s: dict) -> str:
+    if s["class"] == SERIOUS and (s["reason"].startswith("P") or s["upgraded"]):
+        return "serious_upgrade_or_flag"
+    if s["class"] == SERIOUS:
+        return "serious_tier1"
+    if s["class"] == BENIGN:
+        return "benign"
+    return "excluded"
+
+
+def build_pool(rules, tiers, codes, reviewed: set[str]):
+    """One pass over the adult test split with DXA candidates at p >= 10% (no key): per-condition counts, rules
+    fired, the never-reviewed pool by stratum and the class-deciding rule tags per case."""
+    tier1 = sorted(c for c, t in tiers.items() if t == 1)
+    by = defaultdict(Counter)
+    fired_full = Counter()
+    pool: dict[str, list[str]] = defaultdict(list)
+    tags: dict[str, set[str]] = {}
+    for i, row in read_test_split():
+        c = parse_row(row)
+        cid = f"ddxplus_{i}"
+        tier = tiers[c["truth"]]
+        ns = namespace(c["evidences"], c["age"], c["sex"], c["truth"], tier, codes)
+        cands = [(cond, True) for cond in tier1 if cond != c["truth"] and c["dxa"].get(cond, 0.0) >= 10.0]
+        s = select(rules, tiers, ns, cands)
+        k = by[c["truth"]]
+        k["n"] += 1
+        k[s["class"]] += 1
+        k[f"{s['bucket']}_{s['class']}"] += 1
+        if s["reason"] == "X11":
+            k["dxa_only"] += 1
+        if s["reason"].startswith("P"):
+            k["layer_a"] += 1
+        for f in set(s["fired"]) | set(s["excluded_by"]):
+            fired_full[f] += 1
+        if cid not in reviewed:
+            pool[stratum_of(s)].append(cid)
+            t = class_tags(s)
+            if t:
+                tags[cid] = t
+    return by, fired_full, pool, tags
+
+
+def draw_cases(pool: dict[str, list[str]], tags: dict[str, set[str]], seed: int, strata: dict[str, int],
+               rule_min: dict[str, int] = RULE_MIN) -> list[dict]:
+    """Stratified, seeded draw from the never-reviewed pool: within each stratum the named rules' minimums are filled
+    first, then the stratum is filled at random. Returns rows of stratum, case_id and the class-deciding rules."""
+    rng = random.Random(seed)
+    draw, drawn = [], set()
+    for stratum, n in strata.items():
+        ids = sorted(pool[stratum])
+        rng.shuffle(ids)
+        picked: list[str] = []
+        for rule_id, m in rule_min.items():
+            have = sum(1 for cid in picked if rule_id in tags.get(cid, ()))
+            for cid in ids:
+                if have >= m:
+                    break
+                if cid not in drawn and rule_id in tags.get(cid, ()):
+                    picked.append(cid)
+                    drawn.add(cid)
+                    have += 1
+        for cid in ids:
+            if len(picked) >= n:
+                break
+            if cid not in drawn:
+                picked.append(cid)
+                drawn.add(cid)
+        draw += [{"stratum": stratum, "case_id": cid, "rules": "|".join(sorted(tags.get(cid, ())))} for cid in picked]
+    return draw
+
+
 # ---------------------------------------------------------------- counts
 
 
@@ -543,7 +641,7 @@ def count_table(sel: dict[str, dict], tiers: dict) -> list[dict]:
             c["layer_a"] += 1
         if "D1" in s["fired"]:
             c["target_dropped"] += 1
-        if s["reason"] == "dxa-only":
+        if s["reason"] == "X11":
             c["dxa_only"] += 1
     rows = []
     for cond in sorted(by, key=lambda x: (tiers[x], x)):
@@ -551,7 +649,7 @@ def count_table(sel: dict[str, dict], tiers: dict) -> list[dict]:
         rows.append({"condition": cond, "tier": tiers[cond], "n": c["n"], "serious": c[SERIOUS], "benign": c[BENIGN],
                      "excluded": c[EXCLUDED], "include": c["INCLUDE_SERIOUS"] + c["INCLUDE_BENIGN"],
                      "patch": c["PATCH_SERIOUS"] + c["PATCH_BENIGN"], "layer_a_upgrades": c["layer_a"],
-                     "dxa_only_serious": c["dxa_only"], "target_dropped": c["target_dropped"]})
+                     "dxa_only_excluded": c["dxa_only"], "target_dropped": c["target_dropped"]})
     return rows
 
 
@@ -671,100 +769,39 @@ def main() -> None:
 
     # 3. The full adult test split (counts only; DXA-derived targets as candidates at p >= 10%, no red-herring rule).
     if not args.skip_full:
-        reviewed = set()
-        for name in REVIEWED_ID_FILES:
-            reviewed |= {l.strip() for l in (ROOT / "data" / "test_sets" / name).read_text().splitlines() if l.strip()}
-        reviewed |= {c["case_id"] for c in json.loads(V0_250.read_text())["cases"]}
-        tier1 = sorted(c for c, t in tiers.items() if t == 1)
-        by = defaultdict(Counter)
-        fired_full = Counter()
-        pool: dict[str, list[str]] = defaultdict(list)
-        tags: dict[str, set[str]] = {}
-        for i, row in read_test_split():
-            c = parse_row(row)
-            cid = f"ddxplus_{i}"
-            tier = tiers[c["truth"]]
-            ns = namespace(c["evidences"], c["age"], c["sex"], c["truth"], tier, codes)
-            cands = [(cond, True) for cond in tier1 if cond != c["truth"] and c["dxa"].get(cond, 0.0) >= 10.0]
-            s = select(rules, tiers, ns, cands)
-            k = by[c["truth"]]
-            k["n"] += 1
-            k[s["class"]] += 1
-            k[f"{s['bucket']}_{s['class']}"] += 1
-            if s["reason"] == "dxa-only":
-                k["dxa_candidate"] += 1
-            if s["reason"].startswith("P"):
-                k["layer_a"] += 1
-            for f in set(s["fired"]) | set(s["excluded_by"]):
-                fired_full[f] += 1
-            if cid not in reviewed:
-                if s["class"] == SERIOUS and s["reason"] == "dxa-only":
-                    pool["serious_dxa_only"].append(cid)
-                elif s["class"] == SERIOUS and (s["reason"].startswith("P") or s["upgraded"]):
-                    pool["serious_upgrade_or_flag"].append(cid)
-                elif s["class"] == SERIOUS:
-                    pool["serious_tier1"].append(cid)
-                elif s["class"] == BENIGN:
-                    pool["benign"].append(cid)
-                else:
-                    pool["excluded"].append(cid)
-                t = class_tags(s)
-                if t:
-                    tags[cid] = t
+        by, fired_full, pool, tags = build_pool(rules, tiers, codes, reviewed_ids(phase="2b"))
         rows_full = []
         for cond in sorted(by, key=lambda x: (tiers[x], x)):
             k = by[cond]
-            rows_full.append({"condition": cond, "tier": tiers[cond], "n": k["n"], "serious": k[SERIOUS] - k["dxa_candidate"],
-                              "dxa_candidate": k["dxa_candidate"], "benign": k[BENIGN], "excluded": k[EXCLUDED],
+            rows_full.append({"condition": cond, "tier": tiers[cond], "n": k["n"], "serious": k[SERIOUS],
+                              "dxa_only_excluded": k["dxa_only"], "benign": k[BENIGN], "excluded": k[EXCLUDED],
                               "layer_a_upgrades": k["layer_a"]})
         write_csv(OUT / "full_split_counts.csv", rows_full)
         pool_by_tag = Counter(t for s in tags.values() for t in s)
         summary["full_split"] = {"adults": sum(k["n"] for k in by.values()), "fired": dict(fired_full),
                                  "never_reviewed_pool": {k: len(v) for k, v in pool.items()},
                                  "never_reviewed_by_rule": {k: v for k, v in sorted(pool_by_tag.items())}}
-        # Phase 2 candidate draw: stratified, seeded, from cases never reviewed; within each stratum the named
-        # rules' minimums are filled first, then the stratum is filled at random. IDs only; nobody has read them.
-        rng = random.Random(PHASE2_SEED)
-        draw, drawn = [], set()
-        for stratum, n in PHASE2_STRATA.items():
-            ids = sorted(pool[stratum])
-            rng.shuffle(ids)
-            picked: list[str] = []
-            for rule_id, m in RULE_MIN.items():
-                have = sum(1 for cid in picked if rule_id in tags.get(cid, ()))
-                for cid in ids:
-                    if have >= m:
-                        break
-                    if cid not in drawn and rule_id in tags.get(cid, ()):
-                        picked.append(cid)
-                        drawn.add(cid)
-                        have += 1
-            for cid in ids:
-                if len(picked) >= n:
-                    break
-                if cid not in drawn:
-                    picked.append(cid)
-                    drawn.add(cid)
-            draw += [{"stratum": stratum, "case_id": cid, "rules": "|".join(sorted(tags.get(cid, ())))} for cid in picked]
-        write_csv(OUT / "phase2_candidates.csv", draw)
+        # Phase 2b candidate draw. IDs only; nobody has read them. phase2_candidates.csv (Phase 2) stays as committed.
+        draw = draw_cases(pool, tags, PHASE2B_SEED, PHASE2B_STRATA)
+        write_csv(OUT / "phase2b_candidates.csv", draw)
         by_rule = Counter(t for d in draw for t in d["rules"].split("|") if t)
-        summary["phase2"] = {"seed": PHASE2_SEED, "strata": PHASE2_STRATA, "rule_minimums": RULE_MIN, "drawn": len(draw),
-                             "by_stratum": dict(Counter(d["stratum"] for d in draw)),
-                             "by_rule": {k: v for k, v in sorted(by_rule.items())},
-                             # A minimum the pool cannot meet is a shortfall: the rule decides too few classes to test.
-                             "shortfall": {r: {"pool": pool_by_tag.get(r, 0), "drawn": by_rule.get(r, 0)}
-                                           for r, m in RULE_MIN.items() if by_rule.get(r, 0) < m}}
+        summary["phase2b"] = {"seed": PHASE2B_SEED, "strata": PHASE2B_STRATA, "rule_minimums": RULE_MIN, "drawn": len(draw),
+                              "by_stratum": dict(Counter(d["stratum"] for d in draw)),
+                              "by_rule": {k: v for k, v in sorted(by_rule.items())},
+                              # A minimum the pool cannot meet is a shortfall: the rule decides too few classes to test.
+                              "shortfall": {r: {"pool": pool_by_tag.get(r, 0), "drawn": by_rule.get(r, 0)}
+                                            for r, m in RULE_MIN.items() if by_rule.get(r, 0) < m}}
         print(f"full split: {summary['full_split']['adults']} adults; never-reviewed pool {summary['full_split']['never_reviewed_pool']}")
-        print(f"phase 2: {len(draw)} drawn (seed {PHASE2_SEED}); by rule {summary['phase2']['by_rule']}")
+        print(f"phase 2b: {len(draw)} drawn (seed {PHASE2B_SEED}); by rule {summary['phase2b']['by_rule']}")
 
     (OUT / "summary.json").write_text(json.dumps(summary, indent=1, default=lambda o: dict(o) if isinstance(o, Counter) else str(o)) + "\n")
 
     # Markdown tables for the doc.
     L = ["## Main sample (470)", "", md_table(counts470, ["condition", "tier", "n", "a3_serious", "a3_benign", "a3_middle", "a3_other",
                                                          "serious", "benign", "excluded", "include", "patch", "layer_a_upgrades",
-                                                         "dxa_only_serious", "target_dropped"]), ""]
+                                                         "dxa_only_excluded", "target_dropped"]), ""]
     if not args.skip_full:
-        L += ["## Full adult test split", "", md_table(rows_full, ["condition", "tier", "n", "serious", "dxa_candidate", "benign",
+        L += ["## Full adult test split", "", md_table(rows_full, ["condition", "tier", "n", "serious", "dxa_only_excluded", "benign",
                                                                    "excluded", "layer_a_upgrades"]), ""]
     if not args.skip_models:
         L += ["## Audited 150: rules fired", "", md_table([{"rule": k, "cases": v} for k, v in sorted(summary["audited_150"]["fired"].items())], ["rule", "cases"]), ""]

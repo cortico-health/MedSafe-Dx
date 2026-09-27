@@ -21,10 +21,12 @@ Per-model and per-arm rows are printed beside the pooled criteria. The off-list 
 (NHAMCS-rated rows); `--include-ccsr` gives the CCSR sensitivity row.
 
 Usage:
-  python3 scripts/analysis/v03_phase2_precision.py                      # Phase 2, once the reference exists
+  python3 scripts/analysis/v03_phase2_precision.py --set phase2b        # Phase 2b, once its reference exists
+  python3 scripts/analysis/v03_phase2_precision.py --set phase2         # Phase 2 (post hoc under the current rules)
+  python3 scripts/analysis/v03_phase2_precision.py --set pooled         # Phase 2 and 2b pooled (secondary)
   python3 scripts/analysis/v03_phase2_precision.py --set audit150       # the audited 150 (the check)
-Outputs: <out>/precision.json and <out>/precision.md (default results/phase2/, or results/audit/phase2_precision_check/
-for --set audit150).
+Outputs: <out>/precision.json and <out>/precision.md (default results/phase2/, results/phase2b/, results/phase2b/pooled/
+or results/audit/phase2_precision_check/; --out overrides).
 """
 
 from __future__ import annotations
@@ -75,8 +77,12 @@ def block(recs: list[dict]) -> dict:
             "fn_rate_all": pct(r["fn_rate"]), "specificity": specificity(recs)}
 
 
-def evaluate(s: pc.ScoredSet, runs_dir: Path, ref_path: Path, include_ccsr: bool = False) -> dict:
-    ref = pc.load_reference(ref_path, s)
+def evaluate(s: pc.ScoredSet, runs_dir, ref_path, include_ccsr: bool = False) -> dict:
+    """`runs_dir` and `ref_path` may be lists (the pooled analysis): the runs are concatenated and the references joined."""
+    refs = ref_path if isinstance(ref_path, list) else [ref_path]
+    ref = {}
+    for rp in refs:
+        ref.update(pc.load_reference(rp, s))
     missing = [c for c in s.ab.key.case_ids if c not in ref]
     if missing:  # score the cases the reference covers
         s = pc.subset(s, [c for c in s.ab.key.case_ids if c in ref])
@@ -85,7 +91,8 @@ def evaluate(s: pc.ScoredSet, runs_dir: Path, ref_path: Path, include_ccsr: bool
     recs = pc.records(s, runs, rule, ref)
     sc = pc.score(s, recs)
     pooled = block(recs)
-    out = {"set": s.name, "reference": str(ref_path.relative_to(ROOT)), "runs": str(runs_dir.relative_to(ROOT)),
+    out = {"set": s.name, "reference": ", ".join(str(r.relative_to(ROOT)) for r in refs),
+           "runs": ", ".join(str(d.relative_to(ROOT)) for d in (runs_dir if isinstance(runs_dir, list) else [runs_dir])),
            "offlist_tiers": "NHAMCS and CCSR (sensitivity)" if include_ccsr else "NHAMCS only (A5 headline)",
            "cases_scored": s.ab.key.n, "cases_without_reference": missing,
            "reference_decisions": dict(Counter(r["decision"] for c, r in ref.items() if c in set(s.ab.key.case_ids))),
@@ -111,7 +118,7 @@ def fmt(w) -> str:
 
 def report(o: dict) -> str:
     c = o["criteria"]
-    L = [f"# Phase 2 model-level criteria ({o['set']})", "",
+    L = [f"# Model-level criteria ({o['set']}{', ' + o['label'] if o.get('label') else ''})", "",
          f"Reference: `{o['reference']}`. Runs: `{o['runs']}`. Off-list tiers: {o['offlist_tiers']}. "
          f"Cases scored: {o['cases_scored']} (classes {o['classes']}; reference {o['reference_decisions']}). "
          f"Cases without a reference row: {len(o['cases_without_reference'])}.", "",
@@ -145,23 +152,31 @@ def report(o: dict) -> str:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--set", choices=("phase2", "audit150"), default="phase2")
+    ap.add_argument("--set", choices=("phase2", "phase2b", "pooled", "audit150"), default="phase2b")
     ap.add_argument("--reference", type=Path)
     ap.add_argument("--runs", type=Path)
     ap.add_argument("--out", type=Path)
     ap.add_argument("--include-ccsr", action="store_true", help="the CCSR sensitivity row (amendment A5)")
+    ap.add_argument("--label", default="", help="a note for the title, e.g. 'post hoc, rule X11'")
     args = ap.parse_args()
-    if args.set == "phase2":
-        s = pc.load_phase2("run_ids.txt")  # every case the models answered; the reference decides which are scored
-        ref = args.reference or ROOT / "results" / "phase2" / "reference_adjudicated.jsonl"
-        runs, out = args.runs or pc.PHASE2_RUNS, args.out or ROOT / "results" / "phase2"
+    if args.set in ("phase2", "phase2b"):
+        ph = pc.PHASES[args.set[5:]]
+        s = pc.load_phase2("run_ids.txt", args.set[5:])  # every case the models answered; the reference decides which are scored
+        ref = args.reference or ph["out"] / "reference_adjudicated.jsonl"
+        runs, out = args.runs or ph["runs"], args.out or ph["out"]
+    elif args.set == "pooled":
+        s = pc.merge(pc.load_phase2("run_ids.txt", "2"), pc.load_phase2("run_ids.txt", "2b"))
+        ref = [pc.PHASES[p]["out"] / "reference_adjudicated.jsonl" for p in ("2", "2b")]
+        runs, out = [pc.PHASES[p]["runs"] for p in ("2", "2b")], args.out or pc.PHASES["2b"]["out"] / "pooled"
     else:
         s = pc.load_audit150()
         ref = args.reference or ROOT / "results" / "audit" / "reference_adjudicated.jsonl"
         runs, out = args.runs or pc.AUDIT_RUNS, args.out or ROOT / "results" / "audit" / "phase2_precision_check"
-    if not ref.exists():
-        sys.exit(f"{ref} does not exist yet: the reference review is still running")
-    o = evaluate(s, runs.resolve(), ref.resolve(), args.include_ccsr)
+    for rp in (ref if isinstance(ref, list) else [ref]):
+        if not rp.exists():
+            sys.exit(f"{rp} does not exist yet: the reference review is still running")
+    o = evaluate(s, runs, ref, args.include_ccsr)
+    o["label"] = args.label
     out.mkdir(parents=True, exist_ok=True)
     stem = "precision_ccsr" if args.include_ccsr else "precision"
     (out / f"{stem}.json").write_text(json.dumps(o, indent=1, default=str) + "\n")
