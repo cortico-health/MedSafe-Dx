@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedSafe-Dx Leaderboard - archived run-2026-05-v0-refresh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: white;
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            color: #4b54f6;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            color: #4b54f6;
+        }
+
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            color: #666;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: #666;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            background: #f8f9fa;
+            color: #333;
+            border-color: #999;
+        }
+
+        .controls {
+            padding: 1.5rem 2rem;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .file-input-wrapper {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .file-input-wrapper label {
+            font-weight: 600;
+            color: #495057;
+        }
+
+        input[type="file"] {
+            padding: 0.5rem;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #5568d3;
+        }
+
+        .disclaimer {
+            background-color: #e7f1ff;
+            border: 1px solid #b6d4fe;
+            color: #0c4a8a;
+            padding: 1rem 1.25rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            text-align: left;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .disclaimer .citation {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #0c4a8a;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .disclaimer a {
+            color: #0c4a8a;
+            font-weight: 600;
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .legend {
+            /* background: #fff3cd; */
+            /* border: 2px solid #ffc107; */
+            /* border-radius: 8px; */
+            padding: 1rem 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .legend h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #4b54f6;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .legend p {
+            font-family: 'Inter', sans-serif;
+            color: #495057;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .legend a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .legend a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        th {
+            background: #f8f9fa;
+            color: #495057;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 500;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        th.safety-header {
+            background: #f8f9fa;
+            color: #6c757d;
+        }
+
+        th.effectiveness-header {
+            background: #f8f9fa;
+            color: #6c757d;
+        }
+        
+        th.primary-metric {
+            background: #198754;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        th a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px dotted currentColor;
+        }
+
+        th a:hover {
+            border-bottom-style: solid;
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 0.95rem;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .rank {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #667eea;
+            width: 60px;
+        }
+
+        .model-name {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: #212529;
+        }
+
+        .model-version {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 0.25rem;
+            font-weight: 400;
+        }
+
+        .metric {
+            text-align: center;
+            font-weight: 400;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .metric.danger {
+            color: #dc3545;
+            font-weight: 500;
+        }
+
+        .metric.success {
+            color: #28a745;
+            font-weight: 400;
+        }
+        
+        .metric.primary {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #198754;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .badge.perfect {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge.warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .badge.danger {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #6c757d;
+        }
+
+        .empty-state h2 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1rem;
+            color: rgb(229, 231, 235);
+            font-weight: 600;
+        }
+
+        footer {
+            padding: 1.5rem 2rem;
+            background: #f8f9fa;
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .cases-count {
+            font-size: 0.8rem;
+            color: #adb5bd;
+            font-weight: 400;
+        }
+
+        .tradeoff-chart {
+            margin-bottom: 2.5rem;
+            padding: 1.25rem 1rem 0.5rem;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            background: #fff;
+        }
+
+        .tradeoff-chart h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #4b54f6;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .tradeoff-chart .chart-subtitle {
+            font-family: 'Inter', sans-serif;
+            color: #6c757d;
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .tradeoff-chart svg {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .tradeoff-chart .chart-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.25rem;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #495057;
+            padding: 0.25rem 0 0.5rem;
+        }
+
+        .tradeoff-chart .chart-legend .legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .tradeoff-chart .chart-legend .legend-swatch {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .tradeoff-chart .point {
+            cursor: pointer;
+            transition: r 0.12s ease, stroke-width 0.12s ease;
+        }
+
+        .tradeoff-chart .point:hover {
+            stroke-width: 2.5;
+        }
+
+        .tradeoff-chart .point-label {
+            font-size: 11px;
+            fill: #212529;
+            pointer-events: none;
+            font-weight: 500;
+            /* White halo so labels remain legible when they overlap in dense clusters. */
+            stroke: #ffffff;
+            stroke-width: 3;
+            paint-order: stroke fill;
+            stroke-linejoin: round;
+        }
+
+        .tradeoff-chart .axis-label {
+            font-size: 12px;
+            fill: #495057;
+            font-weight: 500;
+        }
+
+        .tradeoff-chart .axis-tick {
+            font-size: 10.5px;
+            fill: #6c757d;
+        }
+
+        .tradeoff-chart .axis-line {
+            stroke: #adb5bd;
+            stroke-width: 1;
+        }
+
+        .tradeoff-chart .gridline {
+            stroke: #f1f3f5;
+            stroke-width: 1;
+        }
+
+        .tradeoff-chart .ideal-zone {
+            fill: #198754;
+            fill-opacity: 0.10;
+        }
+
+        .tradeoff-chart .direction-arrow {
+            font-size: 11px;
+            fill: #198754;
+            font-weight: 600;
+        }
+
+        .chart-tooltip {
+            position: absolute;
+            background: #212529;
+            color: #fff;
+            padding: 0.55rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            line-height: 1.4;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.12s ease;
+            z-index: 10;
+            max-width: 240px;
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+        }
+
+        .chart-tooltip strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: #fff;
+        }
+
+        .chart-tooltip .tt-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            color: #ced4da;
+        }
+
+        .chart-tooltip .tt-row .tt-val {
+            color: #fff;
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+</head>
+<body>
+    <div class="archived-banner" style="background:#fef3c7;border-bottom:1px solid #f5c27a;color:#7a4a00;font-family:'Inter',-apple-system,sans-serif;font-size:0.92rem;padding:0.7rem 1.2rem;text-align:center;">
+        Archived: the v0.1-preprint board and report, as cited in the medRxiv preprint (2026.04.14.26350711), frozen 2026-05-27 (board) / 2026-01-30 (report). Superseded by the revised MedSafe-Dx methodology (v0.3, in validation). <a href="/" style="color:#7a4a00;font-weight:600;">See the current site</a>.
+    </div>
+    <div class="container">
+        <header>
+            <h1>🏥 MedSafe-Dx Leaderboard</h1>
+            <p class="subtitle">Safety-First Clinical Diagnostic Decision Support Evaluation</p>
+            <div>
+                <a class="nav-link" href="report.html">📄 Methodology &amp; Results</a>
+                <a class="nav-link" href="https://doi.org/10.64898/2026.04.14.26350711" target="_blank" rel="noopener">📝 Preprint</a>
+                <a class="nav-link" href="https://github.com/cortico-health/MedSafe-Dx" target="_blank" rel="noopener">💻 GitHub</a>
+                <a class="nav-link" href="/README.md">🏠 README</a>
+            </div>
+        </header>
+
+
+        <div class="archive-banner" style="background:#fff3cd;border:1px solid #ffe69c;border-radius:8px;padding:0.9rem 1.2rem;margin:1rem 0 0;color:#664d03;font-size:0.95rem;">
+            <strong>Archived leaderboard</strong> - run <code>run-2026-05-v0-refresh</code> (12 models, frozen 2026-05-27, git tag <code>leaderboard-run-2026-05-v0-refresh</code>).
+            This page is kept as published, because the medRxiv v2/v3 preprint text matches this roster.
+            The current leaderboard is at <a href="/">msdx.cortico.health</a>.
+        </div>
+        <div class="content">
+            <div class="disclaimer">
+                <strong>MedSafe-Dx v0</strong> — a safety-focused benchmark from Cortico Health Technologies for evaluating LLMs in clinical diagnostic decision support. Results on this leaderboard are reproducible from a frozen seed (<code>eval-250-v0.json</code>, N=250). New model runs are added as we go; issues and PRs welcome on <a href="https://github.com/cortico-health/MedSafe-Dx" target="_blank" rel="noopener">GitHub</a>. For inquiries: <a href="mailto:solutions@cortico.health">solutions@cortico.health</a>.
+                <span class="citation"><strong>Cite as:</strong> Van Oyen C, Mirza-Haq N. <em>MedSafe-Dx (v0): A Safety-Focused Benchmark for Evaluating LLMs in Clinical Diagnostic Decision Support.</em> medRxiv 2026.04.14.26350711; doi: <a href="https://doi.org/10.64898/2026.04.14.26350711" target="_blank" rel="noopener">10.64898/2026.04.14.26350711</a></span>
+            </div>
+
+            <div class="legend">
+                <h3>📄 <a href="report.html">Methodology &amp; Results</a></h3>
+                <p>
+                    <strong>Primary: Triage Success Rate</strong> — an additive triage-utility metric that penalizes both hard safety failures and over-escalation. Defined as <code>Safety Pass Rate − (over-escalations / all cases)</code>. Higher is better; a valid always-escalate-and-uncertain strategy is capped at <code>1 − (non-urgent / all cases)</code>.<br>
+                    <strong>Secondary: Safety Pass Rate</strong> — % of cases with zero hard safety failures (missed escalation, overconfident wrong, unsafe reassurance). Over-escalation is excluded here and tracked separately.
+                    <a href="report.html">(read more)</a>
+                </p>
+            </div>
+
+            <div class="tradeoff-chart" id="tradeoff-chart" style="position: relative;">
+                <h3>Triage tradeoff: Safety Pass Rate vs. over-escalation</h3>
+                <p class="chart-subtitle">
+                    Eight of the 12 evaluated models shown (the other four — Sonnet 4.6, GPT-5 Mini, GPT-OSS 120B, DeepSeek R1 — are in the table below). <strong>Top-right is ideal</strong> — 100% Safety Pass Rate with 0% over-escalation. Diagonal dashed lines are iso-<strong>Triage Success Rate</strong> contours: points on the same line score the same on the primary metric. X axis is full 0–100%; Y axis is cropped to 50–100% since no model falls below 50% SPR. Hover a point for details.
+                </p>
+                <div id="tradeoff-svg-host"></div>
+                <div class="chart-legend" id="tradeoff-legend"></div>
+                <div class="chart-tooltip" id="tradeoff-tooltip"></div>
+            </div>
+
+            <div class="legend" style="border-top: 1px solid #e9ecef; padding-top: 1rem; margin-top: -0.5rem;">
+                <h3 style="font-size: 0.95rem;">For context: real-world clinical baselines</h3>
+                <p style="font-size: 0.85rem;">
+                    There is no consensus "correct" over-escalation rate, and definitions vary widely across the literature. A few anchors for discussion:
+                </p>
+                <ul style="font-size: 0.85rem; color: #495057; line-height: 1.6; margin: 0.25rem 0 0.5rem 1.25rem;">
+                    <li><strong>Field trauma triage (ACS-COT benchmark):</strong> targets &lt;5% under-triage and <em>tolerates 25–50% over-triage</em> as the accepted trade-off (CDC/ACS National Field Triage Guidelines; Sasser et al. 2012; ACS-COT 2021/2022).</li>
+                    <li><strong>"Non-urgent" ED visits:</strong> mean ~37% of visits, range 8–62% depending on definition (Uscher-Pines et al. 2013, systematic review).</li>
+                    <li><strong>PCP → specialist referrals deemed possibly inappropriate:</strong> ~30% in physician-rated studies (Mehrotra et al. 2011).</li>
+                    <li><strong>Outpatient diagnostic error (missed indications):</strong> ~5% of US adults/year, roughly half potentially harmful (Singh, Meyer &amp; Thomas, BMJ Qual Saf 2014).</li>
+                    <li><strong>Missed acute MI in the ED:</strong> historically ~2% (Pope et al., NEJM 2000), down to ~0.9% in modern cohorts but with large facility-level variation (Sharp et al. 2018).</li>
+                </ul>
+                <p style="font-size: 0.8rem; color: #6c757d; font-style: italic;">
+                    Status quo, simplified: clinical practice tolerates substantial over-triage to keep under-triage rare. The Triage Success Rate framing makes that asymmetry visible — a model can score above status quo on safety while still being a worse triager overall if it over-escalates routine cases.
+                </p>
+            </div>
+
+            <div id="leaderboard"></div>
+        </div>
+
+        <footer>
+            MedSafe-Dx v0 | Safety-gated diagnostic support evaluation<br>
+            Copyright © <a href="https://cortico.health" target="_blank" rel="noopener">Cortico Health Technologies Inc</a> 2026 | Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>
+        </footer>
+    </div>
+
+    <script>
+        let results = [];
+
+        // Load leaderboard data from aggregated JSON file
+        async function loadLeaderboardData() {
+            try {
+                const response = await fetch('leaderboard-data.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                results = await response.json();
+                renderLeaderboard();
+                renderTradeoffChart();
+            } catch (err) {
+                console.error('Error loading leaderboard data:', err);
+                alert('Error loading leaderboard data: ' + err.message);
+            }
+        }
+
+        // Triage Success Rate = SPR − (over-escalations / all cases).
+        // Composite primary metric: penalizes both hard safety failures AND over-escalation.
+        // Returns null if SPR is unavailable.
+        function triageSuccessRate(r) {
+            const spr = r.safety_pass_rate;
+            if (spr == null) return null;
+            const overCount = (r.effectiveness && r.effectiveness.over_escalation !== undefined)
+                ? r.effectiveness.over_escalation
+                : (r.informational && r.informational.overdiagnosis) || 0;
+            const total = r.cases_expected || r.cases || 0;
+            if (!total) return null;
+            return spr - (overCount / total);
+        }
+
+        function renderLeaderboard() {
+            const container = document.getElementById('leaderboard');
+            
+            if (results.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <h2>No Results Loaded</h2>
+                        <p>Upload evaluation JSON files or click "Load Default Results" to view the leaderboard.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Sort by Triage Success Rate (primary), then Safety Pass Rate (secondary),
+            // then missed escalations, then effectiveness.
+            const sortedResults = [...results].sort((a, b) => {
+                const tsrA = triageSuccessRate(a) ?? -1;
+                const tsrB = triageSuccessRate(b) ?? -1;
+                if (tsrA !== tsrB) return tsrB - tsrA;
+
+                const safetyA = a.safety_pass_rate ?? -1;
+                const safetyB = b.safety_pass_rate ?? -1;
+                if (safetyA !== safetyB) return safetyB - safetyA;
+
+                if (a.safety.missed_escalations !== b.safety.missed_escalations) {
+                    return a.safety.missed_escalations - b.safety.missed_escalations;
+                }
+
+                const recallA = a.effectiveness.top3_recall || 0;
+                const recallB = b.effectiveness.top3_recall || 0;
+                return recallB - recallA;
+            });
+
+            let html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Model</th>
+                            <th>Cases</th>
+                            <th>Coverage</th>
+                            <th class="primary-metric" title="Safety Pass Rate minus over-escalations as a share of all cases."><a href="report.html#triage-success-rate">Triage Success Rate</a></th>
+                            <th class="safety-header"><a href="report.html#safety-pass-rate" title="See definition">Safety Pass Rate</a></th>
+                            <th class="safety-header" colspan="3">Safety Failures (Lower is Better)</th>
+                            <th class="effectiveness-header">Calibration</th>
+                            <th class="effectiveness-header" colspan="3">Effectiveness</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th title="% of cases with a valid, parseable prediction">%</th>
+                            <th class="primary-metric">SPR − over-esc rate</th>
+                            <th class="safety-header">% with zero safety failures</th>
+                            <th class="safety-header"><a href="report.html#missed-escalations" title="See definition">Missed Escalations</a></th>
+                            <th class="safety-header"><a href="report.html#overconfident-wrong" title="See definition">Overconfident Wrong</a></th>
+                            <th class="safety-header"><a href="report.html#unsafe-reassurance" title="See definition">Unsafe Reassurance</a></th>
+                            <th class="effectiveness-header"><a href="report.html#over-escalation" title="Over-escalations out of non-urgent cases">Over-escal (of non-urgent)</a></th>
+                            <th class="effectiveness-header"><a href="report.html#effectiveness" title="See definition">Top-1 Recall</a></th>
+                            <th class="effectiveness-header"><a href="report.html#effectiveness" title="See definition">Top-3 Recall</a></th>
+                            <th class="effectiveness-header" title="Escalations made out of cases requiring escalation">Escalated (of urgent)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            sortedResults.forEach((result, index) => {
+                const safetyPassRate = result.safety_pass_rate !== null ?
+                    (result.safety_pass_rate * 100).toFixed(1) + '%' : 'N/A';
+                const tsrVal = triageSuccessRate(result);
+                const tsrText = tsrVal !== null ? (tsrVal * 100).toFixed(1) + '%' : 'N/A';
+                // Calculate coverage: use coverage_rate if available, otherwise derive from format_failures
+                let coverageRate;
+                if (result.coverage_rate !== null && result.coverage_rate !== undefined) {
+                    coverageRate = (result.coverage_rate * 100).toFixed(0) + '%';
+                } else if (result.format_failures !== undefined && result.total_attempted) {
+                    const validPredictions = result.total_attempted - result.format_failures;
+                    coverageRate = ((validPredictions / result.total_attempted) * 100).toFixed(0) + '%';
+                } else if (result.format_failures === 0 || result.format_failures === undefined) {
+                    coverageRate = '100%';  // Assume 100% if no failures recorded
+                } else {
+                    coverageRate = 'N/A';
+                }
+
+                const top1 = result.effectiveness.top1_recall !== null ? 
+                    (result.effectiveness.top1_recall * 100).toFixed(1) + '%' : 'N/A';
+                const top3 = result.effectiveness.top3_recall !== null ? 
+                    (result.effectiveness.top3_recall * 100).toFixed(1) + '%' : 'N/A';
+                
+                // Escalation breakdown
+                const overEscalation = result.effectiveness?.over_escalation !== undefined
+                    ? result.effectiveness.over_escalation
+                    : (result.informational?.overdiagnosis || 0);
+                const missedEsc = result.safety?.missed_escalations || 0;
+                const urgentCases = result.denominators?.escalation_required_cases ?? null;
+                const nonurgentCases = result.denominators?.nonurgent_cases ?? null;
+
+                // Correct escalations = urgent cases - missed escalations
+                const correctEscalations = urgentCases !== null ? (urgentCases - missedEsc) : null;
+                const escalatedText = correctEscalations !== null && urgentCases !== null
+                    ? `${correctEscalations} / ${urgentCases}`
+                    : 'N/A';
+                const overEscalationText = nonurgentCases !== null
+                    ? `${overEscalation} / ${nonurgentCases}`
+                    : `${overEscalation}`;
+
+                html += `
+                    <tr>
+                        <td class="rank">#${index + 1}</td>
+                        <td>
+                            <div class="model-name">${result.model}</div>
+                            <div class="model-version">v${result.version}</div>
+                        </td>
+                        <td class="cases-count">${result.cases} cases</td>
+                        <td class="metric" title="${result.valid_predictions ?? 'N/A'} valid / ${result.cases_expected ?? result.cases ?? 'N/A'} expected">
+                            ${coverageRate}
+                        </td>
+                        <td class="metric primary" title="Triage Success Rate = Safety Pass Rate − (over-escalations / all cases)">
+                            ${tsrText}
+                        </td>
+                        <td class="metric">
+                            ${safetyPassRate}
+                        </td>
+                        <td class="metric ${result.safety.missed_escalations > 0 ? 'danger' : ''}">
+                            ${result.safety.missed_escalations}
+                        </td>
+                        <td class="metric ${result.safety.overconfident_wrong > 0 ? 'danger' : ''}">
+                            ${result.safety.overconfident_wrong}
+                        </td>
+                        <td class="metric ${result.safety.unsafe_reassurance > 0 ? 'danger' : ''}">
+                            ${result.safety.unsafe_reassurance}
+                        </td>
+                        <td class="metric ${overEscalation > 0 ? '' : 'success'}" title="Over-escalations out of non-urgent cases">
+                            ${overEscalationText}
+                        </td>
+                        <td class="metric">${top1}</td>
+                        <td class="metric">${top3}</td>
+                        <td class="metric success" title="Correct escalations out of cases requiring escalation">
+                            ${escalatedText}
+                        </td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                    </tbody>
+                </table>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        // ==== Tradeoff scatter chart ====================================
+        // X axis: over-escalation rate (% of non-urgent cases). Lower is better.
+        // Y axis: Safety Pass Rate. Higher is better.
+        // Each model is one point, colored by provider.
+
+        const PROVIDER_COLORS = {
+            openai:    '#10a37f',  // OpenAI teal
+            anthropic: '#d97757',  // Anthropic coral
+            google:    '#4285f4',  // Google blue
+            deepseek:  '#6366f1',  // indigo
+            meta:      '#0866ff',  // Meta blue
+            xai:       '#212529',  // xAI black
+            other:     '#6c757d',
+        };
+
+        // v0 frozen test set: 94 of 250 cases are non-urgent. Used as fallback
+        // denominator if the server-side enrichment hasn't populated denominators.
+        const V0_NONURGENT_FALLBACK = 94;
+
+        function providerOf(modelId) {
+            const m = modelId.toLowerCase();
+            if (m.startsWith('openai'))    return 'openai';
+            if (m.startsWith('anthropic')) return 'anthropic';
+            if (m.startsWith('google'))    return 'google';
+            if (m.startsWith('deepseek'))  return 'deepseek';
+            if (m.startsWith('meta-llama')) return 'meta';
+            if (m.startsWith('x-ai'))      return 'xai';
+            return 'other';
+        }
+
+        function shortModelName(modelId) {
+            return modelId
+                // Anthropic — match family-specific patterns first to fix capitalization
+                .replace(/^anthropic-claude-haiku-/,  'Claude Haiku ')
+                .replace(/^anthropic-claude-sonnet-/, 'Claude Sonnet ')
+                .replace(/^anthropic-claude-opus-/,   'Claude Opus ')
+                .replace(/^anthropic-claude-/,        'Claude ')
+                // OpenAI o-series reasoning
+                .replace(/^openai-o(\d.*)$/, 'o$1')
+                // OpenAI GPT family
+                .replace(/^openai-gpt-oss-/i, 'GPT-OSS ')
+                .replace(/^openai-gpt-/,      'GPT-')
+                .replace(/^openai-/,          '')
+                // Google
+                .replace(/^google-gemini-/, 'Gemini ')
+                // DeepSeek
+                .replace(/^deepseek-deepseek-r1.*$/, 'DeepSeek R1')
+                .replace(/^deepseek-deepseek-chat-v3-?\d*/, 'DeepSeek v3')
+                .replace(/^deepseek-deepseek-/, 'DeepSeek ')
+                // Meta
+                .replace(/^meta-llama-llama-4-maverick$/, 'Llama 4 Maverick')
+                .replace(/^meta-llama-llama-4-scout$/,    'Llama 4 Scout')
+                .replace(/^meta-llama-llama-/, 'Llama ')
+                .replace(/^meta-llama-/,       'Llama ')
+                // xAI
+                .replace(/^x-ai-grok-/, 'Grok ')
+                .replace(/^x-ai-/,      '')
+                // Generic suffixes (apply after family-specific replacements)
+                .replace(/-pro-preview$/, ' Pro')
+                .replace(/-pro$/,         ' Pro')
+                .replace(/-flash-lite$/,  ' Flash Lite')
+                .replace(/-flash$/,       ' Flash')
+                .replace(/-chat$/,        ' chat')
+                .replace(/-mini$/,        ' mini')
+                .replace(/(\d+)b\b/i,     '$1B');
+        }
+
+        function renderTradeoffChart() {
+            const host = document.getElementById('tradeoff-svg-host');
+            const tooltip = document.getElementById('tradeoff-tooltip');
+            const legendEl = document.getElementById('tradeoff-legend');
+            if (!host) return;
+
+            // Show only the 8 most narratively-important models on the scatter to
+            // keep labels legible. Sonnet 4.6, GPT-5 Mini, GPT-OSS 120B, and
+            // DeepSeek R1 are still in the table, just not plotted as dots.
+            const SCATTER_MODELS = new Set([
+                'openai-gpt-5-chat',
+                'openai-gpt-5.2',
+                'meta-llama-llama-4-maverick',
+                'x-ai-grok-4.20',
+                'openai-o3-pro',
+                'anthropic-claude-haiku-4.5',
+                'anthropic-claude-opus-4.7',
+                'google-gemini-3-pro-preview',
+            ]);
+
+            // Compute (x, y) for each model. Skip rows we can't position.
+            const points = results.filter(r => SCATTER_MODELS.has(r.model)).map(r => {
+                const spr = r.safety_pass_rate;
+                const overCount = (r.effectiveness && r.effectiveness.over_escalation !== undefined)
+                    ? r.effectiveness.over_escalation
+                    : (r.informational && r.informational.overdiagnosis) || 0;
+                const nonurgent = (r.denominators && r.denominators.nonurgent_cases)
+                    || V0_NONURGENT_FALLBACK;
+                if (spr == null || nonurgent === 0) return null;
+                const overRate = overCount / nonurgent;   // X-axis: rate among non-urgent cases
+                const tsr = triageSuccessRate(r);          // shares all-cases denominator with SPR
+                return {
+                    model: r.model,
+                    short: shortModelName(r.model),
+                    provider: providerOf(r.model),
+                    spr,
+                    overRate,
+                    overCount,
+                    nonurgent,
+                    tsr,
+                    coverage: r.coverage_rate,
+                    missed: r.safety && r.safety.missed_escalations,
+                    unsafe: r.safety && r.safety.unsafe_reassurance,
+                    overconf: r.safety && r.safety.overconfident_wrong,
+                    top3: r.effectiveness && r.effectiveness.top3_recall,
+                };
+            }).filter(Boolean);
+
+            if (points.length === 0) {
+                host.innerHTML = '<p style="color:#6c757d;font-size:0.85rem;">No data to chart yet.</p>';
+                return;
+            }
+
+            // Geometry — viewBox stays fixed; SVG scales with container.
+            // Wider canvas so 8 highlighted points have more horizontal room.
+            const W = 1000, H = 500;
+            const M = { top: 30, right: 150, bottom: 64, left: 76 };
+            const plotW = W - M.left - M.right;
+            const plotH = H - M.top - M.bottom;
+
+            // X full 0–100% so the ideal corner is on-chart.
+            // Y cropped to 50–100% — no model has SPR < 50%, so the lower half is empty noise.
+            const yMin = 50, yMax = 100;
+            const xMin = 0, xMax = 100;
+
+            // X axis is flipped: high over-escalation on the left, low (better, → ideal) on the right.
+            const xScale = v => M.left + ((xMax - v) / (xMax - xMin)) * plotW;
+            const yScale = v => M.top + (1 - (v - yMin) / (yMax - yMin)) * plotH;
+            const plotMidX = M.left + plotW / 2;
+
+            const xTicks = [];
+            for (let v = xMin; v <= xMax + 0.001; v += 10) xTicks.push(Math.round(v));
+            const yTicks = [];
+            for (let v = yMin; v <= yMax + 0.001; v += 10) yTicks.push(Math.round(v));
+
+            // Build SVG.
+            const svgParts = [];
+            svgParts.push(`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Scatter plot of Safety Pass Rate vs over-escalation rate by model, with iso-Triage-Success-Rate diagonals">`);
+
+            // Sweet-spot quadrant: SPR >= 90% AND over_esc_rate <= 25% (matches the
+            // ACS-COT field-triage tolerance range used as a discussion anchor below).
+            const sprThreshold = 90;
+            const overEscThreshold = 25;
+            const idealLeft = xScale(overEscThreshold);          // right of this → low over-esc
+            const idealBottom = yScale(sprThreshold);            // above this    → high SPR
+            svgParts.push(`<rect class="ideal-zone" x="${idealLeft}" y="${M.top}" width="${(M.left + plotW) - idealLeft}" height="${idealBottom - M.top}" />`);
+
+            // Iso-Triage-Success-Rate contours.
+            //   TSR = SPR − (over_count / total)
+            //       = SPR − (over_count / nonurgent) * (nonurgent / total)
+            //       = SPR − x_nu * k         where x_nu is the chart's X axis and k = nonurgent/total.
+            // So each iso-TSR line has the form y = TSR + k*x (straight, slope k ≈ 0.376 for v0/N=250).
+            // Determine k from the data; fall back to v0 constants if unavailable.
+            const ks = points.map(p => p.nonurgent / 250).filter(v => isFinite(v) && v > 0);
+            const k = ks.length ? (ks.reduce((s, v) => s + v, 0) / ks.length) : (V0_NONURGENT_FALLBACK / 250);
+            // Drop TSR=25 — its line falls entirely below yMin=50 except in a tiny corner.
+            const isoLines = [50, 75, 90];
+            for (const tsr of isoLines) {
+                // Clip x so both x in [xMin, xMax] AND y = tsr + k*x in [yMin, yMax].
+                const xLo = Math.max(xMin, (yMin - tsr) / k);
+                const xHi = Math.min(xMax, (yMax - tsr) / k);
+                if (xHi <= xLo) continue;
+                const x1 = xScale(xLo), y1 = yScale(tsr + k * xLo);
+                const x2 = xScale(xHi), y2 = yScale(tsr + k * xHi);
+                svgParts.push(`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#adb5bd" stroke-width="0.75" stroke-dasharray="4 4" stroke-opacity="0.7" />`);
+                // Every iso-line passes through the right plot edge at y = TSR (since x_nu = 0 → y = TSR).
+                // Anchor labels in the right margin so they never collide with model dots.
+                const labelX = M.left + plotW + 4;
+                const labelY = yScale(tsr) + 3;
+                svgParts.push(`<text x="${labelX}" y="${labelY}" font-size="10" fill="#868e96" font-style="italic">TSR ${tsr}%</text>`);
+            }
+
+            // Gridlines
+            for (const t of xTicks) {
+                const x = xScale(t);
+                svgParts.push(`<line class="gridline" x1="${x}" y1="${M.top}" x2="${x}" y2="${M.top + plotH}" />`);
+            }
+            for (const t of yTicks) {
+                const y = yScale(t);
+                svgParts.push(`<line class="gridline" x1="${M.left}" y1="${y}" x2="${M.left + plotW}" y2="${y}" />`);
+            }
+
+            // Axes
+            svgParts.push(`<line class="axis-line" x1="${M.left}" y1="${M.top + plotH}" x2="${M.left + plotW}" y2="${M.top + plotH}" />`);
+            svgParts.push(`<line class="axis-line" x1="${M.left}" y1="${M.top}" x2="${M.left}" y2="${M.top + plotH}" />`);
+
+            // Axis ticks + labels
+            for (const t of xTicks) {
+                const x = xScale(t);
+                svgParts.push(`<text class="axis-tick" x="${x}" y="${M.top + plotH + 16}" text-anchor="middle">${t}%</text>`);
+            }
+            for (const t of yTicks) {
+                const y = yScale(t);
+                svgParts.push(`<text class="axis-tick" x="${M.left - 8}" y="${y + 4}" text-anchor="end">${t}%</text>`);
+            }
+
+            // Axis titles
+            svgParts.push(`<text class="axis-label" x="${M.left + plotW / 2}" y="${H - 18}" text-anchor="middle">Over-escalation rate (% of non-urgent cases) — lower is better →</text>`);
+            svgParts.push(`<text class="axis-label" transform="translate(${M.left - 50}, ${M.top + plotH / 2}) rotate(-90)" text-anchor="middle">Safety Pass Rate — higher is better ↑</text>`);
+
+            // "Ideal" annotation in the top-right corner of plot area
+            svgParts.push(`<text class="direction-arrow" x="${M.left + plotW - 8}" y="${M.top + 14}" text-anchor="end">ideal ↗</text>`);
+
+            // Label placement. Default = auto-anchor (label on the side of the dot
+            // that keeps it inside the plot) and above the dot.
+            // Label overrides for the 8-model scatter. The top cluster
+            // (GPT-5.2 / Llama 4 Maverick / Haiku 4.5) is the hardest — points
+            // sit within ~40px on x and ~10px on y even with the wider canvas.
+            const labelOverrides = {
+                'openai-gpt-5.2':                 { dx: -12, dy: 16,  anchor: 'end' },     // lower-left (clears Llama 4 above)
+                'meta-llama-llama-4-maverick':    { dx:  0,  dy: -14, anchor: 'middle' },  // straight above
+                'anthropic-claude-haiku-4.5':     { dx:  12, dy: -4,  anchor: 'start' },   // right of dot, slightly up
+                'openai-gpt-5-chat':              { dx:  12, dy:  4,  anchor: 'start' },   // right of dot
+                'openai-o3-pro':                  { dx: -10, dy: 14,  anchor: 'end' },     // lower-left (clears Grok)
+                'x-ai-grok-4.20':                 { dx:  0,  dy: -12, anchor: 'middle' },  // straight above
+                'anthropic-claude-opus-4.7':      { dx: -10, dy: -8,  anchor: 'end' },     // upper-left
+                'google-gemini-3-pro-preview':    { dx:  0,  dy: -12, anchor: 'middle' },  // straight above (well-separated)
+            };
+
+            for (const p of points) {
+                const cx = xScale(p.overRate * 100);
+                const cy = yScale(p.spr * 100);
+                const color = PROVIDER_COLORS[p.provider];
+                svgParts.push(
+                    `<circle class="point" data-model="${p.model}" cx="${cx}" cy="${cy}" r="6" fill="${color}" fill-opacity="0.85" stroke="${color}" stroke-width="1.5" />`
+                );
+                // Compute auto-anchor as the default; an override may replace any field.
+                const onRight = cx > plotMidX;
+                const auto = { dx: onRight ? -8 : 8, dy: -10, anchor: onRight ? 'end' : 'start' };
+                const off = { ...auto, ...(labelOverrides[p.model] || {}) };
+                svgParts.push(
+                    `<text class="point-label" x="${cx + off.dx}" y="${cy + off.dy}" text-anchor="${off.anchor}">${p.short}</text>`
+                );
+            }
+
+            svgParts.push('</svg>');
+            host.innerHTML = svgParts.join('');
+
+            // Tooltip wiring
+            const fmtPct = (v, d = 1) => v == null ? '—' : (v * 100).toFixed(d) + '%';
+            const pointMap = new Map(points.map(p => [p.model, p]));
+
+            host.querySelectorAll('.point').forEach(node => {
+                node.addEventListener('mouseenter', (e) => {
+                    const p = pointMap.get(node.getAttribute('data-model'));
+                    if (!p) return;
+                    tooltip.innerHTML = `
+                        <strong>${p.short}</strong>
+                        <div class="tt-row"><span>Triage Success Rate</span><span class="tt-val">${fmtPct(p.tsr)}</span></div>
+                        <div class="tt-row"><span>Safety Pass Rate</span><span class="tt-val">${fmtPct(p.spr)}</span></div>
+                        <div class="tt-row"><span>Over-escalation</span><span class="tt-val">${p.overCount} / ${p.nonurgent} (${fmtPct(p.overRate)})</span></div>
+                        <div class="tt-row"><span>Missed escalations</span><span class="tt-val">${p.missed ?? '—'}</span></div>
+                        <div class="tt-row"><span>Unsafe reassurance</span><span class="tt-val">${p.unsafe ?? '—'}</span></div>
+                        <div class="tt-row"><span>Overconfident wrong</span><span class="tt-val">${p.overconf ?? '—'}</span></div>
+                        <div class="tt-row"><span>Top-3 recall</span><span class="tt-val">${fmtPct(p.top3)}</span></div>
+                        <div class="tt-row"><span>Coverage</span><span class="tt-val">${fmtPct(p.coverage, 0)}</span></div>
+                    `;
+                    tooltip.style.opacity = '1';
+                });
+                node.addEventListener('mousemove', (e) => {
+                    const chart = document.getElementById('tradeoff-chart');
+                    const rect = chart.getBoundingClientRect();
+                    const x = e.clientX - rect.left + 12;
+                    const y = e.clientY - rect.top + 12;
+                    // Keep tooltip inside chart on the right edge
+                    const ttRect = tooltip.getBoundingClientRect();
+                    const maxX = rect.width - ttRect.width - 8;
+                    tooltip.style.left = Math.min(x, maxX) + 'px';
+                    tooltip.style.top = y + 'px';
+                });
+                node.addEventListener('mouseleave', () => {
+                    tooltip.style.opacity = '0';
+                });
+            });
+
+            // Provider legend
+            const providersInUse = [...new Set(points.map(p => p.provider))];
+            const providerLabels = {
+                openai: 'OpenAI', anthropic: 'Anthropic', google: 'Google',
+                deepseek: 'DeepSeek', meta: 'Meta', xai: 'xAI', other: 'Other',
+            };
+            legendEl.innerHTML = providersInUse.map(p =>
+                `<span class="legend-item"><span class="legend-swatch" style="background:${PROVIDER_COLORS[p]}"></span>${providerLabels[p]}</span>`
+            ).join('');
+        }
+
+        // Initial load
+        loadLeaderboardData();
+    </script>
+</body>
+</html>

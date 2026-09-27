@@ -966,25 +966,30 @@
                 <a class="nav-link" href="https://github.com/cortico-health/MedSafe-Dx" target="_blank" rel="noopener">💻 GitHub</a>
                 <a class="nav-link" href="leaderboard-v02.html">v0.2 preview (synthetic)</a>
                 <a class="nav-link" href="findings-2026-09.html">📊 Findings write-up</a>
+                <a class="nav-link" href="archive/">🗄️ Archive</a>
                 <a class="nav-link" href="README.md">🏠 README</a>
             </div>
         </header>
 
         <div class="content">
             <div class="changes-panel" id="changes-panel">
-                <h2>New ranking: the triage score (draft for review)</h2>
+                <h2>What's changing: a smaller, literature-checked benchmark (draft for review)</h2>
                 <p class="changes-intro">
-                    We now rank models by how often they send a patient with a likely serious condition home (under-triage)
-                    and how often they send a patient without one to urgent care (over-triage), each measured against a clinically tolerated rate.
+                    MedSafe-Dx tests whether an AI assistant flags the patients who need prompt clinical attention, using synthetic patients from the public DDXPlus dataset.
+                    On review, the dataset's answer for a patient often disagreed with other references for the same patient, so we are narrowing the benchmark to the cases where they agree.
                 </p>
                 <div class="changes-body" id="changes-body">
-                <ul>
-                    <li><strong>Why the change.</strong> The old headline number, the Triage Success Rate, counted a missed emergency and an unneeded referral as equally bad, and graded against a yes/no label. Most of its spread came from over-escalation, so it mostly measured how cautious each model was. A policy that escalates everyone would have placed 17th of 20.</li>
-                    <li><strong>What we grade against.</strong> We call a case urgent when the DDXPlus differential gives at least a 15% chance of a severe condition (188 of 250 cases). The old label looked only at the top three diagnoses and ignored their probabilities.</li>
-                    <li><strong>Baselines on the board.</strong> "Always escalate" and "Never escalate" are scored by the same code and shown as reference rows, not models.</li>
-                    <li><strong>Two rows corrected.</strong> GPT-5.4 Mini and GPT-5.6 Luna were first scored from prediction files that a second, accidental run of the same models overwrote seconds later. We rescored both from the files on disk: Mini now has 10 missed escalations (was 7) and 58 over-escalations (was 60); Luna 13 (was 18) and 55 (was 56). The harness now refuses to start a second run on the same file, or to score a file while a run still writes it.</li>
-                    <li><strong>Nothing removed.</strong> Triage Success Rate, Safety Pass Rate and the counts against the old label stay in the data; tick "Show previous metrics" under the table to see them.</li>
-                </ul>
+                <ol>
+                    <li><strong>What we found.</strong> Two clinicians, Dr Sarah Baldwin and Dr Andy Minhas, reviewed cases in a spreadsheet and flagged answers that looked wrong. We then checked every audited case against two more references: DXA, the rule-based diagnosis engine that ships with DDXPlus, and a structured literature review of each case. On many cases these references disagreed with the dataset, so a model marked as failing may have made a reasonable call. In our audit of one strong model, only 12 of the 81 points it lost were failures the literature review agreed with. A benchmark should not expect an AI assistant to match an answer that its own references dispute.</li>
+                    <li><strong>Why it happens.</strong> DDXPlus gives each condition one severity, so every patient with that condition gets the same label. Real patients vary: anaemia with black stools in someone on a blood thinner needs prompt review, while mild tiredness does not. Other causes include targets the patient's findings do not support, text-conversion errors, and conditions no one could identify from the intake alone, such as Chagas disease without a travel history.</li>
+                    <li><strong>What we changed: conditions.</strong> We reviewed all 49 DDXPlus conditions against published guidance. We keep 35, treat 5 as serious (tuberculosis and pericarditis always; COPD flare-ups, atrial fibrillation and myasthenia gravis when a red flag is present), score 6 only when a red flag is present, and set 3 aside entirely.</li>
+                    <li><strong>What we changed: patients.</strong> Most of the fix works per patient. Published red-flag rules make a case serious when its findings call for prompt review, for example coughing up blood at age 40 or over (NICE NG12). Other rules set aside single cases that are broken or cannot be decided from the intake. So each case is kept, corrected with a cited rule, or set aside with a cited reason.</li>
+                    <li><strong>Who checked the evidence.</strong> The literature review was AI-assisted: two independent AI reviewers searched the literature, a third adjudicated, and we checked every citation. The reviewers agreed only moderately, so the review is evidence, not ground truth. Namrah Mirza-Haq will also check the review.</li>
+                    <li><strong>How we test the rules.</strong> We froze the rules, then tested them on fresh cases they were not built from, against pass criteria written down in advance. The first round failed on one group of cases, which we have removed; a second round is under way. We will publish new scores only after it passes.</li>
+                    <li><strong>How we score.</strong> A model passes a serious case only when it escalates for a valid serious reason, so a model cannot score well by escalating everyone. Scoring is deterministic, uses no AI judge, and can be reproduced from open data.</li>
+                    <li><strong>The trade-off.</strong> We prefer a smaller benchmark with a literature-backed basis to a broader one with a disputed one. The cases we set aside are harder: in our audit, the literature review judged model answers unsafe on 28% of them, against 15% of the cases we keep. The new benchmark will therefore understate failures on complex patients, and we will report that.</li>
+                    <li><strong>This board.</strong> The scores below still use the previous method (v0.1) and will be replaced.</li>
+                </ol>
                 <a class="archive-link" href="archive/run-2026-09-healthbench-refresh/">View the previous board (September 2026, ranked by Triage Success Rate)</a>
                 <p style="margin-top: 0.75rem; font-size: 0.9rem;">
                     <a href="archive/run-2026-05-v0-refresh/">May 2026 board (as cited in the preprint)</a> &middot;

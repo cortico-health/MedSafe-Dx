@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedSafe-Dx Archive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 { font-family: 'Montserrat', sans-serif; color: #4b54f6; border-bottom: 2px solid #4b54f6; padding-bottom: 0.5rem; }
+        .back-link { margin-bottom: 1rem; }
+        a { color: #4b54f6; }
+        ul.archive-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+        ul.archive-list li {
+            border: 1px solid #e3e6ea; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem;
+        }
+        ul.archive-list .name { font-weight: 600; font-size: 1.05rem; }
+        ul.archive-list .date { color: #666; font-size: 0.85rem; margin-left: 0.5rem; }
+        ul.archive-list p { margin: 0.4rem 0 0; color: #495057; }
+        @media (max-width: 768px) { body { padding: 1rem; } }
+    </style>
+</head>
+<body>
+    <div class="back-link"><a href="/">&larr; Back to Leaderboard</a></div>
+    <h1>MedSafe-Dx Archive</h1>
+    <p>Frozen snapshots of earlier boards and reports. Content here does not change; the live site at
+        <a href="/">the current site</a> carries the up-to-date methodology and scores.</p>
+    <ul class="archive-list">
+        <li>
+            <span class="name"><a href="v0.1-preprint/">v0.1 preprint</a></span><span class="date">2026-01 to 2026-05</span>
+            <p>The board and methodology report as cited in the medRxiv preprint (2026.04.14.26350711): the May 2026,
+                12-model board and the January 2026 methodology write-up.</p>
+        </li>
+        <li>
+            <span class="name"><a href="2026-09-refresh/">2026-09 refresh</a></span><span class="date">2026-09-23</span>
+            <p>The September 2026 leaderboard refresh (23 rows, ranked by Triage Success Rate) and its findings write-up.</p>
+        </li>
+        <li>
+            <span class="name"><a href="v0.2-preview/leaderboard-v02.html">v0.2 preview</a></span><span class="date">2026-09-23</span>
+            <p>The synthetic-preview board for spec revision 4.2 (no real model calls; simulated rows for scorer testing).</p>
+        </li>
+    </ul>
+</body>
+</html>

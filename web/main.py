@@ -264,6 +264,11 @@ async def read_index():
 async def read_methodology():
     return RedirectResponse(url="/report.html", status_code=301)
 
+@app.get("/leaderboard-v02.html")
+async def read_leaderboard_v02_archived():
+    # The v0.2 preview moved into the frozen archive; this keeps the old URL live.
+    return RedirectResponse(url="/archive/v0.2-preview/leaderboard-v02.html", status_code=301)
+
 @app.get("/report.html")
 async def read_report():
     try:

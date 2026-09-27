@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedSafe-Dx Leaderboard - archived run-2026-09-healthbench-refresh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: white;
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            color: #4b54f6;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            color: #4b54f6;
+        }
+
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            color: #666;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: #666;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            background: #f8f9fa;
+            color: #333;
+            border-color: #999;
+        }
+
+        .controls {
+            padding: 1.5rem 2rem;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .file-input-wrapper {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .file-input-wrapper label {
+            font-weight: 600;
+            color: #495057;
+        }
+
+        input[type="file"] {
+            padding: 0.5rem;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #5568d3;
+        }
+
+        .disclaimer {
+            background-color: #e7f1ff;
+            border: 1px solid #b6d4fe;
+            color: #0c4a8a;
+            padding: 1rem 1.25rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            text-align: left;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .disclaimer .citation {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #0c4a8a;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .disclaimer a {
+            color: #0c4a8a;
+            font-weight: 600;
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .legend {
+            /* background: #fff3cd; */
+            /* border: 2px solid #ffc107; */
+            /* border-radius: 8px; */
+            padding: 1rem 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .legend h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #4b54f6;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .legend p {
+            font-family: 'Inter', sans-serif;
+            color: #495057;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .legend a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .legend a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        th {
+            background: #f8f9fa;
+            color: #495057;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 500;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        th.safety-header {
+            background: #f8f9fa;
+            color: #6c757d;
+        }
+
+        th.effectiveness-header {
+            background: #f8f9fa;
+            color: #6c757d;
+        }
+        
+        th.primary-metric {
+            background: #198754;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        th a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px dotted currentColor;
+        }
+
+        th a:hover {
+            border-bottom-style: solid;
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 0.95rem;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .rank {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #667eea;
+            width: 60px;
+        }
+
+        .model-name {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: #212529;
+            white-space: nowrap;
+        }
+
+        .model-version {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 0.25rem;
+            font-weight: 400;
+        }
+
+        .metric {
+            text-align: center;
+            font-weight: 400;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .metric.danger {
+            color: #dc3545;
+            font-weight: 500;
+        }
+
+        .metric.success {
+            color: #28a745;
+            font-weight: 400;
+        }
+        
+        .metric.primary {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #198754;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .badge.perfect {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge.warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .badge.danger {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* The 14-column table is wider than a phone; scroll it instead of
+           forcing the whole page to scroll sideways. */
+        #leaderboard {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Rank + model stay pinned while the table scrolls sideways.
+           --rank-col-w is measured in renderLeaderboard() after the table mounts. */
+        #leaderboard th:nth-child(1),
+        #leaderboard td:nth-child(1),
+        #leaderboard th:nth-child(2),
+        #leaderboard td:nth-child(2) {
+            position: sticky;
+            background: #fff;
+            z-index: 2;
+        }
+        #leaderboard th:nth-child(1), #leaderboard td:nth-child(1) { left: 0; }
+        #leaderboard th:nth-child(2), #leaderboard td:nth-child(2) {
+            left: var(--rank-col-w, 60px);
+            box-shadow: 2px 0 0 #e9ecef;
+        }
+        #leaderboard th:nth-child(1), #leaderboard th:nth-child(2) { background: #f8f9fa; z-index: 3; }
+        #leaderboard tr:hover td:nth-child(1), #leaderboard tr:hover td:nth-child(2) { background: #f8f9fa; }
+
+        .scroll-hint, .scatter-scroll-hint {
+            display: none;
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin: 1rem 0 -0.5rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #6c757d;
+        }
+
+        .empty-state h2 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1rem;
+            color: rgb(229, 231, 235);
+            font-weight: 600;
+        }
+
+        footer {
+            padding: 1.5rem 2rem;
+            background: #f8f9fa;
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .cases-count {
+            font-size: 0.8rem;
+            color: #adb5bd;
+            font-weight: 400;
+        }
+
+        .tradeoff-chart {
+            margin-bottom: 2.5rem;
+            padding: 1.25rem 1rem 0.5rem;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            background: #fff;
+        }
+
+        .tradeoff-chart h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #4b54f6;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .tradeoff-chart .chart-subtitle {
+            font-family: 'Inter', sans-serif;
+            color: #6c757d;
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .tradeoff-chart svg {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .tradeoff-chart .chart-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.25rem;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #495057;
+            padding: 0.25rem 0 0.5rem;
+        }
+
+        .tradeoff-chart .chart-legend .legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .tradeoff-chart .chart-legend .legend-swatch {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .tradeoff-chart .point {
+            cursor: pointer;
+            transition: r 0.12s ease, stroke-width 0.12s ease;
+        }
+
+        .tradeoff-chart .point:hover {
+            stroke-width: 2.5;
+        }
+
+        .tradeoff-chart .point-label {
+            font-size: 11px;
+            fill: #212529;
+            pointer-events: none;
+            font-weight: 500;
+            /* White halo so labels remain legible when they overlap in dense clusters. */
+            stroke: #ffffff;
+            stroke-width: 3;
+            paint-order: stroke fill;
+            stroke-linejoin: round;
+        }
+
+        .tradeoff-chart .axis-label {
+            font-size: 12px;
+            fill: #495057;
+            font-weight: 500;
+        }
+
+        .tradeoff-chart .axis-tick {
+            font-size: 10.5px;
+            fill: #6c757d;
+        }
+
+        .tradeoff-chart .axis-line {
+            stroke: #adb5bd;
+            stroke-width: 1;
+        }
+
+        .tradeoff-chart .gridline {
+            stroke: #f1f3f5;
+            stroke-width: 1;
+        }
+
+        .tradeoff-chart .ideal-zone {
+            fill: #198754;
+            fill-opacity: 0.10;
+        }
+
+        .tradeoff-chart .direction-arrow {
+            font-size: 11px;
+            fill: #198754;
+            font-weight: 600;
+        }
+
+        .chart-tooltip {
+            position: absolute;
+            background: #212529;
+            color: #fff;
+            padding: 0.55rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            line-height: 1.4;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.12s ease;
+            z-index: 10;
+            max-width: 240px;
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+        }
+
+        .chart-tooltip strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: #fff;
+        }
+
+        .chart-tooltip .tt-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            color: #ced4da;
+        }
+
+        .chart-tooltip .tt-row .tt-val {
+            color: #fff;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* ==== Release / "what changed" panel ==== */
+        .changes-panel {
+            border: 1px solid #d7d9fb;
+            border-left: 4px solid #4b54f6;
+            border-radius: 10px;
+            background: #f7f8ff;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .changes-panel h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #4b54f6;
+            margin-bottom: 0.75rem;
+        }
+
+        .changes-panel .changes-intro {
+            color: #212529;
+            font-size: 0.95rem;
+            line-height: 1.55;
+            margin-bottom: 0.6rem;
+        }
+
+        /* Collapsed to about five lines with a fade; the toggle reveals the rest. */
+        .changes-body {
+            position: relative;
+            overflow: hidden;
+            max-height: 7.5rem;
+        }
+        .changes-body::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 3.5rem;
+            background: linear-gradient(to bottom, rgba(247, 248, 255, 0), #f7f8ff 85%);
+            pointer-events: none;
+        }
+        .changes-panel.expanded .changes-body { max-height: none; }
+        .changes-panel.expanded .changes-body::after { display: none; }
+
+        .changes-toggle {
+            background: none;
+            color: #4b54f6;
+            border: 1px solid #c9ccfa;
+            padding: 0.35rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        .changes-toggle:hover { background: #e4e6fb; }
+
+        .changes-panel ul {
+            margin: 0 0 0.75rem 1.25rem;
+            color: #495057;
+            font-size: 0.9rem;
+            line-height: 1.65;
+        }
+
+        .changes-panel .change-summary {
+            font-size: 0.9rem;
+            color: #212529;
+            font-weight: 600;
+            padding: 0.6rem 0.75rem;
+            background: #fff;
+            border: 1px solid #e4e6fb;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+        }
+
+        .changes-panel .harness-note code {
+            background: #eef0ff;
+            padding: 0.1rem 0.35rem;
+            border-radius: 4px;
+            font-size: 0.78rem;
+        }
+
+        .changes-panel .harness-note {
+            font-size: 0.82rem;
+            color: #6c757d;
+            line-height: 1.55;
+            margin-bottom: 0.9rem;
+        }
+
+        .changes-panel .archive-link {
+            display: inline-block;
+            background: #4b54f6;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 0.55rem 1.1rem;
+            border-radius: 20px;
+        }
+
+        .changes-panel .archive-link:hover {
+            background: #3941d9;
+        }
+
+        /* ==== Era chips & row badges ==== */
+        .era-chip {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .badge.new-model {
+            background: #e4e6fb;
+            color: #3941d9;
+            margin-left: 0;
+            font-size: 0.72rem;
+            padding: 0.15rem 0.55rem;
+        }
+
+        .badge.superseded {
+            background: #f1f3f5;
+            color: #868e96;
+            font-weight: 500;
+            margin-left: 0;
+            font-size: 0.72rem;
+            padding: 0.15rem 0.55rem;
+        }
+
+        .badge.rerun {
+            background: #d1f0ea;
+            color: #0f6b5c;
+            margin-left: 0;
+            font-size: 0.72rem;
+            padding: 0.15rem 0.55rem;
+        }
+
+        .badge.derived {
+            background: #f1f3f5;
+            color: #495057;
+            font-weight: 500;
+            margin-left: 0;
+            font-size: 0.72rem;
+            padding: 0.15rem 0.55rem;
+            cursor: help;
+        }
+
+        .prior-run {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            color: #868e96;
+            margin-top: 0.2rem;
+        }
+
+        .delta-group-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #495057;
+            margin: 0.5rem 0 0.25rem;
+        }
+
+        .badge.codex {
+            background: #fff3cd;
+            color: #856404;
+            margin-left: 0;
+            font-size: 0.72rem;
+            padding: 0.15rem 0.55rem;
+            cursor: help;
+        }
+
+        .table-footnote {
+            font-size: 0.8rem;
+            color: #6c757d;
+            line-height: 1.55;
+            margin-top: 0.75rem;
+            padding-left: 0.25rem;
+        }
+
+        tr.is-superseded .model-name {
+            color: #868e96;
+        }
+
+        /* ==== TSR bar chart + generation deltas (share the scatter's chrome) ==== */
+        .tradeoff-chart .bar {
+            cursor: pointer;
+        }
+
+        .tradeoff-chart .bar:hover {
+            opacity: 0.82;
+        }
+
+        .tradeoff-chart .bar-label {
+            font-size: 12px;
+            fill: #212529;
+        }
+
+        .tradeoff-chart .bar-value {
+            font-size: 12px;
+            fill: #495057;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .tradeoff-chart .delta-up { fill: #198754; }
+        .tradeoff-chart .delta-down { fill: #dc3545; }
+
+        /* ==== Mobile: tighter chrome, scrollable charts and table ==== */
+        @media (max-width: 768px) {
+            header { padding: 1.25rem 1rem 1rem; }
+            h1 { font-size: 1.4rem; }
+            .subtitle { font-size: 0.95rem; }
+            header > div { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-top: 1rem; }
+            .nav-link { margin-top: 0; padding: 0.4rem 0.8rem; font-size: 0.85rem; }
+
+            .content { padding: 1rem; }
+            .changes-panel { padding: 1rem; }
+            .changes-panel h2 { font-size: 1rem; }
+            .changes-panel ul { margin-left: 1rem; font-size: 0.875rem; }
+            .disclaimer { padding: 0.85rem 1rem; font-size: 0.9rem; margin-bottom: 1.25rem; }
+            .legend { padding: 0.5rem 0; margin-bottom: 1rem; }
+            .tradeoff-chart { padding: 1rem 0.75rem 0.5rem; margin-bottom: 1.5rem; }
+            .tradeoff-chart h3 { font-size: 1rem; }
+            .chart-tooltip { max-width: min(240px, calc(100vw - 3rem)); }
+            footer { padding: 1.25rem 1rem; }
+
+            /* Charts are drawn in a 1000-unit viewBox; scaled to a phone the labels
+               drop below 6px. Keep them readable by scrolling the chart instead. */
+            #tradeoff-svg-host {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin: 0 -0.75rem;
+                padding: 0 0.75rem;
+            }
+            #tradeoff-svg-host svg { min-width: 720px; max-height: none; }
+            #tsr-bar-host svg, #delta-host svg { max-height: none; }
+            .scatter-scroll-hint { display: block; }
+
+            .scroll-hint { display: block; }
+            th, td { padding: 0.5rem 0.6rem; }
+            td { font-size: 0.85rem; }
+            th { font-size: 0.7rem; }
+            th.primary-metric { font-size: 0.75rem; }
+            .rank { font-size: 0.95rem; width: auto; padding-right: 0.25rem; }
+            .model-name { white-space: normal; font-size: 0.85rem; }
+            #leaderboard td:nth-child(2) { min-width: 130px; max-width: 150px; }
+            #leaderboard td:nth-child(1) { padding-left: 0.5rem; }
+            .model-version { font-size: 0.72rem; }
+            .metric.primary { font-size: 1rem; }
+            .badge { font-size: 0.7rem; padding: 0.15rem 0.5rem; margin-left: 0.25rem; }
+            .era-chip { font-size: 0.7rem; padding: 0.15rem 0.5rem; }
+            .empty-state { padding: 2.5rem 1rem; }
+        }
+
+        /* ==== Print: light palette, A4, no clipped charts ==== */
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+
+        @media print {
+            html, body {
+                background: #fff !important;
+                color: #212529 !important;
+            }
+
+            body, .container, .content, .changes-panel, .tradeoff-chart, .legend, .disclaimer {
+                background: #fff !important;
+                box-shadow: none !important;
+            }
+
+            .container { max-width: none; }
+            .content { padding: 0 !important; }
+
+            /* Pinned columns and swipe hints only matter on a scrolling screen. */
+            #leaderboard th, #leaderboard td { position: static !important; box-shadow: none !important; }
+            .scroll-hint, .scatter-scroll-hint, .changes-toggle { display: none !important; }
+            .changes-body { max-height: none !important; }
+            .changes-body::after { display: none !important; }
+            #tradeoff-svg-host { overflow: visible !important; }
+            #tradeoff-svg-host svg { min-width: 0 !important; }
+
+            .nav-link, .controls, .chart-tooltip {
+                display: none !important;
+            }
+
+            a { color: #212529 !important; text-decoration: none; }
+
+            svg {
+                max-width: 100% !important;
+                height: auto !important;
+                max-height: none !important;
+                page-break-inside: avoid;
+            }
+
+            table {
+                width: 100% !important;
+                max-width: 100% !important;
+                table-layout: auto;
+                font-size: 7pt;
+                page-break-inside: auto;
+            }
+
+            th {
+                font-size: 6.5pt;
+                text-transform: none !important;
+                letter-spacing: 0 !important;
+            }
+
+            th, td {
+                overflow-wrap: break-word;
+                word-break: normal;
+                hyphens: none;
+            }
+
+            th.primary-metric { font-size: 6.5pt !important; }
+
+            .model-name { white-space: normal !important; font-size: 6.5pt; }
+            .model-version { font-size: 6pt; }
+            .rank { font-size: 8pt; width: auto; }
+            .metric.primary { font-size: 7.5pt; }
+            .badge {
+                font-size: 5pt !important;
+                padding: 0 3px !important;
+                white-space: nowrap;
+                line-height: 1.7;
+            }
+            .model-version { line-height: 1.5; }
+            .era-chip { font-size: 5.5pt; padding: 0 4px; }
+            .cases-count { font-size: 6pt; }
+            .table-footnote { font-size: 7pt; }
+            .prior-run { font-size: 5.5pt; }
+            .delta-group-title { font-size: 8pt; }
+            #leaderboard { overflow: visible !important; }
+
+            thead { display: table-header-group; }
+            tfoot { display: table-footer-group; }
+            tr { page-break-inside: avoid; break-inside: avoid; }
+            th, td { padding: 2px 3px !important; }
+
+            th {
+                background: #f1f3f5 !important;
+                color: #212529 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .era-chip, .badge, .bar, .point {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .tradeoff-chart, .changes-panel, .legend {
+                page-break-inside: avoid;
+                border: 1px solid #ced4da !important;
+            }
+
+            /* Keep the footer on the last page of the table instead of orphaning
+               a near-empty page after it. */
+            footer {
+                color: #495057 !important;
+                background: #fff !important;
+                padding: 0.5rem 0 0 !important;
+                margin-top: 0.5rem !important;
+                font-size: 8pt;
+                break-before: avoid;
+                page-break-before: avoid;
+            }
+
+            table { margin-top: 0.5rem !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="archived-banner" style="background:#fef3c7;border-bottom:1px solid #f5c27a;color:#7a4a00;font-family:'Inter',-apple-system,sans-serif;font-size:0.92rem;padding:0.7rem 1.2rem;text-align:center;">
+        Archived: the 2026-09 leaderboard refresh board and findings, frozen 2026-09-23. Superseded by the revised MedSafe-Dx methodology (v0.3, in validation). <a href="/" style="color:#7a4a00;font-weight:600;">See the current site</a>.
+    </div>
+    <div class="container">
+        <header>
+            <h1>🏥 MedSafe-Dx Leaderboard</h1>
+            <p class="subtitle">Safety-First Clinical Diagnostic Decision Support Evaluation</p>
+            <div>
+                <a class="nav-link" href="/report.html">📄 Methodology &amp; Results</a>
+                <a class="nav-link" href="https://doi.org/10.64898/2026.04.14.26350711" target="_blank" rel="noopener">📝 Preprint</a>
+                <a class="nav-link" href="https://github.com/cortico-health/MedSafe-Dx" target="_blank" rel="noopener">💻 GitHub</a>
+                <a class="nav-link" href="findings-2026-09.html">📊 Findings write-up</a>
+                <a class="nav-link" href="/README.md">🏠 README</a>
+            </div>
+        </header>
+
+        <div class="archive-banner" style="background:#fff3cd;border:1px solid #ffe69c;border-radius:8px;padding:0.9rem 1.2rem;margin:1rem 0 0;color:#664d03;font-size:0.95rem;">
+            <strong>Archived leaderboard</strong> - run <code>run-2026-09-healthbench-refresh</code> (23 rows, ranked by Triage Success Rate, frozen 2026-09-23).
+            We keep this page as it was shown, including the GPT-5.4 Mini and GPT-5.6 Luna rows that were scored from prediction files later overwritten by a second concurrent run.
+            The current leaderboard, ranked by triage score, is at <a href="/">the main page</a>.
+        </div>
+
+
+        <div class="content">
+            <div class="changes-panel" id="changes-panel">
+                <h2>What's new: September 2026 update</h2>
+                <p class="changes-intro">
+                    We tested 11 new AI models on the same 250 patient cases as before. The question for each one:
+                    does it send urgent cases to care, and leave routine ones alone?
+                </p>
+                <div class="changes-body" id="changes-body">
+                <ul id="changes-list">
+                    <li><strong>A new leader.</strong> GPT-5.6 Terra takes the top spot with a Triage Success Rate of 73.2%, narrowly ahead of the previous leader, GPT-5 Chat (72.4%). GPT-5.4 Mini ties for second.</li>
+                    <li><strong>Newer is not always safer.</strong> Three of the four successor models (Grok 4.6, GPT-5.6 Sol and Claude Opus 5) score slightly below the models they replace, because they send more routine cases to urgent care. GPT-5.4 Mini is the exception, up 2.8 points on GPT-5 Mini.</li>
+                    <li><strong>Best at diagnosis, not at triage.</strong> GPT-6 Astra, Claude Fable 5 and Claude Opus 5 name the right diagnosis in their top three more often than any other model, yet they sit in the bottom third of the board because they over-escalate.</li>
+                    <li><strong>Fairer re-runs.</strong> Two older models, GPT-5 Mini and DeepSeek R1, were re-run with a longer answer limit. That fixed most of their earlier formatting failures and lifted their scores by 1 to 2 points. Their original rows stay on the archived board.</li>
+                    <li><strong>A small scoring tweak.</strong> Answers that list more than five possible diagnoses are now trimmed to the top five instead of rejected. Only Claude Opus 5 was affected (7 cases); no previously published score changed.</li>
+                </ul>
+                <div class="change-summary" id="change-summary">Computing release diff&hellip;</div>
+                <p class="harness-note">
+                    <strong>For the technically minded:</strong> this is run <code>run-2026-09-healthbench-refresh</code>, leaderboard v0.1.
+                    The answer limit (max_tokens) was raised from 2000 to 16000 so reasoning models are not cut off mid-answer;
+                    older reasoning-model rows were run at 2000. Gemini 3 Pro Preview's 65 failed answers were 41 empty responses
+                    and 23 truncations, but the model is no longer available to re-run, so its row stays as published.
+                </p>
+                <a class="archive-link" href="../run-2026-05-v0-refresh/">View the previous leaderboard (May 2026, 12 models, as cited in the preprint)</a>
+                <p class="findings-line" style="margin-top: 0.75rem; font-size: 0.9rem;">
+                    <a href="findings-2026-09.html">Read the full findings write-up</a>
+                </p>
+                </div>
+                <button type="button" class="changes-toggle" id="changes-toggle" aria-expanded="false" aria-controls="changes-body">Show more &#9662;</button>
+            </div>
+
+            <div class="disclaimer">
+                <strong>MedSafe-Dx v0.1</strong> — a safety-focused benchmark from Cortico Health Technologies for evaluating LLMs in clinical diagnostic decision support. Results on this leaderboard are reproducible from a frozen seed (<code>eval-250-v0.json</code>, N=250). New model runs are added as we go; issues and PRs welcome on <a href="https://github.com/cortico-health/MedSafe-Dx" target="_blank" rel="noopener">GitHub</a>. For inquiries: <a href="mailto:solutions@cortico.health">solutions@cortico.health</a>.
+                <span class="citation"><strong>Cite as:</strong> Van Oyen C, Mirza-Haq N. <em>MedSafe-Dx (v0): A Safety-Focused Benchmark for Evaluating LLMs in Clinical Diagnostic Decision Support.</em> medRxiv 2026.04.14.26350711; doi: <a href="https://doi.org/10.64898/2026.04.14.26350711" target="_blank" rel="noopener">10.64898/2026.04.14.26350711</a></span>
+            </div>
+
+            <div class="legend">
+                <h3>📄 <a href="/report.html">Methodology &amp; Results</a></h3>
+                <p>
+                    <strong>Primary: Triage Success Rate</strong> — an additive triage-utility metric that penalizes both hard safety failures and over-escalation. Defined as <code>Safety Pass Rate − (over-escalations / all cases)</code>. Higher is better; a valid always-escalate-and-uncertain strategy is capped at <code>1 − (non-urgent / all cases)</code>.<br>
+                    <strong>Secondary: Safety Pass Rate</strong> — % of cases with zero hard safety failures (missed escalation, overconfident wrong, unsafe reassurance). Over-escalation is excluded here and tracked separately.
+                    <a href="/report.html">(read more)</a>
+                </p>
+            </div>
+
+            <div class="tradeoff-chart" id="tsr-bar-chart" style="position: relative;">
+                <h3>Triage Success Rate by model</h3>
+                <p class="chart-subtitle">
+                    Primary metric, sorted best to worst. <code>TSR = Safety Pass Rate &minus; (over-escalations / all cases)</code>.
+                    Bars are coloured by evaluation era. Hover a bar for Safety Pass Rate, over-escalation and top-3 recall.
+                </p>
+                <div id="tsr-bar-host"></div>
+                <div class="chart-legend" id="tsr-bar-legend"></div>
+                <div class="chart-tooltip" id="tsr-bar-tooltip"></div>
+            </div>
+
+            <div class="tradeoff-chart" id="delta-chart" style="position: relative; display: none;">
+                <h3>Generation deltas</h3>
+                <p class="chart-subtitle">
+                    Each row pairs a model with the newer model that refreshes it, on Triage Success Rate.
+                    A rightward (green) move means the successor improved.
+                </p>
+                <div id="delta-host"></div>
+            </div>
+
+            <div class="tradeoff-chart" id="tradeoff-chart" style="position: relative;">
+                <h3>Triage tradeoff: Safety Pass Rate vs. over-escalation</h3>
+                <p class="chart-subtitle">
+                    <span id="scatter-count">All evaluated models shown.</span> <strong>Top-right is ideal</strong> — 100% Safety Pass Rate with 0% over-escalation. Diagonal dashed lines are iso-<strong>Triage Success Rate</strong> contours: points on the same line score the same on the primary metric. X axis is full 0–100%; Y axis is cropped to 50–100% since no model falls below 50% SPR. Hover a point for details.
+                </p>
+                <p class="scatter-scroll-hint scroll-hint" style="margin: 0 0 0.25rem;">Swipe the chart sideways to see the full 0&ndash;100% axis.</p>
+                <div id="tradeoff-svg-host"></div>
+                <div class="chart-legend" id="tradeoff-legend"></div>
+                <div class="chart-tooltip" id="tradeoff-tooltip"></div>
+            </div>
+
+            <div class="legend" style="border-top: 1px solid #e9ecef; padding-top: 1rem; margin-top: -0.5rem;">
+                <h3 style="font-size: 0.95rem;">For context: real-world clinical baselines</h3>
+                <p style="font-size: 0.85rem;">
+                    There is no consensus "correct" over-escalation rate, and definitions vary widely across the literature. A few anchors for discussion:
+                </p>
+                <ul style="font-size: 0.85rem; color: #495057; line-height: 1.6; margin: 0.25rem 0 0.5rem 1.25rem;">
+                    <li><strong>Field trauma triage (ACS-COT benchmark):</strong> targets &lt;5% under-triage and <em>tolerates 25–50% over-triage</em> as the accepted trade-off (CDC/ACS National Field Triage Guidelines; Sasser et al. 2012; ACS-COT 2021/2022).</li>
+                    <li><strong>"Non-urgent" ED visits:</strong> mean ~37% of visits, range 8–62% depending on definition (Uscher-Pines et al. 2013, systematic review).</li>
+                    <li><strong>PCP → specialist referrals deemed possibly inappropriate:</strong> ~30% in physician-rated studies (Mehrotra et al. 2011).</li>
+                    <li><strong>Outpatient diagnostic error (missed indications):</strong> ~5% of US adults/year, roughly half potentially harmful (Singh, Meyer &amp; Thomas, BMJ Qual Saf 2014).</li>
+                    <li><strong>Missed acute MI in the ED:</strong> historically ~2% (Pope et al., NEJM 2000), down to ~0.9% in modern cohorts but with large facility-level variation (Sharp et al. 2018).</li>
+                </ul>
+                <p style="font-size: 0.8rem; color: #6c757d; font-style: italic;">
+                    Status quo, simplified: clinical practice tolerates substantial over-triage to keep under-triage rare. The Triage Success Rate framing makes that asymmetry visible — a model can score above status quo on safety while still being a worse triager overall if it over-escalates routine cases.
+                </p>
+            </div>
+
+            <div id="leaderboard"></div>
+        </div>
+
+        <footer>
+            MedSafe-Dx v0.1 | Safety-gated diagnostic support evaluation<br>
+            Copyright © <a href="https://cortico.health" target="_blank" rel="noopener">Cortico Health Technologies Inc</a> 2026 | Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>
+        </footer>
+    </div>
+
+    <script>
+        let results = [];
+        let archiveResults = [];
+
+        // `?data=<file>` overrides the data source (used for local test fixtures).
+        // Default stays the live aggregate written by the FastAPI app.
+        const DATA_URL = new URLSearchParams(location.search).get('data') || 'leaderboard-data.json';
+        const ARCHIVE_URL = '../run-2026-05-v0-refresh/leaderboard-data.json';
+
+        // Which 2026-09 model refreshes which older model. Drives the "superseded by"
+        // badges and the generation-delta chart; both are skipped if a side is missing.
+        const SUPERSEDES = {
+            'anthropic-claude-opus-5': 'anthropic-claude-opus-4.7',
+            'x-ai-grok-4.6':           'x-ai-grok-4.20',
+            'openai-gpt-5.6-sol':      'openai-gpt-5.2',
+            'openai-gpt-5.4-mini':     'openai-gpt-5-mini',
+        };
+
+        const ERA_COLORS = {
+            '2026-01': '#b9bec9',
+            '2026-03': '#a4aadf',
+            '2026-05': '#8f96f5',
+            '2026-09': '#4b54f6',
+        };
+        const ERA_FALLBACK = '#adb5bd';
+
+        // A "-rerun" row belongs to its base era; the re-run is flagged by a badge
+        // rather than by its own colour, so eras stay comparable across charts.
+        const eraOf = v => String((v && v.version !== undefined) ? v.version : (v || '')).replace(/-rerun$/, '');
+        const isRerun = r => /-rerun$/.test(r.version || '');
+        const eraColor = v => ERA_COLORS[eraOf(v)] || ERA_FALLBACK;
+
+        // ==== Run provenance =============================================
+        // Rows carry how they were produced. 'codex' rows went through the local
+        // Codex CLI rather than OpenRouter, so they are only indicative.
+        const backendOf = r => (r.predictions_metadata && r.predictions_metadata.backend) || null;
+        const isCodexRun = r => backendOf(r) === 'codex';
+
+        // Older rows predate the max_tokens field and ran under the 2000 cap.
+        function maxTokensNote(r) {
+            const mt = r.predictions_metadata && r.predictions_metadata.max_tokens;
+            return mt ? `max_tokens ${mt}` : 'max_tokens 2000 (v0 cap)';
+        }
+
+        const derivedFrom = r => (r.predictions_metadata && r.predictions_metadata.derived_from) || null;
+
+        // The same model's row in the previous release, used to show what a
+        // re-run changed. Archive rows predate the max_tokens field (2000 cap).
+        let ARCHIVE_BY_MODEL = new Map();
+        function priorRunText(r) {
+            const a = ARCHIVE_BY_MODEL.get(r.model);
+            if (!a) return null;
+            const t = triageSuccessRate(a);
+            if (t === null) return null;
+            const mt = (a.predictions_metadata && a.predictions_metadata.max_tokens) || 2000;
+            return `was ${(t * 100).toFixed(1)}% TSR (${a.version}, max_tokens ${mt})`;
+        }
+
+        const CODEX_FOOTNOTE = 'GPT-6 Astra was run through the local Codex CLI (ChatGPT plan) after OpenRouter rejected the run on credits. '
+            + 'Codex adds its own agent system prompt, temperature is not controllable, reasoning effort medium. '
+            + 'Treat it as indicative, not strictly comparable.';
+
+        // Populated by computeReleaseDiff(); consumed by the table badges.
+        let NEW_MODELS = new Set();
+        let SUPERSEDED_BY = new Map();   // old model id -> new model id
+
+        // "What's new" panel: collapsed by default, one click to expand.
+        (function () {
+            const panel = document.getElementById('changes-panel');
+            const toggle = document.getElementById('changes-toggle');
+            if (!panel || !toggle) return;
+            toggle.addEventListener('click', () => {
+                const open = panel.classList.toggle('expanded');
+                toggle.setAttribute('aria-expanded', String(open));
+                toggle.innerHTML = open ? 'Show less &#9652;' : 'Show more &#9662;';
+            });
+        })();
+
+        // Load leaderboard data from aggregated JSON file
+        async function loadLeaderboardData() {
+            try {
+                const response = await fetch(DATA_URL);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                results = await response.json();
+
+                // Previous release, for the "what changed" diff. Non-fatal if absent.
+                try {
+                    const arc = await fetch(ARCHIVE_URL);
+                    archiveResults = arc.ok ? await arc.json() : [];
+                } catch (e) {
+                    console.warn('Archive leaderboard data unavailable:', e);
+                    archiveResults = [];
+                }
+
+                computeReleaseDiff();
+                renderLeaderboard();
+                renderTsrBarChart();
+                renderDeltaChart();
+                renderTradeoffChart();
+                let lastW = window.innerWidth, resizeTimer = null;
+                window.addEventListener('resize', () => {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(() => {
+                        if (window.innerWidth === lastW) return;
+                        lastW = window.innerWidth;
+                        renderTsrBarChart();
+                        renderDeltaChart();
+                    }, 150);
+                });
+            } catch (err) {
+                console.error('Error loading leaderboard data:', err);
+                alert('Error loading leaderboard data: ' + err.message);
+            }
+        }
+
+        // ==== Release diff ==============================================
+        function computeReleaseDiff() {
+            const current = new Map(results.map(r => [r.model, r]));
+            const archived = new Map(archiveResults.map(r => [r.model, r]));
+            ARCHIVE_BY_MODEL = archived;
+
+            NEW_MODELS = new Set(
+                archiveResults.length ? results.filter(r => !archived.has(r.model)).map(r => r.model) : []
+            );
+
+            SUPERSEDED_BY = new Map();
+            for (const [newer, older] of Object.entries(SUPERSEDES)) {
+                if (current.has(newer) && current.has(older)) SUPERSEDED_BY.set(older, newer);
+            }
+
+            const el = document.getElementById('change-summary');
+            if (!el) return;
+
+            const bestOf = rows => rows
+                .map(r => ({ model: r.model, tsr: triageSuccessRate(r) }))
+                .filter(r => r.tsr !== null)
+                .sort((a, b) => b.tsr - a.tsr)[0] || null;
+
+            const prevBest = bestOf(archiveResults);
+            const nowBest = bestOf(results);
+            const pct = v => (v * 100).toFixed(1) + '%';
+
+            // A re-run replaces a model's own old row: neither added nor superseded.
+            const rerunCount = results.filter(isRerun).length;
+
+            const parts = [
+                `${NEW_MODELS.size} model${NEW_MODELS.size === 1 ? '' : 's'} added`,
+                `${SUPERSEDED_BY.size} model${SUPERSEDED_BY.size === 1 ? '' : 's'} superseded`,
+            ];
+
+            if (prevBest && nowBest) {
+                parts.push(prevBest.model === nowBest.model && Math.abs(prevBest.tsr - nowBest.tsr) < 1e-9
+                    ? `top score unchanged at ${pct(nowBest.tsr)} (${shortModelName(nowBest.model)})`
+                    : `top score moved from ${pct(prevBest.tsr)} (${shortModelName(prevBest.model)}) to ${pct(nowBest.tsr)} (${shortModelName(nowBest.model)})`);
+            } else if (nowBest) {
+                parts.push(`top score ${pct(nowBest.tsr)} (${shortModelName(nowBest.model)})`);
+            }
+
+            if (rerunCount) {
+                parts.push(`${rerunCount} model${rerunCount === 1 ? '' : 's'} re-run with the longer answer limit`);
+            }
+
+            el.textContent = parts.join(', ') + '.';
+        }
+
+        // Badges shown next to a model name in the table.
+        function modelBadges(r) {
+            const out = [];
+            if (isRerun(r)) {
+                out.push('<span class="badge rerun" title="Same model re-evaluated under the 16000-token harness">re-run at 16000</span>');
+            } else if (NEW_MODELS.has(r.model)) {
+                out.push(`<span class="badge new-model">new ${eraOf(r)}</span>`);
+            }
+            if (SUPERSEDED_BY.has(r.model)) {
+                out.push(`<span class="badge superseded">superseded by ${shortModelName(SUPERSEDED_BY.get(r.model))}</span>`);
+            }
+            const df = derivedFrom(r);
+            if (df) {
+                out.push(`<span class="badge derived" title="${df}">derived from N=500 run</span>`);
+            }
+            if (isCodexRun(r)) {
+                out.push(`<span class="badge codex" title="${CODEX_FOOTNOTE}">via Codex CLI</span>`);
+            }
+            return out.join(' ');
+        }
+
+        // Triage Success Rate = SPR − (over-escalations / all cases).
+        // Composite primary metric: penalizes both hard safety failures AND over-escalation.
+        // Returns null if SPR is unavailable.
+        function triageSuccessRate(r) {
+            const spr = r.safety_pass_rate;
+            if (spr == null) return null;
+            const overCount = (r.effectiveness && r.effectiveness.over_escalation !== undefined)
+                ? r.effectiveness.over_escalation
+                : (r.informational && r.informational.overdiagnosis) || 0;
+            const total = r.cases_expected || r.cases || 0;
+            if (!total) return null;
+            return spr - (overCount / total);
+        }
+
+        function renderLeaderboard() {
+            const container = document.getElementById('leaderboard');
+            
+            if (results.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <h2>No Results Loaded</h2>
+                        <p>Upload evaluation JSON files or click "Load Default Results" to view the leaderboard.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Sort by Triage Success Rate (primary), then Safety Pass Rate (secondary),
+            // then missed escalations, then effectiveness.
+            const sortedResults = [...results].sort((a, b) => {
+                const tsrA = triageSuccessRate(a) ?? -1;
+                const tsrB = triageSuccessRate(b) ?? -1;
+                if (tsrA !== tsrB) return tsrB - tsrA;
+
+                const safetyA = a.safety_pass_rate ?? -1;
+                const safetyB = b.safety_pass_rate ?? -1;
+                if (safetyA !== safetyB) return safetyB - safetyA;
+
+                if (a.safety.missed_escalations !== b.safety.missed_escalations) {
+                    return a.safety.missed_escalations - b.safety.missed_escalations;
+                }
+
+                const recallA = a.effectiveness.top3_recall || 0;
+                const recallB = b.effectiveness.top3_recall || 0;
+                return recallB - recallA;
+            });
+
+            let html = `
+                <p class="scroll-hint">Swipe the table sideways for more columns.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Model</th>
+                            <th>Era</th>
+                            <th>Cases</th>
+                            <th>Coverage</th>
+                            <th class="primary-metric" title="Safety Pass Rate minus over-escalations as a share of all cases."><a href="/report.html#triage-success-rate">Triage Success Rate</a></th>
+                            <th class="safety-header"><a href="/report.html#safety-pass-rate" title="See definition">Safety Pass Rate</a></th>
+                            <th class="safety-header" colspan="3">Safety Failures (Lower is Better)</th>
+                            <th class="effectiveness-header">Calibration</th>
+                            <th class="effectiveness-header" colspan="3">Effectiveness</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th title="Evaluation run the row comes from"></th>
+                            <th></th>
+                            <th title="% of cases with a valid, parseable prediction">%</th>
+                            <th class="primary-metric">SPR − over-esc rate</th>
+                            <th class="safety-header">% with zero safety failures</th>
+                            <th class="safety-header"><a href="/report.html#missed-escalations" title="See definition">Missed Escalations</a></th>
+                            <th class="safety-header"><a href="/report.html#overconfident-wrong" title="See definition">Overconfident Wrong</a></th>
+                            <th class="safety-header"><a href="/report.html#unsafe-reassurance" title="See definition">Unsafe Reassurance</a></th>
+                            <th class="effectiveness-header"><a href="/report.html#over-escalation" title="Over-escalations out of non-urgent cases">Over-escal (of non-urgent)</a></th>
+                            <th class="effectiveness-header"><a href="/report.html#effectiveness" title="See definition">Top-1 Recall</a></th>
+                            <th class="effectiveness-header"><a href="/report.html#effectiveness" title="See definition">Top-3 Recall</a></th>
+                            <th class="effectiveness-header" title="Escalations made out of cases requiring escalation">Escalated (of urgent)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            sortedResults.forEach((result, index) => {
+                const safetyPassRate = result.safety_pass_rate !== null ?
+                    (result.safety_pass_rate * 100).toFixed(1) + '%' : 'N/A';
+                const tsrVal = triageSuccessRate(result);
+                const tsrText = tsrVal !== null ? (tsrVal * 100).toFixed(1) + '%' : 'N/A';
+                // Calculate coverage: use coverage_rate if available, otherwise derive from format_failures
+                let coverageRate;
+                if (result.coverage_rate !== null && result.coverage_rate !== undefined) {
+                    coverageRate = (result.coverage_rate * 100).toFixed(0) + '%';
+                } else if (result.format_failures !== undefined && result.total_attempted) {
+                    const validPredictions = result.total_attempted - result.format_failures;
+                    coverageRate = ((validPredictions / result.total_attempted) * 100).toFixed(0) + '%';
+                } else if (result.format_failures === 0 || result.format_failures === undefined) {
+                    coverageRate = '100%';  // Assume 100% if no failures recorded
+                } else {
+                    coverageRate = 'N/A';
+                }
+
+                const top1 = result.effectiveness.top1_recall !== null ? 
+                    (result.effectiveness.top1_recall * 100).toFixed(1) + '%' : 'N/A';
+                const top3 = result.effectiveness.top3_recall !== null ? 
+                    (result.effectiveness.top3_recall * 100).toFixed(1) + '%' : 'N/A';
+                
+                // Escalation breakdown
+                const overEscalation = result.effectiveness?.over_escalation !== undefined
+                    ? result.effectiveness.over_escalation
+                    : (result.informational?.overdiagnosis || 0);
+                const missedEsc = result.safety?.missed_escalations || 0;
+                const urgentCases = result.denominators?.escalation_required_cases ?? null;
+                const nonurgentCases = result.denominators?.nonurgent_cases ?? null;
+
+                // Correct escalations = urgent cases - missed escalations
+                const correctEscalations = urgentCases !== null ? (urgentCases - missedEsc) : null;
+                const escalatedText = correctEscalations !== null && urgentCases !== null
+                    ? `${correctEscalations} / ${urgentCases}`
+                    : 'N/A';
+                const overEscalationText = nonurgentCases !== null
+                    ? `${overEscalation} / ${nonurgentCases}`
+                    : `${overEscalation}`;
+
+                html += `
+                    <tr class="${SUPERSEDED_BY.has(result.model) && !isRerun(result) ? 'is-superseded' : ''}">
+                        <td class="rank">#${index + 1}</td>
+                        <td>
+                            <div class="model-name">${result.model}</div>
+                            <div class="model-version">v${result.version} ${modelBadges(result)}</div>
+                            ${isRerun(result) && priorRunText(result) ? `<div class="prior-run">${priorRunText(result)}</div>` : ''}
+                        </td>
+                        <td class="metric">
+                            <span class="era-chip" style="background:${eraColor(result)}" title="${maxTokensNote(result)}">${eraOf(result)}</span>
+                        </td>
+                        <td class="cases-count">${result.cases} cases</td>
+                        <td class="metric" title="${result.valid_predictions ?? 'N/A'} valid / ${result.cases_expected ?? result.cases ?? 'N/A'} expected">
+                            ${coverageRate}
+                        </td>
+                        <td class="metric primary" title="Triage Success Rate = Safety Pass Rate − (over-escalations / all cases)">
+                            ${tsrText}
+                        </td>
+                        <td class="metric">
+                            ${safetyPassRate}
+                        </td>
+                        <td class="metric ${result.safety.missed_escalations > 0 ? 'danger' : ''}">
+                            ${result.safety.missed_escalations}
+                        </td>
+                        <td class="metric ${result.safety.overconfident_wrong > 0 ? 'danger' : ''}">
+                            ${result.safety.overconfident_wrong}
+                        </td>
+                        <td class="metric ${result.safety.unsafe_reassurance > 0 ? 'danger' : ''}">
+                            ${result.safety.unsafe_reassurance}
+                        </td>
+                        <td class="metric ${overEscalation > 0 ? '' : 'success'}" title="Over-escalations out of non-urgent cases">
+                            ${overEscalationText}
+                        </td>
+                        <td class="metric">${top1}</td>
+                        <td class="metric">${top3}</td>
+                        <td class="metric success" title="Correct escalations out of cases requiring escalation">
+                            ${escalatedText}
+                        </td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                    </tbody>
+                </table>
+            `;
+
+            if (sortedResults.some(isCodexRun)) {
+                html += `<p class="table-footnote"><strong>via Codex CLI:</strong> ${CODEX_FOOTNOTE}</p>`;
+            }
+
+            container.innerHTML = html;
+            const firstRank = container.querySelector('td.rank');
+            if (firstRank) container.style.setProperty('--rank-col-w', firstRank.offsetWidth + 'px');
+        }
+
+        // ==== Tradeoff scatter chart ====================================
+        // X axis: over-escalation rate (% of non-urgent cases). Lower is better.
+        // Y axis: Safety Pass Rate. Higher is better.
+        // Each model is one point, colored by provider.
+
+        const PROVIDER_COLORS = {
+            openai:    '#10a37f',  // OpenAI teal
+            anthropic: '#d97757',  // Anthropic coral
+            google:    '#4285f4',  // Google blue
+            deepseek:  '#6366f1',  // indigo
+            meta:      '#0866ff',  // Meta blue
+            xai:       '#212529',  // xAI black
+            moonshot:  '#9333ea',  // Moonshot purple
+            zai:       '#0ea5e9',  // Z.ai sky
+            other:     '#6c757d',
+        };
+
+        // v0 frozen test set: 94 of 250 cases are non-urgent. Used as fallback
+        // denominator if the server-side enrichment hasn't populated denominators.
+        const V0_NONURGENT_FALLBACK = 94;
+
+        function providerOf(modelId) {
+            const m = modelId.toLowerCase();
+            if (m.startsWith('openai'))    return 'openai';
+            if (m.startsWith('anthropic')) return 'anthropic';
+            if (m.startsWith('google'))    return 'google';
+            if (m.startsWith('deepseek'))  return 'deepseek';
+            if (m.startsWith('meta-llama')) return 'meta';
+            if (m.startsWith('x-ai'))      return 'xai';
+            if (m.startsWith('moonshotai')) return 'moonshot';
+            if (m.startsWith('z-ai'))      return 'zai';
+            return 'other';
+        }
+
+        // Display names for models whose id does not reduce cleanly through the
+        // rules below (the 2026-09 roster, mostly).
+        const SHORT_NAME_OVERRIDES = {
+            'anthropic-claude-opus-5': 'Claude Opus 5',
+            'openai-gpt-5.6-sol':      'GPT-5.6 Sol',
+            'openai-gpt-5.6-terra':    'GPT-5.6 Terra',
+            'openai-gpt-5.6-luna':     'GPT-5.6 Luna',
+            'openai-gpt-5.4-mini':     'GPT-5.4 Mini',
+            'openai-gpt-6-astra':      'GPT-6 Astra',
+            'moonshotai-kimi-k3':      'Kimi K3',
+            'z-ai-glm-5.3':            'GLM 5.3',
+            'x-ai-grok-4.6':           'Grok 4.6',
+        };
+
+        function shortModelName(modelId) {
+            if (SHORT_NAME_OVERRIDES[modelId]) return SHORT_NAME_OVERRIDES[modelId];
+            return modelId
+                // Anthropic — match family-specific patterns first to fix capitalization
+                .replace(/^anthropic-claude-haiku-/,  'Claude Haiku ')
+                .replace(/^anthropic-claude-sonnet-/, 'Claude Sonnet ')
+                .replace(/^anthropic-claude-opus-/,   'Claude Opus ')
+                .replace(/^anthropic-claude-/,        'Claude ')
+                // OpenAI o-series reasoning
+                .replace(/^openai-o(\d.*)$/, 'o$1')
+                // OpenAI GPT family
+                .replace(/^openai-gpt-oss-/i, 'GPT-OSS ')
+                .replace(/^openai-gpt-/,      'GPT-')
+                .replace(/^openai-/,          '')
+                // Google
+                .replace(/^google-gemini-/, 'Gemini ')
+                // DeepSeek
+                .replace(/^deepseek-deepseek-r1.*$/, 'DeepSeek R1')
+                .replace(/^deepseek-deepseek-chat-v3-?\d*/, 'DeepSeek v3')
+                .replace(/^deepseek-deepseek-/, 'DeepSeek ')
+                // Meta
+                .replace(/^meta-llama-llama-4-maverick$/, 'Llama 4 Maverick')
+                .replace(/^meta-llama-llama-4-scout$/,    'Llama 4 Scout')
+                .replace(/^meta-llama-llama-/, 'Llama ')
+                .replace(/^meta-llama-/,       'Llama ')
+                // Moonshot AI / Z.ai
+                .replace(/^moonshotai-kimi-(.*)$/, (m, rest) => 'Kimi ' + rest.toUpperCase())
+                .replace(/^z-ai-glm-/,        'GLM ')
+                // xAI
+                .replace(/^x-ai-grok-/, 'Grok ')
+                .replace(/^x-ai-/,      '')
+                // Generic suffixes (apply after family-specific replacements)
+                .replace(/-pro-preview$/, ' Pro')
+                .replace(/-pro$/,         ' Pro')
+                .replace(/-flash-lite$/,  ' Flash Lite')
+                .replace(/-flash$/,       ' Flash')
+                .replace(/-chat$/,        ' chat')
+                .replace(/-mini$/,        ' mini')
+                .replace(/-sol$/,         ' Sol')
+                .replace(/(\d+)b\b/i,     '$1B');
+        }
+
+        // Shared hover-tooltip wiring for the inline SVG charts.
+        // `htmlFor(node)` returns the tooltip body, or null to skip the node.
+        function attachTooltip(chartEl, tooltipEl, nodes, htmlFor) {
+            if (!chartEl || !tooltipEl) return;
+            nodes.forEach(node => {
+                node.addEventListener('mouseenter', () => {
+                    const html = htmlFor(node);
+                    if (!html) return;
+                    tooltipEl.innerHTML = html;
+                    tooltipEl.style.opacity = '1';
+                });
+                node.addEventListener('mousemove', e => {
+                    const rect = chartEl.getBoundingClientRect();
+                    let x = e.clientX - rect.left + 12;
+                    const y = e.clientY - rect.top + 12;
+                    const ttRect = tooltipEl.getBoundingClientRect();
+                    const maxX = rect.width - ttRect.width - 8;
+                    if (x > maxX) x = maxX;
+                    tooltipEl.style.left = x + 'px';
+                    tooltipEl.style.top = y + 'px';
+                });
+                node.addEventListener('mouseleave', () => {
+                    tooltipEl.style.opacity = '0';
+                });
+            });
+        }
+
+        const fmtPctVal = (v, d = 1) => (v == null ? '—' : (v * 100).toFixed(d) + '%');
+
+        // Over-escalation rate among non-urgent cases (the scatter's X axis).
+        function overEscRate(r) {
+            const overCount = (r.effectiveness && r.effectiveness.over_escalation !== undefined)
+                ? r.effectiveness.over_escalation
+                : (r.informational && r.informational.overdiagnosis) || 0;
+            const nonurgent = (r.denominators && r.denominators.nonurgent_cases) || V0_NONURGENT_FALLBACK;
+            return nonurgent ? overCount / nonurgent : null;
+        }
+
+        // Bar and delta charts draw in viewBox units. On a wide screen the
+        // 1000-unit canvas scales down a little; on a phone the canvas is sized
+        // to the host so a 12-unit label is still 12px on screen.
+        function chartWidth(host, full = 1000) {
+            const w = host.clientWidth || (host.parentElement && host.parentElement.clientWidth) || full;
+            return Math.min(full, Math.max(320, Math.floor(w)));
+        }
+
+        // ==== Visual A: Triage Success Rate by model (horizontal bars) ====
+        function renderTsrBarChart() {
+            const host = document.getElementById('tsr-bar-host');
+            const legendEl = document.getElementById('tsr-bar-legend');
+            if (!host) return;
+
+            const rows = results
+                .map(r => ({ r, tsr: triageSuccessRate(r) }))
+                .filter(d => d.tsr !== null)
+                .sort((a, b) => b.tsr - a.tsr);
+
+            if (!rows.length) {
+                host.innerHTML = '<p style="color:#6c757d;font-size:0.85rem;">No data to chart yet.</p>';
+                return;
+            }
+
+            const W = chartWidth(host), rowH = 28, barH = 16;
+            const narrow = W < 640;
+            const M = { top: 12, right: narrow ? 50 : 64, bottom: 44, left: narrow ? 126 : 210 };
+            const plotW = W - M.left - M.right;
+            const H = M.top + rows.length * rowH + M.bottom;
+            const xScale = v => M.left + (v / 100) * plotW;
+
+            const parts = [];
+            parts.push(`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Horizontal bar chart of Triage Success Rate by model, sorted descending, coloured by evaluation era">`);
+
+            // Gridlines + x ticks
+            for (const t of [0, 25, 50, 75, 100]) {
+                const x = xScale(t);
+                parts.push(`<line class="gridline" x1="${x}" y1="${M.top}" x2="${x}" y2="${M.top + rows.length * rowH}" />`);
+                parts.push(`<text class="axis-tick" x="${x}" y="${M.top + rows.length * rowH + 18}" text-anchor="middle">${t}%</text>`);
+            }
+            parts.push(`<line class="axis-line" x1="${M.left}" y1="${M.top}" x2="${M.left}" y2="${M.top + rows.length * rowH}" />`);
+            parts.push(`<text class="axis-label" x="${M.left + plotW / 2}" y="${H - 8}" text-anchor="middle">Triage Success Rate (higher is better)</text>`);
+
+            rows.forEach((d, i) => {
+                const y = M.top + i * rowH + (rowH - barH) / 2;
+                const w = Math.max(1, xScale(d.tsr * 100) - M.left);
+                const color = eraColor(d.r);
+                parts.push(`<rect class="bar" data-model="${d.r.model}" x="${M.left}" y="${y}" width="${w}" height="${barH}" rx="3" fill="${color}" />`);
+                parts.push(`<text class="bar-label" x="${M.left - 10}" y="${y + barH - 3}" text-anchor="end">${shortModelName(d.r.model)}</text>`);
+                parts.push(`<text class="bar-value" x="${M.left + w + 8}" y="${y + barH - 3}">${(d.tsr * 100).toFixed(1)}%</text>`);
+            });
+
+            parts.push('</svg>');
+            host.innerHTML = parts.join('');
+
+            // Tooltip
+            const byModel = new Map(rows.map(d => [d.r.model, d]));
+            attachTooltip(
+                document.getElementById('tsr-bar-chart'),
+                document.getElementById('tsr-bar-tooltip'),
+                host.querySelectorAll('.bar'),
+                node => {
+                    const d = byModel.get(node.getAttribute('data-model'));
+                    if (!d) return null;
+                    const r = d.r;
+                    return `
+                        <strong>${shortModelName(r.model)}</strong>
+                        <div class="tt-row"><span>Era</span><span class="tt-val">${eraOf(r)}${isRerun(r) ? ' (re-run at 16000)' : ''}</span></div>
+                        <div class="tt-row"><span>Triage Success Rate</span><span class="tt-val">${fmtPctVal(d.tsr)}</span></div>
+                        <div class="tt-row"><span>Safety Pass Rate</span><span class="tt-val">${fmtPctVal(r.safety_pass_rate)}</span></div>
+                        <div class="tt-row"><span>Over-escalation (non-urgent)</span><span class="tt-val">${fmtPctVal(overEscRate(r))}</span></div>
+                        <div class="tt-row"><span>Top-3 recall</span><span class="tt-val">${fmtPctVal(r.effectiveness && r.effectiveness.top3_recall)}</span></div>
+                        ${isCodexRun(r) ? '<div class="tt-row"><span>backend</span><span class="tt-val">Codex CLI</span></div>' : ''}
+                        ${isRerun(r) && priorRunText(r) ? `<div class="tt-row"><span>Previous run</span><span class="tt-val">${priorRunText(r)}</span></div>` : ''}
+                    `;
+                }
+            );
+
+            // Era legend, in chronological order, for eras actually present
+            const erasInUse = [...new Set(rows.map(d => eraOf(d.r)))].sort();
+            legendEl.innerHTML = erasInUse.map(v =>
+                `<span class="legend-item"><span class="legend-swatch" style="background:${eraColor(v)};border-radius:2px"></span>${v}</span>`
+            ).join('');
+        }
+
+        // ==== Visual B: generation deltas (old TSR -> new TSR dumbbells) ====
+        function renderDeltaChart() {
+            const section = document.getElementById('delta-chart');
+            const host = document.getElementById('delta-host');
+            if (!section || !host) return;
+
+            const byModel = new Map(results.map(r => [r.model, r]));
+            const successorPairs = Object.entries(SUPERSEDES)
+                .map(([newer, older]) => {
+                    const nr = byModel.get(newer), orow = byModel.get(older);
+                    if (!nr || !orow) return null;
+                    const nt = triageSuccessRate(nr), ot = triageSuccessRate(orow);
+                    if (nt === null || ot === null) return null;
+                    return { newer, older, nr, orow, nt, ot, sub: `replaces ${shortModelName(older)}` };
+                })
+                .filter(Boolean)
+                .sort((a, b) => b.nt - a.nt);
+
+            // Re-runs compare a model against its own row in the previous release.
+            const rerunPairs = results.filter(isRerun).map(r => {
+                const a = ARCHIVE_BY_MODEL.get(r.model);
+                if (!a) return null;
+                const nt = triageSuccessRate(r), ot = triageSuccessRate(a);
+                if (nt === null || ot === null) return null;
+                const mt = (a.predictions_metadata && a.predictions_metadata.max_tokens) || 2000;
+                return { newer: r.model, older: r.model, nr: r, orow: a, nt, ot,
+                         sub: `was ${a.version}, max_tokens ${mt}` };
+            }).filter(Boolean).sort((a, b) => b.nt - a.nt);
+
+            if (!successorPairs.length && !rerunPairs.length) {
+                section.style.display = 'none';
+                return;
+            }
+            section.style.display = '';
+
+            const groups = [];
+            if (successorPairs.length) groups.push({ title: 'Newer model replaces an older one', pairs: successorPairs });
+            if (rerunPairs.length) groups.push({ title: 'Re-runs at max_tokens 16000 (same model, new harness)', pairs: rerunPairs });
+
+            const W = chartWidth(host);
+            host.innerHTML = groups.map(g =>
+                `<p class="delta-group-title">${g.title}</p>${deltaSvg(g.pairs, W)}`
+            ).join('');
+        }
+
+        // One dumbbell row per pair: old Triage Success Rate -> new one.
+        function deltaSvg(pairs, W) {
+            const rowH = 52;
+            const narrow = W < 640;
+            const M = { top: 28, right: narrow ? 66 : 110, bottom: 20, left: narrow ? 150 : 210 };
+            const plotW = W - M.left - M.right;
+            const H = M.top + pairs.length * rowH + M.bottom;
+
+            const vals = pairs.flatMap(d => [d.nt * 100, d.ot * 100]);
+            let lo = Math.floor((Math.min(...vals) - 4) / 5) * 5;
+            let hi = Math.ceil((Math.max(...vals) + 4) / 5) * 5;
+            lo = Math.max(0, lo); hi = Math.min(100, hi);
+            if (hi - lo < 10) { hi = Math.min(100, lo + 10); }
+            const xScale = v => M.left + ((v - lo) / (hi - lo)) * plotW;
+
+            const parts = [];
+            parts.push(`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Slope chart comparing Triage Success Rate of each superseded model against the model that replaces it">`);
+
+            const step = (hi - lo) <= 20 ? 5 : 10;
+            for (let t = lo; t <= hi + 0.001; t += step) {
+                const x = xScale(t);
+                parts.push(`<line class="gridline" x1="${x}" y1="${M.top - 8}" x2="${x}" y2="${M.top + pairs.length * rowH - 12}" />`);
+                parts.push(`<text class="axis-tick" x="${x}" y="${M.top - 14}" text-anchor="middle">${t}%</text>`);
+            }
+
+            pairs.forEach((d, i) => {
+                const y = M.top + i * rowH + 10;
+                const x1 = xScale(d.ot * 100), x2 = xScale(d.nt * 100);
+                const improved = d.nt >= d.ot;
+                const lineColor = improved ? '#198754' : '#dc3545';
+
+                parts.push(`<text class="bar-label" x="${M.left - 14}" y="${y + 2}" text-anchor="end">${shortModelName(d.newer)}</text>`);
+                parts.push(`<text class="axis-tick" x="${M.left - 14}" y="${y + 17}" text-anchor="end">${d.sub}</text>`);
+
+                parts.push(`<line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="${lineColor}" stroke-width="3" stroke-linecap="round" opacity="0.55" />`);
+                parts.push(`<circle cx="${x1}" cy="${y}" r="7" fill="#fff" stroke="${eraColor(d.orow)}" stroke-width="3" />`);
+                parts.push(`<circle cx="${x2}" cy="${y}" r="7" fill="${eraColor(d.nr)}" stroke="${eraColor(d.nr)}" stroke-width="2" />`);
+
+                // Value labels, pushed away from the middle of the dumbbell
+                const leftIsOld = x1 <= x2;
+                parts.push(`<text class="bar-value" x="${x1 + (leftIsOld ? -12 : 12)}" y="${y - 12}" text-anchor="${leftIsOld ? 'end' : 'start'}">${(d.ot * 100).toFixed(1)}%</text>`);
+                parts.push(`<text class="bar-value" x="${x2 + (leftIsOld ? 12 : -12)}" y="${y - 12}" text-anchor="${leftIsOld ? 'start' : 'end'}">${(d.nt * 100).toFixed(1)}%</text>`);
+
+                const delta = (d.nt - d.ot) * 100;
+                parts.push(`<text class="bar-value ${improved ? 'delta-up' : 'delta-down'}" x="${W - M.right + 16}" y="${y + 4}" font-weight="700">${delta >= 0 ? '+' : ''}${delta.toFixed(1)}${narrow ? '' : ' pts'}</text>`);
+            });
+
+            parts.push('</svg>');
+            return parts.join('');
+        }
+
+        function renderTradeoffChart() {
+            const host = document.getElementById('tradeoff-svg-host');
+            const tooltip = document.getElementById('tradeoff-tooltip');
+            const legendEl = document.getElementById('tradeoff-legend');
+            if (!host) return;
+
+            // Every evaluated model is plotted; labels are de-collided below.
+            // Compute (x, y) for each model. Skip rows we can't position.
+            const points = results.map(r => {
+                const spr = r.safety_pass_rate;
+                const overCount = (r.effectiveness && r.effectiveness.over_escalation !== undefined)
+                    ? r.effectiveness.over_escalation
+                    : (r.informational && r.informational.overdiagnosis) || 0;
+                const nonurgent = (r.denominators && r.denominators.nonurgent_cases)
+                    || V0_NONURGENT_FALLBACK;
+                if (spr == null || nonurgent === 0) return null;
+                const overRate = overCount / nonurgent;   // X-axis: rate among non-urgent cases
+                const tsr = triageSuccessRate(r);          // shares all-cases denominator with SPR
+                return {
+                    model: r.model,
+                    short: shortModelName(r.model),
+                    provider: providerOf(r.model),
+                    spr,
+                    overRate,
+                    overCount,
+                    nonurgent,
+                    tsr,
+                    coverage: r.coverage_rate,
+                    missed: r.safety && r.safety.missed_escalations,
+                    unsafe: r.safety && r.safety.unsafe_reassurance,
+                    overconf: r.safety && r.safety.overconfident_wrong,
+                    top3: r.effectiveness && r.effectiveness.top3_recall,
+                    codex: isCodexRun(r),
+                    rerun: isRerun(r),
+                    prior: priorRunText(r),
+                };
+            }).filter(Boolean);
+
+            if (points.length === 0) {
+                host.innerHTML = '<p style="color:#6c757d;font-size:0.85rem;">No data to chart yet.</p>';
+                return;
+            }
+
+            // Geometry — viewBox stays fixed; SVG scales with container.
+            // Wider canvas so 8 highlighted points have more horizontal room.
+            const W = 1000, H = 500;
+            const M = { top: 30, right: 150, bottom: 64, left: 76 };
+            const plotW = W - M.left - M.right;
+            const plotH = H - M.top - M.bottom;
+
+            // X full 0–100% so the ideal corner is on-chart.
+            // Y cropped to 50–100% — no model has SPR < 50%, so the lower half is empty noise.
+            const yMin = 50, yMax = 100;
+            const xMin = 0, xMax = 100;
+
+            // X axis is flipped: high over-escalation on the left, low (better, → ideal) on the right.
+            const xScale = v => M.left + ((xMax - v) / (xMax - xMin)) * plotW;
+            const yScale = v => M.top + (1 - (v - yMin) / (yMax - yMin)) * plotH;
+            const plotMidX = M.left + plotW / 2;
+
+            const xTicks = [];
+            for (let v = xMin; v <= xMax + 0.001; v += 10) xTicks.push(Math.round(v));
+            const yTicks = [];
+            for (let v = yMin; v <= yMax + 0.001; v += 10) yTicks.push(Math.round(v));
+
+            // Build SVG.
+            const svgParts = [];
+            svgParts.push(`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Scatter plot of Safety Pass Rate vs over-escalation rate by model, with iso-Triage-Success-Rate diagonals">`);
+
+            // Sweet-spot quadrant: SPR >= 90% AND over_esc_rate <= 25% (matches the
+            // ACS-COT field-triage tolerance range used as a discussion anchor below).
+            const sprThreshold = 90;
+            const overEscThreshold = 25;
+            const idealLeft = xScale(overEscThreshold);          // right of this → low over-esc
+            const idealBottom = yScale(sprThreshold);            // above this    → high SPR
+            svgParts.push(`<rect class="ideal-zone" x="${idealLeft}" y="${M.top}" width="${(M.left + plotW) - idealLeft}" height="${idealBottom - M.top}" />`);
+
+            // Iso-Triage-Success-Rate contours.
+            //   TSR = SPR − (over_count / total)
+            //       = SPR − (over_count / nonurgent) * (nonurgent / total)
+            //       = SPR − x_nu * k         where x_nu is the chart's X axis and k = nonurgent/total.
+            // So each iso-TSR line has the form y = TSR + k*x (straight, slope k ≈ 0.376 for v0/N=250).
+            // Determine k from the data; fall back to v0 constants if unavailable.
+            const ks = points.map(p => p.nonurgent / 250).filter(v => isFinite(v) && v > 0);
+            const k = ks.length ? (ks.reduce((s, v) => s + v, 0) / ks.length) : (V0_NONURGENT_FALLBACK / 250);
+            // Drop TSR=25 — its line falls entirely below yMin=50 except in a tiny corner.
+            const isoLines = [50, 75, 90];
+            for (const tsr of isoLines) {
+                // Clip x so both x in [xMin, xMax] AND y = tsr + k*x in [yMin, yMax].
+                const xLo = Math.max(xMin, (yMin - tsr) / k);
+                const xHi = Math.min(xMax, (yMax - tsr) / k);
+                if (xHi <= xLo) continue;
+                const x1 = xScale(xLo), y1 = yScale(tsr + k * xLo);
+                const x2 = xScale(xHi), y2 = yScale(tsr + k * xHi);
+                svgParts.push(`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#adb5bd" stroke-width="0.75" stroke-dasharray="4 4" stroke-opacity="0.7" />`);
+                // Every iso-line passes through the right plot edge at y = TSR (since x_nu = 0 → y = TSR).
+                // Anchor labels in the right margin so they never collide with model dots.
+                const labelX = M.left + plotW + 4;
+                const labelY = yScale(tsr) + 3;
+                svgParts.push(`<text x="${labelX}" y="${labelY}" font-size="10" fill="#868e96" font-style="italic">TSR ${tsr}%</text>`);
+            }
+
+            // Gridlines
+            for (const t of xTicks) {
+                const x = xScale(t);
+                svgParts.push(`<line class="gridline" x1="${x}" y1="${M.top}" x2="${x}" y2="${M.top + plotH}" />`);
+            }
+            for (const t of yTicks) {
+                const y = yScale(t);
+                svgParts.push(`<line class="gridline" x1="${M.left}" y1="${y}" x2="${M.left + plotW}" y2="${y}" />`);
+            }
+
+            // Axes
+            svgParts.push(`<line class="axis-line" x1="${M.left}" y1="${M.top + plotH}" x2="${M.left + plotW}" y2="${M.top + plotH}" />`);
+            svgParts.push(`<line class="axis-line" x1="${M.left}" y1="${M.top}" x2="${M.left}" y2="${M.top + plotH}" />`);
+
+            // Axis ticks + labels
+            for (const t of xTicks) {
+                const x = xScale(t);
+                svgParts.push(`<text class="axis-tick" x="${x}" y="${M.top + plotH + 16}" text-anchor="middle">${t}%</text>`);
+            }
+            for (const t of yTicks) {
+                const y = yScale(t);
+                svgParts.push(`<text class="axis-tick" x="${M.left - 8}" y="${y + 4}" text-anchor="end">${t}%</text>`);
+            }
+
+            // Axis titles
+            svgParts.push(`<text class="axis-label" x="${M.left + plotW / 2}" y="${H - 18}" text-anchor="middle">Over-escalation rate (% of non-urgent cases) — lower is better →</text>`);
+            svgParts.push(`<text class="axis-label" transform="translate(${M.left - 50}, ${M.top + plotH / 2}) rotate(-90)" text-anchor="middle">Safety Pass Rate — higher is better ↑</text>`);
+
+            // "Ideal" annotation in the top-right corner of plot area
+            svgParts.push(`<text class="direction-arrow" x="${M.left + plotW - 8}" y="${M.top + 14}" text-anchor="end">ideal ↗</text>`);
+
+            // Label placement. Default = auto-anchor (label on the side of the dot
+            // that keeps it inside the plot) and above the dot.
+            // Label overrides for the 8-model scatter. The top cluster
+            // (GPT-5.2 / Llama 4 Maverick / Haiku 4.5) is the hardest — points
+            // sit within ~40px on x and ~10px on y even with the wider canvas.
+            const labelOverrides = {
+                'openai-gpt-5.2':                 { dx: -12, dy: 16,  anchor: 'end' },     // lower-left (clears Llama 4 above)
+                'meta-llama-llama-4-maverick':    { dx:  0,  dy: -14, anchor: 'middle' },  // straight above
+                'anthropic-claude-haiku-4.5':     { dx:  12, dy: -4,  anchor: 'start' },   // right of dot, slightly up
+                'openai-gpt-5-chat':              { dx:  12, dy:  4,  anchor: 'start' },   // right of dot
+                'openai-o3-pro':                  { dx: -10, dy: 14,  anchor: 'end' },     // lower-left (clears Grok)
+                'x-ai-grok-4.20':                 { dx:  0,  dy: -12, anchor: 'middle' },  // straight above
+                'anthropic-claude-opus-4.7':      { dx: -10, dy: -8,  anchor: 'end' },     // upper-left
+                'google-gemini-3-pro-preview':    { dx:  0,  dy: -12, anchor: 'middle' },  // straight above (well-separated)
+            };
+
+            // Candidate offsets, tried nearest-first until one clears every dot and
+            // every label placed so far. Eight directions x five rings gives crowded
+            // clusters (20+ models) somewhere to escape to; anything placed further
+            // than LEADER_MIN from its dot gets a leader line so it stays readable.
+            const BASE_DIRECTIONS = [
+                { dx:  10, dy:  -8, anchor: 'start'  },
+                { dx: -10, dy:  -8, anchor: 'end'    },
+                { dx:  10, dy:  14, anchor: 'start'  },
+                { dx: -10, dy:  14, anchor: 'end'    },
+                { dx:   0, dy: -15, anchor: 'middle' },
+                { dx:   0, dy:  21, anchor: 'middle' },
+                { dx:  10, dy:   4, anchor: 'start'  },
+                { dx: -10, dy:   4, anchor: 'end'    },
+            ];
+            const CANDIDATES = [];
+            for (const ring of [1, 1.8, 2.6, 3.5, 4.5]) {
+                for (const d of BASE_DIRECTIONS) {
+                    CANDIDATES.push({ dx: d.dx * ring, dy: d.dy * ring, anchor: d.anchor });
+                }
+            }
+            const LEADER_MIN = 22;
+            // Seed the occupied boxes with every dot, so a label never lands on a point.
+            const placedBoxes = points.map(q => {
+                const qx = xScale(q.overRate * 100), qy = yScale(q.spr * 100);
+                return { x1: qx - 9, y1: qy - 9, x2: qx + 9, y2: qy + 9 };
+            });
+            const labelBox = (cx, cy, off, w) => {
+                const x = off.anchor === 'end' ? cx + off.dx - w
+                        : off.anchor === 'middle' ? cx + off.dx - w / 2
+                        : cx + off.dx;
+                return { x1: x, y1: cy + off.dy - 10, x2: x + w, y2: cy + off.dy + 3 };
+            };
+            const overlaps = b => placedBoxes.some(o =>
+                !(b.x2 < o.x1 || b.x1 > o.x2 || b.y2 < o.y1 || b.y1 > o.y2));
+            const outOfPlot = b => b.x1 < M.left - 4 || b.x2 > M.left + plotW + 4
+                                || b.y1 < M.top - 4 || b.y2 > M.top + plotH + 4;
+
+            // Place the strongest models first so they keep their preferred slot.
+            const placementOrder = [...points].sort((a, b) => (b.tsr ?? 0) - (a.tsr ?? 0));
+
+            for (const p of placementOrder) {
+                const cx = xScale(p.overRate * 100);
+                const cy = yScale(p.spr * 100);
+                const color = PROVIDER_COLORS[p.provider];
+                svgParts.push(
+                    `<circle class="point" data-model="${p.model}" cx="${cx}" cy="${cy}" r="6" fill="${color}" fill-opacity="0.85" stroke="${color}" stroke-width="1.5" />`
+                );
+
+                // Preference order: hand-tuned override, then auto-anchor, then fallbacks.
+                const onRight = cx > plotMidX;
+                const auto = { dx: onRight ? -8 : 8, dy: -10, anchor: onRight ? 'end' : 'start' };
+                // Hand-tuned overrides are honoured only while the chart is small
+                // enough for them to still make sense.
+                const tries = [];
+                if (points.length <= 12 && labelOverrides[p.model]) {
+                    tries.push({ ...auto, ...labelOverrides[p.model] });
+                }
+                tries.push(auto, ...CANDIDATES);
+
+                const w = p.short.length * 5.9 + 2;
+                let chosen = tries[0], chosenBox = labelBox(cx, cy, chosen, w);
+                for (const t of tries) {
+                    const b = labelBox(cx, cy, t, w);
+                    if (!overlaps(b) && !outOfPlot(b)) { chosen = t; chosenBox = b; break; }
+                }
+                placedBoxes.push(chosenBox);
+
+                // Leader line for labels that had to move away from their dot.
+                const lx = cx + chosen.dx, ly = cy + chosen.dy;
+                if (Math.hypot(chosen.dx, chosen.dy) > LEADER_MIN) {
+                    const tx = chosen.anchor === 'end' ? lx + 3 : chosen.anchor === 'start' ? lx - 3 : lx;
+                    const ty = chosen.dy < 0 ? ly + 4 : ly - 9;
+                    svgParts.push(`<line x1="${cx}" y1="${cy}" x2="${tx}" y2="${ty}" stroke="#ced4da" stroke-width="0.8" />`);
+                }
+                svgParts.push(
+                    `<text class="point-label" x="${lx}" y="${ly}" text-anchor="${chosen.anchor}">${p.short}</text>`
+                );
+            }
+
+            svgParts.push('</svg>');
+            host.innerHTML = svgParts.join('');
+
+            // Tooltip wiring
+            const fmtPct = (v, d = 1) => v == null ? '—' : (v * 100).toFixed(d) + '%';
+            const pointMap = new Map(points.map(p => [p.model, p]));
+
+            host.querySelectorAll('.point').forEach(node => {
+                node.addEventListener('mouseenter', (e) => {
+                    const p = pointMap.get(node.getAttribute('data-model'));
+                    if (!p) return;
+                    tooltip.innerHTML = `
+                        <strong>${p.short}</strong>
+                        <div class="tt-row"><span>Triage Success Rate</span><span class="tt-val">${fmtPct(p.tsr)}</span></div>
+                        <div class="tt-row"><span>Safety Pass Rate</span><span class="tt-val">${fmtPct(p.spr)}</span></div>
+                        <div class="tt-row"><span>Over-escalation</span><span class="tt-val">${p.overCount} / ${p.nonurgent} (${fmtPct(p.overRate)})</span></div>
+                        <div class="tt-row"><span>Missed escalations</span><span class="tt-val">${p.missed ?? '—'}</span></div>
+                        <div class="tt-row"><span>Unsafe reassurance</span><span class="tt-val">${p.unsafe ?? '—'}</span></div>
+                        <div class="tt-row"><span>Overconfident wrong</span><span class="tt-val">${p.overconf ?? '—'}</span></div>
+                        <div class="tt-row"><span>Top-3 recall</span><span class="tt-val">${fmtPct(p.top3)}</span></div>
+                        <div class="tt-row"><span>Coverage</span><span class="tt-val">${fmtPct(p.coverage, 0)}</span></div>
+                        ${p.codex ? '<div class="tt-row"><span>backend</span><span class="tt-val">Codex CLI</span></div>' : ''}
+                        ${p.rerun && p.prior ? `<div class="tt-row"><span>Previous run</span><span class="tt-val">${p.prior}</span></div>` : ''}
+                    `;
+                    tooltip.style.opacity = '1';
+                });
+                node.addEventListener('mousemove', (e) => {
+                    const chart = document.getElementById('tradeoff-chart');
+                    const rect = chart.getBoundingClientRect();
+                    const x = e.clientX - rect.left + 12;
+                    const y = e.clientY - rect.top + 12;
+                    // Keep tooltip inside chart on the right edge
+                    const ttRect = tooltip.getBoundingClientRect();
+                    const maxX = rect.width - ttRect.width - 8;
+                    tooltip.style.left = Math.min(x, maxX) + 'px';
+                    tooltip.style.top = y + 'px';
+                });
+                node.addEventListener('mouseleave', () => {
+                    tooltip.style.opacity = '0';
+                });
+            });
+
+            const countEl = document.getElementById('scatter-count');
+            if (countEl) {
+                countEl.textContent = `All ${points.length} evaluated model${points.length === 1 ? '' : 's'} shown.`;
+            }
+
+            // Provider legend
+            const providersInUse = [...new Set(points.map(p => p.provider))];
+            const providerLabels = {
+                openai: 'OpenAI', anthropic: 'Anthropic', google: 'Google',
+                deepseek: 'DeepSeek', meta: 'Meta', xai: 'xAI',
+                moonshot: 'Moonshot AI', zai: 'Z.ai', other: 'Other',
+            };
+            legendEl.innerHTML = providersInUse.map(p =>
+                `<span class="legend-item"><span class="legend-swatch" style="background:${PROVIDER_COLORS[p]}"></span>${providerLabels[p]}</span>`
+            ).join('');
+        }
+
+        // Initial load
+        loadLeaderboardData();
+    </script>
+</body>
+</html>
