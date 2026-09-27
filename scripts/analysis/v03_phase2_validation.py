@@ -59,7 +59,7 @@ DECISIONS = (ESC, ROU, UNC)
 SPOT_N = 10
 PHASES = {"2": {"dir": ROOT / "results" / "phase2", "seed": 20261003, "freeze": "45a7599",
                 "strata": ("serious_tier1", "serious_upgrade_or_flag", "serious_dxa_only", "benign", "excluded")},
-          "2b": {"dir": ROOT / "results" / "phase2b", "seed": 20261004, "freeze": "the Phase 2b freeze commit (section 9)",
+          "2b": {"dir": ROOT / "results" / "phase2b", "seed": 20261004, "freeze": "54dbc3f",
                  "strata": ("serious_tier1", "serious_upgrade_or_flag", "benign", "excluded")}}
 POOLED_DIR = ROOT / "results" / "phase2b" / "pooled"
 POST_HOC_DIR = ROOT / "results" / "phase2" / "post_hoc_x11"
