@@ -1,0 +1,489 @@
+[
+ {
+  "case_id": "ddxplus_119324",
+  "index": 15,
+  "intake": "PATIENT INTAKE:\n\nAge: 62\nSex: female\nChief Complaints: Been coughing up blood, Pain present, Pain character: tender, Pain character: stabbing, Pain location: posterior chest wall (L), Pain intensity 4/10, Pain does not radiate, How precisely the pain can be located: 0/10 (10 = most precise), How fast the pain appeared: 4/10 (10 = fastest), Experiencing shortness of breath or difficulty breathing in a significant way, Constantly feel fatigued or do you have non-restful sleep, A cough\nMedical History / Context: Smoke cigarettes, A former smoker, No travel outside the country in the last 4 weeks, Exposed to secondhand cigarette smoke on a daily basis, Family members who have had lung cancer\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Bronchitis",
+  "fable": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "C34.9",
+    "I26.9",
+    "A15.0"
+   ],
+   "red_flags": [
+    "coughing up blood",
+    "age 62 and a current smoker",
+    "significant shortness of breath",
+    "fatigue",
+    "family history of lung cancer",
+    "left posterior chest wall pain"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG12 Suspected cancer: recognition and referral (2015, updated)",
+     "url": "https://www.nice.org.uk/guidance/ng12/chapter/Recommendations-organised-by-site-of-cancer",
+     "point": "1.1.1: refer on a suspected cancer pathway people aged 40 and over with unexplained haemoptysis; 1.1.2: offer an urgent chest X-ray to people aged 40 and over who have ever smoked with cough, fatigue, shortness of breath, chest pain, weight loss or appetite loss."
+    }
+   ],
+   "confidence": 5,
+   "reasoning": "Haemoptysis in a 62-year-old smoker with dyspnoea, fatigue and a family history of lung cancer meets the NG12 threshold for a suspected cancer pathway referral and an urgent chest X-ray. Bronchitis cannot be the endpoint of this visit."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "I26.9",
+    "C34.9"
+   ],
+   "red_flags": [
+    "Hemoptysis with significant dyspnea and chest pain",
+    "Age over 40 with smoking exposure",
+    "Family history of lung cancer"
+   ],
+   "evidence": "NICE NG12 unexplained hemoptysis referral criteria and NICE pulmonary embolism assessment guidance; from knowledge, not verified in this session.",
+   "confidence": 5,
+   "reasoning": "Hemoptysis and significant breathlessness require prompt assessment for pulmonary embolism and other serious pulmonary disease. Unexplained hemoptysis at this age also warrants an urgent lung cancer pathway."
+  }
+ },
+ {
+  "case_id": "ddxplus_47644",
+  "index": 49,
+  "intake": "PATIENT INTAKE:\n\nAge: 44\nSex: female\nChief Complaints: Pain present, Pain character: lancinating (shooting), Pain character: stabbing, Pain character: violent, Pain character: sickening, Pain location: lower chest, Pain location: flank (R), Pain location: flank (L), Pain location: upper chest, Pain location: epigastrium, Pain intensity 6/10, Pain radiates to: scapula (R), Pain radiates to: scapula (L), How precisely the pain can be located: 2/10 (10 = most precise), How fast the pain appeared: 10/10 (10 = fastest), Feeling nauseous or do you feel like vomiting, Recently thrown up blood or something resembling coffee beans, Vomited several times or have you made several efforts to vomit\nMedical History / Context: Drink alcohol excessively or do you have an addiction to alcohol, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Panic attack",
+  "fable": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "K22.3",
+    "K92.0",
+    "K22.6",
+    "I21.9"
+   ],
+   "red_flags": [
+    "vomiting blood or coffee-ground material",
+    "repeated vomiting or retching",
+    "instantaneous violent stabbing pain in the lower chest, epigastrium and flanks radiating to both scapulae",
+    "nausea",
+    "heavy alcohol use"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE CG141 Acute upper gastrointestinal bleeding in over 16s: management (2012, updated)",
+     "url": "https://www.nice.org.uk/guidance/cg141/chapter/Recommendations",
+     "point": "1.1.1: use the Blatchford score at first assessment for all patients with acute upper gastrointestinal bleeding; 1.2: resuscitation and endoscopy follow in hospital."
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Instantaneous severe chest and epigastric pain after retching, followed by haematemesis, is oesophageal rupture or a Mallory-Weiss tear until CT of the chest and abdomen shows otherwise; both need hospital assessment, and haematemesis itself mandates risk scoring and endoscopy."
+    }
+   ],
+   "confidence": 5,
+   "reasoning": "Violent pain of instantaneous onset radiating to both scapulae after repeated vomiting, followed by haematemesis, in a heavy drinker describes oesophageal rupture or a Mallory-Weiss tear. Haematemesis alone calls for Blatchford scoring and endoscopy. Panic attack is not defensible."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "K22.3",
+    "K92.2",
+    "K22.6",
+    "I71.0"
+   ],
+   "red_flags": [
+    "Abrupt chest/epigastric pain radiating to the scapulae",
+    "Repeated vomiting or retching with hematemesis",
+    "Excessive alcohol use"
+   ],
+   "evidence": "WSES esophageal emergency guidance, NICE acute upper gastrointestinal bleeding guidance, and AHA/ACC aortic disease guidance; from knowledge, not verified in this session.",
+   "confidence": 5,
+   "reasoning": "Esophageal perforation and clinically significant upper gastrointestinal bleeding require emergency assessment; the sequence of pain and retching must be clarified. Abrupt chest and back pain also warrants consideration of acute aortic syndrome, and panic is not an adequate explanation."
+  }
+ },
+ {
+  "case_id": "ddxplus_19177",
+  "index": 53,
+  "intake": "PATIENT INTAKE:\n\nAge: 52\nSex: male\nChief Complaints: Find that your symptoms have worsened over the last 2 weeks and that progressively less effort is required to cause the symptoms, Chest pain even at rest, Pain present, Pain character: exhausting, Pain location: lower chest, Pain location: side of the chest (R), Pain location: upper chest, Pain location: breast (L), Pain location: epigastrium, Pain intensity 8/10, Pain radiates to: biceps (R), Pain radiates to: biceps (L), Pain radiates to: thyroid cartilage, Pain radiates to: under the jaw, Pain radiates to: shoulder (R), How precisely the pain can be located: 7/10 (10 = most precise), How fast the pain appeared: 3/10 (10 = fastest), Constantly feel fatigued or do you have non-restful sleep\nMedical History / Context: Diabetes, High cholesterol or do you take medications to treat high cholesterol, Smoke cigarettes, Ever had a heart attack or do you have angina (chest pain), Exercise regularly, 4 times per week or more, No travel outside the country in the last 4 weeks, Close family members who had a cardiovascular disease problem before the age of 50\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Anemia",
+  "fable": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "I20.0",
+    "I21.9"
+   ],
+   "red_flags": [
+    "symptoms worsening over 2 weeks with progressively less effort needed to provoke them",
+    "chest pain at rest",
+    "pain radiating to both arms, throat, jaw and right shoulder",
+    "prior heart attack or angina",
+    "diabetes, smoking, high cholesterol",
+    "family history of early cardiovascular disease"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE CG95 Recent-onset chest pain of suspected cardiac origin: assessment and diagnosis (2010, updated 2016)",
+     "url": "https://www.nice.org.uk/guidance/cg95/chapter/Recommendations",
+     "point": "1.2.1.3: pain in the chest and/or arms, back or jaw, chest pain with sweating or breathlessness, or new or worsening exertional pain may indicate an ACS; 1.2.1.7: refer as an emergency when ACS is suspected and the person has current pain, or pain in the last 12 hours with an abnormal or unavailable ECG."
+    },
+    {
+     "citation": "Byrne RA et al. 2023 ESC Guidelines for the management of acute coronary syndromes. Eur Heart J 2023;44:3720-3826",
+     "url": "https://doi.org/10.1093/eurheartj/ehad191",
+     "point": "Suspected ACS calls for a 12-lead ECG within 10 minutes of first medical contact and high-sensitivity troponin measurement; the ECG alone cannot exclude NSTEMI (point not confirmed from text in this session; DOI, title and year confirmed on Crossref)."
+    }
+   ],
+   "confidence": 5,
+   "reasoning": "Crescendo angina over two weeks with pain now at rest, radiating to both arms and the jaw, in a diabetic smoker with prior MI is unstable angina. CG95 names abrupt deterioration of stable angina with rest pain as an ACS presentation. ECG and troponin are mandatory; anaemia is not the diagnosis."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "I24.9",
+    "I20.0"
+   ],
+   "red_flags": [
+    "Progressively lower exertional threshold",
+    "Chest pain at rest",
+    "Severe pain radiating to arms and jaw",
+    "Known coronary disease",
+    "Diabetes, dyslipidemia and smoking"
+   ],
+   "evidence": "AHA/ACC chest pain guidance and ESC acute coronary syndrome guidance; from knowledge, not verified in this session",
+   "confidence": 5,
+   "reasoning": "Crescendo symptoms and rest pain in someone with established coronary disease suggest acute coronary syndrome, including unstable angina. Anemia alone is not an adequate basis for care without urgent ECG and troponin assessment."
+  }
+ },
+ {
+  "case_id": "ddxplus_45315",
+  "index": 75,
+  "intake": "PATIENT INTAKE:\n\nAge: 23\nSex: female\nChief Complaints: Pain present, Pain character: tugging, Pain location: back of head, Pain location: forehead, Pain location: temple (R), Pain location: temple (L), Pain intensity 4/10, Pain does not radiate, How precisely the pain can be located: 7/10 (10 = most precise), How fast the pain appeared: 3/10 (10 = fastest), Experiencing shortness of breath or difficulty breathing in a significant way, Feel slightly dizzy or lightheaded, Feel lightheaded and dizzy or do you feel like you are about to faint, Feel so tired that you are unable to do your usual activities or are you stuck in your bed all day long, Recently had stools that were black (like coal), Very abundant or very long menstruation periods, Your skin much paler than usual\nMedical History / Context: A poor diet, Ever had a diagnosis of anemia, Any family members who have been diagnosed with anemia, Chronic kidney failure, Think you are pregnant or are you currently pregnant, Travel outside the country in the last 4 weeks: South Africa, Your BMI less than 18.5, or are you underweight\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Anemia",
+  "fable": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "K92.2",
+    "K92.1",
+    "D62",
+    "O00.9"
+   ],
+   "red_flags": [
+    "black stools",
+    "near-fainting",
+    "significant shortness of breath",
+    "pale skin",
+    "heavy periods",
+    "possible pregnancy",
+    "chronic kidney failure"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE CG141 Acute upper gastrointestinal bleeding in over 16s: management, recs 1.1.1, 1.1.2, 1.3.2 (2012, updated 2016)",
+     "url": "https://www.nice.org.uk/guidance/cg141/chapter/Recommendations",
+     "point": "Use the Blatchford score at first assessment for all patients with acute upper GI bleeding; only a score of 0 allows early discharge; offer endoscopy within 24 hours of admission."
+    },
+    {
+     "citation": "Blatchford O, Murray WR, Blatchford M. A risk score to predict need for treatment for upper-gastrointestinal haemorrhage. Lancet 2000;356:1318-1321. doi:10.1016/S0140-6736(00)02816-6",
+     "url": "https://doi.org/10.1016/S0140-6736(00)02816-6",
+     "point": "Presentation with melaena or syncope scores on the Glasgow-Blatchford score, so a patient reporting melaena cannot score 0 and is not a candidate for outpatient management."
+    }
+   ],
+   "confidence": 4,
+   "reasoning": "Melaena with presyncope, dyspnoea and pallor is a GI bleed that scores on the Blatchford score and needs same-day assessment. Possible pregnancy adds a urine test and a low threshold to think of ectopic pregnancy even without pelvic pain."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "K92.2",
+    "D62"
+   ],
+   "red_flags": [
+    "Melena",
+    "Significant dyspnea and presyncope",
+    "Pallor and disabling fatigue",
+    "Heavy or prolonged menstruation",
+    "Chronic kidney failure"
+   ],
+   "evidence": "NICE CG141 gastrointestinal bleeding guidance; NICE NG88 heavy menstrual bleeding assessment; from knowledge, not verified in this session",
+   "confidence": 5,
+   "reasoning": "Melena and marked symptoms require urgent assessment for gastrointestinal blood loss and severe anemia, potentially compounded by menstrual losses. Possible pregnancy requires clarification but does not explain away the gastrointestinal bleeding."
+  }
+ },
+ {
+  "case_id": "ddxplus_36039",
+  "index": 84,
+  "intake": "PATIENT INTAKE:\n\nAge: 36\nSex: male\nChief Complaints: Pain or weakness in your jaw, The perception of seeing two images of a single object seen overlapping or adjacent to each other (double vision), Experiencing shortness of breath or difficulty breathing in a significant way, Do your symptoms of muscle weakness increase with fatigue and/or stress, A hard time opening/raising one or both eyelids, Did you previously, or do you currently, have any weakness/paralysis in one or more of your limbs or in your face\nMedical History / Context: Are there any members of your family who have been diagnosed myasthenia gravis, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Anemia",
+  "fable": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "G70.01",
+    "J96.00",
+    "I63.9",
+    "A05.1"
+   ],
+   "red_flags": [
+    "significant shortness of breath",
+    "drooping eyelid",
+    "double vision",
+    "jaw weakness",
+    "weakness worse with fatigue",
+    "current or prior limb or facial weakness",
+    "family history of myasthenia gravis"
+   ],
+   "evidence": [
+    {
+     "citation": "Sanders DB, et al. International consensus guidance for management of myasthenia gravis: executive summary. Neurology 2016;87:419-425. doi:10.1212/WNL.0000000000002790",
+     "url": "https://doi.org/10.1212/WNL.0000000000002790",
+     "point": "Impending myasthenic crisis (rapid worsening that could lead to crisis within days to weeks) requires hospital admission with close observation of respiratory and bulbar function; manifest crisis requires intensive or step-down care."
+    }
+   ],
+   "confidence": 4,
+   "reasoning": "Fatigable ptosis, diplopia and jaw weakness with significant dyspnoea point to myasthenia with respiratory involvement, an impending crisis under the consensus guidance. No dysphagia is reported, which lowers the confidence slightly, but the anaemia diagnosis explains none of the findings."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "G70.01"
+   ],
+   "red_flags": [
+    "Diplopia and ptosis",
+    "Fatigable weakness",
+    "Jaw weakness",
+    "Significant dyspnea"
+   ],
+   "evidence": "International consensus guidance for myasthenia gravis and impending crisis; from knowledge, not verified in this session",
+   "confidence": 5,
+   "reasoning": "Fatigable ocular and motor weakness with substantial breathlessness raises concern for myasthenia with respiratory involvement. Urgent respiratory muscle assessment is needed even without reported dysphagia."
+  }
+ },
+ {
+  "case_id": "ddxplus_111233",
+  "index": 108,
+  "intake": "PATIENT INTAKE:\n\nAge: 55\nSex: female\nChief Complaints: Pain present, Pain character: sharp, Pain location: back of the neck, Pain location: ankle (R), Pain location: ankle (L), Pain location: shoulder (R), Pain location: shoulder (L), Pain intensity 6/10, Pain does not radiate, How precisely the pain can be located: 6/10 (10 = most precise), How fast the pain appeared: 0/10 (10 = fastest), Experiencing shortness of breath or difficulty breathing in a significant way, Constantly feel fatigued or do you have non-restful sleep, Any lesions, redness or problems on your skin that you believe are related to the condition you are consulting for, Skin lesion colour: red, Skin lesions peel off: no, Skin lesions raised: 3/10, Skin lesion location: nose, Skin lesion larger than 1 cm: yes, Itching of the skin lesions: 1/10, Painful mouth ulcers or sores\nMedical History / Context: Ever had a pericarditis, Breastfed one of your children for more than 9 months, Smoke cigarettes, Consulting because you have high blood pressure, Did you have your first menstrual period before the age of 12, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "SLE",
+  "fable": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "I31.3",
+    "I30.9",
+    "I26.99",
+    "M32.13",
+    "M32.14"
+   ],
+   "red_flags": [
+    "significant shortness of breath",
+    "prior pericarditis",
+    "malar red skin lesion over 1 cm",
+    "painful mouth ulcers",
+    "polyarthralgia",
+    "smokes cigarettes",
+    "hypertension",
+    "age 55"
+   ],
+   "evidence": [
+    {
+     "citation": "Adler Y, et al. 2015 ESC Guidelines for the diagnosis and management of pericardial diseases. Eur Heart J 2015;36:2921-2964. doi:10.1093/eurheartj/ehv318",
+     "url": "https://doi.org/10.1093/eurheartj/ehv318",
+     "point": "Diagnosis of acute pericarditis needs two of four criteria including ECG changes and effusion, so ECG and echocardiography are required, with troponin, CRP and chest X-ray; major predictors of poor prognosis (fever over 38 C, subacute course, large effusion, tamponade, NSAID failure) and minor ones (myopericarditis, immunodepression, trauma, oral anticoagulation) indicate admission."
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Significant dyspnoea in a patient with lupus features and prior pericarditis needs an ECG, echocardiogram and chest film at the visit, because recurrent pericarditis with effusion, pleural disease and pulmonary embolism from antiphospholipid antibodies are common and time-critical in SLE."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "SLE is a sound working diagnosis, but significant dyspnoea with prior pericarditis means recurrent serositis, effusion or PE must be excluded, and the ESC guideline puts ECG and echo at the start of that. Hypertension with new lupus also needs a same-day urine check for nephritis."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "I31.39",
+    "I40.9",
+    "I26.99"
+   ],
+   "red_flags": [
+    "Significant dyspnea",
+    "Previous pericarditis",
+    "Joint pain, facial skin lesion and oral ulcers suggesting systemic inflammation"
+   ],
+   "evidence": "ESC pericarditis guidance; EULAR SLE management principles; from knowledge, not verified in this session.",
+   "confidence": 4,
+   "reasoning": "The intake supports possible systemic autoimmune disease, but significant dyspnea requires assessment for cardiopulmonary involvement at this visit. Pericardial effusion, myocarditis and PE should be considered rather than attributing the respiratory symptom to uncomplicated SLE."
+  }
+ },
+ {
+  "case_id": "ddxplus_101550",
+  "index": 144,
+  "intake": "PATIENT INTAKE:\n\nAge: 19\nSex: male\nChief Complaints: Pain present, Pain character: sharp, Pain location: mouth, Pain location: forehead, Pain location: cheek (R), Pain location: cheek (L), Pain location: nose, Pain intensity 3/10, Pain radiates to: back of head, Pain radiates to: forehead, Pain radiates to: nose, Pain radiates to: temple (L), How precisely the pain can be located: 8/10 (10 = most precise), How fast the pain appeared: 5/10 (10 = fastest), A fever (either felt or measured with a thermometer), Greenish or yellowish nasal discharge\nMedical History / Context: Had a cold in the last 2 weeks, Ever had pneumonia, Polyps in your nose, A deviated nasal septum, Asthma or have you ever had to use a bronchodilator in the past, Ever been diagnosed with gastroesophageal reflux, No travel outside the country in the last 4 weeks, More likely to develop common allergies than the general population\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Acute rhinosinusitis",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "H05.0",
+    "G06.0",
+    "J01.9"
+   ],
+   "red_flags": [
+    "fever with purulent nasal discharge and facial pain after a cold"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG79 Sinusitis (acute): antimicrobial prescribing (2017)",
+     "url": "https://www.nice.org.uk/guidance/ng79/chapter/Recommendations",
+     "point": "1.1.1: no antibiotic for acute sinusitis of around 10 days or less; refer to hospital only for severe systemic infection, intraorbital or periorbital complications, or intracranial complications"
+    }
+   ],
+   "confidence": 5,
+   "reasoning": "Facial pain with fever and purulent discharge after a cold is acute rhinosinusitis in a 19-year-old with polyps and a deviated septum. Examination for periorbital swelling closes the complications."
+  },
+  "astra": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [],
+   "red_flags": [],
+   "evidence": "NICE acute sinusitis guidance; from knowledge, not verified in this session.",
+   "confidence": 5,
+   "reasoning": "Mild facial pain, purulent nasal discharge and fever after a cold support uncomplicated acute rhinosinusitis. No orbital symptoms, severe frontal headache, meningism or focal neurologic symptoms are reported."
+  }
+ },
+ {
+  "case_id": "ddxplus_102395",
+  "index": 220,
+  "intake": "PATIENT INTAKE:\n\nAge: 32\nSex: male\nChief Complaints: Swollen or painful lymph nodes, Pain present, Pain character: burning, Pain location: finger (ring finger) (R), Pain location: finger (little finger) (L), Pain location: finger (index) (L), Pain location: finger (middle) (R), Pain location: finger (middle) (L), Pain intensity 7/10, Pain does not radiate, How precisely the pain can be located: 7/10 (10 = most precise), How fast the pain appeared: 2/10 (10 = fastest), Experiencing shortness of breath or difficulty breathing in a significant way, Noticed a diffuse (widespread) redness in one or both eyes\nMedical History / Context: Significantly overweight compared to people of the same height as you, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Sarcoidosis",
+  "fable": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "H20.0",
+    "I44.2",
+    "D86.0",
+    "J96.0"
+   ],
+   "red_flags": [
+    "diffuse red eyes in suspected sarcoidosis",
+    "significant dyspnoea",
+    "lymphadenopathy and finger arthralgia"
+   ],
+   "evidence": [
+    {
+     "citation": "Crouser ED et al. Diagnosis and Detection of Sarcoidosis. An Official American Thoracic Society Clinical Practice Guideline. Am J Respir Crit Care Med 2020;201:e26-e51",
+     "url": "https://doi.org/10.1164/rccm.202002-0251ST",
+     "point": "The ATS guideline recommends a baseline eye examination to screen for ocular sarcoidosis even without ocular symptoms and addresses ECG screening for cardiac sarcoidosis; diagnosis rests on compatible presentation, granulomas on tissue and exclusion of alternatives."
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Red eyes in sarcoidosis are uveitis until a slit-lamp examination says otherwise, and uveitis is sight-threatening within days; significant dyspnoea needs a chest film and an ECG for conduction disease."
+    }
+   ],
+   "confidence": 4,
+   "reasoning": "Sarcoidosis is not a working diagnosis to hold without imaging, and this patient has red eyes and significant breathlessness. He needs same-day ophthalmology for possible uveitis, a chest film and an ECG for cardiac involvement."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "J96.00",
+    "H20.9"
+   ],
+   "red_flags": [
+    "Significant breathlessness",
+    "Red eyes with suspected multisystem sarcoidosis",
+    "Lymphadenopathy"
+   ],
+   "evidence": "BTS pulmonary sarcoidosis guidance and ophthalmic guidance on ocular sarcoidosis (from knowledge, not verified in this session).",
+   "confidence": 4,
+   "reasoning": "Significant dyspnea requires prompt assessment for respiratory compromise rather than an assumption of uncomplicated sarcoidosis. Associated red eyes warrant assessment for uveitis, although absent pain and visual disturbance make an immediate sight-threatening presentation less certain."
+  }
+ },
+ {
+  "case_id": "ddxplus_85272",
+  "index": 223,
+  "intake": "PATIENT INTAKE:\n\nAge: 21\nSex: female\nChief Complaints: Pain present, Pain character: unpleasant, Pain character: tender, Pain character: heavy, Pain location: top of the head, Pain location: forehead, Pain location: cheek (R), Pain location: temple (R), Pain intensity 3/10, Pain does not radiate, How precisely the pain can be located: 3/10 (10 = most precise), How fast the pain appeared: 5/10 (10 = fastest), A cough that produces colored or more abundant sputum than usual, A fever (either felt or measured with a thermometer), A sore throat, Diffuse (widespread) muscle pain, Nasal congestion or a clear runny nose, A cough\nMedical History / Context: Been in contact with a person with similar symptoms in the past 2 weeks, Live with 4 or more people, Smoke cigarettes, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "URTI",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "J18.9",
+    "G00.9"
+   ],
+   "red_flags": [
+    "fever, productive cough, sore throat, myalgia",
+    "mild diffuse headache 3/10"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG250 Pneumonia: diagnosis and management (2023, updated 2025)",
+     "url": "https://www.nice.org.uk/guidance/ng250/chapter/Recommendations",
+     "point": "1.2.1 and 1.2.2: once pneumonia is diagnosed clinically, stratify with CRB65 (age 65 or over scores a point) together with clinical judgement to decide place of care."
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Typical viral URTI with household contacts in a 21-year-old; examination and vitals close it."
+    }
+   ],
+   "confidence": 4,
+   "reasoning": "Viral URTI in a healthy 21-year-old smoker with sick contacts. Vitals and auscultation close it."
+  },
+  "astra": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [],
+   "red_flags": [],
+   "evidence": "NICE acute cough guidance (from knowledge, not verified in this session).",
+   "confidence": 4,
+   "reasoning": "The mild headache, fever, myalgia, coryza, sore throat, and cough after sick contacts are consistent with an uncomplicated viral respiratory infection. Colored sputum alone does not establish pneumonia or another dangerous bacterial illness."
+  }
+ },
+ {
+  "case_id": "ddxplus_26554",
+  "index": 246,
+  "intake": "PATIENT INTAKE:\n\nAge: 54\nSex: male\nChief Complaints: Had significantly increased sweating, Had diarrhea or an increase in stool frequency, Pain present, Pain character: unpleasant, Pain character: tender, Pain character: exhausting, Pain location: back of head, Pain location: top of the head, Pain location: forehead, Pain location: temple (R), Pain location: temple (L), Pain intensity 5/10, Pain does not radiate, How precisely the pain can be located: 2/10 (10 = most precise), How fast the pain appeared: 0/10 (10 = fastest), Feel so tired that you are unable to do your usual activities or are you stuck in your bed all day long, A sore throat, Any lesions, redness or problems on your skin that you believe are related to the condition you are consulting for, Skin lesion colour: pale, Skin lesions peel off: no, Skin lesions raised: 0/10, Skin lesion location: lower gum, Skin lesion location: upper gum, Skin lesion location: genitals (R), Skin lesion location: genitals (L), Skin lesion location: internal cheek (L), Pain caused by the skin lesions: 2/10, Skin lesion larger than 1 cm: yes, Itching of the skin lesions: 0/10, Diffuse (widespread) muscle pain, Feeling nauseous or do you feel like vomiting, Had an involuntary weight loss over the last 3 months\nMedical History / Context: Ever had a sexually transmitted infection, Currently using intravenous drugs, Had unprotected sex with more than one partner in the last 6 months, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Anemia",
+  "fable": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "B20",
+    "A51.3",
+    "A41.9",
+    "L51.1"
+   ],
+   "red_flags": [
+    "sweats, diarrhoea, bed-bound fatigue and weight loss over 3 months",
+    "lesions over 1 cm on gums, inner cheek and genitals",
+    "sore throat, myalgia, nausea",
+    "STI history, intravenous drug use, multiple partners"
+   ],
+   "evidence": [
+    {
+     "citation": "Workowski KA et al. Sexually Transmitted Infections Treatment Guidelines, 2021. MMWR Recomm Rep 2021;70(4):1-187",
+     "url": "https://doi.org/10.15585/mmwr.rr7004a1",
+     "point": "Signs or symptoms of acute HIV infection (fever, lymphadenopathy, rash, myalgia, headache, oral ulcers) call for HIV testing, with HIV RNA when the antigen/antibody test is negative; genital ulcers are tested for syphilis and HSV."
+    },
+    {
+     "citation": "BHIVA/BASHH/BIA Adult HIV Testing Guidelines 2020",
+     "url": "https://bhiva.org/wp-content/uploads/2024/10/HIV-testing-guidelines-2020.pdf",
+     "point": "HIV testing is recommended for people who inject drugs and for sexual partners of people with HIV; repeat testing is triggered by behavioural risk, symptoms suggesting seroconversion, or an indicator condition."
+    },
+    {
+     "citation": "NICE NG253 Suspected sepsis in people aged 16 or over: recognition, assessment and early management (2025), risk criteria table",
+     "url": "https://www.nice.org.uk/guidance/ng253/chapter/Evaluating-risk",
+     "point": "Medium-risk history criteria include an impaired immune system (illness or drugs including oral steroids) and acute deterioration of functional ability."
+    }
+   ],
+   "confidence": 4,
+   "reasoning": "Weight loss, sweats, mucosal ulcers and functional decline in a man who injects drugs with multiple partners is HIV or syphilis until tested, and anaemia does not explain the illness. Serology with RNA and syphilis testing are what change care."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "B20"
+   ],
+   "red_flags": [
+    "Intravenous drug use and multiple unprotected sexual contacts",
+    "Weight loss and disabling fatigue",
+    "Diarrhea and increased sweating",
+    "Oral and genital lesions"
+   ],
+   "evidence": "NIH HIV diagnostic testing and early HIV infection guidance (from knowledge, not verified in this session).",
+   "confidence": 5,
+   "reasoning": "The exposure history and systemic mucosal illness require prompt evaluation for symptomatic HIV infection and associated complications. Anemia alone does not explain this pattern."
+  }
+ }
+]

@@ -1,0 +1,3899 @@
+[
+ {
+  "case_id": "ddxplus_92882",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I50.9",
+   "I24.9",
+   "I31.4"
+  ],
+  "red_flags": [
+   "Nocturnal breathlessness and positional symptoms",
+   "Peripheral edema with known heart failure and dialysis",
+   "Severe exertional chest pain radiating to jaw and shoulder"
+  ],
+  "evidence": "ESC heart failure, acute coronary syndrome, and pericardial disease guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Decompensated heart failure and myocardial ischemia require assessment at this visit. Dialysis also raises concern for significant pericardial disease; uncomplicated pericarditis is not an adequate assumption."
+ },
+ {
+  "case_id": "ddxplus_57497",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J38.4"
+  ],
+  "red_flags": [
+   "Reported high-pitched inspiratory breathing"
+  ],
+  "evidence": "Resuscitation Council ABCDE approach: stridor suggests upper-airway obstruction; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "The reported sound may represent stridor and requires prompt assessment for laryngeal swelling or other upper-airway obstruction. A recent cold or asthma history does not establish uncomplicated laryngitis."
+ },
+ {
+  "case_id": "ddxplus_106665",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J38.4"
+  ],
+  "red_flags": [
+   "Reported high-pitched inspiratory breathing"
+  ],
+  "evidence": "Resuscitation Council ABCDE approach: stridor suggests upper-airway obstruction; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Possible stridor requires an airway assessment even without reported dyspnea. Routine laryngitis care is reasonable only after clinically important obstruction has been excluded."
+ },
+ {
+  "case_id": "ddxplus_47633",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J93.9",
+   "I26.9"
+  ],
+  "red_flags": [
+   "Significant breathlessness with pleuritic chest pain",
+   "Previous spontaneous pneumothorax",
+   "COPD, smoking, and family history of pneumothorax"
+  ],
+  "evidence": "BTS spontaneous pneumothorax guidance; Wells/PERC principles for suspected pulmonary embolism; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Recurrent pneumothorax is a strong concern and requires immediate clinical assessment and chest imaging. Pulmonary embolism remains a relevant alternative; panic cannot safely explain this presentation without assessment."
+ },
+ {
+  "case_id": "ddxplus_1413",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J18.9",
+   "J69.0"
+  ],
+  "red_flags": [
+   "Productive cough, chills, and substantial pleuritic chest pain",
+   "COPD and previous pneumonia",
+   "Parkinson disease and low BMI"
+  ],
+  "evidence": "NICE pneumonia guidance and CRB65 severity assessment principles; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Pneumonia, including aspiration-related disease, needs assessment before accepting bronchitis. The absence of reported fever or dyspnea does not exclude pneumonia, and severity cannot be determined without observations and examination."
+ },
+ {
+  "case_id": "ddxplus_63760",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J05.1",
+   "J39.0"
+  ],
+  "red_flags": [
+   "Stridor with fever and dysphagia",
+   "Voice change and throat/neck pain",
+   "Symptoms improve leaning forward",
+   "Diabetes"
+  ],
+  "evidence": "NICE acute sore throat guidance on severe suppurative complications and emergency airway assessment principles; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Epiglottitis or a deep neck infection with threatened airway is strongly concerning. This requires emergency airway-capable assessment rather than routine laryngitis treatment."
+ },
+ {
+  "case_id": "ddxplus_56374",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "T78.0",
+   "T61.1"
+  ],
+  "red_flags": [
+   "Pruritic rash and flushing with wheeze",
+   "Presyncope and palpitations",
+   "Reaction after dark-fleshed fish or Swiss cheese"
+  ],
+  "evidence": "WAO anaphylaxis criteria and emergency management principles for severe scombroid poisoning; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Skin symptoms with bronchospasm and presyncope require immediate assessment for anaphylaxis. Histamine fish poisoning can produce a similar dangerous reaction; anemia does not explain the syndrome."
+ },
+ {
+  "case_id": "ddxplus_14668",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9"
+  ],
+  "red_flags": [
+   "Severe heavy chest/epigastric pain radiating to shoulders and neck",
+   "Exertional symptoms relieved by rest",
+   "Known coronary disease and multiple cardiovascular risk factors"
+  ],
+  "evidence": "NICE chest pain guidance and AHA/ACC chest pain pathways; HEART requires ECG and troponin; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "The history is strongly suggestive of myocardial ischemia. Without duration or stability information, acute coronary syndrome must be addressed before attributing symptoms to anemia."
+ },
+ {
+  "case_id": "ddxplus_80123",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "T78.0",
+   "T61.1"
+  ],
+  "red_flags": [
+   "Significant dyspnea and wheeze with pruritic rash and flushing",
+   "Diarrhea, nausea, and palpitations",
+   "Relevant food exposure preceding reaction"
+  ],
+  "evidence": "WAO anaphylaxis criteria and severe scombroid poisoning management principles; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "A multisystem food-associated reaction with respiratory involvement warrants immediate anaphylaxis assessment and treatment when criteria are confirmed. Scombroid poisoning is a plausible alternative that can also cause severe bronchospasm."
+ },
+ {
+  "case_id": "ddxplus_25111",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9"
+  ],
+  "red_flags": [
+   "Chest pain at rest with sweating and significant dyspnea",
+   "Jaw and bilateral shoulder radiation",
+   "Known coronary disease, diabetes, smoking, and dyslipidemia"
+  ],
+  "evidence": "AHA/ACC chest pain and ESC acute coronary syndrome guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "This is a high-risk ischemic symptom pattern requiring urgent ECG and troponin-based assessment. Panic is not an adequate working explanation."
+ },
+ {
+  "case_id": "ddxplus_75526",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "G24.02"
+  ],
+  "red_flags": [
+   "Tongue protrusion, abnormal eye movements, neck spasms, and trismus",
+   "Recent injected medication for nausea, agitation, or intoxication"
+  ],
+  "evidence": "Emergency management principles for acute drug-induced dystonia, including airway assessment; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "The combination strongly suggests an acute medication-induced dystonic reaction requiring prompt treatment. Cranial and lingual involvement warrants assessment for extension to swallowing or laryngeal muscles, although airway symptoms are not reported."
+ },
+ {
+  "case_id": "ddxplus_116230",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I50.9",
+   "I24.9",
+   "I26.9",
+   "I31.4"
+  ],
+  "red_flags": [
+   "Significant dyspnea, nocturnal breathlessness, and positional symptoms",
+   "Unilateral right-leg swelling",
+   "Radiating exertional chest pain",
+   "Dialysis, heart failure, and known coronary disease"
+  ],
+  "evidence": "ESC heart failure and acute coronary syndrome guidance; NICE venous thromboembolic disease and ESC pericardial disease guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Decompensated heart failure and acute coronary syndrome require urgent assessment. Unilateral swelling also warrants evaluation for venous thromboembolism, while dialysis and the pericarditis label raise concern for a significant effusion."
+ },
+ {
+  "case_id": "ddxplus_52019",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K83.1",
+   "C25.9"
+  ],
+  "red_flags": [
+   "Pale stools and dark urine",
+   "Unintentional weight loss and epigastric symptoms",
+   "Chronic pancreatitis and family history of pancreatic cancer"
+  ],
+  "evidence": "NICE suspected biliary disease and chronic pancreatitis guidance; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Possible cholestasis or biliary obstruction requires prompt liver testing and imaging rather than an anemia-only assessment. Pancreatic malignancy is rare at this age but deserves consideration given weight loss and the pancreatic history."
+ },
+ {
+  "case_id": "ddxplus_108935",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "G24.9",
+   "J38.5"
+  ],
+  "red_flags": [
+   "Episodes of inability to breathe or speak",
+   "Significant dyspnea",
+   "Tongue protrusion, abnormal eye movements, neck spasm, and trismus"
+  ],
+  "evidence": "Emergency airway assessment and acute dystonia management principles; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "The motor pattern suggests dystonia with possible laryngeal involvement or laryngospasm. Reported airway interruption makes this an emergency regardless of the precise trigger."
+ },
+ {
+  "case_id": "ddxplus_126935",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K83.1",
+   "C25.9"
+  ],
+  "red_flags": [
+   "Pale stools and dark urine",
+   "Weight loss and abdominal pain radiating to the back",
+   "Chronic pancreatitis and family history of pancreatic cancer"
+  ],
+  "evidence": "NICE biliary disease and chronic pancreatitis guidance; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "The abdominal and cholestatic symptoms require prompt evaluation for pancreaticobiliary obstruction and its cause. Cancer is less common at this age but cannot be dismissed in this context; bronchitis does not explain the concerning findings."
+ },
+ {
+  "case_id": "ddxplus_119324",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I26.9",
+   "C34.9"
+  ],
+  "red_flags": [
+   "Hemoptysis with significant dyspnea and chest pain",
+   "Age over 40 with smoking exposure",
+   "Family history of lung cancer"
+  ],
+  "evidence": "NICE NG12 unexplained hemoptysis referral criteria and NICE pulmonary embolism assessment guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Hemoptysis and significant breathlessness require prompt assessment for pulmonary embolism and other serious pulmonary disease. Unexplained hemoptysis at this age also warrants an urgent lung cancer pathway."
+ },
+ {
+  "case_id": "ddxplus_65030",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J45.901"
+  ],
+  "red_flags": [
+   "Significant dyspnea with wheeze",
+   "Previous asthma hospitalization within a year",
+   "Multiple recent asthma attacks"
+  ],
+  "evidence": "GINA exacerbation assessment and risk factors for asthma-related death; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "An acute asthma exacerbation requires immediate severity assessment and treatment. Previous hospitalization increases risk, and bronchitis alone is an inadequate basis for care."
+ },
+ {
+  "case_id": "ddxplus_65159",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I49.9"
+  ],
+  "red_flags": [
+   "Palpitations with presyncope",
+   "Energy drink and stimulant/decongestant exposure"
+  ],
+  "evidence": "ESC syncope guidance on possible arrhythmic symptoms and initial ECG assessment; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Palpitations accompanied by near-fainting warrant assessment for a clinically significant arrhythmia at this visit. Stimulants may explain benign tachycardia but can also precipitate arrhythmias; anemia is not established."
+ },
+ {
+  "case_id": "ddxplus_36170",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I26.9",
+   "C34.9"
+  ],
+  "red_flags": [
+   "Hemoptysis, significant dyspnea, and chest pain",
+   "Smoking exposure and age 63",
+   "Appetite loss and family history of lung cancer"
+  ],
+  "evidence": "NICE NG12 unexplained hemoptysis criteria and NICE pulmonary embolism guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Pulmonary embolism and lung malignancy require active consideration. The combination cannot safely be managed as uncomplicated bronchitis without prompt investigation."
+ },
+ {
+  "case_id": "ddxplus_107948",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J93.9",
+   "I26.9",
+   "I24.9"
+  ],
+  "red_flags": [
+   "Severe pleuritic chest pain and significant dyspnea",
+   "COPD, smoking, and family history of pneumothorax",
+   "Exertional symptoms relieved by rest"
+  ],
+  "evidence": "BTS pneumothorax guidance, NICE pulmonary embolism guidance, and AHA/ACC chest pain guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Secondary spontaneous pneumothorax and pulmonary embolism require urgent exclusion. Age and exertional symptoms also justify ischemia assessment before accepting panic."
+ },
+ {
+  "case_id": "ddxplus_130113",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9",
+   "I50.9"
+  ],
+  "red_flags": [
+   "Chest pain radiating to chin, scapulae, and arm with sweating",
+   "Exertional and positional symptoms",
+   "Peripheral edema with heart failure and coronary disease"
+  ],
+  "evidence": "ESC acute coronary syndrome and heart failure guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Acute coronary syndrome and worsening heart failure must be assessed. A pericarditis label does not adequately account for the ischemic pattern and congestion."
+ },
+ {
+  "case_id": "ddxplus_34436",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9",
+   "I71.0"
+  ],
+  "red_flags": [
+   "Rapid-onset 10/10 chest/epigastric pain",
+   "Radiation to both arms and jaw with nausea",
+   "Hypertension, smoking, dyslipidemia, and vascular disease"
+  ],
+  "evidence": "AHA/ACC chest pain and aortic disease guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Acute coronary syndrome is a major concern. The very severe, rapidly developing pain also requires assessment for acute aortic syndrome; anemia cannot safely explain this presentation."
+ },
+ {
+  "case_id": "ddxplus_75229",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K83.1",
+   "K85.9"
+  ],
+  "red_flags": [
+   "Pale stools and dark urine",
+   "Moderate abdominal/epigastric pain with nausea",
+   "Chronic pancreatitis"
+  ],
+  "evidence": "NICE suspected biliary disease and pancreatitis guidance; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Possible biliary obstruction and an acute pancreatic complication need prompt assessment with laboratory testing and appropriate imaging. Bronchitis does not explain the abdominal and cholestatic findings."
+ },
+ {
+  "case_id": "ddxplus_28836",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9"
+  ],
+  "red_flags": [
+   "Heavy chest/epigastric pain radiating to both arms and jaw",
+   "Significant dyspnea and exertional symptoms relieved by rest",
+   "Multiple cardiovascular risk factors"
+  ],
+  "evidence": "NICE chest pain and AHA/ACC acute chest pain pathways; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "The symptom pattern is strongly suggestive of myocardial ischemia despite modest pain intensity. Acute coronary syndrome cannot be excluded from the intake, and panic is not an adequate basis for care."
+ },
+ {
+  "case_id": "ddxplus_50615",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I50.9",
+   "I24.9",
+   "I26.9",
+   "I31.4"
+  ],
+  "red_flags": [
+   "Significant dyspnea, nocturnal breathlessness, and positional symptoms",
+   "Leg swelling and calf pain",
+   "Exertional radiating chest pain",
+   "Dialysis, heart failure, and known coronary disease"
+  ],
+  "evidence": "ESC heart failure, acute coronary syndrome, and pericardial disease guidance; NICE venous thromboembolic disease guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Volume overload or decompensated heart failure is strongly concerning, with concurrent ischemia and thromboembolism requiring consideration. Dialysis-associated pericardial disease also merits assessment rather than assuming uncomplicated pericarditis."
+ },
+ {
+  "case_id": "ddxplus_101629",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9",
+   "I71.0"
+  ],
+  "red_flags": [
+   "Rapid-onset severe heavy chest pain with jaw, arm, and back radiation",
+   "Significant dyspnea and exertional symptoms",
+   "Known coronary disease, diabetes, hypertension, and smoking"
+  ],
+  "evidence": "AHA/ACC chest pain and aortic disease guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Acute coronary syndrome is the leading immediate concern. Rapid severe onset with back radiation also warrants an acute aortic syndrome assessment; SLE is not an adequate explanation without evaluation."
+ },
+ {
+  "case_id": "ddxplus_89933",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9"
+  ],
+  "red_flags": [
+   "Heavy chest/epigastric pain radiating to both arms and shoulders",
+   "Sweating and significant dyspnea",
+   "Known coronary disease, diabetes, and extensive vascular risk factors"
+  ],
+  "evidence": "ESC acute coronary syndrome and AHA/ACC chest pain guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "This is a high-risk acute coronary syndrome presentation requiring urgent cardiac evaluation. Panic should not be accepted before ischemia is assessed."
+ },
+ {
+  "case_id": "ddxplus_26735",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "G24.02",
+   "J38.5"
+  ],
+  "red_flags": [
+   "Episodes of inability to breathe or speak",
+   "Tongue protrusion, abnormal eye movements, neck spasm, and trismus",
+   "Antipsychotic exposure within seven days"
+  ],
+  "evidence": "Emergency management principles for acute antipsychotic-induced dystonia and airway compromise; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Acute drug-induced dystonia with possible laryngeal involvement is strongly suggested. Airway symptoms require immediate treatment and monitoring."
+ },
+ {
+  "case_id": "ddxplus_120997",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9",
+   "I50.9"
+  ],
+  "red_flags": [
+   "Severe radiating chest pain with sweating and significant dyspnea",
+   "Peripheral edema and positional symptoms",
+   "Dialysis, heart failure, and known coronary disease"
+  ],
+  "evidence": "ESC acute coronary syndrome and acute heart failure guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Acute coronary syndrome with possible decompensated heart failure requires urgent assessment. Panic does not adequately explain the congestion and cardiovascular risk profile."
+ },
+ {
+  "case_id": "ddxplus_23572",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K83.1",
+   "C25.9"
+  ],
+  "red_flags": [
+   "Pale stools and dark urine",
+   "Abdominal pain radiating to the back",
+   "Chronic pancreatitis and family history of pancreatic cancer"
+  ],
+  "evidence": "NICE suspected biliary disease and chronic pancreatitis guidance; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Possible biliary obstruction warrants prompt investigation even with mild, gradual pain. A pancreatitis-related stricture is plausible, while malignancy is a less likely but relevant cause; bronchitis is insufficient."
+ },
+ {
+  "case_id": "ddxplus_128331",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J05.1",
+   "J39.0"
+  ],
+  "red_flags": [
+   "Stridor and significant dyspnea",
+   "Fever, severe throat/neck pain, excess saliva, and voice change",
+   "Diabetes"
+  ],
+  "evidence": "Emergency upper-airway assessment principles and NICE sore throat guidance on severe complications; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Epiglottitis or a deep neck infection with airway compromise is strongly concerning. Immediate airway-capable assessment is required."
+ },
+ {
+  "case_id": "ddxplus_81916",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9"
+  ],
+  "red_flags": [
+   "Severe radiating chest/epigastric pain and significant dyspnea",
+   "Exertional symptoms relieved by rest",
+   "Established coronary disease and multiple major risk factors"
+  ],
+  "evidence": "AHA/ACC chest pain and ESC acute coronary syndrome guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Young age does not offset known coronary disease and a strongly ischemic symptom pattern. Acute coronary syndrome must be assessed before diagnosing panic."
+ },
+ {
+  "case_id": "ddxplus_56241",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J05.1",
+   "J39.0"
+  ],
+  "red_flags": [
+   "Stridor, significant dyspnea, and excess saliva",
+   "Fever, severe throat pain, and voice change",
+   "Symptoms improve leaning forward"
+  ],
+  "evidence": "Emergency airway assessment principles and NICE acute sore throat guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "The combination suggests epiglottitis or another deep upper-airway infection. Vaccination does not exclude adult epiglottitis, and urgent airway assessment is necessary."
+ },
+ {
+  "case_id": "ddxplus_35377",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K83.1",
+   "C25.9"
+  ],
+  "red_flags": [
+   "Pale stools and dark urine",
+   "Abdominal pain radiating to the back",
+   "Chronic pancreatitis, diabetes, and family history of pancreatic cancer"
+  ],
+  "evidence": "NICE suspected biliary disease and chronic pancreatitis guidance; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Possible cholestatic obstruction needs prompt biochemical and imaging assessment despite mild pain. Malignancy is uncommon at this age but relevant to the pancreatic history; anemia does not explain the stool and urine changes."
+ },
+ {
+  "case_id": "ddxplus_48468",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J05.1",
+   "J39.0"
+  ],
+  "red_flags": [
+   "Significant dyspnea with dysphagia and fever",
+   "Severe throat and neck pain",
+   "Relief leaning forward and diabetes"
+  ],
+  "evidence": "NICE acute sore throat guidance on severe complications and emergency airway assessment principles; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Dyspnea with febrile throat pain and dysphagia requires urgent exclusion of epiglottitis or deep neck infection. The absence of reported stridor does not make routine viral pharyngitis care sufficient."
+ },
+ {
+  "case_id": "ddxplus_107434",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "T78.0",
+   "T61.1"
+  ],
+  "red_flags": [
+   "Wheeze with pruritic rash and flushing",
+   "Diarrhea, nausea, and palpitations",
+   "Relevant food exposure before reaction"
+  ],
+  "evidence": "WAO anaphylaxis criteria and severe scombroid poisoning management principles; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Skin involvement with bronchospasm after food exposure requires anaphylaxis assessment even without reported severe dyspnea. Scombroid poisoning is a plausible alternative, but anemia does not explain this reaction."
+ },
+ {
+  "case_id": "ddxplus_101660",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I26.9"
+  ],
+  "red_flags": [
+   "Hemoptysis, significant dyspnea, and severe pleuritic pain",
+   "Active cancer and previous DVT",
+   "Recent surgery and prolonged immobility"
+  ],
+  "evidence": "NICE venous thromboembolic disease guidance and Wells pulmonary embolism criteria; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Pulmonary embolism is highly concerning given the symptoms and multiple major risk factors. Urgent diagnostic assessment is required; panic is not an adequate explanation."
+ },
+ {
+  "case_id": "ddxplus_106668",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J38.4",
+   "J38.5"
+  ],
+  "red_flags": [
+   "Reported high-pitched inspiratory breathing"
+  ],
+  "evidence": "Resuscitation Council ABCDE approach to stridor and upper-airway obstruction; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Possible stridor requires prompt assessment for laryngeal obstruction or spasm. Recent infection, reflux, or asthma may be contributory but do not establish a safe diagnosis of uncomplicated laryngitis."
+ },
+ {
+  "case_id": "ddxplus_123077",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J18.9",
+   "J69.0",
+   "I26.9"
+  ],
+  "red_flags": [
+   "Hemoptysis, significant dyspnea, and pleuritic pain",
+   "Productive cough and chills",
+   "COPD, heart failure, low BMI, Parkinson disease, and prior stroke"
+  ],
+  "evidence": "NICE pneumonia guidance and CRB65 principles; NICE pulmonary embolism guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Pneumonia, including aspiration-related infection, requires urgent assessment in this vulnerable patient. Hemoptysis with significant dyspnea also warrants consideration of pulmonary embolism rather than accepting bronchitis."
+ },
+ {
+  "case_id": "ddxplus_74855",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "G61.0",
+   "I63.9",
+   "G45.9"
+  ],
+  "red_flags": [
+   "Bilateral limb weakness with sensory symptoms",
+   "Reported unilateral facial weakness",
+   "Recent viral infection"
+  ],
+  "evidence": "EAN/PNS Guillain-Barre syndrome guidance and NICE stroke/TIA recognition principles; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Postinfectious weakness with facial involvement warrants assessment for Guillain-Barre syndrome and respiratory or autonomic complications. Unilateral facial weakness also requires clarification for stroke or TIA; panic cannot safely be assumed."
+ },
+ {
+  "case_id": "ddxplus_67361",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "T78.0",
+   "T61.1"
+  ],
+  "red_flags": [
+   "Significant dyspnea and wheeze with pruritic rash",
+   "Presyncope, flushing, and diarrhea",
+   "Relevant food exposure before reaction"
+  ],
+  "evidence": "WAO anaphylaxis criteria and severe scombroid poisoning management principles; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Respiratory involvement and presyncope during a multisystem food-associated reaction require immediate anaphylaxis assessment. Scombroid poisoning may mimic this presentation and can also be severe."
+ },
+ {
+  "case_id": "ddxplus_26708",
+  "decision": "UNCERTAIN",
+  "dangers_to_consider": [
+   "G61.0",
+   "E83.51"
+  ],
+  "red_flags": [
+   "Subjective bilateral limb weakness",
+   "Distal and perioral paresthesias"
+  ],
+  "evidence": "NICE neurological referral guidance for progressive symmetrical weakness and clinical assessment of electrolyte-related neuromuscular symptoms; from knowledge, not verified in this session.",
+  "confidence": 3,
+  "reasoning": "The sensory distribution can occur with hyperventilation, but reported weakness also raises neuromuscular or electrolyte concerns. Without onset, progression, or an examination, this remains borderline and needs same-visit strength, reflex, and metabolic assessment before confidently accepting panic."
+ },
+ {
+  "case_id": "ddxplus_95089",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "T78.0",
+   "T61.1"
+  ],
+  "red_flags": [
+   "Significant dyspnea and wheeze",
+   "Pruritic rash, flushing, and diarrhea",
+   "Presyncope after relevant food exposure"
+  ],
+  "evidence": "WAO anaphylaxis criteria and severe scombroid poisoning management principles; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "This multisystem reaction includes respiratory and possible circulatory compromise. Immediate assessment and treatment for anaphylaxis when clinically confirmed are necessary, while considering scombroid poisoning."
+ },
+ {
+  "case_id": "ddxplus_77178",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J18.9",
+   "J69.0"
+  ],
+  "red_flags": [
+   "Fever, chills, cough, and pleuritic chest pain",
+   "COPD and heart failure",
+   "Parkinson disease, excessive alcohol use, and low BMI"
+  ],
+  "evidence": "NICE pneumonia guidance and CRB65 severity assessment principles; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Pneumonia needs active assessment before accepting bronchitis, with aspiration risk adding concern. Missing observations prevent a reliable severity assessment despite the absence of reported dyspnea."
+ },
+ {
+  "case_id": "ddxplus_29057",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I40.9",
+   "I31.4",
+   "I49.9"
+  ],
+  "red_flags": [
+   "Breathlessness with minimal exertion",
+   "Palpitations with severe positional chest pain",
+   "Recent viral infection"
+  ],
+  "evidence": "ESC myocarditis and pericardial disease guidance; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Possible myopericarditis, significant pericardial effusion, or associated arrhythmia needs assessment. Marked exercise intolerance and palpitations make an assumption of uncomplicated pericarditis unsafe."
+ },
+ {
+  "case_id": "ddxplus_73318",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I26.9",
+   "I82.409"
+  ],
+  "red_flags": [
+   "Hemoptysis, significant dyspnea, and pleuritic pain",
+   "Unilateral calf swelling",
+   "Active cancer, previous DVT, hormone use, and recent surgery"
+  ],
+  "evidence": "NICE venous thromboembolic disease guidance and Wells pulmonary embolism criteria; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Pulmonary embolism with possible lower-limb DVT is a major immediate concern. Low pain intensity and a pericarditis label do not reduce the need for urgent investigation."
+ },
+ {
+  "case_id": "ddxplus_57435",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9",
+   "I71.0"
+  ],
+  "red_flags": [
+   "Abrupt chest/epigastric pain radiating to arms and jaw",
+   "Sweating and significant dyspnea",
+   "Advanced age, known coronary disease, diabetes, and hypertension"
+  ],
+  "evidence": "AHA/ACC chest pain and aortic disease guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Acute coronary syndrome is strongly concerning and requires emergency assessment. Abrupt onset and vascular risk also warrant evaluation for acute aortic syndrome."
+ },
+ {
+  "case_id": "ddxplus_17750",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "G61.0",
+   "I63.9"
+  ],
+  "red_flags": [
+   "Bilateral limb weakness with significant dyspnea",
+   "Reported unilateral facial weakness or paralysis",
+   "Widespread sensory symptoms"
+  ],
+  "evidence": "EAN/PNS Guillain-Barre syndrome guidance and NICE stroke recognition guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Weakness with breathlessness raises concern for neuromuscular respiratory involvement, including Guillain-Barre syndrome. Facial asymmetry also requires urgent assessment for a central neurological event rather than attributing the presentation to panic."
+ },
+ {
+  "case_id": "ddxplus_26268",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K83.1",
+   "C25.9",
+   "K85.9"
+  ],
+  "red_flags": [
+   "Pale stools and dark urine",
+   "Weight loss with epigastric pain radiating to the back",
+   "Chronic pancreatitis, diabetes, smoking, and family history of pancreatic cancer"
+  ],
+  "evidence": "NICE pancreatic cancer, biliary disease, and pancreatitis assessment principles; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Possible pancreaticobiliary obstruction with weight loss warrants urgent investigation for pancreatic malignancy or another obstructing lesion. An acute pancreatic complication also needs consideration; bronchitis is an inadequate explanation."
+ },
+ {
+  "case_id": "ddxplus_47644",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K22.3",
+   "K92.2",
+   "K22.6",
+   "I71.0"
+  ],
+  "red_flags": [
+   "Abrupt chest/epigastric pain radiating to the scapulae",
+   "Repeated vomiting or retching with hematemesis",
+   "Excessive alcohol use"
+  ],
+  "evidence": "WSES esophageal emergency guidance, NICE acute upper gastrointestinal bleeding guidance, and AHA/ACC aortic disease guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Esophageal perforation and clinically significant upper gastrointestinal bleeding require emergency assessment; the sequence of pain and retching must be clarified. Abrupt chest and back pain also warrants consideration of acute aortic syndrome, and panic is not an adequate explanation."
+ },
+ {
+  "case_id": "ddxplus_96587",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J93.9",
+   "I71.00",
+   "I24.9"
+  ],
+  "red_flags": [
+   "Abrupt severe tearing chest pain",
+   "Significant dyspnea",
+   "Pleuritic pain",
+   "Previous spontaneous pneumothorax",
+   "COPD and smoking"
+  ],
+  "evidence": "BTS pleural disease guidance; ACC/AHA acute aortic syndrome assessment; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Recurrent pneumothorax requires immediate assessment, including for tension physiology. Abrupt severe tearing pain also warrants consideration of aortic dissection and acute coronary syndrome before attributing symptoms to panic."
+ },
+ {
+  "case_id": "ddxplus_11922",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "G61.0",
+   "G70.01"
+  ],
+  "red_flags": [
+   "Bilateral limb weakness",
+   "Facial weakness",
+   "Significant dyspnea",
+   "Recent viral infection",
+   "Limb sensory symptoms"
+  ],
+  "evidence": "EAN/PNS Guillain-Barre syndrome guidance; neuromuscular respiratory assessment principles; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Postinfectious limb and facial weakness with dyspnea raises concern for Guillain-Barre syndrome with respiratory involvement. Hyperventilation can cause paresthesias but does not adequately account for the reported motor weakness."
+ },
+ {
+  "case_id": "ddxplus_89753",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I26.99",
+   "I82.409"
+  ],
+  "red_flags": [
+   "Significant dyspnea",
+   "Pleuritic chest pain",
+   "Loss of consciousness",
+   "Unilateral calf swelling",
+   "Active cancer",
+   "Recent surgery"
+  ],
+  "evidence": "Wells PE/DVT assessment and NICE NG158; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "The combination of thrombotic risk factors, unilateral calf swelling, chest symptoms and syncope strongly warrants urgent pulmonary embolism assessment. Mild pain does not make this presentation low risk."
+ },
+ {
+  "case_id": "ddxplus_19177",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9",
+   "I20.0"
+  ],
+  "red_flags": [
+   "Progressively lower exertional threshold",
+   "Chest pain at rest",
+   "Severe pain radiating to arms and jaw",
+   "Known coronary disease",
+   "Diabetes, dyslipidemia and smoking"
+  ],
+  "evidence": "AHA/ACC chest pain guidance and ESC acute coronary syndrome guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Crescendo symptoms and rest pain in someone with established coronary disease suggest acute coronary syndrome, including unstable angina. Anemia alone is not an adequate basis for care without urgent ECG and troponin assessment."
+ },
+ {
+  "case_id": "ddxplus_127822",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9",
+   "I20.0",
+   "I71.00"
+  ],
+  "red_flags": [
+   "Worsening symptoms with progressively less exertion",
+   "Severe heavy chest pain",
+   "Bilateral arm and back radiation",
+   "Rapid onset",
+   "Known coronary disease and multiple vascular risk factors"
+  ],
+  "evidence": "ESC acute coronary syndrome guidance; ACC/AHA acute aortic syndrome assessment; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "The crescendo exertional pattern and heavy radiating pain require urgent assessment for acute coronary syndrome. Rapid severe pain with back radiation also merits assessment for an acute aortic syndrome."
+ },
+ {
+  "case_id": "ddxplus_860",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9"
+  ],
+  "red_flags": [
+   "Heavy chest pain radiating to both arms and shoulders",
+   "Significant dyspnea",
+   "Rapid onset",
+   "Previous myocardial infarction or angina",
+   "Diabetes, hypertension, dyslipidemia and smoking"
+  ],
+  "evidence": "AHA/ACC chest pain guidance; HEART requires ECG and troponin unavailable here; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "This is a concerning ischemic symptom pattern in a patient with established coronary disease and multiple risk factors. Fatigue does not justify an anemia-only assessment."
+ },
+ {
+  "case_id": "ddxplus_58616",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I26.99",
+   "I82.409"
+  ],
+  "red_flags": [
+   "Chest and scapular pain",
+   "Unilateral ankle swelling",
+   "Previous DVT",
+   "Recent surgery and prolonged immobility",
+   "Hormone use"
+  ],
+  "evidence": "Wells PE/DVT assessment and NICE NG158; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Unilateral swelling with several major thrombotic risk factors requires DVT assessment, and associated chest pain raises concern for pulmonary embolism. Absent dyspnea and localized tenderness do not adequately exclude venous thromboembolism."
+ },
+ {
+  "case_id": "ddxplus_72965",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9",
+   "I20.0"
+  ],
+  "red_flags": [
+   "Crescendo symptoms and chest pain at rest",
+   "Heavy pain radiating to arms and jaw",
+   "Diaphoresis",
+   "Significant dyspnea",
+   "Known coronary disease and diabetes"
+  ],
+  "evidence": "ESC acute coronary syndrome guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Rest pain, worsening exercise tolerance and autonomic symptoms strongly suggest acute coronary syndrome. His age does not offset established coronary disease or this symptom pattern."
+ },
+ {
+  "case_id": "ddxplus_79588",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J45.901"
+  ],
+  "red_flags": [
+   "Significant dyspnea",
+   "Wheeze and cough",
+   "Established asthma",
+   "Asthma hospitalization within the past year",
+   "Recent respiratory infection"
+  ],
+  "evidence": "GINA exacerbation assessment and BTS/SIGN acute asthma guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "An asthma exacerbation must be assessed and treated at this visit, with prior hospitalization increasing concern. Severity cannot be established without respiratory observations, oxygen saturation and airflow measurement."
+ },
+ {
+  "case_id": "ddxplus_78593",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9"
+  ],
+  "red_flags": [
+   "Exertional chest pain relieved by rest",
+   "Left arm and shoulder radiation",
+   "Significant dyspnea",
+   "Rapid onset",
+   "Established coronary disease, diabetes, hypertension and smoking"
+  ],
+  "evidence": "AHA/ACC chest pain guidance and NICE chest pain assessment; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "The exertional pattern is strongly suggestive of myocardial ischemia and is inadequately explained by panic. Without an established stable duration or objective assessment, acute coronary syndrome must be addressed."
+ },
+ {
+  "case_id": "ddxplus_117086",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J18.9",
+   "C34.90"
+  ],
+  "red_flags": [
+   "Reported hemoptysis",
+   "Fever",
+   "Immunosuppression",
+   "Age 56"
+  ],
+  "evidence": "ACR hemoptysis assessment guidance; NICE NG12 unexplained hemoptysis recommendations; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Fever and hemoptysis in an immunosuppressed patient require clarification of the bleeding source and assessment for pulmonary infection. If true hemoptysis remains unexplained, her age also warrants urgent malignancy investigation."
+ },
+ {
+  "case_id": "ddxplus_58732",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J47.1",
+   "J18.9"
+  ],
+  "red_flags": [
+   "Hemoptysis",
+   "Significant dyspnea",
+   "Increased or colored sputum",
+   "Cystic fibrosis",
+   "Previous pneumonia"
+  ],
+  "evidence": "Cystic Fibrosis Foundation pulmonary exacerbation and hemoptysis guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Cystic fibrosis with dyspnea, sputum change and hemoptysis suggests a clinically important pulmonary exacerbation or pneumonia. Bleeding volume and respiratory stability require urgent assessment."
+ },
+ {
+  "case_id": "ddxplus_24656",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J18.9",
+   "J36"
+  ],
+  "red_flags": [
+   "Reported hemoptysis",
+   "Severe focal throat pain rated 9/10",
+   "Immunosuppression",
+   "Smoking"
+  ],
+  "evidence": "ACR hemoptysis assessment guidance; NICE acute sore throat guidance on suppurative complications; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Hemoptysis in an immunosuppressed patient requires assessment for pulmonary infection and confirmation of the bleeding source. Severe focal throat pain also warrants examination for a peritonsillar complication; bronchitis alone is insufficient."
+ },
+ {
+  "case_id": "ddxplus_43283",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "C34.90",
+   "J18.9",
+   "J36"
+  ],
+  "red_flags": [
+   "Reported hemoptysis",
+   "Age 54 with smoking",
+   "Fever",
+   "Severe focal throat pain"
+  ],
+  "evidence": "NICE NG12 unexplained hemoptysis recommendations; NICE acute sore throat guidance; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "The bleeding source must be established before accepting viral pharyngitis, with unexplained true hemoptysis requiring urgent investigation in this age group. Fever and severe focal throat pain additionally warrant examination for pulmonary or suppurative throat infection."
+ },
+ {
+  "case_id": "ddxplus_56155",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "C34.90",
+   "J18.9"
+  ],
+  "red_flags": [
+   "Hemoptysis",
+   "Age 68",
+   "Smoking",
+   "Immunosuppression",
+   "Cough"
+  ],
+  "evidence": "NICE NG12 unexplained hemoptysis recommendations; ACR hemoptysis assessment guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "An older smoker with hemoptysis requires evaluation for lung malignancy and pulmonary infection. Concurrent upper respiratory symptoms do not adequately explain away the bleeding, particularly with immunosuppression."
+ },
+ {
+  "case_id": "ddxplus_9769",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "A16.2",
+   "C34.90"
+  ],
+  "red_flags": [
+   "Hemoptysis and cough",
+   "Unintentional weight loss",
+   "HIV",
+   "Underweight",
+   "Excessive alcohol use"
+  ],
+  "evidence": "WHO tuberculosis screening and diagnostic guidance for people living with HIV; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Pulmonary tuberculosis must be actively considered given cough, hemoptysis, weight loss and HIV, including appropriate infection precautions. Malignancy is another important explanation; uncomplicated bronchitis is inadequate."
+ },
+ {
+  "case_id": "ddxplus_131905",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J18.9",
+   "I26.99",
+   "C34.90"
+  ],
+  "red_flags": [
+   "Hemoptysis",
+   "Significant dyspnea",
+   "Increased or colored sputum",
+   "Age 67"
+  ],
+  "evidence": "NICE pneumonia assessment; Wells/PERC PE assessment principles; NICE NG12 hemoptysis recommendations; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Hemoptysis with substantial breathlessness requires assessment for pneumonia and pulmonary embolism. Unexplained bleeding at this age also warrants malignancy investigation; rheumatoid arthritis alone does not establish medication-related immunosuppression."
+ },
+ {
+  "case_id": "ddxplus_45305",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J18.9"
+  ],
+  "red_flags": [
+   "Reported hemoptysis",
+   "Fever",
+   "Immunosuppression"
+  ],
+  "evidence": "ACR hemoptysis assessment guidance; pneumonia assessment principles in immunocompromised patients; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "A viral upper respiratory illness is plausible, but fever and reported hemoptysis in an immunosuppressed patient require assessment for a significant pulmonary infection. The clinician must first distinguish true hemoptysis from upper airway bleeding."
+ },
+ {
+  "case_id": "ddxplus_128077",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Black stools consistent with melena",
+   "Significant dyspnea",
+   "Presyncope and pallor",
+   "Oral anticoagulant use",
+   "Chronic kidney failure"
+  ],
+  "evidence": "NICE CG141 upper gastrointestinal bleeding guidance; Glasgow-Blatchford assessment requires additional data; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Melena with presyncope, pallor and dyspnea raises concern for clinically significant gastrointestinal hemorrhage and blood-loss anemia. Anticoagulation and renal disease increase concern and preclude routine anemia management without urgent assessment."
+ },
+ {
+  "case_id": "ddxplus_14228",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Melena and fresh rectal blood or clots",
+   "Presyncope",
+   "Pallor",
+   "Oral anticoagulant use",
+   "Chronic kidney failure"
+  ],
+  "evidence": "NICE CG141 and ACG gastrointestinal bleeding guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Overt gastrointestinal bleeding with presyncope and pallor requires urgent assessment for substantial blood loss. A history of anemia does not establish that the current presentation is chronic or stable."
+ },
+ {
+  "case_id": "ddxplus_133717",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Black stools",
+   "Fresh rectal blood or clots",
+   "Lightheadedness",
+   "Age 67",
+   "Chronic kidney failure"
+  ],
+  "evidence": "NICE CG141 and ACG gastrointestinal bleeding guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Concurrent melena, hematochezia and lightheadedness warrant assessment for active gastrointestinal hemorrhage. Renal disease and a prior anemia diagnosis do not adequately explain the overt bleeding."
+ },
+ {
+  "case_id": "ddxplus_130807",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Melena",
+   "Significant dyspnea",
+   "Presyncope",
+   "Oral anticoagulant use",
+   "Chronic kidney failure"
+  ],
+  "evidence": "NICE CG141 upper gastrointestinal bleeding guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Melena accompanied by dyspnea and presyncope suggests potentially important blood loss. Urgent hemodynamic and hemoglobin assessment is required, especially with anticoagulation and renal impairment."
+ },
+ {
+  "case_id": "ddxplus_2759",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "K27.4",
+   "I85.01"
+  ],
+  "red_flags": [
+   "Hematemesis or coffee-ground emesis",
+   "Upper abdominal and chest discomfort",
+   "Excessive alcohol use"
+  ],
+  "evidence": "NICE CG141 upper gastrointestinal bleeding guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Reported hematemesis requires assessment for upper gastrointestinal bleeding, including bleeding peptic ulcer disease. Alcohol history makes assessment for underlying liver disease and a possible variceal source relevant, although neither is established by this intake."
+ },
+ {
+  "case_id": "ddxplus_85276",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Melena",
+   "Significant dyspnea",
+   "Presyncope",
+   "Disabling fatigue",
+   "Oral anticoagulant use"
+  ],
+  "evidence": "NICE CG141 upper gastrointestinal bleeding guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "The combination of overt gastrointestinal bleeding and substantial systemic symptoms suggests clinically significant blood loss. Routine treatment of presumed anemia would miss the need to evaluate and control the bleeding source."
+ },
+ {
+  "case_id": "ddxplus_80900",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Melena",
+   "Pallor and lightheadedness",
+   "Disabling fatigue",
+   "Oral anticoagulant use",
+   "Chronic kidney failure"
+  ],
+  "evidence": "NICE CG141 upper gastrointestinal bleeding guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Melena with pallor and functional decline requires urgent assessment for gastrointestinal hemorrhage and significant anemia. Anticoagulation and renal impairment further increase the concern."
+ },
+ {
+  "case_id": "ddxplus_45315",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Melena",
+   "Significant dyspnea and presyncope",
+   "Pallor and disabling fatigue",
+   "Heavy or prolonged menstruation",
+   "Chronic kidney failure"
+  ],
+  "evidence": "NICE CG141 gastrointestinal bleeding guidance; NICE NG88 heavy menstrual bleeding assessment; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Melena and marked symptoms require urgent assessment for gastrointestinal blood loss and severe anemia, potentially compounded by menstrual losses. Possible pregnancy requires clarification but does not explain away the gastrointestinal bleeding."
+ },
+ {
+  "case_id": "ddxplus_38541",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Fresh rectal blood or clots",
+   "Significant dyspnea and presyncope",
+   "Pallor",
+   "Heavy menstrual bleeding",
+   "Oral anticoagulant use and chronic kidney failure"
+  ],
+  "evidence": "ACG lower gastrointestinal bleeding guidance; NICE NG88 heavy menstrual bleeding assessment; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Overt bleeding with dyspnea, presyncope and pallor raises concern for clinically significant blood-loss anemia. Anticoagulation and renal disease increase risk and require prompt evaluation of bleeding severity and source."
+ },
+ {
+  "case_id": "ddxplus_64600",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "D64.9",
+   "D62"
+  ],
+  "red_flags": [
+   "Significant dyspnea",
+   "Presyncope",
+   "Pallor",
+   "Heavy or prolonged menstruation",
+   "Chronic kidney failure",
+   "Possible pregnancy"
+  ],
+  "evidence": "NICE NG88 heavy menstrual bleeding guidance; AABB symptom-informed anemia assessment principles; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Anemia is plausible, but dyspnea and presyncope raise concern that it is severe or associated with substantial blood loss. Same-visit assessment of stability, hemoglobin, bleeding and pregnancy status is necessary before routine management."
+ },
+ {
+  "case_id": "ddxplus_5302",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Fresh rectal blood or clots",
+   "Presyncope",
+   "Heavy or prolonged menstruation",
+   "Chronic kidney failure"
+  ],
+  "evidence": "ACG lower gastrointestinal bleeding guidance; NICE NG88 heavy menstrual bleeding assessment; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Rectal bleeding accompanied by presyncope requires assessment for clinically significant blood loss even without dyspnea or pallor. Menstrual bleeding and renal disease may compound anemia but do not establish a stable benign presentation."
+ },
+ {
+  "case_id": "ddxplus_83358",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Melena and fresh rectal blood",
+   "Significant dyspnea",
+   "Pallor and disabling fatigue",
+   "Age 93",
+   "Oral anticoagulant use and chronic kidney failure"
+  ],
+  "evidence": "NICE CG141 and ACG gastrointestinal bleeding guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Overt gastrointestinal bleeding with respiratory symptoms and profound fatigue in an anticoagulated older adult requires urgent assessment. Significant hemorrhage and severe blood-loss anemia cannot be managed as routine anemia."
+ },
+ {
+  "case_id": "ddxplus_120814",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Melena",
+   "Presyncope",
+   "Disabling fatigue",
+   "Heavy or prolonged menstruation",
+   "Oral anticoagulant use and chronic kidney failure"
+  ],
+  "evidence": "NICE CG141 upper gastrointestinal bleeding guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Melena with presyncope and severe fatigue suggests important gastrointestinal blood loss. Additional menstrual losses and anticoagulation strengthen the need for urgent assessment rather than empiric anemia treatment alone."
+ },
+ {
+  "case_id": "ddxplus_112499",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Fresh rectal blood or clots",
+   "Significant dyspnea and presyncope",
+   "Pallor and disabling fatigue",
+   "Heavy menstrual bleeding",
+   "Oral anticoagulant use"
+  ],
+  "evidence": "ACG lower gastrointestinal bleeding guidance; NICE NG88 heavy menstrual bleeding assessment; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Multiple reported bleeding sources with dyspnea, presyncope and pallor raise concern for substantial blood loss. Hemodynamic and hemoglobin assessment and evaluation of anticoagulant-associated bleeding are required now."
+ },
+ {
+  "case_id": "ddxplus_43831",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "G70.01"
+  ],
+  "red_flags": [
+   "Diplopia and ptosis",
+   "Fatigable bilateral limb weakness",
+   "Jaw weakness",
+   "Dysphagia",
+   "Significant dyspnea"
+  ],
+  "evidence": "International consensus guidance for myasthenia gravis and impending crisis; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "The ocular, bulbar and fatigable limb symptoms strongly suggest myasthenia with possible impending crisis. Dyspnea and dysphagia require urgent respiratory and swallowing assessment; anemia does not explain this pattern."
+ },
+ {
+  "case_id": "ddxplus_33806",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "G70.01",
+   "I63.9"
+  ],
+  "red_flags": [
+   "Diplopia and ptosis",
+   "Dysarthria and dysphagia",
+   "Fatigable bilateral weakness",
+   "Significant dyspnea",
+   "Advanced age"
+  ],
+  "evidence": "International consensus guidance for myasthenia gravis; NICE stroke recognition guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Bulbar and respiratory involvement with fatigable ocular and limb weakness suggests impending myasthenic crisis. Because onset is unspecified and brainstem signs are present, stroke also requires consideration."
+ },
+ {
+  "case_id": "ddxplus_36039",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "G70.01"
+  ],
+  "red_flags": [
+   "Diplopia and ptosis",
+   "Fatigable weakness",
+   "Jaw weakness",
+   "Significant dyspnea"
+  ],
+  "evidence": "International consensus guidance for myasthenia gravis and impending crisis; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Fatigable ocular and motor weakness with substantial breathlessness raises concern for myasthenia with respiratory involvement. Urgent respiratory muscle assessment is needed even without reported dysphagia."
+ },
+ {
+  "case_id": "ddxplus_29887",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "G70.01",
+   "G61.0"
+  ],
+  "red_flags": [
+   "Diplopia and ptosis",
+   "Dysphagia and jaw weakness",
+   "Bilateral limb weakness"
+  ],
+  "evidence": "International consensus guidance for myasthenia gravis; EAN/PNS Guillain-Barre syndrome guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Ocular, bulbar and generalized weakness suggests a neuromuscular disorder with potential airway and swallowing compromise. Absence of dyspnea does not make dysphagia with generalized weakness safe to attribute to laryngitis."
+ },
+ {
+  "case_id": "ddxplus_51745",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "G70.01",
+   "G61.0"
+  ],
+  "red_flags": [
+   "Diplopia and ptosis",
+   "Dysphagia and jaw weakness",
+   "Bilateral limb weakness",
+   "Significant dyspnea"
+  ],
+  "evidence": "International consensus guidance for myasthenia gravis; EAN/PNS Guillain-Barre syndrome guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Combined ocular, bulbar, limb and respiratory symptoms require urgent assessment for neuromuscular respiratory compromise. Myasthenic crisis is a leading concern, with Guillain-Barre variants also relevant."
+ },
+ {
+  "case_id": "ddxplus_118326",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "G70.01"
+  ],
+  "red_flags": [
+   "Diplopia and ptosis",
+   "Dysarthria",
+   "Fatigable bilateral limb weakness",
+   "Significant dyspnea"
+  ],
+  "evidence": "International consensus guidance for myasthenia gravis and impending crisis; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Fatigable ocular and limb weakness with dysarthria and dyspnea is concerning for generalized myasthenia with bulbar and respiratory involvement. Anemia cannot adequately explain the focal ocular and bulbar symptoms."
+ },
+ {
+  "case_id": "ddxplus_98656",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "G70.01",
+   "I63.9",
+   "G61.0"
+  ],
+  "red_flags": [
+   "Diplopia",
+   "Dysarthria and dysphagia",
+   "Jaw or facial weakness",
+   "Significant dyspnea"
+  ],
+  "evidence": "International consensus guidance for myasthenia gravis; NICE stroke recognition guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Ocular and bulbar dysfunction with breathlessness requires urgent assessment for neuromuscular respiratory compromise or a brainstem process. Unknown onset prevents safely excluding a time-critical stroke presentation."
+ },
+ {
+  "case_id": "ddxplus_106982",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "G70.01",
+   "G61.0"
+  ],
+  "red_flags": [
+   "Diplopia",
+   "Dysphagia",
+   "Fatigable bilateral limb weakness",
+   "Significant dyspnea"
+  ],
+  "evidence": "International consensus guidance for myasthenia gravis; EAN/PNS Guillain-Barre syndrome guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Fatigable ocular, bulbar and generalized weakness with dyspnea warrants urgent evaluation for myasthenia with impending crisis. An SLE label does not resolve the immediate risk of neuromuscular respiratory or swallowing failure."
+ },
+ {
+  "case_id": "ddxplus_22165",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I48.91",
+   "I50.9",
+   "I24.9"
+  ],
+  "red_flags": [
+   "Markedly irregular palpitations",
+   "Significant exertional dyspnea",
+   "Known valvular and structural heart disease",
+   "Diabetes and hypertension",
+   "Severe COPD"
+  ],
+  "evidence": "NICE NG196 atrial fibrillation assessment; ESC atrial fibrillation guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Symptomatic arrhythmia, particularly atrial fibrillation, requires ECG and assessment of hemodynamic consequences. Structural heart disease and exertional dyspnea also warrant assessment for heart failure and ischemia before attributing symptoms to panic."
+ },
+ {
+  "case_id": "ddxplus_108789",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I48.91",
+   "I47.2",
+   "I24.9"
+  ],
+  "red_flags": [
+   "Irregular racing palpitations",
+   "Significant dyspnea",
+   "Lightheadedness",
+   "Hyperthyroidism",
+   "Known coronary and structural heart disease"
+  ],
+  "evidence": "NICE NG196 atrial fibrillation assessment; AHA symptomatic tachyarrhythmia assessment principles; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Palpitations with dyspnea and lightheadedness in someone with structural heart disease require urgent rhythm assessment. Hyperthyroidism supports atrial fibrillation risk, while coronary disease makes ventricular arrhythmia and ischemia important alternatives."
+ },
+ {
+  "case_id": "ddxplus_99157",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I48.91",
+   "I24.9",
+   "I50.9"
+  ],
+  "red_flags": [
+   "Markedly irregular palpitations",
+   "Significant exertional dyspnea relieved by rest",
+   "Known valvular and coronary disease",
+   "Diabetes and hypertension"
+  ],
+  "evidence": "NICE NG196 atrial fibrillation assessment; AHA/ACC chest pain guidance on anginal equivalents; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "A symptomatic arrhythmia must be assessed with ECG, and exertional dyspnea may represent myocardial ischemia despite absent chest pain. Known valve disease also warrants assessment for cardiac decompensation."
+ },
+ {
+  "case_id": "ddxplus_64021",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I48.91",
+   "I50.9",
+   "I24.9"
+  ],
+  "red_flags": [
+   "Markedly irregular heartbeat",
+   "Significant dyspnea",
+   "Hyperthyroidism",
+   "Valvular and structural heart disease",
+   "Known coronary disease"
+  ],
+  "evidence": "NICE NG196 and ESC atrial fibrillation guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "An irregular heartbeat with substantial breathlessness and multiple cardiac substrates requires urgent ECG and stability assessment. Atrial fibrillation with cardiac decompensation or ischemia is not adequately addressed by an anemia diagnosis."
+ },
+ {
+  "case_id": "ddxplus_67580",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I48.91",
+   "I24.9",
+   "I50.9"
+  ],
+  "red_flags": [
+   "Irregular racing palpitations",
+   "Significant exertional dyspnea",
+   "Lightheadedness",
+   "Hyperthyroidism",
+   "Known valve and coronary disease"
+  ],
+  "evidence": "NICE NG196 atrial fibrillation assessment; AHA/ACC chest pain guidance on anginal equivalents; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "A symptomatic arrhythmia is plausible and requires ECG and hemodynamic assessment. Exertional symptoms in established coronary disease additionally require consideration of ischemia before diagnosing panic."
+ },
+ {
+  "case_id": "ddxplus_116293",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I48.91",
+   "I24.9",
+   "I50.9"
+  ],
+  "red_flags": [
+   "Irregular racing palpitations",
+   "Significant exertional dyspnea",
+   "Lightheadedness",
+   "Hyperthyroidism",
+   "Known coronary, valvular and structural heart disease"
+  ],
+  "evidence": "NICE NG196 and ESC atrial fibrillation guidance; AHA/ACC chest pain guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "The symptoms and cardiac history require prompt assessment for atrial fibrillation or another consequential arrhythmia. Associated exertional dyspnea and lightheadedness also raise concern for ischemia or cardiac decompensation."
+ },
+ {
+  "case_id": "ddxplus_103943",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I48.91",
+   "I50.9"
+  ],
+  "red_flags": [
+   "Markedly irregular heartbeat",
+   "Significant dyspnea",
+   "Lightheadedness",
+   "Hyperthyroidism",
+   "Valvular and structural heart disease"
+  ],
+  "evidence": "NICE NG196 and ESC atrial fibrillation guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Atrial fibrillation or another symptomatic arrhythmia must be evaluated with ECG and vital signs. Breathlessness and lightheadedness may indicate clinically important hemodynamic effects or associated heart failure."
+ },
+ {
+  "case_id": "ddxplus_4288",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I48.91",
+   "I47.2",
+   "I24.9"
+  ],
+  "red_flags": [
+   "Palpitations",
+   "Significant dyspnea",
+   "Lightheadedness",
+   "Hyperthyroidism",
+   "Known coronary, valvular and structural heart disease"
+  ],
+  "evidence": "AHA symptomatic tachyarrhythmia assessment principles; NICE NG196 atrial fibrillation assessment; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Palpitations accompanied by substantial dyspnea and lightheadedness require urgent ECG assessment in this cardiac context. The rhythm cannot be inferred from symptoms, and both atrial and ventricular arrhythmias merit consideration."
+ },
+ {
+  "case_id": "ddxplus_89938",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I31.4",
+   "I40.9",
+   "I24.9"
+  ],
+  "red_flags": [
+   "Significant dyspnea",
+   "Severe chest pain",
+   "Pleuritic and positional symptoms",
+   "Recent viral infection",
+   "Previous pericarditis"
+  ],
+  "evidence": "ESC pericardial disease guidance on effusion, tamponade and myocardial involvement; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Recurrent pericarditis is plausible, but substantial breathlessness requires assessment for effusion, tamponade and myocardial involvement. ECG, troponin and echocardiographic assessment are needed before treating this as uncomplicated pericarditis."
+ },
+ {
+  "case_id": "ddxplus_131650",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I31.4",
+   "I40.9",
+   "I71.00",
+   "I24.9"
+  ],
+  "red_flags": [
+   "Chest pain rated 10/10",
+   "Rapid onset with back radiation",
+   "Significant dyspnea",
+   "Palpitations",
+   "Recent viral infection and previous pericarditis"
+  ],
+  "evidence": "ESC pericardial disease guidance; ACC/AHA acute aortic syndrome and chest pain guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Severe chest pain with dyspnea and palpitations requires urgent assessment for complicated pericarditis or myocarditis. Rapid severe pain radiating posteriorly also warrants evaluation for aortic dissection and acute coronary syndrome."
+ },
+ {
+  "case_id": "ddxplus_23491",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9",
+   "I49.9"
+  ],
+  "red_flags": [
+   "Age 57",
+   "Abrupt chest discomfort",
+   "Near-syncope",
+   "Palpitations",
+   "Nausea"
+  ],
+  "evidence": "AHA/ACC chest-pain guidance; ESC syncope guidance; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Panic is plausible, particularly with diffuse tingling and depersonalization. Chest discomfort with near-syncope and palpitations nevertheless requires assessment for ischemia and a clinically significant arrhythmia before accepting panic alone."
+ },
+ {
+  "case_id": "ddxplus_91486",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9",
+   "I26.99"
+  ],
+  "red_flags": [
+   "Age 59",
+   "Chest discomfort",
+   "Significant dyspnea",
+   "Diaphoresis",
+   "Near-syncope",
+   "Nausea"
+  ],
+  "evidence": "AHA/ACC chest-pain guidance; Wells/PERC assessment principles; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "The combination of chest discomfort, dyspnea, sweating and near-syncope requires cardiopulmonary assessment despite the anxiety history. Neither ACS nor PE can be dismissed from the panic-like features; the available information cannot establish a negative PERC assessment."
+ },
+ {
+  "case_id": "ddxplus_70499",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9",
+   "I71.00",
+   "I40.9"
+  ],
+  "red_flags": [
+   "Age 56",
+   "Rapid-onset chest and epigastric pain",
+   "Radiation to thoracic back",
+   "Pleuritic and positional pain",
+   "Recent viral infection"
+  ],
+  "evidence": "AHA/ACC chest-pain and aortic-disease guidance; ESC pericarditis guidance; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Recurrent pericarditis is plausible, but the rapid onset and back radiation require consideration of aortic disease and ACS. ECG and myocardial-injury assessment are also needed before assuming isolated uncomplicated pericarditis."
+ },
+ {
+  "case_id": "ddxplus_57017",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I49.9",
+   "I24.9"
+  ],
+  "red_flags": [
+   "Age 76",
+   "Abrupt chest discomfort",
+   "Near-syncope",
+   "Palpitations",
+   "Excessive alcohol use"
+  ],
+  "evidence": "ESC syncope guidance; AHA/ACC chest-pain guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Palpitations with near-syncope in an older adult require evaluation for a clinically significant arrhythmia. Associated chest discomfort also warrants assessment for ACS, even with convincing hyperventilation symptoms."
+ },
+ {
+  "case_id": "ddxplus_121900",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I71.00",
+   "I24.9",
+   "I31.4",
+   "I40.9"
+  ],
+  "red_flags": [
+   "Severe chest pain rated 8/10",
+   "Radiation to thoracic back",
+   "Significant dyspnea",
+   "Age 57",
+   "Previous pericarditis"
+  ],
+  "evidence": "AHA/ACC chest-pain and aortic-disease guidance; ESC pericarditis guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Severe chest pain radiating to the back with significant dyspnea requires urgent exclusion of aortic disease and ACS. Positional symptoms and previous pericarditis also warrant assessment for myocardial involvement and a hemodynamically significant pericardial effusion."
+ },
+ {
+  "case_id": "ddxplus_64836",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I26.99",
+   "J93.9"
+  ],
+  "red_flags": [
+   "Metastatic cancer",
+   "Rapid-onset pleuritic chest pain",
+   "Pain rated 6/10",
+   "Coughing fits"
+  ],
+  "evidence": "Wells PE assessment principles; BTS pneumothorax guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Metastatic cancer substantially increases thromboembolic risk, making PE an important explanation for pleuritic chest pain even without reported dyspnea. Cough-related chest-wall injury is possible, but bronchitis alone is insufficient without evaluating intrathoracic causes."
+ },
+ {
+  "case_id": "ddxplus_68596",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "R56.9",
+   "I49.9",
+   "D86.85",
+   "D86.89"
+  ],
+  "red_flags": [
+   "Loss of consciousness with convulsive activity or an absence episode",
+   "Significant dyspnea",
+   "Lymphadenopathy",
+   "Red eyes and joint symptoms"
+  ],
+  "evidence": "NICE first-seizure guidance; ESC syncope guidance; ATS sarcoidosis guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "An unexplained seizure-like episode requires assessment for a seizure and cardiac syncope. If sarcoidosis is the underlying disease, neurologic or cardiac involvement must be considered rather than treating it as uncomplicated systemic disease."
+ },
+ {
+  "case_id": "ddxplus_45981",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "R56.9",
+   "I49.9",
+   "D86.85",
+   "D86.89"
+  ],
+  "red_flags": [
+   "Loss of consciousness with convulsive activity or an absence episode",
+   "Significant dyspnea",
+   "Lymphadenopathy",
+   "Red eyes and joint symptoms"
+  ],
+  "evidence": "NICE first-seizure guidance; ESC syncope guidance; ATS sarcoidosis guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "The seizure-like loss of consciousness and significant dyspnea require prompt neurologic and cardiac assessment. Suspected sarcoidosis does not establish a benign explanation and raises concern for potentially serious organ involvement."
+ },
+ {
+  "case_id": "ddxplus_111233",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I31.39",
+   "I40.9",
+   "I26.99"
+  ],
+  "red_flags": [
+   "Significant dyspnea",
+   "Previous pericarditis",
+   "Joint pain, facial skin lesion and oral ulcers suggesting systemic inflammation"
+  ],
+  "evidence": "ESC pericarditis guidance; EULAR SLE management principles; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "The intake supports possible systemic autoimmune disease, but significant dyspnea requires assessment for cardiopulmonary involvement at this visit. Pericardial effusion, myocarditis and PE should be considered rather than attributing the respiratory symptom to uncomplicated SLE."
+ },
+ {
+  "case_id": "ddxplus_60188",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Blood or clots in stool",
+   "Anticoagulant use",
+   "Significant dyspnea",
+   "Dizziness and pallor",
+   "Heavy menstruation",
+   "Chronic kidney failure"
+  ],
+  "evidence": "ACG lower-GI bleeding guidance; ACC anticoagulant-related bleeding guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Overt bleeding with dyspnea, pallor and dizziness raises concern for clinically significant blood loss. Anticoagulation and kidney disease increase concern; an anemia label alone does not address bleeding severity or its source."
+ },
+ {
+  "case_id": "ddxplus_50504",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J18.9"
+  ],
+  "red_flags": [
+   "Hemoptysis",
+   "Fever",
+   "Immunosuppression"
+  ],
+  "evidence": "ACR hemoptysis assessment guidance; NICE pneumonia guidance; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Hemoptysis with fever in an immunosuppressed patient requires assessment for pneumonia or another significant pulmonary infection. Upper-airway bleeding is possible, but its source and severity must be established before accepting viral pharyngitis alone."
+ },
+ {
+  "case_id": "ddxplus_16780",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I40.9",
+   "I31.4",
+   "I26.99",
+   "J93.9"
+  ],
+  "red_flags": [
+   "Chest pain rated 7/10",
+   "Significant dyspnea",
+   "Pleuritic pain",
+   "Recent viral infection",
+   "Previous pericarditis"
+  ],
+  "evidence": "ESC myocarditis/pericarditis guidance; Wells/PERC assessment principles; BTS pneumothorax guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Substantial pleuritic chest pain with dyspnea requires assessment for inflammatory cardiac disease, PE and pneumothorax. The intake does not provide an adequate basis for attributing this presentation to panic."
+ },
+ {
+  "case_id": "ddxplus_32023",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Blood or clots in stool",
+   "Anticoagulant use",
+   "Near-syncope",
+   "Significant dyspnea",
+   "Disabling fatigue"
+  ],
+  "evidence": "ACG lower-GI bleeding guidance; ACC anticoagulant-related bleeding guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Overt gastrointestinal bleeding with near-syncope and dyspnea may represent substantial blood loss. This requires immediate severity assessment rather than routine treatment of presumed nutritional anemia."
+ },
+ {
+  "case_id": "ddxplus_77539",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9",
+   "I40.9",
+   "I31.4",
+   "I49.9"
+  ],
+  "red_flags": [
+   "Age 76",
+   "Chest pain radiating to the back",
+   "Significant dyspnea",
+   "Palpitations",
+   "Recent viral infection",
+   "Positional symptoms"
+  ],
+  "evidence": "AHA/ACC chest-pain guidance; ESC myocarditis/pericarditis guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Chest pain and significant dyspnea in this older adult require ACS assessment. Palpitations and the pericarditic pattern also require evaluation for myocardial involvement, arrhythmia and a significant pericardial effusion."
+ },
+ {
+  "case_id": "ddxplus_86011",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J18.9",
+   "A16.2"
+  ],
+  "red_flags": [
+   "Hemoptysis",
+   "Immunosuppression",
+   "Cough",
+   "Severe throat pain"
+  ],
+  "evidence": "ACR hemoptysis assessment guidance; NICE tuberculosis guidance; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Hemoptysis in an immunosuppressed patient requires evaluation for a pulmonary infection, including tuberculosis when clinically supported. Absence of reported fever does not make uncomplicated viral pharyngitis a sufficient explanation."
+ },
+ {
+  "case_id": "ddxplus_25153",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J18.9",
+   "C34.90"
+  ],
+  "red_flags": [
+   "Hemoptysis",
+   "Fever",
+   "Age 66",
+   "Throat pain rated 8/10"
+  ],
+  "evidence": "ACR hemoptysis assessment guidance; NICE NG12 unexplained-hemoptysis guidance; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Hemoptysis with fever requires assessment for pulmonary infection and clarification of the bleeding source. If unexplained, hemoptysis at this age also warrants urgent investigation for malignancy; laryngitis alone is inadequate."
+ },
+ {
+  "case_id": "ddxplus_13299",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I31.39",
+   "I40.9",
+   "I26.99"
+  ],
+  "red_flags": [
+   "Significant dyspnea",
+   "Previous pericarditis",
+   "Joint symptoms and oral ulcers",
+   "Reported hypertension"
+  ],
+  "evidence": "ESC myocarditis/pericarditis guidance; EULAR SLE management principles; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Anemia is unconfirmed and does not adequately account for significant dyspnea in this inflammatory clinical context. Cardiac inflammation or effusion and other serious cardiopulmonary causes require assessment at this visit."
+ },
+ {
+  "case_id": "ddxplus_41465",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Black stools suggestive of melena",
+   "Anticoagulant use",
+   "Pallor",
+   "Dizziness",
+   "Disabling fatigue",
+   "Possible pregnancy"
+  ],
+  "evidence": "NICE acute upper-GI bleeding guidance; Glasgow-Blatchford assessment principles; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Possible melena with symptomatic anemia during anticoagulant use requires urgent bleeding assessment. Vitals and laboratory results are needed to determine severity; a low-risk Glasgow-Blatchford classification cannot be established from this intake."
+ },
+ {
+  "case_id": "ddxplus_62485",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J47.0",
+   "J18.9",
+   "I26.99"
+  ],
+  "red_flags": [
+   "Hemoptysis",
+   "Significant dyspnea",
+   "Cystic fibrosis",
+   "Chronic lung disease",
+   "Immunosuppression",
+   "Inflammatory bowel disease"
+  ],
+  "evidence": "BTS bronchiectasis guidance; Cystic Fibrosis Foundation hemoptysis guidance; Wells PE assessment principles; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Hemoptysis and significant dyspnea in cystic fibrosis require assessment for bronchiectasis-related infection and potentially consequential pulmonary bleeding. Immunosuppression and inflammatory bowel disease broaden concern to serious infection and thromboembolism."
+ },
+ {
+  "case_id": "ddxplus_124630",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J44.1",
+   "J96.00",
+   "J18.9"
+  ],
+  "red_flags": [
+   "Significant dyspnea",
+   "Severe COPD",
+   "Previous COPD exacerbations",
+   "Wheeze",
+   "Age 69"
+  ],
+  "evidence": "GOLD COPD exacerbation guidance; NICE COPD guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Significant dyspnea and wheeze in severe COPD require assessment for an exacerbation and respiratory failure. Routine bronchitis care is insufficient without establishing oxygenation, ventilation and clinical severity."
+ },
+ {
+  "case_id": "ddxplus_120269",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J18.9",
+   "C34.90"
+  ],
+  "red_flags": [
+   "Hemoptysis",
+   "Fever and cough",
+   "Age 56",
+   "Smoking",
+   "Severe throat pain"
+  ],
+  "evidence": "ACR hemoptysis assessment guidance; NICE NG12 unexplained-hemoptysis guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Hemoptysis with fever and cough requires pulmonary assessment despite concurrent pharyngitis symptoms. Age and smoking also make unexplained hemoptysis an indication for urgent malignancy investigation."
+ },
+ {
+  "case_id": "ddxplus_99450",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I40.9",
+   "I31.4",
+   "I26.99"
+  ],
+  "red_flags": [
+   "Significant dyspnea",
+   "Pleuritic and positional chest pain",
+   "Recent viral infection",
+   "Previous pericarditis"
+  ],
+  "evidence": "ESC myocarditis/pericarditis guidance; Wells/PERC assessment principles; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Pericarditis is plausible, but significant dyspnea requires assessment for myocardial involvement or a hemodynamically important effusion. PE remains a relevant alternative explanation for pleuritic pain and dyspnea."
+ },
+ {
+  "case_id": "ddxplus_113310",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "R56.9",
+   "I49.9",
+   "D86.85",
+   "D86.89"
+  ],
+  "red_flags": [
+   "Loss of consciousness with convulsive activity or an absence episode",
+   "Significant dyspnea",
+   "Lymphadenopathy",
+   "Red eyes and joint symptoms"
+  ],
+  "evidence": "NICE first-seizure guidance; ESC syncope guidance; ATS sarcoidosis guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "The seizure-like episode requires assessment for neurologic disease and cardiac syncope. In suspected sarcoidosis, cardiac or neurologic involvement is a potentially serious explanation that must be addressed."
+ },
+ {
+  "case_id": "ddxplus_87047",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I40.9",
+   "I49.9"
+  ],
+  "red_flags": [
+   "Chest pain after a viral infection",
+   "Palpitations",
+   "Pleuritic and positional symptoms"
+  ],
+  "evidence": "ESC myocarditis/pericarditis guidance; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "The symptom pattern supports pericarditis, but associated palpitations require assessment for myocardial involvement and arrhythmia. Uncomplicated pericarditis should not be assumed before ECG and myocardial-injury evaluation."
+ },
+ {
+  "case_id": "ddxplus_3226",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Blood or clots in stool",
+   "Anticoagulant use",
+   "Significant dyspnea",
+   "Pallor and dizziness",
+   "Disabling fatigue",
+   "Chronic kidney failure"
+  ],
+  "evidence": "ACG lower-GI bleeding guidance; ACC anticoagulant-related bleeding guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Overt gastrointestinal bleeding with substantial anemia symptoms requires urgent assessment of blood loss and hemoglobin. Kidney disease and anticoagulation increase concern despite the patient's young age."
+ },
+ {
+  "case_id": "ddxplus_31914",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Blood or clots in stool",
+   "Anticoagulant use",
+   "Pallor",
+   "Dizziness",
+   "Chronic kidney failure"
+  ],
+  "evidence": "ACG lower-GI bleeding guidance; ACC anticoagulant-related bleeding guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Rectal bleeding with pallor and dizziness during anticoagulant use may represent clinically significant blood loss. The bleeding source and severity need assessment at this visit rather than attribution to uncomplicated anemia."
+ },
+ {
+  "case_id": "ddxplus_96927",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "K27.4",
+   "I24.9"
+  ],
+  "red_flags": [
+   "Black stools suggestive of melena",
+   "Epigastric and chest discomfort",
+   "Age 68",
+   "Excessive alcohol use",
+   "Smoking"
+  ],
+  "evidence": "NICE acute upper-GI bleeding guidance; Glasgow-Blatchford assessment principles; AHA/ACC chest-pain guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Possible melena requires assessment for upper gastrointestinal hemorrhage, including a bleeding ulcer. Reflux features do not exclude bleeding, and chest discomfort in this older patient also warrants consideration of ACS."
+ },
+ {
+  "case_id": "ddxplus_61017",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Black stools suggestive of melena",
+   "Anticoagulant use",
+   "Pallor",
+   "Dizziness",
+   "Fatigue"
+  ],
+  "evidence": "NICE acute upper-GI bleeding guidance; ACC anticoagulant-related bleeding guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Possible melena with pallor and dizziness suggests gastrointestinal blood loss rather than nutritional anemia alone. Anticoagulant use makes same-visit assessment of bleeding severity essential."
+ },
+ {
+  "case_id": "ddxplus_80810",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "R56.9",
+   "I49.9",
+   "D86.89",
+   "D86.85"
+  ],
+  "red_flags": [
+   "Unexplained loss of consciousness with convulsive activity or an absence episode",
+   "Age 60",
+   "Red eyes and joint symptoms suggesting systemic disease"
+  ],
+  "evidence": "NICE first-seizure guidance; ESC syncope guidance; ATS sarcoidosis guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "An unexplained seizure-like episode at this age requires neurologic and cardiac assessment. Suspected sarcoidosis adds possible neurologic or cardiac involvement but does not establish the cause of the episode."
+ },
+ {
+  "case_id": "ddxplus_60204",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J47.0",
+   "J18.9",
+   "I26.99"
+  ],
+  "red_flags": [
+   "Hemoptysis",
+   "Significant dyspnea",
+   "Increased or colored sputum",
+   "Cystic fibrosis",
+   "Immunosuppression",
+   "Inflammatory bowel disease"
+  ],
+  "evidence": "BTS bronchiectasis guidance; Cystic Fibrosis Foundation hemoptysis guidance; Wells PE assessment principles; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "This presentation requires assessment for an infective exacerbation of structural lung disease and the severity of pulmonary bleeding. Significant dyspnea also requires oxygenation assessment and consideration of thromboembolism."
+ },
+ {
+  "case_id": "ddxplus_70282",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Blood or clots in stool",
+   "Anticoagulant use",
+   "Near-syncope",
+   "Significant dyspnea",
+   "Disabling fatigue",
+   "Chronic kidney failure"
+  ],
+  "evidence": "ACG lower-GI bleeding guidance; ACC anticoagulant-related bleeding guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Gastrointestinal bleeding with near-syncope and dyspnea may indicate substantial blood loss or impaired perfusion. The anemia diagnosis does not adequately address this potentially unstable presentation."
+ },
+ {
+  "case_id": "ddxplus_4707",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Blood or clots in stool",
+   "Anticoagulant use",
+   "Near-syncope",
+   "Significant dyspnea",
+   "Pallor and disabling fatigue",
+   "Chronic kidney failure",
+   "Age 68"
+  ],
+  "evidence": "ACG lower-GI bleeding guidance; ACC anticoagulant-related bleeding guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Overt bleeding with near-syncope and significant dyspnea requires urgent assessment for consequential blood loss. Age, kidney disease and anticoagulation increase the risk of complications."
+ },
+ {
+  "case_id": "ddxplus_33420",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J18.9",
+   "A16.2",
+   "B59"
+  ],
+  "red_flags": [
+   "Significant dyspnea",
+   "Fever and cough",
+   "Unintentional weight loss",
+   "Corticosteroid use"
+  ],
+  "evidence": "NICE pneumonia and tuberculosis guidance; opportunistic-infection assessment principles; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Fever, cough, weight loss and significant dyspnea require assessment for pneumonia and tuberculosis. Corticosteroid exposure also warrants clarification of immunosuppression and possible opportunistic infection."
+ },
+ {
+  "case_id": "ddxplus_25615",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J18.9",
+   "A16.2"
+  ],
+  "red_flags": [
+   "Fever and cough",
+   "Unintentional weight loss",
+   "Corticosteroid use",
+   "Diabetes",
+   "Excessive alcohol use"
+  ],
+  "evidence": "NICE pneumonia and tuberculosis guidance; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Constitutional weight loss with fever and cough is inadequately explained by uncomplicated bronchitis. Diabetes and corticosteroid use increase concern for significant pulmonary infection, including tuberculosis, requiring investigation at this visit."
+ },
+ {
+  "case_id": "ddxplus_77689",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "K27.4"
+  ],
+  "red_flags": [
+   "Black stools suggestive of melena",
+   "Epigastric discomfort",
+   "Excessive alcohol use",
+   "Possible pregnancy"
+  ],
+  "evidence": "NICE acute upper-GI bleeding guidance; Glasgow-Blatchford assessment principles; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Possible melena is an alarm feature requiring assessment for upper gastrointestinal hemorrhage, including a bleeding ulcer. Reflux symptoms and mild pain do not establish a low-risk presentation."
+ },
+ {
+  "case_id": "ddxplus_75749",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Black stools and visible blood or clots in stool",
+   "Anticoagulant use",
+   "Near-syncope",
+   "Significant dyspnea",
+   "Pallor and disabling fatigue",
+   "Age 77"
+  ],
+  "evidence": "NICE acute upper-GI bleeding guidance; ACG lower-GI bleeding guidance; ACC anticoagulant-related bleeding guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Multiple overt bleeding features with near-syncope and dyspnea strongly suggest potentially consequential gastrointestinal blood loss. Urgent assessment is required regardless of a previous anemia diagnosis."
+ },
+ {
+  "case_id": "ddxplus_80144",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J44.1",
+   "J96.00",
+   "J18.9"
+  ],
+  "red_flags": [
+   "Significant dyspnea",
+   "Severe COPD",
+   "Increased or colored sputum",
+   "Wheeze",
+   "Previous COPD exacerbations"
+  ],
+  "evidence": "GOLD COPD exacerbation guidance; NICE COPD guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "The combination of significant dyspnea, sputum change and wheeze in severe COPD requires assessment for an exacerbation, pneumonia and respiratory failure. A routine bronchitis diagnosis does not establish safe management."
+ },
+ {
+  "case_id": "ddxplus_119237",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "A16.2",
+   "J18.9",
+   "B59",
+   "C34.90"
+  ],
+  "red_flags": [
+   "Hemoptysis",
+   "Significant dyspnea",
+   "Fever and cough",
+   "Unintentional weight loss",
+   "HIV",
+   "Corticosteroid use",
+   "Diabetes",
+   "Age 78",
+   "Underweight"
+  ],
+  "evidence": "NICE tuberculosis and pneumonia guidance; HIV opportunistic-infection guidance; NICE NG12; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "This combination strongly warrants urgent assessment for tuberculosis, other serious pulmonary infections and respiratory compromise. Age, weight loss and hemoptysis also require consideration of malignancy."
+ },
+ {
+  "case_id": "ddxplus_70176",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Blood or clots in stool",
+   "Anticoagulant use",
+   "Significant dyspnea",
+   "Dizziness and pallor",
+   "Chronic kidney failure"
+  ],
+  "evidence": "ACG lower-GI bleeding guidance; ACC anticoagulant-related bleeding guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Overt gastrointestinal bleeding with dyspnea, pallor and dizziness requires assessment for substantial blood loss. Anticoagulation and kidney disease make routine anemia management insufficient."
+ },
+ {
+  "case_id": "ddxplus_75224",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "K27.4",
+   "I85.01"
+  ],
+  "red_flags": [
+   "Hematemesis or coffee-ground vomiting",
+   "Upper abdominal and chest discomfort",
+   "Excessive alcohol use"
+  ],
+  "evidence": "NICE acute upper-GI bleeding guidance; Glasgow-Blatchford assessment principles; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Vomiting blood or coffee-ground material requires urgent assessment for upper gastrointestinal hemorrhage. Ulcer or erosive bleeding is plausible; alcohol history also warrants checking for underlying liver disease and a variceal source."
+ },
+ {
+  "case_id": "ddxplus_38189",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J45.901",
+   "J93.9",
+   "I49.9"
+  ],
+  "red_flags": [
+   "Significant dyspnea",
+   "Chest pain rated 7/10",
+   "Asthma history",
+   "Palpitations"
+  ],
+  "evidence": "GINA acute-asthma assessment principles; BTS pneumothorax guidance; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Panic is supported by paresthesias and depersonalization, but significant dyspnea and substantial chest pain require objective respiratory assessment. An asthma exacerbation, pneumothorax or clinically significant arrhythmia should be considered before attributing everything to anxiety."
+ },
+ {
+  "case_id": "ddxplus_2797",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute sinusitis and upper-respiratory-infection management principles; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Facial discomfort, sore throat and clear nasal symptoms with frequent respiratory exposures support an uncomplicated upper respiratory illness. Sweating alone does not establish a dangerous complication, and no orbital, neurologic or respiratory alarm symptoms are reported."
+ },
+ {
+  "case_id": "ddxplus_111272",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute otitis media complication and reassessment principles; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Ear pain, fever and nasal symptoms are compatible with acute otitis media. Antibiotic exposure warrants checking treatment response, but without duration, deterioration, postauricular symptoms or neurologic features, it does not establish treatment failure or a dangerous complication."
+ },
+ {
+  "case_id": "ddxplus_8886",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K35.80"
+  ],
+  "red_flags": [
+   "Abdominal pain rated 8/10",
+   "Right iliac fossa pain",
+   "Near-syncope"
+  ],
+  "evidence": "WSES appendicitis assessment guidance; acute-abdominal-pain assessment principles; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Hyperventilation symptoms may accompany panic, but severe abdominal pain involving the right iliac fossa requires assessment for appendicitis. The associated near-syncope further argues against accepting a psychiatric explanation without abdominal and hemodynamic evaluation."
+ },
+ {
+  "case_id": "ddxplus_101550",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute sinusitis guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Mild facial pain, purulent nasal discharge and fever after a cold support uncomplicated acute rhinosinusitis. No orbital symptoms, severe frontal headache, meningism or focal neurologic symptoms are reported."
+ },
+ {
+  "case_id": "ddxplus_58985",
+  "decision": "UNCERTAIN",
+  "dangers_to_consider": [
+   "J18.9"
+  ],
+  "red_flags": [
+   "Fever and cough",
+   "Age 66",
+   "Smoking"
+  ],
+  "evidence": "NICE acute-cough and pneumonia guidance; CRB-65 limitations; from knowledge, not verified in this session.",
+  "confidence": 3,
+  "reasoning": "Sore throat, sick contacts and mild headache support a viral respiratory illness, but fever and cough in an older smoker leave pneumonia plausible. Respiratory rate, oxygenation and chest examination would determine whether routine bronchitis care is adequate; age alone does not establish severe pneumonia."
+ },
+ {
+  "case_id": "ddxplus_53487",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "ARIA allergic-rhinitis guidance; NICE acute-cough guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Nasal and ocular itching with an atopic background favor allergic upper-airway disease as the cause of cough. The bronchitis label could be refined during routine care, but no dangerous respiratory or systemic features are reported."
+ },
+ {
+  "case_id": "ddxplus_30216",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute sore-throat guidance; FeverPAIN/Centor assessment principles; from knowledge, not verified in this session.",
+  "confidence": 4,
+  "reasoning": "Bilateral throat discomfort, fever and coryza are compatible with uncomplicated pharyngitis. Pain severity alone does not establish a deep-neck infection, and no airway symptoms, trismus or inability to swallow are reported."
+ },
+ {
+  "case_id": "ddxplus_102809",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute respiratory-infection assessment principles; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Fever, myalgia, sore throat, coryza and sick contacts support an uncomplicated viral respiratory illness. The mild, nonabrupt headache lacks reported meningeal or neurologic alarm features."
+ },
+ {
+  "case_id": "ddxplus_70453",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute-cough and sore-throat guidance; from knowledge, not verified in this session.",
+  "confidence": 5,
+  "reasoning": "Cough and gradual throat discomfort after a cold fit an uncomplicated respiratory infection. No dyspnea, hemoptysis, fever or airway-warning symptoms are reported."
+ },
+ {
+  "case_id": "ddxplus_55429",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "CDC pertussis clinical features and complication assessment; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Paroxysmal cough, post-tussive vomiting and documented exposure strongly support pertussis. No respiratory distress, apnea or other complication is reported; routine care includes appropriate treatment and transmission precautions."
+ },
+ {
+  "case_id": "ddxplus_90975",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J36",
+   "J05.1"
+  ],
+  "red_flags": [
+   "Unilateral tonsillar and palatal pain",
+   "Fever",
+   "Voice change"
+  ],
+  "evidence": "NICE acute sore throat guidance and recognition of peritonsillar abscess and supraglottitis; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Focal unilateral throat pain with fever and voice change warrants assessment for peritonsillar infection before accepting uncomplicated laryngitis. Supraglottitis is less likely without swallowing or breathing symptoms but remains an airway-threatening alternative."
+ },
+ {
+  "case_id": "ddxplus_66829",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute cough guidance; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Cough, sore throat, mild gradual headache and infectious contacts support an uncomplicated respiratory infection. Fever alone, without dyspnea, chest pain or systemic deterioration, does not establish a time-critical alternative."
+ },
+ {
+  "case_id": "ddxplus_120646",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [
+   "Throat pain rated 7/10 with fever"
+  ],
+  "evidence": "NICE acute sore throat guidance; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Bilateral throat pain accompanied by cough, rhinorrhea and similar illness in contacts supports viral pharyngitis. Despite substantial pain, there are no reported swallowing, airway or focal neck symptoms suggesting a suppurative complication."
+ },
+ {
+  "case_id": "ddxplus_16173",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute sinusitis guidance on orbital and intracranial complications; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Mild facial and periocular discomfort with purulent nasal discharge fits uncomplicated rhinosinusitis. No visual disturbance, orbital swelling, fever or neurological symptoms are reported."
+ },
+ {
+  "case_id": "ddxplus_107444",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [
+   "Ear pain rated 7/10",
+   "Current or recent antibiotic treatment for an ear infection"
+  ],
+  "evidence": "NICE CKS acute otitis media assessment and treatment reassessment; from knowledge, not verified in this session",
+  "confidence": 3,
+  "reasoning": "Otitis media remains a reasonable basis for care, including reassessment of the ear and antibiotic course. Recent treatment does not establish treatment failure without timing, and there are no reported mastoid, neurological or systemic warning symptoms."
+ },
+ {
+  "case_id": "ddxplus_25304",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute cough guidance; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Cough with nasal symptoms, sputum and infectious contact supports uncomplicated bronchitis. Colored sputum alone does not imply pneumonia, and no fever, dyspnea or chest pain is reported."
+ },
+ {
+  "case_id": "ddxplus_84594",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute respiratory infection and acute cough guidance; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Fever, myalgia, sweating, coryza and cough with sick contacts fit a viral respiratory syndrome. The gradual headache has no associated neurological or meningeal symptoms."
+ },
+ {
+  "case_id": "ddxplus_41139",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute sinusitis guidance; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Facial pain, anosmia and purulent nasal discharge after a cold support rhinosinusitis. Periocular pain without visual symptoms, swelling or ocular movement symptoms does not by itself establish an orbital complication."
+ },
+ {
+  "case_id": "ddxplus_66261",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "ARIA allergic rhinitis guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Nasal and ocular itching, clear rhinorrhea and an atopic background strongly support allergic rhinitis. No respiratory compromise or systemic allergic features are reported."
+ },
+ {
+  "case_id": "ddxplus_72451",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute sinusitis guidance; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Mild facial pain, anosmia and purulent discharge are consistent with uncomplicated rhinosinusitis. The intake contains no orbital, neurological or systemic complication features."
+ },
+ {
+  "case_id": "ddxplus_715",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "ARIA allergic rhinitis guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "The combination of nasal itching, itchy eyes, clear rhinorrhea and atopy is characteristic of allergic rhinitis. No dangerous alternative is specifically suggested."
+ },
+ {
+  "case_id": "ddxplus_111461",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [
+   "Age 73 with febrile throat pain"
+  ],
+  "evidence": "NICE acute sore throat guidance and Centor assessment principles; from knowledge, not verified in this session",
+  "confidence": 3,
+  "reasoning": "The intake better supports pharyngitis than laryngitis because hoarseness is absent, and bacterial pharyngitis merits routine assessment. Bilateral gradual pain without swallowing difficulty, voice change or airway symptoms does not specifically suggest a time-critical deep infection."
+ },
+ {
+  "case_id": "ddxplus_126834",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "ARIA allergic rhinitis guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Itchy eyes and nose with clear rhinorrhea and an atopic history support allergic rhinitis. No systemic or respiratory warning symptoms are reported."
+ },
+ {
+  "case_id": "ddxplus_37533",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [
+   "Age 78",
+   "Fever and hoarseness"
+  ],
+  "evidence": "NICE acute sore throat guidance and clinical airway red-flag assessment; from knowledge, not verified in this session",
+  "confidence": 3,
+  "reasoning": "Moderate bilateral throat discomfort, cough and hoarseness following a cold fit acute laryngitis. Advanced age warrants careful assessment, but there is no reported dysphagia, drooling, stridor, dyspnea or focal swelling to make an airway-threatening infection sufficiently likely."
+ },
+ {
+  "case_id": "ddxplus_52561",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute respiratory infection guidance; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Coryza, sore throat, cough and myalgia with infectious contacts support an uncomplicated viral illness. The gradual headache has no reported neurological or meningeal features."
+ },
+ {
+  "case_id": "ddxplus_78338",
+  "decision": "UNCERTAIN",
+  "dangers_to_consider": [
+   "A54.4",
+   "M00.9"
+  ],
+  "red_flags": [
+   "Multifocal finger and shoulder pain rated 7/10",
+   "Vaginal discharge",
+   "Lymphadenopathy",
+   "Age 82"
+  ],
+  "evidence": "CDC disseminated gonococcal infection guidance and septic arthritis assessment principles; from knowledge, not verified in this session",
+  "confidence": 2,
+  "reasoning": "Genital discharge together with asymmetric multifocal joint-region pain raises an infectious arthritis or disseminated infection possibility that sarcoidosis does not adequately resolve. However, absent fever, joint swelling, rash and sexual-risk history make an invasive infection uncertain."
+ },
+ {
+  "case_id": "ddxplus_86950",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute sinusitis and acute cough guidance; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "The dominant features suggest uncomplicated rhinosinusitis with associated cough more than isolated bronchitis. This warrants routine diagnostic refinement, with no reported orbital, neurological or lower-respiratory danger features."
+ },
+ {
+  "case_id": "ddxplus_132582",
+  "decision": "UNCERTAIN",
+  "dangers_to_consider": [
+   "J36",
+   "J39.0"
+  ],
+  "red_flags": [
+   "Immunosuppression",
+   "Unilateral tonsillar pain",
+   "Submandibular pain"
+  ],
+  "evidence": "NICE acute sore throat guidance on complications and higher-risk patients; from knowledge, not verified in this session",
+  "confidence": 3,
+  "reasoning": "Cough and rhinorrhea favor viral pharyngitis, but immunosuppression and focal tonsillar/submandibular pain lower the threshold for excluding a localized deep infection. Modest pain and absent swallowing or airway symptoms keep this borderline rather than clearly emergent."
+ },
+ {
+  "case_id": "ddxplus_62677",
+  "decision": "UNCERTAIN",
+  "dangers_to_consider": [
+   "J44.1",
+   "J18.9"
+  ],
+  "red_flags": [
+   "COPD",
+   "Wheezing",
+   "Changed sputum",
+   "Chest discomfort"
+  ],
+  "evidence": "GOLD COPD exacerbation assessment and NICE acute cough guidance; from knowledge, not verified in this session",
+  "confidence": 3,
+  "reasoning": "Wheezing and sputum change in COPD suggest a lower-airway exacerbation beyond an isolated URTI. No dyspnea or fever is reported, so a dangerous exacerbation or pneumonia is not established, but severity requires assessment at this visit."
+ },
+ {
+  "case_id": "ddxplus_92050",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute sinusitis guidance; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Mild gradual facial pain, anosmia and purulent discharge after a cold support uncomplicated rhinosinusitis. Age and referred temporal or periocular pain alone do not outweigh the absence of visual, vascular or neurological warning symptoms."
+ },
+ {
+  "case_id": "ddxplus_38391",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "ARIA allergic rhinitis guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Nasal and ocular itching, clear discharge and atopy form a typical allergic rhinitis presentation. No acute dangerous alternative is suggested."
+ },
+ {
+  "case_id": "ddxplus_90733",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [
+   "Ear pain rated 8/10 with fever"
+  ],
+  "evidence": "NICE CKS acute otitis media and complication assessment; from knowledge, not verified in this session",
+  "confidence": 3,
+  "reasoning": "Painful febrile otitis media can account for these symptoms and requires examination and appropriate treatment. Irritability is not equivalent to altered consciousness, and no mastoid swelling, neurological symptoms or systemic deterioration is reported."
+ },
+ {
+  "case_id": "ddxplus_2866",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute sinusitis guidance; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Mild facial pain, anosmia and purulent nasal discharge after a cold fit uncomplicated rhinosinusitis. No complication features are present in the intake."
+ },
+ {
+  "case_id": "ddxplus_121205",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "G03.9"
+  ],
+  "red_flags": [
+   "Headache rated 8/10",
+   "Fever",
+   "Marked sweating"
+  ],
+  "evidence": "NICE bacterial meningitis guidance and secondary-headache red flags; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Severe headache with fever warrants active assessment for meningitis before attributing everything to a URTI. Absent neck stiffness or altered mental status reduces suspicion but does not exclude meningitis."
+ },
+ {
+  "case_id": "ddxplus_108680",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "H70.90"
+  ],
+  "red_flags": [
+   "Ear pain rated 8/10",
+   "Fever",
+   "Current or recent antibiotic treatment for an ear infection",
+   "Age 67"
+  ],
+  "evidence": "NICE CKS acute otitis media guidance on reassessment and mastoiditis; from knowledge, not verified in this session",
+  "confidence": 3,
+  "reasoning": "Severe febrile ear pain during or after treatment requires focused reassessment for complicated otitis, including mastoiditis. Bronchitis does not adequately account for the dominant symptoms, although treatment failure cannot be confirmed without timing."
+ },
+ {
+  "case_id": "ddxplus_111673",
+  "decision": "UNCERTAIN",
+  "dangers_to_consider": [
+   "H20.9"
+  ],
+  "red_flags": [
+   "Diffuse eye redness",
+   "Polyarthralgia and lymphadenopathy suggesting systemic inflammatory disease"
+  ],
+  "evidence": "American Thoracic Society sarcoidosis guidance on ocular assessment and uveitis red-flag principles; from knowledge, not verified in this session",
+  "confidence": 3,
+  "reasoning": "Eye redness in a possible systemic inflammatory disorder warrants assessment for uveitis, which may threaten vision. Absence of eye pain, photophobia and visual change makes immediate sight-threatening inflammation uncertain."
+ },
+ {
+  "case_id": "ddxplus_66386",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J36",
+   "J39.0"
+  ],
+  "red_flags": [
+   "Unilateral tonsillar pain rated 8/10",
+   "Fever",
+   "Palatal and submandibular pain"
+  ],
+  "evidence": "NICE acute sore throat guidance on peritonsillar and deep-neck abscess; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Severe focal tonsillar pain with fever and adjacent palatal/submandibular pain warrants exclusion of peritonsillar or deeper infection. Rhinorrhea does not sufficiently justify a viral-only diagnosis."
+ },
+ {
+  "case_id": "ddxplus_35364",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute sinusitis guidance; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Anosmia, purulent discharge and facial pain after a cold support rhinosinusitis. No visual disturbance, orbital swelling, fever or neurological symptoms suggest a complication."
+ },
+ {
+  "case_id": "ddxplus_47835",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute sinusitis and acute cough guidance; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Mild facial pain and anosmia with nasal polyps suggest a sinonasal contribution to the cough. The bronchitis label merits routine refinement, but there are no reported respiratory or neurological danger features."
+ },
+ {
+  "case_id": "ddxplus_21387",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [
+   "Current or recent antibiotic treatment for an ear infection"
+  ],
+  "evidence": "NICE CKS acute otitis media reassessment guidance; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Localized moderate ear pain remains compatible with uncomplicated otitis media. The antibiotic course should be reviewed, but absent fever, mastoid symptoms or neurological features, a time-critical complication is not specifically suggested."
+ },
+ {
+  "case_id": "ddxplus_104206",
+  "decision": "UNCERTAIN",
+  "dangers_to_consider": [
+   "M31.6"
+  ],
+  "red_flags": [
+   "Age 71",
+   "Temporal and scalp-region headache rated 6/10",
+   "Myalgia and sweating"
+  ],
+  "evidence": "British Society for Rheumatology giant cell arteritis guidance; from knowledge, not verified in this session",
+  "confidence": 3,
+  "reasoning": "The respiratory symptoms strongly support a viral illness, but temporal/scalp-region headache and systemic symptoms in this age group warrant consideration of giant cell arteritis. No jaw claudication or visual symptoms are reported, and the headache's duration and novelty are unknown."
+ },
+ {
+  "case_id": "ddxplus_16182",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "H70.90"
+  ],
+  "red_flags": [
+   "Ear pain rated 9/10",
+   "Fever",
+   "Current or recent antibiotic treatment for an ear infection",
+   "Age 67"
+  ],
+  "evidence": "NICE CKS acute otitis media guidance on complications and reassessment; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Very severe febrile ear pain in the setting of recent treatment requires exclusion of complicated otitis, particularly mastoiditis. Bronchitis does not explain the dominant presentation."
+ },
+ {
+  "case_id": "ddxplus_18166",
+  "decision": "UNCERTAIN",
+  "dangers_to_consider": [
+   "J44.1"
+  ],
+  "red_flags": [
+   "COPD",
+   "Wheezing",
+   "Changed sputum",
+   "Nocturnal respiratory symptoms"
+  ],
+  "evidence": "GOLD COPD exacerbation assessment; from knowledge, not verified in this session",
+  "confidence": 3,
+  "reasoning": "The intake suggests a possible COPD exacerbation requiring assessment beyond a generic bronchitis label. Absent dyspnea or fever and minimal chest discomfort favor a mild episode, but baseline symptoms and physiological severity are unavailable."
+ },
+ {
+  "case_id": "ddxplus_3943",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute respiratory infection guidance; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Cough, coryza, sore throat and gradual moderate headache after infectious contact fit a URTI. Sweating alone does not establish a dangerous systemic illness."
+ },
+ {
+  "case_id": "ddxplus_36615",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [
+   "Unilateral ear pain rated 7/10"
+  ],
+  "evidence": "NICE CKS otalgia and acute otitis media assessment; from knowledge, not verified in this session",
+  "confidence": 3,
+  "reasoning": "Bronchitis does not explain the ear pain, which needs routine otoscopic assessment for otitis or another local cause. No fever, mastoid symptoms, neurological features or high-risk medical history suggests an immediate dangerous complication."
+ },
+ {
+  "case_id": "ddxplus_85608",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute sinusitis guidance; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Facial pain, anosmia and purulent discharge after a cold provide a coherent rhinosinusitis presentation. There are no reported ocular, neurological or severe systemic warning features."
+ },
+ {
+  "case_id": "ddxplus_75817",
+  "decision": "UNCERTAIN",
+  "dangers_to_consider": [
+   "H70.90"
+  ],
+  "red_flags": [
+   "Ear pain rated 9/10",
+   "Fever"
+  ],
+  "evidence": "NICE CKS acute otitis media and mastoiditis assessment; from knowledge, not verified in this session",
+  "confidence": 3,
+  "reasoning": "Very severe febrile otalgia requires an ear-focused assessment and is not adequately explained by bronchitis. Uncomplicated otitis remains plausible, while absent mastoid symptoms and neurological features make a dangerous complication borderline."
+ },
+ {
+  "case_id": "ddxplus_25229",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute sinusitis guidance; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Mild facial and periocular discomfort with purulent nasal discharge after a cold supports uncomplicated rhinosinusitis. No orbital dysfunction, swelling or neurological symptoms are reported."
+ },
+ {
+  "case_id": "ddxplus_72234",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "Clinical acute laryngitis assessment and NICE sore throat red flags; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Hoarseness, cough and moderate bilateral throat discomfort after a cold support acute laryngitis. There is no fever, swallowing difficulty or airway symptom to suggest a dangerous deep infection."
+ },
+ {
+  "case_id": "ddxplus_75784",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [
+   "Facial and bilateral periocular pain rated 7/10"
+  ],
+  "evidence": "NICE acute sinusitis guidance on orbital complications; from knowledge, not verified in this session",
+  "confidence": 3,
+  "reasoning": "Purulent discharge and bilateral facial pain following a cold support rhinosinusitis. Substantial periocular pain warrants careful examination, but without visual symptoms, swelling, ocular movement symptoms or fever, the intake does not establish a dangerous orbital complication."
+ },
+ {
+  "case_id": "ddxplus_78045",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "ARIA allergic rhinitis guidance and GINA asthma symptom assessment; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Nasal itching, clear rhinorrhea and an atopic background support allergic rhinitis. Asthma history alone, without wheeze or dyspnea, does not indicate a dangerous exacerbation."
+ },
+ {
+  "case_id": "ddxplus_22715",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute cough and respiratory infection guidance; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Coryza, sore throat, myalgia and cough with a mild gradual headache fit an uncomplicated viral respiratory illness. Sputum color and sweating alone do not establish pneumonia or systemic instability."
+ },
+ {
+  "case_id": "ddxplus_46793",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE CKS acute otitis media assessment; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Mild unilateral otalgia, fever and nasal symptoms fit uncomplicated otitis media. No mastoid, neurological or systemic complication features are reported."
+ },
+ {
+  "case_id": "ddxplus_4215",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9",
+   "I26.9",
+   "I47.9"
+  ],
+  "red_flags": [
+   "Age 56",
+   "Severe chest and abdominal pain",
+   "Significant dyspnea",
+   "Diaphoresis and nausea",
+   "Presyncope",
+   "Palpitations"
+  ],
+  "evidence": "AHA/ACC chest pain guidance, HEART assessment limitations, and Wells/PERC principles; from knowledge, not verified in this session",
+  "confidence": 5,
+  "reasoning": "Chest pain with dyspnea, diaphoresis, nausea and presyncope requires urgent exclusion of acute coronary syndrome, pulmonary embolism and significant arrhythmia. Panic-compatible paresthesias and derealization do not exclude these conditions; HEART and PE exclusion rules cannot be completed from this intake."
+ },
+ {
+  "case_id": "ddxplus_125850",
+  "decision": "UNCERTAIN",
+  "dangers_to_consider": [
+   "J18.9"
+  ],
+  "red_flags": [
+   "Fever",
+   "Cough with chest discomfort",
+   "Wheezing"
+  ],
+  "evidence": "NICE acute cough and pneumonia assessment guidance; from knowledge, not verified in this session",
+  "confidence": 3,
+  "reasoning": "Bronchitis with bronchospasm is plausible, but fever and chest discomfort make pneumonia an alternative requiring focused assessment. No dyspnea or severe systemic symptoms are reported, so the intake alone does not establish a time-critical infection."
+ },
+ {
+  "case_id": "ddxplus_94331",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [
+   "Headache rated 8/10"
+  ],
+  "evidence": "NICE headache red-flag assessment and acute respiratory infection guidance; from knowledge, not verified in this session",
+  "confidence": 3,
+  "reasoning": "The very gradual headache occurs with coryza, sore throat, cough and infectious exposure, without fever, meningism or neurological symptoms. Its severity warrants assessment and symptom control, but severity alone does not establish a time-critical secondary headache."
+ },
+ {
+  "case_id": "ddxplus_46931",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J18.9",
+   "J44.1"
+  ],
+  "red_flags": [
+   "COPD",
+   "Fever",
+   "Changed sputum and wheezing",
+   "Chest and posterior chest-wall pain rated 5/10"
+  ],
+  "evidence": "GOLD COPD exacerbation guidance and NICE pneumonia assessment; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Fever, sputum change and chest pain in someone with COPD warrant active exclusion of pneumonia and assessment of an infective COPD exacerbation. A generic bronchitis diagnosis is insufficient without evaluating respiratory severity."
+ },
+ {
+  "case_id": "ddxplus_89116",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute sinusitis and acute respiratory infection guidance; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Mild facial pain, anosmia and nasal congestion favor uncomplicated sinonasal inflammation over isolated pharyngitis. This is a routine diagnostic refinement without reported airway, orbital or neurological danger features."
+ },
+ {
+  "case_id": "ddxplus_21366",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [
+   "Ear pain rated 7/10 with fever"
+  ],
+  "evidence": "NICE CKS acute otitis media and complication assessment; from knowledge, not verified in this session",
+  "confidence": 4,
+  "reasoning": "Bilateral painful febrile otitis media is a reasonable working diagnosis requiring examination and treatment. Irritability alone does not indicate encephalopathy, and no mastoid or neurological warning symptoms are reported."
+ },
+ {
+  "case_id": "ddxplus_75636",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J18.9",
+   "J44.1"
+  ],
+  "red_flags": [
+   "Fever with increased or discolored sputum",
+   "Chest pain",
+   "Underlying COPD"
+  ],
+  "evidence": "NICE acute cough and COPD exacerbation guidance (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "Pneumonia or an infective COPD exacerbation needs assessment at this visit. An upper respiratory infection alone is insufficient to explain the combination without checking respiratory status and examining the chest."
+ },
+ {
+  "case_id": "ddxplus_65113",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I50.9",
+   "I82.409"
+  ],
+  "red_flags": [
+   "Recent weight gain with extensive leg swelling",
+   "Known heart failure",
+   "Previous DVT and protein-losing kidney disease",
+   "NSAID and corticosteroid use"
+  ],
+  "evidence": "ESC heart failure guidance and NICE venous thromboembolic disease guidance; Wells requires examination findings (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "Weight gain and extensive edema may represent worsening cardiac congestion. Previous thrombosis and protein-losing renal disease also warrant assessment for recurrent DVT, although bilateral swelling favors a systemic cause."
+ },
+ {
+  "case_id": "ddxplus_92272",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute cough and headache assessment guidance (from knowledge, not verified in this session).",
+  "confidence": 3,
+  "reasoning": "The gradual, moderate headache accompanies a coherent viral respiratory syndrome with sick contacts. There is no reported breathlessness, chest pain, meningism, visual disturbance, or jaw claudication to establish a specific time-critical concern."
+ },
+ {
+  "case_id": "ddxplus_20537",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K92.2",
+   "D62"
+  ],
+  "red_flags": [
+   "Visible blood or clots in stool",
+   "Oral anticoagulant use",
+   "Significant breathlessness and lightheadedness",
+   "Disabling fatigue",
+   "Chronic kidney failure"
+  ],
+  "evidence": "ACG acute lower gastrointestinal bleeding guidance and anticoagulant-associated bleeding assessment principles (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "Gastrointestinal bleeding with possible symptomatic blood-loss anemia requires urgent assessment of circulation and hemoglobin. A routine anemia diagnosis does not adequately address ongoing bleeding while anticoagulated."
+ },
+ {
+  "case_id": "ddxplus_68503",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I60.9"
+  ],
+  "red_flags": [
+   "10/10 head and orbital pain",
+   "Very rapid reported onset, 9/10",
+   "No established personal history of similar headaches"
+  ],
+  "evidence": "NICE headache red flags and Ottawa SAH rule eligibility principles; exact time-to-peak is unavailable (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "Severe, rapidly developing head pain requires clarification of time-to-peak and exclusion of subarachnoid hemorrhage if thunderclap onset is confirmed. Autonomic symptoms and a family history of cluster headache do not establish a safe primary headache diagnosis."
+ },
+ {
+  "case_id": "ddxplus_24893",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9",
+   "O14.9"
+  ],
+  "red_flags": [
+   "7/10 epigastric and lower chest pain radiating into the chest",
+   "Age 59, smoking, and obesity",
+   "Possible pregnancy with right upper abdominal pain"
+  ],
+  "evidence": "AHA/ACC chest pain guidance and NICE hypertension in pregnancy guidance; HEART cannot be calculated without ECG and troponin (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "Reflux is plausible, but substantial chest-radiating epigastric pain warrants assessment for acute coronary syndrome. If pregnancy is confirmed at a relevant gestation, right upper abdominal pain also requires assessment for preeclampsia-related disease."
+ },
+ {
+  "case_id": "ddxplus_11759",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "B20",
+   "G03.9"
+  ],
+  "red_flags": [
+   "Sexual exposure to an HIV-positive partner",
+   "Intravenous drug use",
+   "Fever, diarrhea, and painful oral and genital lesions",
+   "Headache with posterior neck pain"
+  ],
+  "evidence": "NIH early HIV infection guidance and NICE meningitis guidance (from knowledge, not verified in this session); B20 coding terminology separately checked against [CDC ICD-10-CM](https://stacks.cdc.gov/view/cdc/250974/cdc_250974_DS1.pdf).",
+  "confidence": 5,
+  "reasoning": "The exposure history and systemic mucosal illness require prompt testing for symptomatic HIV infection. Fever with headache and neck pain additionally requires assessment for meningitis; bronchitis does not explain this presentation."
+ },
+ {
+  "case_id": "ddxplus_121229",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J93.9",
+   "I26.9",
+   "I71.00"
+  ],
+  "red_flags": [
+   "Very rapid onset chest pain, 9/10",
+   "Tearing or violent pain radiating posteriorly",
+   "Pain worsened by deep inspiration"
+  ],
+  "evidence": "BTS pneumothorax guidance, NICE pulmonary embolism guidance, and ACC/AHA aortic disease guidance (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "Cough-related rib injury is plausible with osteoporosis, but sudden pleuritic pain requires exclusion of pneumothorax and consideration of pulmonary embolism. The tearing quality and posterior radiation also warrant an aortic assessment before attributing the pain to bronchitis."
+ },
+ {
+  "case_id": "ddxplus_16871",
+  "decision": "UNCERTAIN",
+  "dangers_to_consider": [
+   "G03.9",
+   "M31.6"
+  ],
+  "red_flags": [
+   "Severe 8/10 headache with fever",
+   "Temporal pain at age 54"
+  ],
+  "evidence": "NICE headache red flags and BSR giant cell arteritis guidance (from knowledge, not verified in this session).",
+  "confidence": 3,
+  "reasoning": "A viral respiratory illness could explain the gradual headache, but its severity and temporal involvement after age 50 merit focused assessment for secondary causes. Absent meningism, visual symptoms, and jaw claudication reduce concern without fully resolving it."
+ },
+ {
+  "case_id": "ddxplus_123627",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "B20",
+   "G03.9"
+  ],
+  "red_flags": [
+   "HIV-positive sexual partner and multiple unprotected sexual contacts",
+   "Fever, lymphadenopathy, and disabling fatigue",
+   "Painful oral and genital lesions with diarrhea",
+   "Headache and posterior neck pain"
+  ],
+  "evidence": "NIH early HIV infection guidance and NICE meningitis guidance (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "Symptomatic HIV infection requires targeted testing and prompt management planning at this visit. Fever, headache, and neck pain also require assessment for meningitis rather than attribution to anemia."
+ },
+ {
+  "case_id": "ddxplus_95710",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J44.1",
+   "J18.9",
+   "I24.9"
+  ],
+  "red_flags": [
+   "Significant breathlessness",
+   "Wheeze and increased or discolored sputum",
+   "Chest pain in a smoker with COPD"
+  ],
+  "evidence": "NICE COPD exacerbation and pneumonia guidance; AHA/ACC chest pain guidance (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "This presentation needs assessment for a COPD exacerbation and pneumonia, including oxygenation and work of breathing. Chest pain with significant dyspnea also warrants consideration of myocardial ischemia."
+ },
+ {
+  "case_id": "ddxplus_58256",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute cough and headache assessment guidance (from knowledge, not verified in this session).",
+  "confidence": 3,
+  "reasoning": "Gradual moderate headache, fever, myalgia, coryza, sore throat, and cough after sick contacts fit a viral respiratory illness. Age increases vulnerability, but the intake supplies no specific respiratory, neurological, or ischemic alarm feature."
+ },
+ {
+  "case_id": "ddxplus_107285",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I60.9"
+  ],
+  "red_flags": [
+   "10/10 head and orbital pain",
+   "Relatively rapid reported onset, 7/10",
+   "No established personal cluster headache diagnosis"
+  ],
+  "evidence": "NICE headache red flags and ACEP acute headache assessment principles (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "The severity and relatively rapid development require clarification of whether this was a thunderclap headache and assessment for subarachnoid hemorrhage. Family history and nasal symptoms cannot establish cluster headache, and anemia does not adequately explain the presentation."
+ },
+ {
+  "case_id": "ddxplus_129295",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9",
+   "K55.059"
+  ],
+  "red_flags": [
+   "Age 96",
+   "Severe 9/10 poorly localized abdominal pain",
+   "Radiation into the chest",
+   "Postprandial worsening and smoking"
+  ],
+  "evidence": "AHA/ACC chest pain guidance and WSES acute mesenteric ischemia guidance (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "Severe abdominal pain radiating into the chest in a very elderly smoker requires urgent consideration of acute coronary syndrome and mesenteric ischemia. Positional or meal-related features do not make bronchitis an adequate diagnosis."
+ },
+ {
+  "case_id": "ddxplus_90243",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "A41.9",
+   "J18.9"
+  ],
+  "red_flags": [
+   "Fever while immunosuppressed",
+   "Age 70",
+   "Respiratory and throat symptoms"
+  ],
+  "evidence": "NICE suspected sepsis and acute respiratory infection guidance (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "A viral infection remains plausible, but fever in an immunosuppressed older adult requires assessment for serious infection and the nature of the immunosuppression. Routine viral pharyngitis care is insufficient without establishing physiological stability and excluding a significant bacterial source."
+ },
+ {
+  "case_id": "ddxplus_119857",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I50.9"
+  ],
+  "red_flags": [
+   "Recent weight gain",
+   "Extensive bilateral leg swelling",
+   "Known heart failure and valvular disease"
+  ],
+  "evidence": "ESC heart failure guidance on worsening congestion (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "Weight gain and extensive edema in established heart failure require assessment for decompensation and treatment adjustment at this visit. Calcium channel blocker edema is an alternative, but cannot safely be assumed to explain the findings."
+ },
+ {
+  "case_id": "ddxplus_107568",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I60.9"
+  ],
+  "red_flags": [
+   "Maximally rapid reported onset, 10/10",
+   "Severe violent orbital and temporal pain"
+  ],
+  "evidence": "NICE thunderclap headache guidance and ACEP acute headache assessment principles (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "A severe headache described as appearing at maximal speed requires urgent exclusion of subarachnoid hemorrhage and other thunderclap causes. Young age and a family history of cluster headache do not remove that requirement."
+ },
+ {
+  "case_id": "ddxplus_113600",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I60.9"
+  ],
+  "red_flags": [
+   "10/10 violent head and orbital pain",
+   "Rapid reported onset, 8/10"
+  ],
+  "evidence": "NICE headache red flags and ACEP acute headache assessment principles (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "Severe rapidly developing head pain requires a secondary headache assessment, particularly clarification of thunderclap onset. Nasal congestion does not exclude hemorrhage, and anemia is not an adequate explanation."
+ },
+ {
+  "case_id": "ddxplus_76401",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I60.9",
+   "M31.6"
+  ],
+  "red_flags": [
+   "Severe 8/10 head and orbital pain",
+   "Rapid reported onset, 8/10",
+   "Temporal pain at age 60"
+  ],
+  "evidence": "NICE headache red flags and BSR giant cell arteritis guidance (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "Rapid severe headache requires assessment for subarachnoid hemorrhage, while temporal pain after age 50 also warrants consideration of giant cell arteritis. Neither a family history of cluster headache nor nasal congestion makes viral pharyngitis an adequate basis for care."
+ },
+ {
+  "case_id": "ddxplus_35125",
+  "decision": "UNCERTAIN",
+  "dangers_to_consider": [
+   "I49.9"
+  ],
+  "red_flags": [
+   "Palpitations associated with near-fainting",
+   "Abrupt substantial chest pain"
+  ],
+  "evidence": "NICE panic disorder guidance on excluding acute physical causes and ESC syncope assessment principles (from knowledge, not verified in this session).",
+  "confidence": 3,
+  "reasoning": "Derealization, perioral and limb tingling, fear, and chronic anxiety strongly support panic with hyperventilation. However, palpitations with near-syncope justify checking the rhythm and physiological stability before accepting that diagnosis."
+ },
+ {
+  "case_id": "ddxplus_102395",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J96.00",
+   "H20.9"
+  ],
+  "red_flags": [
+   "Significant breathlessness",
+   "Red eyes with suspected multisystem sarcoidosis",
+   "Lymphadenopathy"
+  ],
+  "evidence": "BTS pulmonary sarcoidosis guidance and ophthalmic guidance on ocular sarcoidosis (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "Significant dyspnea requires prompt assessment for respiratory compromise rather than an assumption of uncomplicated sarcoidosis. Associated red eyes warrant assessment for uveitis, although absent pain and visual disturbance make an immediate sight-threatening presentation less certain."
+ },
+ {
+  "case_id": "ddxplus_82426",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I82.409"
+  ],
+  "red_flags": [
+   "Rapidly developing 7/10 leg pain",
+   "Left thigh swelling",
+   "Previous DVT",
+   "Protein-losing kidney disease"
+  ],
+  "evidence": "NICE venous thromboembolic disease guidance and DVT Wells assessment principles (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "Prior DVT and protein-losing renal disease increase concern for recurrent thrombosis in a painful swollen leg. Bilateral foot edema and previous lymph node surgery provide alternatives but do not exclude a concurrent proximal DVT."
+ },
+ {
+  "case_id": "ddxplus_116770",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "B20"
+  ],
+  "red_flags": [
+   "Sexual exposure to an HIV-positive partner",
+   "Multiple unprotected sexual contacts",
+   "Lymphadenopathy, weight loss, and disabling fatigue",
+   "Oral and genital lesions with diarrhea"
+  ],
+  "evidence": "NIH early HIV infection and HIV diagnostic testing guidance (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "The exposure history and multisystem illness require prompt evaluation for symptomatic HIV infection, including possible established disease. Anemia alone does not account for the mucosal lesions, lymphadenopathy, and weight loss."
+ },
+ {
+  "case_id": "ddxplus_85272",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute cough guidance (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "The mild headache, fever, myalgia, coryza, sore throat, and cough after sick contacts are consistent with an uncomplicated viral respiratory infection. Colored sputum alone does not establish pneumonia or another dangerous bacterial illness."
+ },
+ {
+  "case_id": "ddxplus_64993",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9",
+   "O14.9"
+  ],
+  "red_flags": [
+   "Severe 8/10 upper abdominal and lower chest pain",
+   "Radiation into the upper chest",
+   "Age 57 and obesity",
+   "Possible pregnancy with right upper abdominal pain"
+  ],
+  "evidence": "AHA/ACC chest pain guidance and NICE hypertension in pregnancy guidance (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "Severe chest-radiating upper abdominal pain requires assessment for myocardial ischemia despite features suggesting reflux. Pregnancy status and gestation also need clarification because severe right upper abdominal pain can signal preeclampsia-related disease."
+ },
+ {
+  "case_id": "ddxplus_123300",
+  "decision": "UNCERTAIN",
+  "dangers_to_consider": [
+   "E16.2",
+   "I49.9"
+  ],
+  "red_flags": [
+   "Near-fainting with sweating and nausea",
+   "Chest discomfort",
+   "Excessive alcohol use"
+  ],
+  "evidence": "ESC syncope assessment principles and NICE guidance on excluding physical causes of panic symptoms (from knowledge, not verified in this session).",
+  "confidence": 3,
+  "reasoning": "A panic or vasovagal episode is plausible, but the autonomic symptoms and near-syncope warrant a glucose check and cardiovascular assessment. There is insufficient intake evidence to accept anemia as the explanation or to establish a high-probability emergency."
+ },
+ {
+  "case_id": "ddxplus_52152",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "B54",
+   "G03.9"
+  ],
+  "red_flags": [
+   "Fever after recent travel to South America",
+   "Headache with cervical and occipital pain",
+   "Constitutional symptoms and appetite or weight change"
+  ],
+  "evidence": "CDC Yellow Book approach to fever in returned travelers and NICE meningitis guidance (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "The itinerary must be clarified promptly because malaria requires urgent exclusion if travel included a transmission area. Fever with headache and neck-region pain also warrants assessment for meningitis; anemia does not explain the febrile illness."
+ },
+ {
+  "case_id": "ddxplus_39879",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "B20"
+  ],
+  "red_flags": [
+   "HIV-positive sexual partner",
+   "Intravenous drug use",
+   "Lymphadenopathy and increased sweating",
+   "Oral and genital lesions with myalgia"
+  ],
+  "evidence": "NIH early HIV infection and HIV diagnostic testing guidance (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "This exposure-associated systemic and mucosal syndrome requires prompt testing for symptomatic HIV infection. Anemia is not an adequate unifying diagnosis."
+ },
+ {
+  "case_id": "ddxplus_22018",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J18.9",
+   "J45.901",
+   "J96.00"
+  ],
+  "red_flags": [
+   "Significant breathlessness with cough",
+   "Cystic fibrosis and asthma",
+   "Immunosuppression"
+  ],
+  "evidence": "NICE cystic fibrosis and pneumonia guidance and GINA acute asthma assessment principles (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "Significant dyspnea in an immunosuppressed patient with structural lung disease requires urgent assessment of oxygenation and respiratory severity. Pneumonia or a substantial asthma exacerbation cannot safely be managed under an uncomplicated bronchitis label."
+ },
+ {
+  "case_id": "ddxplus_33751",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "K46.0"
+  ],
+  "red_flags": [
+   "Painful raised right lower abdominal or groin lesion",
+   "Abdominal distension",
+   "6/10 lower abdominal and genital-region pain",
+   "Pain worsened by coughing or straining"
+  ],
+  "evidence": "HerniaSurge emergency groin hernia assessment principles (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "A painful hernia with possible incarceration or obstruction must be assessed, including examination of the swelling and its reducibility. Cough may provoke the symptoms but does not adequately explain the abdominal findings."
+ },
+ {
+  "case_id": "ddxplus_127080",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J18.9",
+   "J44.1"
+  ],
+  "red_flags": [
+   "Significant breathlessness",
+   "Fever and cough",
+   "Chest pain with underlying COPD"
+  ],
+  "evidence": "NICE pneumonia and COPD exacerbation guidance (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "Fever and significant dyspnea in COPD require assessment for pneumonia and an acute exacerbation. Respiratory severity cannot be established without oxygen saturation, vital signs, and examination."
+ },
+ {
+  "case_id": "ddxplus_69579",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "E84.0",
+   "J18.9"
+  ],
+  "red_flags": [
+   "Increased or discolored sputum",
+   "Cystic fibrosis and COPD",
+   "Immunosuppression",
+   "Previous pneumonia"
+  ],
+  "evidence": "NICE cystic fibrosis guidance and NICE acute cough guidance for patients at increased complication risk (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "Increased sputum in cystic fibrosis can represent a pulmonary exacerbation requiring prompt targeted treatment and specialist input. Immunosuppression increases concern for pneumonia even without reported fever or breathlessness."
+ },
+ {
+  "case_id": "ddxplus_15057",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "B20",
+   "G03.9"
+  ],
+  "red_flags": [
+   "HIV-positive sexual partner",
+   "Fever, lymphadenopathy, and disabling fatigue",
+   "Painful oral and genital lesions",
+   "Headache with posterior neck pain"
+  ],
+  "evidence": "NIH early HIV infection guidance and NICE meningitis guidance (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "An HIV-associated systemic illness requires targeted testing at this visit. The accompanying fever, headache, and neck pain also require assessment for meningitis rather than routine URTI treatment alone."
+ },
+ {
+  "case_id": "ddxplus_3291",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J96.00",
+   "I26.9",
+   "D64.9"
+  ],
+  "red_flags": [
+   "Significant unexplained breathlessness",
+   "Age 63",
+   "No established anemia history or hemoglobin result"
+  ],
+  "evidence": "BTS emergency oxygen assessment principles and NICE pulmonary embolism guidance (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "Significant unexplained dyspnea requires immediate physiological assessment and evaluation for cardiopulmonary disease, including pulmonary embolism when clinically indicated. If anemia is responsible, it may be severe enough to require urgent treatment rather than routine care."
+ },
+ {
+  "case_id": "ddxplus_84246",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J44.1",
+   "J18.9",
+   "J45.901"
+  ],
+  "red_flags": [
+   "Significant breathlessness with cough",
+   "COPD and asthma",
+   "Immunosuppression"
+  ],
+  "evidence": "NICE COPD exacerbation and pneumonia guidance and GINA acute asthma assessment principles (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "A significant obstructive-airway exacerbation or pneumonia requires assessment at this visit. Absence of fever does not reliably exclude infection in an immunosuppressed patient."
+ },
+ {
+  "case_id": "ddxplus_82476",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "B20",
+   "I33.0"
+  ],
+  "red_flags": [
+   "HIV-positive sexual partner and intravenous drug use",
+   "Fever, lymphadenopathy, and disabling fatigue",
+   "Weight loss and diarrhea",
+   "Painful oral and genital lesions"
+  ],
+  "evidence": "NIH HIV diagnostic guidance and ESC infective endocarditis guidance (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "Symptomatic HIV infection is a major concern requiring prompt testing and assessment for complications. Fever and constitutional illness in a person injecting drugs also warrant consideration of infective endocarditis."
+ },
+ {
+  "case_id": "ddxplus_62082",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "A41.9",
+   "J18.9"
+  ],
+  "red_flags": [
+   "Age 81 and immunosuppression",
+   "Chills and sweating",
+   "Fatigue preventing usual activities",
+   "Cough and reduced appetite"
+  ],
+  "evidence": "NICE suspected sepsis and pneumonia guidance (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "Marked functional impairment and systemic symptoms in an immunosuppressed older adult require assessment for serious infection and sepsis. A reported absence of fever would not provide sufficient reassurance in this context."
+ },
+ {
+  "case_id": "ddxplus_4596",
+  "decision": "ROUTINE",
+  "dangers_to_consider": [],
+  "red_flags": [],
+  "evidence": "NICE acute cough and headache assessment guidance (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "A gradual headache with fever, myalgia, coryza, sore throat, cough, and sick contacts fits a viral respiratory illness. The intake lacks sudden onset, meningism, neurological symptoms, or respiratory compromise."
+ },
+ {
+  "case_id": "ddxplus_50408",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "N44.00",
+   "K46.0"
+  ],
+  "red_flags": [
+   "Right testicular pain",
+   "Lower abdominal or groin swellings",
+   "Associated lower abdominal pain"
+  ],
+  "evidence": "Acute scrotum assessment principles and HerniaSurge emergency hernia guidance (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "Testicular pain requires examination to exclude torsion, even though the gradual moderate pain and groin swellings favor a hernia-related cause. Passing stool or gas does not exclude an incarcerated hernia or testicular ischemia."
+ },
+ {
+  "case_id": "ddxplus_18812",
+  "decision": "UNCERTAIN",
+  "dangers_to_consider": [
+   "I50.9"
+  ],
+  "red_flags": [
+   "Extensive painful bilateral edema",
+   "Established heart failure",
+   "Cirrhosis and protein-losing kidney disease"
+  ],
+  "evidence": "ESC heart failure guidance on assessing congestion (from knowledge, not verified in this session).",
+  "confidence": 3,
+  "reasoning": "Several established conditions and medications could explain chronic bilateral edema, and no weight gain or breathlessness is reported. However, the extent and pain require assessment of volume status and whether this represents worsening heart failure before accepting a routine localized-edema label."
+ },
+ {
+  "case_id": "ddxplus_118736",
+  "decision": "UNCERTAIN",
+  "dangers_to_consider": [
+   "I26.9",
+   "J18.9"
+  ],
+  "red_flags": [
+   "Reported coughing up blood",
+   "Smoking"
+  ],
+  "evidence": "ACR hemoptysis assessment principles and NICE pulmonary embolism guidance (from knowledge, not verified in this session).",
+  "confidence": 3,
+  "reasoning": "Blood could originate from an inflamed upper airway, but true hemoptysis requires clarification of its source and quantity and a respiratory assessment. The absence of dyspnea, chest pain, fever, and thrombotic risk factors makes a time-critical pulmonary cause less clearly supported."
+ },
+ {
+  "case_id": "ddxplus_41489",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I60.9"
+  ],
+  "red_flags": [
+   "Severe 8/10 orbital and temporal pain",
+   "Relatively rapid reported onset, 7/10",
+   "No established personal history of cluster headache"
+  ],
+  "evidence": "NICE headache red flags and ACEP acute headache assessment principles (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "Cluster headache is plausible, but the severe rapidly developing pain requires clarification of onset and exclusion of a secondary vascular headache when indicated. Family history and tearing do not justify treating this as bronchitis."
+ },
+ {
+  "case_id": "ddxplus_65572",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J44.1",
+   "J18.9"
+  ],
+  "red_flags": [
+   "Significant breathlessness",
+   "Wheeze and increased or discolored sputum",
+   "Age 69 with COPD",
+   "Chest pain"
+  ],
+  "evidence": "NICE COPD exacerbation and pneumonia guidance (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "The combination suggests a COPD exacerbation, with pneumonia requiring consideration. Significant dyspnea demands assessment of oxygenation and respiratory severity beyond routine bronchitis care."
+ },
+ {
+  "case_id": "ddxplus_2735",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "G03.9",
+   "A41.9"
+  ],
+  "red_flags": [
+   "Fever with headache and neck pain",
+   "Immunosuppression",
+   "Disabling fatigue and sweating"
+  ],
+  "evidence": "NICE meningitis and suspected sepsis guidance (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "Fever, substantial head and neck pain, and severe functional impairment in an immunosuppressed patient require assessment for meningitis and systemic infection. Gradual onset and nasal symptoms do not adequately exclude these possibilities."
+ },
+ {
+  "case_id": "ddxplus_98882",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I26.9",
+   "J18.9"
+  ],
+  "red_flags": [
+   "Hemoptysis",
+   "Significant breathlessness",
+   "Productive cough"
+  ],
+  "evidence": "NICE pulmonary embolism and pneumonia guidance; PERC cannot exclude PE in the presence of hemoptysis (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "Hemoptysis with significant dyspnea requires urgent evaluation for pulmonary embolism and pneumonia, alongside assessment of bleeding severity and oxygenation. Bronchitis should not be accepted without addressing these risks."
+ },
+ {
+  "case_id": "ddxplus_52526",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "J18.9",
+   "G03.9"
+  ],
+  "red_flags": [
+   "Age 81 with fever and chills",
+   "Headache and neck pain",
+   "Cough and reduced appetite"
+  ],
+  "evidence": "NICE pneumonia and meningitis guidance (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "A viral illness is possible, but this older adult needs assessment for pneumonia and a focused meningeal examination given fever with head and neck pain. The pink itchy lesions are nonspecific and should not be interpreted as a documented meningococcal rash."
+ },
+ {
+  "case_id": "ddxplus_26554",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "B20"
+  ],
+  "red_flags": [
+   "Intravenous drug use and multiple unprotected sexual contacts",
+   "Weight loss and disabling fatigue",
+   "Diarrhea and increased sweating",
+   "Oral and genital lesions"
+  ],
+  "evidence": "NIH HIV diagnostic testing and early HIV infection guidance (from knowledge, not verified in this session).",
+  "confidence": 5,
+  "reasoning": "The exposure history and systemic mucosal illness require prompt evaluation for symptomatic HIV infection and associated complications. Anemia alone does not explain this pattern."
+ },
+ {
+  "case_id": "ddxplus_5140",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I50.9",
+   "I82.409"
+  ],
+  "red_flags": [
+   "Recent weight gain with extensive edema",
+   "Known heart failure",
+   "Previous DVT and protein-losing renal disease",
+   "NSAID exposure"
+  ],
+  "evidence": "ESC heart failure guidance and NICE venous thromboembolic disease guidance (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "Recent weight gain and extensive edema require assessment for worsening heart failure, potentially aggravated by NSAIDs. Previous DVT and renal protein loss also justify evaluating whether any component of the leg symptoms represents recurrent thrombosis."
+ },
+ {
+  "case_id": "ddxplus_4193",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I24.9",
+   "I49.9"
+  ],
+  "red_flags": [
+   "Severe 8/10 chest pain",
+   "Sweating and a suffocating sensation",
+   "Palpitations",
+   "Relatively rapid onset"
+  ],
+  "evidence": "AHA/ACC chest pain guidance and NICE panic disorder guidance on excluding acute physical causes (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "Panic is plausible, but severe chest pain with sweating and palpitations requires assessment for acute coronary syndrome and a significant arrhythmia. Chronic anxiety does not adequately exclude these causes."
+ },
+ {
+  "case_id": "ddxplus_75165",
+  "decision": "ESCALATE",
+  "dangers_to_consider": [
+   "I50.9",
+   "N17.9"
+  ],
+  "red_flags": [
+   "Recent weight gain and extensive edema",
+   "Severe 8/10 leg pain",
+   "Age 77 with heart failure and valvular disease",
+   "NSAID use and cirrhosis"
+  ],
+  "evidence": "ESC heart failure guidance and NICE acute kidney injury guidance (from knowledge, not verified in this session).",
+  "confidence": 4,
+  "reasoning": "The weight gain and edema require assessment for cardiac decompensation and renal deterioration, particularly with NSAID exposure. Severe pain also warrants examination for a local complication rather than routine treatment of unspecified edema."
+ }
+]

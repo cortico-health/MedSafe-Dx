@@ -71,17 +71,27 @@ def model_rows(pr: dict) -> dict[str, str]:
 
 
 def main() -> None:
-    lv, pr, ms = load(P2B / "label_validation.json"), load(P2B / "precision.json"), load(P2B / "model_scores.json")
-    prov = load(P2B / "runs" / "provenance.json")
+    lv = load(P2B / "label_validation.json")
     lv2, pr2 = load(P2 / "label_validation.json"), load(P2 / "precision.json")
-    lvp, prp = load(POOLED / "label_validation.json"), load(POOLED / "precision.json")
+    lvp = load(POOLED / "label_validation.json")
     b, m2, p = label_rows(lv, "2b"), label_rows(lv2, "2"), label_rows(lvp, "pooled")
-    mb, mm2, mp = model_rows(pr), model_rows(pr2), model_rows(prp)
+    mm2 = model_rows(pr2)
+    # The model level waits for the run: until precision.json exists the rows say so (the OpenRouter key cap stopped the run).
+    pending = not (P2B / "precision.json").exists()
+    if pending:
+        pr = ms = prp = None
+        mb = mp = {k: "PENDING: model run incomplete (OpenRouter key cap); the watcher resumes it" for k in ("6", "7", "8", "9", "10")}
+    else:
+        pr, ms, prp = load(P2B / "precision.json"), load(P2B / "model_scores.json"), load(POOLED / "precision.json")
+        mb, mp = model_rows(pr), model_rows(prp)
+    prov = load(P2B / "runs" / "provenance.json") if (P2B / "runs" / "provenance.json").exists() else {}
     smoke = load(P2B / "runs" / "smoke" / "provenance.json") if (P2B / "runs" / "smoke" / "provenance.json").exists() else {}
     spend = sum(x["usd"] for x in prov.get("account_spend_usd", []))
     smoke_spend = sum(x["usd"] for x in smoke.get("account_spend_usd", []))
     passes = {"1": lv["criterion_1"]["pass"], "2": all(v["pass"] for v in lv["criterion_2"].values()), "3": not lv["criterion_3"]["flagged"],
-              "4": lv["criterion_4"]["pass"], "6": pr["criteria"]["6_safety"]["pass"], "7": pr["criteria"]["7_point_weighted"]["pass"]}
+              "4": lv["criterion_4"]["pass"]}
+    if not pending:
+        passes.update({"6": pr["criteria"]["6_safety"]["pass"], "7": pr["criteria"]["7_point_weighted"]["pass"]})
     names = {"1": "Class agreement on decided kept cases (>= 90%, Wilson lower bound >= 85%)",
              "2": "Per-stratum agreement (SERIOUS >= 92% ESCALATE, BENIGN >= 85% ROUTINE)",
              "3": "Per-rule agreement (>= 80% on every rule with >= 5 cases)",
@@ -109,6 +119,26 @@ def main() -> None:
     failed = [k for k, v in passes.items() if not v]
     L += ["", f"Phase 2b: {len(passes) - len(failed)} of {len(passes)} judged criteria pass" + (
         "; failed: " + ", ".join(failed) + " (causes below)." if failed else "."), ""]
+    c3 = lv["criterion_3"]
+    if c3["flagged"]:
+        L += ["**Criterion 3 cause.** " + "; ".join(
+            f"{r}: {c3['per_rule'][r]['agree']} of {c3['per_rule'][r]['decided']} decided cases agree ({pc(c3['per_rule'][r]['rate'])})"
+            for r in c3["flagged"]) + ". The disagreeing cases and the reference's rationale are listed in `label_validation.md`. "
+            "Section 7 demotes a flagged rule to EXCLUDE; that is a rule change after unblinding, so this document reports it and "
+            "the demotion is a decision for the next freeze, not an edit here.", ""]
+    if pending:
+        L += ["**Model level pending.** The OpenRouter key reached its hard cap (299 USD) during the run: 1,289 of 3,500 requests "
+              "succeeded (7.97 USD) and the rest returned http_403. The run resumes on the same command once the cap is raised "
+              "(the runner re-runs errored entries); criteria 6-10, the scores and the pooled model rows are then filled by "
+              "`v03_phase2_scores.py --phase 2b`, `v03_phase2_precision.py --set phase2b`, `--set pooled` and this script.", ""]
+        L += ["## Criterion 3 by rule (Phase 2b)", "", "| Rule | cases | decided | agree | rate | result |", "|---|---|---|---|---|---|"]
+        for r, v in lv["criterion_3"]["per_rule"].items():
+            L.append(f"| {r} | {v['cases']} | {v['decided']} | {v['agree']} | {pc(v['rate'])} | "
+                     f"{('PASS' if v['pass'] else 'FAIL') if v['judged'] else 'reported (< 5)'} |")
+        (P2B / "validation.md").write_text("\n".join(L))
+        print("\n".join(L[6:20]))
+        print(f"wrote {P2B / 'validation.md'} (model level pending)")
+        return
 
     # Scores.
     rows = ms["headline"]["rows"]

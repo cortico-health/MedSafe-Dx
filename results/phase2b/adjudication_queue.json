@@ -1,0 +1,1715 @@
+[
+ {
+  "case_id": "ddxplus_57497",
+  "index": 1,
+  "intake": "PATIENT INTAKE:\n\nAge: 45\nSex: female\nChief Complaints: Noticed a high pitched sound when breathing in\nMedical History / Context: Had a cold in the last 2 weeks, Asthma or have you ever had to use a bronchodilator in the past, No travel outside the country in the last 4 weeks, Exposed to secondhand cigarette smoke on a daily basis\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Acute laryngitis",
+  "fable": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "J38.6",
+    "J05.1",
+    "C32.9",
+    "J45.9"
+   ],
+   "red_flags": [
+    "inspiratory high-pitched sound (stridor) in an adult",
+    "recent cold",
+    "asthma history"
+   ],
+   "evidence": [
+    {
+     "citation": "Guardiani E et al. Supraglottitis in the era following widespread immunization against Haemophilus influenzae type B. Laryngoscope 2010;120:2183-2188",
+     "url": "https://doi.org/10.1002/lary.21083",
+     "point": "In 60 adults with supraglottitis, stridor, respiratory distress, rapid onset and shortness of breath were each associated with the need for airway intervention; patients with none of these recovered without one."
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "New stridor in an adult is an upper-airway sign, not a lower-airway one, and warrants laryngeal visualisation unless the examination shows a clear benign cause; a single complaint with no fever, dysphagia, voice change or time course leaves the risk level unknown."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "The only complaint is inspiratory stridor after a cold, with no fever, dysphagia or voice change. Acute laryngitis after a viral illness is plausible, but stridor in an adult reaches the intake without severity or duration, so I cannot tell whether examination alone closes it."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "J38.4"
+   ],
+   "red_flags": [
+    "Reported high-pitched inspiratory breathing"
+   ],
+   "evidence": "Resuscitation Council ABCDE approach: stridor suggests upper-airway obstruction; from knowledge, not verified in this session.",
+   "confidence": 4,
+   "reasoning": "The reported sound may represent stridor and requires prompt assessment for laryngeal swelling or other upper-airway obstruction. A recent cold or asthma history does not establish uncomplicated laryngitis."
+  }
+ },
+ {
+  "case_id": "ddxplus_106665",
+  "index": 2,
+  "intake": "PATIENT INTAKE:\n\nAge: 33\nSex: female\nChief Complaints: Noticed a high pitched sound when breathing in\nMedical History / Context: Had a cold in the last 2 weeks, Asthma or have you ever had to use a bronchodilator in the past, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Acute laryngitis",
+  "fable": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "J38.6",
+    "J05.1",
+    "J45.9",
+    "J38.5"
+   ],
+   "red_flags": [
+    "inspiratory high-pitched sound (stridor) in an adult",
+    "recent cold",
+    "asthma history"
+   ],
+   "evidence": [
+    {
+     "citation": "Guardiani E et al. Supraglottitis in the era following widespread immunization against Haemophilus influenzae type B. Laryngoscope 2010;120:2183-2188",
+     "url": "https://doi.org/10.1002/lary.21083",
+     "point": "In 60 adults with supraglottitis, stridor, respiratory distress, rapid onset and shortness of breath were each associated with the need for airway intervention; patients with none of these recovered without one."
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "New stridor in an adult warrants laryngeal visualisation unless the examination shows a clear benign cause; with no fever, dysphagia, voice change or time course the risk level is unknown."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "A 33-year-old with asthma reports inspiratory stridor after a cold and nothing else. Post-viral laryngitis fits, but stridor alone in an adult is a degraded signal without severity or time course, so the decision is borderline."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "J38.4"
+   ],
+   "red_flags": [
+    "Reported high-pitched inspiratory breathing"
+   ],
+   "evidence": "Resuscitation Council ABCDE approach: stridor suggests upper-airway obstruction; from knowledge, not verified in this session.",
+   "confidence": 4,
+   "reasoning": "Possible stridor requires an airway assessment even without reported dyspnea. Routine laryngitis care is reasonable only after clinically important obstruction has been excluded."
+  }
+ },
+ {
+  "case_id": "ddxplus_65159",
+  "index": 17,
+  "intake": "PATIENT INTAKE:\n\nAge: 33\nSex: female\nChief Complaints: Feel slightly dizzy or lightheaded, Feel lightheaded and dizzy or do you feel like you are about to faint, Feel your heart is beating fast (racing), irregularly (missing a beat) or do you feel palpitations\nMedical History / Context: Feel anxious, Consume energy drinks regularly, No travel outside the country in the last 4 weeks, Recently taken decongestants or other substances that may have stimulant effects\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Anemia",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "I47.1",
+    "I49.9",
+    "D64.9"
+   ],
+   "red_flags": [
+    "palpitations",
+    "lightheaded and near-fainting",
+    "regular energy drinks and recent decongestants",
+    "anxiety"
+   ],
+   "evidence": [
+    {
+     "citation": "Brignole M et al. 2018 ESC Guidelines for the diagnosis and management of syncope. Eur Heart J 2018;39:1883-1948",
+     "url": "https://doi.org/10.1093/eurheartj/ehy037",
+     "point": "Initial evaluation of syncope or presyncope includes history, examination and a 12-lead ECG; palpitations before the event and exertional onset are high-risk features (points not confirmed from text in this session; DOI confirmed on Crossref)."
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Palpitations with presyncope in a young woman taking stimulants are assessed with vitals and a 12-lead ECG at the visit; with no syncope, chest pain or structural heart disease the ECG closes the question and stopping the stimulants is the treatment."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "Palpitations and lightheadedness in a 33-year-old who drinks energy drinks and has taken decongestants fit stimulant-driven symptoms. The office ECG and a haemoglobin close the dangerous alternatives. The working diagnosis of anaemia is incomplete but omits no dangerous treatment."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "I49.9"
+   ],
+   "red_flags": [
+    "Palpitations with presyncope",
+    "Energy drink and stimulant/decongestant exposure"
+   ],
+   "evidence": "ESC syncope guidance on possible arrhythmic symptoms and initial ECG assessment; from knowledge, not verified in this session.",
+   "confidence": 4,
+   "reasoning": "Palpitations accompanied by near-fainting warrant assessment for a clinically significant arrhythmia at this visit. Stimulants may explain benign tachycardia but can also precipitate arrhythmias; anemia is not established."
+  }
+ },
+ {
+  "case_id": "ddxplus_106668",
+  "index": 37,
+  "intake": "PATIENT INTAKE:\n\nAge: 50\nSex: male\nChief Complaints: Noticed a high pitched sound when breathing in\nMedical History / Context: Had a cold in the last 2 weeks, Asthma or have you ever had to use a bronchodilator in the past, Ever been diagnosed with gastroesophageal reflux, No travel outside the country in the last 4 weeks, Exposed to secondhand cigarette smoke on a daily basis\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Acute laryngitis",
+  "fable": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "J38.6",
+    "C32.9",
+    "J05.1",
+    "J38.5"
+   ],
+   "red_flags": [
+    "inspiratory high-pitched sound (stridor) in a 50-year-old",
+    "recent cold",
+    "asthma history",
+    "reflux disease",
+    "daily secondhand smoke"
+   ],
+   "evidence": [
+    {
+     "citation": "Guardiani E et al. Supraglottitis in the era following widespread immunization against Haemophilus influenzae type B. Laryngoscope 2010;120:2183-2188",
+     "url": "https://doi.org/10.1002/lary.21083",
+     "point": "In 60 adults with supraglottitis, stridor, respiratory distress, rapid onset and shortness of breath were each associated with the need for airway intervention; patients with none of these recovered without one."
+    },
+    {
+     "citation": "NICE NG12 Suspected cancer: recognition and referral (2015, updated)",
+     "url": "https://www.nice.org.uk/guidance/ng12/chapter/Recommendations-organised-by-site-of-cancer",
+     "point": "1.8.1: consider a suspected cancer pathway referral for laryngeal cancer in people aged 45 and over with persistent unexplained hoarseness or a neck lump; stridor alone is not a listed criterion."
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "New stridor in an adult warrants laryngeal visualisation unless the examination shows a clear benign cause; with no hoarseness, dysphagia, fever or time course, the risk level is unknown."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "A 50-year-old with reflux, smoke exposure and a recent cold reports inspiratory stridor alone. Post-viral laryngitis fits, but stridor in an adult of this age reaches the intake without duration, hoarseness or severity, so I cannot say whether examination alone closes it."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "J38.4",
+    "J38.5"
+   ],
+   "red_flags": [
+    "Reported high-pitched inspiratory breathing"
+   ],
+   "evidence": "Resuscitation Council ABCDE approach to stridor and upper-airway obstruction; from knowledge, not verified in this session.",
+   "confidence": 4,
+   "reasoning": "Possible stridor requires prompt assessment for laryngeal obstruction or spasm. Recent infection, reflux, or asthma may be contributory but do not establish a safe diagnosis of uncomplicated laryngitis."
+  }
+ },
+ {
+  "case_id": "ddxplus_26708",
+  "index": 41,
+  "intake": "PATIENT INTAKE:\n\nAge: 53\nSex: female\nChief Complaints: Feel weakness in both arms and/or both legs, Numbness, loss of sensation or tingling in the feet, Recently had numbness, loss of sensation or tingling, in both arms and legs and around your mouth, Currently, or did you ever, have numbness, loss of sensitivity or tingling anywhere on your body\nMedical History / Context: No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Panic attack",
+  "fable": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "G61.0",
+    "E83.5",
+    "I63.9"
+   ],
+   "red_flags": [
+    "weakness in both arms and/or legs",
+    "numbness and tingling in the feet, both limbs and around the mouth"
+   ],
+   "evidence": [
+    {
+     "citation": "Leonhard SE et al. Diagnosis and management of Guillain-Barre syndrome in ten steps. Nat Rev Neurol 2019;15:671-683",
+     "url": "https://doi.org/10.1038/s41582-019-0250-9",
+     "point": "GBS is a potentially fatal immune-mediated polyneuropathy usually triggered by infection; the ten steps cover early recognition, admission and monitoring for respiratory failure, because diagnosis needs neurological examination, lumbar puncture and nerve conduction studies beyond an office visit."
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Perioral plus limb tingling is the classic pattern of hyperventilation, but reported weakness in both limbs with distal numbness is also how early Guillain-Barre syndrome presents; only reflexes and strength on examination decide, and the intake carries no time course or trigger."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "A 53-year-old reports bilateral limb weakness with tingling in the feet, limbs and around the mouth, with no viral illness or facial palsy. Panic-driven hyperventilation fits the perioral and limb tingling, but reported weakness needs a neurological examination to exclude an early polyneuropathy. The intake does not settle it."
+  },
+  "astra": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "G61.0",
+    "E83.51"
+   ],
+   "red_flags": [
+    "Subjective bilateral limb weakness",
+    "Distal and perioral paresthesias"
+   ],
+   "evidence": "NICE neurological referral guidance for progressive symmetrical weakness and clinical assessment of electrolyte-related neuromuscular symptoms; from knowledge, not verified in this session.",
+   "confidence": 3,
+   "reasoning": "The sensory distribution can occur with hyperventilation, but reported weakness also raises neuromuscular or electrolyte concerns. Without onset, progression, or an examination, this remains borderline and needs same-visit strength, reflex, and metabolic assessment before confidently accepting panic."
+  }
+ },
+ {
+  "case_id": "ddxplus_64600",
+  "index": 77,
+  "intake": "PATIENT INTAKE:\n\nAge: 23\nSex: female\nChief Complaints: Pain present, Pain character: tender, Pain character: tugging, Pain character: cramping, Pain location: top of the head, Pain location: forehead, Pain location: temple (R), Pain location: temple (L), Pain intensity 4/10, Pain does not radiate, How precisely the pain can be located: 3/10 (10 = most precise), How fast the pain appeared: 3/10 (10 = fastest), Experiencing shortness of breath or difficulty breathing in a significant way, Feel slightly dizzy or lightheaded, Feel lightheaded and dizzy or do you feel like you are about to faint, Constantly feel fatigued or do you have non-restful sleep, Very abundant or very long menstruation periods, Your skin much paler than usual\nMedical History / Context: A poor diet, Any family members who have been diagnosed with anemia, Chronic kidney failure, Think you are pregnant or are you currently pregnant, No travel outside the country in the last 4 weeks, Your BMI less than 18.5, or are you underweight\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Anemia",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "D50.0",
+    "O00.9"
+   ],
+   "red_flags": [
+    "near-fainting",
+    "significant shortness of breath",
+    "heavy periods",
+    "pale skin",
+    "possible pregnancy"
+   ],
+   "evidence": [
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Symptomatic iron-deficiency anaemia from heavy menstrual bleeding is confirmed with a full blood count and a urine pregnancy test at the visit; no bleeding site outside the uterus is reported and no anticoagulant is taken."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "The picture is menstrual blood-loss anaemia in a 23-year-old with no melaena, no rectal bleeding and no anticoagulant. A blood count, vital signs and a pregnancy test close the visit, with transfusion decided on the haemoglobin."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "D64.9",
+    "D62"
+   ],
+   "red_flags": [
+    "Significant dyspnea",
+    "Presyncope",
+    "Pallor",
+    "Heavy or prolonged menstruation",
+    "Chronic kidney failure",
+    "Possible pregnancy"
+   ],
+   "evidence": "NICE NG88 heavy menstrual bleeding guidance; AABB symptom-informed anemia assessment principles; from knowledge, not verified in this session",
+   "confidence": 4,
+   "reasoning": "Anemia is plausible, but dyspnea and presyncope raise concern that it is severe or associated with substantial blood loss. Same-visit assessment of stability, hemoglobin, bleeding and pregnancy status is necessary before routine management."
+  }
+ },
+ {
+  "case_id": "ddxplus_5302",
+  "index": 78,
+  "intake": "PATIENT INTAKE:\n\nAge: 33\nSex: female\nChief Complaints: Pain present, Pain character: tender, Pain character: tugging, Pain character: exhausting, Pain location: back of head, Pain location: top of the head, Pain location: forehead, Pain intensity 5/10, Pain does not radiate, How precisely the pain can be located: 2/10 (10 = most precise), How fast the pain appeared: 4/10 (10 = fastest), Feel lightheaded and dizzy or do you feel like you are about to faint, Very abundant or very long menstruation periods, Noticed light red blood or blood clots in your stool\nMedical History / Context: A poor diet, Any family members who have been diagnosed with anemia, Chronic kidney failure, Think you are pregnant or are you currently pregnant, Travel outside the country in the last 4 weeks: South Africa, Your BMI less than 18.5, or are you underweight\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Anemia",
+  "fable": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "K92.2",
+    "D62",
+    "O00.9",
+    "C18.9"
+   ],
+   "red_flags": [
+    "red blood or clots in stool",
+    "near-fainting",
+    "heavy periods",
+    "possible pregnancy",
+    "chronic kidney failure"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG12 Suspected cancer: recognition and referral, rec 1.3.1 (updated 2023)",
+     "url": "https://www.nice.org.uk/guidance/ng12/chapter/Recommendations-organised-by-site-of-cancer",
+     "point": "Offer FIT to guide colorectal cancer referral in adults aged 50 and over with rectal bleeding, and in adults with iron-deficiency anaemia."
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Rectal bleeding under 50 without abdominal pain or weight loss does not trigger the NG12 pathway, but presyncope with two bleeding sources and possible pregnancy makes the visit depend on the haemoglobin and vital signs."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "A 33-year-old with heavy periods and fresh rectal blood most likely has haemorrhoidal and menstrual loss, which is anaemia care. Near-fainting and possible pregnancy keep it borderline, because the deciding features (haemoglobin, pulse, pregnancy test) are not in the intake."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "K92.2",
+    "D62"
+   ],
+   "red_flags": [
+    "Fresh rectal blood or clots",
+    "Presyncope",
+    "Heavy or prolonged menstruation",
+    "Chronic kidney failure"
+   ],
+   "evidence": "ACG lower gastrointestinal bleeding guidance; NICE NG88 heavy menstrual bleeding assessment; from knowledge, not verified in this session",
+   "confidence": 4,
+   "reasoning": "Rectal bleeding accompanied by presyncope requires assessment for clinically significant blood loss even without dyspnea or pallor. Menstrual bleeding and renal disease may compound anemia but do not establish a stable benign presentation."
+  }
+ },
+ {
+  "case_id": "ddxplus_23491",
+  "index": 100,
+  "intake": "PATIENT INTAKE:\n\nAge: 57\nSex: male\nChief Complaints: Pain present, Pain character: cramping, Pain location: lower chest, Pain location: side of the chest (R), Pain location: flank (L), Pain location: iliac fossa (L), Pain location: pubis, Pain intensity 2/10, Pain does not radiate, How precisely the pain can be located: 8/10 (10 = most precise), How fast the pain appeared: 10/10 (10 = fastest), Feel like you are (or were) choking or suffocating, Feel lightheaded and dizzy or do you feel like you are about to faint, Feel like you are dying or were you afraid that you were about do die, Feeling nauseous or do you feel like vomiting, Feel your heart is beating fast (racing), irregularly (missing a beat) or do you feel palpitations, Recently had numbness, loss of sensation or tingling, in both arms and legs and around your mouth, Feel like you are detached from your own body or your surroundings, Currently, or did you ever, have numbness, loss of sensitivity or tingling anywhere on your body\nMedical History / Context: Feel anxious, Ever been diagnosed with depression, Suffer from chronic anxiety, Asthma or have you ever had to use a bronchodilator in the past, Suffer from fibromyalgia, Ever had a head trauma, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Panic attack",
+  "fable": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "I21.9",
+    "I47.1",
+    "I26.99",
+    "F41.0"
+   ],
+   "red_flags": [
+    "chest pain of very rapid onset",
+    "palpitations",
+    "near-fainting",
+    "feeling of choking",
+    "age 57",
+    "male"
+   ],
+   "evidence": [
+    {
+     "citation": "Gulati M, et al. 2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Guideline for the Evaluation and Diagnosis of Chest Pain. Circulation 2021;144:e368-e454. doi:10.1161/CIR.0000000000001029",
+     "url": "https://doi.org/10.1161/CIR.0000000000001029",
+     "point": "The guideline gives an evidence-based approach to risk stratification and diagnostic work-up of adults with chest pain; acute chest pain is evaluated with an ECG and troponin before it is attributed to a non-cardiac cause."
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Depersonalisation, perioral and limb tingling, fear of dying and chronic anxiety make a panic attack the most likely explanation, and the pain is mild (2/10), cramping and spread over abdominal sites."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "The symptom cluster is textbook panic with hyperventilation, but a 57-year-old man with abrupt chest pain, palpitations and near-fainting still needs an ECG, and many clinicians would add a troponin before attributing it to anxiety. The evidence is balanced, so this is borderline."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "I24.9",
+    "I49.9"
+   ],
+   "red_flags": [
+    "Age 57",
+    "Abrupt chest discomfort",
+    "Near-syncope",
+    "Palpitations",
+    "Nausea"
+   ],
+   "evidence": "AHA/ACC chest-pain guidance; ESC syncope guidance; from knowledge, not verified in this session.",
+   "confidence": 4,
+   "reasoning": "Panic is plausible, particularly with diffuse tingling and depersonalization. Chest discomfort with near-syncope and palpitations nevertheless requires assessment for ischemia and a clinically significant arrhythmia before accepting panic alone."
+  }
+ },
+ {
+  "case_id": "ddxplus_124630",
+  "index": 119,
+  "intake": "PATIENT INTAKE:\n\nAge: 69\nSex: male\nChief Complaints: Experiencing shortness of breath or difficulty breathing in a significant way, A cough, Noticed a wheezing sound when you exhale\nMedical History / Context: Severe Chronic Obstructive Pulmonary Disease (COPD), Had one or several flare ups of chronic obstructive pulmonary disease (COPD) in the past year, Smoke cigarettes, A chronic obstructive pulmonary disease (COPD), Ever been diagnosed with gastroesophageal reflux, Work in the mining sector, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Bronchitis",
+  "fable": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "J44.1",
+    "J18.9",
+    "J93.9",
+    "C34.90"
+   ],
+   "red_flags": [
+    "severe COPD",
+    "significant shortness of breath",
+    "wheeze",
+    "flare-ups in the past year",
+    "smokes cigarettes",
+    "mining work"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG115 Chronic obstructive pulmonary disease in over 16s: diagnosis and management, table 7 (2018, updated 2019)",
+     "url": "https://www.nice.org.uk/guidance/ng115/chapter/Recommendations",
+     "point": "Factors favouring hospital treatment of an exacerbation include severe breathlessness, poor general condition, cyanosis, impaired consciousness and significant comorbidity; mild breathlessness with good condition can be treated at home."
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "An exacerbation in severe COPD is treated with corticosteroids and often antibiotics, which a bronchitis label may omit; the home-versus-hospital decision rests on breathlessness, oxygen saturation and general condition, none of which the intake gives."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "Cough, wheeze and dyspnoea in a smoker with severe COPD and prior flare-ups is a COPD exacerbation, and the NICE table sends severe breathlessness with significant comorbidity to hospital. Whether this visit is a routine exacerbation or an admission depends on saturations and condition that the intake lacks, so it is borderline."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "J44.1",
+    "J96.00",
+    "J18.9"
+   ],
+   "red_flags": [
+    "Significant dyspnea",
+    "Severe COPD",
+    "Previous COPD exacerbations",
+    "Wheeze",
+    "Age 69"
+   ],
+   "evidence": "GOLD COPD exacerbation guidance; NICE COPD guidance; from knowledge, not verified in this session.",
+   "confidence": 5,
+   "reasoning": "Significant dyspnea and wheeze in severe COPD require assessment for an exacerbation and respiratory failure. Routine bronchitis care is insufficient without establishing oxygenation, ventilation and clinical severity."
+  }
+ },
+ {
+  "case_id": "ddxplus_38189",
+  "index": 140,
+  "intake": "PATIENT INTAKE:\n\nAge: 20\nSex: male\nChief Complaints: Pain present, Pain character: cramping, Pain character: sharp, Pain location: side of the chest (L), Pain location: flank (R), Pain location: flank (L), Pain location: iliac fossa (L), Pain location: hypochondrium (L), Pain intensity 7/10, Pain does not radiate, How precisely the pain can be located: 10/10 (10 = most precise), How fast the pain appeared: 6/10 (10 = fastest), Experiencing shortness of breath or difficulty breathing in a significant way, Feel like you are dying or were you afraid that you were about do die, Feeling nauseous or do you feel like vomiting, Feel your heart is beating fast (racing), irregularly (missing a beat) or do you feel palpitations, Recently had numbness, loss of sensation or tingling, in both arms and legs and around your mouth, Feel like you are detached from your own body or your surroundings\nMedical History / Context: Do any members of your immediate family have a psychiatric illness, Drink alcohol excessively or do you have an addiction to alcohol, Ever been diagnosed with depression, Suffer from chronic anxiety, Asthma or have you ever had to use a bronchodilator in the past, Suffer from fibromyalgia, Ever had a head trauma, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Panic attack",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "I47.1",
+    "I26.9",
+    "J93.9",
+    "I21.9",
+    "F41.0"
+   ],
+   "red_flags": [
+    "chest pain 7/10 with significant shortness of breath",
+    "palpitations",
+    "perioral and limb tingling",
+    "derealisation and fear of dying",
+    "asthma history"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE CG95 Recent-onset chest pain of suspected cardiac origin: assessment and diagnosis",
+     "url": "https://www.nice.org.uk/guidance/cg95/chapter/Recommendations",
+     "point": "1.2.2.1: take a resting 12-lead ECG as soon as possible in recent-onset chest pain; 1.2.1.13: if ACS is not suspected consider other causes, some of which may be life-threatening"
+    },
+    {
+     "citation": "Kline JA et al. Clinical criteria to prevent unnecessary diagnostic testing in emergency department patients with suspected pulmonary embolism (PERC). J Thromb Haemost 2004;2:1247-55",
+     "url": "https://doi.org/10.1111/j.1538-7836.2004.00790.x",
+     "point": "PERC: age under 50, pulse under 100, SaO2 over 94%, no unilateral leg swelling, no haemoptysis, no recent trauma or surgery, no prior VTE and no hormone use put PE below the testing threshold in a low-risk patient"
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "A young asthmatic with sudden sharp unilateral chest pain has pneumothorax on the list; symmetrical breath sounds and normal oximetry address it at the visit"
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "A 20-year-old with chronic anxiety, depression and fibromyalgia has the full panic pattern: fear of dying, derealisation and perioral tingling from hyperventilation. An ECG, pulse, oximetry and PERC close arrhythmia and embolism at the visit, so panic attack is an adequate basis for care."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "J45.901",
+    "J93.9",
+    "I49.9"
+   ],
+   "red_flags": [
+    "Significant dyspnea",
+    "Chest pain rated 7/10",
+    "Asthma history",
+    "Palpitations"
+   ],
+   "evidence": "GINA acute-asthma assessment principles; BTS pneumothorax guidance; from knowledge, not verified in this session.",
+   "confidence": 4,
+   "reasoning": "Panic is supported by paresthesias and depersonalization, but significant dyspnea and substantial chest pain require objective respiratory assessment. An asthma exacerbation, pneumothorax or clinically significant arrhythmia should be considered before attributing everything to anxiety."
+  }
+ },
+ {
+  "case_id": "ddxplus_8886",
+  "index": 143,
+  "intake": "PATIENT INTAKE:\n\nAge: 23\nSex: male\nChief Complaints: Pain present, Pain character: cramping, Pain character: sharp, Pain location: flank (R), Pain location: iliac fossa (R), Pain location: hypochondrium (R), Pain location: hypochondrium (L), Pain location: belly, Pain intensity 8/10, Pain does not radiate, How precisely the pain can be located: 8/10 (10 = most precise), How fast the pain appeared: 5/10 (10 = fastest), Feel like you are (or were) choking or suffocating, Feel lightheaded and dizzy or do you feel like you are about to faint, Feel like you are dying or were you afraid that you were about do die, Recently had numbness, loss of sensation or tingling, in both arms and legs and around your mouth, Feel like you are detached from your own body or your surroundings, Currently, or did you ever, have numbness, loss of sensitivity or tingling anywhere on your body\nMedical History / Context: Feel anxious, Do any members of your immediate family have a psychiatric illness, Suffer from chronic anxiety, Asthma or have you ever had to use a bronchodilator in the past, Ever had a head trauma, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Panic attack",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "K35.8",
+    "N20.0",
+    "N44.0",
+    "F41.0"
+   ],
+   "red_flags": [
+    "abdominal pain 8/10 in right flank and iliac fossa",
+    "presyncope",
+    "choking sensation",
+    "perioral and limb tingling",
+    "derealisation and fear of dying"
+   ],
+   "evidence": [
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Right iliac fossa pain without nausea, vomiting or fever, with a derealised, hyperventilating young man, is closed by abdominal and testicular examination and a urine dipstick; no rule mandates imaging on this intake"
+    },
+    {
+     "citation": "Kline JA et al. Clinical criteria to prevent unnecessary diagnostic testing in emergency department patients with suspected pulmonary embolism (PERC). J Thromb Haemost 2004;2:1247-55",
+     "url": "https://doi.org/10.1111/j.1538-7836.2004.00790.x",
+     "point": "PERC: age under 50, pulse under 100, SaO2 over 94%, no unilateral leg swelling, no haemoptysis, no recent trauma or surgery, no prior VTE and no hormone use put PE below the testing threshold in a low-risk patient"
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "The choking feeling, presyncope, perioral tingling and derealisation in a 23-year-old with chronic anxiety are a panic attack, and the 8/10 abdominal pain is a bare score with no nausea, vomiting or fever. Examination of the abdomen and testes with a urine dip closes appendicitis, colic and torsion at the visit."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "K35.80"
+   ],
+   "red_flags": [
+    "Abdominal pain rated 8/10",
+    "Right iliac fossa pain",
+    "Near-syncope"
+   ],
+   "evidence": "WSES appendicitis assessment guidance; acute-abdominal-pain assessment principles; from knowledge, not verified in this session.",
+   "confidence": 4,
+   "reasoning": "Hyperventilation symptoms may accompany panic, but severe abdominal pain involving the right iliac fossa requires assessment for appendicitis. The associated near-syncope further argues against accepting a psychiatric explanation without abdominal and hemodynamic evaluation."
+  }
+ },
+ {
+  "case_id": "ddxplus_58985",
+  "index": 145,
+  "intake": "PATIENT INTAKE:\n\nAge: 66\nSex: male\nChief Complaints: Pain present, Pain character: unpleasant, Pain character: tender, Pain character: heavy, Pain location: occiput, Pain location: temple (R), Pain location: temple (L), Pain intensity 2/10, Pain does not radiate, How precisely the pain can be located: 1/10 (10 = most precise), How fast the pain appeared: 0/10 (10 = fastest), A fever (either felt or measured with a thermometer), A sore throat, A cough\nMedical History / Context: Been in contact with a person with similar symptoms in the past 2 weeks, Live with 4 or more people, Smoke cigarettes, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Bronchitis",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "J18.9",
+    "C34.9",
+    "J44.1"
+   ],
+   "red_flags": [
+    "fever with cough at 66",
+    "smoker",
+    "mild headache and sore throat after contact with a similar illness"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG120 Cough (acute): antimicrobial prescribing (2019)",
+     "url": "https://www.nice.org.uk/guidance/ng120/chapter/Recommendations",
+     "point": "1.1.1 and 1.1.9: acute cough is usually a self-limiting viral illness; do not routinely offer an antibiotic for acute bronchitis in people who are not systemically very unwell or at higher risk of complications"
+    },
+    {
+     "citation": "NICE NG120 Cough (acute): antimicrobial prescribing (2019)",
+     "url": "https://www.nice.org.uk/guidance/ng120/chapter/Recommendations",
+     "point": "1.1.4: refer people with an acute cough to hospital, or seek specialist advice, if they have symptoms or signs suggesting a more serious illness such as sepsis, pulmonary embolism or lung cancer"
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Pneumonia in a 66-year-old smoker is assessed by respiratory rate, oximetry, blood pressure and chest examination at the visit; the intake gives none of these but also gives no breathlessness, chest pain or weight loss"
+    }
+   ],
+   "confidence": 4,
+   "reasoning": "A 66-year-old smoker with fever, sore throat, mild headache and cough after contact with a similar illness has a viral respiratory infection. Vital signs and chest examination at the visit close pneumonia; the cancer X-ray rule needs two unexplained symptoms and this cough is explained."
+  },
+  "astra": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "J18.9"
+   ],
+   "red_flags": [
+    "Fever and cough",
+    "Age 66",
+    "Smoking"
+   ],
+   "evidence": "NICE acute-cough and pneumonia guidance; CRB-65 limitations; from knowledge, not verified in this session.",
+   "confidence": 3,
+   "reasoning": "Sore throat, sick contacts and mild headache support a viral respiratory illness, but fever and cough in an older smoker leave pneumonia plausible. Respiratory rate, oxygenation and chest examination would determine whether routine bronchitis care is adequate; age alone does not establish severe pneumonia."
+  }
+ },
+ {
+  "case_id": "ddxplus_90975",
+  "index": 151,
+  "intake": "PATIENT INTAKE:\n\nAge: 40\nSex: male\nChief Complaints: Pain present, Pain character: tender, Pain character: burning, Pain location: tonsil (L), Pain location: thyroid cartilage, Pain location: palate, Pain intensity 6/10, Pain does not radiate, How precisely the pain can be located: 8/10 (10 = most precise), How fast the pain appeared: 0/10 (10 = fastest), A fever (either felt or measured with a thermometer), Noticed that the tone of your voice has become deeper, softer or hoarse\nMedical History / Context: No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Acute laryngitis",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "J05.1",
+    "J36",
+    "J39.0",
+    "J02.0"
+   ],
+   "red_flags": [
+    "fever with hoarse or softer voice",
+    "pain over the thyroid cartilage",
+    "tonsillar and palatal pain 6/10"
+   ],
+   "evidence": [
+    {
+     "citation": "Guardiani E et al. Supraglottitis in the era following widespread immunization against Haemophilus influenzae type B. Laryngoscope 2010;120:2183-8",
+     "url": "https://doi.org/10.1002/lary.21083",
+     "point": "Adult supraglottitis presents with odynophagia (100%), dysphagia (85%) and voice change (75%); stridor, respiratory distress, tachycardia, tachypnoea, rapid onset and shortness of breath predicted airway intervention, and patients without them recovered without it"
+    },
+    {
+     "citation": "NICE NG84 Sore throat (acute): antimicrobial prescribing (2018)",
+     "url": "https://www.nice.org.uk/guidance/ng84/chapter/Recommendations",
+     "point": "1.1.1: acute sore throat is self-limiting and usually viral; 1.1.3: use FeverPAIN or Centor at the visit; 1.1.5: reassess if symptoms worsen rapidly or significantly"
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Adult supraglottitis is rare and its airway risk tracks stridor, distress, tachypnoea and rapid onset; an intake with none of these and a slow onset is closed by examining the pharynx and listening for stridor"
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "Fever, a hoarse voice and anterior neck pain in a 40-year-old is acute laryngitis, and the intake lists no breathlessness, drooling, stridor or difficulty swallowing. The clinician checks those at the visit and refers for laryngoscopy only if they appear."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "J36",
+    "J05.1"
+   ],
+   "red_flags": [
+    "Unilateral tonsillar and palatal pain",
+    "Fever",
+    "Voice change"
+   ],
+   "evidence": "NICE acute sore throat guidance and recognition of peritonsillar abscess and supraglottitis; from knowledge, not verified in this session",
+   "confidence": 4,
+   "reasoning": "Focal unilateral throat pain with fever and voice change warrants assessment for peritonsillar infection before accepting uncomplicated laryngitis. Supraglottitis is less likely without swallowing or breathing symptoms but remains an airway-threatening alternative."
+  }
+ },
+ {
+  "case_id": "ddxplus_78338",
+  "index": 166,
+  "intake": "PATIENT INTAKE:\n\nAge: 82\nSex: female\nChief Complaints: Swollen or painful lymph nodes, Pain present, Pain character: burning, Pain location: finger (ring finger) (R), Pain location: finger (little finger) (L), Pain location: finger (index) (R), Pain location: finger (middle) (R), Pain location: shoulder (R), Pain intensity 7/10, Pain does not radiate, How precisely the pain can be located: 8/10 (10 = most precise), How fast the pain appeared: 5/10 (10 = fastest), Had any vaginal discharge\nMedical History / Context: No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Sarcoidosis",
+  "fable": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "C85.9",
+    "C81.9",
+    "C77.9",
+    "C54.1",
+    "M05.9"
+   ],
+   "red_flags": [
+    "swollen or painful lymph nodes at 82",
+    "vaginal discharge at 82",
+    "polyarticular hand and shoulder pain 7/10"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG12 Suspected cancer: recognition and referral (2015, updated 2026)",
+     "url": "https://www.nice.org.uk/guidance/ng12/chapter/Recommendations-organised-by-site-of-cancer",
+     "point": "1.10.6 and 1.10.8: consider a suspected cancer pathway referral for non-Hodgkin or Hodgkin lymphoma in adults presenting with unexplained lymphadenopathy"
+    },
+    {
+     "citation": "NICE NG12 Suspected cancer: recognition and referral (2015, updated 2026)",
+     "url": "https://www.nice.org.uk/guidance/ng12/chapter/Recommendations-organised-by-site-of-cancer",
+     "point": "1.5.13: consider an urgent direct access ultrasound to assess for endometrial cancer in women aged 55 and over with unexplained vaginal discharge presenting for the first time"
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "New sarcoidosis at 82 is rare, so lymphadenopathy with joint pain at this age is lymphoma or metastatic disease until tissue or imaging says otherwise"
+    }
+   ],
+   "confidence": 4,
+   "reasoning": "Unexplained lymphadenopathy at 82 with new polyarticular pain meets the lymphoma referral rule, and vaginal discharge in a postmenopausal woman meets the endometrial ultrasound rule. Neither is closed by calling the picture sarcoidosis."
+  },
+  "astra": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "A54.4",
+    "M00.9"
+   ],
+   "red_flags": [
+    "Multifocal finger and shoulder pain rated 7/10",
+    "Vaginal discharge",
+    "Lymphadenopathy",
+    "Age 82"
+   ],
+   "evidence": "CDC disseminated gonococcal infection guidance and septic arthritis assessment principles; from knowledge, not verified in this session",
+   "confidence": 2,
+   "reasoning": "Genital discharge together with asymmetric multifocal joint-region pain raises an infectious arthritis or disseminated infection possibility that sarcoidosis does not adequately resolve. However, absent fever, joint swelling, rash and sexual-risk history make an invasive infection uncertain."
+  }
+ },
+ {
+  "case_id": "ddxplus_132582",
+  "index": 168,
+  "intake": "PATIENT INTAKE:\n\nAge: 55\nSex: female\nChief Complaints: Pain present, Pain character: tender, Pain character: burning, Pain location: tonsil (L), Pain location: thyroid cartilage, Pain location: pharynx, Pain location: under the jaw, Pain intensity 4/10, Pain does not radiate, How precisely the pain can be located: 9/10 (10 = most precise), How fast the pain appeared: 1/10 (10 = fastest), Nasal congestion or a clear runny nose, A cough\nMedical History / Context: Live with 4 or more people, No travel outside the country in the last 4 weeks, Immunosuppressed\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Viral pharyngitis",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "J36",
+    "J39.0",
+    "B37.0"
+   ],
+   "red_flags": [
+    "immunosuppressed with sore throat and pain under the jaw"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG84 Sore throat (acute): antimicrobial prescribing (2018)",
+     "url": "https://www.nice.org.uk/guidance/ng84/chapter/Recommendations",
+     "point": "1.1.1: acute sore throat is self-limiting and usually viral; 1.1.3: use FeverPAIN or Centor at the visit; 1.1.5: reassess if symptoms worsen rapidly or significantly"
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Immunosuppression lowers the threshold for examining the pharynx and neck for candida, quinsy and deep neck infection, but on an afebrile intake examination at the visit is enough"
+    }
+   ],
+   "confidence": 4,
+   "reasoning": "An immunosuppressed 55-year-old with a sore throat, runny nose and cough and no fever has viral pharyngitis. The clinician examines the throat and neck with the immunosuppression in mind and manages routinely."
+  },
+  "astra": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "J36",
+    "J39.0"
+   ],
+   "red_flags": [
+    "Immunosuppression",
+    "Unilateral tonsillar pain",
+    "Submandibular pain"
+   ],
+   "evidence": "NICE acute sore throat guidance on complications and higher-risk patients; from knowledge, not verified in this session",
+   "confidence": 3,
+   "reasoning": "Cough and rhinorrhea favor viral pharyngitis, but immunosuppression and focal tonsillar/submandibular pain lower the threshold for excluding a localized deep infection. Modest pain and absent swallowing or airway symptoms keep this borderline rather than clearly emergent."
+  }
+ },
+ {
+  "case_id": "ddxplus_62677",
+  "index": 169,
+  "intake": "PATIENT INTAKE:\n\nAge: 29\nSex: male\nChief Complaints: Pain present, Pain character: tender, Pain location: lower chest, Pain location: side of the chest (R), Pain location: side of the chest (L), Pain location: breast (R), Pain location: posterior chest wall (L), Pain intensity 3/10, Pain does not radiate, How precisely the pain can be located: 4/10 (10 = most precise), How fast the pain appeared: 0/10 (10 = fastest), A cough that produces colored or more abundant sputum than usual, A sore throat, Nasal congestion or a clear runny nose, A cough, Noticed a wheezing sound when you exhale\nMedical History / Context: Smoke cigarettes, A chronic obstructive pulmonary disease (COPD), No travel outside the country in the last 4 weeks, Are your vaccinations up to date\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "URTI",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "J44.1",
+    "J18.9",
+    "J45.9"
+   ],
+   "red_flags": [
+    "wheeze with purulent sputum",
+    "COPD listed at age 29",
+    "chest wall pain of tender character"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG120 Cough (acute): antimicrobial prescribing (2019)",
+     "url": "https://www.nice.org.uk/guidance/ng120/chapter/Recommendations",
+     "point": "1.1.1 and 1.1.9: acute cough is usually a self-limiting viral illness; do not routinely offer an antibiotic for acute bronchitis in people who are not systemically very unwell or at higher risk of complications"
+    },
+    {
+     "citation": "NICE NG114 COPD (acute exacerbation): antimicrobial prescribing (2018)",
+     "url": "https://www.nice.org.uk/guidance/ng114/chapter/Recommendations",
+     "point": "1.1.2: consider an antibiotic for an acute exacerbation of COPD taking into account sputum colour change, the need for hospital treatment and previous exacerbation history"
+    },
+    {
+     "citation": "NICE NG115 COPD in over 16s: diagnosis and management (2018, updated 2019)",
+     "url": "https://www.nice.org.uk/guidance/ng115/chapter/Recommendations",
+     "point": "Exacerbation defined as sustained worsening of breathlessness, cough, sputum volume or colour beyond day-to-day variation"
+    }
+   ],
+   "confidence": 4,
+   "reasoning": "A young smoker with a cold, purulent sputum, wheeze and tender chest wall pain has a viral chest infection whose pain is musculoskeletal from coughing. Peak flow, oximetry and examination close it; the listed COPD is checked against his records and, if real, the antibiotic decision follows NG114."
+  },
+  "astra": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "J44.1",
+    "J18.9"
+   ],
+   "red_flags": [
+    "COPD",
+    "Wheezing",
+    "Changed sputum",
+    "Chest discomfort"
+   ],
+   "evidence": "GOLD COPD exacerbation assessment and NICE acute cough guidance; from knowledge, not verified in this session",
+   "confidence": 3,
+   "reasoning": "Wheezing and sputum change in COPD suggest a lower-airway exacerbation beyond an isolated URTI. No dyspnea or fever is reported, so a dangerous exacerbation or pneumonia is not established, but severity requires assessment at this visit."
+  }
+ },
+ {
+  "case_id": "ddxplus_121205",
+  "index": 174,
+  "intake": "PATIENT INTAKE:\n\nAge: 28\nSex: male\nChief Complaints: Had significantly increased sweating, Pain present, Pain character: tender, Pain location: top of the head, Pain location: temple (R), Pain location: temple (L), Pain intensity 8/10, Pain does not radiate, How precisely the pain can be located: 6/10 (10 = most precise), How fast the pain appeared: 4/10 (10 = fastest), A fever (either felt or measured with a thermometer), A sore throat, Nasal congestion or a clear runny nose\nMedical History / Context: Been in contact with a person with similar symptoms in the past 2 weeks, Live with 4 or more people, Smoke cigarettes, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "URTI",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "G03.9",
+    "A39.0",
+    "J11.1"
+   ],
+   "red_flags": [
+    "headache 8/10 with fever",
+    "sore throat and congestion after contact",
+    "sweating"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG240 Meningitis (bacterial) and meningococcal disease (2024)",
+     "url": "https://www.nice.org.uk/guidance/ng240/chapter/Recommendations",
+     "point": "1.1.4: strongly suspect bacterial meningitis with the red flag combination of fever, headache, neck stiffness and altered consciousness; 1.1.9: meningococcal disease with a non-blanching rash"
+    },
+    {
+     "citation": "NICE NG84 Sore throat (acute): antimicrobial prescribing (2018)",
+     "url": "https://www.nice.org.uk/guidance/ng84/chapter/Recommendations",
+     "point": "1.1.1: acute sore throat is self-limiting and usually viral; 1.1.3: use FeverPAIN or Centor at the visit; 1.1.5: reassess if symptoms worsen rapidly or significantly"
+    }
+   ],
+   "confidence": 4,
+   "reasoning": "Fever, sore throat and congestion after contact with a similar illness in a 28-year-old is a viral upper respiratory infection, and the 8/10 headache is a bare score with no neck stiffness, rash, vomiting or confusion listed. The clinician checks for meningism and rash at the visit, which closes it."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "G03.9"
+   ],
+   "red_flags": [
+    "Headache rated 8/10",
+    "Fever",
+    "Marked sweating"
+   ],
+   "evidence": "NICE bacterial meningitis guidance and secondary-headache red flags; from knowledge, not verified in this session",
+   "confidence": 4,
+   "reasoning": "Severe headache with fever warrants active assessment for meningitis before attributing everything to a URTI. Absent neck stiffness or altered mental status reduces suspicion but does not exclude meningitis."
+  }
+ },
+ {
+  "case_id": "ddxplus_108680",
+  "index": 175,
+  "intake": "PATIENT INTAKE:\n\nAge: 67\nSex: female\nChief Complaints: Pain present, Pain character: sharp, Pain location: ear (R), Pain location: ear (L), Pain intensity 8/10, Pain does not radiate, How precisely the pain can be located: 7/10 (10 = most precise), How fast the pain appeared: 3/10 (10 = fastest), A fever (either felt or measured with a thermometer), More irritable or has your mood been very unstable recently, A cough\nMedical History / Context: Currently being treated or have you recently been treated with an oral antibiotic for an ear infection, Travel outside the country in the last 4 weeks: North America\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Bronchitis",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "H66.9",
+    "H70.9",
+    "G00.9"
+   ],
+   "red_flags": [
+    "bilateral ear pain 8/10 with fever after an oral antibiotic for ear infection",
+    "age 67"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG91 Otitis media (acute): antimicrobial prescribing (2018, updated 2022)",
+     "url": "https://www.nice.org.uk/guidance/ng91/chapter/Recommendations",
+     "point": "1.1.1: acute otitis media is self-limiting and complications such as mastoiditis are rare; 1.1.7: reassess if symptoms worsen, taking account of previous antibiotic use and signs of a more serious illness"
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "The correct label is acute otitis media with treatment failure; the bronchitis label misses a change of antibiotic but the danger is closed by examination"
+    }
+   ],
+   "confidence": 4,
+   "reasoning": "This is otitis media that has not settled after an antibiotic, with a cough alongside; bronchitis is the wrong label but the ear examination at the visit decides the antibiotic change and closes mastoiditis. No imaging or referral is mandated by the intake."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "H70.90"
+   ],
+   "red_flags": [
+    "Ear pain rated 8/10",
+    "Fever",
+    "Current or recent antibiotic treatment for an ear infection",
+    "Age 67"
+   ],
+   "evidence": "NICE CKS acute otitis media guidance on reassessment and mastoiditis; from knowledge, not verified in this session",
+   "confidence": 3,
+   "reasoning": "Severe febrile ear pain during or after treatment requires focused reassessment for complicated otitis, including mastoiditis. Bronchitis does not adequately account for the dominant symptoms, although treatment failure cannot be confirmed without timing."
+  }
+ },
+ {
+  "case_id": "ddxplus_111673",
+  "index": 176,
+  "intake": "PATIENT INTAKE:\n\nAge: 60\nSex: male\nChief Complaints: Swollen or painful lymph nodes, Pain present, Pain character: tender, Pain character: sharp, Pain location: finger (ring finger) (R), Pain location: finger (ring finger) (L), Pain location: finger (little finger) (L), Pain location: finger (index) (L), Pain location: dorsal aspect of the wrist (L), Pain intensity 3/10, Pain does not radiate, How precisely the pain can be located: 0/10 (10 = most precise), How fast the pain appeared: 0/10 (10 = fastest), Noticed a diffuse (widespread) redness in one or both eyes\nMedical History / Context: Significantly overweight compared to people of the same height as you, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Sarcoidosis",
+  "fable": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "C85.9",
+    "C81.9",
+    "H20.9",
+    "M06.9"
+   ],
+   "red_flags": [
+    "swollen or painful lymph nodes at 60",
+    "diffuse red eye",
+    "polyarticular finger and wrist pain"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG12 Suspected cancer: recognition and referral (2015, updated 2026)",
+     "url": "https://www.nice.org.uk/guidance/ng12/chapter/Recommendations-organised-by-site-of-cancer",
+     "point": "1.10.6 and 1.10.8: consider a suspected cancer pathway referral for non-Hodgkin or Hodgkin lymphoma in adults presenting with unexplained lymphadenopathy"
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Uveitis is the most common ocular manifestation of sarcoidosis and is sight-threatening, so a red eye with suspected sarcoidosis needs slit-lamp examination within days"
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "Lymphadenopathy with joint pain and a red eye at 60 may be sarcoidosis, but sarcoidosis is a diagnosis of exclusion and the same picture is lymphoma. The referral for imaging and tissue confirmation and the eye assessment are what the visit must set in motion; a working label alone does not."
+  },
+  "astra": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "H20.9"
+   ],
+   "red_flags": [
+    "Diffuse eye redness",
+    "Polyarthralgia and lymphadenopathy suggesting systemic inflammatory disease"
+   ],
+   "evidence": "American Thoracic Society sarcoidosis guidance on ocular assessment and uveitis red-flag principles; from knowledge, not verified in this session",
+   "confidence": 3,
+   "reasoning": "Eye redness in a possible systemic inflammatory disorder warrants assessment for uveitis, which may threaten vision. Absence of eye pain, photophobia and visual change makes immediate sight-threatening inflammation uncertain."
+  }
+ },
+ {
+  "case_id": "ddxplus_66386",
+  "index": 177,
+  "intake": "PATIENT INTAKE:\n\nAge: 39\nSex: male\nChief Complaints: Pain present, Pain character: tender, Pain location: tonsil (R), Pain location: thyroid cartilage, Pain location: palate, Pain location: pharynx, Pain location: under the jaw, Pain intensity 8/10, Pain does not radiate, How precisely the pain can be located: 9/10 (10 = most precise), How fast the pain appeared: 1/10 (10 = fastest), A fever (either felt or measured with a thermometer), Nasal congestion or a clear runny nose\nMedical History / Context: Been in contact with a person with similar symptoms in the past 2 weeks, Live with 4 or more people, Attend or work in a daycare, Smoke cigarettes, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Viral pharyngitis",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "J36",
+    "J39.0",
+    "J02.0"
+   ],
+   "red_flags": [
+    "unilateral tonsillar pain 8/10 with fever",
+    "pain under the jaw"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG84 Sore throat (acute): antimicrobial prescribing (2018)",
+     "url": "https://www.nice.org.uk/guidance/ng84/chapter/Recommendations",
+     "point": "1.1.1: acute sore throat is self-limiting and usually viral; 1.1.3: use FeverPAIN or Centor at the visit; 1.1.5: reassess if symptoms worsen rapidly or significantly"
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Peritonsillar abscess is recognised on examination by trismus, uvular deviation and a bulging soft palate; a bare 8/10 unilateral pain score does not mandate imaging"
+    }
+   ],
+   "confidence": 4,
+   "reasoning": "Fever with predominantly right tonsillar pain and pain under the jaw after contact with a similar illness is tonsillitis, and the clinician looks for quinsy at the visit. FeverPAIN or Centor decides the antibiotic."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "J36",
+    "J39.0"
+   ],
+   "red_flags": [
+    "Unilateral tonsillar pain rated 8/10",
+    "Fever",
+    "Palatal and submandibular pain"
+   ],
+   "evidence": "NICE acute sore throat guidance on peritonsillar and deep-neck abscess; from knowledge, not verified in this session",
+   "confidence": 4,
+   "reasoning": "Severe focal tonsillar pain with fever and adjacent palatal/submandibular pain warrants exclusion of peritonsillar or deeper infection. Rhinorrhea does not sufficiently justify a viral-only diagnosis."
+  }
+ },
+ {
+  "case_id": "ddxplus_104206",
+  "index": 181,
+  "intake": "PATIENT INTAKE:\n\nAge: 71\nSex: female\nChief Complaints: Had significantly increased sweating, Pain present, Pain character: unpleasant, Pain character: tender, Pain location: top of the head, Pain location: forehead, Pain location: cheek (R), Pain location: temple (L), Pain intensity 6/10, Pain does not radiate, How precisely the pain can be located: 7/10 (10 = most precise), How fast the pain appeared: 3/10 (10 = fastest), A cough that produces colored or more abundant sputum than usual, A sore throat, Diffuse (widespread) muscle pain, Nasal congestion or a clear runny nose, A cough\nMedical History / Context: Live with 4 or more people, Attend or work in a daycare, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "URTI",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "J18.9",
+    "J11.1",
+    "G03.9"
+   ],
+   "red_flags": [
+    "age 71 with purulent sputum, sweats, myalgia and headache 6/10"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG120 Cough (acute): antimicrobial prescribing (2019)",
+     "url": "https://www.nice.org.uk/guidance/ng120/chapter/Recommendations",
+     "point": "1.1.1 and 1.1.9: acute cough is usually a self-limiting viral illness; do not routinely offer an antibiotic for acute bronchitis in people who are not systemically very unwell or at higher risk of complications"
+    },
+    {
+     "citation": "NICE NG120 Cough (acute): antimicrobial prescribing (2019)",
+     "url": "https://www.nice.org.uk/guidance/ng120/chapter/Recommendations",
+     "point": "1.1.4: refer people with an acute cough to hospital, or seek specialist advice, if they have symptoms or signs suggesting a more serious illness such as sepsis, pulmonary embolism or lung cancer"
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Pneumonia in a 71-year-old is assessed by respiratory rate, oximetry, blood pressure, confusion and chest examination at the visit; the intake lists no breathlessness, chest pain or fever"
+    }
+   ],
+   "confidence": 4,
+   "reasoning": "A 71-year-old with sore throat, congestion, myalgia, sweats and productive cough has a viral respiratory infection with bronchitis, and the intake lists no fever, breathlessness or chest pain. Vital signs and chest examination close pneumonia; the headache is moderate without meningism."
+  },
+  "astra": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "M31.6"
+   ],
+   "red_flags": [
+    "Age 71",
+    "Temporal and scalp-region headache rated 6/10",
+    "Myalgia and sweating"
+   ],
+   "evidence": "British Society for Rheumatology giant cell arteritis guidance; from knowledge, not verified in this session",
+   "confidence": 3,
+   "reasoning": "The respiratory symptoms strongly support a viral illness, but temporal/scalp-region headache and systemic symptoms in this age group warrant consideration of giant cell arteritis. No jaw claudication or visual symptoms are reported, and the headache's duration and novelty are unknown."
+  }
+ },
+ {
+  "case_id": "ddxplus_16182",
+  "index": 182,
+  "intake": "PATIENT INTAKE:\n\nAge: 67\nSex: male\nChief Complaints: Pain present, Pain character: tender, Pain location: ear (R), Pain location: ear (L), Pain intensity 9/10, Pain does not radiate, How precisely the pain can be located: 8/10 (10 = most precise), How fast the pain appeared: 7/10 (10 = fastest), A fever (either felt or measured with a thermometer), A cough\nMedical History / Context: Currently being treated or have you recently been treated with an oral antibiotic for an ear infection, No travel outside the country in the last 4 weeks, Are your vaccinations up to date\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Bronchitis",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "H70.9",
+    "H60.2",
+    "G00.9"
+   ],
+   "red_flags": [
+    "bilateral ear pain 9/10 of rapid onset with fever after an oral antibiotic for ear infection",
+    "age 67"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG91 Otitis media (acute): antimicrobial prescribing (2018, updated 2022)",
+     "url": "https://www.nice.org.uk/guidance/ng91/chapter/Recommendations",
+     "point": "1.1.1: acute otitis media is self-limiting and complications such as mastoiditis are rare; 1.1.7: reassess if symptoms worsen, taking account of previous antibiotic use and signs of a more serious illness"
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Severe otalgia with fever after antibiotic failure at 67 needs a careful otoscopic and mastoid examination; without diabetes or immunosuppression, necrotising otitis externa is unlikely"
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "Severe bilateral ear pain with fever after a failed antibiotic course at 67 is otitis media that needs a different antibiotic, not bronchitis. The 9/10 score is a bare number; examination of the ears and mastoids at the visit decides whether referral is needed."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "H70.90"
+   ],
+   "red_flags": [
+    "Ear pain rated 9/10",
+    "Fever",
+    "Current or recent antibiotic treatment for an ear infection",
+    "Age 67"
+   ],
+   "evidence": "NICE CKS acute otitis media guidance on complications and reassessment; from knowledge, not verified in this session",
+   "confidence": 4,
+   "reasoning": "Very severe febrile ear pain in the setting of recent treatment requires exclusion of complicated otitis, particularly mastoiditis. Bronchitis does not explain the dominant presentation."
+  }
+ },
+ {
+  "case_id": "ddxplus_18166",
+  "index": 183,
+  "intake": "PATIENT INTAKE:\n\nAge: 57\nSex: female\nChief Complaints: Pain present, Pain character: burning, Pain location: lower chest, Pain location: side of the chest (R), Pain location: side of the chest (L), Pain location: breast (R), Pain location: posterior chest wall (R), Pain intensity 1/10, Pain does not radiate, How precisely the pain can be located: 3/10 (10 = most precise), How fast the pain appeared: 0/10 (10 = fastest), A cough that produces colored or more abundant sputum than usual, A cough, Noticed a wheezing sound when you exhale, Are your symptoms more prominent at night\nMedical History / Context: A chronic obstructive pulmonary disease (COPD), No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Bronchitis",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "J44.1",
+    "J18.9"
+   ],
+   "red_flags": [
+    "COPD",
+    "purulent sputum with wheeze",
+    "symptoms worse at night"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG114 COPD (acute exacerbation): antimicrobial prescribing (2018)",
+     "url": "https://www.nice.org.uk/guidance/ng114/chapter/Recommendations",
+     "point": "1.1.2: consider an antibiotic for an acute exacerbation of COPD taking into account sputum colour change, the need for hospital treatment and previous exacerbation history"
+    },
+    {
+     "citation": "NICE NG120 Cough (acute): antimicrobial prescribing (2019)",
+     "url": "https://www.nice.org.uk/guidance/ng120/chapter/Recommendations",
+     "point": "1.1.1 and 1.1.9: acute cough is usually a self-limiting viral illness; do not routinely offer an antibiotic for acute bronchitis in people who are not systemically very unwell or at higher risk of complications"
+    },
+    {
+     "citation": "NICE NG115 COPD in over 16s: diagnosis and management (2018, updated 2019)",
+     "url": "https://www.nice.org.uk/guidance/ng115/chapter/Recommendations",
+     "point": "Table 7: mild breathlessness and good general condition favour treatment at home"
+    }
+   ],
+   "confidence": 4,
+   "reasoning": "A woman with COPD and a productive, wheezy cough without breathlessness has a mild exacerbation or bronchitis that examination, oximetry and peak flow close. The 1/10 chest burning is not a cardiac pattern; the antibiotic and steroid decision is made at the visit."
+  },
+  "astra": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "J44.1"
+   ],
+   "red_flags": [
+    "COPD",
+    "Wheezing",
+    "Changed sputum",
+    "Nocturnal respiratory symptoms"
+   ],
+   "evidence": "GOLD COPD exacerbation assessment; from knowledge, not verified in this session",
+   "confidence": 3,
+   "reasoning": "The intake suggests a possible COPD exacerbation requiring assessment beyond a generic bronchitis label. Absent dyspnea or fever and minimal chest discomfort favor a mild episode, but baseline symptoms and physiological severity are unavailable."
+  }
+ },
+ {
+  "case_id": "ddxplus_75817",
+  "index": 187,
+  "intake": "PATIENT INTAKE:\n\nAge: 53\nSex: male\nChief Complaints: Pain present, Pain character: sharp, Pain location: ear (R), Pain location: ear (L), Pain intensity 9/10, Pain does not radiate, How precisely the pain can be located: 8/10 (10 = most precise), How fast the pain appeared: 7/10 (10 = fastest), A fever (either felt or measured with a thermometer), A cough\nMedical History / Context: No travel outside the country in the last 4 weeks, Are your vaccinations up to date\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Bronchitis",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "H66.9",
+    "H70.9",
+    "G00.9"
+   ],
+   "red_flags": [
+    "bilateral ear pain 9/10 of rapid onset with fever"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG91 Otitis media (acute): antimicrobial prescribing (2018, updated 2022)",
+     "url": "https://www.nice.org.uk/guidance/ng91/chapter/Recommendations",
+     "point": "1.1.1: acute otitis media is self-limiting and complications such as mastoiditis are rare; 1.1.7: reassess if symptoms worsen, taking account of previous antibiotic use and signs of a more serious illness"
+    }
+   ],
+   "confidence": 4,
+   "reasoning": "Rapid-onset bilateral ear pain with fever and cough in a 53-year-old is acute otitis media, and otoscopy with mastoid examination closes the complications. The bronchitis label misses the ear but the visit examination corrects it."
+  },
+  "astra": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "H70.90"
+   ],
+   "red_flags": [
+    "Ear pain rated 9/10",
+    "Fever"
+   ],
+   "evidence": "NICE CKS acute otitis media and mastoiditis assessment; from knowledge, not verified in this session",
+   "confidence": 3,
+   "reasoning": "Very severe febrile otalgia requires an ear-focused assessment and is not adequately explained by bronchitis. Uncomplicated otitis remains plausible, while absent mastoid symptoms and neurological features make a dangerous complication borderline."
+  }
+ },
+ {
+  "case_id": "ddxplus_125850",
+  "index": 195,
+  "intake": "PATIENT INTAKE:\n\nAge: 39\nSex: female\nChief Complaints: Pain present, Pain character: burning, Pain location: lower chest, Pain location: side of the chest (R), Pain location: side of the chest (L), Pain intensity 2/10, Pain does not radiate, How precisely the pain can be located: 5/10 (10 = most precise), How fast the pain appeared: 3/10 (10 = fastest), A fever (either felt or measured with a thermometer), A cough, Noticed a wheezing sound when you exhale, Are your symptoms more prominent at night\nMedical History / Context: Smoke cigarettes, No travel outside the country in the last 4 weeks, Are your vaccinations up to date\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Bronchitis",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "J18.9",
+    "J45.9"
+   ],
+   "red_flags": [
+    "fever, cough, wheeze, nocturnal symptoms",
+    "smoker"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG250 Pneumonia: diagnosis and management (2023, updated 2025)",
+     "url": "https://www.nice.org.uk/guidance/ng250/chapter/Recommendations",
+     "point": "1.2.1 and 1.2.2: once pneumonia is diagnosed clinically, stratify with CRB65 (age 65 or over scores a point) together with clinical judgement to decide place of care."
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Fever with wheeze and mild burning chest pain in a 39-year-old smoker is acute bronchitis; pneumonia needs focal signs or abnormal vitals before a chest film is warranted."
+    }
+   ],
+   "confidence": 4,
+   "reasoning": "Acute bronchitis with wheeze in a 39-year-old smoker. Vitals, oximetry, auscultation and peak flow close it."
+  },
+  "astra": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "J18.9"
+   ],
+   "red_flags": [
+    "Fever",
+    "Cough with chest discomfort",
+    "Wheezing"
+   ],
+   "evidence": "NICE acute cough and pneumonia assessment guidance; from knowledge, not verified in this session",
+   "confidence": 3,
+   "reasoning": "Bronchitis with bronchospasm is plausible, but fever and chest discomfort make pneumonia an alternative requiring focused assessment. No dyspnea or severe systemic symptoms are reported, so the intake alone does not establish a time-critical infection."
+  }
+ },
+ {
+  "case_id": "ddxplus_46931",
+  "index": 197,
+  "intake": "PATIENT INTAKE:\n\nAge: 45\nSex: male\nChief Complaints: Pain present, Pain character: burning, Pain location: upper chest, Pain location: pharynx, Pain location: posterior chest wall (R), Pain intensity 5/10, Pain does not radiate, How precisely the pain can be located: 5/10 (10 = most precise), How fast the pain appeared: 5/10 (10 = fastest), A cough that produces colored or more abundant sputum than usual, A fever (either felt or measured with a thermometer), Nasal congestion or a clear runny nose, A cough, Noticed a wheezing sound when you exhale\nMedical History / Context: Smoke cigarettes, A chronic obstructive pulmonary disease (COPD), No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Bronchitis",
+  "fable": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "J18.9",
+    "J44.1",
+    "I21.9",
+    "C34.9"
+   ],
+   "red_flags": [
+    "COPD smoker with fever, purulent sputum and wheeze",
+    "burning upper chest and posterior chest pain 5/10"
+   ],
+   "evidence": [
+    {
+     "citation": "Agusti A et al. Global Initiative for Chronic Obstructive Lung Disease 2023 Report: GOLD Executive Summary. Eur Respir J 2023;61:2300239",
+     "url": "https://doi.org/10.1183/13993003.00239-2023",
+     "point": "An exacerbation is dyspnoea and/or cough and sputum worsening over 14 days or less; decompensated heart failure, pneumonia and pulmonary embolism mimic or aggravate it and must be considered; sudden worsening of resting dyspnoea, low saturation or acute respiratory failure are indications for hospital care; antibiotics are given when sputum volume and purulence increase."
+    },
+    {
+     "citation": "NICE NG250 Pneumonia: diagnosis and management (2023, updated 2025)",
+     "url": "https://www.nice.org.uk/guidance/ng250/chapter/Recommendations",
+     "point": "1.2.1 and 1.2.2: once pneumonia is diagnosed clinically, stratify with CRB65 (age 65 or over scores a point) together with clinical judgement to decide place of care."
+    },
+    {
+     "citation": "NICE NG12 Suspected cancer: recognition and referral (2015, updated 2025)",
+     "url": "https://www.nice.org.uk/guidance/ng12/chapter/Recommendations-organised-by-site-of-cancer",
+     "point": "1.1.1 and 1.1.2: urgent chest X-ray for people 40 and over with unexplained haemoptysis, or who have ever smoked and have one unexplained symptom such as cough, shortness of breath or chest pain."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "This is a COPD exacerbation with fever and purulent sputum rather than simple bronchitis, so it needs antibiotics and bronchodilator review. Whether pneumonia or a cardiac cause of the chest pain needs a film and ECG depends on vitals and examination the intake does not carry."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "J18.9",
+    "J44.1"
+   ],
+   "red_flags": [
+    "COPD",
+    "Fever",
+    "Changed sputum and wheezing",
+    "Chest and posterior chest-wall pain rated 5/10"
+   ],
+   "evidence": "GOLD COPD exacerbation guidance and NICE pneumonia assessment; from knowledge, not verified in this session",
+   "confidence": 4,
+   "reasoning": "Fever, sputum change and chest pain in someone with COPD warrant active exclusion of pneumonia and assessment of an infective COPD exacerbation. A generic bronchitis diagnosis is insufficient without evaluating respiratory severity."
+  }
+ },
+ {
+  "case_id": "ddxplus_75636",
+  "index": 200,
+  "intake": "PATIENT INTAKE:\n\nAge: 50\nSex: female\nChief Complaints: Pain present, Pain character: tender, Pain location: side of the chest (R), Pain location: breast (R), Pain intensity 2/10, Pain does not radiate, How precisely the pain can be located: 6/10 (10 = most precise), How fast the pain appeared: 0/10 (10 = fastest), A cough that produces colored or more abundant sputum than usual, A fever (either felt or measured with a thermometer), A sore throat, Nasal congestion or a clear runny nose, A cough\nMedical History / Context: A chronic obstructive pulmonary disease (COPD), No travel outside the country in the last 4 weeks, Are your vaccinations up to date\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "URTI",
+  "fable": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "J18.9",
+    "J44.1"
+   ],
+   "red_flags": [
+    "COPD with fever and purulent sputum",
+    "right chest wall tenderness 2/10"
+   ],
+   "evidence": [
+    {
+     "citation": "Agusti A et al. Global Initiative for Chronic Obstructive Lung Disease 2023 Report: GOLD Executive Summary. Eur Respir J 2023;61:2300239",
+     "url": "https://doi.org/10.1183/13993003.00239-2023",
+     "point": "An exacerbation is dyspnoea and/or cough and sputum worsening over 14 days or less; decompensated heart failure, pneumonia and pulmonary embolism mimic or aggravate it and must be considered; sudden worsening of resting dyspnoea, low saturation or acute respiratory failure are indications for hospital care; antibiotics are given when sputum volume and purulence increase."
+    },
+    {
+     "citation": "NICE NG250 Pneumonia: diagnosis and management (2023, updated 2025)",
+     "url": "https://www.nice.org.uk/guidance/ng250/chapter/Recommendations",
+     "point": "1.2.1 and 1.2.2: once pneumonia is diagnosed clinically, stratify with CRB65 (age 65 or over scores a point) together with clinical judgement to decide place of care."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "A febrile productive cough in a 50-year-old with COPD is a lower respiratory infection or exacerbation, not just a URTI. Pneumonia cannot be separated from bronchitis on this intake, so oximetry and chest examination decide whether a film is needed."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "J18.9",
+    "J44.1"
+   ],
+   "red_flags": [
+    "Fever with increased or discolored sputum",
+    "Chest pain",
+    "Underlying COPD"
+   ],
+   "evidence": "NICE acute cough and COPD exacerbation guidance (from knowledge, not verified in this session).",
+   "confidence": 4,
+   "reasoning": "Pneumonia or an infective COPD exacerbation needs assessment at this visit. An upper respiratory infection alone is insufficient to explain the combination without checking respiratory status and examining the chest."
+  }
+ },
+ {
+  "case_id": "ddxplus_92272",
+  "index": 202,
+  "intake": "PATIENT INTAKE:\n\nAge: 67\nSex: male\nChief Complaints: Pain present, Pain character: tender, Pain location: top of the head, Pain location: forehead, Pain location: occiput, Pain location: temple (R), Pain intensity 4/10, Pain does not radiate, How precisely the pain can be located: 2/10 (10 = most precise), How fast the pain appeared: 3/10 (10 = fastest), A cough that produces colored or more abundant sputum than usual, A fever (either felt or measured with a thermometer), A sore throat, Diffuse (widespread) muscle pain, Nasal congestion or a clear runny nose\nMedical History / Context: Been in contact with a person with similar symptoms in the past 2 weeks, Attend or work in a daycare, Smoke cigarettes, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "URTI",
+  "fable": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "J18.9",
+    "J11.1"
+   ],
+   "red_flags": [
+    "67-year-old smoker",
+    "fever with purulent sputum",
+    "sore throat, myalgia, coryza"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG250 Pneumonia: diagnosis and management (2023, updated 2025)",
+     "url": "https://www.nice.org.uk/guidance/ng250/chapter/Recommendations",
+     "point": "1.2.1 and 1.2.2: once pneumonia is diagnosed clinically, stratify with CRB65 (age 65 or over scores a point) together with clinical judgement to decide place of care."
+    },
+    {
+     "citation": "NICE NG12 Suspected cancer: recognition and referral (2015, updated 2025)",
+     "url": "https://www.nice.org.uk/guidance/ng12/chapter/Recommendations-organised-by-site-of-cancer",
+     "point": "1.1.1 and 1.1.2: urgent chest X-ray for people 40 and over with unexplained haemoptysis, or who have ever smoked and have one unexplained symptom such as cough, shortness of breath or chest pain."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "An influenza-like illness with productive cough in a 67-year-old smoker. If examination finds pneumonia, age alone scores on CRB65 and hospital assessment enters the decision, so vitals and chest findings decide."
+  },
+  "astra": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [],
+   "red_flags": [],
+   "evidence": "NICE acute cough and headache assessment guidance (from knowledge, not verified in this session).",
+   "confidence": 3,
+   "reasoning": "The gradual, moderate headache accompanies a coherent viral respiratory syndrome with sick contacts. There is no reported breathlessness, chest pain, meningism, visual disturbance, or jaw claudication to establish a specific time-critical concern."
+  }
+ },
+ {
+  "case_id": "ddxplus_16871",
+  "index": 208,
+  "intake": "PATIENT INTAKE:\n\nAge: 54\nSex: female\nChief Complaints: Pain present, Pain character: heavy, Pain location: top of the head, Pain location: cheek (R), Pain location: temple (L), Pain intensity 8/10, Pain does not radiate, How precisely the pain can be located: 3/10 (10 = most precise), How fast the pain appeared: 2/10 (10 = fastest), A cough that produces colored or more abundant sputum than usual, A fever (either felt or measured with a thermometer), A sore throat, Nasal congestion or a clear runny nose, A cough\nMedical History / Context: Been in contact with a person with similar symptoms in the past 2 weeks, Live with 4 or more people, Smoke cigarettes, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "URTI",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "G00.9",
+    "J01"
+   ],
+   "red_flags": [
+    "heavy headache 8/10 with fever",
+    "onset 2/10 (gradual)",
+    "productive cough, sore throat, coryza"
+   ],
+   "evidence": [
+    {
+     "citation": "Do TP et al. Red and orange flags for secondary headaches in clinical practice: SNNOOP10 list. Neurology 2019;92:134-144",
+     "url": "https://doi.org/10.1212/WNL.0000000000006697",
+     "point": "SNNOOP10 red flags for secondary headache include sudden or abrupt onset, recent onset of a new headache, older age and a painful eye with autonomic features."
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Fever with a gradual, poorly localised headache during an obvious URTI is expected; neck stiffness, rash, vomiting and altered mentation are what would change the decision."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "URTI in a 54-year-old smoker. The 8/10 headache is a bare score with gradual onset and an infective explanation, so examination for meningism closes it."
+  },
+  "astra": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "G03.9",
+    "M31.6"
+   ],
+   "red_flags": [
+    "Severe 8/10 headache with fever",
+    "Temporal pain at age 54"
+   ],
+   "evidence": "NICE headache red flags and BSR giant cell arteritis guidance (from knowledge, not verified in this session).",
+   "confidence": 3,
+   "reasoning": "A viral respiratory illness could explain the gradual headache, but its severity and temporal involvement after age 50 merit focused assessment for secondary causes. Absent meningism, visual symptoms, and jaw claudication reduce concern without fully resolving it."
+  }
+ },
+ {
+  "case_id": "ddxplus_35125",
+  "index": 219,
+  "intake": "PATIENT INTAKE:\n\nAge: 31\nSex: female\nChief Complaints: Pain present, Pain character: cramping, Pain character: sharp, Pain location: lower chest, Pain location: side of the chest (R), Pain location: side of the chest (L), Pain location: flank (L), Pain location: hypochondrium (R), Pain intensity 7/10, Pain does not radiate, How precisely the pain can be located: 7/10 (10 = most precise), How fast the pain appeared: 8/10 (10 = fastest), Feel like you are (or were) choking or suffocating, Feel lightheaded and dizzy or do you feel like you are about to faint, Feel like you are dying or were you afraid that you were about do die, Feel your heart is beating fast (racing), irregularly (missing a beat) or do you feel palpitations, Recently had numbness, loss of sensation or tingling, in both arms and legs and around your mouth, Feel like you are detached from your own body or your surroundings, Currently, or did you ever, have numbness, loss of sensitivity or tingling anywhere on your body\nMedical History / Context: Drink alcohol excessively or do you have an addiction to alcohol, Ever been diagnosed with depression, Suffer from chronic anxiety, Ever had a migraine or is a member of your family known to have migraines, Suffer from fibromyalgia, Ever had a head trauma, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Panic attack",
+  "fable": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "I47.1",
+    "I26.9",
+    "I21.9",
+    "F41.0"
+   ],
+   "red_flags": [
+    "sudden (8/10) chest pain 7/10 with choking, presyncope and palpitations",
+    "paraesthesia and derealisation",
+    "chronic anxiety, depression, excess alcohol"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE CG95 Recent-onset chest pain of suspected cardiac origin: assessment and diagnosis (2010, updated 2016)",
+     "url": "https://www.nice.org.uk/guidance/cg95/chapter/Recommendations",
+     "point": "1.2.1.10: confirm or exclude a suspected ACS by resting 12-lead ECG and blood troponin; refer as an emergency when pain is current or recent."
+    },
+    {
+     "citation": "Kline JA et al. Clinical criteria to prevent unnecessary diagnostic testing in emergency department patients with suspected pulmonary embolism. J Thromb Haemost 2004;2:1247-1255",
+     "url": "https://doi.org/10.1111/j.1538-7836.2004.00790.x",
+     "point": "PERC allows omission of D-dimer only when all eight are true: age under 50, pulse under 100, SaO2 over 94%, no unilateral leg swelling, no haemoptysis, no recent trauma or surgery, no prior VTE, no hormone use."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "Panic attack fits a 31-year-old with chronic anxiety and perioral tingling, and an office ECG with vitals may close it. Sudden chest pain with choking and near-syncope is also how PE and arrhythmia present, and PERC cannot be applied without a pulse and saturation."
+  },
+  "astra": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "I49.9"
+   ],
+   "red_flags": [
+    "Palpitations associated with near-fainting",
+    "Abrupt substantial chest pain"
+   ],
+   "evidence": "NICE panic disorder guidance on excluding acute physical causes and ESC syncope assessment principles (from knowledge, not verified in this session).",
+   "confidence": 3,
+   "reasoning": "Derealization, perioral and limb tingling, fear, and chronic anxiety strongly support panic with hyperventilation. However, palpitations with near-syncope justify checking the rhythm and physiological stability before accepting that diagnosis."
+  }
+ },
+ {
+  "case_id": "ddxplus_123300",
+  "index": 225,
+  "intake": "PATIENT INTAKE:\n\nAge: 20\nSex: male\nChief Complaints: Had significantly increased sweating, Pain present, Pain character: cramping, Pain location: side of the chest (R), Pain location: flank (L), Pain intensity 2/10, Pain does not radiate, How precisely the pain can be located: 8/10 (10 = most precise), How fast the pain appeared: 6/10 (10 = fastest), Feel lightheaded and dizzy or do you feel like you are about to faint, Feeling nauseous or do you feel like vomiting, Feel like you are detached from your own body or your surroundings\nMedical History / Context: Do any members of your immediate family have a psychiatric illness, Drink alcohol excessively or do you have an addiction to alcohol, Ever been diagnosed with depression, Suffer from chronic anxiety, Ever had a migraine or is a member of your family known to have migraines, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Anemia",
+  "fable": {
+   "decision": "ROUTINE",
+   "dangers_to_consider": [
+    "I49.9",
+    "E16.2",
+    "F10.3"
+   ],
+   "red_flags": [
+    "sweating, lightheadedness, nausea and derealisation",
+    "chest and flank pain 2/10",
+    "excess alcohol, anxiety, depression"
+   ],
+   "evidence": [
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Anxiety symptoms with mild pain in a 20-year-old are closed by vitals, an office ECG and a glucose and haemoglobin, which the working diagnosis of anaemia already implies."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "A 20-year-old with anxiety and alcohol excess has a panic-like episode with 2/10 pain and no dyspnoea or palpitations. Vitals, an ECG and the FBC that 'anaemia' already implies close it."
+  },
+  "astra": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "E16.2",
+    "I49.9"
+   ],
+   "red_flags": [
+    "Near-fainting with sweating and nausea",
+    "Chest discomfort",
+    "Excessive alcohol use"
+   ],
+   "evidence": "ESC syncope assessment principles and NICE guidance on excluding physical causes of panic symptoms (from knowledge, not verified in this session).",
+   "confidence": 3,
+   "reasoning": "A panic or vasovagal episode is plausible, but the autonomic symptoms and near-syncope warrant a glucose check and cardiovascular assessment. There is insufficient intake evidence to accept anemia as the explanation or to establish a high-probability emergency."
+  }
+ },
+ {
+  "case_id": "ddxplus_50408",
+  "index": 238,
+  "intake": "PATIENT INTAKE:\n\nAge: 50\nSex: male\nChief Complaints: Pain present, Pain character: heavy, Pain location: iliac fossa (R), Pain location: iliac fossa (L), Pain location: hip (R), Pain location: hip (L), Pain location: testicle (R), Pain intensity 4/10, Pain does not radiate, How precisely the pain can be located: 3/10 (10 = most precise), How fast the pain appeared: 4/10 (10 = fastest), Any lesions, redness or problems on your skin that you believe are related to the condition you are consulting for, Skin lesion colour: pale, Skin lesions peel off: no, Skin lesions raised: 2/10, Skin lesion location: iliac fossa (R), Skin lesion location: iliac fossa (L), Pain caused by the skin lesions: 1/10, Skin lesion larger than 1 cm: yes, Itching of the skin lesions: 0/10, Been able to pass stools or gas since your symptoms increased, Intense coughing fits\nMedical History / Context: Significantly overweight compared to people of the same height as you, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Bronchitis",
+  "fable": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "K40.20",
+    "K40.30",
+    "N44.00"
+   ],
+   "red_flags": [
+    "raised 'lesions' in both iliac fossae with pain 4/10 spreading to the hip and right testicle",
+    "pain with coughing fits",
+    "passing stool and gas, overweight"
+   ],
+   "evidence": [
+    {
+     "citation": "HerniaSurge Group. International guidelines for groin hernia management. Hernia 2018;22:1-165",
+     "url": "https://doi.org/10.1007/s10029-017-1668-x",
+     "point": "Female sex, femoral hernia and prior hernia-related hospitalisation are risk factors for incarceration or strangulation; emergency treatment is tailored to patient and hernia factors."
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "Bilateral groin lumps that hurt on coughing are inguinal hernias; passing flatus and stool argues against obstruction, and reducibility is decided by examination."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "This is bilateral inguinal hernia with testicular referral, not bronchitis. Nothing in the intake suggests incarceration, but the working diagnosis does not examine the hernias at all, so the visit has to."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "N44.00",
+    "K46.0"
+   ],
+   "red_flags": [
+    "Right testicular pain",
+    "Lower abdominal or groin swellings",
+    "Associated lower abdominal pain"
+   ],
+   "evidence": "Acute scrotum assessment principles and HerniaSurge emergency hernia guidance (from knowledge, not verified in this session).",
+   "confidence": 4,
+   "reasoning": "Testicular pain requires examination to exclude torsion, even though the gradual moderate pain and groin swellings favor a hernia-related cause. Passing stool or gas does not exclude an incarcerated hernia or testicular ischemia."
+  }
+ },
+ {
+  "case_id": "ddxplus_18812",
+  "index": 239,
+  "intake": "PATIENT INTAKE:\n\nAge: 60\nSex: female\nChief Complaints: Pain present, Pain character: tender, Pain character: tugging, Pain character: heavy, Pain character: sharp, Pain location: ankle (R), Pain location: thigh (L), Pain location: dorsal aspect of the foot (R), Pain location: dorsal aspect of the foot (L), Pain location: sole (R), Pain intensity 7/10, Pain does not radiate, How precisely the pain can be located: 5/10 (10 = most precise), How fast the pain appeared: 3/10 (10 = fastest), Swelling in one or more areas of your body, Swelling location: ankle (R), Swelling location: ankle (L), Swelling location: thigh (R), Swelling location: thigh (L), Swelling location: dorsal aspect of the foot (R)\nMedical History / Context: Take corticosteroids, Heart failure, Liver cirrhosis, Ever had surgery to remove lymph nodes, Take a calcium channel blockers (medication), Were you diagnosed with endocrine disease or a hormone dysfunction, Ever been diagnosed with obstructive sleep apnea (OSA), A known kidney problem resulting in an inability to retain proteins, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Localized edema",
+  "fable": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "I50.9",
+    "I82.409",
+    "N04.9"
+   ],
+   "red_flags": [
+    "bilateral ankle, thigh and foot swelling with pain 7/10",
+    "heart failure, cirrhosis, nephrotic kidney disease, corticosteroids, calcium channel blocker",
+    "no weight gain listed, no prior DVT"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG158 Venous thromboembolic diseases: diagnosis, management and thrombophilia testing (2020)",
+     "url": "https://www.nice.org.uk/guidance/ng158/chapter/Recommendations",
+     "point": "1.1.2: if DVT is suspected, use the two-level Wells score (previous DVT scores 1 point, as do entire-leg swelling and localised tenderness); 1.1.3 and 1.1.8: a likely score gets a proximal leg-vein ultrasound within 4 hours, an unlikely score gets a D-dimer within 4 hours."
+    },
+    {
+     "citation": "McDonagh TA et al. 2021 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. Eur Heart J 2021;42:3599-3726",
+     "url": "https://doi.org/10.1093/eurheartj/ehab368",
+     "point": "Chronic HF that deteriorates suddenly or slowly is decompensated HF; new fluid accumulation and rapid weight change need prompt assessment of fluid status and diuretic treatment (text paraphrased from the fetched guideline page)."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "Several chronic causes of symmetric oedema are present and no weight gain or prior DVT is listed, so the working diagnosis may hold. Examination for a disproportionate limb and for decompensation decides whether Wells scoring or a heart failure review is needed."
+  },
+  "astra": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "I50.9"
+   ],
+   "red_flags": [
+    "Extensive painful bilateral edema",
+    "Established heart failure",
+    "Cirrhosis and protein-losing kidney disease"
+   ],
+   "evidence": "ESC heart failure guidance on assessing congestion (from knowledge, not verified in this session).",
+   "confidence": 3,
+   "reasoning": "Several established conditions and medications could explain chronic bilateral edema, and no weight gain or breathlessness is reported. However, the extent and pain require assessment of volume status and whether this represents worsening heart failure before accepting a routine localized-edema label."
+  }
+ },
+ {
+  "case_id": "ddxplus_118736",
+  "index": 240,
+  "intake": "PATIENT INTAKE:\n\nAge: 31\nSex: female\nChief Complaints: Been coughing up blood, Pain present, Pain character: tender, Pain character: burning, Pain location: tonsil (R), Pain location: tonsil (L), Pain location: thyroid cartilage, Pain location: pharynx, Pain location: under the jaw, Pain intensity 6/10, Pain does not radiate, How precisely the pain can be located: 7/10 (10 = most precise), How fast the pain appeared: 4/10 (10 = fastest), Nasal congestion or a clear runny nose\nMedical History / Context: Smoke cigarettes, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Viral pharyngitis",
+  "fable": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "I26.9",
+    "A15.0",
+    "J18.9",
+    "C34.9",
+    "J05.1"
+   ],
+   "red_flags": [
+    "coughing up blood",
+    "smoker",
+    "pain 6/10 at the tonsils, thyroid cartilage and under the jaw"
+   ],
+   "evidence": [
+    {
+     "citation": "Earwood JS, Thompson TD. Hemoptysis: evaluation and management. Am Fam Physician 2015;91:243-249 (PMID 25955625)",
+     "url": "https://europepmc.org/article/MED/25955625",
+     "point": "Chest radiography is the initial diagnostic test for haemodynamically stable patients with haemoptysis; pseudohaemoptysis is identified by history and examination; tuberculosis is considered in people born in endemic regions."
+    },
+    {
+     "citation": "Kline JA et al. Clinical criteria to prevent unnecessary diagnostic testing in emergency department patients with suspected pulmonary embolism. J Thromb Haemost 2004;2:1247-1255",
+     "url": "https://doi.org/10.1111/j.1538-7836.2004.00790.x",
+     "point": "PERC allows omission of D-dimer only when all eight are true: age under 50, pulse under 100, SaO2 over 94%, no unilateral leg swelling, no haemoptysis, no recent trauma or surgery, no prior VTE, no hormone use."
+    },
+    {
+     "citation": "Konstantinides SV et al. 2019 ESC Guidelines for the diagnosis and management of acute pulmonary embolism. Eur Heart J 2020;41:543-603",
+     "url": "https://doi.org/10.1093/eurheartj/ehz405",
+     "point": "PE is suspected in a patient with dyspnoea, chest pain (often pleuritic), pre-syncope or syncope, or haemoptysis; assessment is clinical probability, then D-dimer, then CT pulmonary angiography."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "Blood from an inflamed pharynx would be pseudohaemoptysis and routine, but the intake cannot tell that from true haemoptysis, which in a smoker needs a chest film and fails PERC, so PE probability has to be assessed. Pain at the thyroid cartilage also earns a look at the supraglottis."
+  },
+  "astra": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "I26.9",
+    "J18.9"
+   ],
+   "red_flags": [
+    "Reported coughing up blood",
+    "Smoking"
+   ],
+   "evidence": "ACR hemoptysis assessment principles and NICE pulmonary embolism guidance (from knowledge, not verified in this session).",
+   "confidence": 3,
+   "reasoning": "Blood could originate from an inflamed upper airway, but true hemoptysis requires clarification of its source and quantity and a respiratory assessment. The absence of dyspnea, chest pain, fever, and thrombotic risk factors makes a time-critical pulmonary cause less clearly supported."
+  }
+ },
+ {
+  "case_id": "ddxplus_52526",
+  "index": 245,
+  "intake": "PATIENT INTAKE:\n\nAge: 81\nSex: male\nChief Complaints: Pain present, Pain character: tender, Pain character: heavy, Pain location: back of head, Pain location: back of the neck, Pain location: side of the neck (R), Pain location: pharynx, Pain intensity 3/10, Pain does not radiate, How precisely the pain can be located: 5/10 (10 = most precise), How fast the pain appeared: 6/10 (10 = fastest), A fever (either felt or measured with a thermometer), Had chills or shivers, Any lesions, redness or problems on your skin that you believe are related to the condition you are consulting for, Skin lesion colour: pink, Skin lesions peel off: no, Skin lesions raised: 3/10, Skin lesion location: side of the neck (L), Skin lesion location: forehead, Pain caused by the skin lesions: 3/10, Skin lesion larger than 1 cm: yes, Itching of the skin lesions: 4/10, Diffuse (widespread) muscle pain, Recently had a loss of appetite or do you get full more quickly then usually, Nasal congestion or a clear runny nose, A cough\nMedical History / Context: Smoke cigarettes, No travel outside the country in the last 4 weeks\n\nReturn ONLY valid JSON matching this schema, with the fields in this order:\n\n{\n  \"serious_concern\": \"YES | NO\",\n  \"flags\": [\"ICD10_CODE\", \"...\"],\n  \"differential\": [\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT},\n    {\"code\": \"ICD10_CODE\", \"p\": PERCENT}\n  ],\n  \"p_serious\": PERCENT\n}",
+  "clinician_working_diagnosis": "Viral pharyngitis",
+  "fable": {
+   "decision": "UNCERTAIN",
+   "dangers_to_consider": [
+    "A41.9",
+    "L03.211",
+    "B02.9",
+    "J18.9"
+   ],
+   "red_flags": [
+    "81-year-old smoker with fever and chills",
+    "pink lesions over 1 cm on the neck and forehead",
+    "loss of appetite, myalgia, cough, coryza"
+   ],
+   "evidence": [
+    {
+     "citation": "NICE NG253 Suspected sepsis in people aged 16 or over: recognition, assessment and early management (2025), risk criteria table",
+     "url": "https://www.nice.org.uk/guidance/ng253/chapter/Evaluating-risk",
+     "point": "Medium-risk history criteria include an impaired immune system (illness or drugs including oral steroids) and acute deterioration of functional ability."
+    },
+    {
+     "citation": "clinical reasoning",
+     "url": "",
+     "point": "A pink lesion over 1 cm on the face or neck in a febrile 81-year-old is facial cellulitis or early zoster until examined; either needs treatment a pharyngitis label omits."
+    }
+   ],
+   "confidence": 3,
+   "reasoning": "Most of this is influenza-like illness, but fever with chills and a large pink lesion on the face and neck in an 81-year-old could be cellulitis or zoster, and age lowers the sepsis threshold. Examination of the lesion and vitals decide."
+  },
+  "astra": {
+   "decision": "ESCALATE",
+   "dangers_to_consider": [
+    "J18.9",
+    "G03.9"
+   ],
+   "red_flags": [
+    "Age 81 with fever and chills",
+    "Headache and neck pain",
+    "Cough and reduced appetite"
+   ],
+   "evidence": "NICE pneumonia and meningitis guidance (from knowledge, not verified in this session).",
+   "confidence": 4,
+   "reasoning": "A viral illness is possible, but this older adult needs assessment for pneumonia and a focused meningeal examination given fever with head and neck pain. The pink itchy lesions are nonspecific and should not be interpreted as a documented meningococcal rash."
+  }
+ }
+]

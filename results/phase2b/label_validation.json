@@ -1,0 +1,375 @@
+{
+ "n": 250,
+ "kappa": 0.700318411687582,
+ "raw_agreement": 0.872,
+ "confusion": {
+  "ESCALATE|ESCALATE": 170,
+  "UNCERTAIN|ESCALATE": 10,
+  "ROUTINE|ESCALATE": 9,
+  "UNCERTAIN|UNCERTAIN": 3,
+  "ROUTINE|ROUTINE": 45,
+  "ROUTINE|UNCERTAIN": 9,
+  "ESCALATE|UNCERTAIN": 3,
+  "UNCERTAIN|ROUTINE": 1
+ },
+ "adjudicated": 35,
+ "decisions": {
+  "ESCALATE": 178,
+  "ROUTINE": 71,
+  "UNCERTAIN": 1
+ },
+ "criterion_4": {
+  "kappa": 0.700318411687582,
+  "pass": true,
+  "kappa_decided": 0.8835758835758837,
+  "decided_both": 224,
+  "raw_agreement_decided": 0.9598214285714286,
+  "uncertain_rate": {
+   "fable": 0.056,
+   "astra": 0.06
+  },
+  "uncertain_count": {
+   "fable": 14,
+   "astra": 15
+  }
+ },
+ "by_stratum": {
+  "serious_tier1": {
+   "ESCALATE": 58,
+   "ROUTINE": 1,
+   "UNCERTAIN": 1
+  },
+  "serious_upgrade_or_flag": {
+   "ESCALATE": 78,
+   "ROUTINE": 2
+  },
+  "benign": {
+   "ROUTINE": 57,
+   "ESCALATE": 3
+  },
+  "excluded": {
+   "ROUTINE": 11,
+   "ESCALATE": 39
+  }
+ },
+ "criterion_1": {
+  "agree": 196,
+  "decided": 203,
+  "rate": 0.9655172413793104,
+  "wilson": [
+   0.9305453090706792,
+   0.9831980043936925
+  ],
+  "pass": true
+ },
+ "criterion_2": {
+  "serious_tier1": {
+   "decided": 59,
+   "agree": 58,
+   "rate": 0.9830508474576272,
+   "wilson": [
+    0.910042739450708,
+    0.9970017661147945
+   ],
+   "target": 0.92,
+   "pass": true
+  },
+  "serious_upgrade_or_flag": {
+   "decided": 80,
+   "agree": 78,
+   "rate": 0.975,
+   "wilson": [
+    0.9133556694270627,
+    0.9931171068589743
+   ],
+   "target": 0.92,
+   "pass": true
+  },
+  "benign": {
+   "decided": 55,
+   "agree": 53,
+   "rate": 0.9636363636363636,
+   "wilson": [
+    0.8767653592704914,
+    0.9899704588009981
+   ],
+   "target": 0.85,
+   "pass": true
+  }
+ },
+ "criterion_3": {
+  "per_rule": {
+   "P1": {
+    "cases": 15,
+    "decided": 15,
+    "agree": 15,
+    "rate": 1.0,
+    "judged": true,
+    "pass": true,
+    "decisions": {
+     "ESCALATE": 15
+    }
+   },
+   "P10": {
+    "cases": 2,
+    "decided": 2,
+    "agree": 2,
+    "rate": 1.0,
+    "judged": false,
+    "pass": true,
+    "decisions": {
+     "ESCALATE": 2
+    }
+   },
+   "P12": {
+    "cases": 8,
+    "decided": 8,
+    "agree": 8,
+    "rate": 1.0,
+    "judged": true,
+    "pass": true,
+    "decisions": {
+     "ESCALATE": 8
+    }
+   },
+   "P2": {
+    "cases": 16,
+    "decided": 16,
+    "agree": 16,
+    "rate": 1.0,
+    "judged": true,
+    "pass": true,
+    "decisions": {
+     "ESCALATE": 16
+    }
+   },
+   "P3": {
+    "cases": 13,
+    "decided": 13,
+    "agree": 12,
+    "rate": 0.9230769230769231,
+    "judged": true,
+    "pass": true,
+    "decisions": {
+     "ESCALATE": 12,
+     "ROUTINE": 1
+    }
+   },
+   "P4": {
+    "cases": 4,
+    "decided": 4,
+    "agree": 4,
+    "rate": 1.0,
+    "judged": false,
+    "pass": true,
+    "decisions": {
+     "ESCALATE": 4
+    }
+   },
+   "P5": {
+    "cases": 9,
+    "decided": 9,
+    "agree": 7,
+    "rate": 0.7777777777777778,
+    "judged": true,
+    "pass": false,
+    "decisions": {
+     "ESCALATE": 7,
+     "ROUTINE": 2
+    }
+   },
+   "P6": {
+    "cases": 2,
+    "decided": 2,
+    "agree": 2,
+    "rate": 1.0,
+    "judged": false,
+    "pass": true,
+    "decisions": {
+     "ESCALATE": 2
+    }
+   },
+   "P7": {
+    "cases": 8,
+    "decided": 8,
+    "agree": 8,
+    "rate": 1.0,
+    "judged": true,
+    "pass": true,
+    "decisions": {
+     "ESCALATE": 8
+    }
+   },
+   "P9": {
+    "cases": 8,
+    "decided": 8,
+    "agree": 8,
+    "rate": 1.0,
+    "judged": true,
+    "pass": true,
+    "decisions": {
+     "ESCALATE": 8
+    }
+   },
+   "K22": {
+    "cases": 4,
+    "decided": 4,
+    "agree": 4,
+    "rate": 1.0,
+    "judged": false,
+    "pass": true,
+    "decisions": {
+     "ESCALATE": 4
+    }
+   },
+   "K23": {
+    "cases": 2,
+    "decided": 2,
+    "agree": 2,
+    "rate": 1.0,
+    "judged": false,
+    "pass": true,
+    "decisions": {
+     "ESCALATE": 2
+    }
+   },
+   "K24": {
+    "cases": 8,
+    "decided": 8,
+    "agree": 8,
+    "rate": 1.0,
+    "judged": true,
+    "pass": true,
+    "decisions": {
+     "ESCALATE": 8
+    }
+   },
+   "K33": {
+    "cases": 8,
+    "decided": 8,
+    "agree": 8,
+    "rate": 1.0,
+    "judged": true,
+    "pass": true,
+    "decisions": {
+     "ESCALATE": 8
+    }
+   },
+   "K42": {
+    "cases": 8,
+    "decided": 8,
+    "agree": 8,
+    "rate": 1.0,
+    "judged": true,
+    "pass": true,
+    "decisions": {
+     "ESCALATE": 8
+    }
+   }
+  },
+  "flagged": [
+   "P5"
+  ]
+ },
+ "criterion_5": {
+  "n": 46,
+  "decisions": {
+   "ROUTINE": 8,
+   "ESCALATE": 38
+  },
+  "split": 7,
+  "per_rule": {
+   "K27": {
+    "cases": 2,
+    "decisions": {
+     "ESCALATE": 2
+    },
+    "split": 0,
+    "escalate_conf4": 1,
+    "candidate_patch": false
+   },
+   "K30": {
+    "cases": 7,
+    "decisions": {
+     "ESCALATE": 7
+    },
+    "split": 0,
+    "escalate_conf4": 7,
+    "candidate_patch": true
+   },
+   "K32": {
+    "cases": 2,
+    "decisions": {
+     "ESCALATE": 1,
+     "ROUTINE": 1
+    },
+    "split": 1,
+    "escalate_conf4": 0,
+    "candidate_patch": false
+   },
+   "X10": {
+    "cases": 28,
+    "decisions": {
+     "ESCALATE": 26,
+     "ROUTINE": 2
+    },
+    "split": 2,
+    "escalate_conf4": 19,
+    "candidate_patch": false
+   },
+   "X11": {
+    "cases": 1,
+    "decisions": {
+     "ROUTINE": 1
+    },
+    "split": 0,
+    "escalate_conf4": 0,
+    "candidate_patch": false
+   },
+   "X6": {
+    "cases": 6,
+    "decisions": {
+     "ESCALATE": 5,
+     "ROUTINE": 1
+    },
+    "split": 0,
+    "escalate_conf4": 1,
+    "candidate_patch": false
+   },
+   "X7": {
+    "cases": 3,
+    "decisions": {
+     "ESCALATE": 3
+    },
+    "split": 0,
+    "escalate_conf4": 0,
+    "candidate_patch": false
+   },
+   "X8": {
+    "cases": 1,
+    "decisions": {
+     "ESCALATE": 1
+    },
+    "split": 0,
+    "escalate_conf4": 1,
+    "candidate_patch": true
+   },
+   "X9": {
+    "cases": 8,
+    "decisions": {
+     "ROUTINE": 4,
+     "ESCALATE": 4
+    },
+    "split": 5,
+    "escalate_conf4": 2,
+    "candidate_patch": false
+   }
+  }
+ },
+ "passes": {
+  "1": true,
+  "2": true,
+  "3": false,
+  "4": true
+ }
+}
