@@ -16,7 +16,8 @@ failed with the next case in the draw's own shuffled order of that stratum's poo
 20. Rule X11 (decision 12) removed the stratum, so Phase 2b has no replacement step; its draw reproduces
 under the current rules, while the Phase 2 draw reproduces only under the rules frozen at 45a7599. The
 strata keep their draw; their classes come from the rules applied with the key's targets, and a case whose
-class moves is reported, not replaced.
+class moves is reported, not replaced. Decision 21 (P5 demoted) moved cases out of the upgraded stratum, so the Phase 2b
+draw reproduces only under the rules frozen at 54dbc3f too.
 
 Checks before writing: the rebuilt 470 key must match data/test_sets/eval-v03-key.sha256, and the
 reproduced draw must equal the candidates file.

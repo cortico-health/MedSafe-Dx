@@ -35,18 +35,33 @@ layer-a rule or UPGRADE reached, whose only serious target is DXA-derived, is EX
 reference kept 8 of the 20 such cases routine (60% ESCALATE against the 92% target), so the class was
 demoted rather than refitted. `dxa_only_target` in the namespace is set after layer b.
 
-The Phase 2b draw (`PHASE2B_STRATA`, `RULE_MIN`, `PHASE2B_SEED`) takes never-reviewed cases by stratum,
-filling each named rule's minimum first, so every rule under test has enough fresh cases. It excludes
+Decision 21 (2026-09-27, after Phase 2b, before the full-run draw): rule P5 moves from layer a to layer c.
+The Phase 2b reference agreed with it on 7 of 9 cases (77.8%, below criterion 3's 80%), so a case that P5
+alone made SERIOUS is EXCLUDED, and its danger set is no longer credited. Decision 22 keeps HIV (K30)
+excluded.
+
+The Phase 2b draw (`PHASE2B_STRATA`, `RULE_MIN`, `PHASE2B_SEED`) took never-reviewed cases by stratum,
+filling each named rule's minimum first, so every rule under test had enough fresh cases. It excluded
 every case Phase 2 reviewed or ran (`PHASE2_RUN_IDS`: the 250 and the 18 replaced DXA-only cases). The
-Phase 2 draw (`PHASE2_STRATA`, seed 20261003) is kept as committed in phase2_candidates.csv; it
-reproduces only under the rules frozen at 45a7599, because X11 moved the DXA-only pool into the
-excluded pool.
+Phase 2 and Phase 2b draws are kept as committed in phase2_candidates.csv and phase2b_candidates.csv;
+each reproduces only under the rules frozen for it (45a7599 and 54dbc3f), because X11 and decision 21
+moved cases between strata.
+
+The full-run draw (`--draw-full`; `FULL_SEED`, `FULL_TIER1_PER_CONDITION`, `FULL_UPGRADE`, `FULL_UPGRADE_RULE_MIN`,
+`FULL_BENIGN`) takes about 900 scored cases from the never-reviewed pool, which now also leaves out every case
+Phase 2b ran: up to 25 per tier-1 condition, 140 upgraded or flagged cases with at least 8 per class-deciding
+rule, and 260 BENIGN cases split evenly across the benign conditions (a condition with fewer takes all it has).
+No EXCLUDED case is drawn. Within each bucket the order is a seeded shuffle with the cases that have no exact
+public twin first (`twin_flags`: another adult row in the DDXPlus test or validate split with the same age band,
+sex and evidence tokens, as in docs/v0.3-memorisation-checks.md), so a twin is drawn only when the bucket runs out
+of cases without one. scripts/build_v03_full_set.py keys the draw and walks the same order to replace a case
+whose class moves under the key.
 
 Rule triggers are Python boolean expressions over a fixed namespace (`namespace()`): every DDXPlus
 evidence code as a presence flag, `age`, `sex`, `tier`, `truth`, the pain scales `intensity` and
 `onset`, and the named predicates listed in PREDICATES.
 
-Usage: python scripts/analysis/v03_case_selection.py [--skip-full] [--skip-models]
+Usage: python scripts/analysis/v03_case_selection.py [--skip-full] [--skip-models] [--draw-full]
 """
 
 from __future__ import annotations
@@ -92,6 +107,16 @@ PHASE2_RUN_IDS = "eval-v03-phase2.run_ids.txt"
 # Minimum fresh cases per rule under test, filled first within the stratum the rule's cases fall in (a case
 # counts for every rule that decided its class, so chest-pain cases firing P12 and P13 count for both).
 RULE_MIN = {"P1": 8, "P2": 8, "P5": 8, "P7": 8, "P9": 8, "P12": 8, "P13": 8}
+# The full run (docs/v0.3-case-selection-rules.md section 7.4): about 900 scored cases, seed 20261005, the pool minus
+# every case Phase 2b ran as well. The user asked for about 30 per tier-1 condition, 150 upgraded and 270 BENIGN
+# (1,020 in all); we scale each part down to reach about 900, because the run budget is 80 USD and Phase 2b cost
+# 0.078 USD per case across the 14 model x arm rows.
+FULL_SEED = 20261005
+FULL_TIER1_PER_CONDITION = 25
+FULL_UPGRADE = 140
+FULL_UPGRADE_RULE_MIN = 8  # per class-deciding rule of the upgraded stratum, filled first
+FULL_BENIGN = 260
+PHASE2B_RUN_IDS = "eval-v03-phase2b.run_ids.txt"
 
 # Pain-location values (E_55) and swelling locations (E_152) used by the named predicates.
 CHEST = {"V_29", "V_101", "V_55", "V_56", "V_159", "V_160", "V_170", "V_171", "V_127", "V_128"}
@@ -545,9 +570,11 @@ def kept_scores(ab, sel, recs, rm, vr, zero_code: str | None = None) -> dict:
 
 
 def reviewed_ids(phase: str = "2b") -> set[str]:
-    """Every case anyone has read or run: the 470, the v0 250, the pools and their controls, the 150, and for Phase 2b
-    the 268 Phase 2 cases (the 250 reviewed and the 18 replaced DXA-only cases the models answered)."""
-    names = list(REVIEWED_ID_FILES) + ([PHASE2_RUN_IDS] if phase == "2b" else [])
+    """Every case anyone has read or run: the 470, the v0 250, the pools and their controls, the 150, for Phase 2b
+    the 268 Phase 2 cases (the 250 reviewed and the 18 replaced DXA-only cases the models answered), and for the
+    full run the 250 Phase 2b cases as well."""
+    names = list(REVIEWED_ID_FILES) + ([PHASE2_RUN_IDS] if phase in ("2b", "full") else []) \
+        + ([PHASE2B_RUN_IDS] if phase == "full" else [])
     out = set()
     for name in names:
         out |= {l.strip() for l in (ROOT / "data" / "test_sets" / name).read_text().splitlines() if l.strip()}
@@ -565,9 +592,10 @@ def stratum_of(s: dict) -> str:
     return "excluded"
 
 
-def build_pool(rules, tiers, codes, reviewed: set[str]):
+def build_pool(rules, tiers, codes, reviewed: set[str], truths: dict[str, str] | None = None):
     """One pass over the adult test split with DXA candidates at p >= 10% (no key): per-condition counts, rules
-    fired, the never-reviewed pool by stratum and the class-deciding rule tags per case."""
+    fired, the never-reviewed pool by stratum and the class-deciding rule tags per case. `truths`, when given, is
+    filled with each pool case's true condition."""
     tier1 = sorted(c for c, t in tiers.items() if t == 1)
     by = defaultdict(Counter)
     fired_full = Counter()
@@ -586,12 +614,14 @@ def build_pool(rules, tiers, codes, reviewed: set[str]):
         k[f"{s['bucket']}_{s['class']}"] += 1
         if s["reason"] == "X11":
             k["dxa_only"] += 1
-        if s["reason"].startswith("P"):
+        if s["class"] == SERIOUS and s["reason"].startswith("P"):  # an EXCLUDED case can carry P5 (decision 21)
             k["layer_a"] += 1
         for f in set(s["fired"]) | set(s["excluded_by"]):
             fired_full[f] += 1
         if cid not in reviewed:
             pool[stratum_of(s)].append(cid)
+            if truths is not None:
+                truths[cid] = c["truth"]
             t = class_tags(s)
             if t:
                 tags[cid] = t
@@ -627,6 +657,88 @@ def draw_cases(pool: dict[str, list[str]], tags: dict[str, set[str]], seed: int,
     return draw
 
 
+def twin_flags(ids: set[str]) -> dict[str, bool]:
+    """case_id -> whether the test-split case has an exact public twin: another adult row in the DDXPlus test or
+    validate split with the same age band, sex and evidence tokens (scripts/analysis/v03_memorisation.py)."""
+    import v03_memorisation as mem
+
+    counts: Counter = Counter()
+    test = None
+    for name in ("test", "validate"):
+        d = mem.load_split(name)
+        for age, sex, toks in zip(d["age"], d["sex"], d["tokens"]):
+            counts[(mem.age_band(int(age)), sex, toks)] += 1
+        if name == "test":
+            test = d
+    out = {}
+    for row, age, sex, toks in zip(test["row"], test["age"], test["sex"], test["tokens"]):
+        cid = f"ddxplus_{row}"
+        if cid in ids:
+            out[cid] = counts[(mem.age_band(int(age)), sex, toks)] > 1  # the case itself counts once
+    return out
+
+
+def full_orders(pool: dict[str, list[str]], truths: dict[str, str], twins: dict[str, bool], tiers: dict,
+                seed: int = FULL_SEED) -> dict[tuple[str, str], list[str]]:
+    """The full run's draw order per bucket: (serious_tier1, condition) for each tier-1 condition, (serious_upgrade_or_flag,
+    "") and (benign, condition) for each benign condition. Each bucket is a seeded shuffle, then a stable sort that puts
+    the cases without an exact public twin first. Buckets are shuffled in sorted order, so the order reproduces."""
+    rng = random.Random(seed)
+    buckets: dict[tuple[str, str], list[str]] = {}
+    for stratum in ("serious_tier1", "serious_upgrade_or_flag", "benign"):
+        by: dict[str, list[str]] = defaultdict(list)
+        for cid in pool[stratum]:
+            by["" if stratum == "serious_upgrade_or_flag" else truths[cid]].append(cid)
+        for cond in sorted(by):
+            ids = sorted(by[cond])
+            rng.shuffle(ids)
+            buckets[(stratum, cond)] = sorted(ids, key=lambda c: twins.get(c, False))
+    return buckets
+
+
+def benign_quotas(sizes: dict[str, int], n: int = FULL_BENIGN) -> dict[str, int]:
+    """Split n evenly across the benign conditions; a condition with fewer cases takes all it has and the rest is
+    shared among the others (smallest pools first, ties by name)."""
+    out, left = {}, n
+    order = sorted(sizes, key=lambda c: (sizes[c], c))
+    for j, c in enumerate(order):
+        out[c] = min(sizes[c], left // (len(order) - j))
+        left -= out[c]
+    return out
+
+
+def draw_full(buckets: dict[tuple[str, str], list[str]], tags: dict[str, set[str]]) -> list[dict]:
+    """The full-run draw from `full_orders`: the first FULL_TIER1_PER_CONDITION cases of each tier-1 bucket; in the
+    upgraded bucket FULL_UPGRADE_RULE_MIN cases per class-deciding rule first (rules in sorted order, a case counting for
+    every rule that decided it), then the bucket's order to FULL_UPGRADE; the BENIGN quotas of `benign_quotas`."""
+    draw = []
+    for (stratum, cond), ids in buckets.items():
+        if stratum == "serious_tier1":
+            picked = ids[:FULL_TIER1_PER_CONDITION]
+        elif stratum == "benign":
+            q = benign_quotas({c: len(v) for (st, c), v in buckets.items() if st == "benign"})
+            picked = ids[:q[cond]]
+        else:
+            picked, got = [], set()
+            for rule_id in sorted({t for c in ids for t in tags.get(c, ())}):
+                have = sum(1 for c in picked if rule_id in tags.get(c, ()))
+                for c in ids:
+                    if have >= FULL_UPGRADE_RULE_MIN:
+                        break
+                    if c not in got and rule_id in tags.get(c, ()):
+                        picked.append(c)
+                        got.add(c)
+                        have += 1
+            for c in ids:
+                if len(picked) >= FULL_UPGRADE:
+                    break
+                if c not in got:
+                    picked.append(c)
+                    got.add(c)
+        draw += [{"stratum": stratum, "bucket": cond, "case_id": c, "rules": "|".join(sorted(tags.get(c, ())))} for c in picked]
+    return draw
+
+
 # ---------------------------------------------------------------- counts
 
 
@@ -637,7 +749,7 @@ def count_table(sel: dict[str, dict], tiers: dict) -> list[dict]:
         c["n"] += 1
         c[f"{s['bucket']}_{s['class']}"] += 1
         c[s["class"]] += 1
-        if s["reason"].startswith("P"):
+        if s["class"] == SERIOUS and s["reason"].startswith("P"):
             c["layer_a"] += 1
         if "D1" in s["fired"]:
             c["target_dropped"] += 1
@@ -684,6 +796,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--skip-full", action="store_true", help="skip the full test-split pass")
     ap.add_argument("--skip-models", action="store_true", help="skip the 7-model rescoring")
+    ap.add_argument("--draw-full", action="store_true", help="write the full-run draw (full_candidates.csv)")
     args = ap.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     rules = load_rules()
@@ -769,7 +882,8 @@ def main() -> None:
 
     # 3. The full adult test split (counts only; DXA-derived targets as candidates at p >= 10%, no red-herring rule).
     if not args.skip_full:
-        by, fired_full, pool, tags = build_pool(rules, tiers, codes, reviewed_ids(phase="2b"))
+        truths: dict[str, str] = {}
+        by, fired_full, pool, tags = build_pool(rules, tiers, codes, reviewed_ids(phase="full"), truths)
         rows_full = []
         for cond in sorted(by, key=lambda x: (tiers[x], x)):
             k = by[cond]
@@ -781,18 +895,29 @@ def main() -> None:
         summary["full_split"] = {"adults": sum(k["n"] for k in by.values()), "fired": dict(fired_full),
                                  "never_reviewed_pool": {k: len(v) for k, v in pool.items()},
                                  "never_reviewed_by_rule": {k: v for k, v in sorted(pool_by_tag.items())}}
-        # Phase 2b candidate draw. IDs only; nobody has read them. phase2_candidates.csv (Phase 2) stays as committed.
-        draw = draw_cases(pool, tags, PHASE2B_SEED, PHASE2B_STRATA)
-        write_csv(OUT / "phase2b_candidates.csv", draw)
-        by_rule = Counter(t for d in draw for t in d["rules"].split("|") if t)
-        summary["phase2b"] = {"seed": PHASE2B_SEED, "strata": PHASE2B_STRATA, "rule_minimums": RULE_MIN, "drawn": len(draw),
-                              "by_stratum": dict(Counter(d["stratum"] for d in draw)),
-                              "by_rule": {k: v for k, v in sorted(by_rule.items())},
-                              # A minimum the pool cannot meet is a shortfall: the rule decides too few classes to test.
-                              "shortfall": {r: {"pool": pool_by_tag.get(r, 0), "drawn": by_rule.get(r, 0)}
-                                            for r, m in RULE_MIN.items() if by_rule.get(r, 0) < m}}
+        # The Phase 2 and 2b draws stay as committed (phase2_candidates.csv, phase2b_candidates.csv).
+        summary["phase2b"] = {"seed": PHASE2B_SEED, "strata": PHASE2B_STRATA, "draw": "phase2b_candidates.csv (as committed at b998919)"}
+        # The full-run pool: counts per bucket, with and without an exact public twin (ids only; nobody reads a case).
+        scored = set(pool["serious_tier1"]) | set(pool["serious_upgrade_or_flag"]) | set(pool["benign"])
+        twins = twin_flags(scored)
+        buckets = full_orders(pool, truths, twins, tiers)
+        summary["full_run_pool"] = {f"{st}|{c}": {"pool": len(ids), "no_twin": sum(not twins[x] for x in ids)}
+                                    for (st, c), ids in buckets.items()}
+        summary["full_run_pool_by_rule"] = dict(sorted(Counter(t for c in pool["serious_upgrade_or_flag"] for t in tags.get(c, ())).items()))
         print(f"full split: {summary['full_split']['adults']} adults; never-reviewed pool {summary['full_split']['never_reviewed_pool']}")
-        print(f"phase 2b: {len(draw)} drawn (seed {PHASE2B_SEED}); by rule {summary['phase2b']['by_rule']}")
+        if args.draw_full:
+            draw = draw_full(buckets, tags)
+            for d in draw:
+                d["twin"] = twins[d["case_id"]]
+            write_csv(OUT / "full_candidates.csv", draw)
+            by_rule = Counter(t for d in draw if d["stratum"] == "serious_upgrade_or_flag" for t in d["rules"].split("|") if t)
+            summary["full_run"] = {"seed": FULL_SEED, "tier1_per_condition": FULL_TIER1_PER_CONDITION, "upgrade": FULL_UPGRADE,
+                                   "upgrade_rule_min": FULL_UPGRADE_RULE_MIN, "benign": FULL_BENIGN, "drawn": len(draw),
+                                   "by_stratum": dict(Counter(d["stratum"] for d in draw)),
+                                   "by_bucket": dict(Counter(f"{d['stratum']}|{d['bucket']}" for d in draw)),
+                                   "upgrade_by_rule": dict(sorted(by_rule.items())),
+                                   "twins": sum(d["twin"] for d in draw)}
+            print(f"full run: {len(draw)} drawn (seed {FULL_SEED}); {summary['full_run']['by_stratum']}; twins {summary['full_run']['twins']}")
 
     (OUT / "summary.json").write_text(json.dumps(summary, indent=1, default=lambda o: dict(o) if isinstance(o, Counter) else str(o)) + "\n")
 
