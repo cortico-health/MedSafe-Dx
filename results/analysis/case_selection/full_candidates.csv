@@ -1,0 +1,901 @@
+stratum,bucket,case_id,rules,twin
+serious_tier1,Acute dystonic reactions,ddxplus_84317,,False
+serious_tier1,Acute dystonic reactions,ddxplus_33912,,False
+serious_tier1,Acute dystonic reactions,ddxplus_113916,,False
+serious_tier1,Acute dystonic reactions,ddxplus_86157,,False
+serious_tier1,Acute dystonic reactions,ddxplus_50027,,False
+serious_tier1,Acute dystonic reactions,ddxplus_75809,,False
+serious_tier1,Acute dystonic reactions,ddxplus_85971,,False
+serious_tier1,Acute dystonic reactions,ddxplus_19250,,False
+serious_tier1,Acute dystonic reactions,ddxplus_60460,,False
+serious_tier1,Acute dystonic reactions,ddxplus_88986,,False
+serious_tier1,Acute dystonic reactions,ddxplus_71719,,False
+serious_tier1,Acute dystonic reactions,ddxplus_37354,,False
+serious_tier1,Acute dystonic reactions,ddxplus_123534,,False
+serious_tier1,Acute dystonic reactions,ddxplus_115672,,False
+serious_tier1,Acute dystonic reactions,ddxplus_5134,,False
+serious_tier1,Acute dystonic reactions,ddxplus_34808,,False
+serious_tier1,Acute dystonic reactions,ddxplus_74616,,False
+serious_tier1,Acute dystonic reactions,ddxplus_101024,,False
+serious_tier1,Acute dystonic reactions,ddxplus_74696,,False
+serious_tier1,Acute dystonic reactions,ddxplus_115538,,False
+serious_tier1,Acute dystonic reactions,ddxplus_49915,,False
+serious_tier1,Acute dystonic reactions,ddxplus_96172,,False
+serious_tier1,Acute dystonic reactions,ddxplus_81380,,False
+serious_tier1,Acute dystonic reactions,ddxplus_105748,,False
+serious_tier1,Acute dystonic reactions,ddxplus_104403,,False
+serious_tier1,Acute pulmonary edema,ddxplus_17749,,False
+serious_tier1,Acute pulmonary edema,ddxplus_29787,,False
+serious_tier1,Acute pulmonary edema,ddxplus_14478,,False
+serious_tier1,Acute pulmonary edema,ddxplus_62631,,False
+serious_tier1,Acute pulmonary edema,ddxplus_7927,,False
+serious_tier1,Acute pulmonary edema,ddxplus_132591,,False
+serious_tier1,Acute pulmonary edema,ddxplus_75709,,False
+serious_tier1,Acute pulmonary edema,ddxplus_82457,,False
+serious_tier1,Acute pulmonary edema,ddxplus_110589,,False
+serious_tier1,Acute pulmonary edema,ddxplus_123035,,False
+serious_tier1,Acute pulmonary edema,ddxplus_4341,,False
+serious_tier1,Acute pulmonary edema,ddxplus_117988,,False
+serious_tier1,Acute pulmonary edema,ddxplus_94857,,False
+serious_tier1,Acute pulmonary edema,ddxplus_7432,,False
+serious_tier1,Acute pulmonary edema,ddxplus_70922,,False
+serious_tier1,Acute pulmonary edema,ddxplus_62110,,False
+serious_tier1,Acute pulmonary edema,ddxplus_34836,,False
+serious_tier1,Acute pulmonary edema,ddxplus_105462,,False
+serious_tier1,Acute pulmonary edema,ddxplus_80264,,False
+serious_tier1,Acute pulmonary edema,ddxplus_131192,,False
+serious_tier1,Acute pulmonary edema,ddxplus_32666,,False
+serious_tier1,Acute pulmonary edema,ddxplus_69589,,False
+serious_tier1,Acute pulmonary edema,ddxplus_1334,,False
+serious_tier1,Acute pulmonary edema,ddxplus_131412,,False
+serious_tier1,Acute pulmonary edema,ddxplus_115925,,False
+serious_tier1,Anaphylaxis,ddxplus_45402,,False
+serious_tier1,Anaphylaxis,ddxplus_21713,,False
+serious_tier1,Anaphylaxis,ddxplus_102819,,False
+serious_tier1,Anaphylaxis,ddxplus_69531,,False
+serious_tier1,Anaphylaxis,ddxplus_64948,,False
+serious_tier1,Anaphylaxis,ddxplus_36693,,False
+serious_tier1,Anaphylaxis,ddxplus_6768,,False
+serious_tier1,Anaphylaxis,ddxplus_44037,,False
+serious_tier1,Anaphylaxis,ddxplus_116528,,False
+serious_tier1,Anaphylaxis,ddxplus_51030,,False
+serious_tier1,Anaphylaxis,ddxplus_29388,,False
+serious_tier1,Anaphylaxis,ddxplus_6859,,False
+serious_tier1,Anaphylaxis,ddxplus_77792,,False
+serious_tier1,Anaphylaxis,ddxplus_119788,,False
+serious_tier1,Anaphylaxis,ddxplus_110105,,False
+serious_tier1,Anaphylaxis,ddxplus_23585,,False
+serious_tier1,Anaphylaxis,ddxplus_46422,,False
+serious_tier1,Anaphylaxis,ddxplus_114198,,False
+serious_tier1,Anaphylaxis,ddxplus_57121,,False
+serious_tier1,Anaphylaxis,ddxplus_110887,,False
+serious_tier1,Anaphylaxis,ddxplus_48560,,False
+serious_tier1,Anaphylaxis,ddxplus_105281,,False
+serious_tier1,Anaphylaxis,ddxplus_60146,,False
+serious_tier1,Anaphylaxis,ddxplus_69091,,False
+serious_tier1,Anaphylaxis,ddxplus_47318,,False
+serious_tier1,Boerhaave,ddxplus_67916,,False
+serious_tier1,Boerhaave,ddxplus_98896,,False
+serious_tier1,Boerhaave,ddxplus_104729,,False
+serious_tier1,Boerhaave,ddxplus_35923,,False
+serious_tier1,Boerhaave,ddxplus_9428,,False
+serious_tier1,Boerhaave,ddxplus_118285,,False
+serious_tier1,Boerhaave,ddxplus_121952,,False
+serious_tier1,Boerhaave,ddxplus_105589,,False
+serious_tier1,Boerhaave,ddxplus_4086,,False
+serious_tier1,Boerhaave,ddxplus_23902,,False
+serious_tier1,Boerhaave,ddxplus_28559,,False
+serious_tier1,Boerhaave,ddxplus_57082,,False
+serious_tier1,Boerhaave,ddxplus_58521,,False
+serious_tier1,Boerhaave,ddxplus_31777,,False
+serious_tier1,Boerhaave,ddxplus_73438,,False
+serious_tier1,Boerhaave,ddxplus_115782,,False
+serious_tier1,Boerhaave,ddxplus_59300,,False
+serious_tier1,Boerhaave,ddxplus_86494,,False
+serious_tier1,Boerhaave,ddxplus_8613,,False
+serious_tier1,Boerhaave,ddxplus_125160,,False
+serious_tier1,Boerhaave,ddxplus_63689,,False
+serious_tier1,Boerhaave,ddxplus_9018,,False
+serious_tier1,Boerhaave,ddxplus_14072,,False
+serious_tier1,Boerhaave,ddxplus_64231,,False
+serious_tier1,Boerhaave,ddxplus_84676,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_20110,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_104968,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_39225,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_30403,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_42368,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_31692,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_70170,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_123705,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_55330,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_109988,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_130184,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_114453,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_89072,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_63191,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_27709,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_80488,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_49966,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_38421,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_78795,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_2783,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_56468,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_93257,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_85790,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_53293,,False
+serious_tier1,Bronchospasm / acute asthma exacerbation,ddxplus_67543,,False
+serious_tier1,Ebola,ddxplus_110272,,False
+serious_tier1,Ebola,ddxplus_37820,,False
+serious_tier1,Ebola,ddxplus_70165,,False
+serious_tier1,Ebola,ddxplus_38750,,False
+serious_tier1,Ebola,ddxplus_55416,,False
+serious_tier1,Ebola,ddxplus_75525,,False
+serious_tier1,Ebola,ddxplus_24711,,False
+serious_tier1,Ebola,ddxplus_106018,,False
+serious_tier1,Ebola,ddxplus_45703,,False
+serious_tier1,Ebola,ddxplus_101234,,False
+serious_tier1,Ebola,ddxplus_103775,,False
+serious_tier1,Ebola,ddxplus_94807,,False
+serious_tier1,Ebola,ddxplus_61145,,False
+serious_tier1,Ebola,ddxplus_102095,,False
+serious_tier1,Ebola,ddxplus_63654,,False
+serious_tier1,Ebola,ddxplus_55519,,False
+serious_tier1,Ebola,ddxplus_111154,,False
+serious_tier1,Ebola,ddxplus_77908,,False
+serious_tier1,Ebola,ddxplus_69792,,False
+serious_tier1,Ebola,ddxplus_121628,,False
+serious_tier1,Ebola,ddxplus_113655,,False
+serious_tier1,Ebola,ddxplus_11560,,False
+serious_tier1,Ebola,ddxplus_129961,,False
+serious_tier1,Ebola,ddxplus_74254,,False
+serious_tier1,Ebola,ddxplus_100701,,False
+serious_tier1,Epiglottitis,ddxplus_36461,,False
+serious_tier1,Epiglottitis,ddxplus_120604,,False
+serious_tier1,Epiglottitis,ddxplus_119295,,False
+serious_tier1,Epiglottitis,ddxplus_89818,,False
+serious_tier1,Epiglottitis,ddxplus_46378,,False
+serious_tier1,Epiglottitis,ddxplus_102014,,False
+serious_tier1,Epiglottitis,ddxplus_57071,,False
+serious_tier1,Epiglottitis,ddxplus_9849,,False
+serious_tier1,Epiglottitis,ddxplus_60324,,False
+serious_tier1,Epiglottitis,ddxplus_14739,,False
+serious_tier1,Epiglottitis,ddxplus_61357,,False
+serious_tier1,Epiglottitis,ddxplus_11674,,False
+serious_tier1,Epiglottitis,ddxplus_53784,,False
+serious_tier1,Epiglottitis,ddxplus_44503,,False
+serious_tier1,Epiglottitis,ddxplus_108790,,False
+serious_tier1,Epiglottitis,ddxplus_77639,,False
+serious_tier1,Epiglottitis,ddxplus_91209,,False
+serious_tier1,Epiglottitis,ddxplus_29496,,False
+serious_tier1,Epiglottitis,ddxplus_102101,,False
+serious_tier1,Epiglottitis,ddxplus_42076,,False
+serious_tier1,Epiglottitis,ddxplus_32320,,False
+serious_tier1,Epiglottitis,ddxplus_52741,,False
+serious_tier1,Epiglottitis,ddxplus_82744,,False
+serious_tier1,Epiglottitis,ddxplus_11141,,False
+serious_tier1,Epiglottitis,ddxplus_23441,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_53617,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_18191,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_99835,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_82743,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_32410,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_113907,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_70759,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_5954,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_121274,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_11050,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_108911,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_128993,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_23809,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_112956,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_42050,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_41752,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_9508,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_94584,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_91919,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_108810,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_68986,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_15959,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_106754,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_57694,,False
+serious_tier1,Guillain-Barré syndrome,ddxplus_4867,,False
+serious_tier1,Larygospasm,ddxplus_4099,,False
+serious_tier1,Larygospasm,ddxplus_24604,,False
+serious_tier1,Larygospasm,ddxplus_53801,,False
+serious_tier1,Larygospasm,ddxplus_103305,,False
+serious_tier1,Larygospasm,ddxplus_96738,,False
+serious_tier1,Larygospasm,ddxplus_69790,,False
+serious_tier1,Larygospasm,ddxplus_67754,,False
+serious_tier1,Larygospasm,ddxplus_14,,False
+serious_tier1,Larygospasm,ddxplus_20180,,False
+serious_tier1,Larygospasm,ddxplus_110090,,False
+serious_tier1,Larygospasm,ddxplus_54186,,False
+serious_tier1,Larygospasm,ddxplus_81850,,False
+serious_tier1,Larygospasm,ddxplus_42662,,False
+serious_tier1,Larygospasm,ddxplus_21160,,False
+serious_tier1,Larygospasm,ddxplus_84560,,False
+serious_tier1,Larygospasm,ddxplus_33728,,False
+serious_tier1,Larygospasm,ddxplus_44046,,False
+serious_tier1,Larygospasm,ddxplus_98488,,False
+serious_tier1,Larygospasm,ddxplus_5420,,False
+serious_tier1,Larygospasm,ddxplus_81066,,False
+serious_tier1,Larygospasm,ddxplus_61443,,False
+serious_tier1,Larygospasm,ddxplus_5431,,False
+serious_tier1,Larygospasm,ddxplus_43639,,False
+serious_tier1,Larygospasm,ddxplus_67894,,False
+serious_tier1,Larygospasm,ddxplus_122665,,False
+serious_tier1,Myocarditis,ddxplus_85696,,False
+serious_tier1,Myocarditis,ddxplus_94994,,False
+serious_tier1,Myocarditis,ddxplus_91176,,False
+serious_tier1,Myocarditis,ddxplus_22652,,False
+serious_tier1,Myocarditis,ddxplus_80053,,False
+serious_tier1,Myocarditis,ddxplus_99117,,False
+serious_tier1,Myocarditis,ddxplus_66589,,False
+serious_tier1,Myocarditis,ddxplus_68928,,False
+serious_tier1,Myocarditis,ddxplus_122869,,False
+serious_tier1,Myocarditis,ddxplus_70930,,False
+serious_tier1,Myocarditis,ddxplus_55619,,False
+serious_tier1,Myocarditis,ddxplus_67239,,False
+serious_tier1,Myocarditis,ddxplus_29287,,False
+serious_tier1,Myocarditis,ddxplus_45539,,False
+serious_tier1,Myocarditis,ddxplus_30366,,False
+serious_tier1,Myocarditis,ddxplus_129758,,False
+serious_tier1,Myocarditis,ddxplus_119223,,False
+serious_tier1,Myocarditis,ddxplus_132340,,False
+serious_tier1,Myocarditis,ddxplus_80203,,False
+serious_tier1,Myocarditis,ddxplus_3547,,False
+serious_tier1,Myocarditis,ddxplus_9151,,False
+serious_tier1,Myocarditis,ddxplus_106599,,False
+serious_tier1,Myocarditis,ddxplus_7646,,False
+serious_tier1,Myocarditis,ddxplus_8401,,False
+serious_tier1,Myocarditis,ddxplus_24315,,False
+serious_tier1,PSVT,ddxplus_126422,,False
+serious_tier1,PSVT,ddxplus_8487,,False
+serious_tier1,PSVT,ddxplus_79096,,False
+serious_tier1,PSVT,ddxplus_85635,,False
+serious_tier1,PSVT,ddxplus_52979,,False
+serious_tier1,PSVT,ddxplus_85901,,False
+serious_tier1,PSVT,ddxplus_103843,,False
+serious_tier1,PSVT,ddxplus_39091,,False
+serious_tier1,PSVT,ddxplus_59153,,False
+serious_tier1,PSVT,ddxplus_54503,,False
+serious_tier1,PSVT,ddxplus_12503,,False
+serious_tier1,PSVT,ddxplus_86152,,False
+serious_tier1,PSVT,ddxplus_88635,,False
+serious_tier1,PSVT,ddxplus_50928,,False
+serious_tier1,PSVT,ddxplus_61341,,False
+serious_tier1,PSVT,ddxplus_61155,,False
+serious_tier1,PSVT,ddxplus_97053,,False
+serious_tier1,PSVT,ddxplus_22237,,False
+serious_tier1,PSVT,ddxplus_52762,,False
+serious_tier1,PSVT,ddxplus_114415,,False
+serious_tier1,PSVT,ddxplus_24501,,False
+serious_tier1,PSVT,ddxplus_68119,,False
+serious_tier1,PSVT,ddxplus_74647,,False
+serious_tier1,PSVT,ddxplus_52281,,False
+serious_tier1,PSVT,ddxplus_92343,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_123645,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_126290,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_111390,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_3229,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_4030,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_116946,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_104114,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_79010,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_116335,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_106763,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_17479,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_3621,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_90198,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_90598,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_59935,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_95704,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_30749,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_96672,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_65011,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_36345,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_93154,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_26566,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_114910,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_82396,,False
+serious_tier1,Pancreatic neoplasm,ddxplus_42246,,False
+serious_tier1,Pneumonia,ddxplus_44325,,False
+serious_tier1,Pneumonia,ddxplus_106697,,False
+serious_tier1,Pneumonia,ddxplus_27164,,False
+serious_tier1,Pneumonia,ddxplus_97767,,False
+serious_tier1,Pneumonia,ddxplus_116396,,False
+serious_tier1,Pneumonia,ddxplus_90535,,False
+serious_tier1,Pneumonia,ddxplus_65358,,False
+serious_tier1,Pneumonia,ddxplus_91465,,False
+serious_tier1,Pneumonia,ddxplus_111662,,False
+serious_tier1,Pneumonia,ddxplus_130898,,False
+serious_tier1,Pneumonia,ddxplus_98333,,False
+serious_tier1,Pneumonia,ddxplus_11274,,False
+serious_tier1,Pneumonia,ddxplus_30095,,False
+serious_tier1,Pneumonia,ddxplus_111318,,False
+serious_tier1,Pneumonia,ddxplus_94264,,False
+serious_tier1,Pneumonia,ddxplus_132612,,False
+serious_tier1,Pneumonia,ddxplus_127985,,False
+serious_tier1,Pneumonia,ddxplus_94929,,False
+serious_tier1,Pneumonia,ddxplus_49482,,False
+serious_tier1,Pneumonia,ddxplus_104490,,False
+serious_tier1,Pneumonia,ddxplus_2083,,False
+serious_tier1,Pneumonia,ddxplus_73964,,False
+serious_tier1,Pneumonia,ddxplus_59283,,False
+serious_tier1,Pneumonia,ddxplus_44905,,False
+serious_tier1,Pneumonia,ddxplus_97577,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_112938,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_88660,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_98996,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_47971,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_16566,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_112633,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_120832,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_116255,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_52266,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_54386,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_17474,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_31258,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_75289,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_11109,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_89355,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_100934,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_95984,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_75320,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_52913,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_43824,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_48388,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_15043,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_92449,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_14387,,False
+serious_tier1,Possible NSTEMI / STEMI,ddxplus_108096,,False
+serious_tier1,Pulmonary embolism,ddxplus_36970,,False
+serious_tier1,Pulmonary embolism,ddxplus_33470,,False
+serious_tier1,Pulmonary embolism,ddxplus_104263,,False
+serious_tier1,Pulmonary embolism,ddxplus_101143,,False
+serious_tier1,Pulmonary embolism,ddxplus_51212,,False
+serious_tier1,Pulmonary embolism,ddxplus_9783,,False
+serious_tier1,Pulmonary embolism,ddxplus_76352,,False
+serious_tier1,Pulmonary embolism,ddxplus_43484,,False
+serious_tier1,Pulmonary embolism,ddxplus_81065,,False
+serious_tier1,Pulmonary embolism,ddxplus_78579,,False
+serious_tier1,Pulmonary embolism,ddxplus_43393,,False
+serious_tier1,Pulmonary embolism,ddxplus_92059,,False
+serious_tier1,Pulmonary embolism,ddxplus_42597,,False
+serious_tier1,Pulmonary embolism,ddxplus_37196,,False
+serious_tier1,Pulmonary embolism,ddxplus_104946,,False
+serious_tier1,Pulmonary embolism,ddxplus_109106,,False
+serious_tier1,Pulmonary embolism,ddxplus_76833,,False
+serious_tier1,Pulmonary embolism,ddxplus_87083,,False
+serious_tier1,Pulmonary embolism,ddxplus_84588,,False
+serious_tier1,Pulmonary embolism,ddxplus_12944,,False
+serious_tier1,Pulmonary embolism,ddxplus_125127,,False
+serious_tier1,Pulmonary embolism,ddxplus_75108,,False
+serious_tier1,Pulmonary embolism,ddxplus_13134,,False
+serious_tier1,Pulmonary embolism,ddxplus_118506,,False
+serious_tier1,Pulmonary embolism,ddxplus_79873,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_105675,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_114435,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_103563,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_68801,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_119921,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_57794,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_133637,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_83021,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_36549,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_32943,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_41227,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_34207,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_19576,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_68989,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_61054,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_87831,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_78481,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_60819,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_36669,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_33609,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_132140,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_127569,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_95910,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_115708,,False
+serious_tier1,Pulmonary neoplasm,ddxplus_36630,,False
+serious_tier1,Scombroid food poisoning,ddxplus_48181,,False
+serious_tier1,Scombroid food poisoning,ddxplus_70290,,False
+serious_tier1,Scombroid food poisoning,ddxplus_44998,,False
+serious_tier1,Scombroid food poisoning,ddxplus_86553,,False
+serious_tier1,Scombroid food poisoning,ddxplus_119193,,False
+serious_tier1,Scombroid food poisoning,ddxplus_35805,,False
+serious_tier1,Scombroid food poisoning,ddxplus_130902,,False
+serious_tier1,Scombroid food poisoning,ddxplus_79811,,False
+serious_tier1,Scombroid food poisoning,ddxplus_79648,,False
+serious_tier1,Scombroid food poisoning,ddxplus_62473,,False
+serious_tier1,Scombroid food poisoning,ddxplus_57015,,False
+serious_tier1,Scombroid food poisoning,ddxplus_1907,,False
+serious_tier1,Scombroid food poisoning,ddxplus_23945,,False
+serious_tier1,Scombroid food poisoning,ddxplus_121599,,False
+serious_tier1,Scombroid food poisoning,ddxplus_5900,,False
+serious_tier1,Scombroid food poisoning,ddxplus_130459,,False
+serious_tier1,Scombroid food poisoning,ddxplus_51338,,False
+serious_tier1,Scombroid food poisoning,ddxplus_13426,,False
+serious_tier1,Scombroid food poisoning,ddxplus_75973,,False
+serious_tier1,Scombroid food poisoning,ddxplus_127013,,False
+serious_tier1,Scombroid food poisoning,ddxplus_90130,,False
+serious_tier1,Scombroid food poisoning,ddxplus_76615,,False
+serious_tier1,Scombroid food poisoning,ddxplus_77521,,False
+serious_tier1,Scombroid food poisoning,ddxplus_120628,,False
+serious_tier1,Scombroid food poisoning,ddxplus_69566,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_2611,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_43752,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_65680,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_55718,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_66572,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_10314,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_109905,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_87794,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_89847,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_106523,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_73427,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_113692,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_10512,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_76378,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_111998,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_94152,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_8852,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_20170,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_21536,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_119073,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_121467,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_22947,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_106451,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_92401,,False
+serious_tier1,Spontaneous pneumothorax,ddxplus_91148,,False
+serious_tier1,Stable angina,ddxplus_94377,,False
+serious_tier1,Stable angina,ddxplus_110049,,False
+serious_tier1,Stable angina,ddxplus_50057,,False
+serious_tier1,Stable angina,ddxplus_122825,,False
+serious_tier1,Stable angina,ddxplus_84290,,False
+serious_tier1,Stable angina,ddxplus_24769,,False
+serious_tier1,Stable angina,ddxplus_18889,,False
+serious_tier1,Stable angina,ddxplus_64814,,False
+serious_tier1,Stable angina,ddxplus_74637,,False
+serious_tier1,Stable angina,ddxplus_9417,,False
+serious_tier1,Stable angina,ddxplus_82763,,False
+serious_tier1,Stable angina,ddxplus_36319,,False
+serious_tier1,Stable angina,ddxplus_50177,,False
+serious_tier1,Stable angina,ddxplus_1936,,False
+serious_tier1,Stable angina,ddxplus_62783,,False
+serious_tier1,Stable angina,ddxplus_72831,,False
+serious_tier1,Stable angina,ddxplus_101096,,False
+serious_tier1,Stable angina,ddxplus_90220,,False
+serious_tier1,Stable angina,ddxplus_68123,,False
+serious_tier1,Stable angina,ddxplus_1536,,False
+serious_tier1,Stable angina,ddxplus_59054,,False
+serious_tier1,Stable angina,ddxplus_100222,,False
+serious_tier1,Stable angina,ddxplus_130090,,False
+serious_tier1,Stable angina,ddxplus_131145,,False
+serious_tier1,Stable angina,ddxplus_58281,,False
+serious_tier1,Unstable angina,ddxplus_19440,,False
+serious_tier1,Unstable angina,ddxplus_8552,,False
+serious_tier1,Unstable angina,ddxplus_32874,,False
+serious_tier1,Unstable angina,ddxplus_100671,,False
+serious_tier1,Unstable angina,ddxplus_131841,,False
+serious_tier1,Unstable angina,ddxplus_66161,,False
+serious_tier1,Unstable angina,ddxplus_106489,,False
+serious_tier1,Unstable angina,ddxplus_101522,,False
+serious_tier1,Unstable angina,ddxplus_51888,,False
+serious_tier1,Unstable angina,ddxplus_82748,,False
+serious_tier1,Unstable angina,ddxplus_4611,,False
+serious_tier1,Unstable angina,ddxplus_102598,,False
+serious_tier1,Unstable angina,ddxplus_122426,,False
+serious_tier1,Unstable angina,ddxplus_114167,,False
+serious_tier1,Unstable angina,ddxplus_80934,,False
+serious_tier1,Unstable angina,ddxplus_68214,,False
+serious_tier1,Unstable angina,ddxplus_101008,,False
+serious_tier1,Unstable angina,ddxplus_100059,,False
+serious_tier1,Unstable angina,ddxplus_111734,,False
+serious_tier1,Unstable angina,ddxplus_53843,,False
+serious_tier1,Unstable angina,ddxplus_45911,,False
+serious_tier1,Unstable angina,ddxplus_86067,,False
+serious_tier1,Unstable angina,ddxplus_70462,,False
+serious_tier1,Unstable angina,ddxplus_9003,,False
+serious_tier1,Unstable angina,ddxplus_57404,,False
+serious_upgrade_or_flag,,ddxplus_123177,K22|P1,False
+serious_upgrade_or_flag,,ddxplus_66058,K22|P1,False
+serious_upgrade_or_flag,,ddxplus_40409,K22|P1,False
+serious_upgrade_or_flag,,ddxplus_118166,K22,False
+serious_upgrade_or_flag,,ddxplus_77855,K22|P1,False
+serious_upgrade_or_flag,,ddxplus_46790,K22,False
+serious_upgrade_or_flag,,ddxplus_121218,K22|P1,False
+serious_upgrade_or_flag,,ddxplus_31539,K22|P1,False
+serious_upgrade_or_flag,,ddxplus_127585,K23|P10,False
+serious_upgrade_or_flag,,ddxplus_106841,K23|P10,False
+serious_upgrade_or_flag,,ddxplus_116519,K23|P10,False
+serious_upgrade_or_flag,,ddxplus_38543,K23|P10,False
+serious_upgrade_or_flag,,ddxplus_30284,K23|P10,False
+serious_upgrade_or_flag,,ddxplus_62857,K23|P10,False
+serious_upgrade_or_flag,,ddxplus_35177,K23|P10,False
+serious_upgrade_or_flag,,ddxplus_22852,K23|P10,False
+serious_upgrade_or_flag,,ddxplus_15299,K24|P9,False
+serious_upgrade_or_flag,,ddxplus_133327,K24|P9,False
+serious_upgrade_or_flag,,ddxplus_50010,K24|P9,False
+serious_upgrade_or_flag,,ddxplus_34564,K24|P9,False
+serious_upgrade_or_flag,,ddxplus_74391,K24|P9,False
+serious_upgrade_or_flag,,ddxplus_21346,K24|P9,False
+serious_upgrade_or_flag,,ddxplus_77657,K24|P9,False
+serious_upgrade_or_flag,,ddxplus_125548,K24|P9,False
+serious_upgrade_or_flag,,ddxplus_94779,K33|P7,False
+serious_upgrade_or_flag,,ddxplus_41863,K33|P7,False
+serious_upgrade_or_flag,,ddxplus_60375,K33|P7,False
+serious_upgrade_or_flag,,ddxplus_21032,K33|P7,False
+serious_upgrade_or_flag,,ddxplus_80174,K33|P7,False
+serious_upgrade_or_flag,,ddxplus_28377,K33|P7,False
+serious_upgrade_or_flag,,ddxplus_86366,K33|P7,False
+serious_upgrade_or_flag,,ddxplus_50331,K33|P7,False
+serious_upgrade_or_flag,,ddxplus_53712,K42,False
+serious_upgrade_or_flag,,ddxplus_122041,K42|P12,False
+serious_upgrade_or_flag,,ddxplus_74515,K42,False
+serious_upgrade_or_flag,,ddxplus_90666,K42|P12,False
+serious_upgrade_or_flag,,ddxplus_8594,K42,False
+serious_upgrade_or_flag,,ddxplus_133197,K42|P12,False
+serious_upgrade_or_flag,,ddxplus_2428,K42,False
+serious_upgrade_or_flag,,ddxplus_63878,K42,False
+serious_upgrade_or_flag,,ddxplus_85161,P1,False
+serious_upgrade_or_flag,,ddxplus_96049,P1,False
+serious_upgrade_or_flag,,ddxplus_24254,P12,False
+serious_upgrade_or_flag,,ddxplus_44102,P12,False
+serious_upgrade_or_flag,,ddxplus_91222,P12,False
+serious_upgrade_or_flag,,ddxplus_1822,P12,False
+serious_upgrade_or_flag,,ddxplus_114190,P12,False
+serious_upgrade_or_flag,,ddxplus_59816,P14,False
+serious_upgrade_or_flag,,ddxplus_118860,P14,False
+serious_upgrade_or_flag,,ddxplus_118767,P14,False
+serious_upgrade_or_flag,,ddxplus_29172,P14,False
+serious_upgrade_or_flag,,ddxplus_2895,P14,False
+serious_upgrade_or_flag,,ddxplus_82730,P14,False
+serious_upgrade_or_flag,,ddxplus_110334,P14,False
+serious_upgrade_or_flag,,ddxplus_97158,P14,False
+serious_upgrade_or_flag,,ddxplus_64791,P15,False
+serious_upgrade_or_flag,,ddxplus_40744,P15,False
+serious_upgrade_or_flag,,ddxplus_99138,P2,False
+serious_upgrade_or_flag,,ddxplus_121062,P2|P3,False
+serious_upgrade_or_flag,,ddxplus_113104,P2,False
+serious_upgrade_or_flag,,ddxplus_118840,P2|P3,False
+serious_upgrade_or_flag,,ddxplus_61586,P2,False
+serious_upgrade_or_flag,,ddxplus_129468,P2,False
+serious_upgrade_or_flag,,ddxplus_113296,P2,False
+serious_upgrade_or_flag,,ddxplus_24372,P2,False
+serious_upgrade_or_flag,,ddxplus_115997,P2|P3,False
+serious_upgrade_or_flag,,ddxplus_122292,P2|P3,False
+serious_upgrade_or_flag,,ddxplus_99175,P2|P3,False
+serious_upgrade_or_flag,,ddxplus_37515,P2|P3,False
+serious_upgrade_or_flag,,ddxplus_57031,P2|P3,False
+serious_upgrade_or_flag,,ddxplus_2282,P2|P3,False
+serious_upgrade_or_flag,,ddxplus_56848,P4,False
+serious_upgrade_or_flag,,ddxplus_108359,P4,False
+serious_upgrade_or_flag,,ddxplus_102698,P4,False
+serious_upgrade_or_flag,,ddxplus_73437,P4,False
+serious_upgrade_or_flag,,ddxplus_56677,P4,False
+serious_upgrade_or_flag,,ddxplus_99729,P4,False
+serious_upgrade_or_flag,,ddxplus_55318,P4,False
+serious_upgrade_or_flag,,ddxplus_39577,P4,False
+serious_upgrade_or_flag,,ddxplus_82022,P6,False
+serious_upgrade_or_flag,,ddxplus_85055,P6,False
+serious_upgrade_or_flag,,ddxplus_124890,P6,False
+serious_upgrade_or_flag,,ddxplus_89735,P6,False
+serious_upgrade_or_flag,,ddxplus_123923,P6,False
+serious_upgrade_or_flag,,ddxplus_66520,P6,False
+serious_upgrade_or_flag,,ddxplus_121859,P6,False
+serious_upgrade_or_flag,,ddxplus_20716,P6,False
+serious_upgrade_or_flag,,ddxplus_109691,P1,False
+serious_upgrade_or_flag,,ddxplus_81588,P1,False
+serious_upgrade_or_flag,,ddxplus_26475,P1,False
+serious_upgrade_or_flag,,ddxplus_107883,P1,False
+serious_upgrade_or_flag,,ddxplus_26030,P1,False
+serious_upgrade_or_flag,,ddxplus_19152,P1,False
+serious_upgrade_or_flag,,ddxplus_70993,P2,False
+serious_upgrade_or_flag,,ddxplus_27903,P1,False
+serious_upgrade_or_flag,,ddxplus_89003,P2,False
+serious_upgrade_or_flag,,ddxplus_26028,P1,False
+serious_upgrade_or_flag,,ddxplus_70776,P1,False
+serious_upgrade_or_flag,,ddxplus_4244,P1,False
+serious_upgrade_or_flag,,ddxplus_55267,P1,False
+serious_upgrade_or_flag,,ddxplus_71784,P1,False
+serious_upgrade_or_flag,,ddxplus_90670,P6,False
+serious_upgrade_or_flag,,ddxplus_104762,P2,False
+serious_upgrade_or_flag,,ddxplus_53247,P6,False
+serious_upgrade_or_flag,,ddxplus_67961,P6,False
+serious_upgrade_or_flag,,ddxplus_128765,P2,False
+serious_upgrade_or_flag,,ddxplus_71367,P2,False
+serious_upgrade_or_flag,,ddxplus_39499,P3,False
+serious_upgrade_or_flag,,ddxplus_26619,P2,False
+serious_upgrade_or_flag,,ddxplus_45409,P2|P3,False
+serious_upgrade_or_flag,,ddxplus_17087,K42,False
+serious_upgrade_or_flag,,ddxplus_44484,P2,False
+serious_upgrade_or_flag,,ddxplus_121507,K42,False
+serious_upgrade_or_flag,,ddxplus_9194,P2,False
+serious_upgrade_or_flag,,ddxplus_25608,P2|P3,False
+serious_upgrade_or_flag,,ddxplus_87904,P12,False
+serious_upgrade_or_flag,,ddxplus_21223,P1,False
+serious_upgrade_or_flag,,ddxplus_73233,K42|P12,False
+serious_upgrade_or_flag,,ddxplus_123399,P3,False
+serious_upgrade_or_flag,,ddxplus_105570,P1,False
+serious_upgrade_or_flag,,ddxplus_10253,P1,False
+serious_upgrade_or_flag,,ddxplus_122776,K42,False
+serious_upgrade_or_flag,,ddxplus_27828,P3,False
+serious_upgrade_or_flag,,ddxplus_102674,P2,False
+serious_upgrade_or_flag,,ddxplus_19064,K42|P12,False
+serious_upgrade_or_flag,,ddxplus_82036,P2,False
+serious_upgrade_or_flag,,ddxplus_80368,P6,False
+serious_upgrade_or_flag,,ddxplus_111215,P3,False
+serious_upgrade_or_flag,,ddxplus_131074,P2,False
+serious_upgrade_or_flag,,ddxplus_76130,P1,False
+serious_upgrade_or_flag,,ddxplus_56055,P2,False
+serious_upgrade_or_flag,,ddxplus_96951,P12,False
+serious_upgrade_or_flag,,ddxplus_65552,K42,False
+serious_upgrade_or_flag,,ddxplus_81087,P1,False
+serious_upgrade_or_flag,,ddxplus_102322,P12,False
+serious_upgrade_or_flag,,ddxplus_96033,P3,False
+serious_upgrade_or_flag,,ddxplus_79297,P2|P3,False
+serious_upgrade_or_flag,,ddxplus_97790,P2|P3,False
+serious_upgrade_or_flag,,ddxplus_95667,P1,False
+serious_upgrade_or_flag,,ddxplus_89259,P2,False
+benign,Acute laryngitis,ddxplus_108166,,False
+benign,Acute laryngitis,ddxplus_9266,,False
+benign,Acute laryngitis,ddxplus_30737,,False
+benign,Acute laryngitis,ddxplus_18423,,False
+benign,Acute laryngitis,ddxplus_87713,,False
+benign,Acute laryngitis,ddxplus_2712,,False
+benign,Acute laryngitis,ddxplus_122059,,False
+benign,Acute laryngitis,ddxplus_72002,,False
+benign,Acute laryngitis,ddxplus_5202,,False
+benign,Acute laryngitis,ddxplus_108237,,False
+benign,Acute laryngitis,ddxplus_114558,,False
+benign,Acute laryngitis,ddxplus_82752,,False
+benign,Acute laryngitis,ddxplus_71608,,False
+benign,Acute laryngitis,ddxplus_83261,,False
+benign,Acute laryngitis,ddxplus_60193,,False
+benign,Acute laryngitis,ddxplus_32193,,False
+benign,Acute laryngitis,ddxplus_92835,,False
+benign,Acute laryngitis,ddxplus_91291,,False
+benign,Acute laryngitis,ddxplus_124901,,False
+benign,Acute otitis media,ddxplus_130543,,False
+benign,Acute otitis media,ddxplus_68129,,False
+benign,Acute otitis media,ddxplus_120008,,False
+benign,Acute otitis media,ddxplus_102265,,False
+benign,Acute otitis media,ddxplus_92845,,False
+benign,Acute otitis media,ddxplus_64679,,False
+benign,Acute otitis media,ddxplus_120828,,False
+benign,Acute otitis media,ddxplus_16265,,False
+benign,Acute otitis media,ddxplus_13923,,False
+benign,Acute otitis media,ddxplus_119863,,False
+benign,Acute otitis media,ddxplus_41381,,False
+benign,Acute otitis media,ddxplus_95363,,False
+benign,Acute otitis media,ddxplus_87267,,False
+benign,Acute otitis media,ddxplus_83753,,False
+benign,Acute otitis media,ddxplus_69358,,False
+benign,Acute otitis media,ddxplus_79490,,False
+benign,Acute otitis media,ddxplus_107846,,False
+benign,Acute otitis media,ddxplus_29663,,False
+benign,Acute otitis media,ddxplus_46285,,False
+benign,Acute rhinosinusitis,ddxplus_99044,,False
+benign,Acute rhinosinusitis,ddxplus_110853,,False
+benign,Acute rhinosinusitis,ddxplus_125005,,False
+benign,Acute rhinosinusitis,ddxplus_69623,,False
+benign,Acute rhinosinusitis,ddxplus_44852,,False
+benign,Acute rhinosinusitis,ddxplus_116148,,False
+benign,Acute rhinosinusitis,ddxplus_42177,,False
+benign,Acute rhinosinusitis,ddxplus_76597,,False
+benign,Acute rhinosinusitis,ddxplus_73943,,False
+benign,Acute rhinosinusitis,ddxplus_39752,,False
+benign,Acute rhinosinusitis,ddxplus_131784,,False
+benign,Acute rhinosinusitis,ddxplus_41218,,False
+benign,Acute rhinosinusitis,ddxplus_4776,,False
+benign,Acute rhinosinusitis,ddxplus_36563,,False
+benign,Acute rhinosinusitis,ddxplus_59172,,False
+benign,Acute rhinosinusitis,ddxplus_110835,,False
+benign,Acute rhinosinusitis,ddxplus_20403,,False
+benign,Acute rhinosinusitis,ddxplus_132125,,False
+benign,Acute rhinosinusitis,ddxplus_91972,,False
+benign,Allergic sinusitis,ddxplus_107592,,False
+benign,Allergic sinusitis,ddxplus_8432,,False
+benign,Allergic sinusitis,ddxplus_112598,,False
+benign,Allergic sinusitis,ddxplus_99162,,False
+benign,Allergic sinusitis,ddxplus_129277,,False
+benign,Allergic sinusitis,ddxplus_555,,False
+benign,Allergic sinusitis,ddxplus_50650,,False
+benign,Allergic sinusitis,ddxplus_115762,,False
+benign,Allergic sinusitis,ddxplus_15110,,False
+benign,Allergic sinusitis,ddxplus_79879,,False
+benign,Allergic sinusitis,ddxplus_42442,,False
+benign,Allergic sinusitis,ddxplus_81194,,False
+benign,Allergic sinusitis,ddxplus_84003,,False
+benign,Allergic sinusitis,ddxplus_18453,,False
+benign,Allergic sinusitis,ddxplus_41151,,False
+benign,Allergic sinusitis,ddxplus_93952,,False
+benign,Allergic sinusitis,ddxplus_66303,,False
+benign,Allergic sinusitis,ddxplus_93453,,False
+benign,Allergic sinusitis,ddxplus_64879,,False
+benign,Anemia,ddxplus_62225,,False
+benign,Anemia,ddxplus_4969,,False
+benign,Anemia,ddxplus_71880,,False
+benign,Anemia,ddxplus_17345,,False
+benign,Anemia,ddxplus_97103,,False
+benign,Anemia,ddxplus_122035,,False
+benign,Anemia,ddxplus_109071,,False
+benign,Anemia,ddxplus_38408,,False
+benign,Anemia,ddxplus_115919,,False
+benign,Anemia,ddxplus_38620,,False
+benign,Anemia,ddxplus_107967,,False
+benign,Anemia,ddxplus_31601,,False
+benign,Anemia,ddxplus_87297,,False
+benign,Anemia,ddxplus_117929,,False
+benign,Anemia,ddxplus_59468,,False
+benign,Anemia,ddxplus_90971,,False
+benign,Anemia,ddxplus_6561,,False
+benign,Anemia,ddxplus_51533,,False
+benign,Bronchitis,ddxplus_6167,,False
+benign,Bronchitis,ddxplus_81091,,False
+benign,Bronchitis,ddxplus_129597,,False
+benign,Bronchitis,ddxplus_101459,,False
+benign,Bronchitis,ddxplus_44198,,False
+benign,Bronchitis,ddxplus_102789,,False
+benign,Bronchitis,ddxplus_85706,,False
+benign,Bronchitis,ddxplus_53424,,False
+benign,Bronchitis,ddxplus_6923,,False
+benign,Bronchitis,ddxplus_33011,,False
+benign,Bronchitis,ddxplus_5198,,False
+benign,Bronchitis,ddxplus_17932,,False
+benign,Bronchitis,ddxplus_82604,,False
+benign,Bronchitis,ddxplus_90286,,False
+benign,Bronchitis,ddxplus_99853,,False
+benign,Bronchitis,ddxplus_107100,,False
+benign,Bronchitis,ddxplus_125685,,False
+benign,Bronchitis,ddxplus_125031,,False
+benign,Chronic rhinosinusitis,ddxplus_64214,,False
+benign,Chronic rhinosinusitis,ddxplus_55560,,False
+benign,Chronic rhinosinusitis,ddxplus_54826,,False
+benign,Chronic rhinosinusitis,ddxplus_80374,,False
+benign,Chronic rhinosinusitis,ddxplus_7472,,False
+benign,Chronic rhinosinusitis,ddxplus_116637,,False
+benign,Chronic rhinosinusitis,ddxplus_27296,,False
+benign,Chronic rhinosinusitis,ddxplus_70896,,False
+benign,Chronic rhinosinusitis,ddxplus_80291,,False
+benign,Chronic rhinosinusitis,ddxplus_107462,,False
+benign,Chronic rhinosinusitis,ddxplus_13977,,False
+benign,Chronic rhinosinusitis,ddxplus_1961,,False
+benign,Chronic rhinosinusitis,ddxplus_63524,,False
+benign,Chronic rhinosinusitis,ddxplus_108799,,False
+benign,Chronic rhinosinusitis,ddxplus_11249,,False
+benign,Chronic rhinosinusitis,ddxplus_56175,,False
+benign,Chronic rhinosinusitis,ddxplus_102372,,False
+benign,Chronic rhinosinusitis,ddxplus_47083,,False
+benign,Chronic rhinosinusitis,ddxplus_32951,,False
+benign,Localized edema,ddxplus_112580,,False
+benign,Localized edema,ddxplus_104576,,False
+benign,Localized edema,ddxplus_1000,,False
+benign,Localized edema,ddxplus_61230,,False
+benign,Localized edema,ddxplus_95925,,False
+benign,Localized edema,ddxplus_119969,,False
+benign,Localized edema,ddxplus_126973,,False
+benign,Localized edema,ddxplus_108347,,False
+benign,Localized edema,ddxplus_16364,,False
+benign,Localized edema,ddxplus_70051,,False
+benign,Localized edema,ddxplus_133386,,False
+benign,Localized edema,ddxplus_129163,,False
+benign,Localized edema,ddxplus_93643,,False
+benign,Localized edema,ddxplus_110360,,False
+benign,Localized edema,ddxplus_35218,,False
+benign,Localized edema,ddxplus_61010,,False
+benign,Localized edema,ddxplus_38951,,False
+benign,Localized edema,ddxplus_87223,,False
+benign,Panic attack,ddxplus_56335,,False
+benign,Panic attack,ddxplus_106880,,False
+benign,Panic attack,ddxplus_104773,,False
+benign,Panic attack,ddxplus_66955,,False
+benign,Panic attack,ddxplus_82484,,False
+benign,Panic attack,ddxplus_101743,,False
+benign,Panic attack,ddxplus_11470,,False
+benign,Panic attack,ddxplus_35724,,False
+benign,Panic attack,ddxplus_106221,,False
+benign,Panic attack,ddxplus_74319,,False
+benign,Panic attack,ddxplus_19829,,False
+benign,Panic attack,ddxplus_30131,,False
+benign,Panic attack,ddxplus_117777,,False
+benign,Panic attack,ddxplus_15063,,False
+benign,Panic attack,ddxplus_10909,,False
+benign,Panic attack,ddxplus_27900,,False
+benign,Panic attack,ddxplus_40255,,False
+benign,Panic attack,ddxplus_11864,,False
+benign,Panic attack,ddxplus_121213,,False
+benign,SLE,ddxplus_91021,,False
+benign,SLE,ddxplus_129579,,False
+benign,SLE,ddxplus_32197,,False
+benign,SLE,ddxplus_25671,,False
+benign,SLE,ddxplus_57824,,False
+benign,SLE,ddxplus_93219,,False
+benign,SLE,ddxplus_11226,,False
+benign,SLE,ddxplus_2739,,False
+benign,SLE,ddxplus_72915,,False
+benign,SLE,ddxplus_7191,,False
+benign,SLE,ddxplus_121414,,False
+benign,SLE,ddxplus_111666,,False
+benign,SLE,ddxplus_10867,,False
+benign,SLE,ddxplus_70300,,False
+benign,SLE,ddxplus_128229,,False
+benign,SLE,ddxplus_68647,,False
+benign,SLE,ddxplus_133211,,False
+benign,SLE,ddxplus_106169,,False
+benign,Sarcoidosis,ddxplus_96423,,False
+benign,Sarcoidosis,ddxplus_67135,,False
+benign,Sarcoidosis,ddxplus_93538,,False
+benign,Sarcoidosis,ddxplus_45464,,False
+benign,Sarcoidosis,ddxplus_130709,,False
+benign,Sarcoidosis,ddxplus_18268,,False
+benign,Sarcoidosis,ddxplus_92428,,False
+benign,Sarcoidosis,ddxplus_18158,,False
+benign,Sarcoidosis,ddxplus_81636,,False
+benign,Sarcoidosis,ddxplus_107768,,False
+benign,Sarcoidosis,ddxplus_50706,,False
+benign,Sarcoidosis,ddxplus_107648,,False
+benign,Sarcoidosis,ddxplus_108898,,False
+benign,Sarcoidosis,ddxplus_97113,,False
+benign,Sarcoidosis,ddxplus_25753,,False
+benign,Sarcoidosis,ddxplus_83387,,False
+benign,Sarcoidosis,ddxplus_10760,,False
+benign,Sarcoidosis,ddxplus_19235,,False
+benign,URTI,ddxplus_63310,,False
+benign,URTI,ddxplus_77922,,False
+benign,URTI,ddxplus_7291,,False
+benign,URTI,ddxplus_67189,,False
+benign,URTI,ddxplus_20303,,False
+benign,URTI,ddxplus_76581,,False
+benign,URTI,ddxplus_99426,,False
+benign,URTI,ddxplus_115582,,False
+benign,URTI,ddxplus_27658,,False
+benign,URTI,ddxplus_52087,,False
+benign,URTI,ddxplus_110048,,False
+benign,URTI,ddxplus_79396,,False
+benign,URTI,ddxplus_130026,,False
+benign,URTI,ddxplus_119496,,False
+benign,URTI,ddxplus_114065,,False
+benign,URTI,ddxplus_93468,,False
+benign,URTI,ddxplus_91071,,False
+benign,URTI,ddxplus_99371,,False
+benign,URTI,ddxplus_29949,,False
+benign,Viral pharyngitis,ddxplus_79478,,False
+benign,Viral pharyngitis,ddxplus_86367,,False
+benign,Viral pharyngitis,ddxplus_29143,,False
+benign,Viral pharyngitis,ddxplus_26116,,False
+benign,Viral pharyngitis,ddxplus_91138,,False
+benign,Viral pharyngitis,ddxplus_84275,,False
+benign,Viral pharyngitis,ddxplus_33790,,False
+benign,Viral pharyngitis,ddxplus_52536,,False
+benign,Viral pharyngitis,ddxplus_18999,,False
+benign,Viral pharyngitis,ddxplus_42430,,False
+benign,Viral pharyngitis,ddxplus_45157,,False
+benign,Viral pharyngitis,ddxplus_26441,,False
+benign,Viral pharyngitis,ddxplus_25231,,False
+benign,Viral pharyngitis,ddxplus_30914,,False
+benign,Viral pharyngitis,ddxplus_111943,,False
+benign,Viral pharyngitis,ddxplus_3493,,False
+benign,Viral pharyngitis,ddxplus_123325,,False
+benign,Viral pharyngitis,ddxplus_114773,,False
+benign,Viral pharyngitis,ddxplus_114647,,False
+benign,Whooping cough,ddxplus_70641,,False
+benign,Whooping cough,ddxplus_87703,,False
+benign,Whooping cough,ddxplus_99804,,False
+benign,Whooping cough,ddxplus_97948,,False
+benign,Whooping cough,ddxplus_12629,,False
+benign,Whooping cough,ddxplus_38558,,False
+benign,Whooping cough,ddxplus_29684,,False
+benign,Whooping cough,ddxplus_35859,,False
+benign,Whooping cough,ddxplus_33031,,False
+benign,Whooping cough,ddxplus_29515,,False
+benign,Whooping cough,ddxplus_79919,,False
+benign,Whooping cough,ddxplus_81869,,False
+benign,Whooping cough,ddxplus_59945,,False
+benign,Whooping cough,ddxplus_44475,,False
+benign,Whooping cough,ddxplus_52549,,False
+benign,Whooping cough,ddxplus_98930,,False
+benign,Whooping cough,ddxplus_119956,,False
+benign,Whooping cough,ddxplus_127117,,False

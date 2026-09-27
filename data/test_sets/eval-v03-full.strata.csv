@@ -1,0 +1,901 @@
+case_id,stratum,bucket,rules,twin,replaces,truth,class,reason,targets,dangers,truth_credit,a4,working_diagnosis
+ddxplus_84317,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_33912,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_113916,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,SLE
+ddxplus_86157,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_50027,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_75809,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_85971,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_19250,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_60460,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_88986,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_71719,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_37354,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_123534,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_115672,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_5134,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_34808,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_74616,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_101024,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_74696,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_115538,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_49915,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_96172,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_81380,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_105748,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_104403,serious_tier1,Acute dystonic reactions,,False,,Acute dystonic reactions,SERIOUS,K06,Acute dystonic reactions,,True,False,Anemia
+ddxplus_17749,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,C79|I21|I26|J93|M84|S22,True,False,SLE
+ddxplus_29787,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,,True,False,Pericarditis
+ddxplus_14478,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,,True,False,Panic attack
+ddxplus_62631,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,I20|I21|I24|I25|I26|I71,True,False,SLE
+ddxplus_7927,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,,True,False,Pericarditis
+ddxplus_132591,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,I20|I21|I24|I25|I26|I71,True,False,SLE
+ddxplus_75709,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,,True,False,SLE
+ddxplus_82457,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,,True,False,Pericarditis
+ddxplus_110589,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema|Possible NSTEMI / STEMI|Stable angina,,True,False,Pericarditis
+ddxplus_123035,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,,True,False,Pericarditis
+ddxplus_4341,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,,True,False,Pericarditis
+ddxplus_117988,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,,True,False,Pericarditis
+ddxplus_94857,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,I71,True,False,SLE
+ddxplus_7432,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,,True,False,Pericarditis
+ddxplus_70922,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,I20|I21|I24|I25|I26|I71,True,False,Pericarditis
+ddxplus_62110,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,I20|I21|I24|I25|I26|I71,True,False,Pericarditis
+ddxplus_34836,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,,True,False,Pericarditis
+ddxplus_105462,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,C79|I20|I21|I24|I25|I26|I71|J93|M84|S22,True,False,Panic attack
+ddxplus_80264,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,,True,False,Pericarditis
+ddxplus_131192,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,,True,False,Pericarditis
+ddxplus_32666,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,,True,False,Panic attack
+ddxplus_69589,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,,True,False,Panic attack
+ddxplus_1334,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,,True,False,SLE
+ddxplus_131412,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,I20|I21|I24|I25|I26|I71,True,False,Pericarditis
+ddxplus_115925,serious_tier1,Acute pulmonary edema,,False,,Acute pulmonary edema,SERIOUS,K01,Acute pulmonary edema,I20|I21|I24|I25|I26|I71,True,False,Pericarditis
+ddxplus_45402,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Pericarditis
+ddxplus_21713,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Panic attack
+ddxplus_102819,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Localized edema
+ddxplus_69531,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Anemia
+ddxplus_64948,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Anemia
+ddxplus_36693,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Panic attack
+ddxplus_6768,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Localized edema
+ddxplus_44037,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Localized edema
+ddxplus_116528,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Localized edema
+ddxplus_51030,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Localized edema
+ddxplus_29388,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Localized edema
+ddxplus_6859,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Localized edema
+ddxplus_77792,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Pericarditis
+ddxplus_119788,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Anemia
+ddxplus_110105,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Localized edema
+ddxplus_23585,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Anemia
+ddxplus_46422,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis|Bronchospasm / acute asthma exacerbation,,True,False,Anemia
+ddxplus_114198,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Anemia
+ddxplus_57121,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Bronchitis
+ddxplus_110887,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Localized edema
+ddxplus_48560,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Panic attack
+ddxplus_105281,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Anemia
+ddxplus_60146,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Localized edema
+ddxplus_69091,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Localized edema
+ddxplus_47318,serious_tier1,Anaphylaxis,,False,,Anaphylaxis,SERIOUS,K02,Anaphylaxis,,True,False,Panic attack
+ddxplus_67916,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave,D62|I85|K25|K26|K27|K28|K92,True,False,Panic attack
+ddxplus_98896,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave,I71,True,False,Pericarditis
+ddxplus_104729,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave,D62|I85|K25|K26|K27|K28|K92,True,False,Anemia
+ddxplus_35923,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave,D62|I71|I85|K25|K26|K27|K28|K92,True,False,Anemia
+ddxplus_9428,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave|Possible NSTEMI / STEMI,C79|I21|I26|I71|J93|M84|S22,True,False,Pericarditis
+ddxplus_118285,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave,C79|D62|I21|I26|I71|I85|J93|K25|K26|K27|K28|K92|M84|S22,True,False,Anemia
+ddxplus_121952,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave|Spontaneous pneumothorax,D62|I71|I85|K25|K26|K27|K28|K92,True,False,Panic attack
+ddxplus_105589,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave,D62|I71|I85|K25|K26|K27|K28|K92,True,False,Panic attack
+ddxplus_4086,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave,D62|I71|I85|K25|K26|K27|K28|K92,True,False,Anemia
+ddxplus_23902,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave,D62|I71|I85|K25|K26|K27|K28|K92,True,False,Anemia
+ddxplus_28559,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave,I71,True,False,Panic attack
+ddxplus_57082,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave,D62|I71|I85|K25|K26|K27|K28|K92,True,False,Anemia
+ddxplus_58521,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave,D62|I71|I85|K25|K26|K27|K28|K92,True,False,Panic attack
+ddxplus_31777,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave|Possible NSTEMI / STEMI,I71,True,False,Anemia
+ddxplus_73438,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave|Spontaneous pneumothorax,D62|I71|I85|K25|K26|K27|K28|K92,True,False,Panic attack
+ddxplus_115782,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave,I71,True,False,Anemia
+ddxplus_59300,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave|Spontaneous pneumothorax,D62|I71|I85|K25|K26|K27|K28|K92,True,False,Panic attack
+ddxplus_86494,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave,C79|I21|I26|J93|M84|S22,True,False,Pericarditis
+ddxplus_8613,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave,D62|I71|I85|K25|K26|K27|K28|K92,True,False,Panic attack
+ddxplus_125160,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave,D62|I71|I85|K25|K26|K27|K28|K92,True,False,Panic attack
+ddxplus_63689,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave,C79|D62|I21|I26|I71|I85|J93|K25|K26|K27|K28|K92|M84|S22,True,False,Panic attack
+ddxplus_9018,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave|Spontaneous pneumothorax,D62|I71|I85|K25|K26|K27|K28|K92,True,False,Panic attack
+ddxplus_14072,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave,D62|I71|I85|K25|K26|K27|K28|K92,True,False,Panic attack
+ddxplus_64231,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave,D62|I71|I85|K25|K26|K27|K28|K92,True,False,Panic attack
+ddxplus_84676,serious_tier1,Boerhaave,,False,,Boerhaave,SERIOUS,K07,Boerhaave|Possible NSTEMI / STEMI,I71,True,False,Panic attack
+ddxplus_20110,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_104968,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_39225,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_30403,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_42368,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_31692,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Anemia
+ddxplus_70170,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_123705,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_55330,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_109988,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_130184,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_114453,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_89072,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_63191,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_27709,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_80488,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_49966,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Anemia
+ddxplus_38421,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_78795,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_2783,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_56468,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Anemia
+ddxplus_93257,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Anemia
+ddxplus_85790,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_53293,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_67543,serious_tier1,Bronchospasm / acute asthma exacerbation,,False,,Bronchospasm / acute asthma exacerbation,SERIOUS,K18,Bronchospasm / acute asthma exacerbation,,True,False,Bronchitis
+ddxplus_110272,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,Bronchitis
+ddxplus_37820,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,Bronchitis
+ddxplus_70165,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,Anemia
+ddxplus_38750,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,Anemia
+ddxplus_55416,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Bronchospasm / acute asthma exacerbation|Ebola,,True,False,Bronchitis
+ddxplus_75525,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,Bronchitis
+ddxplus_24711,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,Bronchitis
+ddxplus_106018,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,URTI
+ddxplus_45703,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,Bronchitis
+ddxplus_101234,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,Bronchitis
+ddxplus_103775,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,Bronchitis
+ddxplus_94807,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,Anemia
+ddxplus_61145,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,Anemia
+ddxplus_102095,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,Bronchitis
+ddxplus_63654,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Bronchospasm / acute asthma exacerbation|Ebola,,True,False,Bronchitis
+ddxplus_55519,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Bronchospasm / acute asthma exacerbation|Ebola,,True,False,Bronchitis
+ddxplus_111154,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,Bronchitis
+ddxplus_77908,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,Bronchitis
+ddxplus_69792,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,Panic attack
+ddxplus_121628,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,URTI
+ddxplus_113655,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,Bronchitis
+ddxplus_11560,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Bronchospasm / acute asthma exacerbation|Ebola,,True,False,Bronchitis
+ddxplus_129961,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,Bronchitis
+ddxplus_74254,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,Panic attack
+ddxplus_100701,serious_tier1,Ebola,,False,,Ebola,SERIOUS,K03,Ebola,,True,False,URTI
+ddxplus_36461,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_120604,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Anemia
+ddxplus_119295,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_89818,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Anemia
+ddxplus_46378,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_102014,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_57071,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_9849,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_60324,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_14739,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_61357,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_11674,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Viral pharyngitis
+ddxplus_53784,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Bronchitis
+ddxplus_44503,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_108790,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_77639,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_91209,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_29496,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_102101,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_42076,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_32320,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_52741,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_82744,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_11141,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_23441,serious_tier1,Epiglottitis,,False,,Epiglottitis,SERIOUS,K09,Epiglottitis,,True,False,Acute laryngitis
+ddxplus_53617,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Panic attack
+ddxplus_18191,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Anemia
+ddxplus_99835,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Anemia
+ddxplus_82743,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Panic attack
+ddxplus_32410,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Anemia
+ddxplus_113907,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Panic attack
+ddxplus_70759,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Anemia
+ddxplus_5954,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Panic attack
+ddxplus_121274,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Panic attack
+ddxplus_11050,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Panic attack
+ddxplus_108911,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Panic attack
+ddxplus_128993,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Anemia
+ddxplus_23809,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Anemia
+ddxplus_112956,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Panic attack
+ddxplus_42050,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Anemia
+ddxplus_41752,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Panic attack
+ddxplus_9508,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Anemia
+ddxplus_94584,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Panic attack
+ddxplus_91919,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Anemia
+ddxplus_108810,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Panic attack
+ddxplus_68986,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Anemia
+ddxplus_15959,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Anemia
+ddxplus_106754,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Anemia
+ddxplus_57694,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Anemia
+ddxplus_4867,serious_tier1,Guillain-Barré syndrome,,False,,Guillain-Barré syndrome,SERIOUS,K10,Guillain-Barré syndrome,,True,False,Anemia
+ddxplus_4099,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_24604,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_53801,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_103305,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_96738,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_69790,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_67754,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_14,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_20180,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_110090,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_54186,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_81850,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_42662,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_21160,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_84560,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_33728,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_44046,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_98488,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_5420,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_81066,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_61443,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_5431,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_43639,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_67894,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_122665,serious_tier1,Larygospasm,,False,,Larygospasm,SERIOUS,K04,Larygospasm,,True,False,Acute laryngitis
+ddxplus_85696,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Panic attack
+ddxplus_94994,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Pericarditis
+ddxplus_91176,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Pericarditis
+ddxplus_22652,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Pericarditis
+ddxplus_80053,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Pericarditis
+ddxplus_99117,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Pericarditis
+ddxplus_66589,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Panic attack
+ddxplus_68928,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Pericarditis
+ddxplus_122869,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Pericarditis
+ddxplus_70930,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis|Stable angina,,True,False,Pericarditis
+ddxplus_55619,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Pericarditis
+ddxplus_67239,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis|Stable angina,,True,False,Anemia
+ddxplus_29287,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis|Stable angina,,True,False,Pericarditis
+ddxplus_45539,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Pericarditis
+ddxplus_30366,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Anemia
+ddxplus_129758,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Pericarditis
+ddxplus_119223,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Pericarditis
+ddxplus_132340,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Pericarditis
+ddxplus_80203,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Pericarditis
+ddxplus_3547,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Anemia
+ddxplus_9151,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Panic attack
+ddxplus_106599,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Pericarditis
+ddxplus_7646,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Pericarditis
+ddxplus_8401,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Panic attack
+ddxplus_24315,serious_tier1,Myocarditis,,False,,Myocarditis,SERIOUS,K11,Myocarditis,,True,False,Panic attack
+ddxplus_126422,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_8487,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_79096,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_85635,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_52979,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_85901,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_103843,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Panic attack
+ddxplus_39091,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_59153,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_54503,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,Myocarditis|PSVT,,True,False,Anemia
+ddxplus_12503,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_86152,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,Myocarditis|PSVT,,True,False,Anemia
+ddxplus_88635,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_50928,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_61341,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_61155,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_97053,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_22237,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_52762,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_114415,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_24501,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_68119,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_74647,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Panic attack
+ddxplus_52281,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_92343,serious_tier1,PSVT,,False,,PSVT,SERIOUS,K12,PSVT,,True,False,Anemia
+ddxplus_123645,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Bronchitis
+ddxplus_126290,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Anemia
+ddxplus_111390,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Anemia
+ddxplus_3229,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Bronchitis
+ddxplus_4030,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Anemia
+ddxplus_116946,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Pericarditis
+ddxplus_104114,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Bronchitis
+ddxplus_79010,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Anemia
+ddxplus_116335,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Bronchitis
+ddxplus_106763,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Bronchitis
+ddxplus_17479,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm|Pulmonary neoplasm,,True,False,Bronchitis
+ddxplus_3621,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Bronchitis
+ddxplus_90198,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Anemia
+ddxplus_90598,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Bronchitis
+ddxplus_59935,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Anemia
+ddxplus_95704,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Bronchitis
+ddxplus_30749,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Bronchitis
+ddxplus_96672,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Bronchitis
+ddxplus_65011,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Bronchitis
+ddxplus_36345,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Bronchitis
+ddxplus_93154,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Anemia
+ddxplus_26566,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Anemia
+ddxplus_114910,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Bronchitis
+ddxplus_82396,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm|Pulmonary neoplasm,,True,False,Bronchitis
+ddxplus_42246,serious_tier1,Pancreatic neoplasm,,False,,Pancreatic neoplasm,SERIOUS,K19,Pancreatic neoplasm,,True,False,Bronchitis
+ddxplus_44325,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_106697,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,C79|I21|I26|J93|M84|S22,True,False,Bronchitis
+ddxplus_27164,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,,True,False,Bronchitis
+ddxplus_97767,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_116396,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_90535,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,,True,False,Bronchitis
+ddxplus_65358,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,C79|I21|I26|J93|M84|S22,True,False,Bronchitis
+ddxplus_91465,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,,True,False,Bronchitis
+ddxplus_111662,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,,True,False,Bronchitis
+ddxplus_130898,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_98333,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,A15|A16|C34|C79|I21|I26|J18|J47|J93|J96|M84|S22,True,False,Allergic sinusitis
+ddxplus_11274,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_30095,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,C79|I21|I26|J93|M84|S22,True,False,Bronchitis
+ddxplus_111318,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,A15|A16|C34|C79|I21|I26|J18|J47|J93|J96|M84|S22,True,False,Bronchitis
+ddxplus_94264,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,C79|I21|I26|J93|M84|S22,True,False,Pericarditis
+ddxplus_132612,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_127985,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia|Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_94929,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_49482,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,A15|A16|C34|C79|I21|I26|J18|J47|J93|J96|M84|S22,True,False,Bronchitis
+ddxplus_104490,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,,True,False,Bronchitis
+ddxplus_2083,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,,True,False,Bronchitis
+ddxplus_73964,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,,True,False,Bronchitis
+ddxplus_59283,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,,True,False,Bronchitis
+ddxplus_44905,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,,True,False,Bronchitis
+ddxplus_97577,serious_tier1,Pneumonia,,False,,Pneumonia,SERIOUS,K20,Pneumonia,,True,False,Bronchitis
+ddxplus_112938,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,,True,False,Panic attack
+ddxplus_88660,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,,True,False,Anemia
+ddxplus_98996,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,,True,False,Pericarditis
+ddxplus_47971,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,C79|I21|I26|J93|M84|S22,True,False,Panic attack
+ddxplus_16566,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,,True,False,Anemia
+ddxplus_112633,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,I20|I21|I24|I25|I26|I71,True,False,Panic attack
+ddxplus_120832,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,I20|I21|I24|I25|I26|I71,True,False,Panic attack
+ddxplus_116255,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI|Unstable angina,,True,False,Pericarditis
+ddxplus_52266,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,,True,False,Pericarditis
+ddxplus_54386,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,I20|I21|I24|I25|I26|I71,True,False,Panic attack
+ddxplus_17474,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,C79|I21|I26|I71|J93|M84|S22,True,False,Panic attack
+ddxplus_31258,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,C79|I20|I21|I24|I25|I26|I71|J93|M84|S22,True,False,Panic attack
+ddxplus_75289,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,,True,False,Pericarditis
+ddxplus_11109,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,C79|I21|I26|I71|J93|M84|S22,True,False,Panic attack
+ddxplus_89355,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,I71,True,False,Pericarditis
+ddxplus_100934,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,,True,False,Anemia
+ddxplus_95984,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,C79|I21|I26|I71|J93|M84|S22,True,False,Panic attack
+ddxplus_75320,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,C79|I21|I26|J93|M84|S22,True,False,Panic attack
+ddxplus_52913,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,,True,False,Panic attack
+ddxplus_43824,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,,True,False,Panic attack
+ddxplus_48388,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,C79|I21|I26|J93|M84|S22,True,False,SLE
+ddxplus_15043,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,I71,True,False,SLE
+ddxplus_92449,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,I71,True,False,Pericarditis
+ddxplus_14387,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,,True,False,Panic attack
+ddxplus_108096,serious_tier1,Possible NSTEMI / STEMI,,False,,Possible NSTEMI / STEMI,SERIOUS,K05,Possible NSTEMI / STEMI,C79|I21|I26|J93|M84|S22,True,False,SLE
+ddxplus_36970,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,A15|A16|C34|C79|I21|I26|I71|J18|J47|J93|J96|M84|S22,True,False,Panic attack
+ddxplus_33470,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,C79|I21|I26|I71|J93|M84|S22,True,False,Localized edema
+ddxplus_104263,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,C79|I21|I26|J93|M84|S22,True,False,Pericarditis
+ddxplus_101143,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,C79|I21|I26|J93|M84|S22,True,False,Localized edema
+ddxplus_51212,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,,True,False,Panic attack
+ddxplus_9783,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,C79|I21|I26|I71|J93|M84|S22,True,False,Localized edema
+ddxplus_76352,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,C79|I21|I26|I71|I82|J93|M84|S22,True,False,Panic attack
+ddxplus_43484,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,A15|A16|C34|C79|I21|I26|I71|I82|J18|J47|J93|J96|M84|S22,True,False,Panic attack
+ddxplus_81065,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,A15|A16|C34|C79|I21|I26|I82|J18|J47|J93|J96|M84|S22,True,False,Pericarditis
+ddxplus_78579,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,A15|A16|C34|C79|I21|I26|I71|I82|J18|J47|J93|J96|M84|S22,True,False,Panic attack
+ddxplus_43393,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,C79|I21|I26|I82|J93|M84|S22,True,False,Panic attack
+ddxplus_92059,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,A15|A16|C34|C79|I21|I26|I71|J18|J47|J93|J96|M84|S22,True,False,Panic attack
+ddxplus_42597,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,C79|I21|I26|I71|J93|M84|S22,True,False,Panic attack
+ddxplus_37196,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,C79|I21|I26|J93|M84|S22,True,False,Localized edema
+ddxplus_104946,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,A15|A16|C34|C79|I21|I26|J18|J47|J93|J96|M84|S22,True,False,Panic attack
+ddxplus_109106,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,I26|I82,True,False,Panic attack
+ddxplus_76833,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,C79|I21|I26|J93|M84|S22,True,False,Pericarditis
+ddxplus_87083,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,A15|A16|C34|I26|I82|J18|J47|J96,True,False,Localized edema
+ddxplus_84588,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,C79|I21|I26|J93|M84|S22,True,False,Panic attack
+ddxplus_12944,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,C79|I21|I26|I82|J93|M84|S22,True,False,Pericarditis
+ddxplus_125127,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,A15|A16|C34|I26|J18|J47|J96,True,False,Panic attack
+ddxplus_75108,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,C79|I21|I26|I71|I82|J93|M84|S22,True,False,Panic attack
+ddxplus_13134,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,C79|I21|I26|I82|J93|M84|S22,True,False,Panic attack
+ddxplus_118506,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,A15|A16|C34|C79|I21|I26|I71|I82|J18|J47|J93|J96|M84|S22,True,False,Panic attack
+ddxplus_79873,serious_tier1,Pulmonary embolism,,False,,Pulmonary embolism,SERIOUS,K13,Pulmonary embolism,C79|I21|I26|J93|M84|S22,True,False,Pericarditis
+ddxplus_105675,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_114435,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,,True,False,Bronchitis
+ddxplus_103563,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_68801,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,True,False,Anemia
+ddxplus_119921,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,,True,False,Bronchitis
+ddxplus_57794,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,,True,False,Anemia
+ddxplus_133637,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_83021,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,,True,False,Bronchitis
+ddxplus_36549,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_32943,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,,True,False,Bronchitis
+ddxplus_41227,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_34207,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_19576,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_68989,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_61054,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,,True,False,Bronchitis
+ddxplus_87831,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_78481,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_60819,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_36669,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,True,False,Anemia
+ddxplus_33609,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,,True,False,Bronchitis
+ddxplus_132140,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_127569,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,,True,False,Anemia
+ddxplus_95910,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_115708,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_36630,serious_tier1,Pulmonary neoplasm,,False,,Pulmonary neoplasm,SERIOUS,K21,Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_48181,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_70290,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,PSVT|Scombroid food poisoning,,True,False,Anemia
+ddxplus_44998,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,PSVT|Scombroid food poisoning,,True,False,Anemia
+ddxplus_86553,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_119193,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_35805,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_130902,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,PSVT|Scombroid food poisoning,,True,False,Anemia
+ddxplus_79811,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_79648,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_62473,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,PSVT|Scombroid food poisoning,,True,False,Anemia
+ddxplus_57015,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_1907,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_23945,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_121599,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_5900,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_130459,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_51338,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_13426,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,PSVT|Scombroid food poisoning,,True,False,Anemia
+ddxplus_75973,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_127013,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_90130,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_76615,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_77521,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_120628,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_69566,serious_tier1,Scombroid food poisoning,,False,,Scombroid food poisoning,SERIOUS,K14,Scombroid food poisoning,,True,False,Anemia
+ddxplus_2611,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax,C79|I21|I26|J93|M84|S22,True,False,Panic attack
+ddxplus_43752,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax,C79|I21|I26|J93|M84|S22,True,False,Panic attack
+ddxplus_65680,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax,I71,True,False,Panic attack
+ddxplus_55718,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax,I71,True,False,Panic attack
+ddxplus_66572,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax|Unstable angina,I71,True,False,Pericarditis
+ddxplus_10314,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax|Unstable angina,I71,True,False,Panic attack
+ddxplus_109905,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax,I71,True,False,Pericarditis
+ddxplus_87794,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax,I71,True,False,Panic attack
+ddxplus_89847,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax,C79|I21|I26|I71|J93|M84|S22,True,False,Pericarditis
+ddxplus_106523,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax,C79|I21|I26|I71|J93|M84|S22,True,False,Pericarditis
+ddxplus_73427,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax,I71,True,False,Panic attack
+ddxplus_113692,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax,,True,False,Panic attack
+ddxplus_10512,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax|Unstable angina,C79|I21|I26|J93|M84|S22,True,False,Panic attack
+ddxplus_76378,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax|Unstable angina,,True,False,Pericarditis
+ddxplus_111998,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax,,True,False,Panic attack
+ddxplus_94152,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax,I71,True,False,Pericarditis
+ddxplus_8852,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax,I71,True,False,Pericarditis
+ddxplus_20170,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax,,True,False,Panic attack
+ddxplus_21536,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax|Unstable angina,I71,True,False,Pericarditis
+ddxplus_119073,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax,I71,True,False,Pericarditis
+ddxplus_121467,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax,C79|I21|I26|I71|J93|M84|S22,True,False,Panic attack
+ddxplus_22947,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax|Unstable angina,I71,True,False,Bronchitis
+ddxplus_106451,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax,C79|I21|I26|J93|M84|S22,True,False,Pericarditis
+ddxplus_92401,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax|Unstable angina,C79|I21|I26|I71|J93|M84|S22,True,False,Pericarditis
+ddxplus_91148,serious_tier1,Spontaneous pneumothorax,,False,,Spontaneous pneumothorax,SERIOUS,K15,Spontaneous pneumothorax,I71,True,False,Panic attack
+ddxplus_94377,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Stable angina|Unstable angina,C79|I21|I26|J93|M84|S22,True,False,Panic attack
+ddxplus_110049,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Stable angina|Unstable angina,,True,False,Panic attack
+ddxplus_50057,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Possible NSTEMI / STEMI|Stable angina|Unstable angina,,True,False,Pericarditis
+ddxplus_122825,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Possible NSTEMI / STEMI|Stable angina|Unstable angina,,True,False,Anemia
+ddxplus_84290,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Stable angina,,True,False,Panic attack
+ddxplus_24769,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Stable angina|Unstable angina,I71,True,False,Panic attack
+ddxplus_18889,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Stable angina|Unstable angina,C79|I20|I21|I24|I25|I26|I71|J93|M84|S22,True,False,SLE
+ddxplus_64814,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Possible NSTEMI / STEMI|Stable angina,,True,False,Panic attack
+ddxplus_74637,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Stable angina,,True,False,SLE
+ddxplus_9417,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Possible NSTEMI / STEMI|Stable angina|Unstable angina,,True,False,Anemia
+ddxplus_82763,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Stable angina|Unstable angina,I20|I21|I24|I25|I26|I71,True,False,Pericarditis
+ddxplus_36319,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Possible NSTEMI / STEMI|Stable angina|Unstable angina,,True,False,Anemia
+ddxplus_50177,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Stable angina,,True,False,Panic attack
+ddxplus_1936,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Stable angina|Unstable angina,C79|I21|I26|I71|J93|M84|S22,True,False,Pericarditis
+ddxplus_62783,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Possible NSTEMI / STEMI|Stable angina|Unstable angina,,True,False,Anemia
+ddxplus_72831,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Possible NSTEMI / STEMI|Stable angina,C79|I21|I26|J93|M84|S22,True,False,Anemia
+ddxplus_101096,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Possible NSTEMI / STEMI|Stable angina|Unstable angina,I71,True,False,Pericarditis
+ddxplus_90220,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Possible NSTEMI / STEMI|Stable angina,,True,False,Panic attack
+ddxplus_68123,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Possible NSTEMI / STEMI|Stable angina,,True,False,Anemia
+ddxplus_1536,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Possible NSTEMI / STEMI|Stable angina|Unstable angina,I71,True,False,Pericarditis
+ddxplus_59054,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Stable angina,,True,False,Pericarditis
+ddxplus_100222,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Possible NSTEMI / STEMI|Stable angina|Unstable angina,,True,False,Pericarditis
+ddxplus_130090,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Possible NSTEMI / STEMI|Stable angina|Unstable angina,,True,False,Anemia
+ddxplus_131145,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Possible NSTEMI / STEMI|Stable angina,,True,False,Panic attack
+ddxplus_58281,serious_tier1,Stable angina,,False,,Stable angina,SERIOUS,K16,Possible NSTEMI / STEMI|Stable angina|Unstable angina,I71,True,False,SLE
+ddxplus_19440,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Possible NSTEMI / STEMI|Stable angina|Unstable angina,,True,False,Anemia
+ddxplus_8552,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Possible NSTEMI / STEMI|Unstable angina,,True,False,SLE
+ddxplus_32874,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Unstable angina,,True,False,Panic attack
+ddxplus_100671,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Possible NSTEMI / STEMI|Unstable angina,,True,False,Anemia
+ddxplus_131841,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Unstable angina,,True,False,Panic attack
+ddxplus_66161,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Unstable angina,,True,False,Anemia
+ddxplus_106489,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Possible NSTEMI / STEMI|Stable angina|Unstable angina,,True,False,Pericarditis
+ddxplus_101522,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Possible NSTEMI / STEMI|Unstable angina,,True,False,Anemia
+ddxplus_51888,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Possible NSTEMI / STEMI|Stable angina|Unstable angina,,True,False,Pericarditis
+ddxplus_82748,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Possible NSTEMI / STEMI|Unstable angina,,True,False,Pericarditis
+ddxplus_4611,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Unstable angina,,True,False,Panic attack
+ddxplus_102598,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Possible NSTEMI / STEMI|Unstable angina,I71,True,False,Pericarditis
+ddxplus_122426,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Possible NSTEMI / STEMI|Stable angina|Unstable angina,I71,True,False,Pericarditis
+ddxplus_114167,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Possible NSTEMI / STEMI|Stable angina|Unstable angina,,True,False,Anemia
+ddxplus_80934,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Unstable angina,,True,False,Anemia
+ddxplus_68214,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Unstable angina,C79|I21|I26|J93|M84|S22,True,False,SLE
+ddxplus_101008,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Unstable angina,,True,False,Pericarditis
+ddxplus_100059,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Unstable angina,,True,False,Anemia
+ddxplus_111734,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Unstable angina,C79|I21|I26|J93|M84|S22,True,False,Panic attack
+ddxplus_53843,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Unstable angina,,True,False,Panic attack
+ddxplus_45911,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Possible NSTEMI / STEMI|Spontaneous pneumothorax|Stable angina|Unstable angina,,True,False,Pericarditis
+ddxplus_86067,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Unstable angina,,True,False,Panic attack
+ddxplus_70462,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Unstable angina,I71,True,False,Pericarditis
+ddxplus_9003,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Unstable angina,,True,False,Panic attack
+ddxplus_57404,serious_tier1,Unstable angina,,False,,Unstable angina,SERIOUS,K17,Possible NSTEMI / STEMI|Unstable angina,,True,False,Anemia
+ddxplus_123177,serious_upgrade_or_flag,,K22|P1,False,,Tuberculosis,SERIOUS,K22,Tuberculosis,A15|A16|B59|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_66058,serious_upgrade_or_flag,,K22|P1,False,,Tuberculosis,SERIOUS,K22,Tuberculosis,A15|A16|B59|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_40409,serious_upgrade_or_flag,,K22|P1,False,,Tuberculosis,SERIOUS,K22,Tuberculosis,A15|A16|B59|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_118166,serious_upgrade_or_flag,,K22,False,,Tuberculosis,SERIOUS,K22,Pulmonary neoplasm|Tuberculosis,A15|A16|B59|C34|J18,True,False,Bronchitis
+ddxplus_77855,serious_upgrade_or_flag,,K22|P1,False,,Tuberculosis,SERIOUS,K22,Pulmonary neoplasm|Tuberculosis,A15|A16|B59|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_46790,serious_upgrade_or_flag,,K22,False,,Tuberculosis,SERIOUS,K22,Tuberculosis,A15|A16|B59|C34|J18,True,False,Bronchitis
+ddxplus_121218,serious_upgrade_or_flag,,K22|P1,False,,Tuberculosis,SERIOUS,K22,Pulmonary neoplasm|Tuberculosis,A15|A16|B59|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_31539,serious_upgrade_or_flag,,K22|P1,False,,Tuberculosis,SERIOUS,K22,Pulmonary neoplasm|Tuberculosis,A15|A16|B59|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_127585,serious_upgrade_or_flag,,K23|P10,False,,Acute COPD exacerbation / infection,SERIOUS,K23,Acute COPD exacerbation / infection,J18|J44|J93|J96,True,False,Bronchitis
+ddxplus_106841,serious_upgrade_or_flag,,K23|P10,False,,Acute COPD exacerbation / infection,SERIOUS,K23,Acute COPD exacerbation / infection,J18|J44|J93|J96,True,False,Bronchitis
+ddxplus_116519,serious_upgrade_or_flag,,K23|P10,False,,Acute COPD exacerbation / infection,SERIOUS,K23,Acute COPD exacerbation / infection,J18|J44|J93|J96,True,False,Bronchitis
+ddxplus_38543,serious_upgrade_or_flag,,K23|P10,False,,Acute COPD exacerbation / infection,SERIOUS,K23,Acute COPD exacerbation / infection,J18|J44|J93|J96,True,False,Bronchitis
+ddxplus_30284,serious_upgrade_or_flag,,K23|P10,False,,Acute COPD exacerbation / infection,SERIOUS,K23,Acute COPD exacerbation / infection,J18|J44|J93|J96,True,False,Bronchitis
+ddxplus_62857,serious_upgrade_or_flag,,K23|P10,False,,Acute COPD exacerbation / infection,SERIOUS,K23,Acute COPD exacerbation / infection,J18|J44|J93|J96,True,False,Bronchitis
+ddxplus_35177,serious_upgrade_or_flag,,K23|P10,False,,Acute COPD exacerbation / infection,SERIOUS,K23,Acute COPD exacerbation / infection,J18|J44|J93|J96,True,False,Bronchitis
+ddxplus_22852,serious_upgrade_or_flag,,K23|P10,False,,Acute COPD exacerbation / infection,SERIOUS,K23,Acute COPD exacerbation / infection,J18|J44|J93|J96,True,False,Bronchitis
+ddxplus_15299,serious_upgrade_or_flag,,K24|P9,False,,Atrial fibrillation,SERIOUS,K24,Atrial fibrillation|PSVT,E05|I21|I47|I48|I50,True,False,Anemia
+ddxplus_133327,serious_upgrade_or_flag,,K24|P9,False,,Atrial fibrillation,SERIOUS,K24,Atrial fibrillation|Myocarditis|PSVT,E05|I21|I47|I48|I50,True,False,Anemia
+ddxplus_50010,serious_upgrade_or_flag,,K24|P9,False,,Atrial fibrillation,SERIOUS,K24,Atrial fibrillation|PSVT,E05|I21|I47|I48|I50,True,False,Anemia
+ddxplus_34564,serious_upgrade_or_flag,,K24|P9,False,,Atrial fibrillation,SERIOUS,K24,Atrial fibrillation|PSVT,E05|I21|I47|I48|I50,True,False,Anemia
+ddxplus_74391,serious_upgrade_or_flag,,K24|P9,False,,Atrial fibrillation,SERIOUS,K24,Atrial fibrillation|PSVT,E05|I21|I47|I48|I50,True,False,Anemia
+ddxplus_21346,serious_upgrade_or_flag,,K24|P9,False,,Atrial fibrillation,SERIOUS,K24,Atrial fibrillation|PSVT,E05|I21|I47|I48|I50,True,False,Anemia
+ddxplus_77657,serious_upgrade_or_flag,,K24|P9,False,,Atrial fibrillation,SERIOUS,K24,Atrial fibrillation|PSVT,E05|I21|I47|I48|I50,True,False,Panic attack
+ddxplus_125548,serious_upgrade_or_flag,,K24|P9,False,,Atrial fibrillation,SERIOUS,K24,Atrial fibrillation|Myocarditis|PSVT,E05|I21|I47|I48|I50,True,False,Anemia
+ddxplus_94779,serious_upgrade_or_flag,,K33|P7,False,,Myasthenia gravis,SERIOUS,K33,Myasthenia gravis,G61|G70|J96,True,False,Anemia
+ddxplus_41863,serious_upgrade_or_flag,,K33|P7,False,,Myasthenia gravis,SERIOUS,K33,Myasthenia gravis,G61|G70|J96,True,False,Anemia
+ddxplus_60375,serious_upgrade_or_flag,,K33|P7,False,,Myasthenia gravis,SERIOUS,K33,Guillain-Barré syndrome|Myasthenia gravis,G61|G70|J96,True,False,Anemia
+ddxplus_21032,serious_upgrade_or_flag,,K33|P7,False,,Myasthenia gravis,SERIOUS,K33,Myasthenia gravis,G61|G70|J96,True,False,Anemia
+ddxplus_80174,serious_upgrade_or_flag,,K33|P7,False,,Myasthenia gravis,SERIOUS,K33,Guillain-Barré syndrome|Myasthenia gravis,G61|G70|J96,True,False,Anemia
+ddxplus_28377,serious_upgrade_or_flag,,K33|P7,False,,Myasthenia gravis,SERIOUS,K33,Myasthenia gravis,G61|G70|J96,True,False,Anemia
+ddxplus_86366,serious_upgrade_or_flag,,K33|P7,False,,Myasthenia gravis,SERIOUS,K33,Myasthenia gravis,G61|G70|J96,True,False,Anemia
+ddxplus_50331,serious_upgrade_or_flag,,K33|P7,False,,Myasthenia gravis,SERIOUS,K33,Myasthenia gravis,G61|G70|J96,True,False,Acute laryngitis
+ddxplus_53712,serious_upgrade_or_flag,,K42,False,,Pericarditis,SERIOUS,K42,Pericarditis,I20|I21|I24|I30|I31|I40|I51|I71|J90,True,False,Pericarditis
+ddxplus_122041,serious_upgrade_or_flag,,K42|P12,False,,Pericarditis,SERIOUS,K42,PSVT|Pericarditis,C79|I20|I21|I24|I26|I30|I31|I40|I51|J90|J93|M84|S22,True,False,Pericarditis
+ddxplus_74515,serious_upgrade_or_flag,,K42,False,,Pericarditis,SERIOUS,K42,Pericarditis,I20|I21|I24|I30|I31|I40|I51|J90,True,False,Pericarditis
+ddxplus_90666,serious_upgrade_or_flag,,K42|P12,False,,Pericarditis,SERIOUS,K42,Pericarditis,C79|I20|I21|I24|I26|I30|I31|I40|I51|I71|J90|J93|M84|S22,True,False,Pericarditis
+ddxplus_8594,serious_upgrade_or_flag,,K42,False,,Pericarditis,SERIOUS,K42,Pericarditis,I20|I21|I24|I30|I31|I40|I51|J90,True,False,Pericarditis
+ddxplus_133197,serious_upgrade_or_flag,,K42|P12,False,,Pericarditis,SERIOUS,K42,Pericarditis|Spontaneous pneumothorax,C79|I20|I21|I24|I26|I30|I31|I40|I51|J90|J93|M84|S22,True,False,Pericarditis
+ddxplus_2428,serious_upgrade_or_flag,,K42,False,,Pericarditis,SERIOUS,K42,Pericarditis,I20|I21|I24|I30|I31|I40|I51|J90,True,False,Pericarditis
+ddxplus_63878,serious_upgrade_or_flag,,K42,False,,Pericarditis,SERIOUS,K42,Pericarditis,I20|I21|I24|I30|I31|I40|I51|J90,True,False,Pericarditis
+ddxplus_85161,serious_upgrade_or_flag,,P1,False,,Bronchiectasis,SERIOUS,P1,,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_96049,serious_upgrade_or_flag,,P1,False,,Viral pharyngitis,SERIOUS,P1,,A15|A16|C34|I26|J18|J47|J96,False,True,Viral pharyngitis
+ddxplus_24254,serious_upgrade_or_flag,,P12,False,,Spontaneous rib fracture,SERIOUS,P12,,C79|I21|I26|I71|J93|M84|S22,True,False,Pericarditis
+ddxplus_44102,serious_upgrade_or_flag,,P12,False,,Panic attack,SERIOUS,P12,,C79|I21|I26|J93|M84|S22,False,True,Panic attack
+ddxplus_91222,serious_upgrade_or_flag,,P12,False,,Spontaneous rib fracture,SERIOUS,P12,,C79|I21|I26|I71|J93|M84|S22,True,False,Bronchitis
+ddxplus_1822,serious_upgrade_or_flag,,P12,False,,Panic attack,SERIOUS,P12,,C79|I21|I26|J93|M84|S22,False,True,Panic attack
+ddxplus_114190,serious_upgrade_or_flag,,P12,False,,Panic attack,SERIOUS,P12,,C79|I21|I26|J93|M84|S22,False,True,Panic attack
+ddxplus_59816,serious_upgrade_or_flag,,P14,False,,Cluster headache,SERIOUS,P14,,G45|I60|I61|I63,True,False,Viral pharyngitis
+ddxplus_118860,serious_upgrade_or_flag,,P14,False,,Cluster headache,SERIOUS,P14,,G45|I60|I61|I63,True,False,Bronchitis
+ddxplus_118767,serious_upgrade_or_flag,,P14,False,,Cluster headache,SERIOUS,P14,,G45|I60|I61|I63,True,False,Viral pharyngitis
+ddxplus_29172,serious_upgrade_or_flag,,P14,False,,Cluster headache,SERIOUS,P14,,G45|I60|I61|I63,True,False,Anemia
+ddxplus_2895,serious_upgrade_or_flag,,P14,False,,Cluster headache,SERIOUS,P14,,G45|I60|I61|I63,True,False,Bronchitis
+ddxplus_82730,serious_upgrade_or_flag,,P14,False,,Cluster headache,SERIOUS,P14,,G45|I60|I61|I63,True,False,Anemia
+ddxplus_110334,serious_upgrade_or_flag,,P14,False,,Cluster headache,SERIOUS,P14,,G45|I60|I61|I63,True,False,Viral pharyngitis
+ddxplus_97158,serious_upgrade_or_flag,,P14,False,,Cluster headache,SERIOUS,P14,,G45|I60|I61|I63,True,False,Anemia
+ddxplus_64791,serious_upgrade_or_flag,,P15,False,,Localized edema,SERIOUS,P15,,I26|I82,False,True,Localized edema
+ddxplus_40744,serious_upgrade_or_flag,,P15,False,,Localized edema,SERIOUS,P15,,I26|I82,False,True,Localized edema
+ddxplus_99138,serious_upgrade_or_flag,,P2,False,,GERD,SERIOUS,P2,,D62|I85|K25|K26|K27|K28|K92,True,False,Bronchitis
+ddxplus_121062,serious_upgrade_or_flag,,P2|P3,False,,Anemia,SERIOUS,P2,,C18|C19|C20|D62|I85|K25|K26|K27|K28|K62|K92,False,True,Anemia
+ddxplus_113104,serious_upgrade_or_flag,,P2,False,,GERD,SERIOUS,P2,,D62|I85|K25|K26|K27|K28|K92,True,False,Bronchitis
+ddxplus_118840,serious_upgrade_or_flag,,P2|P3,False,,Anemia,SERIOUS,P2,,C18|C19|C20|D62|I85|K25|K26|K27|K28|K62|K92,False,True,Anemia
+ddxplus_61586,serious_upgrade_or_flag,,P2,False,,Anemia,SERIOUS,P2,,D62|I85|K25|K26|K27|K28|K92,False,True,Anemia
+ddxplus_129468,serious_upgrade_or_flag,,P2,False,,Anemia,SERIOUS,P2,,D62|I85|K25|K26|K27|K28|K92,False,True,Anemia
+ddxplus_113296,serious_upgrade_or_flag,,P2,False,,Anemia,SERIOUS,P2,,D62|I85|K25|K26|K27|K28|K92,False,True,Anemia
+ddxplus_24372,serious_upgrade_or_flag,,P2,False,,Anemia,SERIOUS,P2,,D62|I85|K25|K26|K27|K28|K92,False,True,Anemia
+ddxplus_115997,serious_upgrade_or_flag,,P2|P3,False,,Anemia,SERIOUS,P2,,C18|C19|C20|D62|I85|K25|K26|K27|K28|K62|K92,False,True,Anemia
+ddxplus_122292,serious_upgrade_or_flag,,P2|P3,False,,Anemia,SERIOUS,P2,,C18|C19|C20|D62|I85|K25|K26|K27|K28|K62|K92,False,True,Anemia
+ddxplus_99175,serious_upgrade_or_flag,,P2|P3,False,,Anemia,SERIOUS,P2,,C18|C19|C20|D62|I85|K25|K26|K27|K28|K62|K92,False,True,Anemia
+ddxplus_37515,serious_upgrade_or_flag,,P2|P3,False,,Anemia,SERIOUS,P2,,C18|C19|C20|D62|I85|K25|K26|K27|K28|K62|K92,False,True,Anemia
+ddxplus_57031,serious_upgrade_or_flag,,P2|P3,False,,Anemia,SERIOUS,P2,,C18|C19|C20|D62|I85|K25|K26|K27|K28|K62|K92,False,True,Anemia
+ddxplus_2282,serious_upgrade_or_flag,,P2|P3,False,,Anemia,SERIOUS,P2,,C18|C19|C20|D62|I85|K25|K26|K27|K28|K62|K92,False,True,Anemia
+ddxplus_56848,serious_upgrade_or_flag,,P4,False,,Sarcoidosis,SERIOUS,P4,,G40|G41|R56,False,True,Sarcoidosis
+ddxplus_108359,serious_upgrade_or_flag,,P4,False,,Sarcoidosis,SERIOUS,P4,,G40|G41|R56,False,True,Sarcoidosis
+ddxplus_102698,serious_upgrade_or_flag,,P4,False,,Sarcoidosis,SERIOUS,P4,,G40|G41|R56,False,True,Sarcoidosis
+ddxplus_73437,serious_upgrade_or_flag,,P4,False,,Sarcoidosis,SERIOUS,P4,,G40|G41|R56,False,True,Sarcoidosis
+ddxplus_56677,serious_upgrade_or_flag,,P4,False,,Sarcoidosis,SERIOUS,P4,,G40|G41|R56,False,True,Sarcoidosis
+ddxplus_99729,serious_upgrade_or_flag,,P4,False,,Sarcoidosis,SERIOUS,P4,,G40|G41|R56,False,True,Sarcoidosis
+ddxplus_55318,serious_upgrade_or_flag,,P4,False,,Sarcoidosis,SERIOUS,P4,,G40|G41|R56,False,True,Sarcoidosis
+ddxplus_39577,serious_upgrade_or_flag,,P4,False,,Sarcoidosis,SERIOUS,P4,,G40|G41|R56,False,True,Sarcoidosis
+ddxplus_82022,serious_upgrade_or_flag,,P6,False,,SLE,SERIOUS,P6,,I26|I30|I31|I40|J90|M32,False,True,SLE
+ddxplus_85055,serious_upgrade_or_flag,,P6,False,,SLE,SERIOUS,P6,,I26|I30|I31|I40|J90|M32,False,True,SLE
+ddxplus_124890,serious_upgrade_or_flag,,P6,False,,SLE,SERIOUS,P6,,I26|I30|I31|I40|J90|M32,False,True,SLE
+ddxplus_89735,serious_upgrade_or_flag,,P6,False,,SLE,SERIOUS,P6,,I26|I30|I31|I40|J90|M32,False,True,SLE
+ddxplus_123923,serious_upgrade_or_flag,,P6,False,,SLE,SERIOUS,P6,,I26|I30|I31|I40|J90|M32,False,True,SLE
+ddxplus_66520,serious_upgrade_or_flag,,P6,False,,SLE,SERIOUS,P6,,I26|I30|I31|I40|J90|M32,False,True,SLE
+ddxplus_121859,serious_upgrade_or_flag,,P6,False,,SLE,SERIOUS,P6,,I26|I30|I31|I40|J90|M32,False,True,SLE
+ddxplus_20716,serious_upgrade_or_flag,,P6,False,,SLE,SERIOUS,P6,,I26|I30|I31|I40|J90|M32,False,True,SLE
+ddxplus_109691,serious_upgrade_or_flag,,P1,False,,Viral pharyngitis,SERIOUS,P1,,A15|A16|C34|I26|J18|J47|J96,False,True,Viral pharyngitis
+ddxplus_81588,serious_upgrade_or_flag,,P1,False,,Viral pharyngitis,SERIOUS,P1,,A15|A16|C34|I26|J18|J47|J96,False,True,Viral pharyngitis
+ddxplus_26475,serious_upgrade_or_flag,,P1,False,,Viral pharyngitis,SERIOUS,P1,,A15|A16|C34|I26|J18|J47|J96,False,True,Bronchitis
+ddxplus_107883,serious_upgrade_or_flag,,P1,False,,Viral pharyngitis,SERIOUS,P1,,A15|A16|C34|I26|J18|J47|J96,False,True,Bronchitis
+ddxplus_26030,serious_upgrade_or_flag,,P1,False,,Viral pharyngitis,SERIOUS,P1,,A15|A16|C34|I26|J18|J47|J96,False,True,Bronchitis
+ddxplus_19152,serious_upgrade_or_flag,,P1,False,,Viral pharyngitis,SERIOUS,P1,,A15|A16|C34|I26|J18|J47|J96,False,True,Viral pharyngitis
+ddxplus_70993,serious_upgrade_or_flag,,P2,False,,Anemia,SERIOUS,P2,,D62|I85|K25|K26|K27|K28|K92,False,True,Anemia
+ddxplus_27903,serious_upgrade_or_flag,,P1,False,,Bronchiectasis,SERIOUS,P1,Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,True,False,Bronchitis
+ddxplus_89003,serious_upgrade_or_flag,,P2,False,,Anemia,SERIOUS,P2,,D62|I85|K25|K26|K27|K28|K92,False,True,Anemia
+ddxplus_26028,serious_upgrade_or_flag,,P1,False,,Viral pharyngitis,SERIOUS,P1,,A15|A16|C34|I26|J18|J47|J96,False,True,Acute laryngitis
+ddxplus_70776,serious_upgrade_or_flag,,P1,False,,Viral pharyngitis,SERIOUS,P1,,A15|A16|C34|I26|J18|J47|J96,False,True,Viral pharyngitis
+ddxplus_4244,serious_upgrade_or_flag,,P1,False,,Viral pharyngitis,SERIOUS,P1,,A15|A16|C34|I26|J18|J47|J96,False,True,Bronchitis
+ddxplus_55267,serious_upgrade_or_flag,,P1,False,,Viral pharyngitis,SERIOUS,P1,,A15|A16|C34|I26|J18|J47|J96,False,True,Viral pharyngitis
+ddxplus_71784,serious_upgrade_or_flag,,P1,False,,Viral pharyngitis,SERIOUS,P1,,A15|A16|C34|I26|J18|J47|J96,False,True,Viral pharyngitis
+ddxplus_90670,serious_upgrade_or_flag,,P6,False,,SLE,SERIOUS,P6,,I26|I30|I31|I40|J90|M32,False,True,SLE
+ddxplus_104762,serious_upgrade_or_flag,,P2,False,,Anemia,SERIOUS,P2,,D62|I85|K25|K26|K27|K28|K92,False,True,Anemia
+ddxplus_53247,serious_upgrade_or_flag,,P6,False,,SLE,SERIOUS,P6,,I26|I30|I31|I40|J90|M32,False,True,SLE
+ddxplus_67961,serious_upgrade_or_flag,,P6,False,,SLE,SERIOUS,P6,,I26|I30|I31|I40|J90|M32,False,True,SLE
+ddxplus_128765,serious_upgrade_or_flag,,P2,False,,Anemia,SERIOUS,P2,,D62|I85|K25|K26|K27|K28|K92,False,True,Anemia
+ddxplus_71367,serious_upgrade_or_flag,,P2,False,,GERD,SERIOUS,P2,,D62|I85|K25|K26|K27|K28|K92,True,False,Bronchitis
+ddxplus_39499,serious_upgrade_or_flag,,P3,False,,Anemia,SERIOUS,P3,,C18|C19|C20|D62|K62|K92,False,True,Anemia
+ddxplus_26619,serious_upgrade_or_flag,,P2,False,,Anemia,SERIOUS,P2,,D62|I85|K25|K26|K27|K28|K92,False,True,Anemia
+ddxplus_45409,serious_upgrade_or_flag,,P2|P3,False,,Anemia,SERIOUS,P2,,C18|C19|C20|D62|I85|K25|K26|K27|K28|K62|K92,False,True,Anemia
+ddxplus_17087,serious_upgrade_or_flag,,K42,False,,Pericarditis,SERIOUS,K42,Pericarditis,I20|I21|I24|I30|I31|I40|I51|J90,True,False,Pericarditis
+ddxplus_44484,serious_upgrade_or_flag,,P2,False,,Anemia,SERIOUS,P2,,D62|I85|K25|K26|K27|K28|K92,False,True,Anemia
+ddxplus_121507,serious_upgrade_or_flag,,K42,False,,Pericarditis,SERIOUS,K42,Pericarditis,I20|I21|I24|I30|I31|I40|I51|I71|J90,True,False,Pericarditis
+ddxplus_9194,serious_upgrade_or_flag,,P2,False,,Anemia,SERIOUS,P2,,D62|I85|K25|K26|K27|K28|K92,False,True,Anemia
+ddxplus_25608,serious_upgrade_or_flag,,P2|P3,False,,Anemia,SERIOUS,P2,,C18|C19|C20|D62|I85|K25|K26|K27|K28|K62|K92,False,True,Anemia
+ddxplus_87904,serious_upgrade_or_flag,,P12,False,,Spontaneous rib fracture,SERIOUS,P12,,C79|I21|I26|I71|J93|M84|S22,True,False,Bronchitis
+ddxplus_21223,serious_upgrade_or_flag,,P1,False,,Viral pharyngitis,SERIOUS,P1,,A15|A16|C34|I26|J18|J47|J96,False,True,Viral pharyngitis
+ddxplus_73233,serious_upgrade_or_flag,,K42|P12,False,,Pericarditis,SERIOUS,K42,Pericarditis,C79|I20|I21|I24|I26|I30|I31|I40|I51|I71|J90|J93|M84|S22,True,False,Pericarditis
+ddxplus_123399,serious_upgrade_or_flag,,P3,False,,Anemia,SERIOUS,P3,,C18|C19|C20|D62|K62|K92,False,True,Anemia
+ddxplus_105570,serious_upgrade_or_flag,,P1,False,,Viral pharyngitis,SERIOUS,P1,,A15|A16|C34|I26|J18|J47|J96,False,True,Bronchitis
+ddxplus_10253,serious_upgrade_or_flag,,P1,False,,Viral pharyngitis,SERIOUS,P1,Pulmonary neoplasm,A15|A16|C34|I26|J18|J47|J96,False,True,Viral pharyngitis
+ddxplus_122776,serious_upgrade_or_flag,,K42,False,,Pericarditis,SERIOUS,K42,Pericarditis,I20|I21|I24|I30|I31|I40|I51|J90,True,False,Pericarditis
+ddxplus_27828,serious_upgrade_or_flag,,P3,False,,Anemia,SERIOUS,P3,,C18|C19|C20|D62|K62|K92,False,True,Anemia
+ddxplus_102674,serious_upgrade_or_flag,,P2,False,,GERD,SERIOUS,P2,,D62|I85|K25|K26|K27|K28|K92,True,False,Bronchitis
+ddxplus_19064,serious_upgrade_or_flag,,K42|P12,False,,Pericarditis,SERIOUS,K42,Myocarditis|PSVT|Pericarditis,C79|I20|I21|I24|I26|I30|I31|I40|I51|J90|J93|M84|S22,True,False,Pericarditis
+ddxplus_82036,serious_upgrade_or_flag,,P2,False,,GERD,SERIOUS,P2,Boerhaave,D62|I85|K25|K26|K27|K28|K92,True,False,Bronchitis
+ddxplus_80368,serious_upgrade_or_flag,,P6,False,,SLE,SERIOUS,P6,,I26|I30|I31|I40|J90|M32,False,True,SLE
+ddxplus_111215,serious_upgrade_or_flag,,P3,False,,Anemia,SERIOUS,P3,,C18|C19|C20|D62|K62|K92,False,True,Anemia
+ddxplus_131074,serious_upgrade_or_flag,,P2,False,,Anemia,SERIOUS,P2,,D62|I85|K25|K26|K27|K28|K92,False,True,Anemia
+ddxplus_76130,serious_upgrade_or_flag,,P1,False,,Viral pharyngitis,SERIOUS,P1,,A15|A16|C34|I26|J18|J47|J96,False,True,Viral pharyngitis
+ddxplus_56055,serious_upgrade_or_flag,,P2,False,,Anemia,SERIOUS,P2,,D62|I85|K25|K26|K27|K28|K92,False,True,Anemia
+ddxplus_96951,serious_upgrade_or_flag,,P12,False,,Panic attack,SERIOUS,P12,,C79|I21|I26|J93|M84|S22,False,True,Panic attack
+ddxplus_65552,serious_upgrade_or_flag,,K42,False,,Pericarditis,SERIOUS,K42,Pericarditis,I20|I21|I24|I30|I31|I40|I51|J90,True,False,Pericarditis
+ddxplus_81087,serious_upgrade_or_flag,,P1,False,,Viral pharyngitis,SERIOUS,P1,,A15|A16|C34|I26|J18|J47|J96,False,True,Viral pharyngitis
+ddxplus_102322,serious_upgrade_or_flag,,P12,False,,Panic attack,SERIOUS,P12,,C79|I21|I26|J93|M84|S22,False,True,Panic attack
+ddxplus_96033,serious_upgrade_or_flag,,P3,False,,Anemia,SERIOUS,P3,,C18|C19|C20|D62|K62|K92,False,True,Anemia
+ddxplus_79297,serious_upgrade_or_flag,,P2|P3,False,,Anemia,SERIOUS,P2,,C18|C19|C20|D62|I85|K25|K26|K27|K28|K62|K92,False,True,Anemia
+ddxplus_97790,serious_upgrade_or_flag,,P2|P3,False,,Anemia,SERIOUS,P2,,C18|C19|C20|D62|I85|K25|K26|K27|K28|K62|K92,False,True,Anemia
+ddxplus_95667,serious_upgrade_or_flag,,P1,False,,Viral pharyngitis,SERIOUS,P1,,A15|A16|C34|I26|J18|J47|J96,False,True,Viral pharyngitis
+ddxplus_89259,serious_upgrade_or_flag,,P2,False,,Anemia,SERIOUS,P2,,D62|I85|K25|K26|K27|K28|K92,False,True,Anemia
+ddxplus_108166,benign,Acute laryngitis,,False,,Acute laryngitis,BENIGN,K35,,,False,False,Bronchitis
+ddxplus_9266,benign,Acute laryngitis,,False,,Acute laryngitis,BENIGN,K35,,,False,False,Bronchitis
+ddxplus_30737,benign,Acute laryngitis,,False,,Acute laryngitis,BENIGN,K35,,,False,False,Acute laryngitis
+ddxplus_18423,benign,Acute laryngitis,,False,,Acute laryngitis,BENIGN,K35,,,False,False,Acute laryngitis
+ddxplus_87713,benign,Acute laryngitis,,False,,Acute laryngitis,BENIGN,K35,,,False,False,Acute laryngitis
+ddxplus_2712,benign,Acute laryngitis,,False,,Acute laryngitis,BENIGN,K35,,,False,False,Acute laryngitis
+ddxplus_122059,benign,Acute laryngitis,,False,,Acute laryngitis,BENIGN,K35,,,False,False,Acute laryngitis
+ddxplus_72002,benign,Acute laryngitis,,False,,Acute laryngitis,BENIGN,K35,,,False,False,Acute laryngitis
+ddxplus_5202,benign,Acute laryngitis,,False,,Acute laryngitis,BENIGN,K35,,,False,False,Acute laryngitis
+ddxplus_108237,benign,Acute laryngitis,,False,,Acute laryngitis,BENIGN,K35,,,False,False,Acute laryngitis
+ddxplus_114558,benign,Acute laryngitis,,False,,Acute laryngitis,BENIGN,K35,,,False,False,Acute laryngitis
+ddxplus_82752,benign,Acute laryngitis,,False,,Acute laryngitis,BENIGN,K35,,,False,False,Bronchitis
+ddxplus_71608,benign,Acute laryngitis,,False,,Acute laryngitis,BENIGN,K35,,,False,False,Bronchitis
+ddxplus_83261,benign,Acute laryngitis,,False,,Acute laryngitis,BENIGN,K35,,,False,False,Acute laryngitis
+ddxplus_60193,benign,Acute laryngitis,,False,,Acute laryngitis,BENIGN,K35,,,False,False,Acute laryngitis
+ddxplus_32193,benign,Acute laryngitis,,False,,Acute laryngitis,BENIGN,K35,,,False,False,Acute laryngitis
+ddxplus_92835,benign,Acute laryngitis,,False,,Acute laryngitis,BENIGN,K35,,,False,False,Acute laryngitis
+ddxplus_91291,benign,Acute laryngitis,,False,,Acute laryngitis,BENIGN,K35,,,False,False,Acute laryngitis
+ddxplus_124901,benign,Acute laryngitis,,False,,Acute laryngitis,BENIGN,K35,,,False,False,Acute laryngitis
+ddxplus_130543,benign,Acute otitis media,,False,,Acute otitis media,BENIGN,K36,,,False,False,Acute otitis media
+ddxplus_68129,benign,Acute otitis media,,False,,Acute otitis media,BENIGN,K36,,,False,False,Bronchitis
+ddxplus_120008,benign,Acute otitis media,,False,,Acute otitis media,BENIGN,K36,,,False,False,Bronchitis
+ddxplus_102265,benign,Acute otitis media,,False,,Acute otitis media,BENIGN,K36,,,False,False,Acute otitis media
+ddxplus_92845,benign,Acute otitis media,,False,,Acute otitis media,BENIGN,K36,,,False,False,Acute otitis media
+ddxplus_64679,benign,Acute otitis media,,False,,Acute otitis media,BENIGN,K36,,,False,False,Acute otitis media
+ddxplus_120828,benign,Acute otitis media,,False,,Acute otitis media,BENIGN,K36,,,False,False,URTI
+ddxplus_16265,benign,Acute otitis media,,False,,Acute otitis media,BENIGN,K36,,,False,False,Acute otitis media
+ddxplus_13923,benign,Acute otitis media,,False,,Acute otitis media,BENIGN,K36,,,False,False,Acute otitis media
+ddxplus_119863,benign,Acute otitis media,,False,,Acute otitis media,BENIGN,K36,,,False,False,URTI
+ddxplus_41381,benign,Acute otitis media,,False,,Acute otitis media,BENIGN,K36,,,False,False,Bronchitis
+ddxplus_95363,benign,Acute otitis media,,False,,Acute otitis media,BENIGN,K36,,,False,False,Acute otitis media
+ddxplus_87267,benign,Acute otitis media,,False,,Acute otitis media,BENIGN,K36,,,False,False,Bronchitis
+ddxplus_83753,benign,Acute otitis media,,False,,Acute otitis media,BENIGN,K36,,,False,False,Acute otitis media
+ddxplus_69358,benign,Acute otitis media,,False,,Acute otitis media,BENIGN,K36,,,False,False,Acute otitis media
+ddxplus_79490,benign,Acute otitis media,,False,,Acute otitis media,BENIGN,K36,,,False,False,Bronchitis
+ddxplus_107846,benign,Acute otitis media,,False,,Acute otitis media,BENIGN,K36,,,False,False,Acute otitis media
+ddxplus_29663,benign,Acute otitis media,,False,,Acute otitis media,BENIGN,K36,,,False,False,Acute otitis media
+ddxplus_46285,benign,Acute otitis media,,False,,Acute otitis media,BENIGN,K36,,,False,False,Acute otitis media
+ddxplus_99044,benign,Acute rhinosinusitis,,False,,Acute rhinosinusitis,BENIGN,K37,,,False,False,Acute rhinosinusitis
+ddxplus_110853,benign,Acute rhinosinusitis,,False,,Acute rhinosinusitis,BENIGN,K37,,,False,False,Acute rhinosinusitis
+ddxplus_125005,benign,Acute rhinosinusitis,,False,,Acute rhinosinusitis,BENIGN,K37,,,False,False,Bronchitis
+ddxplus_69623,benign,Acute rhinosinusitis,,False,,Acute rhinosinusitis,BENIGN,K37,,,False,False,Bronchitis
+ddxplus_44852,benign,Acute rhinosinusitis,,False,,Acute rhinosinusitis,BENIGN,K37,,,False,False,Acute rhinosinusitis
+ddxplus_116148,benign,Acute rhinosinusitis,,False,,Acute rhinosinusitis,BENIGN,K37,,,False,False,Acute rhinosinusitis
+ddxplus_42177,benign,Acute rhinosinusitis,,False,,Acute rhinosinusitis,BENIGN,K37,,,False,False,Viral pharyngitis
+ddxplus_76597,benign,Acute rhinosinusitis,,False,,Acute rhinosinusitis,BENIGN,K37,,,False,False,Acute rhinosinusitis
+ddxplus_73943,benign,Acute rhinosinusitis,,False,,Acute rhinosinusitis,BENIGN,K37,,,False,False,Acute rhinosinusitis
+ddxplus_39752,benign,Acute rhinosinusitis,,False,,Acute rhinosinusitis,BENIGN,K37,,,False,False,Acute rhinosinusitis
+ddxplus_131784,benign,Acute rhinosinusitis,,False,,Acute rhinosinusitis,BENIGN,K37,,,False,False,Acute rhinosinusitis
+ddxplus_41218,benign,Acute rhinosinusitis,,False,,Acute rhinosinusitis,BENIGN,K37,,,False,False,Acute rhinosinusitis
+ddxplus_4776,benign,Acute rhinosinusitis,,False,,Acute rhinosinusitis,BENIGN,K37,,,False,False,Bronchitis
+ddxplus_36563,benign,Acute rhinosinusitis,,False,,Acute rhinosinusitis,BENIGN,K37,,,False,False,Acute rhinosinusitis
+ddxplus_59172,benign,Acute rhinosinusitis,,False,,Acute rhinosinusitis,BENIGN,K37,,,False,False,Acute rhinosinusitis
+ddxplus_110835,benign,Acute rhinosinusitis,,False,,Acute rhinosinusitis,BENIGN,K37,,,False,False,Acute rhinosinusitis
+ddxplus_20403,benign,Acute rhinosinusitis,,False,,Acute rhinosinusitis,BENIGN,K37,,,False,False,Acute rhinosinusitis
+ddxplus_132125,benign,Acute rhinosinusitis,,False,,Acute rhinosinusitis,BENIGN,K37,,,False,False,Bronchitis
+ddxplus_91972,benign,Acute rhinosinusitis,,False,,Acute rhinosinusitis,BENIGN,K37,,,False,False,URTI
+ddxplus_107592,benign,Allergic sinusitis,,False,,Allergic sinusitis,BENIGN,K38,,,False,False,Allergic sinusitis
+ddxplus_8432,benign,Allergic sinusitis,,False,,Allergic sinusitis,BENIGN,K38,,,False,False,Allergic sinusitis
+ddxplus_112598,benign,Allergic sinusitis,,False,,Allergic sinusitis,BENIGN,K38,,,False,False,Allergic sinusitis
+ddxplus_99162,benign,Allergic sinusitis,,False,,Allergic sinusitis,BENIGN,K38,,,False,False,Allergic sinusitis
+ddxplus_129277,benign,Allergic sinusitis,,False,,Allergic sinusitis,BENIGN,K38,,,False,False,Allergic sinusitis
+ddxplus_555,benign,Allergic sinusitis,,False,,Allergic sinusitis,BENIGN,K38,,,False,False,Allergic sinusitis
+ddxplus_50650,benign,Allergic sinusitis,,False,,Allergic sinusitis,BENIGN,K38,,,False,False,Allergic sinusitis
+ddxplus_115762,benign,Allergic sinusitis,,False,,Allergic sinusitis,BENIGN,K38,,,False,False,Allergic sinusitis
+ddxplus_15110,benign,Allergic sinusitis,,False,,Allergic sinusitis,BENIGN,K38,,,False,False,Allergic sinusitis
+ddxplus_79879,benign,Allergic sinusitis,,False,,Allergic sinusitis,BENIGN,K38,,,False,False,Allergic sinusitis
+ddxplus_42442,benign,Allergic sinusitis,,False,,Allergic sinusitis,BENIGN,K38,,,False,False,Allergic sinusitis
+ddxplus_81194,benign,Allergic sinusitis,,False,,Allergic sinusitis,BENIGN,K38,,,False,False,Bronchitis
+ddxplus_84003,benign,Allergic sinusitis,,False,,Allergic sinusitis,BENIGN,K38,,,False,False,Allergic sinusitis
+ddxplus_18453,benign,Allergic sinusitis,,False,,Allergic sinusitis,BENIGN,K38,,,False,False,Allergic sinusitis
+ddxplus_41151,benign,Allergic sinusitis,,False,,Allergic sinusitis,BENIGN,K38,,,False,False,Allergic sinusitis
+ddxplus_93952,benign,Allergic sinusitis,,False,,Allergic sinusitis,BENIGN,K38,,,False,False,Bronchitis
+ddxplus_66303,benign,Allergic sinusitis,,False,,Allergic sinusitis,BENIGN,K38,,,False,False,Allergic sinusitis
+ddxplus_93453,benign,Allergic sinusitis,,False,,Allergic sinusitis,BENIGN,K38,,,False,False,Allergic sinusitis
+ddxplus_64879,benign,Allergic sinusitis,,False,,Allergic sinusitis,BENIGN,K38,,,False,False,Allergic sinusitis
+ddxplus_62225,benign,Anemia,,False,,Anemia,BENIGN,K39,,,False,False,Anemia
+ddxplus_4969,benign,Anemia,,False,,Anemia,BENIGN,K39,,,False,False,Anemia
+ddxplus_71880,benign,Anemia,,False,,Anemia,BENIGN,K39,,,False,False,Anemia
+ddxplus_17345,benign,Anemia,,False,,Anemia,BENIGN,K39,,,False,False,Anemia
+ddxplus_97103,benign,Anemia,,False,,Anemia,BENIGN,K39,,,False,False,Anemia
+ddxplus_122035,benign,Anemia,,False,,Anemia,BENIGN,K39,,,False,False,Anemia
+ddxplus_109071,benign,Anemia,,False,,Anemia,BENIGN,K39,,,False,False,Anemia
+ddxplus_38408,benign,Anemia,,False,,Anemia,BENIGN,K39,,,False,False,Anemia
+ddxplus_115919,benign,Anemia,,False,,Anemia,BENIGN,K39,,,False,False,Anemia
+ddxplus_38620,benign,Anemia,,False,,Anemia,BENIGN,K39,,,False,False,Anemia
+ddxplus_107967,benign,Anemia,,False,,Anemia,BENIGN,K39,,,False,False,Anemia
+ddxplus_31601,benign,Anemia,,False,,Anemia,BENIGN,K39,,,False,False,Anemia
+ddxplus_87297,benign,Anemia,,False,,Anemia,BENIGN,K39,,,False,False,Anemia
+ddxplus_117929,benign,Anemia,,False,,Anemia,BENIGN,K39,,,False,False,Anemia
+ddxplus_59468,benign,Anemia,,False,,Anemia,BENIGN,K39,,,False,False,Anemia
+ddxplus_90971,benign,Anemia,,False,,Anemia,BENIGN,K39,,,False,False,Anemia
+ddxplus_6561,benign,Anemia,,False,,Anemia,BENIGN,K39,,,False,False,Anemia
+ddxplus_51533,benign,Anemia,,False,,Anemia,BENIGN,K39,,,False,False,Anemia
+ddxplus_6167,benign,Bronchitis,,False,,Bronchitis,BENIGN,K40,,,False,False,Viral pharyngitis
+ddxplus_2114,benign,Bronchitis,,False,ddxplus_81091,Bronchitis,BENIGN,K40,,,False,False,Bronchitis
+ddxplus_129597,benign,Bronchitis,,False,,Bronchitis,BENIGN,K40,,,False,False,Bronchitis
+ddxplus_101459,benign,Bronchitis,,False,,Bronchitis,BENIGN,K40,,,False,False,URTI
+ddxplus_44198,benign,Bronchitis,,False,,Bronchitis,BENIGN,K40,,,False,False,Bronchitis
+ddxplus_102789,benign,Bronchitis,,False,,Bronchitis,BENIGN,K40,,,False,False,URTI
+ddxplus_85706,benign,Bronchitis,,False,,Bronchitis,BENIGN,K40,,,False,False,Bronchitis
+ddxplus_53424,benign,Bronchitis,,False,,Bronchitis,BENIGN,K40,,,False,False,URTI
+ddxplus_6923,benign,Bronchitis,,False,,Bronchitis,BENIGN,K40,,,False,False,Bronchitis
+ddxplus_106533,benign,Bronchitis,,False,ddxplus_33011,Bronchitis,BENIGN,K40,,,False,False,Bronchitis
+ddxplus_37508,benign,Bronchitis,,False,ddxplus_5198,Bronchitis,BENIGN,K40,,,False,False,Bronchitis
+ddxplus_89609,benign,Bronchitis,,False,ddxplus_17932,Bronchitis,BENIGN,K40,,,False,False,Bronchitis
+ddxplus_73515,benign,Bronchitis,,False,ddxplus_82604,Bronchitis,BENIGN,K40,,,False,False,Bronchitis
+ddxplus_90286,benign,Bronchitis,,False,,Bronchitis,BENIGN,K40,,,False,False,Bronchitis
+ddxplus_99853,benign,Bronchitis,,False,,Bronchitis,BENIGN,K40,,,False,False,Bronchitis
+ddxplus_67475,benign,Bronchitis,,False,ddxplus_107100,Bronchitis,BENIGN,K40,,,False,False,URTI
+ddxplus_125685,benign,Bronchitis,,False,,Bronchitis,BENIGN,K40,,,False,False,Bronchitis
+ddxplus_110814,benign,Bronchitis,,False,ddxplus_125031,Bronchitis,BENIGN,K40,,,False,False,Bronchitis
+ddxplus_64214,benign,Chronic rhinosinusitis,,False,,Chronic rhinosinusitis,BENIGN,K47,,,False,False,Bronchitis
+ddxplus_55560,benign,Chronic rhinosinusitis,,False,,Chronic rhinosinusitis,BENIGN,K47,,,False,False,Acute rhinosinusitis
+ddxplus_54826,benign,Chronic rhinosinusitis,,False,,Chronic rhinosinusitis,BENIGN,K47,,,False,False,Acute rhinosinusitis
+ddxplus_80374,benign,Chronic rhinosinusitis,,False,,Chronic rhinosinusitis,BENIGN,K47,,,False,False,Bronchitis
+ddxplus_7472,benign,Chronic rhinosinusitis,,False,,Chronic rhinosinusitis,BENIGN,K47,,,False,False,Bronchitis
+ddxplus_116637,benign,Chronic rhinosinusitis,,False,,Chronic rhinosinusitis,BENIGN,K47,,,False,False,Acute rhinosinusitis
+ddxplus_27296,benign,Chronic rhinosinusitis,,False,,Chronic rhinosinusitis,BENIGN,K47,,,False,False,Viral pharyngitis
+ddxplus_70896,benign,Chronic rhinosinusitis,,False,,Chronic rhinosinusitis,BENIGN,K47,,,False,False,Viral pharyngitis
+ddxplus_80291,benign,Chronic rhinosinusitis,,False,,Chronic rhinosinusitis,BENIGN,K47,,,False,False,Viral pharyngitis
+ddxplus_107462,benign,Chronic rhinosinusitis,,False,,Chronic rhinosinusitis,BENIGN,K47,,,False,False,Viral pharyngitis
+ddxplus_13977,benign,Chronic rhinosinusitis,,False,,Chronic rhinosinusitis,BENIGN,K47,,,False,False,Viral pharyngitis
+ddxplus_1961,benign,Chronic rhinosinusitis,,False,,Chronic rhinosinusitis,BENIGN,K47,,,False,False,Bronchitis
+ddxplus_63524,benign,Chronic rhinosinusitis,,False,,Chronic rhinosinusitis,BENIGN,K47,,,False,False,Viral pharyngitis
+ddxplus_108799,benign,Chronic rhinosinusitis,,False,,Chronic rhinosinusitis,BENIGN,K47,,,False,False,Acute rhinosinusitis
+ddxplus_11249,benign,Chronic rhinosinusitis,,False,,Chronic rhinosinusitis,BENIGN,K47,,,False,False,Bronchitis
+ddxplus_56175,benign,Chronic rhinosinusitis,,False,,Chronic rhinosinusitis,BENIGN,K47,,,False,False,Chronic rhinosinusitis
+ddxplus_102372,benign,Chronic rhinosinusitis,,False,,Chronic rhinosinusitis,BENIGN,K47,,,False,False,Chronic rhinosinusitis
+ddxplus_47083,benign,Chronic rhinosinusitis,,False,,Chronic rhinosinusitis,BENIGN,K47,,,False,False,Acute rhinosinusitis
+ddxplus_32951,benign,Chronic rhinosinusitis,,False,,Chronic rhinosinusitis,BENIGN,K47,,,False,False,Viral pharyngitis
+ddxplus_112580,benign,Localized edema,,False,,Localized edema,BENIGN,K41,,,False,False,Localized edema
+ddxplus_104576,benign,Localized edema,,False,,Localized edema,BENIGN,K41,,,False,False,Localized edema
+ddxplus_1000,benign,Localized edema,,False,,Localized edema,BENIGN,K41,,,False,False,Localized edema
+ddxplus_61230,benign,Localized edema,,False,,Localized edema,BENIGN,K41,,,False,False,Localized edema
+ddxplus_95925,benign,Localized edema,,False,,Localized edema,BENIGN,K41,,,False,False,Localized edema
+ddxplus_119969,benign,Localized edema,,False,,Localized edema,BENIGN,K41,,,False,False,Localized edema
+ddxplus_126973,benign,Localized edema,,False,,Localized edema,BENIGN,K41,,,False,False,Localized edema
+ddxplus_108347,benign,Localized edema,,False,,Localized edema,BENIGN,K41,,,False,False,Localized edema
+ddxplus_16364,benign,Localized edema,,False,,Localized edema,BENIGN,K41,,,False,False,Localized edema
+ddxplus_70051,benign,Localized edema,,False,,Localized edema,BENIGN,K41,,,False,False,Localized edema
+ddxplus_133386,benign,Localized edema,,False,,Localized edema,BENIGN,K41,,,False,False,Localized edema
+ddxplus_129163,benign,Localized edema,,False,,Localized edema,BENIGN,K41,,,False,False,Localized edema
+ddxplus_93643,benign,Localized edema,,False,,Localized edema,BENIGN,K41,,,False,False,Localized edema
+ddxplus_110360,benign,Localized edema,,False,,Localized edema,BENIGN,K41,,,False,False,Localized edema
+ddxplus_35218,benign,Localized edema,,False,,Localized edema,BENIGN,K41,,,False,False,Localized edema
+ddxplus_61010,benign,Localized edema,,False,,Localized edema,BENIGN,K41,,,False,False,Localized edema
+ddxplus_38951,benign,Localized edema,,False,,Localized edema,BENIGN,K41,,,False,False,Localized edema
+ddxplus_87223,benign,Localized edema,,False,,Localized edema,BENIGN,K41,,,False,False,Localized edema
+ddxplus_125118,benign,Panic attack,,False,ddxplus_56335,Panic attack,BENIGN,K48,,,False,False,Panic attack
+ddxplus_106880,benign,Panic attack,,False,,Panic attack,BENIGN,K48,,,False,False,Panic attack
+ddxplus_104773,benign,Panic attack,,False,,Panic attack,BENIGN,K48,,,False,False,Panic attack
+ddxplus_89343,benign,Panic attack,,False,ddxplus_66955,Panic attack,BENIGN,K48,,,False,False,Panic attack
+ddxplus_112379,benign,Panic attack,,False,ddxplus_82484,Panic attack,BENIGN,K48,,,False,False,Panic attack
+ddxplus_102643,benign,Panic attack,,False,ddxplus_101743,Panic attack,BENIGN,K48,,,False,False,Panic attack
+ddxplus_20828,benign,Panic attack,,False,ddxplus_11470,Panic attack,BENIGN,K48,,,False,False,Panic attack
+ddxplus_11147,benign,Panic attack,,False,ddxplus_35724,Panic attack,BENIGN,K48,,,False,False,Panic attack
+ddxplus_106221,benign,Panic attack,,False,,Panic attack,BENIGN,K48,,,False,False,Panic attack
+ddxplus_5187,benign,Panic attack,,False,ddxplus_74319,Panic attack,BENIGN,K48,,,False,False,Panic attack
+ddxplus_16613,benign,Panic attack,,False,ddxplus_19829,Panic attack,BENIGN,K48,,,False,False,Panic attack
+ddxplus_7211,benign,Panic attack,,False,ddxplus_30131,Panic attack,BENIGN,K48,,,False,False,Panic attack
+ddxplus_97056,benign,Panic attack,,False,ddxplus_117777,Panic attack,BENIGN,K48,,,False,False,Panic attack
+ddxplus_89186,benign,Panic attack,,False,ddxplus_15063,Panic attack,BENIGN,K48,,,False,False,Panic attack
+ddxplus_36053,benign,Panic attack,,False,ddxplus_10909,Panic attack,BENIGN,K48,,,False,False,Panic attack
+ddxplus_117914,benign,Panic attack,,False,ddxplus_27900,Panic attack,BENIGN,K48,,,False,False,Panic attack
+ddxplus_33318,benign,Panic attack,,False,ddxplus_40255,Panic attack,BENIGN,K48,,,False,False,Anemia
+ddxplus_80858,benign,Panic attack,,False,ddxplus_11864,Panic attack,BENIGN,K48,,,False,False,Panic attack
+ddxplus_61343,benign,Panic attack,,False,ddxplus_121213,Panic attack,BENIGN,K48,,,False,False,Panic attack
+ddxplus_91021,benign,SLE,,False,,SLE,BENIGN,K43,,,False,False,SLE
+ddxplus_129579,benign,SLE,,False,,SLE,BENIGN,K43,,,False,False,SLE
+ddxplus_32197,benign,SLE,,False,,SLE,BENIGN,K43,,,False,False,SLE
+ddxplus_25671,benign,SLE,,False,,SLE,BENIGN,K43,,,False,False,SLE
+ddxplus_57824,benign,SLE,,False,,SLE,BENIGN,K43,,,False,False,SLE
+ddxplus_93219,benign,SLE,,False,,SLE,BENIGN,K43,,,False,False,SLE
+ddxplus_11226,benign,SLE,,False,,SLE,BENIGN,K43,,,False,False,SLE
+ddxplus_2739,benign,SLE,,False,,SLE,BENIGN,K43,,,False,False,SLE
+ddxplus_72915,benign,SLE,,False,,SLE,BENIGN,K43,,,False,False,SLE
+ddxplus_7191,benign,SLE,,False,,SLE,BENIGN,K43,,,False,False,SLE
+ddxplus_121414,benign,SLE,,False,,SLE,BENIGN,K43,,,False,False,SLE
+ddxplus_111666,benign,SLE,,False,,SLE,BENIGN,K43,,,False,False,SLE
+ddxplus_10867,benign,SLE,,False,,SLE,BENIGN,K43,,,False,False,SLE
+ddxplus_70300,benign,SLE,,False,,SLE,BENIGN,K43,,,False,False,Localized edema
+ddxplus_128229,benign,SLE,,False,,SLE,BENIGN,K43,,,False,False,SLE
+ddxplus_68647,benign,SLE,,False,,SLE,BENIGN,K43,,,False,False,SLE
+ddxplus_133211,benign,SLE,,False,,SLE,BENIGN,K43,,,False,False,SLE
+ddxplus_106169,benign,SLE,,False,,SLE,BENIGN,K43,,,False,False,SLE
+ddxplus_96423,benign,Sarcoidosis,,False,,Sarcoidosis,BENIGN,K44,,,False,False,Sarcoidosis
+ddxplus_67135,benign,Sarcoidosis,,False,,Sarcoidosis,BENIGN,K44,,,False,False,Sarcoidosis
+ddxplus_93538,benign,Sarcoidosis,,False,,Sarcoidosis,BENIGN,K44,,,False,False,Sarcoidosis
+ddxplus_45464,benign,Sarcoidosis,,False,,Sarcoidosis,BENIGN,K44,,,False,False,Sarcoidosis
+ddxplus_130709,benign,Sarcoidosis,,False,,Sarcoidosis,BENIGN,K44,,,False,False,Sarcoidosis
+ddxplus_18268,benign,Sarcoidosis,,False,,Sarcoidosis,BENIGN,K44,,,False,False,Sarcoidosis
+ddxplus_92428,benign,Sarcoidosis,,False,,Sarcoidosis,BENIGN,K44,,,False,False,Sarcoidosis
+ddxplus_18158,benign,Sarcoidosis,,False,,Sarcoidosis,BENIGN,K44,,,False,False,Sarcoidosis
+ddxplus_81636,benign,Sarcoidosis,,False,,Sarcoidosis,BENIGN,K44,,,False,False,Sarcoidosis
+ddxplus_107768,benign,Sarcoidosis,,False,,Sarcoidosis,BENIGN,K44,,,False,False,Sarcoidosis
+ddxplus_50706,benign,Sarcoidosis,,False,,Sarcoidosis,BENIGN,K44,,,False,False,Sarcoidosis
+ddxplus_107648,benign,Sarcoidosis,,False,,Sarcoidosis,BENIGN,K44,,,False,False,Sarcoidosis
+ddxplus_108898,benign,Sarcoidosis,,False,,Sarcoidosis,BENIGN,K44,,,False,False,Sarcoidosis
+ddxplus_97113,benign,Sarcoidosis,,False,,Sarcoidosis,BENIGN,K44,,,False,False,Sarcoidosis
+ddxplus_25753,benign,Sarcoidosis,,False,,Sarcoidosis,BENIGN,K44,,,False,False,Sarcoidosis
+ddxplus_83387,benign,Sarcoidosis,,False,,Sarcoidosis,BENIGN,K44,,,False,False,Sarcoidosis
+ddxplus_10760,benign,Sarcoidosis,,False,,Sarcoidosis,BENIGN,K44,,,False,False,SLE
+ddxplus_19235,benign,Sarcoidosis,,False,,Sarcoidosis,BENIGN,K44,,,False,False,Sarcoidosis
+ddxplus_63310,benign,URTI,,False,,URTI,BENIGN,K49,,,False,False,URTI
+ddxplus_77922,benign,URTI,,False,,URTI,BENIGN,K49,,,False,False,URTI
+ddxplus_7291,benign,URTI,,False,,URTI,BENIGN,K49,,,False,False,URTI
+ddxplus_67189,benign,URTI,,False,,URTI,BENIGN,K49,,,False,False,URTI
+ddxplus_20303,benign,URTI,,False,,URTI,BENIGN,K49,,,False,False,URTI
+ddxplus_76581,benign,URTI,,False,,URTI,BENIGN,K49,,,False,False,URTI
+ddxplus_99426,benign,URTI,,False,,URTI,BENIGN,K49,,,False,False,URTI
+ddxplus_115582,benign,URTI,,False,,URTI,BENIGN,K49,,,False,False,URTI
+ddxplus_27658,benign,URTI,,False,,URTI,BENIGN,K49,,,False,False,URTI
+ddxplus_52087,benign,URTI,,False,,URTI,BENIGN,K49,,,False,False,URTI
+ddxplus_110048,benign,URTI,,False,,URTI,BENIGN,K49,,,False,False,URTI
+ddxplus_79396,benign,URTI,,False,,URTI,BENIGN,K49,,,False,False,URTI
+ddxplus_130026,benign,URTI,,False,,URTI,BENIGN,K49,,,False,False,URTI
+ddxplus_119496,benign,URTI,,False,,URTI,BENIGN,K49,,,False,False,URTI
+ddxplus_114065,benign,URTI,,False,,URTI,BENIGN,K49,,,False,False,URTI
+ddxplus_93468,benign,URTI,,False,,URTI,BENIGN,K49,,,False,False,URTI
+ddxplus_91071,benign,URTI,,False,,URTI,BENIGN,K49,,,False,False,URTI
+ddxplus_99371,benign,URTI,,False,,URTI,BENIGN,K49,,,False,False,URTI
+ddxplus_29949,benign,URTI,,False,,URTI,BENIGN,K49,,,False,False,URTI
+ddxplus_79478,benign,Viral pharyngitis,,False,,Viral pharyngitis,BENIGN,K45,,,False,False,Viral pharyngitis
+ddxplus_86367,benign,Viral pharyngitis,,False,,Viral pharyngitis,BENIGN,K45,,,False,False,Viral pharyngitis
+ddxplus_29143,benign,Viral pharyngitis,,False,,Viral pharyngitis,BENIGN,K45,,,False,False,Viral pharyngitis
+ddxplus_26116,benign,Viral pharyngitis,,False,,Viral pharyngitis,BENIGN,K45,,,False,False,Viral pharyngitis
+ddxplus_91138,benign,Viral pharyngitis,,False,,Viral pharyngitis,BENIGN,K45,,,False,False,Viral pharyngitis
+ddxplus_84275,benign,Viral pharyngitis,,False,,Viral pharyngitis,BENIGN,K45,,,False,False,Viral pharyngitis
+ddxplus_33790,benign,Viral pharyngitis,,False,,Viral pharyngitis,BENIGN,K45,,,False,False,Viral pharyngitis
+ddxplus_52536,benign,Viral pharyngitis,,False,,Viral pharyngitis,BENIGN,K45,,,False,False,Viral pharyngitis
+ddxplus_18999,benign,Viral pharyngitis,,False,,Viral pharyngitis,BENIGN,K45,,,False,False,Bronchitis
+ddxplus_42430,benign,Viral pharyngitis,,False,,Viral pharyngitis,BENIGN,K45,,,False,False,Viral pharyngitis
+ddxplus_45157,benign,Viral pharyngitis,,False,,Viral pharyngitis,BENIGN,K45,,,False,False,Viral pharyngitis
+ddxplus_26441,benign,Viral pharyngitis,,False,,Viral pharyngitis,BENIGN,K45,,,False,False,Viral pharyngitis
+ddxplus_25231,benign,Viral pharyngitis,,False,,Viral pharyngitis,BENIGN,K45,,,False,False,Viral pharyngitis
+ddxplus_30914,benign,Viral pharyngitis,,False,,Viral pharyngitis,BENIGN,K45,,,False,False,Viral pharyngitis
+ddxplus_111943,benign,Viral pharyngitis,,False,,Viral pharyngitis,BENIGN,K45,,,False,False,Viral pharyngitis
+ddxplus_3493,benign,Viral pharyngitis,,False,,Viral pharyngitis,BENIGN,K45,,,False,False,Viral pharyngitis
+ddxplus_123325,benign,Viral pharyngitis,,False,,Viral pharyngitis,BENIGN,K45,,,False,False,Viral pharyngitis
+ddxplus_114773,benign,Viral pharyngitis,,False,,Viral pharyngitis,BENIGN,K45,,,False,False,Viral pharyngitis
+ddxplus_114647,benign,Viral pharyngitis,,False,,Viral pharyngitis,BENIGN,K45,,,False,False,Viral pharyngitis
+ddxplus_70641,benign,Whooping cough,,False,,Whooping cough,BENIGN,K46,,,False,False,Whooping cough
+ddxplus_87703,benign,Whooping cough,,False,,Whooping cough,BENIGN,K46,,,False,False,Bronchitis
+ddxplus_99804,benign,Whooping cough,,False,,Whooping cough,BENIGN,K46,,,False,False,Bronchitis
+ddxplus_97948,benign,Whooping cough,,False,,Whooping cough,BENIGN,K46,,,False,False,Whooping cough
+ddxplus_12629,benign,Whooping cough,,False,,Whooping cough,BENIGN,K46,,,False,False,Whooping cough
+ddxplus_38558,benign,Whooping cough,,False,,Whooping cough,BENIGN,K46,,,False,False,Bronchitis
+ddxplus_29684,benign,Whooping cough,,False,,Whooping cough,BENIGN,K46,,,False,False,Bronchitis
+ddxplus_35859,benign,Whooping cough,,False,,Whooping cough,BENIGN,K46,,,False,False,Bronchitis
+ddxplus_33031,benign,Whooping cough,,False,,Whooping cough,BENIGN,K46,,,False,False,Whooping cough
+ddxplus_29515,benign,Whooping cough,,False,,Whooping cough,BENIGN,K46,,,False,False,Bronchitis
+ddxplus_79919,benign,Whooping cough,,False,,Whooping cough,BENIGN,K46,,,False,False,Bronchitis
+ddxplus_81869,benign,Whooping cough,,False,,Whooping cough,BENIGN,K46,,,False,False,Bronchitis
+ddxplus_59945,benign,Whooping cough,,False,,Whooping cough,BENIGN,K46,,,False,False,Whooping cough
+ddxplus_44475,benign,Whooping cough,,False,,Whooping cough,BENIGN,K46,,,False,False,Bronchitis
+ddxplus_52549,benign,Whooping cough,,False,,Whooping cough,BENIGN,K46,,,False,False,Bronchitis
+ddxplus_98930,benign,Whooping cough,,False,,Whooping cough,BENIGN,K46,,,False,False,Bronchitis
+ddxplus_119956,benign,Whooping cough,,False,,Whooping cough,BENIGN,K46,,,False,False,Bronchitis
+ddxplus_127117,benign,Whooping cough,,False,,Whooping cough,BENIGN,K46,,,False,False,Bronchitis
