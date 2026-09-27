@@ -1,0 +1,648 @@
+{
+ "set": "pooled",
+ "reference": "results/phase2/reference_adjudicated.jsonl, results/phase2b/reference_adjudicated.jsonl",
+ "runs": "results/phase2/runs, results/phase2b/runs",
+ "offlist_tiers": "NHAMCS only (A5 headline)",
+ "cases_scored": 500,
+ "cases_without_reference": [
+  "ddxplus_56727",
+  "ddxplus_17239",
+  "ddxplus_40196",
+  "ddxplus_6563",
+  "ddxplus_7703",
+  "ddxplus_26765",
+  "ddxplus_113555",
+  "ddxplus_102472",
+  "ddxplus_123578",
+  "ddxplus_83345",
+  "ddxplus_10022",
+  "ddxplus_129358",
+  "ddxplus_47274",
+  "ddxplus_76704",
+  "ddxplus_55409",
+  "ddxplus_102157",
+  "ddxplus_95174",
+  "ddxplus_115843"
+ ],
+ "reference_decisions": {
+  "ESCALATE": 344,
+  "ROUTINE": 148,
+  "UNCERTAIN": 8
+ },
+ "classes": {
+  "SERIOUS": 260,
+  "EXCLUDED": 118,
+  "BENIGN": 122
+ },
+ "rows": 14,
+ "pooled": {
+  "judged": 6888,
+  "TP": 716,
+  "FP": 597,
+  "FN": 500,
+  "TN": 5075,
+  "precision": [
+   54.5,
+   51.8,
+   57.2
+  ],
+  "safety": [
+   86.6,
+   83.1,
+   89.4
+  ],
+  "safety_k": 399,
+  "safety_n": 461,
+  "point_weighted": [
+   76.2,
+   74.9,
+   77.5
+  ],
+  "fn_rate_kept": [
+   6.2,
+   4.7,
+   8.1
+  ],
+  "fn_kept": 47,
+  "tp_kept": 716,
+  "fn_rate_all": [
+   41.1,
+   38.4,
+   43.9
+  ],
+  "specificity": {
+   "escalations": 3178,
+   "partials": 552,
+   "share": [
+    17.4,
+    16.1,
+    18.7
+   ],
+   "in_list": 280,
+   "off_list": 187,
+   "truth": 85,
+   "other": 0
+  }
+ },
+ "criteria": {
+  "6_safety": {
+   "value": [
+    86.6,
+    83.1,
+    89.4
+   ],
+   "min": 75.0,
+   "pass": true
+  },
+  "7_point_weighted": {
+   "value": [
+    76.2,
+    74.9,
+    77.5
+   ],
+   "min": 65.0,
+   "pass": true
+  },
+  "8_reason_specificity": {
+   "escalations": 3178,
+   "partials": 552,
+   "share": [
+    17.4,
+    16.1,
+    18.7
+   ],
+   "in_list": 280,
+   "off_list": 187,
+   "truth": 85,
+   "other": 0
+  },
+  "9_fn_rate_kept": [
+   6.2,
+   4.7,
+   8.1
+  ],
+  "10_anchor_check": {
+   "claude-haiku-4.5": {
+    "cost_agreed_4aj": 82.98,
+    "cost_agreed_4bj": 90.84,
+    "diff_per_100": -7.85,
+    "ci": [
+     -52.33,
+     38.46
+    ],
+    "excludes_zero": false
+   },
+   "claude-sonnet-4.6": {
+    "cost_agreed_4aj": 29.58,
+    "cost_agreed_4bj": 13.09,
+    "diff_per_100": 16.49,
+    "ci": [
+     5.72,
+     27.85
+    ],
+    "excludes_zero": true
+   },
+   "gemini-3.1-pro-preview": {
+    "cost_agreed_4aj": 10.73,
+    "cost_agreed_4bj": 4.71,
+    "diff_per_100": 6.02,
+    "ci": [
+     -0.22,
+     19.7
+    ],
+    "excludes_zero": false
+   },
+   "glm-5.3": {
+    "cost_agreed_4aj": 36.65,
+    "cost_agreed_4bj": 28.53,
+    "diff_per_100": 8.12,
+    "ci": [
+     -10.44,
+     24.6
+    ],
+    "excludes_zero": false
+   },
+   "gpt-5.6-terra": {
+    "cost_agreed_4aj": 6.81,
+    "cost_agreed_4bj": 10.47,
+    "diff_per_100": -3.66,
+    "ci": [
+     -13.3,
+     4.89
+    ],
+    "excludes_zero": false
+   },
+   "gpt-oss-120b": {
+    "cost_agreed_4aj": 32.46,
+    "cost_agreed_4bj": 43.46,
+    "diff_per_100": -10.99,
+    "ci": [
+     -29.33,
+     7.46
+    ],
+    "excludes_zero": false
+   },
+   "llama-3.1-8b-instruct": {
+    "cost_agreed_4aj": 233.25,
+    "cost_agreed_4bj": 190.58,
+    "diff_per_100": 42.67,
+    "ci": [
+     6.47,
+     78.08
+    ],
+    "excludes_zero": true
+   }
+  }
+ },
+ "by_arm": {
+  "4aj": {
+   "judged": 3444,
+   "TP": 368,
+   "FP": 289,
+   "FN": 256,
+   "TN": 2531,
+   "precision": [
+    56.0,
+    52.2,
+    59.8
+   ],
+   "safety": [
+    86.6,
+    81.8,
+    90.3
+   ],
+   "safety_k": 214,
+   "safety_n": 247,
+   "point_weighted": [
+    77.2,
+    75.4,
+    79.0
+   ],
+   "fn_rate_kept": [
+    6.6,
+    4.5,
+    9.5
+   ],
+   "fn_kept": 26,
+   "tp_kept": 368,
+   "fn_rate_all": [
+    41.0,
+    37.2,
+    44.9
+   ],
+   "specificity": {
+    "escalations": 1573,
+    "partials": 265,
+    "share": [
+     16.8,
+     15.1,
+     18.8
+    ],
+    "in_list": 133,
+    "off_list": 91,
+    "truth": 41,
+    "other": 0
+   }
+  },
+  "4bj": {
+   "judged": 3444,
+   "TP": 348,
+   "FP": 308,
+   "FN": 244,
+   "TN": 2544,
+   "precision": [
+    53.0,
+    49.2,
+    56.8
+   ],
+   "safety": [
+    86.4,
+    81.2,
+    90.4
+   ],
+   "safety_k": 185,
+   "safety_n": 214,
+   "point_weighted": [
+    75.2,
+    73.2,
+    77.0
+   ],
+   "fn_rate_kept": [
+    5.7,
+    3.8,
+    8.5
+   ],
+   "fn_kept": 21,
+   "tp_kept": 348,
+   "fn_rate_all": [
+    41.2,
+    37.3,
+    45.2
+   ],
+   "specificity": {
+    "escalations": 1605,
+    "partials": 287,
+    "share": [
+     17.9,
+     16.1,
+     19.8
+    ],
+    "in_list": 147,
+    "off_list": 96,
+    "truth": 44,
+    "other": 0
+   }
+  }
+ },
+ "by_model": {
+  "claude-haiku-4.5": {
+   "judged": 984,
+   "TP": 112,
+   "FP": 85,
+   "FN": 81,
+   "TN": 706,
+   "precision": [
+    56.9,
+    49.9,
+    63.6
+   ],
+   "safety": [
+    91.1,
+    83.9,
+    95.2
+   ],
+   "safety_k": 92,
+   "safety_n": 101,
+   "point_weighted": [
+    82.7,
+    79.9,
+    85.1
+   ],
+   "fn_rate_kept": [
+    8.9,
+    5.1,
+    15.3
+   ],
+   "fn_kept": 11,
+   "tp_kept": 112,
+   "fn_rate_all": [
+    42.0,
+    35.2,
+    49.0
+   ],
+   "specificity": {
+    "escalations": 419,
+    "partials": 75,
+    "share": [
+     17.9,
+     14.5,
+     21.9
+    ],
+    "in_list": 33,
+    "off_list": 13,
+    "truth": 29,
+    "other": 0
+   }
+  },
+  "claude-sonnet-4.6": {
+   "judged": 984,
+   "TP": 79,
+   "FP": 84,
+   "FN": 46,
+   "TN": 775,
+   "precision": [
+    48.5,
+    40.9,
+    56.1
+   ],
+   "safety": [
+    58.3,
+    38.8,
+    75.5
+   ],
+   "safety_k": 14,
+   "safety_n": 24,
+   "point_weighted": [
+    53.1,
+    47.5,
+    58.6
+   ],
+   "fn_rate_kept": [
+    4.8,
+    1.9,
+    11.7
+   ],
+   "fn_kept": 4,
+   "tp_kept": 79,
+   "fn_rate_all": [
+    36.8,
+    28.9,
+    45.5
+   ],
+   "specificity": {
+    "escalations": 496,
+    "partials": 68,
+    "share": [
+     13.7,
+     11.0,
+     17.0
+    ],
+    "in_list": 24,
+    "off_list": 38,
+    "truth": 6,
+    "other": 0
+   }
+  },
+  "gemini-3.1-pro-preview": {
+   "judged": 984,
+   "TP": 29,
+   "FP": 66,
+   "FN": 60,
+   "TN": 829,
+   "precision": [
+    30.5,
+    22.2,
+    40.4
+   ],
+   "safety": [
+    62.5,
+    30.6,
+    86.3
+   ],
+   "safety_k": 5,
+   "safety_n": 8,
+   "point_weighted": [
+    41.3,
+    33.5,
+    49.5
+   ],
+   "fn_rate_kept": [
+    12.1,
+    4.8,
+    27.3
+   ],
+   "fn_kept": 4,
+   "tp_kept": 29,
+   "fn_rate_all": [
+    67.4,
+    57.1,
+    76.3
+   ],
+   "specificity": {
+    "escalations": 512,
+    "partials": 57,
+    "share": [
+     11.1,
+     8.7,
+     14.2
+    ],
+    "in_list": 33,
+    "off_list": 13,
+    "truth": 11,
+    "other": 0
+   }
+  },
+  "glm-5.3": {
+   "judged": 984,
+   "TP": 57,
+   "FP": 64,
+   "FN": 52,
+   "TN": 811,
+   "precision": [
+    47.1,
+    38.4,
+    56.0
+   ],
+   "safety": [
+    65.3,
+    51.3,
+    77.1
+   ],
+   "safety_k": 32,
+   "safety_n": 49,
+   "point_weighted": [
+    60.0,
+    55.2,
+    64.6
+   ],
+   "fn_rate_kept": [
+    8.1,
+    3.5,
+    17.5
+   ],
+   "fn_kept": 5,
+   "tp_kept": 57,
+   "fn_rate_all": [
+    47.7,
+    38.6,
+    57.0
+   ],
+   "specificity": {
+    "escalations": 471,
+    "partials": 44,
+    "share": [
+     9.3,
+     7.0,
+     12.3
+    ],
+    "in_list": 21,
+    "off_list": 16,
+    "truth": 7,
+    "other": 0
+   }
+  },
+  "gpt-5.6-terra": {
+   "judged": 984,
+   "TP": 36,
+   "FP": 64,
+   "FN": 60,
+   "TN": 824,
+   "precision": [
+    36.0,
+    27.3,
+    45.8
+   ],
+   "safety": [
+    35.7,
+    16.3,
+    61.2
+   ],
+   "safety_k": 5,
+   "safety_n": 14,
+   "point_weighted": [
+    35.9,
+    29.3,
+    43.0
+   ],
+   "fn_rate_kept": [
+    10.0,
+    4.0,
+    23.1
+   ],
+   "fn_kept": 4,
+   "tp_kept": 36,
+   "fn_rate_all": [
+    62.5,
+    52.5,
+    71.5
+   ],
+   "specificity": {
+    "escalations": 506,
+    "partials": 45,
+    "share": [
+     8.9,
+     6.7,
+     11.7
+    ],
+    "in_list": 32,
+    "off_list": 5,
+    "truth": 8,
+    "other": 0
+   }
+  },
+  "gpt-oss-120b": {
+   "judged": 984,
+   "TP": 116,
+   "FP": 119,
+   "FN": 75,
+   "TN": 674,
+   "precision": [
+    49.4,
+    43.0,
+    55.7
+   ],
+   "safety": [
+    85.3,
+    69.9,
+    93.6
+   ],
+   "safety_k": 29,
+   "safety_n": 34,
+   "point_weighted": [
+    66.1,
+    61.5,
+    70.3
+   ],
+   "fn_rate_kept": [
+    4.9,
+    2.3,
+    10.3
+   ],
+   "fn_kept": 6,
+   "tp_kept": 116,
+   "fn_rate_all": [
+    39.3,
+    32.6,
+    46.3
+   ],
+   "specificity": {
+    "escalations": 486,
+    "partials": 112,
+    "share": [
+     23.0,
+     19.5,
+     27.0
+    ],
+    "in_list": 65,
+    "off_list": 40,
+    "truth": 7,
+    "other": 0
+   }
+  },
+  "llama-3.1-8b-instruct": {
+   "judged": 984,
+   "TP": 287,
+   "FP": 115,
+   "FN": 126,
+   "TN": 456,
+   "precision": [
+    71.4,
+    66.8,
+    75.6
+   ],
+   "safety": [
+    96.1,
+    92.8,
+    97.9
+   ],
+   "safety_k": 222,
+   "safety_n": 231,
+   "point_weighted": [
+    90.5,
+    89.1,
+    91.8
+   ],
+   "fn_rate_kept": [
+    4.3,
+    2.5,
+    7.3
+   ],
+   "fn_kept": 13,
+   "tp_kept": 287,
+   "fn_rate_all": [
+    30.5,
+    26.3,
+    35.1
+   ],
+   "specificity": {
+    "escalations": 288,
+    "partials": 151,
+    "share": [
+     52.4,
+     46.7,
+     58.1
+    ],
+    "in_list": 72,
+    "off_list": 62,
+    "truth": 17,
+    "other": 0
+   }
+  }
+ },
+ "zero_reference": {
+  "code": "I471",
+  "condition": "PSVT",
+  "serious_cases": 26
+ },
+ "label": ""
+}
