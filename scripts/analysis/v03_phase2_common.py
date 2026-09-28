@@ -42,7 +42,9 @@ PHASE2_RUNS = ROOT / "results" / "phase2" / "runs"
 AUDIT_RUNS = ROOT / "results" / "v03" / "ab" / "runs"
 # Phase 2 (seed 20261003) and Phase 2b (seed 20261004, decision 13): the set stem, the run directory and the results directory.
 PHASES = {"2": {"stem": "eval-v03-phase2", "runs": PHASE2_RUNS, "out": ROOT / "results" / "phase2"},
-          "2b": {"stem": "eval-v03-phase2b", "runs": ROOT / "results" / "phase2b" / "runs", "out": ROOT / "results" / "phase2b"}}
+          "2b": {"stem": "eval-v03-phase2b", "runs": ROOT / "results" / "phase2b" / "runs", "out": ROOT / "results" / "phase2b"},
+          # The full run (section 7.4, seed 20261005), scored by scripts/analysis/v03_full_scores.py.
+          "full": {"stem": "eval-v03-full", "runs": ROOT / "results" / "v03_full" / "runs", "out": ROOT / "results" / "v03_full"}}
 MODELS = ("openai/gpt-5.6-terra", "google/gemini-3.1-pro-preview", "anthropic/claude-sonnet-4.6", "z-ai/glm-5.3",
           "openai/gpt-oss-120b", "anthropic/claude-haiku-4.5", "meta-llama/llama-3.1-8b-instruct")
 ARMS = ("v7a4aj", "v7a4bj")
@@ -196,13 +198,24 @@ MEASURES = ("score_z_bal", "score_z_mix", "U", "O", "partial", "partial_inlist",
             "pass", "esc")
 
 
-def score(s: ScoredSet, recs: list[dict], zero_code: str | None = None) -> dict:
-    """Per model x arm: the measures with 95% intervals (condition bootstrap, 2,000 draws, seed 20260923); the paired
-    4aj minus 4bj differences; every model pair within an arm; and, when the records carry reference kinds, the
-    anchor check (4aj minus 4bj cost on reference-agreed penalties, per 100 headline cases)."""
+def draws_for(s: ScoredSet, within: bool = False):
+    """(M, key) for `vr.stats`: the condition bootstrap (key None: the set's own clusters), or with `within` the
+    within-condition resampling of evaluator/v03_stats.py on a case-level key. 2,000 draws, seed 20260923."""
+    if within:
+        from evaluator import v03_stats as vst
+        M, ckey, _ = vst.within_setup(s.ab.key, None, vs.N_BOOTSTRAP, vs.BOOTSTRAP_SEED)
+        return M, ckey
+    return vs.cluster_draws(s.ab.key.k, vs.N_BOOTSTRAP, vs.BOOTSTRAP_SEED), None
+
+
+def score(s: ScoredSet, recs: list[dict], zero_code: str | None = None, within: bool = False) -> dict:
+    """Per model x arm: the measures with 95% intervals (condition bootstrap, or with `within` the within-condition
+    resampling; 2,000 draws, seed 20260923); the paired 4aj minus 4bj differences; every model pair within an arm;
+    and, when the records carry reference kinds, the anchor check (4aj minus 4bj cost on reference-agreed penalties,
+    per 100 headline cases). `raw` holds each row's (point, draws) for further paired tests."""
     zero, zinfo = zero_outcome(s, zero_code)
     keys = s.ab.key.keys
-    M = vs.cluster_draws(s.ab.key.k, vs.N_BOOTSTRAP, vs.BOOTSTRAP_SEED)
+    M, ckey = draws_for(s, within)
     head = s.ab.head
     by_row = defaultdict(dict)
     for r in recs:
@@ -213,11 +226,11 @@ def score(s: ScoredSet, recs: list[dict], zero_code: str | None = None) -> dict:
         o = vr.Outcome(np.array([r["esc_after"] for r in rs]),
                        [vr.Reason(r["reason_after"] if r["reason_after"] in vr.REASONS else vr.NONE) for r in rs],
                        [r["benchmark"] for r in rs])
-        point, draws = vr.stats(o, s.ab, M, zero=zero)
+        point, draws = vr.stats(o, s.ab, M, zero=zero, key=ckey)
         raw[(model, arm)] = (point, draws)
         rows[(model, arm)] = {m: vr.summarise(point, draws)[m] for m in MEASURES}
         if all("kind" in r for r in rs):
-            st = vs.Stats(s.ab.key)
+            st = vs.Stats(ckey if ckey is not None else s.ab.key)
             st.add("cost_agreed", np.array([r["cost"] if r["kind"] == "TP" else 0.0 for r in rs]) * head, head)
             agreed[(model, arm)] = st.evaluate(M)
     models = sorted({m for m, _ in raw})
@@ -226,7 +239,7 @@ def score(s: ScoredSet, recs: list[dict], zero_code: str | None = None) -> dict:
     for model in models:
         a, b = (model, "4aj"), (model, "4bj")
         if a in raw and b in raw:
-            paired[model] = vr.diff(raw[a][1], raw[b][1], raw[a][0], raw[b][0], ("score_z_bal", "U", "O", "esc"))
+            paired[model] = vr.diff(raw[a][1], raw[b][1], raw[a][0], raw[b][0], ("score_z_bal", "U", "O", "esc", "cost"))
         if a in agreed and b in agreed:
             d = vr.diff(agreed[a][1], agreed[b][1], agreed[a][0], agreed[b][0], ("cost_agreed",))["cost_agreed"]
             anchor[model] = {"cost_agreed_4aj": round(100 * float(agreed[a][0]["cost_agreed"]), 2),
@@ -240,7 +253,7 @@ def score(s: ScoredSet, recs: list[dict], zero_code: str | None = None) -> dict:
                 pairs[(arm, m1, m2)] = {**d, "separated": excludes_zero(d["ci"])}
     return {"zero_reference": zinfo, "headline_cases": int(head.sum()), "serious": int(s.ab.serious.sum()),
             "benign": int(s.ab.benign.sum()), "rows": rows, "paired_4aj_minus_4bj": paired, "model_pairs": pairs,
-            "anchor_check": anchor}
+            "anchor_check": anchor, "raw": raw, "zero_outcome": zero, "M": M, "key": ckey}
 
 
 def excludes_zero(ci) -> bool:

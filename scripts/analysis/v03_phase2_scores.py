@@ -144,6 +144,7 @@ def main() -> None:
     (OUT / "model_scores.md").write_text("\n".join(L))
 
     def js(sc):
+        sc = {k: v for k, v in sc.items() if k not in ("raw", "zero_outcome", "M", "key")}
         return {**sc, "rows": {f"{m}|{a}": r for (m, a), r in sc["rows"].items()},
                 "model_pairs": {"|".join(k): d for k, d in sc["model_pairs"].items()}}
     (OUT / "model_scores.json").write_text(json.dumps({"headline": js(head), "sensitivity_ccsr": js(sens_ccsr),
