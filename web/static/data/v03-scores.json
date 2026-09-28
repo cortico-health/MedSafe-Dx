@@ -1,0 +1,441 @@
+{
+ "source": {
+  "file": "results/v03_full/scores.json",
+  "commit": "4ac4c79",
+  "built_by": "scripts/web/build_v03_scores_json.py"
+ },
+ "set": {
+  "cases": 900,
+  "seed": 20261005,
+  "strata": {
+   "serious_tier1": 500,
+   "serious_upgrade_or_flag": 140,
+   "benign": 260
+  },
+  "public_twins": 0,
+  "serious": 640,
+  "benign": 260,
+  "zero_point": {
+   "code": "I21",
+   "condition": "Possible NSTEMI / STEMI",
+   "serious_cases": 56
+  }
+ },
+ "models": [
+  {
+   "model": "gemini-3.1-pro-preview",
+   "score_4aj": {
+    "value": 68.5,
+    "ci": [
+     63.6,
+     73.2
+    ]
+   },
+   "score_4aj_condition_bootstrap_ci": [
+    52.9,
+    81.9
+   ],
+   "U": {
+    "value": 2.5,
+    "ci": [
+     1.4,
+     3.6
+    ]
+   },
+   "O": {
+    "value": 27.7,
+    "ci": [
+     24.4,
+     30.9
+    ]
+   },
+   "partial": {
+    "total": 9.7,
+    "in_list": 6.1,
+    "off_list": 3.6,
+    "truth": 0.0
+   },
+   "escalated": 77.3,
+   "score_4bj": {
+    "value": 67.0,
+    "ci": [
+     62.4,
+     71.5
+    ]
+   },
+   "parse_4bj_unreadable": 0
+  },
+  {
+   "model": "gpt-5.6-terra",
+   "score_4aj": {
+    "value": 64.2,
+    "ci": [
+     58.5,
+     69.4
+    ]
+   },
+   "score_4aj_condition_bootstrap_ci": [
+    46.9,
+    78.7
+   ],
+   "U": {
+    "value": 3.3,
+    "ci": [
+     2.0,
+     4.5
+    ]
+   },
+   "O": {
+    "value": 29.6,
+    "ci": [
+     26.0,
+     33.5
+    ]
+   },
+   "partial": {
+    "total": 9.8,
+    "in_list": 7.0,
+    "off_list": 2.7,
+    "truth": 0.2
+   },
+   "escalated": 77.3,
+   "score_4bj": {
+    "value": 65.4,
+    "ci": [
+     60.4,
+     70.2
+    ]
+   },
+   "parse_4bj_unreadable": 0
+  },
+  {
+   "model": "claude-sonnet-4.6",
+   "score_4aj": {
+    "value": 50.6,
+    "ci": [
+     43.2,
+     57.5
+    ]
+   },
+   "score_4aj_condition_bootstrap_ci": [
+    31.6,
+    67.3
+   ],
+   "U": {
+    "value": 5.9,
+    "ci": [
+     4.4,
+     7.7
+    ]
+   },
+   "O": {
+    "value": 34.6,
+    "ci": [
+     30.6,
+     38.9
+    ]
+   },
+   "partial": {
+    "total": 10.0,
+    "in_list": 5.2,
+    "off_list": 4.8,
+    "truth": 0.0
+   },
+   "escalated": 76.9,
+   "score_4bj": {
+    "value": 48.3,
+    "ci": [
+     41.3,
+     55.1
+    ]
+   },
+   "parse_4bj_unreadable": 0
+  },
+  {
+   "model": "glm-5.3",
+   "score_4aj": {
+    "value": 40.5,
+    "ci": [
+     32.7,
+     47.9
+    ]
+   },
+   "score_4aj_condition_bootstrap_ci": [
+    8.9,
+    66.3
+   ],
+   "U": {
+    "value": 10.2,
+    "ci": [
+     8.3,
+     12.0
+    ]
+   },
+   "O": {
+    "value": 23.5,
+    "ci": [
+     19.8,
+     27.4
+    ]
+   },
+   "partial": {
+    "total": 9.2,
+    "in_list": 5.5,
+    "off_list": 3.8,
+    "truth": 0.0
+   },
+   "escalated": 70.7,
+   "score_4bj": {
+    "value": 38.0,
+    "ci": [
+     30.4,
+     46.0
+    ]
+   },
+   "parse_4bj_unreadable": 1
+  },
+  {
+   "model": "gpt-oss-120b",
+   "score_4aj": {
+    "value": 33.6,
+    "ci": [
+     26.5,
+     40.8
+    ]
+   },
+   "score_4aj_condition_bootstrap_ci": [
+    12.4,
+    54.0
+   ],
+   "U": {
+    "value": 7.7,
+    "ci": [
+     6.0,
+     9.4
+    ]
+   },
+   "O": {
+    "value": 43.1,
+    "ci": [
+     38.5,
+     47.5
+    ]
+   },
+   "partial": {
+    "total": 19.1,
+    "in_list": 14.2,
+    "off_list": 4.5,
+    "truth": 0.3
+   },
+   "escalated": 78.1,
+   "score_4bj": {
+    "value": 20.0,
+    "ci": [
+     12.5,
+     27.4
+    ]
+   },
+   "parse_4bj_unreadable": 0
+  },
+  {
+   "model": "claude-haiku-4.5",
+   "score_4aj": {
+    "value": 19.9,
+    "ci": [
+     10.9,
+     29.4
+    ]
+   },
+   "score_4aj_condition_bootstrap_ci": [
+    -11.9,
+    46.6
+   ],
+   "U": {
+    "value": 15.0,
+    "ci": [
+     12.7,
+     17.3
+    ]
+   },
+   "O": {
+    "value": 16.9,
+    "ci": [
+     13.3,
+     20.9
+    ]
+   },
+   "partial": {
+    "total": 17.7,
+    "in_list": 11.9,
+    "off_list": 2.8,
+    "truth": 3.0
+   },
+   "escalated": 65.3,
+   "score_4bj": {
+    "value": 20.6,
+    "ci": [
+     10.6,
+     30.6
+    ]
+   },
+   "parse_4bj_unreadable": 0
+  },
+  {
+   "model": "llama-3.1-8b-instruct",
+   "score_4aj": {
+    "value": -116.6,
+    "ci": [
+     -128.0,
+     -104.4
+    ]
+   },
+   "score_4aj_condition_bootstrap_ci": [
+    -153.4,
+    -75.7
+   ],
+   "U": {
+    "value": 49.4,
+    "ci": [
+     46.1,
+     52.4
+    ]
+   },
+   "O": {
+    "value": 6.9,
+    "ci": [
+     4.1,
+     9.8
+    ]
+   },
+   "partial": {
+    "total": 25.2,
+    "in_list": 15.5,
+    "off_list": 9.7,
+    "truth": 0.0
+   },
+   "escalated": 38.0,
+   "score_4bj": {
+    "value": -101.4,
+    "ci": [
+     -113.5,
+     -90.3
+    ]
+   },
+   "parse_4bj_unreadable": 0
+  }
+ ],
+ "reference_rows": [
+  {
+   "id": "zero_point",
+   "score": {
+    "value": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ]
+   },
+   "U": {
+    "value": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ]
+   },
+   "O": {
+    "value": 100.0,
+    "ci": [
+     100.0,
+     100.0
+    ]
+   },
+   "escalated": 100.0
+  },
+  {
+   "id": "naive_bayes",
+   "score": {
+    "value": 12.8,
+    "ci": [
+     7.0,
+     18.9
+    ]
+   },
+   "U": {
+    "value": 21.7,
+    "ci": [
+     20.2,
+     23.2
+    ]
+   },
+   "O": {
+    "value": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ]
+   },
+   "escalated": 55.7
+  },
+  {
+   "id": "always_routine",
+   "score": {
+    "value": -301.4,
+    "ci": [
+     -305.5,
+     -297.4
+    ]
+   },
+   "U": {
+    "value": 100.0,
+    "ci": [
+     100.0,
+     100.0
+    ]
+   },
+   "O": {
+    "value": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ]
+   },
+   "escalated": 0.0
+  }
+ ],
+ "pair_separation": {
+  "4aj": {
+   "separated": 19,
+   "separated_condition_bootstrap": 13,
+   "pairs": 21,
+   "not_separated": [
+    [
+     "gemini-3.1-pro-preview",
+     "gpt-5.6-terra"
+    ],
+    [
+     "glm-5.3",
+     "gpt-oss-120b"
+    ]
+   ]
+  },
+  "4bj": {
+   "separated": 19,
+   "separated_condition_bootstrap": 13,
+   "pairs": 21,
+   "not_separated": [
+    [
+     "claude-haiku-4.5",
+     "gpt-oss-120b"
+    ],
+    [
+     "gemini-3.1-pro-preview",
+     "gpt-5.6-terra"
+    ]
+   ]
+  }
+ },
+ "anchor_test": {
+  "models_surviving_holm": 0,
+  "models": 7
+ },
+ "spend_usd": 69.78
+}
