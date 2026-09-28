@@ -133,7 +133,8 @@ def get_leaderboard_data() -> List[Dict[str, Any]]:
         results.sort(key=sort_key)
     return results
 
-def _render_markdown_file(path: str, title: str) -> Response:
+def _render_markdown_file(path: str, title: str, extra_links: str = "") -> Response:
+    """Render a markdown file as a page. extra_links is HTML we append to the back-link row."""
     p = Path(path)
     md_content = p.read_text(encoding="utf-8")
 
@@ -224,7 +225,7 @@ def _render_markdown_file(path: str, title: str) -> Response:
     </style>
 </head>
 <body>
-    <div class="back-link"><a href="/">&larr; Back to Leaderboard</a></div>
+    <div class="back-link"><a href="/">&larr; Back to Leaderboard</a>{extra_links}</div>
     <div id="content">{body_html}</div>
     <div class="render-meta">
         Rendered from <code>{p}</code> (mtime UTC: <code>{mtime_utc}</code>, bytes: <code>{size_bytes}</code>, sha256: <code>{sha}</code>)
@@ -269,47 +270,36 @@ async def read_leaderboard_v02_archived():
     # The v0.2 preview moved into the frozen archive; this keeps the old URL live.
     return RedirectResponse(url="/archive/v0.2-preview/leaderboard-v02.html", status_code=301)
 
+# The live methodology page is v0.3. The v0 report the preprint cites is frozen at
+# /archive/v0.1-preprint/report.html, and the page header links to it.
+V03_REPORT_LINKS = (
+    ' &middot; <a href="/archive/v0.1-preprint/report.html">Preprint report (v0, archived)</a>'
+    ' &middot; <a href="https://doi.org/10.64898/2026.04.14.26350711">medRxiv preprint</a>'
+)
+
 @app.get("/report.html")
 async def read_report():
     try:
         return _render_markdown_file(
-            str(PROJECT_ROOT / "BENCHMARK_REPORT.md"),
-            "MedSafe-Dx Methodology & Results",
+            str(PROJECT_ROOT / "docs" / "METHODOLOGY-v0.3.md"),
+            "MedSafe-Dx v0.3: Methodology & Results",
+            extra_links=V03_REPORT_LINKS,
         )
     except FileNotFoundError:
-        return Response(content="Report not found. Ensure BENCHMARK_REPORT.md is mounted.", status_code=404)
+        return Response(content="Report not found. Ensure docs/METHODOLOGY-v0.3.md is mounted.", status_code=404)
 
 @app.get("/report-v03.html")
 async def read_report_v03():
-    # Preview of the v0.3 methodology page. It replaces /report.html after the
-    # full v0.3 run; until then the v0 report stays at /report.html.
-    try:
-        return _render_markdown_file(
-            str(PROJECT_ROOT / "docs" / "METHODOLOGY-v0.3.md"),
-            "MedSafe-Dx v0.3 Methodology & Results (preview)",
-        )
-    except FileNotFoundError:
-        return Response(content="v0.3 report not found. Ensure docs/METHODOLOGY-v0.3.md is mounted.", status_code=404)
+    # The v0.3 preview URL, kept so shared links still land on the methodology page.
+    return RedirectResponse(url="/report.html", status_code=301)
 
-@app.get("/publish-tables.html")
-async def read_publish_tables():
-    try:
-        return _render_markdown_file(
-            "/app/results/analysis/publish_tables.md",
-            "MedSafe-Dx Publication Tables",
-        )
-    except FileNotFoundError:
-        return Response(content="Publish tables not found", status_code=404)
+@app.get("/results-summary.html")
+async def read_results_summary():
+    # Old name for the methodology page.
+    return RedirectResponse(url="/report.html", status_code=301)
 
-@app.get("/case-breakdown.html")
-async def read_case_breakdown():
-    try:
-        return _render_markdown_file(
-            "/app/results/analysis/case_breakdown_tables.md",
-            "MedSafe-Dx Case Breakdown",
-        )
-    except FileNotFoundError:
-        return Response(content="Case breakdown not found", status_code=404)
+# /publish-tables.html and /case-breakdown.html are gone: they post-date the preprint
+# (added 2026-04-22) and described the v0 250-case run the v0.3 page replaces.
 
 @app.get("/findings-2026-09.html")
 async def read_findings_2026_09():
@@ -324,15 +314,5 @@ async def read_findings_2026_09():
 @app.get("/README.md")
 async def read_readme():
     return FileResponse(str(PROJECT_ROOT / "README.md"), media_type="text/markdown")
-
-@app.get("/results-summary.html")
-async def read_results_summary():
-    try:
-        return _render_markdown_file(
-            str(PROJECT_ROOT / "BENCHMARK_REPORT.md"),
-            "MedSafe-Dx Methodology & Results",
-        )
-    except FileNotFoundError:
-        return Response(content="Report not found", status_code=404)
 
 app.mount("/", StaticFiles(directory="static", html=True), name="static")
