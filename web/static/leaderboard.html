@@ -188,6 +188,59 @@
         }
         .ref-note { display: block; font-size: 0.75rem; color: #6c757d; font-weight: 400; }
 
+        /* ==== Misses vs over-escalations chart ==== */
+        .uo-chart {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1rem 1rem 0.75rem;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            background: #fff;
+        }
+        /* The chart draws in pixel units at the host's width, so its text stays at
+           its set size on a phone; below 340px it scrolls inside this box. */
+        #uo-host { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        #uo-host svg { display: block; font-family: 'Inter', sans-serif; }
+        .uo-chart .gridline { stroke: #f1f3f5; stroke-width: 1; }
+        .uo-chart .axis-line { stroke: #adb5bd; stroke-width: 1; }
+        .uo-chart .axis-tick { font-size: 11px; fill: #6c757d; }
+        .uo-chart .axis-label { font-size: 12px; fill: #495057; font-weight: 500; }
+        .uo-chart .hint { font-size: 11px; fill: #198754; font-weight: 600; }
+        .uo-chart .whisker { stroke-width: 1.4; stroke-opacity: 0.5; }
+        .uo-chart .mark { cursor: pointer; outline: none; }
+        .uo-chart .mark:hover .dot, .uo-chart .mark:focus .dot { stroke-width: 3; }
+        .uo-chart .point-label {
+            font-size: 11.5px;
+            fill: #212529;
+            font-weight: 500;
+            pointer-events: none;
+            stroke: #fff;
+            stroke-width: 3;
+            paint-order: stroke fill;
+            stroke-linejoin: round;
+        }
+        .uo-chart .point-label.ref { fill: #6c757d; font-style: italic; }
+        .uo-chart .leader { stroke: #adb5bd; stroke-width: 1; }
+        .uo-caption { font-size: 0.82rem; color: #6c757d; line-height: 1.5; margin-top: 0.4rem; }
+        .chart-tooltip {
+            position: absolute;
+            background: #212529;
+            color: #fff;
+            padding: 0.55rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            line-height: 1.4;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.12s ease;
+            z-index: 10;
+            max-width: 240px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+        }
+        .chart-tooltip strong { display: block; margin-bottom: 0.25rem; }
+        .chart-tooltip .tt-row { display: flex; justify-content: space-between; gap: 1rem; color: #ced4da; }
+        .chart-tooltip .tt-val { color: #fff; font-variant-numeric: tabular-nums; }
+
         .scroll-hint { display: none; font-size: 0.8rem; color: #6c757d; margin-bottom: 0.4rem; }
 
         .table-footnote { font-size: 0.8rem; color: #6c757d; line-height: 1.55; margin-top: 0.75rem; }
@@ -308,6 +361,13 @@
                 <p class="citation"><strong>Cite the v0 preprint:</strong> Van Oyen C, Mirza-Haq N. <em>MedSafe-Dx (v0): A Safety-Focused Benchmark for Evaluating LLMs in Clinical Diagnostic Decision Support.</em> medRxiv 2026.04.14.26350711; doi: <a href="https://doi.org/10.64898/2026.04.14.26350711" target="_blank" rel="noopener">10.64898/2026.04.14.26350711</a></p>
             </div>
 
+            <div class="uo-chart" id="uo-chart">
+                <h3 class="section">Misses vs over-escalations</h3>
+                <div id="uo-host"></div>
+                <p class="uo-caption" id="uo-caption">Each dot is a model; whiskers are 95% intervals; lower-left is better. Grey hollow diamonds are reference policies. Hover or tap a mark for its score. We draw no equal-score lines, because the score also charges each partial, and the partial rate differs by model.</p>
+                <div class="chart-tooltip" id="uo-tooltip" role="status"></div>
+            </div>
+
             <h3 class="section">Scores</h3>
             <p class="section-sub">
                 Ranked by the headline score (arm 4aj: the model sees the intake alone). Bars show the point and its 95% interval; grey rows are reference policies, not models.
@@ -374,6 +434,11 @@
             'gpt-oss-120b': 'gpt-oss-120b',
             'claude-haiku-4.5': 'Claude Haiku 4.5',
             'llama-3.1-8b-instruct': 'Llama 3.1 8B Instruct',
+        };
+        // Short chart labels for phone widths; the tooltip keeps the full name.
+        const SHORT = {
+            'gemini-3.1-pro-preview': 'Gemini', 'gpt-5.6-terra': 'Terra', 'claude-sonnet-4.6': 'Sonnet',
+            'glm-5.3': 'GLM', 'gpt-oss-120b': 'gpt-oss', 'claude-haiku-4.5': 'Haiku', 'llama-3.1-8b-instruct': 'Llama 8B',
         };
         const REFS = {
             zero_point: { name: 'Zero point', note: 'Escalates every patient, flagging I21 (possible NSTEMI/STEMI). Scores 0 by construction.' },
@@ -479,6 +544,212 @@
         }
 
 
+        // ==== Misses vs over-escalations chart ============================
+        // One linear scale per axis places every mark, tick and label. The SVG is
+        // drawn at the host's pixel width, so text keeps its size on a phone.
+        const SVGNS = 'http://www.w3.org/2000/svg';
+        function el(name, attrs, text) {
+            const n = document.createElementNS(SVGNS, name);
+            for (const [k, v] of Object.entries(attrs || {})) n.setAttribute(k, v);
+            if (text != null) n.textContent = text;
+            return n;
+        }
+        const UO_AX = { x: [0, 100], y: [0, 60] };
+        const REF_GREY = '#868e96', MODEL_BLUE = '#4b54f6';
+        let CHART_DATA = null;
+
+        function renderChart(d) {
+            const host = document.getElementById('uo-host');
+            const chart = document.getElementById('uo-chart');
+            const tip = document.getElementById('uo-tooltip');
+            host.innerHTML = '';
+            const W = Math.max(340, Math.min(1100, Math.floor(host.clientWidth || 1000)));
+            const narrow = W < 560;
+            const H = narrow ? 420 : Math.round(Math.min(500, W * 0.48));
+            const m = { l: narrow ? 50 : 58, r: narrow ? 14 : 22, t: 26, b: narrow ? 40 : 46 };
+            const pw = W - m.l - m.r, ph = H - m.t - m.b;
+            const X = o => m.l + (o - UO_AX.x[0]) / (UO_AX.x[1] - UO_AX.x[0]) * pw;
+            const Y = u => m.t + ph - (u - UO_AX.y[0]) / (UO_AX.y[1] - UO_AX.y[0]) * ph;
+            const inY = u => u >= UO_AX.y[0] && u <= UO_AX.y[1];
+
+            const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: 'img',
+                'aria-label': 'Scatter plot of each model\'s misses (percent of SERIOUS patients) against over-escalations (percent of BENIGN patients), with 95% intervals and three reference policies' });
+            host.appendChild(svg);
+
+            // Grid, ticks, axes
+            const xStep = narrow ? 20 : 10;
+            for (let v = UO_AX.x[0]; v <= UO_AX.x[1]; v += xStep) {
+                svg.appendChild(el('line', { class: 'gridline', x1: X(v), x2: X(v), y1: m.t, y2: m.t + ph }));
+                svg.appendChild(el('text', { class: 'axis-tick', x: X(v), y: m.t + ph + 19, 'text-anchor': 'middle' }, v + '%'));
+            }
+            for (let v = UO_AX.y[0]; v <= UO_AX.y[1]; v += 10) {
+                svg.appendChild(el('line', { class: 'gridline', x1: m.l, x2: m.l + pw, y1: Y(v), y2: Y(v) }));
+                svg.appendChild(el('text', { class: 'axis-tick', x: m.l - 6, y: Y(v) + 4, 'text-anchor': 'end' }, v + '%'));
+            }
+            svg.appendChild(el('line', { class: 'axis-line', x1: m.l, x2: m.l + pw, y1: m.t + ph, y2: m.t + ph }));
+            svg.appendChild(el('line', { class: 'axis-line', x1: m.l, x2: m.l, y1: m.t, y2: m.t + ph }));
+            svg.appendChild(el('text', { class: 'axis-label', x: m.l + pw / 2, y: H - 8, 'text-anchor': 'middle' },
+                narrow ? 'Over-escalations (O), % of BENIGN' : 'Over-escalations (O): % of BENIGN patients escalated'));
+            svg.appendChild(el('text', { class: 'axis-label', transform: `translate(${narrow ? 12 : 14},${m.t + ph / 2}) rotate(-90)`, 'text-anchor': 'middle' },
+                narrow ? 'Misses (U), % of SERIOUS' : 'Misses (U): % of SERIOUS patients missed'));
+
+            // Direction hints sit in empty parts of the plot; label placement avoids them.
+            const obstacles = [];
+            const hint = (x, y, anchor, text) => {
+                const t = el('text', { class: 'hint', x, y, 'text-anchor': anchor }, text);
+                svg.appendChild(t);
+                const b = t.getBBox();
+                obstacles.push({ x: b.x - 2, y: b.y - 2, w: b.width + 4, h: b.height + 4 });
+            };
+            hint(X(UO_AX.x[1]) - 4, Y(UO_AX.y[1] * 0.5), 'end', 'more cautious →');
+            hint(X(UO_AX.x[0]) + 8, Y(UO_AX.y[1] * 0.62), 'start', '↓ safer');
+
+            // Marks: models, then reference policies. Off-scale references become an arrow at the edge.
+            const items = d.models.map(md => ({ kind: 'model', id: md.model, fullName: NAMES[md.model] || md.model,
+                name: (narrow && SHORT[md.model]) || NAMES[md.model] || md.model,
+                U: md.U, O: md.O, score: md.score_4aj }))
+                .concat(d.reference_rows.map(r => ({ kind: 'ref', id: r.id,
+                    name: r.id === 'zero_point' ? (narrow ? 'Zero point' : 'Zero point (escalate everyone)') : (REFS[r.id] || { name: r.id }).name,
+                    fullName: (REFS[r.id] || { name: r.id }).name, U: r.U, O: r.O, score: r.score })));
+            const marks = [];
+            const leaders = el('g'), whiskers = el('g'), dots = el('g');
+            svg.appendChild(leaders); svg.appendChild(whiskers); svg.appendChild(dots);
+            for (const it of items) {
+                const color = it.kind === 'ref' ? REF_GREY : MODEL_BLUE;
+                const px = X(it.O.value);
+                const g = el('g', { class: 'mark', tabindex: 0, 'data-id': it.id,
+                    'aria-label': `${it.fullName || it.name}: misses ${f1(it.U.value)}%, over-escalations ${f1(it.O.value)}%, score ${f1(it.score.value)}` });
+                if (!inY(it.U.value)) {
+                    // Off scale: an arrow on the edge it left through, labelled with its value.
+                    const up = it.U.value > UO_AX.y[1];
+                    const ey = up ? m.t : m.t + ph;
+                    g.appendChild(el('path', { class: 'dot', fill: '#fff', stroke: color, 'stroke-width': 2,
+                        d: up ? `M${px} ${ey - 14} l6 10 h-12 z` : `M${px} ${ey + 14} l6 -10 h-12 z` }));
+                    const lab = el('text', { class: 'point-label ref', x: px + 10, y: up ? ey - 6 : ey + 12 },
+                        `${it.fullName || it.name}: ${f1(it.U.value)}% misses, off scale`);
+                    dots.appendChild(g); svg.appendChild(lab);
+                    const b = lab.getBBox();
+                    obstacles.push({ x: b.x, y: b.y, w: b.width, h: b.height });
+                    it.node = g;
+                    continue;
+                }
+                const py = Y(it.U.value);
+                const [ulo, uhi] = it.U.ci, [olo, ohi] = it.O.ci;
+                if (ohi > olo) whiskers.appendChild(el('line', { class: 'whisker', stroke: color, x1: X(olo), x2: X(ohi), y1: py, y2: py }));
+                if (uhi > ulo) whiskers.appendChild(el('line', { class: 'whisker', stroke: color, x1: px, x2: px, y1: Y(uhi), y2: Y(ulo) }));
+                g.appendChild(it.kind === 'ref'
+                    ? el('path', { class: 'dot', d: `M${px} ${py - 6} l6 6 l-6 6 l-6 -6 z`, fill: '#fff', stroke: color, 'stroke-width': 2 })
+                    : el('circle', { class: 'dot', cx: px, cy: py, r: 5, fill: color, stroke: '#fff', 'stroke-width': 1.5 }));
+                dots.appendChild(g);
+                it.node = g;
+                marks.push({ it, px, py });
+            }
+            placeUoLabels(svg, leaders, marks, obstacles, { l: m.l, r: m.l + pw + m.r - 2, t: m.t - 4, b: m.t + ph });
+
+            const tipHtml = it => `<strong>${esc(it.fullName || it.name)}${it.kind === 'ref' ? ' (reference)' : ''}</strong>
+                <div class="tt-row"><span>Score</span><span class="tt-val">${f1(it.score.value)}${it.score.ci[0] !== it.score.ci[1] ? ' ' + ciText(it.score.ci) : ''}</span></div>
+                <div class="tt-row"><span>Misses (U)</span><span class="tt-val">${f1(it.U.value)}%${it.U.ci[0] !== it.U.ci[1] ? ' ' + ciText(it.U.ci) : ''}</span></div>
+                <div class="tt-row"><span>Over-escalations (O)</span><span class="tt-val">${f1(it.O.value)}%${it.O.ci[0] !== it.O.ci[1] ? ' ' + ciText(it.O.ci) : ''}</span></div>`;
+            for (const it of items) {
+                const node = it.node;
+                const place = (cx, cy) => {
+                    const rect = chart.getBoundingClientRect();
+                    const tr = tip.getBoundingClientRect();
+                    let x = cx - rect.left + 12, y = cy - rect.top + 12;
+                    if (x > rect.width - tr.width - 8) x = Math.max(8, cx - rect.left - tr.width - 12);
+                    tip.style.left = x + 'px'; tip.style.top = y + 'px';
+                };
+                const show = e => {
+                    tip.innerHTML = tipHtml(it);
+                    tip.style.opacity = '1';
+                    if (e && e.clientX != null && e.type !== 'focus') place(e.clientX, e.clientY);
+                    else { const b = node.getBoundingClientRect(); place(b.right, b.top); }
+                };
+                const hide = () => { tip.style.opacity = '0'; };
+                node.addEventListener('mouseenter', show);
+                node.addEventListener('mousemove', e => place(e.clientX, e.clientY));
+                node.addEventListener('mouseleave', hide);
+                node.addEventListener('click', show);
+                node.addEventListener('focus', show);
+                node.addEventListener('blur', hide);
+            }
+        }
+
+        // Greedy label placement: try spots around each mark, nearest first, and keep the
+        // first that stays in the plot and clears other labels, marks and hints. Far spots
+        // get a leader line. Every label is placed; the last resort is the nearest spot.
+        // We try a few orders and keep the one whose labels sit closest to their marks.
+        function placeUoLabels(svg, leaders, marks, obstacles, box) {
+            const hit = (a, b) => a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
+            const markBoxes = marks.map(mk => ({ x: mk.px - 7, y: mk.py - 7, w: 14, h: 14 }));
+            const dirs = [[1, 0], [-1, 0], [0, -1], [0, 1], [1, -1], [-1, -1], [1, 1], [-1, 1]];
+            const h = 13;
+            const texts = marks.map(mk => {
+                const t = el('text', { class: 'point-label' + (mk.it.kind === 'ref' ? ' ref' : ''), x: 0, y: 0 }, mk.it.name);
+                svg.appendChild(t);
+                return { t, w: t.getComputedTextLength() + 2 };
+            });
+            // Place labels greedily in one order; returns each label's spot and a cost
+            // (squared distance from its mark, plus a penalty for any forced overlap).
+            const tryOrder = order => {
+                const placed = [], out = new Map();
+                let cost = 0;
+                for (const i of order) {
+                    const mk = marks[i], w = texts[i].w;
+                    let best = null, fallback = null;
+                    outer:
+                    for (const r of [9, 15, 24, 34, 46, 60]) {
+                        for (const [dx, dy] of dirs) {
+                            const cx = mk.px + dx * r, cy = mk.py + dy * r;
+                            const b = { x: dx > 0 ? cx : dx < 0 ? cx - w : cx - w / 2,
+                                        y: dy > 0 ? cy : dy < 0 ? cy - h : cy - h / 2, w, h };
+                            if (b.x < box.l + 2 || b.x + w > box.r || b.y < box.t || b.y + h > box.b - 2) continue;
+                            const cand = { b, r, cx };
+                            if (!fallback) fallback = cand;
+                            if (placed.some(p => hit(p, b)) || obstacles.some(o => hit(o, b))) continue;
+                            if (markBoxes.some((mb, j) => j !== i && hit(mb, b))) continue;
+                            best = cand; break outer;
+                        }
+                    }
+                    cost += best ? best.r * best.r : 1e5;
+                    best = best || fallback;
+                    placed.push(best.b);
+                    out.set(i, best);
+                }
+                return { out, cost };
+            };
+            const idx = marks.map((_, i) => i);
+            const orders = [
+                idx.slice().sort((a, b) => marks[b].it.score.value - marks[a].it.score.value),
+                idx.slice().sort((a, b) => marks[b].px - marks[a].px),
+                idx.slice().sort((a, b) => marks[a].px - marks[b].px),
+                idx.slice().sort((a, b) => marks[b].py - marks[a].py),
+                idx.slice().sort((a, b) => marks[a].py - marks[b].py),
+            ];
+            const best = orders.map(tryOrder).sort((a, b) => a.cost - b.cost)[0];
+            for (const [i, spot] of best.out) {
+                const mk = marks[i], t = texts[i].t;
+                t.setAttribute('x', spot.b.x + 1);
+                t.setAttribute('y', spot.b.y + h - 3);
+                if (spot.r > 15) {
+                    const lx = spot.cx > mk.px + 1 ? spot.b.x : spot.cx < mk.px - 1 ? spot.b.x + spot.b.w : spot.b.x + spot.b.w / 2;
+                    const ly = Math.max(spot.b.y, Math.min(spot.b.y + h, mk.py));
+                    leaders.appendChild(el('line', { class: 'leader', x1: mk.px, y1: mk.py, x2: lx, y2: ly }));
+                }
+            }
+        }
+
+        (function () {
+            let lastW = window.innerWidth, t;
+            window.addEventListener('resize', () => {
+                clearTimeout(t);
+                t = setTimeout(() => {
+                    if (CHART_DATA && window.innerWidth !== lastW) { lastW = window.innerWidth; renderChart(CHART_DATA); }
+                }, 150);
+            });
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (CHART_DATA) renderChart(CHART_DATA); });
+        })();
+
         (function () {
             const panel = document.getElementById('changes-panel');
             const toggle = document.getElementById('changes-toggle');
@@ -491,7 +762,7 @@
 
         fetch(DATA_URL)
             .then(r => { if (!r.ok) throw new Error(`${DATA_URL}: HTTP ${r.status}`); return r.json(); })
-            .then(render)
+            .then(d => { render(d); CHART_DATA = d; renderChart(d); })
             .catch(err => {
                 document.getElementById('leaderboard').innerHTML =
                     `<div class="empty-state"><h2>No results loaded</h2><p>${esc(err.message)}</p></div>`;
