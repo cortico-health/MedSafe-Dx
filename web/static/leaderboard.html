@@ -191,6 +191,13 @@
         .scroll-hint { display: none; font-size: 0.8rem; color: #6c757d; margin-bottom: 0.4rem; }
 
         .table-footnote { font-size: 0.8rem; color: #6c757d; line-height: 1.55; margin-top: 0.75rem; }
+        th a.th-link { color: inherit; text-decoration: underline dotted; text-underline-offset: 2px; }
+        .miss-types { margin: 1rem 0 1.5rem; padding: 0.9rem 1.1rem; border: 1px solid #e3e6ea; border-radius: 8px; background: #fbfbfc; font-size: 0.85rem; color: #495057; line-height: 1.55; scroll-margin-top: 1rem; }
+        .miss-types h4 { margin: 0 0 0.4rem; font-size: 0.95rem; color: #343a40; }
+        .miss-types p { margin: 0 0 0.4rem; }
+        .miss-types ol, .miss-types ul { margin: 0 0 0.5rem 1.2rem; }
+        .miss-types li { margin-bottom: 0.25rem; }
+        .miss-types .miss-src { font-size: 0.8rem; color: #6c757d; margin: 0; }
 
         .explain {
             display: grid;
@@ -311,6 +318,20 @@
                 <div id="leaderboard"><div class="empty-state">Loading scores...</div></div>
             </div>
             <p class="table-footnote" id="table-footnote"></p>
+            <div class="miss-types" id="miss-types">
+                <h4>Miss types</h4>
+                <p>A miss is a SERIOUS patient the model did not send on for a serious reason. Each costs 7. There are two types:</p>
+                <ol>
+                    <li><strong>Sent to routine care.</strong> The model raised no flag, so the patient goes to routine care.</li>
+                    <li><strong>Flagged, but nothing serious.</strong> The model flagged a condition that is not serious, so the flag does not escalate the patient. This covers a benign or moderate DDXPlus condition, a condition outside the 49 that CDC emergency-department data (NHAMCS) rates below serious or cannot rate, and a flag that is not a readable ICD-10 code.</li>
+                </ol>
+                <p>Two related outcomes are not misses, and each costs 1:</p>
+                <ul>
+                    <li><strong>Partial.</strong> The model escalated a SERIOUS patient but named a different serious condition from the one the case is about. On a case that a red-flag rule made serious, escalating for the true condition also counts as a partial.</li>
+                    <li><strong>Over-escalation (O).</strong> The model escalated a BENIGN patient.</li>
+                </ul>
+                <p class="miss-src">Definitions: <a href="report.html">methodology</a>, section 5 (scoring).</p>
+            </div>
 
             <div class="explain" id="how-to-read">
                 <div class="card">
@@ -443,7 +464,7 @@
                     <th class="num primary-metric">Score<span class="th-sub">arm 4aj, 95% CI</span></th>
                     <th class="bar-cell">${axisSvg()}</th>
                     <th class="num">4bj score<span class="th-sub">secondary</span></th>
-                    <th class="num">Misses (U)<span class="th-sub">% of SERIOUS</span></th>
+                    <th class="num"><a class="th-link" href="#miss-types" title="What counts as a miss">Misses (U)</a><span class="th-sub">% of SERIOUS &middot; <a class="th-link" href="#miss-types">types</a></span></th>
                     <th class="num">Over-escalations (O)<span class="th-sub">% of BENIGN</span></th>
                 </tr></thead>
                 <tbody>${body}</tbody></table>`;
@@ -452,7 +473,7 @@
             document.getElementById('table-footnote').innerHTML =
                 `${s.cases} cases (seed ${s.seed}): ${s.serious} SERIOUS, ${s.benign} BENIGN. `
                 + `Under each score: the 95% interval resampling cases within each condition, then ("cond.") the wider interval that also resamples conditions. `
-                + `Misses: SERIOUS cases the model sent to routine care or flagged with nothing serious. Over-escalations: BENIGN cases the model escalated. `
+                + `Misses: SERIOUS cases costing a full miss (<a href="#miss-types">types below</a>). Over-escalations: BENIGN cases the model escalated. `
                 + `Always routine sits at ${f1(d.reference_rows.find(r => r.id === 'always_routine').score.value)}, off the left of the axis. `
                 + `Source: <code>${esc(d.source.file)}</code> at commit <code>${esc(d.source.commit)}</code>, via <code>${esc(d.source.built_by)}</code>.`;
         }
