@@ -303,13 +303,8 @@ async def read_results_summary():
 
 @app.get("/findings-2026-09.html")
 async def read_findings_2026_09():
-    try:
-        return _render_markdown_file(
-            str(PROJECT_ROOT / "docs" / "FINDINGS-2026-09.md"),
-            "MedSafe-Dx: findings from the 2026-09 leaderboard refresh",
-        )
-    except FileNotFoundError:
-        return Response(content="Findings not found", status_code=404)
+    # The September findings are archived; the frozen copy lives with its board.
+    return RedirectResponse(url="/archive/2026-09-refresh/findings-2026-09.html", status_code=301)
 
 @app.get("/README.md")
 async def read_readme():
