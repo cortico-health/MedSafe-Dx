@@ -56,7 +56,11 @@
             border-radius: 8px;
             line-height: 1.5;
         }
-        .disclaimer .citation { display: block; margin-top: 0.5rem; font-size: 0.85rem; }
+        .disclaimer .about { margin: 0 0 0.75rem; }
+        .disclaimer .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.5rem 1.25rem; margin: 0 0 0.75rem; }
+        .disclaimer .facts dt { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.75; }
+        .disclaimer .facts dd { margin: 0.1rem 0 0; font-size: 0.9rem; }
+        .disclaimer .citation { margin: 0; padding-top: 0.6rem; border-top: 1px solid #b6d4fe; font-size: 0.85rem; }
         .disclaimer a { color: #0c4a8a; font-weight: 600; }
 
         /* ==== "What changed" panel ==== */
@@ -263,40 +267,35 @@
         </header>
 
         <div class="content">
-            <div class="changes-panel" id="changes-panel">
-                <h2>What changed: a smaller, literature-checked benchmark (v0.3)</h2>
+            <div class="changes-panel expanded" id="changes-panel">
+                <h2>What changed in v0.3</h2>
                 <p class="changes-intro">
-                    MedSafe-Dx tests whether an AI assistant flags the patients who need prompt clinical attention, using synthetic patients from the public DDXPlus dataset.
-                    On review, the dataset's answer for a patient often disagreed with other references for the same patient, so we narrowed the benchmark to the cases where they agree.
-                    Validation has passed, and the scores below are the first under the new method.
+                    We narrowed MedSafe-Dx to the synthetic DDXPlus patients whose safety label is backed by published clinical guidance.
+                    The <a href="report.html">methodology</a> gives every rule, source and limit.
                 </p>
-                <div class="changes-body" id="changes-body">
                 <ol>
-                    <li><strong>What we found.</strong> Two clinicians, Dr Sarah Baldwin and Dr Andy Minhas, reviewed cases in a spreadsheet and flagged answers that looked wrong. We then checked every audited case against two more references: DXA, the rule-based diagnosis engine that ships with DDXPlus, and a structured literature review of each case. On many cases these references disagreed with the dataset, so a model marked as failing may have made a reasonable call. In our audit of 150 cases, the literature review judged 529 of the 751 answers our earlier scoring penalised (70%)<!-- source: docs/v0.3-fp-fn-audit.md, finding 3 (529 of 751 penalised answers safe) --> to be safe. A benchmark should not expect an AI assistant to match an answer that its own references dispute.</li>
-                    <li><strong>Why it happens.</strong> DDXPlus gives each condition one severity, so every patient with that condition gets the same label. Real patients vary: anaemia with black stools in someone on a blood thinner needs prompt review, while mild tiredness does not. Other causes include targets the patient's findings do not support, text-conversion errors, and conditions no one could identify from the intake alone, such as Chagas disease without a travel history.</li>
-                    <li><strong>What we changed: conditions.</strong> We reviewed all 49 DDXPlus conditions against published guidance. We keep 35, treat 5 as serious (tuberculosis and pericarditis always; COPD flare-ups, atrial fibrillation and myasthenia gravis when a red flag is present), score 6 only when a red flag is present, and set 3 aside entirely.<!-- source: docs/v0.3-case-selection-rules.md (condition verdicts) --></li>
-                    <li><strong>What we changed: patients.</strong> Most of the fix works per patient. Published red-flag rules make a case serious when its findings call for prompt review, for example coughing up blood at age 40 or over (NICE NG12). Other rules set aside single cases that are broken or cannot be decided from the intake. So each case is kept, corrected with a cited rule, or set aside with a cited reason.</li>
-                    <li><strong>Who checked the evidence.</strong> The literature review was AI-assisted: two independent AI reviewers searched the literature, a third adjudicated, and we checked every citation. The reviewers agreed only moderately, so the review is evidence, not ground truth. Namrah Mirza-Haq will also check the review.</li>
-                    <li><strong>How we tested the rules.</strong> We froze the rules, then tested them on fresh cases they were not built from, against pass criteria written down in advance. The first round failed on one group of cases, which we removed; the second round passed.<!-- source: results/phase2b/validation.md; docs/METHODOLOGY-v0.3.md section 1 item 3 --> These are the new scores.</li>
-                    <li><strong>How we score.</strong> A model passes a serious case only when it escalates for a valid serious reason, so a model cannot score well by escalating everyone. Scoring is deterministic, uses no AI judge, and can be reproduced from open data.</li>
-                    <li><strong>The trade-off.</strong> We prefer a smaller benchmark with a literature-backed basis to a broader one with a disputed one. The cases we set aside are harder: in our audit, the literature review judged model answers unsafe on 27% of them, against 15% of the cases we keep.<!-- source: docs/v0.3-case-selection-rules.md section 6 (27.0% set aside vs 14.8% kept) --> The benchmark therefore understates failures on complex patients, and we report that.</li>
-                    <li><strong>This board.</strong> The scores below use the new method (v0.3). The previous board (v0.1, triage score on 250 cases) is archived.</li>
+                    <li><strong>Why.</strong> Audits, including by clinicians, found that the dataset's answer often disagreed with other references for the same patient, because DDXPlus gives every patient with a condition the same severity. A literature review judged 70% of the answers our earlier scoring penalised to be safe.</li>
+                    <li><strong>What changed.</strong> We keep each case, correct it with a published red-flag rule, or set it aside, and cite the reason.</li>
+                    <li><strong>How we checked.</strong> We froze the rules and tested them on fresh cases against criteria set in advance. The second round passed.</li>
+                    <li><strong>Scoring.</strong> A model passes a serious case only when it escalates for a valid serious reason, so escalating everyone scores 0.</li>
+                    <li><strong>Trade-off.</strong> The cases we set aside are harder, so the benchmark understates failures on complex patients.</li>
                 </ol>
-                <a class="archive-link" href="/archive/v0.1-board-2026-09/">View the previous board (v0.1, September 2026)</a>
-                <p style="margin-top: 0.75rem; font-size: 0.9rem;">
+                <p style="font-size: 0.9rem;">
+                    <a href="/archive/v0.1-board-2026-09/">Previous board (v0.1)</a> &middot;
                     <a href="/archive/">All archived boards and reports</a> &middot;
                     <a href="#how-to-read">How the score works</a>
                 </p>
-                </div>
-                <button type="button" class="changes-toggle" id="changes-toggle" aria-expanded="false" aria-controls="changes-body">Show more &#9662;</button>
             </div>
 
             <div class="disclaimer">
-                <strong>MedSafe-Dx v0.3</strong> - a safety-focused benchmark from Cortico Health Technologies for evaluating LLMs in clinical diagnostic decision support.
-                Seven models answered 900<!-- source: results/v03_full/scores.md, header --> synthetic DDXPlus patients drawn by seed 20261005<!-- source: results/v03_full/scores.md, header -->:
-                500 serious by the condition (tier 1), 140 serious by an upgrade or a red flag, and 260 BENIGN<!-- source: results/v03_full/scores.md, header (strata) -->.
-                None has an exact public twin<!-- source: results/v03_full/scores.md, header (0 twins) -->. Scoring is deterministic and reproducible from open data; issues and PRs welcome on <a href="https://github.com/cortico-health/MedSafe-Dx" target="_blank" rel="noopener">GitHub</a>. For inquiries: <a href="mailto:solutions@cortico.health">solutions@cortico.health</a>.
-                <span class="citation"><strong>Cite the v0 preprint as:</strong> Van Oyen C, Mirza-Haq N. <em>MedSafe-Dx (v0): A Safety-Focused Benchmark for Evaluating LLMs in Clinical Diagnostic Decision Support.</em> medRxiv 2026.04.14.26350711; doi: <a href="https://doi.org/10.64898/2026.04.14.26350711" target="_blank" rel="noopener">10.64898/2026.04.14.26350711</a></span>
+                <p class="about"><strong>MedSafe-Dx v0.3</strong> is a safety benchmark from Cortico Health Technologies. It tests whether an LLM used as a clinical assistant flags the patients who need prompt attention.</p>
+                <dl class="facts">
+                    <div><dt>This run</dt><dd>7 models, each answering the same 900 synthetic DDXPlus patients (seed 20261005)<!-- source: results/v03_full/scores.md, header --></dd></div>
+                    <div><dt>Patients</dt><dd>500 serious by condition, 140 serious by a red-flag rule, 260 benign<!-- source: results/v03_full/scores.md, header (strata) -->. None has an exact public copy<!-- source: results/v03_full/scores.md, header (0 twins) -->.</dd></div>
+                    <div><dt>Scoring</dt><dd>Deterministic, with no AI judge; reproducible from open data. See the <a href="report.html">methodology</a>.</dd></div>
+                    <div><dt>Contribute</dt><dd>Issues and PRs on <a href="https://github.com/cortico-health/MedSafe-Dx" target="_blank" rel="noopener">GitHub</a>. Inquiries: <a href="mailto:solutions@cortico.health">solutions@cortico.health</a></dd></div>
+                </dl>
+                <p class="citation"><strong>Cite the v0 preprint:</strong> Van Oyen C, Mirza-Haq N. <em>MedSafe-Dx (v0): A Safety-Focused Benchmark for Evaluating LLMs in Clinical Diagnostic Decision Support.</em> medRxiv 2026.04.14.26350711; doi: <a href="https://doi.org/10.64898/2026.04.14.26350711" target="_blank" rel="noopener">10.64898/2026.04.14.26350711</a></p>
             </div>
 
             <h3 class="section">Scores</h3>
@@ -455,15 +454,6 @@
                 + `Source: <code>${esc(d.source.file)}</code> at commit <code>${esc(d.source.commit)}</code>, via <code>${esc(d.source.built_by)}</code>.`;
         }
 
-        (function () {
-            const panel = document.getElementById('changes-panel');
-            const toggle = document.getElementById('changes-toggle');
-            toggle.addEventListener('click', () => {
-                const open = panel.classList.toggle('expanded');
-                toggle.setAttribute('aria-expanded', String(open));
-                toggle.innerHTML = open ? 'Show less &#9652;' : 'Show more &#9662;';
-            });
-        })();
 
         fetch(DATA_URL)
             .then(r => { if (!r.ok) throw new Error(`${DATA_URL}: HTTP ${r.status}`); return r.json(); })
