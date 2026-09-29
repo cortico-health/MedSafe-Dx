@@ -267,12 +267,13 @@
         </header>
 
         <div class="content">
-            <div class="changes-panel expanded" id="changes-panel">
+            <div class="changes-panel" id="changes-panel">
                 <h2>What changed in v0.3</h2>
                 <p class="changes-intro">
                     We narrowed MedSafe-Dx to the synthetic DDXPlus patients whose safety label is backed by published clinical guidance.
                     The <a href="report.html">methodology</a> gives every rule, source and limit.
                 </p>
+                <div class="changes-body" id="changes-body">
                 <ol>
                     <li><strong>Why.</strong> Audits, including by clinicians, found that the dataset's answer often disagreed with other references for the same patient, because DDXPlus gives every patient with a condition the same severity. A literature review judged 70% of the answers our earlier scoring penalised to be safe.</li>
                     <li><strong>What changed.</strong> We keep each case, correct it with a published red-flag rule, or set it aside, and cite the reason.</li>
@@ -285,6 +286,8 @@
                     <a href="/archive/">All archived boards and reports</a> &middot;
                     <a href="#how-to-read">How the score works</a>
                 </p>
+                </div>
+                <button type="button" class="changes-toggle" id="changes-toggle" aria-expanded="false" aria-controls="changes-body">Show more &#9662;</button>
             </div>
 
             <div class="disclaimer">
@@ -454,6 +457,16 @@
                 + `Source: <code>${esc(d.source.file)}</code> at commit <code>${esc(d.source.commit)}</code>, via <code>${esc(d.source.built_by)}</code>.`;
         }
 
+
+        (function () {
+            const panel = document.getElementById('changes-panel');
+            const toggle = document.getElementById('changes-toggle');
+            toggle.addEventListener('click', () => {
+                const open = panel.classList.toggle('expanded');
+                toggle.setAttribute('aria-expanded', String(open));
+                toggle.innerHTML = open ? 'Show less &#9652;' : 'Show more &#9662;';
+            });
+        })();
 
         fetch(DATA_URL)
             .then(r => { if (!r.ok) throw new Error(`${DATA_URL}: HTTP ${r.status}`); return r.json(); })
