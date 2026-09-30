@@ -19,7 +19,8 @@
    "code": "I21",
    "condition": "Possible NSTEMI / STEMI",
    "serious_cases": 56
-  }
+  },
+  "zero_cost_bal": 174.375
  },
  "models": [
   {
@@ -56,6 +57,13 @@
     "truth": 0.0
    },
    "escalated": 77.3,
+   "miss_equivalent": {
+    "value": 3.88,
+    "ci": [
+     2.82,
+     4.97
+    ]
+   },
    "score_4bj": {
     "value": 67.0,
     "ci": [
@@ -99,6 +107,13 @@
     "truth": 0.2
    },
    "escalated": 77.3,
+   "miss_equivalent": {
+    "value": 4.69,
+    "ci": [
+     3.46,
+     5.95
+    ]
+   },
    "score_4bj": {
     "value": 65.4,
     "ci": [
@@ -142,6 +157,13 @@
     "truth": 0.0
    },
    "escalated": 76.9,
+   "miss_equivalent": {
+    "value": 7.37,
+    "ci": [
+     5.79,
+     9.1
+    ]
+   },
    "score_4bj": {
     "value": 48.3,
     "ci": [
@@ -185,6 +207,13 @@
     "truth": 0.0
    },
    "escalated": 70.7,
+   "miss_equivalent": {
+    "value": 11.48,
+    "ci": [
+     9.64,
+     13.31
+    ]
+   },
    "score_4bj": {
     "value": 38.0,
     "ci": [
@@ -228,6 +257,13 @@
     "truth": 0.3
    },
    "escalated": 78.1,
+   "miss_equivalent": {
+    "value": 10.38,
+    "ci": [
+     8.73,
+     12.12
+    ]
+   },
    "score_4bj": {
     "value": 20.0,
     "ci": [
@@ -271,6 +307,13 @@
     "truth": 3.0
    },
    "escalated": 65.3,
+   "miss_equivalent": {
+    "value": 17.52,
+    "ci": [
+     15.19,
+     19.82
+    ]
+   },
    "score_4bj": {
     "value": 20.6,
     "ci": [
@@ -314,6 +357,13 @@
     "truth": 0.0
    },
    "escalated": 38.0,
+   "miss_equivalent": {
+    "value": 52.97,
+    "ci": [
+     49.7,
+     56.0
+    ]
+   },
    "score_4bj": {
     "value": -101.4,
     "ci": [
@@ -348,7 +398,15 @@
      100.0
     ]
    },
-   "escalated": 100.0
+   "escalated": 100.0,
+   "partial": 74.4,
+   "miss_equivalent": {
+    "value": 10.62,
+    "ci": [
+     10.62,
+     10.62
+    ]
+   }
   },
   {
    "id": "naive_bayes",
@@ -373,7 +431,15 @@
      0.0
     ]
    },
-   "escalated": 55.7
+   "escalated": 55.7,
+   "partial": 0.0,
+   "miss_equivalent": {
+    "value": 21.72,
+    "ci": [
+     20.16,
+     23.2
+    ]
+   }
   },
   {
    "id": "always_routine",
@@ -398,7 +464,15 @@
      0.0
     ]
    },
-   "escalated": 0.0
+   "escalated": 0.0,
+   "partial": 0.0,
+   "miss_equivalent": {
+    "value": 100.0,
+    "ci": [
+     100.0,
+     100.0
+    ]
+   }
   }
  ],
  "pair_separation": {

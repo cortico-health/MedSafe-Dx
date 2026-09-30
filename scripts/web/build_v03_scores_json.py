@@ -30,6 +30,27 @@ def metric(row, key):
     return {"value": round(m["value"], 1), "ci": [round(x, 1) for x in m["ci"]]}
 
 
+def miss_equivalent(row, partial):
+    """U + P/7 in % of SERIOUS, with U's interval shifted by P/7.
+
+    The balanced cost is O + 7U + P (evaluator/v03_valid_reason.py, `_balanced_cost`), so on the
+    axes (O, U + P/7) every line of equal score is straight. The interval is U's, shifted: an
+    approximation, because the scores file keeps no draws of U + P/7."""
+    shift = partial / 7
+    return {"value": round(row["U"]["value"] + shift, 2),
+            "ci": [round(x + shift, 2) for x in row["U"]["ci"]]}
+
+
+def serious_cost(row, serious, benign):
+    """7U + P in % of SERIOUS for a row whose scores file gives only the sample-mix cost.
+
+    The mix cost is (7 x misses + partials + over-escalations) over all cases; costs are whole
+    numbers per case, so we round the SERIOUS cost to a whole count before dividing."""
+    total = row["cost"]["value"] / 100 * (serious + benign)
+    count = round(total - row["O"]["value"] / 100 * benign)
+    return 100 * count / serious
+
+
 def main():
     src = json.loads(SRC.read_text())
     within = src["headline_within_condition"]
@@ -53,6 +74,7 @@ def main():
                 "truth": round(a["partial_truth"]["value"], 1),
             },
             "escalated": round(a["esc"]["value"], 1),
+            "miss_equivalent": miss_equivalent(a, a["partial"]["value"]),
             "score_4bj": metric(b, "score_z_bal"),
             "parse_4bj_unreadable": src["parse"][f"{model}|{SECONDARY}"]["unreadable"],
         })
@@ -61,13 +83,19 @@ def main():
     refs = []
     for name, rid in REFERENCE_ROWS:
         r = src["reference_rows"][name]
+        partial = max(0.0, serious_cost(r, within["serious"], within["benign"]) - 7 * r["U"]["value"])
         refs.append({
             "id": rid,
             "score": metric(r, "score_z_bal"),
             "U": metric(r, "U"),
             "O": metric(r, "O"),
             "escalated": round(r["esc"]["value"], 1),
+            "partial": round(partial, 1),
+            "miss_equivalent": miss_equivalent(r, partial),
         })
+    # The zero point's balanced cost: every model's score is 100 x (1 - (O + 7U + P) / this).
+    zero = src["reference_rows"]["zero point (A2)"]
+    zero_cost_bal = zero["O"]["value"] + serious_cost(zero, within["serious"], within["benign"])
 
     # model_pairs keys read "<arm>|<model A>|<model B>"; a pair is unseparated
     # when its within-condition difference interval includes 0.
@@ -94,6 +122,7 @@ def main():
             "serious": within["serious"],
             "benign": within["benign"],
             "zero_point": within["zero_reference"],
+            "zero_cost_bal": round(zero_cost_bal, 3),
         },
         "models": rows,
         "reference_rows": refs,

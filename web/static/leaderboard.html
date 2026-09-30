@@ -221,6 +221,8 @@
         }
         .uo-chart .point-label.ref { fill: #6c757d; font-style: italic; }
         .uo-chart .leader { stroke: #adb5bd; stroke-width: 1; }
+        .uo-chart .iso { stroke: #adb5bd; stroke-width: 1.2; stroke-dasharray: 1.5 4; stroke-linecap: round; }
+        .uo-chart .iso-label { font-size: 11px; fill: #868e96; }
         .uo-caption { font-size: 0.82rem; color: #6c757d; line-height: 1.5; margin-top: 0.4rem; }
         .chart-tooltip {
             position: absolute;
@@ -364,14 +366,13 @@
             <div class="uo-chart" id="uo-chart">
                 <h3 class="section">Misses vs over-escalations</h3>
                 <div id="uo-host"></div>
-                <p class="uo-caption" id="uo-caption">Each dot is a model; whiskers are 95% intervals; lower-left is better. Grey hollow diamonds are reference policies. Hover or tap a mark for its score. We draw no equal-score lines, because the score also charges each partial, and the partial rate differs by model.</p>
+                <p class="uo-caption" id="uo-caption">Each dot is a model. Dotted lines join points with the same overall score; lower-left is better. The vertical axis counts each partial as 1/7 of a miss, matching the score's costs. Whiskers are 95% intervals; the vertical whisker is the misses interval shifted by the model's partials/7, an approximation. Grey hollow diamonds are reference policies; arrows mark those off the scale. Hover or tap a mark for its score, misses, partials and over-escalations.</p>
                 <div class="chart-tooltip" id="uo-tooltip" role="status"></div>
             </div>
 
             <h3 class="section">Scores</h3>
             <p class="section-sub">
-                Ranked by the headline score (arm 4aj: the model sees the intake alone). Bars show the point and its 95% interval; grey rows are reference policies, not models.
-                The 4bj column scores the same cases with a benign working diagnosis stated in the prompt.
+                Ranked by the score (arm 4aj: the model sees the intake alone). Bars show the point and its 95% interval; grey rows are reference policies, not models.
             </p>
             <p class="scroll-hint">Swipe the table sideways for the interval bars and more columns.</p>
             <div class="table-scroll">
@@ -408,9 +409,9 @@
                     <h4>What the run shows</h4>
                     <ol>
                         <li><strong>Gemini 3.1 Pro and GPT-5.6 Terra are tied.</strong> Their paired score difference is 4.3 [-1.2, 9.9]<!-- source: results/v03_full/scores.md, "Model-pair separation", arm 4aj -->; the interval includes 0.</li>
-                        <li><strong>19 of 21 model pairs separate</strong> in each arm<!-- source: results/v03_full/scores.md, "Model-pair separation" -->. The other unseparated pair is GLM 5.3 and gpt-oss-120b in arm 4aj, and gpt-oss-120b and Claude Haiku 4.5 in arm 4bj.<!-- source: results/v03_full/scores.md, "Model-pair separation" --></li>
-                        <li><strong>A stated benign diagnosis moved no model detectably.</strong> The pre-registered anchor test (4aj against 4bj) found no model that survives Holm's correction across the 7 models.<!-- source: results/v03_full/scores.md, "Confirmatory anchor test (spec record R2)" --></li>
-                        <li><strong>One parse failure.</strong> One GLM 5.3 answer in arm 4bj failed to parse after one retry; we score it as routine.<!-- source: results/v03_full/scores.md, "Parsing" (glm-5.3|4bj: 1 unreadable) --></li>
+                        <li><strong>19 of 21 model pairs separate.</strong><!-- source: results/v03_full/scores.md, "Model-pair separation", arm 4aj --> The other unseparated pair is GLM 5.3 and gpt-oss-120b.<!-- source: results/v03_full/scores.md, "Model-pair separation", arm 4aj (6.9 [-3.2, 16.3]) --></li>
+                        <li><strong>A stated diagnosis.</strong> A benign working diagnosis in the prompt made no consistent difference; see the <a href="report.html#discussion-does-a-stated-benign-diagnosis-change-the-answer">discussion in the methodology</a>.<!-- source: results/v03_full/scores.md, "Confirmatory anchor test (spec record R2)"; spec/v0.3-scoring.md record R3 --></li>
+                        <li><strong>Every answer parsed.</strong> All seven models answered all 900 cases.<!-- source: results/v03_full/scores.md, "Parsing" (every |4aj row: 900 of 900, 0 unreadable) --></li>
                         <li><strong>Spend.</strong> The run cost 69.78 USD in API calls.<!-- source: results/v03_full/scores.md, header (account spend delta 69.78 USD) --></li>
                     </ol>
                 </div>
@@ -503,7 +504,6 @@
                         <td><span class="ref-tag">Reference</span><span class="model-name">${esc(meta.name)}</span><span class="ref-note">${esc(meta.note)}</span></td>
                         <td class="num"><span class="score">${f1(r.score.value)}</span>${r.score.ci[0] !== r.score.ci[1] ? `<span class="ci">${ciText(r.score.ci)}</span>` : ''}</td>
                         <td class="bar-cell">${barSvg(r.score, true)}</td>
-                        <td class="num">-</td>
                         <td class="num">${f1(r.U.value)}%</td>
                         <td class="num">${f1(r.O.value)}%</td>
                     </tr>`;
@@ -516,7 +516,6 @@
                     <td><span class="model-name">${esc(NAMES[m.model] || m.model)}</span>${tie}<span class="model-id">${esc(m.model)}</span></td>
                     <td class="num"><span class="score">${f1(m.score_4aj.value)}</span><span class="ci">${ciText(m.score_4aj.ci)}</span><span class="ci" title="Condition bootstrap">cond. ${ciText(m.score_4aj_condition_bootstrap_ci)}</span></td>
                     <td class="bar-cell">${barSvg(m.score_4aj, false)}</td>
-                    <td class="num">${f1(m.score_4bj.value)}<span class="ci">${ciText(m.score_4bj.ci)}</span></td>
                     <td class="num">${f1(m.U.value)}%<span class="ci">${ciText(m.U.ci)}</span></td>
                     <td class="num">${f1(m.O.value)}%<span class="ci">${ciText(m.O.ci)}</span></td>
                 </tr>`;
@@ -528,7 +527,6 @@
                     <th>Model</th>
                     <th class="num primary-metric">Score<span class="th-sub">arm 4aj, 95% CI</span></th>
                     <th class="bar-cell">${axisSvg()}</th>
-                    <th class="num">4bj score<span class="th-sub">secondary</span></th>
                     <th class="num"><a class="th-link" href="#miss-types" title="What counts as a miss">Misses (U)</a><span class="th-sub">% of SERIOUS &middot; <a class="th-link" href="#miss-types">types</a></span></th>
                     <th class="num">Over-escalations (O)<span class="th-sub">% of BENIGN</span></th>
                 </tr></thead>
@@ -554,7 +552,11 @@
             if (text != null) n.textContent = text;
             return n;
         }
-        const UO_AX = { x: [0, 100], y: [0, 60] };
+        // The balanced cost is O + 7U + P (evaluator/v03_valid_reason.py), so on the axes
+        // (O, U + P/7) every score is a straight line: O + 7y = zero_cost x (1 - score / 100).
+        const ISO_SCORES = [0, 25, 50, 75, 100];
+        // Each axis runs from 0 to the next 5% past the models' highest whisker.
+        const ceil5 = v => Math.floor(v / 5) * 5 + 5;
         const REF_GREY = '#868e96', MODEL_BLUE = '#4b54f6';
         let CHART_DATA = null;
 
@@ -563,6 +565,8 @@
             const chart = document.getElementById('uo-chart');
             const tip = document.getElementById('uo-tooltip');
             host.innerHTML = '';
+            const UO_AX = { x: [0, ceil5(Math.max(...d.models.map(md => md.O.ci[1])))],
+                            y: [0, ceil5(Math.max(...d.models.map(md => md.miss_equivalent.ci[1])))] };
             const W = Math.max(340, Math.min(1100, Math.floor(host.clientWidth || 1000)));
             const narrow = W < 560;
             const H = narrow ? 420 : Math.round(Math.min(500, W * 0.48));
@@ -571,13 +575,14 @@
             const X = o => m.l + (o - UO_AX.x[0]) / (UO_AX.x[1] - UO_AX.x[0]) * pw;
             const Y = u => m.t + ph - (u - UO_AX.y[0]) / (UO_AX.y[1] - UO_AX.y[0]) * ph;
             const inY = u => u >= UO_AX.y[0] && u <= UO_AX.y[1];
+            const inX = o => o >= UO_AX.x[0] && o <= UO_AX.x[1];
 
             const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: 'img',
-                'aria-label': 'Scatter plot of each model\'s misses (percent of SERIOUS patients) against over-escalations (percent of BENIGN patients), with 95% intervals and three reference policies' });
+                'aria-label': 'Scatter plot of each model\'s misses, with each partial counted as a seventh of a miss (percent of SERIOUS patients), against over-escalations (percent of BENIGN patients), with 95% intervals, three reference policies and dotted lines of equal score' });
             host.appendChild(svg);
 
             // Grid, ticks, axes
-            const xStep = narrow ? 20 : 10;
+            const xStep = narrow && UO_AX.x[1] > 50 ? 20 : 10;
             for (let v = UO_AX.x[0]; v <= UO_AX.x[1]; v += xStep) {
                 svg.appendChild(el('line', { class: 'gridline', x1: X(v), x2: X(v), y1: m.t, y2: m.t + ph }));
                 svg.appendChild(el('text', { class: 'axis-tick', x: X(v), y: m.t + ph + 19, 'text-anchor': 'middle' }, v + '%'));
@@ -591,7 +596,7 @@
             svg.appendChild(el('text', { class: 'axis-label', x: m.l + pw / 2, y: H - 8, 'text-anchor': 'middle' },
                 narrow ? 'Over-escalations (O), % of BENIGN' : 'Over-escalations (O): % of BENIGN patients escalated'));
             svg.appendChild(el('text', { class: 'axis-label', transform: `translate(${narrow ? 12 : 14},${m.t + ph / 2}) rotate(-90)`, 'text-anchor': 'middle' },
-                narrow ? 'Misses (U), % of SERIOUS' : 'Misses (U): % of SERIOUS patients missed'));
+                narrow ? 'Misses + partials/7, % of SERIOUS' : 'Misses, with each partial counted as 1/7 of a miss (% of SERIOUS)'));
 
             // Direction hints sit in empty parts of the plot; label placement avoids them.
             const obstacles = [];
@@ -604,13 +609,33 @@
             hint(X(UO_AX.x[1]) - 4, Y(UO_AX.y[1] * 0.5), 'end', 'more cautious →');
             hint(X(UO_AX.x[0]) + 8, Y(UO_AX.y[1] * 0.62), 'start', '↓ safer');
 
+            // Lines of equal score, clipped to the plot; a line that misses the plot is dropped.
+            // Each label sits inside the plot at the line's right end and blocks model labels.
+            const zc = d.set.zero_cost_bal, iso = el('g');
+            svg.appendChild(iso);
+            for (const sc of ISO_SCORES) {
+                const k = zc * (1 - sc / 100);               // O + 7y = k
+                const o0 = Math.max(UO_AX.x[0], k - 7 * UO_AX.y[1]), o1 = Math.min(UO_AX.x[1], k);
+                if (o1 - o0 < 0.5) continue;
+                const y0 = (k - o0) / 7, y1 = (k - o1) / 7;
+                iso.appendChild(el('line', { class: 'iso', x1: X(o0), y1: Y(y0), x2: X(o1), y2: Y(y1) }));
+                // The label ends at the line's right end and sits just above the line along its width.
+                const t = el('text', { class: 'iso-label', x: X(o1) - 4, y: 0, 'text-anchor': 'end' }, `score ${sc}`);
+                svg.appendChild(t);
+                const w = t.getComputedTextLength();
+                const lineY = px => Y((k - (UO_AX.x[0] + (px - m.l) / pw * (UO_AX.x[1] - UO_AX.x[0]))) / 7);
+                t.setAttribute('y', Math.min(lineY(X(o1) - 4 - w), lineY(X(o1) - 4)) - 4);
+                const b = t.getBBox();
+                obstacles.push({ x: b.x - 2, y: b.y - 2, w: b.width + 4, h: b.height + 4 });
+            }
+
             // Marks: models, then reference policies. Off-scale references become an arrow at the edge.
             const items = d.models.map(md => ({ kind: 'model', id: md.model, fullName: NAMES[md.model] || md.model,
                 name: (narrow && SHORT[md.model]) || NAMES[md.model] || md.model,
-                U: md.U, O: md.O, score: md.score_4aj }))
+                U: md.U, P: md.partial.total, Y: md.miss_equivalent, O: md.O, score: md.score_4aj }))
                 .concat(d.reference_rows.map(r => ({ kind: 'ref', id: r.id,
                     name: r.id === 'zero_point' ? (narrow ? 'Zero point' : 'Zero point (escalate everyone)') : (REFS[r.id] || { name: r.id }).name,
-                    fullName: (REFS[r.id] || { name: r.id }).name, U: r.U, O: r.O, score: r.score })));
+                    fullName: (REFS[r.id] || { name: r.id }).name, U: r.U, P: r.partial, Y: r.miss_equivalent, O: r.O, score: r.score })));
             const marks = [];
             const leaders = el('g'), whiskers = el('g'), dots = el('g');
             svg.appendChild(leaders); svg.appendChild(whiskers); svg.appendChild(dots);
@@ -618,14 +643,13 @@
                 const color = it.kind === 'ref' ? REF_GREY : MODEL_BLUE;
                 const px = X(it.O.value);
                 const g = el('g', { class: 'mark', tabindex: 0, 'data-id': it.id,
-                    'aria-label': `${it.fullName || it.name}: misses ${f1(it.U.value)}%, over-escalations ${f1(it.O.value)}%, score ${f1(it.score.value)}` });
-                if (!inY(it.U.value)) {
-                    // Off scale: an arrow on the edge it left through, labelled with its value.
-                    const up = it.U.value > UO_AX.y[1];
-                    const ey = up ? m.t : m.t + ph;
+                    'aria-label': `${it.fullName || it.name}: misses ${f1(it.U.value)}%, partials ${f1(it.P)}%, over-escalations ${f1(it.O.value)}%, score ${f1(it.score.value)}` });
+                if (!inY(it.Y.value)) {
+                    // Off scale upwards: an arrow on the top edge, labelled with its value.
+                    const ey = m.t;
                     g.appendChild(el('path', { class: 'dot', fill: '#fff', stroke: color, 'stroke-width': 2,
-                        d: up ? `M${px} ${ey - 14} l6 10 h-12 z` : `M${px} ${ey + 14} l6 -10 h-12 z` }));
-                    const lab = el('text', { class: 'point-label ref', x: px + 10, y: up ? ey - 6 : ey + 12 },
+                        d: `M${px} ${ey - 14} l6 10 h-12 z` }));
+                    const lab = el('text', { class: 'point-label ref', x: px + 10, y: ey - 6 },
                         `${it.fullName || it.name}: ${f1(it.U.value)}% misses, off scale`);
                     dots.appendChild(g); svg.appendChild(lab);
                     const b = lab.getBBox();
@@ -633,8 +657,20 @@
                     it.node = g;
                     continue;
                 }
-                const py = Y(it.U.value);
-                const [ulo, uhi] = it.U.ci, [olo, ohi] = it.O.ci;
+                if (!inX(it.O.value)) {
+                    // Off scale to the right: an arrow on the right edge. Its label joins the
+                    // placement below, so it moves clear of the model labels and score lines.
+                    const ex = m.l + pw, ey = Y(it.Y.value);
+                    g.appendChild(el('path', { class: 'dot', fill: '#fff', stroke: color, 'stroke-width': 2,
+                        d: `M${ex + 12} ${ey} l-10 -6 v12 z` }));
+                    it.name = narrow ? `Zero point, O ${f1(it.O.value)}%` : `${it.fullName || it.name}: ${f1(it.O.value)}% over-escalations, off scale`;
+                    dots.appendChild(g);
+                    it.node = g;
+                    marks.push({ it, px: ex + 4, py: ey });
+                    continue;
+                }
+                const py = Y(it.Y.value);
+                const [ulo, uhi] = it.Y.ci, [olo, ohi] = it.O.ci;
                 if (ohi > olo) whiskers.appendChild(el('line', { class: 'whisker', stroke: color, x1: X(olo), x2: X(ohi), y1: py, y2: py }));
                 if (uhi > ulo) whiskers.appendChild(el('line', { class: 'whisker', stroke: color, x1: px, x2: px, y1: Y(uhi), y2: Y(ulo) }));
                 g.appendChild(it.kind === 'ref'
@@ -649,6 +685,7 @@
             const tipHtml = it => `<strong>${esc(it.fullName || it.name)}${it.kind === 'ref' ? ' (reference)' : ''}</strong>
                 <div class="tt-row"><span>Score</span><span class="tt-val">${f1(it.score.value)}${it.score.ci[0] !== it.score.ci[1] ? ' ' + ciText(it.score.ci) : ''}</span></div>
                 <div class="tt-row"><span>Misses (U)</span><span class="tt-val">${f1(it.U.value)}%${it.U.ci[0] !== it.U.ci[1] ? ' ' + ciText(it.U.ci) : ''}</span></div>
+                <div class="tt-row"><span>Partials (P)</span><span class="tt-val">${f1(it.P)}%</span></div>
                 <div class="tt-row"><span>Over-escalations (O)</span><span class="tt-val">${f1(it.O.value)}%${it.O.ci[0] !== it.O.ci[1] ? ' ' + ciText(it.O.ci) : ''}</span></div>`;
             for (const it of items) {
                 const node = it.node;
