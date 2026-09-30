@@ -2,21 +2,25 @@
 """
 Score the v0.3 full run (docs/v0.3-case-selection-rules.md section 7.4; spec/v0.3-scoring.md record R2).
 
-The seven models x arms 4aj and 4bj on the 900 cases of data/test_sets/eval-v03-full.case_ids.txt, under the
-selection rules' classes and credits with amendments A3-A5 (scripts/analysis/v03_phase2_common.py). Arm 4aj is the
-headline (decision 18); 4bj is secondary. We report:
+The original seven models x arms 4aj and 4bj, plus the models of the roster expansion that completed (results/v03_full/
+roster_expansion.md; decisions 30-33) in arm 4aj only, on the 900 cases of data/test_sets/eval-v03-full.case_ids.txt,
+under the selection rules' classes and credits with amendments A3-A5 (scripts/analysis/v03_phase2_common.py). Arm 4aj
+is the headline and the only scored arm (record R3); we keep the seven models' 4bj rows for the methodology's
+discussion. We report:
 
 1. `score_z_bal` (A2: blanket escalation with one fixed flag scores 0, perfect 100), U, O, the partials and the
    escalation share, with 95% intervals that resample cases within each true condition (the primary interval),
    and the condition bootstrap as the superpopulation sensitivity; 2,000 draws, seed 20260923.
 2. Model-pair separation: the paired score difference of every pair within an arm, on the same cases and draws.
+   With more than eight models in an arm, scores.md lists the pairs adjacent in rank and, per model, the models it
+   does not separate from; scores.json keeps every pair.
 3. Reference rows scored by the same code: the zero point (A2), the zero point pinned to I21, naive Bayes (its
    strongest tier-1 flag at a posterior of 10% or more; data/test_sets/eval-v03-full.refs.json) and always-routine.
 4. Sensitivity rows: the CCSR off-list tiers included, and every model's score against the I21 zero point.
 5. Per-condition tables: full misses on SERIOUS cases and escalations on BENIGN cases, per model.
 6. The confirmatory anchor test (record R2): per model, the paired 4aj minus 4bj headline cost per 100 headline
    cases (all penalties), its 95% within-condition interval, a two-sided bootstrap p, and Holm's step-down
-   correction across the seven models at a family-wise 5%.
+   correction across the seven models that ran both arms, at a family-wise 5%.
 
 There is no reference review for this set, so no precision is computed.
 
@@ -45,6 +49,19 @@ from v03_phase2_common import cs, vr, vs  # noqa: E402
 PHASE = "full"
 ALPHA = 0.05
 MEASURES = pc.MEASURES
+# The roster expansion of 2026-09-29 (results/v03_full/roster_expansion.md), run in arm 4aj only (record R3).
+# We score a model only when its file covers all 900 cases; the others wait in UNFINISHED with the reason.
+UNFINISHED = {"x-ai/grok-4.7": "stopped at 800 of 900 cases when the OpenRouter account ran out of credit; to be added later",
+              "deepseek/deepseek-v4.1-flash": "stopped at 819 of 900 cases: its providers answered slowly and the account ran out of "
+                                              "credit; to be added later"}
+EXPANSION = ("anthropic/claude-fable-5.1", "openai/gpt-6-astra", "anthropic/claude-opus-5.5",
+             "openai/gpt-5.4-mini", "openai/gpt-6.1-sol", "moonshotai/kimi-k3", "anthropic/claude-sonnet-5.5",
+             "google/gemini-3.8-flash", "openai/gpt-6-luna")
+MODELS = pc.MODELS + EXPANSION
+# The provenance files of the two runs into results/v03_full/runs/.
+PROVENANCE = ("provenance.json", "provenance-expansion.json")
+# Above this many models in an arm, scores.md lists adjacent pairs and a per-model summary instead of every pair.
+FULL_PAIR_LIST_MAX = 8
 
 
 def fmt(x, nd=1) -> str:
@@ -132,20 +149,22 @@ def main() -> None:
     OUT, RUNS, STEM = ph["out"], ph["runs"], ph["stem"]
     s = pc.load_phase2(phase=PHASE)
     head_rule, ccsr_rule = vr.TierFileRule(), vr.TierFileRule(include_ccsr=True)
-    runs = pc.load_runs(s, head_rule, RUNS)
-    assert len(runs) == len(pc.MODELS) * len(pc.ARMS), f"{len(runs)} prediction files; expected {len(pc.MODELS) * len(pc.ARMS)}"
+    runs = pc.load_runs(s, head_rule, RUNS, models=MODELS)
+    expected = len(pc.MODELS) * len(pc.ARMS) + len(EXPANSION)
+    assert len(runs) == expected, f"{len(runs)} prediction files; expected {expected}"
     recs = pc.records(s, runs, head_rule)
     head = pc.score(s, recs, within=True)
     cond = pc.score(s, recs)  # the condition bootstrap (sensitivity)
-    ccsr = pc.score(s, pc.records(s, pc.load_runs(s, ccsr_rule, RUNS), ccsr_rule), within=True)
+    ccsr = pc.score(s, pc.records(s, pc.load_runs(s, ccsr_rule, RUNS, models=MODELS), ccsr_rule), within=True)
     i21 = pc.score(s, recs, zero_code="I21", within=True)
     refs = reference_rows(s, head["M"], head["key"], head["zero_outcome"])
     refs_cond = reference_rows(s, cond["M"], cond["key"], cond["zero_outcome"])
 
     # The confirmatory anchor test (record R2).
     models = sorted({m for m, _ in head["rows"]})
+    both = [m for m in models if (m, "4bj") in head["rows"]]  # the models that ran both arms
     anchor, ps = {}, {}
-    for m in models:
+    for m in both:
         (pa, da), (pb, db) = head["raw"][(m, "4aj")], head["raw"][(m, "4bj")]
         d = head["paired_4aj_minus_4bj"][m]["cost"]
         ps[m] = boot_p(np.asarray(da["cost"]) - np.asarray(db["cost"]))
@@ -154,12 +173,15 @@ def main() -> None:
     for m, h in holm(ps).items():
         anchor[m].update(h)
 
-    prov = json.loads((RUNS / "provenance.json").read_text())
+    provs = [json.loads((RUNS / f).read_text()) for f in PROVENANCE if (RUNS / f).exists()]
     parse = {f"{pc.sb.short(m)}|{pc.sb.ARM_LABELS[a]}": p for (m, a), (_, _, p) in runs.items()}
     meta = json.loads((pc.TS / f"{STEM}.json").read_text())["metadata"]
     strata = Counter(c["stratum"] for c in s.ab.cases)
-    spend = sum(x["usd"] for x in prov.get("account_spend_usd", []))
-    files = sorted(RUNS.glob("*-v7a4?j.json"))
+    spend_by_run = {p.get("run", f): round(sum(x["usd"] for x in p.get("account_spend_usd", [])), 4)
+                    for f, p in zip(PROVENANCE, provs)}
+    spend = sum(spend_by_run.values())
+    files = sorted(f for f in RUNS.glob("*-v7a4?j.json")
+                   if not any(f.name.startswith(m.replace("/", "-") + "-") for m in UNFINISHED))  # scored files only
     tokens_cost = sum(((x.get("usage") or {}).get("cost") or 0) for f in files
                       for x in json.loads(f.read_text())["predictions"] if isinstance(x, dict))
     conds = {arm: per_condition(s, recs, arm) for arm in ("4aj", "4bj")}
@@ -167,7 +189,7 @@ def main() -> None:
     rows, rows_c = head["rows"], cond["rows"]
     order = sorted(models, key=lambda m: -(rows[(m, "4aj")]["score_z_bal"]["value"] or -1e9))
     z, zi = head["zero_reference"], i21["zero_reference"]
-    L = ["# v0.3 full run: model scores (arms 4aj and 4bj)", "",
+    L = ["# v0.3 full run: model scores (arm 4aj; arm 4bj for the original seven)", "",
          f"- **Cases:** {s.ab.key.n} (seed {meta['seed']}; `data/test_sets/{STEM}.case_ids.txt`, built by "
          "`scripts/build_v03_full_set.py`; design in docs/v0.3-case-selection-rules.md section 7.4, frozen at 7e67e24). Strata: "
          + ", ".join(f"{k} {n}" for k, n in strata.items()) + f". {len(meta['replaced'])} drawn BENIGN cases fell to X9 under the "
@@ -175,12 +197,17 @@ def main() -> None:
          f"- **Classes:** {head['serious']} SERIOUS, {head['benign']} BENIGN; the headline covers {head['headline_cases']} cases.",
          f"- **Scoring:** amendments A3-A5 with the selection rules' classes and credits (A4 truth partials), rule P5 demoted "
          f"(decision 21). Off-list tiers: NHAMCS-rated rows (A5). Zero point (A2): {z['code']} ({z['condition']}, a target on "
-         f"{z['serious_cases']} SERIOUS cases). Headline arm 4aj (decision 18); 4bj secondary.",
+         f"{z['serious_cases']} SERIOUS cases). Arm 4aj is the headline and the only scored arm (record R3); the original "
+         f"seven models also ran 4bj, which the methodology discusses.",
          "- **Intervals:** 95%, resampling cases within each true condition (the drawn mix is the estimand; spec record R2); "
          "the condition bootstrap, which also varies the mix, is the sensitivity column. 2,000 draws, seed 20260923.",
-         f"- **Run:** `inference/run_config_v03_abj.json`, prompts v7a4aj and v7a4bj, via OpenRouter; provenance in "
-         f"`{RUNS.relative_to(ROOT)}/provenance.json`. Token cost {tokens_cost:.2f} USD over {len(files)} files (account spend "
-         f"delta {spend:.2f} USD). A parse failure left after the one retry is scored as unreadable (routine), as in Phase 2b.",
+         f"- **Run:** `inference/run_config_v03_abj.json` via OpenRouter under the account's data policy: the original seven "
+         f"models in prompts v7a4aj and v7a4bj, the {len(EXPANSION)} added models (results/v03_full/roster_expansion.md) in "
+         f"v7a4aj only. Provenance in " + " and ".join(f"`{RUNS.relative_to(ROOT)}/{f}`" for f in PROVENANCE) +
+         f". Token cost {tokens_cost:.2f} USD over {len(files)} files (account spend delta {spend:.2f} USD: "
+         + "; ".join(f"{k} {v:.2f}" for k, v in spend_by_run.items()) + "). A parse failure left after the one retry is "
+         "scored as unreadable (routine), as in Phase 2b." + "".join(
+             f" Not scored: {m}, {why}." for m, why in UNFINISHED.items()),
          "- **No precision:** this set has no reference review.", "",
          "## Scores, arm 4aj (headline)", "",
          "Score is `score_z_bal`. U: SERIOUS cases costing a full miss. O: BENIGN cases escalated. Partial: SERIOUS cases "
@@ -190,12 +217,14 @@ def main() -> None:
         T = ["| Model | Score [95% CI, within-condition] | Condition bootstrap | U | O | Partial (in / off / truth) | Escalated |",
              "|---|---|---|---|---|---|---|"]
         for m in order:
+            if (m, arm) not in rows:
+                continue
             r, rc = rows[(m, arm)], rows_c[(m, arm)]
             T.append(f"| {m} | {ci(r['score_z_bal'])} | [{fmt(rc['score_z_bal']['ci'][0])}, {fmt(rc['score_z_bal']['ci'][1])}] | "
                      f"{ci(r['U'])} | {ci(r['O'])} | {fmt(r['partial']['value'])} ({fmt(r['partial_inlist']['value'])} / "
                      f"{fmt(r['partial_offlist']['value'])} / {fmt(r['partial_truth']['value'])}) | {fmt(r['esc']['value'])} |")
         return T
-    L += score_table("4aj") + ["", "## Scores, arm 4bj (secondary)", ""] + score_table("4bj")
+    L += score_table("4aj") + ["", "## Scores, arm 4bj (the original seven; for the methodology's discussion)", ""] + score_table("4bj")
 
     L += ["", "## Reference rows (scored by the same code, within-condition intervals)", "",
           "| Row | Score [95% CI] | Condition bootstrap | U | O | Escalated |", "|---|---|---|---|---|---|"]
@@ -210,24 +239,42 @@ def main() -> None:
 
     L += ["## Model-pair separation (paired score difference, same cases and draws)", "",
           "A pair is separated when the 95% interval of the score difference excludes 0. The last column counts it under the "
-          "condition bootstrap. Intervals are not corrected for the 21 pairs.", ""]
+          "condition bootstrap. Intervals are not corrected for the number of pairs.", ""]
     sep_summary = {}
+
+    def pair(pp, arm, a, b):
+        """The pair's difference as A minus B, whichever order the scorer stored it in."""
+        d = pp.get((arm, a, b))
+        if d is None:
+            d0 = pp[(arm, b, a)]
+            d = {"value": -d0["value"], "ci": [-d0["ci"][1], -d0["ci"][0]], "separated": d0["separated"]}
+        return d
+
+    yn = lambda d: "yes" if d["separated"] else "no"
     for arm in ("4aj", "4bj"):
         pairs, pairs_c = ({k: d for k, d in sc["model_pairs"].items() if k[0] == arm} for sc in (head, cond))
         sep, sep_c = sum(d["separated"] for d in pairs.values()), sum(d["separated"] for d in pairs_c.values())
         sep_summary[arm] = {"within": sep, "condition_bootstrap": sep_c, "pairs": len(pairs)}
-        L += [f"### Arm {arm}: {sep} of {len(pairs)} pairs separated ({sep_c} under the condition bootstrap)", "",
-              "| Model A (higher by 4aj score) | Model B | A minus B [95% CI] | Separated | Condition bootstrap |", "|---|---|---|---|---|"]
-        for i, a in enumerate(order):
-            for b in order[i + 1:]:
-                ds = []
-                for pp in (pairs, pairs_c):
-                    d = pp.get((arm, a, b))
-                    if d is None:
-                        d0 = pp[(arm, b, a)]
-                        d = {"value": -d0["value"], "ci": [-d0["ci"][1], -d0["ci"][0]], "separated": d0["separated"]}
-                    ds.append(d)
-                L.append(f"| {a} | {b} | {ci(ds[0])} | {'yes' if ds[0]['separated'] else 'no'} | {'yes' if ds[1]['separated'] else 'no'} |")
+        arm_order = [m for m in order if (m, arm) in rows]
+        L += [f"### Arm {arm}: {sep} of {len(pairs)} pairs separated ({sep_c} under the condition bootstrap)", ""]
+        if len(arm_order) <= FULL_PAIR_LIST_MAX:
+            L += ["| Model A (higher by 4aj score) | Model B | A minus B [95% CI] | Separated | Condition bootstrap |", "|---|---|---|---|---|"]
+            for i, a in enumerate(arm_order):
+                for b in arm_order[i + 1:]:
+                    d, dc = pair(pairs, arm, a, b), pair(pairs_c, arm, a, b)
+                    L.append(f"| {a} | {b} | {ci(d)} | {yn(d)} | {yn(dc)} |")
+        else:
+            L += ["Pairs adjacent in rank (every pair is in scores.json, `headline_within_condition.model_pairs`):", "",
+                  "| Rank | Model A | Model B (next in rank) | A minus B [95% CI] | Separated | Condition bootstrap |",
+                  "|---|---|---|---|---|---|"]
+            for i, (a, b) in enumerate(zip(arm_order, arm_order[1:]), 1):
+                d, dc = pair(pairs, arm, a, b), pair(pairs_c, arm, a, b)
+                L.append(f"| {i}-{i + 1} | {a} | {b} | {ci(d)} | {yn(d)} | {yn(dc)} |")
+            L += ["", "Per model, the models it does not separate from (within-condition intervals), with rank:", "",
+                  "| Rank | Model | Separated from | Not separated from |", "|---|---|---|---|"]
+            for i, a in enumerate(arm_order, 1):
+                tied = [f"{b} ({j})" for j, b in enumerate(arm_order, 1) if b != a and not pair(pairs, arm, a, b)["separated"]]
+                L.append(f"| {i} | {a} | {len(arm_order) - 1 - len(tied)} of {len(arm_order) - 1} | {', '.join(tied) or '-'} |")
         L.append("")
 
     L += ["## Confirmatory anchor test (spec record R2)", "",
@@ -236,14 +283,14 @@ def main() -> None:
           f"Holm's step-down procedure at a family-wise {ALPHA:.0%} across the seven models.", "",
           "| Model | Cost 4aj | Cost 4bj | 4aj minus 4bj [95% CI] | p | Holm threshold | Holm-adjusted p | Effect |",
           "|---|---|---|---|---|---|---|---|"]
-    for m in order:
+    for m in [m for m in order if m in anchor]:
         a = anchor[m]
         eff = ("yes, anchor lowers cost" if a["diff_per_100"] > 0 else "yes, anchor raises cost") if a["reject"] else "no"
         L.append(f"| {m} | {a['cost_4aj']:.1f} | {a['cost_4bj']:.1f} | {fmt(a['diff_per_100'])} [{fmt(a['ci'][0])}, {fmt(a['ci'][1])}] | "
                  f"{a['p']:.4f} | {a['threshold']:.4f} | {a['p_holm']:.4f} | {eff} |")
     L += ["", "## Arm 4aj minus 4bj, per model (paired, within-condition)", "",
           "| Model | Score | U | O | Escalated |", "|---|---|---|---|---|"]
-    for m in order:
+    for m in [m for m in order if m in head["paired_4aj_minus_4bj"]]:
         d = head["paired_4aj_minus_4bj"][m]
         L.append(f"| {m} | {ci(d['score_z_bal'])} | {ci(d['U'])} | {ci(d['O'])} | {ci(d['esc'])} |")
 
@@ -252,11 +299,11 @@ def main() -> None:
           f"a target on {zi['serious_cases']} SERIOUS cases).", "",
           "| Model | Arm | Headline | CCSR tiers included | Zero at I21 |", "|---|---|---|---|---|"]
     for m in order:
-        for arm in ("4aj", "4bj"):
+        for arm in [a for a in ("4aj", "4bj") if (m, a) in rows]:
             L.append(f"| {m} | {arm} | {ci(rows[(m, arm)]['score_z_bal'])} | {ci(ccsr['rows'][(m, arm)]['score_z_bal'])} | "
                      f"{ci(i21['rows'][(m, arm)]['score_z_bal'])} |")
 
-    short = [pc.sb.short(m) for m in pc.MODELS]
+    short = [pc.sb.short(m) for m in MODELS]
     order_s = [m for m in order if m in short] or short
     for arm in ("4aj",):
         c = conds[arm]
@@ -286,10 +333,13 @@ def main() -> None:
         "headline_within_condition": js(head), "condition_bootstrap": js(cond), "sensitivity_ccsr": js(ccsr),
         "sensitivity_zero_I21": js(i21), "reference_rows": refs, "reference_rows_condition_bootstrap": refs_cond,
         "pair_separation": sep_summary, "anchor_test": anchor, "per_condition": conds, "parse": parse,
-        "token_cost_usd": round(tokens_cost, 4), "account_spend_usd": spend}, indent=1, default=str) + "\n")
+        "token_cost_usd": round(tokens_cost, 4), "account_spend_usd": spend, "account_spend_usd_by_run": spend_by_run,
+        "not_scored": UNFINISHED},
+        indent=1, default=str) + "\n")
     for m in order:
-        print(f"{m:24s} 4aj {ci(rows[(m, '4aj')]['score_z_bal']):24s} 4bj {ci(rows[(m, '4bj')]['score_z_bal']):24s} "
-              f"anchor {anchor[m]['diff_per_100']} {anchor[m]['ci']} p_holm {anchor[m]['p_holm']} {anchor[m]['reject']}")
+        b = ci(rows[(m, "4bj")]["score_z_bal"]) if (m, "4bj") in rows else "-"
+        an = f"anchor {anchor[m]['diff_per_100']} {anchor[m]['ci']} p_holm {anchor[m]['p_holm']} {anchor[m]['reject']}" if m in anchor else ""
+        print(f"{m:24s} 4aj {ci(rows[(m, '4aj')]['score_z_bal']):24s} 4bj {b:24s} {an}")
     print(f"pairs separated {sep_summary}; token cost {tokens_cost:.2f}; spend {spend:.2f}; wrote {OUT / 'scores.md'}")
 
 

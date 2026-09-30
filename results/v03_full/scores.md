@@ -1,10 +1,10 @@
-# v0.3 full run: model scores (arms 4aj and 4bj)
+# v0.3 full run: model scores (arm 4aj; arm 4bj for the original seven)
 
 - **Cases:** 900 (seed 20261005; `data/test_sets/eval-v03-full.case_ids.txt`, built by `scripts/build_v03_full_set.py`; design in docs/v0.3-case-selection-rules.md section 7.4, frozen at 7e67e24). Strata: serious_tier1 500, serious_upgrade_or_flag 140, benign 260. 23 drawn BENIGN cases fell to X9 under the key and were replaced by the next cases in their buckets. Cases with an exact public twin: 0.
 - **Classes:** 640 SERIOUS, 260 BENIGN; the headline covers 900 cases.
-- **Scoring:** amendments A3-A5 with the selection rules' classes and credits (A4 truth partials), rule P5 demoted (decision 21). Off-list tiers: NHAMCS-rated rows (A5). Zero point (A2): I21 (Possible NSTEMI / STEMI, a target on 56 SERIOUS cases). Headline arm 4aj (decision 18); 4bj secondary.
+- **Scoring:** amendments A3-A5 with the selection rules' classes and credits (A4 truth partials), rule P5 demoted (decision 21). Off-list tiers: NHAMCS-rated rows (A5). Zero point (A2): I21 (Possible NSTEMI / STEMI, a target on 56 SERIOUS cases). Arm 4aj is the headline and the only scored arm (record R3); the original seven models also ran 4bj, which the methodology discusses.
 - **Intervals:** 95%, resampling cases within each true condition (the drawn mix is the estimand; spec record R2); the condition bootstrap, which also varies the mix, is the sensitivity column. 2,000 draws, seed 20260923.
-- **Run:** `inference/run_config_v03_abj.json`, prompts v7a4aj and v7a4bj, via OpenRouter; provenance in `results/v03_full/runs/provenance.json`. Token cost 69.80 USD over 14 files (account spend delta 69.78 USD). A parse failure left after the one retry is scored as unreadable (routine), as in Phase 2b.
+- **Run:** `inference/run_config_v03_abj.json` via OpenRouter under the account's data policy: the original seven models in prompts v7a4aj and v7a4bj, the 9 added models (results/v03_full/roster_expansion.md) in v7a4aj only. Provenance in `results/v03_full/runs/provenance.json` and `results/v03_full/runs/provenance-expansion.json`. Token cost 147.54 USD over 23 files (account spend delta 176.74 USD: v0.3 full run 69.78; v0.3 full run, roster expansion 106.96). A parse failure left after the one retry is scored as unreadable (routine), as in Phase 2b. Not scored: x-ai/grok-4.7, stopped at 800 of 900 cases when the OpenRouter account ran out of credit; to be added later. Not scored: deepseek/deepseek-v4.1-flash, stopped at 819 of 900 cases: its providers answered slowly and the account ran out of credit; to be added later.
 - **No precision:** this set has no reference review.
 
 ## Scores, arm 4aj (headline)
@@ -13,15 +13,24 @@ Score is `score_z_bal`. U: SERIOUS cases costing a full miss. O: BENIGN cases es
 
 | Model | Score [95% CI, within-condition] | Condition bootstrap | U | O | Partial (in / off / truth) | Escalated |
 |---|---|---|---|---|---|---|
+| claude-opus-5.5 | 73.5 [69.5, 77.3] | [56.6, 87.3] | 1.9 [1.1, 2.6] | 27.7 [24.4, 31.1] | 5.3 (2.8 / 2.0 / 0.5) | 77.8 |
+| claude-fable-5.1 | 71.1 [66.0, 75.9] | [56.3, 84.0] | 2.2 [1.1, 3.3] | 26.9 [23.1, 30.8] | 8.1 (4.1 / 3.6 / 0.5) | 77.3 |
+| gpt-6.1-sol | 69.2 [65.3, 73.1] | [49.7, 84.6] | 2.0 [1.1, 2.9] | 29.2 [26.2, 32.5] | 10.3 (7.3 / 2.8 / 0.2) | 78.1 |
+| gpt-6-astra | 68.8 [64.8, 72.9] | [50.0, 84.2] | 2.2 [1.3, 3.0] | 27.3 [24.4, 30.5] | 11.7 (8.0 / 3.6 / 0.2) | 77.4 |
 | gemini-3.1-pro-preview | 68.5 [63.6, 73.2] | [52.9, 81.9] | 2.5 [1.4, 3.6] | 27.7 [24.4, 30.9] | 9.7 (6.1 / 3.6 / 0.0) | 77.3 |
+| gpt-6-luna | 67.1 [62.2, 71.6] | [51.7, 80.5] | 2.2 [1.2, 3.3] | 28.5 [25.0, 32.2] | 13.6 (9.2 / 4.4 / 0.0) | 77.8 |
 | gpt-5.6-terra | 64.2 [58.5, 69.4] | [46.9, 78.7] | 3.3 [2.0, 4.5] | 29.6 [26.0, 33.5] | 9.8 (7.0 / 2.7 / 0.2) | 77.3 |
+| gemini-3.8-flash | 61.5 [56.2, 66.5] | [43.0, 77.3] | 3.4 [2.3, 4.6] | 32.7 [29.0, 36.2] | 10.5 (6.7 / 3.6 / 0.2) | 78.1 |
+| kimi-k3 | 58.7 [53.1, 64.5] | [35.4, 77.9] | 5.0 [3.6, 6.4] | 26.1 [22.7, 29.7] | 10.9 (6.4 / 4.4 / 0.2) | 75.1 |
+| gpt-5.4-mini | 57.4 [51.2, 63.3] | [38.3, 74.0] | 4.8 [3.5, 6.2] | 30.8 [27.0, 34.6] | 9.7 (6.9 / 2.8 / 0.0) | 76.6 |
+| claude-sonnet-5.5 | 57.2 [51.8, 62.4] | [33.7, 76.3] | 4.8 [3.7, 6.0] | 30.4 [26.8, 34.1] | 10.3 (6.7 / 3.4 / 0.2) | 76.4 |
 | claude-sonnet-4.6 | 50.6 [43.2, 57.5] | [31.6, 67.3] | 5.9 [4.4, 7.7] | 34.6 [30.6, 38.9] | 10.0 (5.2 / 4.8 / 0.0) | 76.9 |
 | glm-5.3 | 40.5 [32.7, 47.9] | [8.9, 66.3] | 10.2 [8.3, 12.0] | 23.5 [19.8, 27.4] | 9.2 (5.5 / 3.8 / 0.0) | 70.7 |
 | gpt-oss-120b | 33.6 [26.5, 40.8] | [12.4, 54.0] | 7.7 [6.0, 9.4] | 43.1 [38.5, 47.5] | 19.1 (14.2 / 4.5 / 0.3) | 78.1 |
 | claude-haiku-4.5 | 19.9 [10.9, 29.4] | [-11.9, 46.6] | 15.0 [12.7, 17.3] | 16.9 [13.3, 20.9] | 17.7 (11.9 / 2.8 / 3.0) | 65.3 |
 | llama-3.1-8b-instruct | -116.6 [-128.0, -104.4] | [-153.4, -75.7] | 49.4 [46.1, 52.4] | 6.9 [4.1, 9.8] | 25.2 (15.5 / 9.7 / 0.0) | 38.0 |
 
-## Scores, arm 4bj (secondary)
+## Scores, arm 4bj (the original seven; for the methodology's discussion)
 
 | Model | Score [95% CI, within-condition] | Condition bootstrap | U | O | Partial (in / off / truth) | Escalated |
 |---|---|---|---|---|---|---|
@@ -46,33 +55,50 @@ The zero point scores 0 by construction; A2's rule picks I21 on this set, so the
 
 ## Model-pair separation (paired score difference, same cases and draws)
 
-A pair is separated when the 95% interval of the score difference excludes 0. The last column counts it under the condition bootstrap. Intervals are not corrected for the 21 pairs.
+A pair is separated when the 95% interval of the score difference excludes 0. The last column counts it under the condition bootstrap. Intervals are not corrected for the number of pairs.
 
-### Arm 4aj: 19 of 21 pairs separated (13 under the condition bootstrap)
+### Arm 4aj: 89 of 120 pairs separated (54 under the condition bootstrap)
 
-| Model A (higher by 4aj score) | Model B | A minus B [95% CI] | Separated | Condition bootstrap |
-|---|---|---|---|---|
-| gemini-3.1-pro-preview | gpt-5.6-terra | 4.3 [-1.2, 9.9] | no | no |
-| gemini-3.1-pro-preview | claude-sonnet-4.6 | 17.9 [11.0, 25.2] | yes | yes |
-| gemini-3.1-pro-preview | glm-5.3 | 28.0 [20.5, 35.7] | yes | yes |
-| gemini-3.1-pro-preview | gpt-oss-120b | 34.9 [27.0, 42.6] | yes | yes |
-| gemini-3.1-pro-preview | claude-haiku-4.5 | 48.6 [38.8, 58.8] | yes | yes |
-| gemini-3.1-pro-preview | llama-3.1-8b-instruct | 185.1 [172.1, 197.5] | yes | yes |
-| gpt-5.6-terra | claude-sonnet-4.6 | 13.6 [5.8, 21.5] | yes | no |
-| gpt-5.6-terra | glm-5.3 | 23.7 [15.7, 32.2] | yes | no |
-| gpt-5.6-terra | gpt-oss-120b | 30.6 [22.0, 39.4] | yes | yes |
-| gpt-5.6-terra | claude-haiku-4.5 | 44.2 [34.0, 54.4] | yes | yes |
-| gpt-5.6-terra | llama-3.1-8b-instruct | 180.8 [167.3, 192.8] | yes | yes |
-| claude-sonnet-4.6 | glm-5.3 | 10.1 [0.6, 19.5] | yes | no |
-| claude-sonnet-4.6 | gpt-oss-120b | 16.9 [7.0, 26.3] | yes | yes |
-| claude-sonnet-4.6 | claude-haiku-4.5 | 30.6 [19.6, 41.7] | yes | no |
-| claude-sonnet-4.6 | llama-3.1-8b-instruct | 167.2 [153.9, 180.5] | yes | yes |
-| glm-5.3 | gpt-oss-120b | 6.9 [-3.2, 16.3] | no | no |
-| glm-5.3 | claude-haiku-4.5 | 20.5 [9.3, 31.7] | yes | no |
-| glm-5.3 | llama-3.1-8b-instruct | 157.1 [143.6, 170.6] | yes | yes |
-| gpt-oss-120b | claude-haiku-4.5 | 13.7 [2.8, 24.9] | yes | no |
-| gpt-oss-120b | llama-3.1-8b-instruct | 150.2 [136.7, 163.8] | yes | yes |
-| claude-haiku-4.5 | llama-3.1-8b-instruct | 136.6 [121.6, 150.7] | yes | yes |
+Pairs adjacent in rank (every pair is in scores.json, `headline_within_condition.model_pairs`):
+
+| Rank | Model A | Model B (next in rank) | A minus B [95% CI] | Separated | Condition bootstrap |
+|---|---|---|---|---|---|
+| 1-2 | claude-opus-5.5 | claude-fable-5.1 | 2.4 [-1.7, 7.0] | no | no |
+| 2-3 | claude-fable-5.1 | gpt-6.1-sol | 1.9 [-4.3, 7.9] | no | no |
+| 3-4 | gpt-6.1-sol | gpt-6-astra | 0.3 [-2.0, 2.8] | no | no |
+| 4-5 | gpt-6-astra | gemini-3.1-pro-preview | 0.3 [-5.0, 6.1] | no | no |
+| 5-6 | gemini-3.1-pro-preview | gpt-6-luna | 1.4 [-3.8, 6.9] | no | no |
+| 6-7 | gpt-6-luna | gpt-5.6-terra | 2.9 [-2.5, 8.4] | no | no |
+| 7-8 | gpt-5.6-terra | gemini-3.8-flash | 2.8 [-3.1, 8.8] | no | no |
+| 8-9 | gemini-3.8-flash | kimi-k3 | 2.8 [-4.2, 9.5] | no | no |
+| 9-10 | kimi-k3 | gpt-5.4-mini | 1.3 [-5.7, 8.2] | no | no |
+| 10-11 | gpt-5.4-mini | claude-sonnet-5.5 | 0.1 [-6.1, 6.5] | no | no |
+| 11-12 | claude-sonnet-5.5 | claude-sonnet-4.6 | 6.6 [-0.4, 14.2] | no | no |
+| 12-13 | claude-sonnet-4.6 | glm-5.3 | 10.1 [0.6, 19.5] | yes | no |
+| 13-14 | glm-5.3 | gpt-oss-120b | 6.9 [-3.2, 16.3] | no | no |
+| 14-15 | gpt-oss-120b | claude-haiku-4.5 | 13.7 [2.8, 24.9] | yes | no |
+| 15-16 | claude-haiku-4.5 | llama-3.1-8b-instruct | 136.6 [121.6, 150.7] | yes | yes |
+
+Per model, the models it does not separate from (within-condition intervals), with rank:
+
+| Rank | Model | Separated from | Not separated from |
+|---|---|---|---|
+| 1 | claude-opus-5.5 | 11 of 15 | claude-fable-5.1 (2), gpt-6.1-sol (3), gpt-6-astra (4), gemini-3.1-pro-preview (5) |
+| 2 | claude-fable-5.1 | 10 of 15 | claude-opus-5.5 (1), gpt-6.1-sol (3), gpt-6-astra (4), gemini-3.1-pro-preview (5), gpt-6-luna (6) |
+| 3 | gpt-6.1-sol | 9 of 15 | claude-opus-5.5 (1), claude-fable-5.1 (2), gpt-6-astra (4), gemini-3.1-pro-preview (5), gpt-6-luna (6), gpt-5.6-terra (7) |
+| 4 | gpt-6-astra | 9 of 15 | claude-opus-5.5 (1), claude-fable-5.1 (2), gpt-6.1-sol (3), gemini-3.1-pro-preview (5), gpt-6-luna (6), gpt-5.6-terra (7) |
+| 5 | gemini-3.1-pro-preview | 9 of 15 | claude-opus-5.5 (1), claude-fable-5.1 (2), gpt-6.1-sol (3), gpt-6-astra (4), gpt-6-luna (6), gpt-5.6-terra (7) |
+| 6 | gpt-6-luna | 9 of 15 | claude-fable-5.1 (2), gpt-6.1-sol (3), gpt-6-astra (4), gemini-3.1-pro-preview (5), gpt-5.6-terra (7), gemini-3.8-flash (8) |
+| 7 | gpt-5.6-terra | 8 of 15 | gpt-6.1-sol (3), gpt-6-astra (4), gemini-3.1-pro-preview (5), gpt-6-luna (6), gemini-3.8-flash (8), kimi-k3 (9), gpt-5.4-mini (10) |
+| 8 | gemini-3.8-flash | 10 of 15 | gpt-6-luna (6), gpt-5.6-terra (7), kimi-k3 (9), gpt-5.4-mini (10), claude-sonnet-5.5 (11) |
+| 9 | kimi-k3 | 11 of 15 | gpt-5.6-terra (7), gemini-3.8-flash (8), gpt-5.4-mini (10), claude-sonnet-5.5 (11) |
+| 10 | gpt-5.4-mini | 10 of 15 | gpt-5.6-terra (7), gemini-3.8-flash (8), kimi-k3 (9), claude-sonnet-5.5 (11), claude-sonnet-4.6 (12) |
+| 11 | claude-sonnet-5.5 | 11 of 15 | gemini-3.8-flash (8), kimi-k3 (9), gpt-5.4-mini (10), claude-sonnet-4.6 (12) |
+| 12 | claude-sonnet-4.6 | 13 of 15 | gpt-5.4-mini (10), claude-sonnet-5.5 (11) |
+| 13 | glm-5.3 | 14 of 15 | gpt-oss-120b (14) |
+| 14 | gpt-oss-120b | 14 of 15 | glm-5.3 (13) |
+| 15 | claude-haiku-4.5 | 15 of 15 | - |
+| 16 | llama-3.1-8b-instruct | 15 of 15 | - |
 
 ### Arm 4bj: 19 of 21 pairs separated (13 under the condition bootstrap)
 
@@ -132,10 +158,19 @@ CCSR: the off-list tiers include the CCSR-rated rows. I21: the zero point pinned
 
 | Model | Arm | Headline | CCSR tiers included | Zero at I21 |
 |---|---|---|---|---|
+| claude-opus-5.5 | 4aj | 73.5 [69.5, 77.3] | 73.5 [69.5, 77.3] | 73.5 [69.5, 77.3] |
+| claude-fable-5.1 | 4aj | 71.1 [66.0, 75.9] | 71.1 [66.0, 75.9] | 71.1 [66.0, 75.9] |
+| gpt-6.1-sol | 4aj | 69.2 [65.3, 73.1] | 69.2 [65.3, 73.1] | 69.2 [65.3, 73.1] |
+| gpt-6-astra | 4aj | 68.8 [64.8, 72.9] | 68.8 [64.8, 72.9] | 68.8 [64.8, 72.9] |
 | gemini-3.1-pro-preview | 4aj | 68.5 [63.6, 73.2] | 68.5 [63.6, 73.2] | 68.5 [63.6, 73.2] |
 | gemini-3.1-pro-preview | 4bj | 67.0 [62.4, 71.5] | 67.0 [62.4, 71.5] | 67.0 [62.4, 71.5] |
+| gpt-6-luna | 4aj | 67.1 [62.2, 71.6] | 67.1 [62.2, 71.6] | 67.1 [62.2, 71.6] |
 | gpt-5.6-terra | 4aj | 64.2 [58.5, 69.4] | 64.2 [58.5, 69.4] | 64.2 [58.5, 69.4] |
 | gpt-5.6-terra | 4bj | 65.4 [60.4, 70.2] | 65.4 [60.4, 70.2] | 65.4 [60.4, 70.2] |
+| gemini-3.8-flash | 4aj | 61.5 [56.2, 66.5] | 62.0 [56.8, 67.0] | 61.5 [56.2, 66.5] |
+| kimi-k3 | 4aj | 58.7 [53.1, 64.5] | 58.7 [53.1, 64.5] | 58.7 [53.1, 64.5] |
+| gpt-5.4-mini | 4aj | 57.4 [51.2, 63.3] | 57.4 [51.2, 63.3] | 57.4 [51.2, 63.3] |
+| claude-sonnet-5.5 | 4aj | 57.2 [51.8, 62.4] | 57.2 [51.8, 62.4] | 57.2 [51.8, 62.4] |
 | claude-sonnet-4.6 | 4aj | 50.6 [43.2, 57.5] | 52.2 [45.2, 58.6] | 50.6 [43.2, 57.5] |
 | claude-sonnet-4.6 | 4bj | 48.3 [41.3, 55.1] | 49.4 [42.5, 55.9] | 48.3 [41.3, 55.1] |
 | glm-5.3 | 4aj | 40.5 [32.7, 47.9] | 41.0 [33.2, 48.5] | 40.5 [32.7, 47.9] |
@@ -149,62 +184,62 @@ CCSR: the off-list tiers include the CCSR-rated rows. I21: the zero point pinned
 
 ## Full misses per condition, SERIOUS cases (arm 4aj)
 
-| Condition | n | gemini-3.1-pro-preview | gpt-5.6-terra | claude-sonnet-4.6 | glm-5.3 | gpt-oss-120b | claude-haiku-4.5 | llama-3.1-8b-instruct |
-|---|---|---|---|---|---|---|---|---|
-| PSVT | 25 | 6 | 4 | 6 | 18 | 7 | 6 | 17 |
-| Acute dystonic reactions | 25 | 2 | 1 | 4 | 9 | 8 | 11 | 23 |
-| Ebola | 25 | 0 | 1 | 9 | 4 | 10 | 3 | 23 |
-| Epiglottitis | 25 | 0 | 0 | 0 | 4 | 3 | 20 | 22 |
-| Viral pharyngitis | 18 | 0 | 2 | 1 | 8 | 1 | 10 | 16 |
-| Larygospasm | 25 | 0 | 0 | 0 | 9 | 3 | 8 | 13 |
-| Cluster headache | 8 | 4 | 2 | 4 | 5 | 7 | 2 | 8 |
-| Scombroid food poisoning | 25 | 0 | 0 | 0 | 0 | 1 | 6 | 20 |
-| Pancreatic neoplasm | 25 | 1 | 9 | 0 | 0 | 1 | 4 | 9 |
-| SLE | 12 | 1 | 2 | 1 | 3 | 2 | 3 | 12 |
-| Pneumonia | 25 | 0 | 0 | 1 | 1 | 0 | 4 | 17 |
-| Guillain-Barré syndrome | 25 | 0 | 0 | 1 | 0 | 0 | 0 | 19 |
-| Boerhaave | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 19 |
-| Sarcoidosis | 8 | 2 | 0 | 7 | 2 | 3 | 0 | 5 |
-| Spontaneous pneumothorax | 25 | 0 | 0 | 0 | 0 | 0 | 5 | 13 |
-| Anemia | 31 | 0 | 0 | 2 | 0 | 3 | 2 | 9 |
-| Pulmonary embolism | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 14 |
-| Anaphylaxis | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 11 |
-| Myocarditis | 25 | 0 | 0 | 0 | 0 | 0 | 3 | 7 |
-| Myasthenia gravis | 8 | 0 | 0 | 1 | 0 | 0 | 0 | 7 |
-| Pulmonary neoplasm | 25 | 0 | 0 | 1 | 0 | 0 | 0 | 7 |
-| Pericarditis | 14 | 0 | 0 | 0 | 0 | 0 | 0 | 7 |
-| Acute pulmonary edema | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 4 |
-| Atrial fibrillation | 8 | 0 | 0 | 0 | 0 | 0 | 4 | 0 |
-| Tuberculosis | 8 | 0 | 0 | 0 | 2 | 0 | 1 | 1 |
-| Spontaneous rib fracture | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 3 |
-| Acute COPD exacerbation / infection | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 2 |
-| Bronchiectasis | 2 | 0 | 0 | 0 | 0 | 0 | 1 | 1 |
-| GERD | 5 | 0 | 0 | 0 | 0 | 0 | 1 | 1 |
-| Panic attack | 5 | 0 | 0 | 0 | 0 | 0 | 2 | 0 |
-| Stable angina | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 2 |
-| Unstable angina | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 2 |
-| Localized edema | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
-| Possible NSTEMI / STEMI | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
-| Bronchospasm / acute asthma exacerbation | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Condition | n | claude-opus-5.5 | claude-fable-5.1 | gpt-6.1-sol | gpt-6-astra | gemini-3.1-pro-preview | gpt-6-luna | gpt-5.6-terra | gemini-3.8-flash | kimi-k3 | gpt-5.4-mini | claude-sonnet-5.5 | claude-sonnet-4.6 | glm-5.3 | gpt-oss-120b | claude-haiku-4.5 | llama-3.1-8b-instruct |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| PSVT | 25 | 0 | 5 | 1 | 1 | 6 | 3 | 4 | 9 | 11 | 9 | 13 | 6 | 18 | 7 | 6 | 17 |
+| Acute dystonic reactions | 25 | 0 | 1 | 0 | 0 | 2 | 2 | 1 | 2 | 2 | 2 | 2 | 4 | 9 | 8 | 11 | 23 |
+| Cluster headache | 8 | 5 | 2 | 0 | 0 | 4 | 0 | 2 | 4 | 7 | 7 | 8 | 4 | 5 | 7 | 2 | 8 |
+| Pancreatic neoplasm | 25 | 0 | 0 | 11 | 11 | 1 | 7 | 9 | 1 | 0 | 4 | 3 | 0 | 0 | 1 | 4 | 9 |
+| Ebola | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 3 | 0 | 1 | 0 | 9 | 4 | 10 | 3 | 23 |
+| Epiglottitis | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 3 | 20 | 22 |
+| Larygospasm | 25 | 0 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 7 | 0 | 0 | 0 | 9 | 3 | 8 | 13 |
+| Sarcoidosis | 8 | 7 | 5 | 0 | 1 | 2 | 1 | 0 | 1 | 2 | 1 | 4 | 7 | 2 | 3 | 0 | 5 |
+| Viral pharyngitis | 18 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 3 | 0 | 1 | 8 | 1 | 10 | 16 |
+| Scombroid food poisoning | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 | 20 |
+| SLE | 12 | 0 | 0 | 0 | 0 | 1 | 0 | 2 | 1 | 0 | 1 | 0 | 1 | 3 | 2 | 3 | 12 |
+| Pneumonia | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 1 | 0 | 4 | 17 |
+| Boerhaave | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 19 |
+| Guillain-Barré syndrome | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 19 |
+| Anemia | 31 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 0 | 2 | 0 | 3 | 2 | 9 |
+| Spontaneous pneumothorax | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5 | 13 |
+| Pulmonary embolism | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 14 |
+| Anaphylaxis | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 11 |
+| Myasthenia gravis | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 1 | 0 | 0 | 0 | 7 |
+| Myocarditis | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 3 | 7 |
+| Pulmonary neoplasm | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 7 |
+| Pericarditis | 14 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 7 |
+| Bronchiectasis | 2 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 1 |
+| Acute pulmonary edema | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 4 |
+| Atrial fibrillation | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 0 |
+| Tuberculosis | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 1 | 1 |
+| Spontaneous rib fracture | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 3 |
+| Acute COPD exacerbation / infection | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 |
+| GERD | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 |
+| Panic attack | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 |
+| Stable angina | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 |
+| Unstable angina | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 |
+| Localized edema | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
+| Possible NSTEMI / STEMI | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
+| Bronchospasm / acute asthma exacerbation | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ## Escalations per condition, BENIGN cases (arm 4aj)
 
-| Condition | n | gemini-3.1-pro-preview | gpt-5.6-terra | claude-sonnet-4.6 | glm-5.3 | gpt-oss-120b | claude-haiku-4.5 | llama-3.1-8b-instruct |
-|---|---|---|---|---|---|---|---|---|
-| Localized edema | 18 | 18 | 18 | 17 | 18 | 16 | 15 | 1 |
-| Bronchitis | 18 | 17 | 17 | 18 | 13 | 17 | 8 | 1 |
-| Panic attack | 19 | 18 | 15 | 13 | 9 | 16 | 5 | 8 |
-| Acute laryngitis | 19 | 3 | 8 | 14 | 9 | 15 | 4 | 1 |
-| Viral pharyngitis | 19 | 4 | 7 | 10 | 4 | 15 | 1 | 0 |
-| Allergic sinusitis | 19 | 2 | 2 | 10 | 1 | 4 | 4 | 1 |
-| Whooping cough | 18 | 2 | 1 | 0 | 3 | 11 | 4 | 3 |
-| Anemia | 18 | 7 | 4 | 2 | 2 | 2 | 1 | 3 |
-| Sarcoidosis | 18 | 0 | 3 | 1 | 2 | 8 | 0 | 0 |
-| URTI | 19 | 0 | 2 | 2 | 0 | 4 | 1 | 0 |
-| Chronic rhinosinusitis | 19 | 0 | 0 | 2 | 0 | 3 | 0 | 0 |
-| Acute rhinosinusitis | 19 | 1 | 0 | 1 | 0 | 0 | 1 | 0 |
-| SLE | 18 | 0 | 0 | 0 | 0 | 1 | 0 | 0 |
-| Acute otitis media | 19 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Condition | n | claude-opus-5.5 | claude-fable-5.1 | gpt-6.1-sol | gpt-6-astra | gemini-3.1-pro-preview | gpt-6-luna | gpt-5.6-terra | gemini-3.8-flash | kimi-k3 | gpt-5.4-mini | claude-sonnet-5.5 | claude-sonnet-4.6 | glm-5.3 | gpt-oss-120b | claude-haiku-4.5 | llama-3.1-8b-instruct |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Localized edema | 18 | 18 | 18 | 18 | 18 | 18 | 18 | 18 | 18 | 18 | 18 | 18 | 17 | 18 | 16 | 15 | 1 |
+| Bronchitis | 18 | 17 | 16 | 18 | 18 | 17 | 17 | 17 | 14 | 16 | 17 | 17 | 18 | 13 | 17 | 8 | 1 |
+| Panic attack | 19 | 18 | 14 | 19 | 17 | 18 | 18 | 15 | 18 | 14 | 13 | 15 | 13 | 9 | 16 | 5 | 8 |
+| Acute laryngitis | 19 | 4 | 2 | 2 | 3 | 3 | 4 | 8 | 12 | 7 | 12 | 6 | 14 | 9 | 15 | 4 | 1 |
+| Viral pharyngitis | 19 | 7 | 6 | 6 | 6 | 4 | 4 | 7 | 12 | 5 | 9 | 10 | 10 | 4 | 15 | 1 | 0 |
+| Anemia | 18 | 2 | 3 | 4 | 5 | 7 | 3 | 4 | 9 | 3 | 3 | 5 | 2 | 2 | 2 | 1 | 3 |
+| Sarcoidosis | 18 | 0 | 4 | 6 | 4 | 0 | 3 | 3 | 1 | 3 | 4 | 0 | 1 | 2 | 8 | 0 | 0 |
+| Whooping cough | 18 | 0 | 1 | 0 | 0 | 2 | 1 | 1 | 0 | 0 | 2 | 7 | 0 | 3 | 11 | 4 | 3 |
+| Allergic sinusitis | 19 | 1 | 1 | 1 | 0 | 2 | 1 | 2 | 0 | 0 | 0 | 0 | 10 | 1 | 4 | 4 | 1 |
+| URTI | 19 | 4 | 3 | 2 | 0 | 0 | 2 | 2 | 1 | 1 | 2 | 1 | 2 | 0 | 4 | 1 | 0 |
+| Acute rhinosinusitis | 19 | 1 | 2 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 1 | 0 |
+| Chronic rhinosinusitis | 19 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 3 | 0 | 0 |
+| SLE | 18 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 |
+| Acute otitis media | 19 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 Arm 4bj's per-condition tables are in scores.json.
 
@@ -212,17 +247,26 @@ Arm 4bj's per-condition tables are in scores.json.
 
 | Row | Answered | Unreadable | Errored | No justification | Token cost (USD) |
 |---|---|---|---|---|---|
+| claude-fable-5.1|4aj | 900 of 900 | 0 | 0 | 0 | 21.3336 |
 | claude-haiku-4.5|4aj | 900 of 900 | 0 | 0 | 0 | 1.3957 |
 | claude-haiku-4.5|4bj | 900 of 900 | 0 | 0 | 0 | 1.4463 |
+| claude-opus-5.5|4aj | 900 of 900 | 0 | 0 | 0 | 12.4226 |
 | claude-sonnet-4.6|4aj | 900 of 900 | 0 | 0 | 0 | 17.3652 |
 | claude-sonnet-4.6|4bj | 900 of 900 | 0 | 0 | 0 | 16.854 |
+| claude-sonnet-5.5|4aj | 900 of 900 | 0 | 0 | 0 | 3.6647 |
 | gemini-3.1-pro-preview|4aj | 900 of 900 | 0 | 0 | 0 | 9.478 |
 | gemini-3.1-pro-preview|4bj | 900 of 900 | 0 | 0 | 0 | 8.7437 |
+| gemini-3.8-flash|4aj | 900 of 900 | 0 | 0 | 0 | 3.1772 |
 | glm-5.3|4aj | 900 of 900 | 0 | 0 | 0 | 1.0155 |
 | glm-5.3|4bj | 900 of 900 | 1 | 1 | 1 | 1.0026 |
+| gpt-5.4-mini|4aj | 900 of 900 | 0 | 0 | 0 | 6.7311 |
 | gpt-5.6-terra|4aj | 900 of 900 | 0 | 0 | 0 | 6.1222 |
 | gpt-5.6-terra|4bj | 900 of 900 | 0 | 0 | 0 | 5.9569 |
+| gpt-6-astra|4aj | 900 of 900 | 0 | 0 | 0 | 21.9731 |
+| gpt-6-luna|4aj | 900 of 900 | 0 | 0 | 0 | 0.4563 |
+| gpt-6.1-sol|4aj | 900 of 900 | 0 | 0 | 0 | 4.3388 |
 | gpt-oss-120b|4aj | 900 of 900 | 0 | 0 | 0 | 0.1972 |
 | gpt-oss-120b|4bj | 900 of 900 | 0 | 0 | 0 | 0.1822 |
+| kimi-k3|4aj | 900 of 900 | 0 | 0 | 0 | 3.6455 |
 | llama-3.1-8b-instruct|4aj | 900 of 900 | 0 | 0 | 0 | 0.0186 |
 | llama-3.1-8b-instruct|4bj | 900 of 900 | 0 | 0 | 0 | 0.0194 |

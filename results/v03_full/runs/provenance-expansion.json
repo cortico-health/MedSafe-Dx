@@ -1,0 +1,281 @@
+{
+ "run": "v0.3 full run, roster expansion",
+ "spec": "spec/v0.3-scoring.md A1-A5, R2, R3; results/v03_full/roster_expansion.md",
+ "limit": null,
+ "started": "2026-09-30T00:23:54Z",
+ "finished": "2026-09-30T07:22:13Z",
+ "git_commit": "c47a81c1d2dc0a20c471fec019d4be7c08563e99",
+ "git_dirty": true,
+ "cases": {
+  "path": "data/test_sets/eval-v03-full.json",
+  "sha256": "dbd90a336501763da0943b1d77ceeb0640f914d356b47e4dad48aa1ae185f5c4",
+  "design_sha256": null
+ },
+ "run_config": {
+  "path": "inference/run_config_v03_abj.json",
+  "sha256": "effc223a8a0e6dd35f06b52c80dbb13947150f0d524e7e1ab99e9a2c66f3ed9f",
+  "content": {
+   "_about": "MedSafe-Dx v0.3 arms 4aj and 4bj (spec/v0.3-scoring.md, amendment A1). The values are run_config_v03_ab.json's (max_tokens 16000, reasoning effort 'medium' where the model supports it, one retry on an empty or truncated response) over a seven-model roster, plus the 11 models of the 2026-09-29 roster expansion (results/v03_full/roster_expansion.md), all at reasoning effort 'medium'. Claude Haiku 4.5 runs with reasoning off (null: we send no reasoning parameter), as do the Llama models, which take none.",
+   "config_version": "v03-abj-2026-09-26",
+   "prompt_version": "v7",
+   "decoder_version": "v02",
+   "temperature": 0.0,
+   "max_tokens": 16000,
+   "empty_or_truncated_retries": 1,
+   "default_reasoning_effort": null,
+   "models": {
+    "openai/gpt-5.6-terra": {
+     "reasoning_effort": "medium"
+    },
+    "openai/gpt-oss-120b": {
+     "reasoning_effort": "medium"
+    },
+    "anthropic/claude-sonnet-4.6": {
+     "reasoning_effort": "medium"
+    },
+    "google/gemini-3.1-pro-preview": {
+     "reasoning_effort": "medium"
+    },
+    "z-ai/glm-5.3": {
+     "reasoning_effort": "medium"
+    },
+    "anthropic/claude-haiku-4.5": {
+     "reasoning_effort": null
+    },
+    "meta-llama/llama-3.1-8b-instruct": {
+     "reasoning_effort": null
+    },
+    "meta-llama/llama-3.3-70b-instruct": {
+     "reasoning_effort": null
+    },
+    "openai/gpt-6-luna": {
+     "reasoning_effort": "medium"
+    },
+    "deepseek/deepseek-v4.1-flash": {
+     "reasoning_effort": "medium"
+    },
+    "google/gemini-3.8-flash": {
+     "reasoning_effort": "medium"
+    },
+    "anthropic/claude-sonnet-5.5": {
+     "reasoning_effort": "medium"
+    },
+    "moonshotai/kimi-k3": {
+     "reasoning_effort": "medium"
+    },
+    "openai/gpt-6.1-sol": {
+     "reasoning_effort": "medium"
+    },
+    "openai/gpt-5.4-mini": {
+     "reasoning_effort": "medium"
+    },
+    "anthropic/claude-opus-5.5": {
+     "reasoning_effort": "medium"
+    },
+    "openai/gpt-6-astra": {
+     "reasoning_effort": "medium"
+    },
+    "anthropic/claude-fable-5.1": {
+     "reasoning_effort": "medium"
+    },
+    "x-ai/grok-4.7": {
+     "reasoning_effort": "medium"
+    }
+   }
+  }
+ },
+ "roster": [
+  "x-ai/grok-4.7",
+  "anthropic/claude-fable-5.1",
+  "openai/gpt-6-astra",
+  "anthropic/claude-opus-5.5",
+  "openai/gpt-5.4-mini",
+  "openai/gpt-6.1-sol",
+  "moonshotai/kimi-k3",
+  "anthropic/claude-sonnet-5.5",
+  "google/gemini-3.8-flash",
+  "deepseek/deepseek-v4.1-flash",
+  "openai/gpt-6-luna"
+ ],
+ "models_run": [
+  "openai/gpt-6-luna",
+  "google/gemini-3.8-flash",
+  "anthropic/claude-sonnet-5.5",
+  "moonshotai/kimi-k3",
+  "openai/gpt-6.1-sol",
+  "openai/gpt-5.4-mini",
+  "anthropic/claude-opus-5.5",
+  "openai/gpt-6-astra",
+  "anthropic/claude-fable-5.1"
+ ],
+ "incomplete": [
+  "x-ai/grok-4.7/v7a4aj",
+  "deepseek/deepseek-v4.1-flash/v7a4aj"
+ ],
+ "account_spend_usd": [
+  {
+   "started": "2026-09-30T00:23:54Z",
+   "finished": "2026-09-30T07:22:00Z",
+   "usd": 106.9598,
+   "note": "the key's usage (489.4788) minus its usage before the run (382.5190); covers the 9 complete files, the partial Grok and DeepSeek files, the parse-failure retries and one test request. The files' own token cost sums to 106.25."
+  }
+ ],
+ "predictions": [
+  {
+   "path": "results/v03_full/runs/openai-gpt-6-luna-v7a4aj.json",
+   "sha256": "c59302341719437d9f6187f87d726500adb1bff2f4ce9a5d01736cc43ee20651",
+   "model": "openai/gpt-6-luna",
+   "prompt_version": "v7a4aj",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-abj-2026-09-26",
+   "config_overridden": [],
+   "git_commit": "c47a81c",
+   "successful_predictions": 900,
+   "failed_predictions": 0,
+   "cost_usd": 0.4563,
+   "prompt_tokens": 521883,
+   "completion_tokens": 808314
+  },
+  {
+   "path": "results/v03_full/runs/google-gemini-3.8-flash-v7a4aj.json",
+   "sha256": "b4e6e20e0ff3ab2c71fb5325662e8574c85fe564d4a835399ce4e792ac040743",
+   "model": "google/gemini-3.8-flash",
+   "prompt_version": "v7a4aj",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-abj-2026-09-26",
+   "config_overridden": [],
+   "git_commit": "c47a81c",
+   "successful_predictions": 900,
+   "failed_predictions": 0,
+   "cost_usd": 3.1772,
+   "prompt_tokens": 543782,
+   "completion_tokens": 738509
+  },
+  {
+   "path": "results/v03_full/runs/anthropic-claude-sonnet-5.5-v7a4aj.json",
+   "sha256": "b7c255f22827b7a53eb341a50d03c1fecd3e0ef5f2adeba113474431ccaf91b0",
+   "model": "anthropic/claude-sonnet-5.5",
+   "prompt_version": "v7a4aj",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-abj-2026-09-26",
+   "config_overridden": [],
+   "git_commit": "c47a81c",
+   "successful_predictions": 900,
+   "failed_predictions": 0,
+   "cost_usd": 3.6647,
+   "prompt_tokens": 822162,
+   "completion_tokens": 202041
+  },
+  {
+   "path": "results/v03_full/runs/moonshotai-kimi-k3-v7a4aj.json",
+   "sha256": "2d2df2ea26ac06f79f7cf80be63d3e9a62cdbb0a5f4bb731d6079138bb3f0238",
+   "model": "moonshotai/kimi-k3",
+   "prompt_version": "v7a4aj",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-abj-2026-09-26",
+   "config_overridden": [],
+   "git_commit": "c47a81c",
+   "successful_predictions": 900,
+   "failed_predictions": 0,
+   "cost_usd": 3.6455,
+   "prompt_tokens": 599724,
+   "completion_tokens": 213038
+  },
+  {
+   "path": "results/v03_full/runs/openai-gpt-6.1-sol-v7a4aj.json",
+   "sha256": "c6514cc9db18ce04224110fd44f825d23f47a61c609074c5b56bf3deb24ffbb8",
+   "model": "openai/gpt-6.1-sol",
+   "prompt_version": "v7a4aj",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-abj-2026-09-26",
+   "config_overridden": [],
+   "git_commit": "c47a81c",
+   "successful_predictions": 900,
+   "failed_predictions": 0,
+   "cost_usd": 4.3388,
+   "prompt_tokens": 521883,
+   "completion_tokens": 329508
+  },
+  {
+   "path": "results/v03_full/runs/openai-gpt-5.4-mini-v7a4aj.json",
+   "sha256": "daa97f2b539d5fe599208846735d5096783fe39be345b1f0bbb1f852da59fb1e",
+   "model": "openai/gpt-5.4-mini",
+   "prompt_version": "v7a4aj",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-abj-2026-09-26",
+   "config_overridden": [],
+   "git_commit": "c47a81c",
+   "successful_predictions": 900,
+   "failed_predictions": 0,
+   "cost_usd": 6.7311,
+   "prompt_tokens": 521883,
+   "completion_tokens": 1408817
+  },
+  {
+   "path": "results/v03_full/runs/anthropic-claude-opus-5.5-v7a4aj.json",
+   "sha256": "5eea3bd70560aa6092b82688383029d761f443981cc5e2e2a449372bb80f7a06",
+   "model": "anthropic/claude-opus-5.5",
+   "prompt_version": "v7a4aj",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-abj-2026-09-26",
+   "config_overridden": [],
+   "git_commit": "c47a81c",
+   "successful_predictions": 900,
+   "failed_predictions": 0,
+   "cost_usd": 12.4226,
+   "prompt_tokens": 822162,
+   "completion_tokens": 456698
+  },
+  {
+   "path": "results/v03_full/runs/openai-gpt-6-astra-v7a4aj.json",
+   "sha256": "9a49e93f0d8f5e9e22362c9062feff712588fc9b7c49dac0e0b351a7e40bd461",
+   "model": "openai/gpt-6-astra",
+   "prompt_version": "v7a4aj",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-abj-2026-09-26",
+   "config_overridden": [],
+   "git_commit": "c47a81c",
+   "successful_predictions": 900,
+   "failed_predictions": 0,
+   "cost_usd": 21.9731,
+   "prompt_tokens": 521883,
+   "completion_tokens": 335085
+  },
+  {
+   "path": "results/v03_full/runs/anthropic-claude-fable-5.1-v7a4aj.json",
+   "sha256": "0f03eafbe708b2849d71a88cbe5ef26bae5fd297c16a6ed0c5f0b5f0c5b80f27",
+   "model": "anthropic/claude-fable-5.1",
+   "prompt_version": "v7a4aj",
+   "decoder_version": "v02",
+   "max_tokens": 16000,
+   "reasoning_effort": "medium",
+   "config_version": "v03-abj-2026-09-26",
+   "config_overridden": [],
+   "git_commit": "c47a81c",
+   "successful_predictions": 900,
+   "failed_predictions": 0,
+   "cost_usd": 21.3336,
+   "prompt_tokens": 822162,
+   "completion_tokens": 262239
+  }
+ ],
+ "python": "3.12.3",
+ "incomplete_note": "Grok 4.7 stopped at 800 of 900 cases and DeepSeek V4.1 Flash at 819 of 900 when the OpenRouter account ran out of credit (2026-09-30); both are to be added later. Their partial files stay in results/v03_full/runs/.",
+ "concurrency_note": "Grok 4.7 and DeepSeek V4.1 Flash were restarted mid-run with 24 workers instead of 8, resuming their files; model settings were unchanged."
+}
