@@ -14,7 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / "results" / "v03_full" / "scores.json"
 OUT = ROOT / "web" / "static" / "data" / "v03-scores.json"
-SOURCE_COMMIT = "4ac4c79"  # the commit that scored the full run
+SOURCE_COMMIT = "1d424d5"  # the commit that scored the full run (16 models)
 
 HEADLINE, SECONDARY = "4aj", "4bj"
 REFERENCE_ROWS = [
@@ -60,7 +60,8 @@ def main():
     rows = []
     for model in models:
         a = within["rows"][f"{model}|{HEADLINE}"]
-        b = within["rows"][f"{model}|{SECONDARY}"]
+        # Only the original seven models ran arm 4bj; the rest carry null there.
+        b = within["rows"].get(f"{model}|{SECONDARY}")
         rows.append({
             "model": model,
             "score_4aj": metric(a, "score_z_bal"),
@@ -75,8 +76,9 @@ def main():
             },
             "escalated": round(a["esc"]["value"], 1),
             "miss_equivalent": miss_equivalent(a, a["partial"]["value"]),
-            "score_4bj": metric(b, "score_z_bal"),
-            "parse_4bj_unreadable": src["parse"][f"{model}|{SECONDARY}"]["unreadable"],
+            "parse_4aj_unreadable": src["parse"][f"{model}|{HEADLINE}"]["unreadable"],
+            "score_4bj": metric(b, "score_z_bal") if b else None,
+            "parse_4bj_unreadable": src["parse"][f"{model}|{SECONDARY}"]["unreadable"] if b else None,
         })
     rows.sort(key=lambda r: -r["score_4aj"]["value"])
 

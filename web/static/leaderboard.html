@@ -207,6 +207,9 @@
         .uo-chart .axis-label { font-size: 12px; fill: #495057; font-weight: 500; }
         .uo-chart .hint { font-size: 11px; fill: #198754; font-weight: 600; }
         .uo-chart .whisker { stroke-width: 1.4; stroke-opacity: 0.5; }
+        /* With many models the whiskers fade; hovering or focusing a mark brings its own back. */
+        .uo-chart .whisker.faint { stroke-opacity: 0.2; }
+        .uo-chart .whisker.hot { stroke-opacity: 0.9; stroke-width: 2; }
         .uo-chart .mark { cursor: pointer; outline: none; }
         .uo-chart .mark:hover .dot, .uo-chart .mark:focus .dot { stroke-width: 3; }
         .uo-chart .point-label {
@@ -220,7 +223,7 @@
             stroke-linejoin: round;
         }
         .uo-chart .point-label.ref { fill: #6c757d; font-style: italic; }
-        .uo-chart .leader { stroke: #adb5bd; stroke-width: 1; }
+        .uo-chart .leader { stroke: #868e96; stroke-width: 1; }
         .uo-chart .iso { stroke: #adb5bd; stroke-width: 1.2; stroke-dasharray: 1.5 4; stroke-linecap: round; }
         .uo-chart .iso-label { font-size: 11px; fill: #868e96; }
         .uo-caption { font-size: 0.82rem; color: #6c757d; line-height: 1.5; margin-top: 0.4rem; }
@@ -355,7 +358,7 @@
             <div class="disclaimer">
                 <p class="about"><strong>MedSafe-Dx v0.3</strong> is a safety benchmark from Cortico Health Technologies. It tests whether an LLM used as a clinical assistant flags the patients who need prompt attention.</p>
                 <dl class="facts">
-                    <div><dt>This run</dt><dd>7 models, each answering the same 900 synthetic DDXPlus patients (seed 20261005)<!-- source: results/v03_full/scores.md, header --></dd></div>
+                    <div><dt>This run</dt><dd>16 models, each answering the same 900 synthetic DDXPlus patients (seed 20261005). Grok 4.7 and DeepSeek V4.1 Flash will be added when their runs finish.<!-- source: results/v03_full/scores.md, 4aj scores table (16 rows) and header ("Not scored") --></dd></div>
                     <div><dt>Patients</dt><dd>500 serious by condition, 140 serious by a red-flag rule, 260 benign<!-- source: results/v03_full/scores.md, header (strata) -->. None has an exact public copy<!-- source: results/v03_full/scores.md, header (0 twins) -->.</dd></div>
                     <div><dt>Scoring</dt><dd>Deterministic, with no AI judge; reproducible from open data. See the <a href="report.html">methodology</a>.</dd></div>
                     <div><dt>Contribute</dt><dd>Issues and PRs on <a href="https://github.com/cortico-health/MedSafe-Dx" target="_blank" rel="noopener">GitHub</a>. Inquiries: <a href="mailto:solutions@cortico.health">solutions@cortico.health</a></dd></div>
@@ -372,7 +375,7 @@
 
             <h3 class="section">Scores</h3>
             <p class="section-sub">
-                Ranked by the score (arm 4aj: the model sees the intake alone). Bars show the point and its 95% interval; grey rows are reference policies, not models.
+                Ranked by the score (arm 4aj: the model sees the intake alone). Bars show the point and its 95% interval; grey rows are reference policies, not models. A "tied with" badge names the ranks a model does not separate from: the 95% interval of their paired score difference includes 0.
             </p>
             <p class="scroll-hint">Swipe the table sideways for the interval bars and more columns.</p>
             <div class="table-scroll">
@@ -408,18 +411,19 @@
                 <div class="card">
                     <h4>What the run shows</h4>
                     <ol>
-                        <li><strong>Gemini 3.1 Pro and GPT-5.6 Terra are tied.</strong> Their paired score difference is 4.3 [-1.2, 9.9]<!-- source: results/v03_full/scores.md, "Model-pair separation", arm 4aj -->; the interval includes 0.</li>
-                        <li><strong>19 of 21 model pairs separate.</strong><!-- source: results/v03_full/scores.md, "Model-pair separation", arm 4aj --> The other unseparated pair is GLM 5.3 and gpt-oss-120b.<!-- source: results/v03_full/scores.md, "Model-pair separation", arm 4aj (6.9 [-3.2, 16.3]) --></li>
+                        <li><strong>Five models share the top.</strong> Claude Opus 5.5 scores highest (73.5), but its paired interval includes 0 against Claude Fable 5.1, GPT-6.1 Sol, GPT-6 Astra and Gemini 3.1 Pro; against Gemini 3.1 Pro it is 5.0 [-0.1, 10.5].<!-- source: results/v03_full/scores.md, "Model-pair separation", arm 4aj (per-model table, rank 1); scores.json model_pairs 4aj|claude-opus-5.5|gemini-3.1-pro-preview --></li>
+                        <li><strong>89 of 120 model pairs separate</strong> (54 under the wider condition bootstrap). Neighbours in the ranking mostly do not: of the 15 adjacent pairs, 3 separate.<!-- source: results/v03_full/scores.md, "Model-pair separation", arm 4aj --></li>
+                        <li><strong>Price does not buy the score.</strong> GPT-6 Luna (67.1) does not separate from GPT-6 Astra (68.8) and cost 0.46 USD for the 900 cases against Astra's 21.97.<!-- source: results/v03_full/scores.json, model_pairs 4aj|gpt-6-astra|gpt-6-luna (1.7 [-2.6, 6.4]); results/v03_full/scores.md, "Parsing" (token cost) --></li>
                         <li><strong>A stated diagnosis.</strong> A benign working diagnosis in the prompt made no consistent difference; see the <a href="report.html#discussion-does-a-stated-benign-diagnosis-change-the-answer">discussion in the methodology</a>.<!-- source: results/v03_full/scores.md, "Confirmatory anchor test (spec record R2)"; spec/v0.3-scoring.md record R3 --></li>
-                        <li><strong>Every answer parsed.</strong> All seven models answered all 900 cases.<!-- source: results/v03_full/scores.md, "Parsing" (every |4aj row: 900 of 900, 0 unreadable) --></li>
-                        <li><strong>Spend.</strong> The run cost 69.78 USD in API calls.<!-- source: results/v03_full/scores.md, header (account spend delta 69.78 USD) --></li>
+                        <li><strong>Every answer parsed.</strong> All 16 models answered all 900 cases; the 7 answers that failed to parse the first time parsed on the one retry.<!-- source: results/v03_full/scores.md, "Parsing" (every |4aj row: 900 of 900, 0 unreadable); results/v03_full/runs/logs --></li>
+                        <li><strong>Spend.</strong> The runs cost 176.74 USD in API calls: 69.78 for the first seven models, 106.96 for the added models, including the unfinished Grok and DeepSeek runs.<!-- source: results/v03_full/scores.md, header (account spend delta) --></li>
                     </ol>
                 </div>
             </div>
         </div>
 
         <footer>
-            MedSafe-Dx v0.3 | Scores from <code>results/v03_full/scores.json</code> (commit <code>4ac4c79</code>)<!-- source: web/static/data/v03-scores.json, source field --><br>
+            MedSafe-Dx v0.3 | Scores from <code>results/v03_full/scores.json</code> (commit <code>1d424d5</code>)<!-- source: web/static/data/v03-scores.json, source field --><br>
             Copyright © <a href="https://cortico.health" target="_blank" rel="noopener">Cortico Health Technologies Inc</a> 2026 | Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>
         </footer>
     </div>
@@ -435,11 +439,25 @@
             'gpt-oss-120b': 'gpt-oss-120b',
             'claude-haiku-4.5': 'Claude Haiku 4.5',
             'llama-3.1-8b-instruct': 'Llama 3.1 8B Instruct',
+            'grok-4.7': 'Grok 4.7',
+            'claude-fable-5.1': 'Claude Fable 5.1',
+            'gpt-6-astra': 'GPT-6 Astra',
+            'claude-opus-5.5': 'Claude Opus 5.5',
+            'gpt-5.4-mini': 'GPT-5.4 mini',
+            'gpt-6.1-sol': 'GPT-6.1 Sol',
+            'kimi-k3': 'Kimi K3',
+            'claude-sonnet-5.5': 'Claude Sonnet 5.5',
+            'gemini-3.8-flash': 'Gemini 3.8 Flash',
+            'deepseek-v4.1-flash': 'DeepSeek V4.1 Flash',
+            'gpt-6-luna': 'GPT-6 Luna',
         };
-        // Short chart labels for phone widths; the tooltip keeps the full name.
+        // Short chart labels; the tooltip keeps the full name. Every name here must stay unique.
         const SHORT = {
-            'gemini-3.1-pro-preview': 'Gemini', 'gpt-5.6-terra': 'Terra', 'claude-sonnet-4.6': 'Sonnet',
+            'gemini-3.1-pro-preview': 'Gemini 3.1 Pro', 'gpt-5.6-terra': 'Terra', 'claude-sonnet-4.6': 'Sonnet 4.6',
             'glm-5.3': 'GLM', 'gpt-oss-120b': 'gpt-oss', 'claude-haiku-4.5': 'Haiku', 'llama-3.1-8b-instruct': 'Llama 8B',
+            'grok-4.7': 'Grok', 'claude-fable-5.1': 'Fable', 'gpt-6-astra': 'Astra', 'claude-opus-5.5': 'Opus',
+            'gpt-5.4-mini': '5.4 mini', 'gpt-6.1-sol': 'Sol', 'kimi-k3': 'Kimi', 'claude-sonnet-5.5': 'Sonnet 5.5',
+            'gemini-3.8-flash': 'Gemini Flash', 'deepseek-v4.1-flash': 'DeepSeek', 'gpt-6-luna': 'Luna',
         };
         const REFS = {
             zero_point: { name: 'Zero point', note: 'Escalates every patient, flagging I21 (possible NSTEMI/STEMI). Scores 0 by construction.' },
@@ -447,9 +465,9 @@
             always_routine: { name: 'Always routine', note: 'Sends every patient to routine care.' },
         };
 
-        // Shared axis for every bar. It spans 0, the reference rows and Llama's
-        // interval; always-routine (-301.4) sits off the left edge as an arrow.
-        const AX = { min: -140, max: 100, ticks: [-100, -50, 0, 50, 100] };
+        // Shared axis for every bar. It spans the intervals of the rows that score 0 or more, so the
+        // leading models stay apart; a row below its left edge becomes an arrow labelled with its score.
+        const AX = { min: -25, max: 100, ticks: [0, 25, 50, 75, 100] };
         const W = 300, PAD = 10;
         const x = v => PAD + (Math.max(AX.min, Math.min(AX.max, v)) - AX.min) / (AX.max - AX.min) * (W - 2 * PAD);
 
@@ -474,7 +492,7 @@
             if (v < AX.min) {
                 // Off scale: an arrow at the left edge, labelled with the true value.
                 mark = `<path d="M${PAD} ${y} l9 -6 v12 z" fill="${color}"/>
-                        <text x="${PAD + 13}" y="${y + 4}" font-size="11" fill="${color}">${f1(v)}, off scale</text>`;
+                        <text x="${PAD + 13}" y="${y + 4}" font-size="11" fill="${color}" stroke="${isRef ? '#f4f5f7' : '#fff'}" stroke-width="4" paint-order="stroke" stroke-linejoin="round">${f1(v)}, off scale</text>`;
             } else {
                 const dot = isRef
                     ? `<path d="M${x(v)} ${y - 6} l6 6 l-6 6 l-6 -6 z" fill="#fff" stroke="${color}" stroke-width="2"/>`
@@ -488,8 +506,30 @@
         }
 
         function render(d) {
-            const tied = new Set((d.pair_separation['4aj'].not_separated || [])
-                .filter(p => p.includes('gemini-3.1-pro-preview') && p.includes('gpt-5.6-terra')).flat());
+            // Per model, the ranks of the models it does not separate from (paired 95% interval includes 0).
+            const rankOf = new Map(d.models.slice().sort((a, b) => b.score_4aj.value - a.score_4aj.value).map((m, i) => [m.model, i + 1]));
+            const tiedWith = new Map();
+            for (const [a, b] of d.pair_separation['4aj'].not_separated || []) {
+                for (const [p, q] of [[a, b], [b, a]]) {
+                    if (!tiedWith.has(p)) tiedWith.set(p, []);
+                    tiedWith.get(p).push(q);
+                }
+            }
+            // Ranks as compact runs: [2, 3, 4, 7] reads "#2-4, #7".
+            const rankRuns = rs => {
+                const out = [];
+                for (const r of rs.sort((a, b) => a - b)) {
+                    const last = out[out.length - 1];
+                    if (last && r === last[1] + 1) last[1] = r; else out.push([r, r]);
+                }
+                return out.map(([a, b]) => a === b ? `#${a}` : `#${a}-${b}`).join(', ');
+            };
+            const tieChip = model => {
+                const others = tiedWith.get(model);
+                if (!others || !others.length) return '';
+                const names = others.slice().sort((a, b) => rankOf.get(a) - rankOf.get(b)).map(o => NAMES[o] || o).join(', ');
+                return `<span class="tie-chip" title="Not separated from ${esc(names)}: the paired 95% interval of the score difference includes 0">tied with ${rankRuns(others.map(o => rankOf.get(o)))}</span>`;
+            };
 
             const rows = d.models.map(m => ({ kind: 'model', score: m.score_4aj.value, m }))
                 .concat(d.reference_rows.map(r => ({ kind: 'ref', score: r.score.value, r })))
@@ -510,7 +550,7 @@
                 }
                 const m = row.m;
                 rank += 1;
-                const tie = tied.has(m.model) ? '<span class="tie-chip" title="The paired interval for Gemini minus Terra includes 0">tied</span>' : '';
+                const tie = tieChip(m.model);
                 return `<tr>
                     <td class="rank">${rank}</td>
                     <td><span class="model-name">${esc(NAMES[m.model] || m.model)}</span>${tie}<span class="model-id">${esc(m.model)}</span></td>
@@ -537,7 +577,7 @@
                 `${s.cases} cases (seed ${s.seed}): ${s.serious} SERIOUS, ${s.benign} BENIGN. `
                 + `Under each score: the 95% interval resampling cases within each condition, then ("cond.") the wider interval that also resamples conditions. `
                 + `Misses: SERIOUS cases costing a full miss (<a href="#miss-types">types below</a>). Over-escalations: BENIGN cases the model escalated. `
-                + `Always routine sits at ${f1(d.reference_rows.find(r => r.id === 'always_routine').score.value)}, off the left of the axis. `
+                + `Rows scoring below ${AX.min} (${d.models.concat(d.reference_rows).filter(r => (r.score_4aj || r.score).value < AX.min).map(r => r.model ? (NAMES[r.model] || r.model) : (REFS[r.id] || { name: r.id }).name).join(', ')}) sit off the left of the axis as arrows. `
                 + `Source: <code>${esc(d.source.file)}</code> at commit <code>${esc(d.source.commit)}</code>, via <code>${esc(d.source.built_by)}</code>.`;
         }
 
@@ -555,7 +595,9 @@
         // The balanced cost is O + 7U + P (evaluator/v03_valid_reason.py), so on the axes
         // (O, U + P/7) every score is a straight line: O + 7y = zero_cost x (1 - score / 100).
         const ISO_SCORES = [0, 25, 50, 75, 100];
-        // Each axis runs from 0 to the next 5% past the models' highest whisker.
+        // Each axis runs from 0 to the next 5% past the highest whisker of the rows that score 0 or
+        // more (models and reference policies), so the models near the top keep room to separate.
+        // A row below that range sits on the plot's edge as a labelled arrow.
         const ceil5 = v => Math.floor(v / 5) * 5 + 5;
         const REF_GREY = '#868e96', MODEL_BLUE = '#4b54f6';
         let CHART_DATA = null;
@@ -565,12 +607,15 @@
             const chart = document.getElementById('uo-chart');
             const tip = document.getElementById('uo-tooltip');
             host.innerHTML = '';
-            const UO_AX = { x: [0, ceil5(Math.max(...d.models.map(md => md.O.ci[1])))],
-                            y: [0, ceil5(Math.max(...d.models.map(md => md.miss_equivalent.ci[1])))] };
+            const inRange = d.models.map(md => ({ s: md.score_4aj.value, O: md.O.ci[1], Y: md.miss_equivalent.ci[1] }))
+                .concat(d.reference_rows.map(r => ({ s: r.score.value, O: r.O.ci[1], Y: r.miss_equivalent.ci[1] })))
+                .filter(r => r.s >= 0 && r.O < 100);
+            const UO_AX = { x: [0, ceil5(Math.max(...inRange.map(r => r.O)))],
+                            y: [0, ceil5(Math.max(...inRange.map(r => r.Y)))] };
             const W = Math.max(340, Math.min(1100, Math.floor(host.clientWidth || 1000)));
             const narrow = W < 560;
-            const H = narrow ? 420 : Math.round(Math.min(500, W * 0.48));
-            const m = { l: narrow ? 50 : 58, r: narrow ? 14 : 22, t: 26, b: narrow ? 40 : 46 };
+            const H = narrow ? 480 : Math.round(Math.min(560, W * 0.52));
+            const m = { l: narrow ? 50 : 58, r: narrow ? 14 : 22, t: 34, b: narrow ? 40 : 46 };
             const pw = W - m.l - m.r, ph = H - m.t - m.b;
             const X = o => m.l + (o - UO_AX.x[0]) / (UO_AX.x[1] - UO_AX.x[0]) * pw;
             const Y = u => m.t + ph - (u - UO_AX.y[0]) / (UO_AX.y[1] - UO_AX.y[0]) * ph;
@@ -587,7 +632,8 @@
                 svg.appendChild(el('line', { class: 'gridline', x1: X(v), x2: X(v), y1: m.t, y2: m.t + ph }));
                 svg.appendChild(el('text', { class: 'axis-tick', x: X(v), y: m.t + ph + 19, 'text-anchor': 'middle' }, v + '%'));
             }
-            for (let v = UO_AX.y[0]; v <= UO_AX.y[1]; v += 10) {
+            const yStep = UO_AX.y[1] <= 30 ? 5 : 10;
+            for (let v = UO_AX.y[0]; v <= UO_AX.y[1]; v += yStep) {
                 svg.appendChild(el('line', { class: 'gridline', x1: m.l, x2: m.l + pw, y1: Y(v), y2: Y(v) }));
                 svg.appendChild(el('text', { class: 'axis-tick', x: m.l - 6, y: Y(v) + 4, 'text-anchor': 'end' }, v + '%'));
             }
@@ -606,7 +652,7 @@
                 const b = t.getBBox();
                 obstacles.push({ x: b.x - 2, y: b.y - 2, w: b.width + 4, h: b.height + 4 });
             };
-            hint(X(UO_AX.x[1]) - 4, Y(UO_AX.y[1] * 0.5), 'end', 'more cautious →');
+            hint(X(UO_AX.x[1]) - 4, Y(0) - 6, 'end', 'more cautious →');
             hint(X(UO_AX.x[0]) + 8, Y(UO_AX.y[1] * 0.62), 'start', '↓ safer');
 
             // Lines of equal score, clipped to the plot; a line that misses the plot is dropped.
@@ -638,6 +684,7 @@
                     fullName: (REFS[r.id] || { name: r.id }).name, U: r.U, P: r.partial, Y: r.miss_equivalent, O: r.O, score: r.score })));
             const marks = [];
             const leaders = el('g'), whiskers = el('g'), dots = el('g');
+            const wClass = 'whisker' + (d.models.length > 10 ? ' faint' : '');
             svg.appendChild(leaders); svg.appendChild(whiskers); svg.appendChild(dots);
             for (const it of items) {
                 const color = it.kind === 'ref' ? REF_GREY : MODEL_BLUE;
@@ -645,16 +692,15 @@
                 const g = el('g', { class: 'mark', tabindex: 0, 'data-id': it.id,
                     'aria-label': `${it.fullName || it.name}: misses ${f1(it.U.value)}%, partials ${f1(it.P)}%, over-escalations ${f1(it.O.value)}%, score ${f1(it.score.value)}` });
                 if (!inY(it.Y.value)) {
-                    // Off scale upwards: an arrow on the top edge, labelled with its value.
+                    // Off scale upwards: an arrow on the top edge. Its label, which gives the true
+                    // misses, joins the placement below.
                     const ey = m.t;
-                    g.appendChild(el('path', { class: 'dot', fill: '#fff', stroke: color, 'stroke-width': 2,
+                    g.appendChild(el('path', { class: 'dot', fill: it.kind === 'ref' ? '#fff' : color, stroke: color, 'stroke-width': 2,
                         d: `M${px} ${ey - 14} l6 10 h-12 z` }));
-                    const lab = el('text', { class: 'point-label ref', x: px + 10, y: ey - 6 },
-                        `${it.fullName || it.name}: ${f1(it.U.value)}% misses, off scale`);
-                    dots.appendChild(g); svg.appendChild(lab);
-                    const b = lab.getBBox();
-                    obstacles.push({ x: b.x, y: b.y, w: b.width, h: b.height });
+                    it.name = narrow ? `${it.name}, U ${f1(it.U.value)}%` : `${it.fullName || it.name}: ${f1(it.U.value)}% misses, off scale`;
+                    dots.appendChild(g);
                     it.node = g;
+                    marks.push({ it, px, py: ey - 8 });
                     continue;
                 }
                 if (!inX(it.O.value)) {
@@ -671,8 +717,10 @@
                 }
                 const py = Y(it.Y.value);
                 const [ulo, uhi] = it.Y.ci, [olo, ohi] = it.O.ci;
-                if (ohi > olo) whiskers.appendChild(el('line', { class: 'whisker', stroke: color, x1: X(olo), x2: X(ohi), y1: py, y2: py }));
-                if (uhi > ulo) whiskers.appendChild(el('line', { class: 'whisker', stroke: color, x1: px, x2: px, y1: Y(uhi), y2: Y(ulo) }));
+                it.whiskers = [];
+                if (ohi > olo) it.whiskers.push(el('line', { class: wClass, stroke: color, x1: X(olo), x2: X(ohi), y1: py, y2: py }));
+                if (uhi > ulo) it.whiskers.push(el('line', { class: wClass, stroke: color, x1: px, x2: px, y1: Y(uhi), y2: Y(ulo) }));
+                it.whiskers.forEach(w => whiskers.appendChild(w));
                 g.appendChild(it.kind === 'ref'
                     ? el('path', { class: 'dot', d: `M${px} ${py - 6} l6 6 l-6 6 l-6 -6 z`, fill: '#fff', stroke: color, 'stroke-width': 2 })
                     : el('circle', { class: 'dot', cx: px, cy: py, r: 5, fill: color, stroke: '#fff', 'stroke-width': 1.5 }));
@@ -680,7 +728,7 @@
                 it.node = g;
                 marks.push({ it, px, py });
             }
-            placeUoLabels(svg, leaders, marks, obstacles, { l: m.l, r: m.l + pw + m.r - 2, t: m.t - 4, b: m.t + ph });
+            placeUoLabels(svg, leaders, marks, obstacles, { l: m.l, r: m.l + pw + m.r - 2, t: 2, b: m.t + ph });
 
             const tipHtml = it => `<strong>${esc(it.fullName || it.name)}${it.kind === 'ref' ? ' (reference)' : ''}</strong>
                 <div class="tt-row"><span>Score</span><span class="tt-val">${f1(it.score.value)}${it.score.ci[0] !== it.score.ci[1] ? ' ' + ciText(it.score.ci) : ''}</span></div>
@@ -697,12 +745,13 @@
                     tip.style.left = x + 'px'; tip.style.top = y + 'px';
                 };
                 const show = e => {
+                    (it.whiskers || []).forEach(w => w.classList.add('hot'));
                     tip.innerHTML = tipHtml(it);
                     tip.style.opacity = '1';
                     if (e && e.clientX != null && e.type !== 'focus') place(e.clientX, e.clientY);
                     else { const b = node.getBoundingClientRect(); place(b.right, b.top); }
                 };
-                const hide = () => { tip.style.opacity = '0'; };
+                const hide = () => { tip.style.opacity = '0'; (it.whiskers || []).forEach(w => w.classList.remove('hot')); };
                 node.addEventListener('mouseenter', show);
                 node.addEventListener('mousemove', e => place(e.clientX, e.clientY));
                 node.addEventListener('mouseleave', hide);
@@ -720,12 +769,16 @@
             const hit = (a, b) => a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
             const markBoxes = marks.map(mk => ({ x: mk.px - 7, y: mk.py - 7, w: 14, h: 14 }));
             const dirs = [[1, 0], [-1, 0], [0, -1], [0, 1], [1, -1], [-1, -1], [1, 1], [-1, 1]];
-            const h = 13;
+            // Each label's box comes from the rendered text: its width, and a height and baseline
+            // shared by all labels (the tallest), plus a pixel of clearance.
             const texts = marks.map(mk => {
                 const t = el('text', { class: 'point-label' + (mk.it.kind === 'ref' ? ' ref' : ''), x: 0, y: 0 }, mk.it.name);
                 svg.appendChild(t);
-                return { t, w: t.getComputedTextLength() + 2 };
+                const bb = t.getBBox();
+                return { t, w: bb.width + 2, h: bb.height, asc: -bb.y };
             });
+            const h = Math.max(13, ...texts.map(x => x.h)) + 1;
+            const asc = Math.max(...texts.map(x => x.asc));
             // Place labels greedily in one order; returns each label's spot and a cost
             // (squared distance from its mark, plus a penalty for any forced overlap).
             const tryOrder = order => {
@@ -735,13 +788,13 @@
                     const mk = marks[i], w = texts[i].w;
                     let best = null, fallback = null;
                     outer:
-                    for (const r of [9, 15, 24, 34, 46, 60]) {
+                    for (const r of [9, 15, 24, 34, 46, 60, 76]) {
                         for (const [dx, dy] of dirs) {
                             const cx = mk.px + dx * r, cy = mk.py + dy * r;
                             const b = { x: dx > 0 ? cx : dx < 0 ? cx - w : cx - w / 2,
                                         y: dy > 0 ? cy : dy < 0 ? cy - h : cy - h / 2, w, h };
                             if (b.x < box.l + 2 || b.x + w > box.r || b.y < box.t || b.y + h > box.b - 2) continue;
-                            const cand = { b, r, cx };
+                            const cand = { b, r, cx, beside: r === 9 && dy === 0 };
                             if (!fallback) fallback = cand;
                             if (placed.some(p => hit(p, b)) || obstacles.some(o => hit(o, b))) continue;
                             if (markBoxes.some((mb, j) => j !== i && hit(mb, b))) continue;
@@ -767,8 +820,9 @@
             for (const [i, spot] of best.out) {
                 const mk = marks[i], t = texts[i].t;
                 t.setAttribute('x', spot.b.x + 1);
-                t.setAttribute('y', spot.b.y + h - 3);
-                if (spot.r > 15) {
+                t.setAttribute('y', spot.b.y + 0.5 + asc);
+                // A label directly beside its mark needs no leader; any other gets one.
+                if (!spot.beside) {
                     const lx = spot.cx > mk.px + 1 ? spot.b.x : spot.cx < mk.px - 1 ? spot.b.x + spot.b.w : spot.b.x + spot.b.w / 2;
                     const ly = Math.max(spot.b.y, Math.min(spot.b.y + h, mk.py));
                     leaders.appendChild(el('line', { class: 'leader', x1: mk.px, y1: mk.py, x2: lx, y2: ly }));
