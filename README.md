@@ -46,7 +46,7 @@ We froze the rules, drew 250 fresh cases nobody had read, had two AI reviewers (
 | | *Naive Bayes (dataset-knowledge reference)* | *12.8 [7.0, 18.9]* |
 | | *Always routine* | *-301.4* |
 
-Opus 5.5 leads at 73.5 and does not separate from Fable 5.1, Sol, Astra and Gemini 3.1 Pro; 89 of 120 pairs separate under the within-condition interval, 54 under the condition bootstrap (no correction for the 120 comparisons). Claude Fable 5.1 and GPT-6 Astra also wrote the reference the rules were designed against and checked on, and the authors drafted the rules working with Claude Opus 5.5; the methodology (section 8, limit 7) sets out what that means for their rows. Stating a benign working diagnosis in the prompt made no consistent difference across samples, so arm 4a is the only scored arm. Grok 4.7 and DeepSeek V4.1 Flash stopped short of 900 cases when the account ran out of credit; we add a model when it has answered all 900.
+Opus 5.5 leads at 73.5 and does not separate from Fable 5.1, Sol, Astra and Gemini 3.1 Pro; 89 of 120 pairs separate under the within-condition interval, 54 under the condition bootstrap (no correction for the 120 comparisons). Claude Fable 5.1 and GPT-6 Astra also wrote the reference the rules were designed against and checked on, and the authors drafted the rules working with Claude Opus 5.5; the methodology (section 8, limit 7) sets out what that means for their rows. Stating a benign working diagnosis in the prompt made no consistent difference across samples, so arm 4a is the only scored arm.
 
 > **Cite as:** Van Oyen C, Mirza-Haq N. *MedSafe-Dx (v0): A Safety-Focused Benchmark for Evaluating LLMs in Clinical Diagnostic Decision Support.* medRxiv 2026.04.14.26350711; doi: <https://doi.org/10.64898/2026.04.14.26350711>. v0.3 revision, 1 October 2026.
 
@@ -62,7 +62,7 @@ python3 scripts/build_v03_full_set.py
 
 # 2. Run the 16 models in arm 4aj, the only scored arm. Our runs cost 176.74 USD in all:
 #    69.78 for the first seven models (which also ran arm 4bj) and 106.96 for the nine added
-#    models, including the unfinished Grok 4.7 and DeepSeek V4.1 Flash runs.
+#    models, including partial runs not reported here.
 CASES=data/test_sets/eval-v03-full.json OUT_DIR=results/v03_full/runs \
   RUN_CONFIG=inference/run_config_v03_abj.json RUN_LABEL="v0.3 full run" \
   ARMS_OVERRIDE="v7a4aj" \
