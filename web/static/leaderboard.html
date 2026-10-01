@@ -166,6 +166,7 @@
             font-weight: 600;
             vertical-align: middle;
         }
+        .design-mark { margin-left: 0.15rem; color: #842029; font-weight: 700; text-decoration: none; cursor: help; }
         .author-chip {
             display: inline-block;
             margin-left: 0.35rem;
@@ -405,13 +406,14 @@
             <p class="section-sub">
                 Ranked by the score in arm 4aj: the model sees the intake alone and adds a one-line justification. Bars show the point and its 95% interval; grey rows are reference policies, not models.
                 A "not separated" badge names the ranks whose paired 95% interval includes 0. Intervals resample cases within each condition and are not corrected for the 120 comparisons; the wider interval that also resamples conditions separates 54 pairs, not 89.<!-- source: results/v03_full/scores.md, "Model-pair separation", arm 4aj (89 of 120; 54 under the condition bootstrap) -->
-                A "wrote the reference" or "helped draft the rules" badge marks the three models that took part in building the labels (<a href="report.html#8-limits">limit 7</a>).
+                An asterisk (*) marks a model used in the study design (<a href="#design-note">note below the table</a>).
             </p>
             <p class="scroll-hint">Swipe the table sideways for the interval bars and more columns.</p>
             <div class="table-scroll">
                 <div id="leaderboard"><div class="empty-state">Loading scores...</div></div>
             </div>
             <p class="table-footnote" id="table-footnote"></p>
+            <p class="table-footnote" id="design-note">* Model used in study design (coding, lit review). Claude Opus 5.5 helped code the rules; Claude Fable 5.1 and GPT-6 Astra wrote the literature reference. See <a href="report.html#8-limits">limit 7</a>.</p>
             <div class="miss-types" id="miss-types">
                 <h4>Miss types</h4>
                 <p>A miss (U, under-escalation) is a SERIOUS patient the model did not send on for a serious reason. Each costs 7. There are two types:</p>
@@ -572,8 +574,8 @@
             const authorChip = model => {
                 const v = REFERENCE_AUTHORS[model];
                 if (!v) return '';
-                const [label, tip] = Array.isArray(v) ? v : ['wrote the reference', v];
-                return `<a class="author-chip" href="report.html#8-limits" title="${esc(tip)}">${esc(label)}</a>`;
+                const tip = Array.isArray(v) ? v[1] : v;
+                return `<a class="design-mark" href="#design-note" title="${esc(tip)}" aria-label="Model used in study design">*</a>`;
             };
 
             const rows = d.models.map(m => ({ kind: 'model', score: m.score_4aj.value, m }))
@@ -595,10 +597,10 @@
                 }
                 const m = row.m;
                 rank += 1;
-                const tie = authorChip(m.model) + tieChip(m.model);
+                const tie = tieChip(m.model);
                 return `<tr>
                     <td class="rank">${rank}</td>
-                    <td><span class="model-name">${esc(NAMES[m.model] || m.model)}</span>${tie}<span class="model-id">${esc(m.model)}</span></td>
+                    <td><span class="model-name">${esc(NAMES[m.model] || m.model)}</span>${authorChip(m.model)}${tie}<span class="model-id">${esc(m.model)}</span></td>
                     <td class="num"><span class="score">${f1(m.score_4aj.value)}</span><span class="ci">${ciText(m.score_4aj.ci)}</span><span class="ci" title="Condition bootstrap">cond. ${ciText(m.score_4aj_condition_bootstrap_ci)}</span></td>
                     <td class="bar-cell">${barSvg(m.score_4aj, false)}</td>
                     <td class="num">${f1(m.U.value)}%<span class="ci">${ciText(m.U.ci)}</span></td>
