@@ -54,7 +54,31 @@ Opus 5.5 leads at 73.5 and does not separate from Fable 5.1, Sol, Astra and Gemi
 
 ## Reproducing the v0.3 run
 
-Needs the DDXPlus release files in `data/ddxplus_v0` and an OpenRouter key in `.env.local` (see Prerequisites below). Run from the repo root on branch `v0.2-spec`; section 9 of the methodology lists every input.
+Needs the DDXPlus release files in `data/ddxplus_v0` and an OpenRouter key in `.env.local` (see Prerequisites below). Run from the repo root on branch `v0.2-spec`. Every request goes through OpenRouter; the patients are synthetic. Model outputs and run logs stay git-ignored under `results/*/runs/`; the scores, run settings and provenance built from them are committed, and the outputs are available on request.
+
+| What | Where |
+|---|---|
+| Dataset | DDXPlus release files (Fansi Tchango et al. 2022), adult test split: 109,938 patients |
+| Main sample | `data/test_sets/eval-v02-adult.case_ids.txt`: 470 cases, 10 per condition, seed 20260923 |
+| Audited 150 (the prompt-test set, in-sample for the rules) | `data/test_sets/eval-v03-ab150.case_ids.txt`, seed 20260923; reference in `results/audit/reference_adjudicated.jsonl` |
+| Validation round 1 | seed 20261003, freeze 45a7599; `data/test_sets/eval-v03-phase2.case_ids.txt`; `results/phase2/` |
+| Validation round 2 | seed 20261004, freeze 54dbc3f (hash recorded by 838e765); `data/test_sets/eval-v03-phase2b.case_ids.txt`; `results/phase2b/` |
+| Full run: cases | seed 20261005, freeze 7e67e24 (hash recorded by 0e71326); draw by `scripts/analysis/v03_case_selection.py --draw-full` into `results/analysis/case_selection/full_candidates.csv`; key and rendered cases by `scripts/build_v03_full_set.py`; design in `docs/v0.3-case-selection-rules.md` section 7.4; case ids `data/test_sets/eval-v03-full.case_ids.txt` |
+| Full run: scores and provenance | `results/v03_full/scores.md` and `scores.json` (commit 1d424d5; the first seven models 4ac4c79); provenance `results/v03_full/runs/provenance.json` and `provenance-expansion.json` (launched from commits 49c0aa5 and c47a81c with uncommitted changes; see Appendix C of the methodology); roster and costs `results/v03_full/roster_expansion.md` |
+| Bootstrap | 2,000 draws, seed 20260923: condition clusters for the validation rounds; cases within each condition for the full run, with the condition bootstrap as sensitivity |
+| The rules | `spec/case_selection_rules_v03.csv` (49 condition verdicts, 23 cross-cutting rules, 22 cardinal-feature rows), as frozen at 7e67e24; `docs/v0.3-case-selection-rules.md` |
+| Tiers | `spec/dangerous_if_missed_tiers_v03b.csv`; off-list `spec/offlist_tiers_nhamcs.csv` (filled at f2aa2eb) and `spec/offlist_escalation_groups.csv` |
+| Scoring design | `spec/v0.3-scoring.md` (draft 3, amendments A1-A5, records R1-R3) |
+| Scorer | `evaluator/v03_valid_reason.py`; classes in `evaluator/working_diagnosis.py`; tests under `evaluator/tests/` |
+| Keys | `scripts/build_v03_key.py`, `scripts/build_v03b_key.py` |
+| Case selection and in-sample rescoring | `scripts/analysis/v03_case_selection.py` |
+| Audit | `scripts/analysis/v03_fp_fn_audit.py`; `docs/v0.3-fp-fn-audit.md` |
+| Fresh-case draws and validation | `scripts/build_v03_phase2_set.py`, `scripts/analysis/v03_phase2_validation.py`, `v03_phase2_precision.py`, `v03_phase2_scores.py` |
+| Prompts and run configuration | `inference/prompt.py` (v7a4aj, v7a4bj); `inference/run_config_v03_abj.json`; validation provenance in `results/phase2b/runs/provenance.json`; full-run settings per model in `results/v03_full/run_settings.md` (step 3b below) |
+| The preprint rule | `BENCHMARK_REPORT.md` at commit 88697e7, section 2.3 |
+| Spend | Round 1 model run 21.27 USD; round 2 19.57 USD; full run in step 2 below |
+
+<!-- source: moved from docs/METHODOLOGY-v0.3.md section 9 "Reproducing it" on 2026-10-01; spend from results/phase2b/validation.md and results/v03_full/scores.json, account_spend_usd_by_run -->
 
 ```bash
 # 1. Draw the 900 cases, build the key and render the intakes (a few minutes)
