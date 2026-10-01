@@ -23,7 +23,7 @@ We froze the rules, drew 250 fresh cases nobody had read, had two AI reviewers (
 
 ### Headline scores (v0.3 full run)
 
-16 models on 900 never-reviewed cases (seed 20261005: 500 tier-1, 140 promoted by a rule, 260 benign; none with a public twin), arm 4aj (the intake alone, with a one-line justification). 100 is a perfect answer on every case; 0 is escalating every patient with one fixed flag (possible MI); below 0 is worse than that. Source: [`results/v03_full/scores.md`](results/v03_full/scores.md).
+16 models on 900 never-reviewed cases (seed 20261005: 500 tier-1, 140 promoted by a rule, 260 benign; all from the public DDXPlus test split, chosen so none has an exact twin in the validation or test splits), arm 4aj (the intake alone, with a one-line justification). 100 is a perfect answer on every case; 0 is escalating every patient with one fixed flag (possible MI); below 0 is worse than that. Source: [`results/v03_full/scores.md`](results/v03_full/scores.md).
 
 | # | Model | Score [95% CI] |
 |---|---|---|
