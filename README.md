@@ -19,7 +19,7 @@ The preprint labelled a patient "needs escalation" from the one severity DDXPlus
 
 ### How the labels were validated
 
-We froze the rules, drew 250 fresh cases nobody had read, had two AI reviewers (Claude Fable 5.1 with a cited source per claim, GPT-6 Astra from knowledge) rate them blind, with Claude Fable 5.1 adjudicating, and judged the result against criteria written before the draw. Round 2 passed: 96.6% class agreement, every stratum above its bar, reviewer kappa 0.700, and 84.3% of the benchmark's full-miss charges agreed by the reference. One rule (P5) fell below its bar and was demoted before the full run ([`results/phase2b/validation.md`](results/phase2b/validation.md)). Our clinical advisors' review of the v0.3 ratings is in progress.
+We froze the rules, drew 250 fresh cases nobody had read, had two AI reviewers (Claude Fable 5.1 with a cited source per claim, GPT-6 Astra from knowledge) rate them blind, with Claude Fable 5.1 adjudicating, and judged the result against criteria written before the draw. Round 2 passed five of six criteria: 96.6% class agreement, every stratum above its bar, reviewer kappa 0.700, and 84.3% of the benchmark's full-miss charges agreed by the reference. One rule (P5) fell below its bar and was demoted before the full run ([`results/phase2b/validation.md`](results/phase2b/validation.md)). Our clinical advisors' review of the v0.3 ratings is in progress.
 
 ### Headline scores (v0.3 full run)
 
@@ -27,7 +27,7 @@ We froze the rules, drew 250 fresh cases nobody had read, had two AI reviewers (
 
 | # | Model | Score [95% CI] |
 |---|---|---|
-| 1 | Claude Opus 5.5 | 73.5 [69.5, 77.3] |
+| 1 | Claude Opus 5.5 (helped draft the rules) | 73.5 [69.5, 77.3] |
 | 2 | Claude Fable 5.1 (wrote the reference) | 71.1 [66.0, 75.9] |
 | 3 | GPT-6.1 Sol | 69.2 [65.3, 73.1] |
 | 4 | GPT-6 Astra (wrote the reference) | 68.8 [64.8, 72.9] |
@@ -46,7 +46,7 @@ We froze the rules, drew 250 fresh cases nobody had read, had two AI reviewers (
 | | *Naive Bayes (dataset-knowledge reference)* | *12.8 [7.0, 18.9]* |
 | | *Always routine* | *-301.4* |
 
-Opus 5.5 leads at 73.5 and does not separate from Fable 5.1, Sol, Astra and Gemini 3.1 Pro; 89 of 120 pairs separate under the within-condition interval, 54 under the condition bootstrap (no correction for the 120 comparisons). Claude Fable 5.1 and GPT-6 Astra also wrote the reference the rules were checked against; the methodology (section 8, limit 7) sets out what that means for their rows. Stating a benign working diagnosis in the prompt made no consistent difference across samples, so arm 4a is the only scored arm. Grok 4.7 and DeepSeek V4.1 Flash stopped short of 900 cases when the account ran out of credit; we add a model when it has answered all 900.
+Opus 5.5 leads at 73.5 and does not separate from Fable 5.1, Sol, Astra and Gemini 3.1 Pro; 89 of 120 pairs separate under the within-condition interval, 54 under the condition bootstrap (no correction for the 120 comparisons). Claude Fable 5.1 and GPT-6 Astra also wrote the reference the rules were designed against and checked on, and the authors drafted the rules working with Claude Opus 5.5; the methodology (section 8, limit 7) sets out what that means for their rows. Stating a benign working diagnosis in the prompt made no consistent difference across samples, so arm 4a is the only scored arm. Grok 4.7 and DeepSeek V4.1 Flash stopped short of 900 cases when the account ran out of credit; we add a model when it has answered all 900.
 
 > **Cite as:** Van Oyen C, Mirza-Haq N. *MedSafe-Dx (v0): A Safety-Focused Benchmark for Evaluating LLMs in Clinical Diagnostic Decision Support.* medRxiv 2026.04.14.26350711; doi: <https://doi.org/10.64898/2026.04.14.26350711>. v0.3 revision, 1 October 2026.
 

@@ -176,7 +176,8 @@
             font-size: 0.68rem;
             font-weight: 600;
             vertical-align: middle;
-            cursor: help;
+            cursor: pointer;
+            text-decoration: none;
         }
         td.bar-cell { width: 34%; min-width: 220px; padding-top: 0.2rem; padding-bottom: 0.2rem; }
         td.bar-cell svg, th.bar-cell svg { display: block; width: 100%; height: auto; overflow: visible; }
@@ -355,7 +356,7 @@
                 <dl class="facts">
                     <div><dt>This run</dt><dd>16 models, each answering the same 900 synthetic DDXPlus patients (seed 20261005). Grok 4.7 stopped at 800 of 900 cases and DeepSeek V4.1 Flash at 819 when the account ran out of credit. We add a model when it has answered all 900.<!-- source: results/v03_full/scores.md, 4aj scores table (16 rows) and header ("Not scored") --></dd></div>
                     <div><dt>Patients</dt><dd>500 serious by condition, 140 serious by a red-flag rule, 260 benign<!-- source: results/v03_full/scores.md, header (strata) -->. None has an exact public copy<!-- source: results/v03_full/scores.md, header (0 twins) -->.</dd></div>
-                    <div><dt>Scoring</dt><dd>Scoring is arithmetic on a fixed rule file; no model grades an answer. The rules were checked against a literature reference written by two AI reviewers, Claude Fable 5.1 and GPT-6 Astra, which are also ranked below and marked "wrote the reference" (clinician review pending). The next round will use an adjudicator that is not on the board. See the <a href="report.html">methodology</a>.<!-- source: results/phase2b/label_validation.md header; results/phase2b/adjudication_notes.md line 1; decision 36 --></dd></div>
+                    <div><dt>Scoring</dt><dd>Scoring is arithmetic on a fixed rule file; no model grades an answer. The rules were designed against and checked on a literature reference written by two AI reviewers, Claude Fable 5.1 and GPT-6 Astra, and the authors drafted the rules working with Claude Opus 5.5. All three are ranked below and flagged (clinician review pending). The next round will use an adjudicator that is not on the board. See the <a href="report.html">methodology</a>.<!-- source: results/phase2b/label_validation.md header; results/phase2b/adjudication_notes.md line 1; decision 36; Opus 5.5: co-author on every commit to spec/case_selection_rules_v03.csv and docs/v0.3-fp-fn-audit.md --></dd></div>
                     <div><dt>Trade-off</dt><dd>We set aside cases whose right answer the intake cannot settle. Those cases are harder, so the benchmark understates failures on complex patients.<!-- source: docs/v0.3-case-selection-rules.md section 6 (27.0% unsafe on set-aside cases against 14.8% on kept) --></dd></div>
                     <div><dt>Contribute</dt><dd>Issues and PRs on <a href="https://github.com/cortico-health/MedSafe-Dx" target="_blank" rel="noopener">GitHub</a>. Inquiries: <a href="mailto:solutions@cortico.health">solutions@cortico.health</a></dd></div>
                 </dl>
@@ -374,7 +375,7 @@
             <p class="section-sub">
                 Ranked by the score in arm 4aj: the model sees the intake alone and adds a one-line justification. Bars show the point and its 95% interval; grey rows are reference policies, not models.
                 A "not separated" badge names the ranks whose paired 95% interval includes 0. Intervals resample cases within each condition and are not corrected for the 120 comparisons; the wider interval that also resamples conditions separates 54 pairs, not 89.<!-- source: results/v03_full/scores.md, "Model-pair separation", arm 4aj (89 of 120; 54 under the condition bootstrap) -->
-                A "wrote the reference" badge marks the two models that wrote the reference the rules were checked against.
+                A "wrote the reference" or "helped draft the rules" badge marks the three models that took part in building the labels (<a href="report.html#8-limits">limit 7</a>).
             </p>
             <p class="scroll-hint">Swipe the table sideways for the interval bars and more columns.</p>
             <div class="table-scroll">
@@ -411,10 +412,10 @@
                     <h4>What the run shows</h4>
                     <ol>
                         <li><strong>No clear leader.</strong> Claude Opus 5.5 scores highest (73.5) but does not separate from the next four: Claude Fable 5.1, GPT-6.1 Sol, GPT-6 Astra and Gemini 3.1 Pro. Those four in turn do not separate from GPT-6 Luna (rank 6). Against Gemini 3.1 Pro, Opus 5.5 is 5.0 [-0.1, 10.5].<!-- source: results/v03_full/scores.md, "Model-pair separation", arm 4aj (per-model table, ranks 1-6); scores.json model_pairs 4aj|claude-opus-5.5|gemini-3.1-pro-preview --></li>
-                        <li><strong>89 of 120 model pairs separate</strong> under the within-condition interval, 54 under the wider condition bootstrap. Neither count is corrected for the 120 comparisons; about 6 separations are expected by chance. Neighbours in the ranking mostly do not separate: of the 15 adjacent pairs, 3 do.<!-- source: results/v03_full/scores.md, "Model-pair separation", arm 4aj; "about 6" = 5% x 120 --></li>
+                        <li><strong>89 of 120 model pairs separate</strong> under the within-condition interval, 54 under the wider condition bootstrap. Neither count is corrected for the 120 comparisons; if no two models differed, about 6 of 120 pairs would separate by chance. Neighbours in the ranking mostly do not separate: of the 15 adjacent pairs, 3 do.<!-- source: results/v03_full/scores.md, "Model-pair separation", arm 4aj; "about 6" = 5% x 120 --></li>
                         <li><strong>Spend does not buy the score.</strong> GPT-6 Luna's 900 answers cost 0.46 USD in tokens against GPT-6 Astra's 21.97, and the two do not separate (1.7 [-2.6, 6.4]).<!-- source: results/v03_full/scores.json, model_pairs 4aj|gpt-6-astra|gpt-6-luna (1.7 [-2.6, 6.4]); results/v03_full/scores.md, "Parsing" (token cost 0.4563 and 21.9731) --></li>
                         <li><strong>A stated diagnosis.</strong> A benign working diagnosis in the prompt made no consistent difference; see the <a href="report.html#discussion-does-a-stated-benign-diagnosis-change-the-answer">discussion in the methodology</a>.<!-- source: results/v03_full/scores.md, "Confirmatory anchor test (spec record R2)"; spec/v0.3-scoring.md record R3 --></li>
-                        <li><strong>Every answer parsed.</strong> All 16 models answered all 900 cases. The 7 answers that failed to parse the first time parsed when asked again once. The runner also allows up to four attempts on an empty response; Gemini 3.8 Flash needed an empty-response retry on 3 cases.<!-- source: results/v03_full/scores.md, "Parsing" (every |4aj row: 900 of 900, 0 unreadable); results/v03_full/runs/logs ("Empty content" lines: gemini-3.8-flash 3); inference/openrouter.py (empty_content_retries 3) --></li>
+                        <li><strong>Every answer parsed.</strong> All 16 models answered all 900 cases. In the added models' run, 7 answers that failed to parse the first time parsed when asked again once; in the first run, 25 GLM 5.3 answers errored and were re-run once. The runner also allows up to four attempts on an empty response; Gemini 3.8 Flash needed an empty-response retry on 3 cases.<!-- source: results/v03_full/scores.md, "Parsing" (every |4aj row: 900 of 900, 0 unreadable); results/v03_full/runs/logs ("Empty content" lines: gemini-3.8-flash 3); inference/openrouter.py (empty_content_retries 3) --></li>
                         <li><strong>Spend.</strong> The runs cost 176.74 USD in API calls: 69.78 for the first seven models, 106.96 for the added models, including the unfinished Grok and DeepSeek runs.<!-- source: results/v03_full/scores.md, header (account spend delta) --></li>
                     </ol>
                 </div>
@@ -430,7 +431,7 @@
                 <ol>
                     <li><strong>Why.</strong> Clinical advisors reviewing the v0.1 model answers, and our own audit, found that the dataset's answer often disagreed with other references for the same patient, because DDXPlus gives every patient with a condition the same severity. A literature review judged about two-thirds of the answers our earlier scoring penalised to be safe.<!-- source: docs/v0.3-fp-fn-audit.md, update table, A3 row "Precision, all penalties" 33.5% (185 of 553), so 66.5% of penalised answers were safe by the reference --></li>
                     <li><strong>What changed.</strong> We keep each case, correct it with a published red-flag rule, or set it aside, and cite the reason.</li>
-                    <li><strong>How we checked.</strong> We froze the rules and tested them on fresh cases against criteria set in advance. The first round failed on one group of cases and on reviewer agreement; we set that group aside and the second round passed.<!-- source: results/phase2/label_validation.md; results/phase2b/validation.md --></li>
+                    <li><strong>How we checked.</strong> We froze the rules and tested them on fresh cases against criteria set in advance. The first round failed on one group of cases and on reviewer agreement; we set that group aside and the second round passed five of six criteria; the failing rule was demoted.<!-- source: results/phase2/label_validation.md; results/phase2b/validation.md --></li>
                     <li><strong>Scoring.</strong> A model passes a serious case only when it escalates for a valid serious reason, so escalating everyone with one fixed flag scores 0.</li>
                 </ol>
                 <p style="font-size: 0.9rem;">
@@ -483,7 +484,8 @@
         // The models that wrote the literature reference the rules were designed against and validated on
         // (results/phase2b/label_validation.md; adjudication_notes.md); decision 36 keeps them ranked and flagged.
         const REFERENCE_AUTHORS = {
-            'claude-fable-5.1': 'Claude Fable 5.1 wrote the literature reference the rules were designed against and validated on (reviewer and adjudicator). Its score may benefit from sharing the reference\'s judgement; we flag this row until a clinician check or a third-model adjudication is done.',
+            'claude-opus-5.5': ['helped draft the rules', 'The authors drafted the rules and adjudicated the audited 150 cases working with Claude Opus 5.5; the commit history credits it on every commit to the rules. Its score may benefit from sharing the rules\' judgement; we flag this row until a clinician check or a third-model adjudication is done.'],
+            'claude-fable-5.1': 'Claude Fable 5.1 wrote the literature reference the rules were designed against and validated on (reviewer, and adjudicator in both validation rounds). Its score may benefit from sharing the reference\'s judgement; we flag this row until a clinician check or a third-model adjudication is done.',
             'gpt-6-astra': 'GPT-6 Astra wrote the literature reference the rules were designed against and validated on (reviewer). Its score may benefit from sharing the reference\'s judgement; we flag this row until a clinician check or a third-model adjudication is done.',
         };
         const REFS = {
@@ -558,8 +560,12 @@
                 const names = others.slice().sort((a, b) => rankOf.get(a) - rankOf.get(b)).map(o => NAMES[o] || o).join(', ');
                 return `<span class="tie-chip" title="Not separated from ${esc(names)}: the paired 95% interval of the score difference includes 0 (within-condition interval, not corrected for the 120 comparisons)">not separated from ${rankRuns(others.map(o => rankOf.get(o)))}</span>`;
             };
-            const authorChip = model => REFERENCE_AUTHORS[model]
-                ? `<span class="author-chip" tabindex="0" title="${esc(REFERENCE_AUTHORS[model])}">wrote the reference</span>` : '';
+            const authorChip = model => {
+                const v = REFERENCE_AUTHORS[model];
+                if (!v) return '';
+                const [label, tip] = Array.isArray(v) ? v : ['wrote the reference', v];
+                return `<a class="author-chip" href="report.html#8-limits" title="${esc(tip)}">${esc(label)}</a>`;
+            };
 
             const rows = d.models.map(m => ({ kind: 'model', score: m.score_4aj.value, m }))
                 .concat(d.reference_rows.map(r => ({ kind: 'ref', score: r.score.value, r })))
