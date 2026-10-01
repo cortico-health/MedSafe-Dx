@@ -358,28 +358,6 @@
         </header>
 
         <div class="content">
-            <div class="changes-panel" id="changes-panel">
-                <h2>What changed in v0.3</h2>
-                <p class="changes-intro">
-                    We narrowed MedSafe-Dx to the synthetic DDXPlus patients whose safety label is backed by published clinical guidance.
-                    The <a href="report.html">methodology</a> gives every rule, source and limit.
-                </p>
-                <div class="changes-body" id="changes-body">
-                <ol>
-                    <li><strong>Why.</strong> Clinical advisors reviewing the v0.1 model answers, and our own audit, found that the dataset's answer often disagreed with other references for the same patient, because DDXPlus gives every patient with a condition the same severity. A literature review judged about two-thirds of the answers our earlier scoring penalised to be safe.<!-- source: docs/v0.3-fp-fn-audit.md, update table, A3 row "Precision, all penalties" 33.5% (185 of 553), so 66.5% of penalised answers were safe by the reference --></li>
-                    <li><strong>What changed.</strong> We keep each case, correct it with a published red-flag rule, or set it aside, and cite the reason.</li>
-                    <li><strong>How we checked.</strong> We froze the rules and tested them on fresh cases against criteria set in advance. The first round failed on one group of cases and on reviewer agreement; we set that group aside and the second round passed five of six criteria; the failing rule was demoted.<!-- source: results/phase2/label_validation.md; results/phase2b/validation.md --></li>
-                    <li><strong>Scoring.</strong> A model passes a serious case only when it escalates for a valid serious reason, so escalating everyone with one fixed flag scores 0.</li>
-                </ol>
-                <p style="font-size: 0.9rem;">
-                    <a href="/archive/v0.1-board-2026-09/">Previous board (v0.1)</a> &middot;
-                    <a href="/archive/">All archived boards and reports</a> &middot;
-                    <a href="#how-to-read">How the score works</a>
-                </p>
-                </div>
-                <button type="button" class="changes-toggle" id="changes-toggle" aria-expanded="false" aria-controls="changes-body">Show more &#9662;</button>
-            </div>
-
             <div class="disclaimer">
                 <p class="about"><strong>MedSafe-Dx v0.3</strong> tests one decision: given a GP intake summary for a synthetic patient, does a language model flag the patient who needs prompt attention and leave alone the one who does not?</p>
                 <p class="intended-use">MedSafe-Dx is developed by Cortico Health Technologies, which builds clinical software. Not for clinical use: scores describe behaviour on synthetic patients, not fitness for patient care.<!-- source: decision 37 (verbatim) --></p>
@@ -452,6 +430,27 @@
                 </div>
             </div>
 
+            <div class="changes-panel" id="changes-panel">
+                <h2>What changed in v0.3</h2>
+                <p class="changes-intro">
+                    We narrowed MedSafe-Dx to the synthetic DDXPlus patients whose safety label is backed by published clinical guidance.
+                    The <a href="report.html">methodology</a> gives every rule, source and limit.
+                </p>
+                <div class="changes-body" id="changes-body">
+                <ol>
+                    <li><strong>Why.</strong> Clinical advisors reviewing the v0.1 model answers, and our own audit, found that the dataset's answer often disagreed with other references for the same patient, because DDXPlus gives every patient with a condition the same severity. A literature review judged about two-thirds of the answers our earlier scoring penalised to be safe.<!-- source: docs/v0.3-fp-fn-audit.md, update table, A3 row "Precision, all penalties" 33.5% (185 of 553), so 66.5% of penalised answers were safe by the reference --></li>
+                    <li><strong>What changed.</strong> We keep each case, correct it with a published red-flag rule, or set it aside, and cite the reason.</li>
+                    <li><strong>How we checked.</strong> We froze the rules and tested them on fresh cases against criteria set in advance. The first round failed on one group of cases and on reviewer agreement; we set that group aside and the second round passed five of six criteria; the failing rule was demoted.<!-- source: results/phase2/label_validation.md; results/phase2b/validation.md --></li>
+                    <li><strong>Scoring.</strong> A model passes a serious case only when it escalates for a valid serious reason, so escalating everyone with one fixed flag scores 0.</li>
+                </ol>
+                <p style="font-size: 0.9rem;">
+                    <a href="/archive/v0.1-board-2026-09/">Previous board (v0.1)</a> &middot;
+                    <a href="/archive/">All archived boards and reports</a> &middot;
+                    <a href="#how-to-read">How the score works</a>
+                </p>
+                </div>
+                <button type="button" class="changes-toggle" id="changes-toggle" aria-expanded="false" aria-controls="changes-body">Show more &#9662;</button>
+            </div>
         </div>
 
         <footer>
