@@ -212,7 +212,7 @@
             background: #fff;
         }
         /* The chart draws in pixel units at the host's width, so its text stays at
-           its set size on a phone; below 340px it scrolls inside this box. */
+           its set size on a phone; below 300px it scrolls inside this box. */
         #uo-host { overflow-x: auto; -webkit-overflow-scrolling: touch; }
         #uo-host svg { display: block; font-family: 'Inter', sans-serif; }
         .uo-chart .gridline { stroke: #f1f3f5; stroke-width: 1; }
@@ -240,6 +240,13 @@
         .uo-chart .leader { stroke: #868e96; stroke-width: 1; }
         .uo-chart .iso { stroke: #adb5bd; stroke-width: 1.2; stroke-dasharray: 1.5 4; stroke-linecap: round; }
         .uo-chart .iso-label { font-size: 11px; fill: #6c757d; }
+        .uo-chart .ideal-label { font-size: 11px; fill: #198754; font-weight: 600; }
+        .uo-chart .zoom-box { fill: rgba(75, 84, 246, 0.04); stroke: #4b54f6; stroke-opacity: 0.45; stroke-width: 1; stroke-dasharray: 4 3; }
+        .uo-chart .zoom-label { font-size: 11px; fill: #4b54f6; font-weight: 600; }
+        .uo-chart .zoom-link:hover .zoom-label, .uo-chart .zoom-link:focus .zoom-label { text-decoration: underline; }
+        .uo-chart h4.uo-sub { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; color: #343a40; margin: 1.5rem 0 0.5rem; scroll-margin-top: 1rem; }
+        #uo-zoom-host { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        #uo-zoom-host svg { display: block; font-family: 'Inter', sans-serif; }
         .uo-caption { font-size: 0.82rem; color: #6c757d; line-height: 1.5; margin-top: 0.4rem; }
         .uo-caption:empty { display: none; }
         #uo-key { color: #495057; }
@@ -355,7 +362,7 @@
                 <p class="intended-use">MedSafe-Dx is developed by Cortico Health Technologies, which builds clinical software. Not for clinical use: scores describe behaviour on synthetic patients, not fitness for patient care.<!-- source: decision 37 (verbatim) --></p>
                 <dl class="facts">
                     <div><dt>This run</dt><dd>16 models, each answering the same 900 synthetic DDXPlus patients (seed 20261005). Grok 4.7 stopped at 800 of 900 cases and DeepSeek V4.1 Flash at 819 when the account ran out of credit. We add a model when it has answered all 900.<!-- source: results/v03_full/scores.md, 4aj scores table (16 rows) and header ("Not scored") --></dd></div>
-                    <div><dt>Patients</dt><dd>500 serious by condition, 140 serious by a red-flag rule, 260 benign<!-- source: results/v03_full/scores.md, header (strata) -->. None has an exact public copy<!-- source: results/v03_full/scores.md, header (0 twins) -->.</dd></div>
+                    <div><dt>Patients</dt><dd>500 serious by condition, 140 serious by a red-flag rule, 260 benign<!-- source: results/v03_full/scores.md, header (strata) -->. All come from the public DDXPlus test split; none has an exact twin in its validation or test splits (the train split was not searched)<!-- source: results/v03_full/scores.md, header (0 twins) -->.</dd></div>
                     <div><dt>Scoring</dt><dd>Scoring is arithmetic on a fixed rule file; no model grades an answer. The rules were designed against and checked on a literature reference written by two AI reviewers, Claude Fable 5.1 and GPT-6 Astra, and the authors drafted the rules working with Claude Opus 5.5. All three are ranked below and flagged (clinician review pending). The next round will use an adjudicator that is not on the board. See the <a href="report.html">methodology</a>.<!-- source: results/phase2b/label_validation.md header; results/phase2b/adjudication_notes.md line 1; decision 36; Opus 5.5: co-author on every commit to spec/case_selection_rules_v03.csv and docs/v0.3-fp-fn-audit.md --></dd></div>
                     <div><dt>Trade-off</dt><dd>We set aside cases whose right answer the intake cannot settle. Those cases are harder, so the benchmark understates failures on complex patients.<!-- source: docs/v0.3-case-selection-rules.md section 6 (27.0% unsafe on set-aside cases against 14.8% on kept) --></dd></div>
                     <div><dt>Contribute</dt><dd>Issues and PRs on <a href="https://github.com/cortico-health/MedSafe-Dx" target="_blank" rel="noopener">GitHub</a>. Inquiries: <a href="mailto:solutions@cortico.health">solutions@cortico.health</a></dd></div>
@@ -367,7 +374,10 @@
                 <h3 class="section">Misses vs over-escalations</h3>
                 <div id="uo-host"></div>
                 <p class="uo-caption" id="uo-key"></p>
-                <p class="uo-caption" id="uo-caption">Each dot is a model. Dotted lines join points with the same overall score; lower-left is better. For models, the vertical axis counts each partial as 1/7 of a miss, matching the score's costs; reference policies sit at their misses alone. Whiskers are 95% intervals; the vertical whisker is the misses interval shifted by the model's partials/7, an approximation. Grey hollow diamonds are reference policies. Hover or tap a mark for its score, misses, partials and over-escalations.</p>
+                <p class="uo-caption" id="uo-caption">Each dot is a model. Dotted lines join points with the same overall score; lower-left is better, and the green target at the corner is the ideal point (no misses, no over-escalations, score 100). For models, the vertical axis counts each partial as 1/7 of a miss, matching the score's costs; reference policies sit at their misses alone. Whiskers are 95% intervals; the vertical whisker is the misses interval shifted by the model's partials/7, an approximation. Grey hollow diamonds are reference policies. The dashed box marks the close-up below. Hover or tap a mark for its score, misses, partials and over-escalations.</p>
+                <h4 class="uo-sub" id="uo-zoom">Close-up: the leading cluster</h4>
+                <div id="uo-zoom-host"></div>
+                <p class="uo-caption">The same plot, zoomed to over-escalations 20-40% and misses 0-10%, with a dotted line every 10 points of score. Every model in this window carries its full name; models outside it are left out here.</p>
                 <div class="chart-tooltip" id="uo-tooltip" role="status"></div>
             </div>
 
@@ -631,45 +641,64 @@
         // The balanced cost is O + 7U + P (evaluator/v03_valid_reason.py), so on the axes
         // (O, U + P/7) every score is a straight line: O + 7y = zero_cost x (1 - score / 100).
         const ISO_SCORES = [0, 25, 50, 75, 100];
-        // Each axis runs from 0 to the next 5% past the highest whisker of the rows that score 0 or
-        // more (models and reference policies), so the models near the top keep room to separate.
-        // A row below that range sits on the plot's edge as a labelled arrow.
+        // The main view's x axis runs from 0 to the next 5% past the highest whisker of the rows that
+        // score 0 or more. Its y axis stops at the next 5% past naive Bayes's whisker, so the models
+        // near the top keep room to separate; a row missing more than that sits on the top edge as a
+        // labelled arrow. The close-up draws a fixed window around the leading cluster.
         const ceil5 = v => Math.floor(v / 5) * 5 + 5;
-        const REF_GREY = '#868e96', MODEL_BLUE = '#4b54f6';
+        const ZOOM = { x: [20, 40], y: [0, 10] };
+        const REF_GREY = '#868e96', MODEL_BLUE = '#4b54f6', IDEAL_GREEN = '#198754';
         let CHART_DATA = null;
 
         function renderChart(d) {
-            const host = document.getElementById('uo-host');
+            const inRange = d.models.map(md => ({ s: md.score_4aj.value, O: md.O.ci[1] }))
+                .concat(d.reference_rows.map(r => ({ s: r.score.value, O: r.O.ci[1] })))
+                .filter(r => r.s >= 0 && r.O < 100);
+            const nb = d.reference_rows.find(r => r.id === 'naive_bayes');
+            const yTop = ceil5(nb ? nb.U.ci[1] : Math.max(...d.models.filter(md => md.score_4aj.value >= 0).map(md => md.miss_equivalent.ci[1])));
+            const main = { x: [0, ceil5(Math.max(...inRange.map(r => r.O)))], y: [0, yTop] };
+            drawUo(document.getElementById('uo-host'), d, main, { zoom: false });
+            drawUo(document.getElementById('uo-zoom-host'), d, ZOOM, { zoom: true });
+        }
+
+        // Draws one view of the chart into host. The main view numbers the top cluster, turns
+        // off-scale rows into edge arrows and marks the ideal point and the close-up's window;
+        // the close-up names every model and leaves out the rows outside its window.
+        function drawUo(host, d, AXR, opt) {
+            const zoom = opt.zoom;
             const chart = document.getElementById('uo-chart');
             const tip = document.getElementById('uo-tooltip');
             host.innerHTML = '';
-            const inRange = d.models.map(md => ({ s: md.score_4aj.value, O: md.O.ci[1], Y: md.miss_equivalent.ci[1] }))
-                .concat(d.reference_rows.map(r => ({ s: r.score.value, O: r.O.ci[1], Y: r.U.ci[1] })))
-                .filter(r => r.s >= 0 && r.O < 100);
-            const UO_AX = { x: [0, ceil5(Math.max(...inRange.map(r => r.O)))],
-                            y: [0, ceil5(Math.max(...inRange.map(r => r.Y)))] };
-            const W = Math.max(340, Math.min(1100, Math.floor(host.clientWidth || 1000)));
+            const W = Math.max(300, Math.min(1100, Math.floor(host.clientWidth || 1000)));
             const narrow = W < 560;
-            const H = narrow ? 480 : Math.round(Math.min(560, W * 0.52));
+            const H = narrow ? (zoom ? 520 : 480) : Math.round(Math.min(560, W * 0.52));
             const m = { l: narrow ? 50 : 58, r: narrow ? 14 : 22, t: 34, b: narrow ? 40 : 46 };
             const pw = W - m.l - m.r, ph = H - m.t - m.b;
-            const X = o => m.l + (o - UO_AX.x[0]) / (UO_AX.x[1] - UO_AX.x[0]) * pw;
-            const Y = u => m.t + ph - (u - UO_AX.y[0]) / (UO_AX.y[1] - UO_AX.y[0]) * ph;
-            const inY = u => u >= UO_AX.y[0] && u <= UO_AX.y[1];
-            const inX = o => o >= UO_AX.x[0] && o <= UO_AX.x[1];
+            const X = o => m.l + (o - AXR.x[0]) / (AXR.x[1] - AXR.x[0]) * pw;
+            const Y = u => m.t + ph - (u - AXR.y[0]) / (AXR.y[1] - AXR.y[0]) * ph;
+            const inY = u => u >= AXR.y[0] && u <= AXR.y[1];
+            const inX = o => o >= AXR.x[0] && o <= AXR.x[1];
 
             const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: 'img',
-                'aria-label': 'Scatter plot of each model\'s misses, with each partial counted as a seventh of a miss (percent of SERIOUS patients), against over-escalations (percent of BENIGN patients), with 95% intervals, three reference policies and dotted lines of equal score' });
+                'aria-label': zoom
+                    ? `Close-up of the same plot: over-escalations ${AXR.x[0]} to ${AXR.x[1]}%, misses with partials counted as sevenths ${AXR.y[0]} to ${AXR.y[1]}%, with every model in that window named`
+                    : 'Scatter plot of each model\'s misses, with each partial counted as a seventh of a miss (percent of SERIOUS patients), against over-escalations (percent of BENIGN patients), with 95% intervals, three reference policies, the ideal point and dotted lines of equal score' });
             host.appendChild(svg);
+            // Whiskers and score lines stay inside the plot area.
+            const clipId = (zoom ? 'uo-clip-zoom' : 'uo-clip-main');
+            const defs = el('defs'), cp = el('clipPath', { id: clipId });
+            cp.appendChild(el('rect', { x: m.l, y: m.t, width: pw, height: ph }));
+            defs.appendChild(cp); svg.appendChild(defs);
 
             // Grid, ticks, axes
-            const xStep = narrow && UO_AX.x[1] > 50 ? 20 : 10;
-            for (let v = UO_AX.x[0]; v <= UO_AX.x[1]; v += xStep) {
+            const xSpan = AXR.x[1] - AXR.x[0], ySpan = AXR.y[1] - AXR.y[0];
+            const xStep = xSpan <= 20 ? (narrow ? 5 : 2) : narrow && xSpan > 50 ? 20 : 10;
+            for (let v = AXR.x[0]; v <= AXR.x[1]; v += xStep) {
                 svg.appendChild(el('line', { class: 'gridline', x1: X(v), x2: X(v), y1: m.t, y2: m.t + ph }));
                 svg.appendChild(el('text', { class: 'axis-tick', x: X(v), y: m.t + ph + 19, 'text-anchor': 'middle' }, v + '%'));
             }
-            const yStep = UO_AX.y[1] <= 30 ? 5 : 10;
-            for (let v = UO_AX.y[0]; v <= UO_AX.y[1]; v += yStep) {
+            const yStep = ySpan <= 10 ? (narrow ? 2 : 1) : ySpan <= 30 ? 5 : 10;
+            for (let v = AXR.y[0]; v <= AXR.y[1]; v += yStep) {
                 svg.appendChild(el('line', { class: 'gridline', x1: m.l, x2: m.l + pw, y1: Y(v), y2: Y(v) }));
                 svg.appendChild(el('text', { class: 'axis-tick', x: m.l - 6, y: Y(v) + 4, 'text-anchor': 'end' }, v + '%'));
             }
@@ -682,22 +711,24 @@
 
             // Direction hints sit in empty parts of the plot; label placement avoids them.
             const obstacles = [];
+            const block = n => { const b = n.getBBox(); obstacles.push({ x: b.x - 2, y: b.y - 2, w: b.width + 4, h: b.height + 4 }); };
             const hint = (x, y, anchor, text) => {
                 const t = el('text', { class: 'hint', x, y, 'text-anchor': anchor }, text);
                 svg.appendChild(t);
-                const b = t.getBBox();
-                obstacles.push({ x: b.x - 2, y: b.y - 2, w: b.width + 4, h: b.height + 4 });
+                block(t);
             };
-            hint(X(UO_AX.x[1]) - 4, Y(0) - 6, 'end', 'more cautious →');
-            hint(X(UO_AX.x[0]) + 8, Y(UO_AX.y[1] * 0.62), 'start', '↓ safer');
+            hint(X(AXR.x[1]) - 4, Y(AXR.y[0]) - 6, 'end', 'more cautious →');
+            if (!zoom) hint(X(AXR.x[0]) + 8, Y(AXR.y[1] * 0.62), 'start', '↓ safer');
 
             // Lines of equal score, clipped to the plot; a line that misses the plot is dropped.
             // Each label sits inside the plot at the line's right end and blocks model labels.
-            const zc = d.set.zero_cost_bal, iso = el('g');
+            // The close-up adds a line every 10 points, because only two of the main set cross it.
+            const zc = d.set.zero_cost_bal, iso = el('g', { 'clip-path': `url(#${clipId})` });
             svg.appendChild(iso);
-            for (const sc of ISO_SCORES) {
+            const isoScores = zoom ? [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100] : ISO_SCORES;
+            for (const sc of isoScores) {
                 const k = zc * (1 - sc / 100);               // O + 7y = k
-                const o0 = Math.max(UO_AX.x[0], k - 7 * UO_AX.y[1]), o1 = Math.min(UO_AX.x[1], k);
+                const o0 = Math.max(AXR.x[0], k - 7 * AXR.y[1]), o1 = Math.min(AXR.x[1], k - 7 * AXR.y[0]);
                 if (o1 - o0 < 0.5) continue;
                 const y0 = (k - o0) / 7, y1 = (k - o1) / 7;
                 iso.appendChild(el('line', { class: 'iso', x1: X(o0), y1: Y(y0), x2: X(o1), y2: Y(y1) }));
@@ -705,27 +736,50 @@
                 const t = el('text', { class: 'iso-label', x: X(o1) - 4, y: 0, 'text-anchor': 'end' }, `score ${sc}`);
                 svg.appendChild(t);
                 const w = t.getComputedTextLength();
-                const lineY = px => Y((k - (UO_AX.x[0] + (px - m.l) / pw * (UO_AX.x[1] - UO_AX.x[0]))) / 7);
-                t.setAttribute('y', Math.min(lineY(X(o1) - 4 - w), lineY(X(o1) - 4)) - 4);
-                const b = t.getBBox();
-                obstacles.push({ x: b.x - 2, y: b.y - 2, w: b.width + 4, h: b.height + 4 });
+                const lineY = px => Y((k - (AXR.x[0] + (px - m.l) / pw * xSpan)) / 7);
+                t.setAttribute('y', Math.max(m.t + 12, Math.min(lineY(X(o1) - 4 - w), lineY(X(o1) - 4)) - 4));
+                block(t);
             }
 
-            // Marks: models, then reference policies. Off-scale references become an arrow at the edge.
-            // The top cluster crowds, so ranks 1 to TOP_NUMBERED carry their rank as the label and the key
-            // under the chart names them; every other model keeps its name.
+            if (!zoom) {
+                // The ideal point: no misses, no over-escalations, score 100. A hollow target keeps the axes visible.
+                const ideal = el('g', { class: 'ideal', role: 'img', 'aria-label': 'Ideal point: 0% misses, 0% over-escalations, score 100' });
+                ideal.appendChild(el('circle', { cx: X(0), cy: Y(0), r: 7, fill: 'none', stroke: IDEAL_GREEN, 'stroke-width': 1.8 }));
+                ideal.appendChild(el('circle', { cx: X(0), cy: Y(0), r: 2.5, fill: IDEAL_GREEN }));
+                ideal.appendChild(el('title', {}, 'Ideal point: 0% misses, 0% over-escalations, score 100'));
+                svg.appendChild(ideal);
+                const t = el('text', { class: 'ideal-label', x: X(0) + 11, y: Y(0) - 10 }, 'Ideal (score 100)');
+                svg.appendChild(t);
+                block(t);
+                obstacles.push({ x: X(0) - 9, y: Y(0) - 9, w: 18, h: 18 });
+
+                // The close-up's window, linked to the close-up below.
+                const zx0 = X(ZOOM.x[0]), zx1 = X(ZOOM.x[1]), zy0 = Y(ZOOM.y[1]), zy1 = Y(ZOOM.y[0]);
+                svg.appendChild(el('rect', { class: 'zoom-box', x: zx0, y: zy0, width: zx1 - zx0, height: zy1 - zy0 }));
+                const a = el('a', { href: '#uo-zoom', class: 'zoom-link' });
+                const zt = el('text', { class: 'zoom-label', x: zx1 - 2, y: zy0 - 5, 'text-anchor': 'end' }, 'zoomed below ↓');
+                a.appendChild(zt); svg.appendChild(a);
+                block(zt);
+            }
+
+            // Marks: models, then reference policies. In the main view an off-scale row becomes an
+            // arrow at the edge, and ranks 1 to TOP_NUMBERED carry their rank as the label, because
+            // the top cluster crowds; the key under the chart names them. The close-up names every
+            // model in full and leaves out rows outside its window.
             const TOP_NUMBERED = 6;
             const rankOf = new Map(d.models.slice().sort((a, b) => b.score_4aj.value - a.score_4aj.value).map((md, i) => [md.model, i + 1]));
-            const items = d.models.map(md => ({ kind: 'model', id: md.model, fullName: NAMES[md.model] || md.model,
-                name: rankOf.get(md.model) <= TOP_NUMBERED ? String(rankOf.get(md.model)) : ((narrow && SHORT[md.model]) || NAMES[md.model] || md.model),
+            let items = d.models.map(md => ({ kind: 'model', id: md.model, fullName: NAMES[md.model] || md.model,
+                name: zoom ? (NAMES[md.model] || md.model)
+                    : rankOf.get(md.model) <= TOP_NUMBERED ? String(rankOf.get(md.model)) : ((narrow && SHORT[md.model]) || NAMES[md.model] || md.model),
                 U: md.U, P: md.partial.total, Y: md.miss_equivalent, O: md.O, score: md.score_4aj }))
                 .concat(d.reference_rows.map(r => ({ kind: 'ref', id: r.id,
                     name: r.id === 'zero_point' ? (narrow ? 'Zero point' : 'Zero point (escalate everyone)') : (REFS[r.id] || { name: r.id }).name,
                     fullName: (REFS[r.id] || { name: r.id }).name, U: r.U, P: r.partial, Y: r.U, O: r.O, score: r.score })));
+            if (zoom) items = items.filter(it => inX(it.O.value) && inY(it.Y.value));
             const offScaleRefs = [];
             const marks = [];
-            const leaders = el('g'), whiskers = el('g'), dots = el('g');
-            const wClass = 'whisker' + (d.models.length > 10 ? ' faint' : '');
+            const leaders = el('g'), whiskers = el('g', { 'clip-path': `url(#${clipId})` }), dots = el('g');
+            const wClass = 'whisker' + (items.length > 10 ? ' faint' : '');
             svg.appendChild(leaders); svg.appendChild(whiskers); svg.appendChild(dots);
             for (const it of items) {
                 const color = it.kind === 'ref' ? REF_GREY : MODEL_BLUE;
@@ -740,8 +794,8 @@
                         d: `M${px} ${ey - 14} l6 10 h-12 z` }));
                     dots.appendChild(g);
                     it.node = g;
-                    if (it.kind === 'ref') { offScaleRefs.push(`${it.fullName} (top edge): ${f1(it.U.value)}% misses`); continue; }
-                    it.name = narrow ? `${it.name}, U ${f1(it.U.value)}%` : `${it.fullName || it.name}: ${f1(it.U.value)}% misses, off scale`;
+                    if (it.kind === 'ref') it.name = `${it.fullName}: ${f1(it.U.value)}% misses`;
+                    else it.name = narrow ? `${it.name}, U ${f1(it.U.value)}%` : `${it.fullName || it.name}: ${f1(it.U.value)}% misses, off scale`;
                     marks.push({ it, px, py: ey - 8 });
                     continue;
                 }
@@ -776,12 +830,16 @@
                 marks.push({ it, px, py });
             }
             placeUoLabels(svg, leaders, marks, obstacles, { l: m.l, r: m.l + pw + m.r - 2, t: 2, b: m.t + ph });
-            const numbered = d.models.filter(md => rankOf.get(md.model) <= TOP_NUMBERED)
-                .sort((a, b) => rankOf.get(a.model) - rankOf.get(b.model))
-                .map(md => `${rankOf.get(md.model)} ${esc(NAMES[md.model] || md.model)}`);
-            document.getElementById('uo-key').innerHTML =
-                `<strong>Numbered dots</strong> are ranks 1-${TOP_NUMBERED}: ${numbered.join(', ')}.`
-                + (offScaleRefs.length ? ` <strong>Arrows</strong> are reference policies off the scale: ${offScaleRefs.map(esc).join('; ')}.` : '');
+            if (!zoom) {
+                const numbered = d.models.filter(md => rankOf.get(md.model) <= TOP_NUMBERED)
+                    .sort((a, b) => rankOf.get(a.model) - rankOf.get(b.model))
+                    .map(md => `${rankOf.get(md.model)} ${esc(NAMES[md.model] || md.model)}`);
+                const above = items.filter(it => !inY(it.Y.value)).map(it => `${it.fullName} (${f1(it.U.value)}% misses)`);
+                document.getElementById('uo-key').innerHTML =
+                    `<strong>Numbered dots</strong> are ranks 1-${TOP_NUMBERED}: ${numbered.join(', ')}.`
+                    + ` <strong>The vertical axis stops at ${AXR.y[1]}%</strong>, just above naive Bayes; ${above.length ? `${esc(above.join(', '))} sit off the top as arrows.` : 'no row misses more.'}`
+                    + (offScaleRefs.length ? ` <strong>Right-edge arrows</strong> are reference policies off the scale: ${offScaleRefs.map(esc).join('; ')}.` : '');
+            }
 
             const tipHtml = it => `<strong>${esc(it.fullName || it.name)}${it.kind === 'ref' ? ' (reference)' : ''}</strong>
                 <div class="tt-row"><span>Score</span><span class="tt-val">${f1(it.score.value)}${it.score.ci[0] !== it.score.ci[1] ? ' ' + ciText(it.score.ci) : ''}</span></div>
