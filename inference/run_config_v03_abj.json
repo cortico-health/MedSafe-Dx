@@ -1,5 +1,5 @@
 {
-  "_about": "MedSafe-Dx v0.3 arms 4aj and 4bj (spec/v0.3-scoring.md, amendment A1). The values are run_config_v03_ab.json's (max_tokens 16000, reasoning effort 'medium' where the model supports it, one retry on an empty or truncated response) over a seven-model roster, plus the 11 models of the 2026-09-29 roster expansion (results/v03_full/roster_expansion.md), all at reasoning effort 'medium'. Claude Haiku 4.5 runs with reasoning off (null: we send no reasoning parameter), as do the Llama models, which take none.",
+  "_about": "MedSafe-Dx v0.3 arms 4aj and 4bj (spec/v0.3-scoring.md, amendment A1). The values are run_config_v03_ab.json's (max_tokens 16000, reasoning effort 'medium' where the model supports it, one retry on an empty or truncated response) over a seven-model roster, plus the 11 models of the 2026-09-29 roster expansion (results/v03_full/roster_expansion.md), all at reasoning effort 'medium'. Claude Haiku 4.5 runs with reasoning off (null: we send no reasoning parameter), as do the Llama models, which take none. GPT-5.2 and Llama 4 Maverick, first and second on the original v0.1 board, were added on 2026-10-01 as progress references: GPT-5.2 at reasoning effort 'medium', Maverick with no reasoning parameter.",
   "config_version": "v03-abj-2026-09-26",
   "prompt_version": "v7",
   "decoder_version": "v02",
@@ -64,6 +64,12 @@
     },
     "x-ai/grok-4.7": {
       "reasoning_effort": "medium"
+    },
+    "openai/gpt-5.2": {
+      "reasoning_effort": "medium"
+    },
+    "meta-llama/llama-4-maverick": {
+      "reasoning_effort": null
     }
   }
 }

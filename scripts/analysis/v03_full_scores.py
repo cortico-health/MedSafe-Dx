@@ -3,7 +3,7 @@
 Score the v0.3 full run (docs/v0.3-case-selection-rules.md section 7.4; spec/v0.3-scoring.md record R2).
 
 The original seven models x arms 4aj and 4bj, plus the models of the roster expansion that completed (results/v03_full/
-roster_expansion.md; decisions 30-33) in arm 4aj only, on the 900 cases of data/test_sets/eval-v03-full.case_ids.txt,
+roster_expansion.md; decisions 30-33) and the v0.1 reference models (REFERENCE) in arm 4aj only, on the 900 cases of data/test_sets/eval-v03-full.case_ids.txt,
 under the selection rules' classes and credits with amendments A3-A5 (scripts/analysis/v03_phase2_common.py). Arm 4aj
 is the headline and the only scored arm (record R3); we keep the seven models' 4bj rows for the methodology's
 discussion. We report:
@@ -50,16 +50,21 @@ PHASE = "full"
 ALPHA = 0.05
 MEASURES = pc.MEASURES
 # The roster expansion of 2026-09-29 (results/v03_full/roster_expansion.md), run in arm 4aj only (record R3).
-# We score a model only when its file covers all 900 cases; the others wait in UNFINISHED with the reason.
-UNFINISHED = {"x-ai/grok-4.7": "stopped at 800 of 900 cases when the OpenRouter account ran out of credit; to be added later",
-              "deepseek/deepseek-v4.1-flash": "stopped at 819 of 900 cases: its providers answered slowly and the account ran out of "
-                                              "credit; to be added later"}
+# Grok 4.7 and DeepSeek V4.1 Flash stopped short on 2026-09-30 and finished on 2026-10-01.
 EXPANSION = ("anthropic/claude-fable-5.1", "openai/gpt-6-astra", "anthropic/claude-opus-5.5",
              "openai/gpt-5.4-mini", "openai/gpt-6.1-sol", "moonshotai/kimi-k3", "anthropic/claude-sonnet-5.5",
-             "google/gemini-3.8-flash", "openai/gpt-6-luna")
-MODELS = pc.MODELS + EXPANSION
-# The provenance files of the two runs into results/v03_full/runs/.
-PROVENANCE = ("provenance.json", "provenance-expansion.json")
+             "google/gemini-3.8-flash", "openai/gpt-6-luna", "x-ai/grok-4.7", "deepseek/deepseek-v4.1-flash")
+# Progress references, added 2026-10-01 in arm 4aj only: models from the top of the v0.1 board
+# (web/static/archive/v0.1-preprint/leaderboard-data.json), scored so readers can see how far models have come.
+# They sit outside the roster expansion.
+REFERENCE = ("openai/gpt-5.2", "meta-llama/llama-4-maverick")
+# We score a model only when its file covers all 900 cases; the others wait in UNFINISHED with the reason.
+# A case left errored after the parse retry is covered: the parse rule scores it as unreadable (routine).
+UNFINISHED: dict[str, str] = {}
+MODELS = pc.MODELS + EXPANSION + REFERENCE
+# The provenance files of the runs into results/v03_full/runs/.
+PROVENANCE = ("provenance.json", "provenance-expansion.json", "provenance-v01-reference.json",
+              "provenance-v01-reference-resume.json")
 # Above this many models in an arm, scores.md lists adjacent pairs and a per-model summary instead of every pair.
 FULL_PAIR_LIST_MAX = 8
 
@@ -150,7 +155,7 @@ def main() -> None:
     s = pc.load_phase2(phase=PHASE)
     head_rule, ccsr_rule = vr.TierFileRule(), vr.TierFileRule(include_ccsr=True)
     runs = pc.load_runs(s, head_rule, RUNS, models=MODELS)
-    expected = len(pc.MODELS) * len(pc.ARMS) + len(EXPANSION)
+    expected = len(pc.MODELS) * len(pc.ARMS) + len(EXPANSION) + len(REFERENCE)
     assert len(runs) == expected, f"{len(runs)} prediction files; expected {expected}"
     recs = pc.records(s, runs, head_rule)
     head = pc.score(s, recs, within=True)
@@ -202,7 +207,8 @@ def main() -> None:
          "- **Intervals:** 95%, resampling cases within each true condition (the drawn mix is the estimand; spec record R2); "
          "the condition bootstrap, which also varies the mix, is the sensitivity column. 2,000 draws, seed 20260923.",
          f"- **Run:** `inference/run_config_v03_abj.json` via OpenRouter under the account's data policy: the original seven "
-         f"models in prompts v7a4aj and v7a4bj, the {len(EXPANSION)} added models (results/v03_full/roster_expansion.md) in "
+         f"models in prompts v7a4aj and v7a4bj, the {len(EXPANSION)} added models (results/v03_full/roster_expansion.md) and "
+         f"the v0.1 reference model{'s' if len(REFERENCE) > 1 else ''} ({', '.join(REFERENCE)}; ranks {'1-' + str(len(REFERENCE)) if len(REFERENCE) > 1 else '1'} on the v0.1 board) in "
          f"v7a4aj only. Provenance in " + " and ".join(f"`{RUNS.relative_to(ROOT)}/{f}`" for f in PROVENANCE) +
          f". Token cost {tokens_cost:.2f} USD over {len(files)} files (account spend delta {spend:.2f} USD: "
          + "; ".join(f"{k} {v:.2f}" for k, v in spend_by_run.items()) + "). A parse failure left after the one retry is "
@@ -213,6 +219,8 @@ def main() -> None:
          "Score is `score_z_bal`. U: SERIOUS cases costing a full miss. O: BENIGN cases escalated. Partial: SERIOUS cases "
          "charged a partial (in-list / off-list / truth). All in %.", ""]
 
+    reference_short = {pc.sb.short(m) for m in REFERENCE}
+
     def score_table(arm):
         T = ["| Model | Score [95% CI, within-condition] | Condition bootstrap | U | O | Partial (in / off / truth) | Escalated |",
              "|---|---|---|---|---|---|---|"]
@@ -220,7 +228,8 @@ def main() -> None:
             if (m, arm) not in rows:
                 continue
             r, rc = rows[(m, arm)], rows_c[(m, arm)]
-            T.append(f"| {m} | {ci(r['score_z_bal'])} | [{fmt(rc['score_z_bal']['ci'][0])}, {fmt(rc['score_z_bal']['ci'][1])}] | "
+            name = f"{m} (v0.1 reference)" if m in reference_short else m
+            T.append(f"| {name} | {ci(r['score_z_bal'])} | [{fmt(rc['score_z_bal']['ci'][0])}, {fmt(rc['score_z_bal']['ci'][1])}] | "
                      f"{ci(r['U'])} | {ci(r['O'])} | {fmt(r['partial']['value'])} ({fmt(r['partial_inlist']['value'])} / "
                      f"{fmt(r['partial_offlist']['value'])} / {fmt(r['partial_truth']['value'])}) | {fmt(r['esc']['value'])} |")
         return T
@@ -327,7 +336,7 @@ def main() -> None:
         sc = {k: v for k, v in sc.items() if k not in ("raw", "zero_outcome", "M", "key")}
         return {**sc, "rows": {f"{m}|{a}": r for (m, a), r in sc["rows"].items()},
                 "model_pairs": {"|".join(k): d for k, d in sc["model_pairs"].items()}}
-    (OUT / "scores.json").write_text(json.dumps({
+    (OUT / "scores.json").write_text(json.dumps({"reference_models": list(REFERENCE),
         "set": {"cases": s.ab.key.n, "seed": meta["seed"], "strata": dict(strata), "twins": meta["twins"],
                 "replaced": meta["replaced"], "freeze": "7e67e24"},
         "headline_within_condition": js(head), "condition_bootstrap": js(cond), "sensitivity_ccsr": js(ccsr),

@@ -23,7 +23,7 @@ We froze the rules, drew 250 fresh cases nobody had read, had two AI reviewers (
 
 ### Headline scores (v0.3 full run)
 
-16 models on 900 never-reviewed cases (seed 20261005: 500 tier-1, 140 promoted by a rule, 260 benign; all from the public DDXPlus test split, chosen so none has an exact twin in the validation or test splits), arm 4aj (the intake alone, with a one-line justification). 100 is a perfect answer on every case; 0 is escalating every patient with one fixed flag (possible MI); below 0 is worse than that. Source: [`results/v03_full/scores.md`](results/v03_full/scores.md).
+20 models on 900 never-reviewed cases (seed 20261005: 500 tier-1, 140 promoted by a rule, 260 benign; all from the public DDXPlus test split, chosen so none has an exact twin in the validation or test splits), arm 4aj (the intake alone, with a one-line justification). 100 is a perfect answer on every case; 0 is escalating every patient with one fixed flag (possible MI); below 0 is worse than that. Source: [`results/v03_full/scores.md`](results/v03_full/scores.md).
 
 | # | Model | Score [95% CI] |
 |---|---|---|
@@ -35,18 +35,22 @@ We froze the rules, drew 250 fresh cases nobody had read, had two AI reviewers (
 | 6 | GPT-6 Luna | 67.1 [62.2, 71.6] |
 | 7 | GPT-5.6 Terra | 64.2 [58.5, 69.4] |
 | 8 | Gemini 3.8 Flash | 61.5 [56.2, 66.5] |
-| 9 | Kimi K3 | 58.7 [53.1, 64.5] |
-| 10 | GPT-5.4 mini | 57.4 [51.2, 63.3] |
-| 11 | Claude Sonnet 5.5 | 57.2 [51.8, 62.4] |
-| 12 | Claude Sonnet 4.6 | 50.6 [43.2, 57.5] |
-| 13 | GLM 5.3 | 40.5 [32.7, 47.9] |
-| 14 | gpt-oss-120b | 33.6 [26.5, 40.8] |
-| 15 | Claude Haiku 4.5 | 19.9 [10.9, 29.4] |
-| 16 | Llama 3.1 8B Instruct | -116.6 [-128.0, -104.4] |
+| 9 | GPT-5.2 (v0.1 #1, reference) | 60.9 [55.8, 65.6] |
+| 10 | Grok 4.7 | 60.8 [55.2, 65.9] |
+| 11 | Kimi K3 | 58.7 [53.1, 64.5] |
+| 12 | GPT-5.4 mini | 57.4 [51.2, 63.3] |
+| 13 | Claude Sonnet 5.5 | 57.2 [51.8, 62.4] |
+| 14 | DeepSeek V4.1 Flash | 55.1 [48.7, 61.0] |
+| 15 | Claude Sonnet 4.6 | 50.6 [43.2, 57.5] |
+| 16 | GLM 5.3 | 40.5 [32.7, 47.9] |
+| 17 | gpt-oss-120b | 33.6 [26.5, 40.8] |
+| 18 | Claude Haiku 4.5 | 19.9 [10.9, 29.4] |
+| 19 | Llama 4 Maverick (v0.1 #2, reference) | 11.9 [3.0, 21.2] |
+| 20 | Llama 3.1 8B Instruct | -116.6 [-128.0, -104.4] |
 | | *Naive Bayes (dataset-knowledge reference)* | *12.8 [7.0, 18.9]* |
 | | *Always routine* | *-301.4* |
 
-Opus 5.5 leads at 73.5 and does not separate from Fable 5.1, Sol, Astra and Gemini 3.1 Pro; 89 of 120 pairs separate under the within-condition interval, 54 under the condition bootstrap (no correction for the 120 comparisons). Claude Fable 5.1 and GPT-6 Astra also wrote the reference the rules were designed against and checked on, and the authors drafted the rules working with Claude Opus 5.5; the methodology (section 8, limit 7) sets out what that means for their rows. Stating a benign working diagnosis in the prompt made no consistent difference across samples, so arm 4a is the only scored arm.
+Opus 5.5 leads at 73.5 and does not separate from Fable 5.1, Sol, Astra and Gemini 3.1 Pro; 140 of 190 pairs separate under the within-condition interval, 86 under the condition bootstrap (no correction for the 190 comparisons). GPT-5.2 and Llama 4 Maverick, first and second on the v0.1 board, rank 9th and 19th; we score them as progress references. Claude Fable 5.1 and GPT-6 Astra also wrote the reference the rules were designed against and checked on, and the authors drafted the rules working with Claude Opus 5.5; the methodology (section 8, limit 7) sets out what that means for their rows. Stating a benign working diagnosis in the prompt made no consistent difference across samples, so arm 4a is the only scored arm.
 
 > **Cite as:** Van Oyen C, Mirza-Haq N. *MedSafe-Dx (v0): A Safety-Focused Benchmark for Evaluating LLMs in Clinical Diagnostic Decision Support.* medRxiv 2026.04.14.26350711; doi: <https://doi.org/10.64898/2026.04.14.26350711>. v0.3 revision, 1 October 2026.
 
@@ -84,13 +88,14 @@ Needs the DDXPlus release files in `data/ddxplus_v0` and an OpenRouter key in `.
 # 1. Draw the 900 cases, build the key and render the intakes (a few minutes)
 python3 scripts/build_v03_full_set.py
 
-# 2. Run the 16 models in arm 4aj, the only scored arm. Our runs cost 176.74 USD in all:
-#    69.78 for the first seven models (which also ran arm 4bj) and 106.96 for the nine added
-#    models, including partial runs not reported here.
+# 2. Run the 20 models in arm 4aj, the only scored arm. Our runs cost 188.36 USD in all:
+#    69.78 for the first seven models (which also ran arm 4bj), 106.96 for the nine added
+#    models, and 11.61 for GPT-5.2 and Llama 4 Maverick (the v0.1 references) and the finished Grok 4.7 and
+#    DeepSeek V4.1 Flash runs, including partial runs not reported here.
 CASES=data/test_sets/eval-v03-full.json OUT_DIR=results/v03_full/runs \
   RUN_CONFIG=inference/run_config_v03_abj.json RUN_LABEL="v0.3 full run" \
   ARMS_OVERRIDE="v7a4aj" \
-  MODELS_OVERRIDE="anthropic/claude-opus-5.5 anthropic/claude-fable-5.1 openai/gpt-6.1-sol openai/gpt-6-astra google/gemini-3.1-pro-preview openai/gpt-6-luna openai/gpt-5.6-terra google/gemini-3.8-flash moonshotai/kimi-k3 openai/gpt-5.4-mini anthropic/claude-sonnet-5.5 anthropic/claude-sonnet-4.6 z-ai/glm-5.3 openai/gpt-oss-120b anthropic/claude-haiku-4.5 meta-llama/llama-3.1-8b-instruct" \
+  MODELS_OVERRIDE="anthropic/claude-opus-5.5 anthropic/claude-fable-5.1 openai/gpt-6.1-sol openai/gpt-6-astra google/gemini-3.1-pro-preview openai/gpt-6-luna openai/gpt-5.6-terra google/gemini-3.8-flash moonshotai/kimi-k3 openai/gpt-5.4-mini anthropic/claude-sonnet-5.5 anthropic/claude-sonnet-4.6 z-ai/glm-5.3 openai/gpt-oss-120b anthropic/claude-haiku-4.5 meta-llama/llama-3.1-8b-instruct x-ai/grok-4.7 deepseek/deepseek-v4.1-flash openai/gpt-5.2 meta-llama/llama-4-maverick" \
   NO_SCORE=1 CONFIRM=yes ./scripts/run_v03_ab.sh
 
 # 3. Score: writes results/v03_full/scores.md and scores.json

@@ -4,7 +4,7 @@
 - **Classes:** 640 SERIOUS, 260 BENIGN; the headline covers 900 cases.
 - **Scoring:** amendments A3-A5 with the selection rules' classes and credits (A4 truth partials), rule P5 demoted (decision 21). Off-list tiers: NHAMCS-rated rows (A5). Zero point (A2): I21 (Possible NSTEMI / STEMI, a target on 56 SERIOUS cases). Arm 4aj is the headline and the only scored arm (record R3); the original seven models also ran 4bj, which the methodology discusses.
 - **Intervals:** 95%, resampling cases within each true condition (the drawn mix is the estimand; spec record R2); the condition bootstrap, which also varies the mix, is the sensitivity column. 2,000 draws, seed 20260923.
-- **Run:** `inference/run_config_v03_abj.json` via OpenRouter under the account's data policy: the original seven models in prompts v7a4aj and v7a4bj, the 9 added models (results/v03_full/roster_expansion.md) in v7a4aj only. Provenance in `results/v03_full/runs/provenance.json` and `results/v03_full/runs/provenance-expansion.json`. Token cost 147.54 USD over 23 files (account spend delta 176.74 USD: v0.3 full run 69.78; v0.3 full run, roster expansion 106.96). A parse failure left after the one retry is scored as unreadable (routine), as in Phase 2b. Not scored: x-ai/grok-4.7, stopped at 800 of 900 cases when the OpenRouter account ran out of credit; to be added later. Not scored: deepseek/deepseek-v4.1-flash, stopped at 819 of 900 cases: its providers answered slowly and the account ran out of credit; to be added later.
+- **Run:** `inference/run_config_v03_abj.json` via OpenRouter under the account's data policy: the original seven models in prompts v7a4aj and v7a4bj, the 11 added models (results/v03_full/roster_expansion.md) and the v0.1 reference models (openai/gpt-5.2, meta-llama/llama-4-maverick; ranks 1-2 on the v0.1 board) in v7a4aj only. Provenance in `results/v03_full/runs/provenance.json` and `results/v03_full/runs/provenance-expansion.json` and `results/v03_full/runs/provenance-v01-reference.json` and `results/v03_full/runs/provenance-v01-reference-resume.json`. Token cost 187.96 USD over 27 files (account spend delta 188.36 USD: v0.3 full run 69.78; v0.3 full run, roster expansion 106.96; v0.3 full run, v0.1 reference models and unfinished expansion runs 11.61; v0.3 full run, Llama 4 Maverick resume (2 errored cases) 0.00). A parse failure left after the one retry is scored as unreadable (routine), as in Phase 2b.
 - **No precision:** this set has no reference review.
 
 ## Scores, arm 4aj (headline)
@@ -21,13 +21,17 @@ Score is `score_z_bal`. U: SERIOUS cases costing a full miss. O: BENIGN cases es
 | gpt-6-luna | 67.1 [62.2, 71.6] | [51.7, 80.5] | 2.2 [1.2, 3.3] | 28.5 [25.0, 32.2] | 13.6 (9.2 / 4.4 / 0.0) | 77.8 |
 | gpt-5.6-terra | 64.2 [58.5, 69.4] | [46.9, 78.7] | 3.3 [2.0, 4.5] | 29.6 [26.0, 33.5] | 9.8 (7.0 / 2.7 / 0.2) | 77.3 |
 | gemini-3.8-flash | 61.5 [56.2, 66.5] | [43.0, 77.3] | 3.4 [2.3, 4.6] | 32.7 [29.0, 36.2] | 10.5 (6.7 / 3.6 / 0.2) | 78.1 |
+| gpt-5.2 (v0.1 reference) | 60.9 [55.8, 65.6] | [46.5, 74.5] | 2.0 [1.1, 3.1] | 40.4 [36.4, 44.3] | 13.6 (10.2 / 3.4 / 0.0) | 81.3 |
+| grok-4.7 | 60.8 [55.2, 65.9] | [44.1, 74.4] | 3.1 [2.0, 4.4] | 32.3 [28.5, 36.3] | 14.2 (8.3 / 5.9 / 0.0) | 78.2 |
 | kimi-k3 | 58.7 [53.1, 64.5] | [35.4, 77.9] | 5.0 [3.6, 6.4] | 26.1 [22.7, 29.7] | 10.9 (6.4 / 4.4 / 0.2) | 75.1 |
 | gpt-5.4-mini | 57.4 [51.2, 63.3] | [38.3, 74.0] | 4.8 [3.5, 6.2] | 30.8 [27.0, 34.6] | 9.7 (6.9 / 2.8 / 0.0) | 76.6 |
 | claude-sonnet-5.5 | 57.2 [51.8, 62.4] | [33.7, 76.3] | 4.8 [3.7, 6.0] | 30.4 [26.8, 34.1] | 10.3 (6.7 / 3.4 / 0.2) | 76.4 |
+| deepseek-v4.1-flash | 55.1 [48.7, 61.0] | [34.9, 73.0] | 4.8 [3.4, 6.3] | 33.1 [29.3, 37.1] | 11.2 (5.6 / 5.5 / 0.2) | 77.2 |
 | claude-sonnet-4.6 | 50.6 [43.2, 57.5] | [31.6, 67.3] | 5.9 [4.4, 7.7] | 34.6 [30.6, 38.9] | 10.0 (5.2 / 4.8 / 0.0) | 76.9 |
 | glm-5.3 | 40.5 [32.7, 47.9] | [8.9, 66.3] | 10.2 [8.3, 12.0] | 23.5 [19.8, 27.4] | 9.2 (5.5 / 3.8 / 0.0) | 70.7 |
 | gpt-oss-120b | 33.6 [26.5, 40.8] | [12.4, 54.0] | 7.7 [6.0, 9.4] | 43.1 [38.5, 47.5] | 19.1 (14.2 / 4.5 / 0.3) | 78.1 |
 | claude-haiku-4.5 | 19.9 [10.9, 29.4] | [-11.9, 46.6] | 15.0 [12.7, 17.3] | 16.9 [13.3, 20.9] | 17.7 (11.9 / 2.8 / 3.0) | 65.3 |
+| llama-4-maverick (v0.1 reference) | 11.9 [3.0, 21.2] | [-28.0, 45.0] | 17.0 [14.9, 19.1] | 23.1 [18.8, 27.4] | 11.2 (5.8 / 4.8 / 0.6) | 65.7 |
 | llama-3.1-8b-instruct | -116.6 [-128.0, -104.4] | [-153.4, -75.7] | 49.4 [46.1, 52.4] | 6.9 [4.1, 9.8] | 25.2 (15.5 / 9.7 / 0.0) | 38.0 |
 
 ## Scores, arm 4bj (the original seven; for the methodology's discussion)
@@ -57,7 +61,7 @@ The zero point scores 0 by construction; A2's rule picks I21 on this set, so the
 
 A pair is separated when the 95% interval of the score difference excludes 0. The last column counts it under the condition bootstrap. Intervals are not corrected for the number of pairs.
 
-### Arm 4aj: 89 of 120 pairs separated (54 under the condition bootstrap)
+### Arm 4aj: 140 of 190 pairs separated (86 under the condition bootstrap)
 
 Pairs adjacent in rank (every pair is in scores.json, `headline_within_condition.model_pairs`):
 
@@ -70,35 +74,43 @@ Pairs adjacent in rank (every pair is in scores.json, `headline_within_condition
 | 5-6 | gemini-3.1-pro-preview | gpt-6-luna | 1.4 [-3.8, 6.9] | no | no |
 | 6-7 | gpt-6-luna | gpt-5.6-terra | 2.9 [-2.5, 8.4] | no | no |
 | 7-8 | gpt-5.6-terra | gemini-3.8-flash | 2.8 [-3.1, 8.8] | no | no |
-| 8-9 | gemini-3.8-flash | kimi-k3 | 2.8 [-4.2, 9.5] | no | no |
-| 9-10 | kimi-k3 | gpt-5.4-mini | 1.3 [-5.7, 8.2] | no | no |
-| 10-11 | gpt-5.4-mini | claude-sonnet-5.5 | 0.1 [-6.1, 6.5] | no | no |
-| 11-12 | claude-sonnet-5.5 | claude-sonnet-4.6 | 6.6 [-0.4, 14.2] | no | no |
-| 12-13 | claude-sonnet-4.6 | glm-5.3 | 10.1 [0.6, 19.5] | yes | no |
-| 13-14 | glm-5.3 | gpt-oss-120b | 6.9 [-3.2, 16.3] | no | no |
-| 14-15 | gpt-oss-120b | claude-haiku-4.5 | 13.7 [2.8, 24.9] | yes | no |
-| 15-16 | claude-haiku-4.5 | llama-3.1-8b-instruct | 136.6 [121.6, 150.7] | yes | yes |
+| 8-9 | gemini-3.8-flash | gpt-5.2 | 0.6 [-5.2, 6.1] | no | no |
+| 9-10 | gpt-5.2 | grok-4.7 | 0.1 [-5.8, 6.2] | no | no |
+| 10-11 | grok-4.7 | kimi-k3 | 2.1 [-4.8, 8.9] | no | no |
+| 11-12 | kimi-k3 | gpt-5.4-mini | 1.3 [-5.7, 8.2] | no | no |
+| 12-13 | gpt-5.4-mini | claude-sonnet-5.5 | 0.1 [-6.1, 6.5] | no | no |
+| 13-14 | claude-sonnet-5.5 | deepseek-v4.1-flash | 2.1 [-4.2, 8.9] | no | no |
+| 14-15 | deepseek-v4.1-flash | claude-sonnet-4.6 | 4.6 [-2.8, 11.4] | no | no |
+| 15-16 | claude-sonnet-4.6 | glm-5.3 | 10.1 [0.6, 19.5] | yes | no |
+| 16-17 | glm-5.3 | gpt-oss-120b | 6.9 [-3.2, 16.3] | no | no |
+| 17-18 | gpt-oss-120b | claude-haiku-4.5 | 13.7 [2.8, 24.9] | yes | no |
+| 18-19 | claude-haiku-4.5 | llama-4-maverick | 8.0 [-4.3, 20.0] | no | no |
+| 19-20 | llama-4-maverick | llama-3.1-8b-instruct | 128.6 [114.3, 142.5] | yes | yes |
 
 Per model, the models it does not separate from (within-condition intervals), with rank:
 
 | Rank | Model | Separated from | Not separated from |
 |---|---|---|---|
-| 1 | claude-opus-5.5 | 11 of 15 | claude-fable-5.1 (2), gpt-6.1-sol (3), gpt-6-astra (4), gemini-3.1-pro-preview (5) |
-| 2 | claude-fable-5.1 | 10 of 15 | claude-opus-5.5 (1), gpt-6.1-sol (3), gpt-6-astra (4), gemini-3.1-pro-preview (5), gpt-6-luna (6) |
-| 3 | gpt-6.1-sol | 9 of 15 | claude-opus-5.5 (1), claude-fable-5.1 (2), gpt-6-astra (4), gemini-3.1-pro-preview (5), gpt-6-luna (6), gpt-5.6-terra (7) |
-| 4 | gpt-6-astra | 9 of 15 | claude-opus-5.5 (1), claude-fable-5.1 (2), gpt-6.1-sol (3), gemini-3.1-pro-preview (5), gpt-6-luna (6), gpt-5.6-terra (7) |
-| 5 | gemini-3.1-pro-preview | 9 of 15 | claude-opus-5.5 (1), claude-fable-5.1 (2), gpt-6.1-sol (3), gpt-6-astra (4), gpt-6-luna (6), gpt-5.6-terra (7) |
-| 6 | gpt-6-luna | 9 of 15 | claude-fable-5.1 (2), gpt-6.1-sol (3), gpt-6-astra (4), gemini-3.1-pro-preview (5), gpt-5.6-terra (7), gemini-3.8-flash (8) |
-| 7 | gpt-5.6-terra | 8 of 15 | gpt-6.1-sol (3), gpt-6-astra (4), gemini-3.1-pro-preview (5), gpt-6-luna (6), gemini-3.8-flash (8), kimi-k3 (9), gpt-5.4-mini (10) |
-| 8 | gemini-3.8-flash | 10 of 15 | gpt-6-luna (6), gpt-5.6-terra (7), kimi-k3 (9), gpt-5.4-mini (10), claude-sonnet-5.5 (11) |
-| 9 | kimi-k3 | 11 of 15 | gpt-5.6-terra (7), gemini-3.8-flash (8), gpt-5.4-mini (10), claude-sonnet-5.5 (11) |
-| 10 | gpt-5.4-mini | 10 of 15 | gpt-5.6-terra (7), gemini-3.8-flash (8), kimi-k3 (9), claude-sonnet-5.5 (11), claude-sonnet-4.6 (12) |
-| 11 | claude-sonnet-5.5 | 11 of 15 | gemini-3.8-flash (8), kimi-k3 (9), gpt-5.4-mini (10), claude-sonnet-4.6 (12) |
-| 12 | claude-sonnet-4.6 | 13 of 15 | gpt-5.4-mini (10), claude-sonnet-5.5 (11) |
-| 13 | glm-5.3 | 14 of 15 | gpt-oss-120b (14) |
-| 14 | gpt-oss-120b | 14 of 15 | glm-5.3 (13) |
-| 15 | claude-haiku-4.5 | 15 of 15 | - |
-| 16 | llama-3.1-8b-instruct | 15 of 15 | - |
+| 1 | claude-opus-5.5 | 15 of 19 | claude-fable-5.1 (2), gpt-6.1-sol (3), gpt-6-astra (4), gemini-3.1-pro-preview (5) |
+| 2 | claude-fable-5.1 | 14 of 19 | claude-opus-5.5 (1), gpt-6.1-sol (3), gpt-6-astra (4), gemini-3.1-pro-preview (5), gpt-6-luna (6) |
+| 3 | gpt-6.1-sol | 13 of 19 | claude-opus-5.5 (1), claude-fable-5.1 (2), gpt-6-astra (4), gemini-3.1-pro-preview (5), gpt-6-luna (6), gpt-5.6-terra (7) |
+| 4 | gpt-6-astra | 13 of 19 | claude-opus-5.5 (1), claude-fable-5.1 (2), gpt-6.1-sol (3), gemini-3.1-pro-preview (5), gpt-6-luna (6), gpt-5.6-terra (7) |
+| 5 | gemini-3.1-pro-preview | 13 of 19 | claude-opus-5.5 (1), claude-fable-5.1 (2), gpt-6.1-sol (3), gpt-6-astra (4), gpt-6-luna (6), gpt-5.6-terra (7) |
+| 6 | gpt-6-luna | 12 of 19 | claude-fable-5.1 (2), gpt-6.1-sol (3), gpt-6-astra (4), gemini-3.1-pro-preview (5), gpt-5.6-terra (7), gemini-3.8-flash (8), grok-4.7 (10) |
+| 7 | gpt-5.6-terra | 10 of 19 | gpt-6.1-sol (3), gpt-6-astra (4), gemini-3.1-pro-preview (5), gpt-6-luna (6), gemini-3.8-flash (8), gpt-5.2 (9), grok-4.7 (10), kimi-k3 (11), gpt-5.4-mini (12) |
+| 8 | gemini-3.8-flash | 12 of 19 | gpt-6-luna (6), gpt-5.6-terra (7), gpt-5.2 (9), grok-4.7 (10), kimi-k3 (11), gpt-5.4-mini (12), claude-sonnet-5.5 (13) |
+| 9 | gpt-5.2 | 12 of 19 | gpt-5.6-terra (7), gemini-3.8-flash (8), grok-4.7 (10), kimi-k3 (11), gpt-5.4-mini (12), claude-sonnet-5.5 (13), deepseek-v4.1-flash (14) |
+| 10 | grok-4.7 | 11 of 19 | gpt-6-luna (6), gpt-5.6-terra (7), gemini-3.8-flash (8), gpt-5.2 (9), kimi-k3 (11), gpt-5.4-mini (12), claude-sonnet-5.5 (13), deepseek-v4.1-flash (14) |
+| 11 | kimi-k3 | 12 of 19 | gpt-5.6-terra (7), gemini-3.8-flash (8), gpt-5.2 (9), grok-4.7 (10), gpt-5.4-mini (12), claude-sonnet-5.5 (13), deepseek-v4.1-flash (14) |
+| 12 | gpt-5.4-mini | 11 of 19 | gpt-5.6-terra (7), gemini-3.8-flash (8), gpt-5.2 (9), grok-4.7 (10), kimi-k3 (11), claude-sonnet-5.5 (13), deepseek-v4.1-flash (14), claude-sonnet-4.6 (15) |
+| 13 | claude-sonnet-5.5 | 12 of 19 | gemini-3.8-flash (8), gpt-5.2 (9), grok-4.7 (10), kimi-k3 (11), gpt-5.4-mini (12), deepseek-v4.1-flash (14), claude-sonnet-4.6 (15) |
+| 14 | deepseek-v4.1-flash | 13 of 19 | gpt-5.2 (9), grok-4.7 (10), kimi-k3 (11), gpt-5.4-mini (12), claude-sonnet-5.5 (13), claude-sonnet-4.6 (15) |
+| 15 | claude-sonnet-4.6 | 16 of 19 | gpt-5.4-mini (12), claude-sonnet-5.5 (13), deepseek-v4.1-flash (14) |
+| 16 | glm-5.3 | 18 of 19 | gpt-oss-120b (17) |
+| 17 | gpt-oss-120b | 18 of 19 | glm-5.3 (16) |
+| 18 | claude-haiku-4.5 | 18 of 19 | llama-4-maverick (19) |
+| 19 | llama-4-maverick | 18 of 19 | claude-haiku-4.5 (18) |
+| 20 | llama-3.1-8b-instruct | 19 of 19 | - |
 
 ### Arm 4bj: 19 of 21 pairs separated (13 under the condition bootstrap)
 
@@ -168,9 +180,12 @@ CCSR: the off-list tiers include the CCSR-rated rows. I21: the zero point pinned
 | gpt-5.6-terra | 4aj | 64.2 [58.5, 69.4] | 64.2 [58.5, 69.4] | 64.2 [58.5, 69.4] |
 | gpt-5.6-terra | 4bj | 65.4 [60.4, 70.2] | 65.4 [60.4, 70.2] | 65.4 [60.4, 70.2] |
 | gemini-3.8-flash | 4aj | 61.5 [56.2, 66.5] | 62.0 [56.8, 67.0] | 61.5 [56.2, 66.5] |
+| gpt-5.2 | 4aj | 60.9 [55.8, 65.6] | 60.9 [55.8, 65.6] | 60.9 [55.8, 65.6] |
+| grok-4.7 | 4aj | 60.8 [55.2, 65.9] | 60.8 [55.2, 65.9] | 60.8 [55.2, 65.9] |
 | kimi-k3 | 4aj | 58.7 [53.1, 64.5] | 58.7 [53.1, 64.5] | 58.7 [53.1, 64.5] |
 | gpt-5.4-mini | 4aj | 57.4 [51.2, 63.3] | 57.4 [51.2, 63.3] | 57.4 [51.2, 63.3] |
 | claude-sonnet-5.5 | 4aj | 57.2 [51.8, 62.4] | 57.2 [51.8, 62.4] | 57.2 [51.8, 62.4] |
+| deepseek-v4.1-flash | 4aj | 55.1 [48.7, 61.0] | 55.1 [48.7, 61.0] | 55.1 [48.7, 61.0] |
 | claude-sonnet-4.6 | 4aj | 50.6 [43.2, 57.5] | 52.2 [45.2, 58.6] | 50.6 [43.2, 57.5] |
 | claude-sonnet-4.6 | 4bj | 48.3 [41.3, 55.1] | 49.4 [42.5, 55.9] | 48.3 [41.3, 55.1] |
 | glm-5.3 | 4aj | 40.5 [32.7, 47.9] | 41.0 [33.2, 48.5] | 40.5 [32.7, 47.9] |
@@ -179,67 +194,68 @@ CCSR: the off-list tiers include the CCSR-rated rows. I21: the zero point pinned
 | gpt-oss-120b | 4bj | 20.0 [12.5, 27.4] | 21.1 [13.4, 28.4] | 20.0 [12.5, 27.4] |
 | claude-haiku-4.5 | 4aj | 19.9 [10.9, 29.4] | 26.9 [18.5, 35.6] | 19.9 [10.9, 29.4] |
 | claude-haiku-4.5 | 4bj | 20.6 [10.6, 30.6] | 23.8 [14.3, 33.6] | 20.6 [10.6, 30.6] |
+| llama-4-maverick | 4aj | 11.9 [3.0, 21.2] | 14.4 [5.8, 22.9] | 11.9 [3.0, 21.2] |
 | llama-3.1-8b-instruct | 4aj | -116.6 [-128.0, -104.4] | -103.8 [-115.0, -92.4] | -116.6 [-128.0, -104.4] |
 | llama-3.1-8b-instruct | 4bj | -101.4 [-113.5, -90.3] | -95.5 [-107.4, -84.3] | -101.4 [-113.5, -90.3] |
 
 ## Full misses per condition, SERIOUS cases (arm 4aj)
 
-| Condition | n | claude-opus-5.5 | claude-fable-5.1 | gpt-6.1-sol | gpt-6-astra | gemini-3.1-pro-preview | gpt-6-luna | gpt-5.6-terra | gemini-3.8-flash | kimi-k3 | gpt-5.4-mini | claude-sonnet-5.5 | claude-sonnet-4.6 | glm-5.3 | gpt-oss-120b | claude-haiku-4.5 | llama-3.1-8b-instruct |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| PSVT | 25 | 0 | 5 | 1 | 1 | 6 | 3 | 4 | 9 | 11 | 9 | 13 | 6 | 18 | 7 | 6 | 17 |
-| Acute dystonic reactions | 25 | 0 | 1 | 0 | 0 | 2 | 2 | 1 | 2 | 2 | 2 | 2 | 4 | 9 | 8 | 11 | 23 |
-| Cluster headache | 8 | 5 | 2 | 0 | 0 | 4 | 0 | 2 | 4 | 7 | 7 | 8 | 4 | 5 | 7 | 2 | 8 |
-| Pancreatic neoplasm | 25 | 0 | 0 | 11 | 11 | 1 | 7 | 9 | 1 | 0 | 4 | 3 | 0 | 0 | 1 | 4 | 9 |
-| Ebola | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 3 | 0 | 1 | 0 | 9 | 4 | 10 | 3 | 23 |
-| Epiglottitis | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 3 | 20 | 22 |
-| Larygospasm | 25 | 0 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 7 | 0 | 0 | 0 | 9 | 3 | 8 | 13 |
-| Sarcoidosis | 8 | 7 | 5 | 0 | 1 | 2 | 1 | 0 | 1 | 2 | 1 | 4 | 7 | 2 | 3 | 0 | 5 |
-| Viral pharyngitis | 18 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 3 | 0 | 1 | 8 | 1 | 10 | 16 |
-| Scombroid food poisoning | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 | 20 |
-| SLE | 12 | 0 | 0 | 0 | 0 | 1 | 0 | 2 | 1 | 0 | 1 | 0 | 1 | 3 | 2 | 3 | 12 |
-| Pneumonia | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 1 | 0 | 4 | 17 |
-| Boerhaave | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 19 |
-| Guillain-Barré syndrome | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 19 |
-| Anemia | 31 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 0 | 2 | 0 | 3 | 2 | 9 |
-| Spontaneous pneumothorax | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5 | 13 |
-| Pulmonary embolism | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 14 |
-| Anaphylaxis | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 11 |
-| Myasthenia gravis | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 1 | 0 | 0 | 0 | 7 |
-| Myocarditis | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 3 | 7 |
-| Pulmonary neoplasm | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 7 |
-| Pericarditis | 14 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 7 |
-| Bronchiectasis | 2 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 1 |
-| Acute pulmonary edema | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 4 |
-| Atrial fibrillation | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 0 |
-| Tuberculosis | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 1 | 1 |
-| Spontaneous rib fracture | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 3 |
-| Acute COPD exacerbation / infection | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 |
-| GERD | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 |
-| Panic attack | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 |
-| Stable angina | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 |
-| Unstable angina | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 |
-| Localized edema | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
-| Possible NSTEMI / STEMI | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
-| Bronchospasm / acute asthma exacerbation | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Condition | n | claude-opus-5.5 | claude-fable-5.1 | gpt-6.1-sol | gpt-6-astra | gemini-3.1-pro-preview | gpt-6-luna | gpt-5.6-terra | gemini-3.8-flash | gpt-5.2 | grok-4.7 | kimi-k3 | gpt-5.4-mini | claude-sonnet-5.5 | deepseek-v4.1-flash | claude-sonnet-4.6 | glm-5.3 | gpt-oss-120b | claude-haiku-4.5 | llama-4-maverick | llama-3.1-8b-instruct |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| PSVT | 25 | 0 | 5 | 1 | 1 | 6 | 3 | 4 | 9 | 3 | 3 | 11 | 9 | 13 | 12 | 6 | 18 | 7 | 6 | 9 | 17 |
+| Acute dystonic reactions | 25 | 0 | 1 | 0 | 0 | 2 | 2 | 1 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 4 | 9 | 8 | 11 | 5 | 23 |
+| Cluster headache | 8 | 5 | 2 | 0 | 0 | 4 | 0 | 2 | 4 | 0 | 5 | 7 | 7 | 8 | 3 | 4 | 5 | 7 | 2 | 1 | 8 |
+| Pancreatic neoplasm | 25 | 0 | 0 | 11 | 11 | 1 | 7 | 9 | 1 | 5 | 2 | 0 | 4 | 3 | 0 | 0 | 0 | 1 | 4 | 0 | 9 |
+| Larygospasm | 25 | 0 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 3 | 7 | 0 | 0 | 1 | 0 | 9 | 3 | 8 | 19 | 13 |
+| Ebola | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 3 | 0 | 2 | 0 | 1 | 0 | 3 | 9 | 4 | 10 | 3 | 2 | 23 |
+| Epiglottitis | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 3 | 20 | 4 | 22 |
+| Viral pharyngitis | 18 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 2 | 2 | 0 | 3 | 0 | 1 | 1 | 8 | 1 | 10 | 6 | 16 |
+| Scombroid food poisoning | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 | 23 | 20 |
+| Sarcoidosis | 8 | 7 | 5 | 0 | 1 | 2 | 1 | 0 | 1 | 0 | 0 | 2 | 1 | 4 | 2 | 7 | 2 | 3 | 0 | 2 | 5 |
+| Pneumonia | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 2 | 1 | 1 | 0 | 4 | 15 | 17 |
+| SLE | 12 | 0 | 0 | 0 | 0 | 1 | 0 | 2 | 1 | 1 | 0 | 0 | 1 | 0 | 2 | 1 | 3 | 2 | 3 | 6 | 12 |
+| Anemia | 31 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 0 | 3 | 2 | 0 | 3 | 2 | 0 | 9 |
+| Boerhaave | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 19 |
+| Guillain-Barré syndrome | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 19 |
+| Spontaneous pneumothorax | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5 | 1 | 13 |
+| Pulmonary embolism | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 14 |
+| Myasthenia gravis | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 1 | 0 | 0 | 0 | 3 | 7 |
+| Myocarditis | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 3 | 3 | 7 |
+| Anaphylaxis | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 11 |
+| Pulmonary neoplasm | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 7 |
+| Bronchiectasis | 2 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | 2 | 1 |
+| Pericarditis | 14 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 7 |
+| Tuberculosis | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 1 | 3 | 1 |
+| Acute pulmonary edema | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 4 |
+| Atrial fibrillation | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 0 | 0 |
+| Panic attack | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 2 | 0 |
+| GERD | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 1 |
+| Spontaneous rib fracture | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 3 |
+| Acute COPD exacerbation / infection | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 |
+| Localized edema | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 |
+| Stable angina | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 |
+| Unstable angina | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 |
+| Possible NSTEMI / STEMI | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
+| Bronchospasm / acute asthma exacerbation | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ## Escalations per condition, BENIGN cases (arm 4aj)
 
-| Condition | n | claude-opus-5.5 | claude-fable-5.1 | gpt-6.1-sol | gpt-6-astra | gemini-3.1-pro-preview | gpt-6-luna | gpt-5.6-terra | gemini-3.8-flash | kimi-k3 | gpt-5.4-mini | claude-sonnet-5.5 | claude-sonnet-4.6 | glm-5.3 | gpt-oss-120b | claude-haiku-4.5 | llama-3.1-8b-instruct |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Localized edema | 18 | 18 | 18 | 18 | 18 | 18 | 18 | 18 | 18 | 18 | 18 | 18 | 17 | 18 | 16 | 15 | 1 |
-| Bronchitis | 18 | 17 | 16 | 18 | 18 | 17 | 17 | 17 | 14 | 16 | 17 | 17 | 18 | 13 | 17 | 8 | 1 |
-| Panic attack | 19 | 18 | 14 | 19 | 17 | 18 | 18 | 15 | 18 | 14 | 13 | 15 | 13 | 9 | 16 | 5 | 8 |
-| Acute laryngitis | 19 | 4 | 2 | 2 | 3 | 3 | 4 | 8 | 12 | 7 | 12 | 6 | 14 | 9 | 15 | 4 | 1 |
-| Viral pharyngitis | 19 | 7 | 6 | 6 | 6 | 4 | 4 | 7 | 12 | 5 | 9 | 10 | 10 | 4 | 15 | 1 | 0 |
-| Anemia | 18 | 2 | 3 | 4 | 5 | 7 | 3 | 4 | 9 | 3 | 3 | 5 | 2 | 2 | 2 | 1 | 3 |
-| Sarcoidosis | 18 | 0 | 4 | 6 | 4 | 0 | 3 | 3 | 1 | 3 | 4 | 0 | 1 | 2 | 8 | 0 | 0 |
-| Whooping cough | 18 | 0 | 1 | 0 | 0 | 2 | 1 | 1 | 0 | 0 | 2 | 7 | 0 | 3 | 11 | 4 | 3 |
-| Allergic sinusitis | 19 | 1 | 1 | 1 | 0 | 2 | 1 | 2 | 0 | 0 | 0 | 0 | 10 | 1 | 4 | 4 | 1 |
-| URTI | 19 | 4 | 3 | 2 | 0 | 0 | 2 | 2 | 1 | 1 | 2 | 1 | 2 | 0 | 4 | 1 | 0 |
-| Acute rhinosinusitis | 19 | 1 | 2 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 1 | 0 |
-| Chronic rhinosinusitis | 19 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 3 | 0 | 0 |
-| SLE | 18 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 |
-| Acute otitis media | 19 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Condition | n | claude-opus-5.5 | claude-fable-5.1 | gpt-6.1-sol | gpt-6-astra | gemini-3.1-pro-preview | gpt-6-luna | gpt-5.6-terra | gemini-3.8-flash | gpt-5.2 | grok-4.7 | kimi-k3 | gpt-5.4-mini | claude-sonnet-5.5 | deepseek-v4.1-flash | claude-sonnet-4.6 | glm-5.3 | gpt-oss-120b | claude-haiku-4.5 | llama-4-maverick | llama-3.1-8b-instruct |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Localized edema | 18 | 18 | 18 | 18 | 18 | 18 | 18 | 18 | 18 | 18 | 17 | 18 | 18 | 18 | 18 | 17 | 18 | 16 | 15 | 12 | 1 |
+| Bronchitis | 18 | 17 | 16 | 18 | 18 | 17 | 17 | 17 | 14 | 18 | 16 | 16 | 17 | 17 | 17 | 18 | 13 | 17 | 8 | 11 | 1 |
+| Panic attack | 19 | 18 | 14 | 19 | 17 | 18 | 18 | 15 | 18 | 19 | 18 | 14 | 13 | 15 | 19 | 13 | 9 | 16 | 5 | 4 | 8 |
+| Acute laryngitis | 19 | 4 | 2 | 2 | 3 | 3 | 4 | 8 | 12 | 12 | 3 | 7 | 12 | 6 | 8 | 14 | 9 | 15 | 4 | 9 | 1 |
+| Viral pharyngitis | 19 | 7 | 6 | 6 | 6 | 4 | 4 | 7 | 12 | 11 | 4 | 5 | 9 | 10 | 7 | 10 | 4 | 15 | 1 | 7 | 0 |
+| Anemia | 18 | 2 | 3 | 4 | 5 | 7 | 3 | 4 | 9 | 9 | 8 | 3 | 3 | 5 | 3 | 2 | 2 | 2 | 1 | 3 | 3 |
+| Sarcoidosis | 18 | 0 | 4 | 6 | 4 | 0 | 3 | 3 | 1 | 10 | 11 | 3 | 4 | 0 | 7 | 1 | 2 | 8 | 0 | 0 | 0 |
+| Whooping cough | 18 | 0 | 1 | 0 | 0 | 2 | 1 | 1 | 0 | 2 | 2 | 0 | 2 | 7 | 4 | 0 | 3 | 11 | 4 | 3 | 3 |
+| Allergic sinusitis | 19 | 1 | 1 | 1 | 0 | 2 | 1 | 2 | 0 | 4 | 1 | 0 | 0 | 0 | 2 | 10 | 1 | 4 | 4 | 10 | 1 |
+| URTI | 19 | 4 | 3 | 2 | 0 | 0 | 2 | 2 | 1 | 2 | 1 | 1 | 2 | 1 | 0 | 2 | 0 | 4 | 1 | 0 | 0 |
+| Acute rhinosinusitis | 19 | 1 | 2 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 2 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 0 | 0 |
+| Chronic rhinosinusitis | 19 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 2 | 0 | 3 | 0 | 0 | 0 |
+| SLE | 18 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 1 | 0 |
+| Acute otitis media | 19 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 Arm 4bj's per-condition tables are in scores.json.
 
@@ -254,11 +270,13 @@ Arm 4bj's per-condition tables are in scores.json.
 | claude-sonnet-4.6|4aj | 900 of 900 | 0 | 0 | 0 | 17.3652 |
 | claude-sonnet-4.6|4bj | 900 of 900 | 0 | 0 | 0 | 16.854 |
 | claude-sonnet-5.5|4aj | 900 of 900 | 0 | 0 | 0 | 3.6647 |
+| deepseek-v4.1-flash|4aj | 900 of 900 | 0 | 0 | 0 | 1.5775 |
 | gemini-3.1-pro-preview|4aj | 900 of 900 | 0 | 0 | 0 | 9.478 |
 | gemini-3.1-pro-preview|4bj | 900 of 900 | 0 | 0 | 0 | 8.7437 |
 | gemini-3.8-flash|4aj | 900 of 900 | 0 | 0 | 0 | 3.1772 |
 | glm-5.3|4aj | 900 of 900 | 0 | 0 | 0 | 1.0155 |
 | glm-5.3|4bj | 900 of 900 | 1 | 1 | 1 | 1.0026 |
+| gpt-5.2|4aj | 900 of 900 | 0 | 0 | 0 | 8.5893 |
 | gpt-5.4-mini|4aj | 900 of 900 | 0 | 0 | 0 | 6.7311 |
 | gpt-5.6-terra|4aj | 900 of 900 | 0 | 0 | 0 | 6.1222 |
 | gpt-5.6-terra|4bj | 900 of 900 | 0 | 0 | 0 | 5.9569 |
@@ -267,6 +285,8 @@ Arm 4bj's per-condition tables are in scores.json.
 | gpt-6.1-sol|4aj | 900 of 900 | 0 | 0 | 0 | 4.3388 |
 | gpt-oss-120b|4aj | 900 of 900 | 0 | 0 | 0 | 0.1972 |
 | gpt-oss-120b|4bj | 900 of 900 | 0 | 0 | 0 | 0.1822 |
+| grok-4.7|4aj | 900 of 900 | 0 | 0 | 0 | 30.0682 |
 | kimi-k3|4aj | 900 of 900 | 0 | 0 | 0 | 3.6455 |
 | llama-3.1-8b-instruct|4aj | 900 of 900 | 0 | 0 | 0 | 0.0186 |
 | llama-3.1-8b-instruct|4bj | 900 of 900 | 0 | 0 | 0 | 0.0194 |
+| llama-4-maverick|4aj | 900 of 900 | 2 | 2 | 2 | 0.184 |

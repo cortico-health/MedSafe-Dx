@@ -1,4 +1,8 @@
 {
+ "reference_models": [
+  "openai/gpt-5.2",
+  "meta-llama/llama-4-maverick"
+ ],
  "set": {
   "cases": 900,
   "seed": 20261005,
@@ -710,6 +714,78 @@
      ]
     }
    },
+   "deepseek-v4.1-flash|4aj": {
+    "score_z_bal": {
+     "value": 55.14,
+     "ci": [
+      48.72,
+      61.0
+     ]
+    },
+    "score_z_mix": {
+     "value": 49.05,
+     "ci": [
+      40.21,
+      57.74
+     ]
+    },
+    "U": {
+     "value": 4.84,
+     "ci": [
+      3.43,
+      6.28
+     ]
+    },
+    "O": {
+     "value": 33.08,
+     "ci": [
+      29.28,
+      37.07
+     ]
+    },
+    "partial": {
+     "value": 11.25,
+     "ci": [
+      9.17,
+      13.36
+     ]
+    },
+    "partial_inlist": {
+     "value": 5.62,
+     "ci": [
+      4.09,
+      7.2
+     ]
+    },
+    "partial_offlist": {
+     "value": 5.47,
+     "ci": [
+      4.06,
+      6.99
+     ]
+    },
+    "partial_truth": {
+     "value": 0.16,
+     "ci": [
+      0.0,
+      0.47
+     ]
+    },
+    "pass": {
+     "value": 83.91,
+     "ci": [
+      81.57,
+      86.31
+     ]
+    },
+    "esc": {
+     "value": 77.22,
+     "ci": [
+      75.67,
+      78.89
+     ]
+    }
+   },
    "gemini-3.1-pro-preview|4aj": {
     "score_z_bal": {
      "value": 68.53,
@@ -1067,6 +1143,78 @@
      "ci": [
       69.22,
       73.22
+     ]
+    }
+   },
+   "gpt-5.2|4aj": {
+    "score_z_bal": {
+     "value": 60.89,
+     "ci": [
+      55.79,
+      65.61
+     ]
+    },
+    "score_z_mix": {
+     "value": 61.55,
+     "ci": [
+      54.78,
+      67.79
+     ]
+    },
+    "U": {
+     "value": 2.03,
+     "ci": [
+      1.09,
+      3.09
+     ]
+    },
+    "O": {
+     "value": 40.38,
+     "ci": [
+      36.4,
+      44.31
+     ]
+    },
+    "partial": {
+     "value": 13.59,
+     "ci": [
+      11.32,
+      15.91
+     ]
+    },
+    "partial_inlist": {
+     "value": 10.16,
+     "ci": [
+      8.28,
+      12.01
+     ]
+    },
+    "partial_offlist": {
+     "value": 3.44,
+     "ci": [
+      2.31,
+      4.64
+     ]
+    },
+    "partial_truth": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "pass": {
+     "value": 84.38,
+     "ci": [
+      81.94,
+      86.88
+     ]
+    },
+    "esc": {
+     "value": 81.33,
+     "ci": [
+      79.78,
+      82.78
      ]
     }
    },
@@ -1646,6 +1794,78 @@
      ]
     }
    },
+   "grok-4.7|4aj": {
+    "score_z_bal": {
+     "value": 60.77,
+     "ci": [
+      55.21,
+      65.89
+     ]
+    },
+    "score_z_mix": {
+     "value": 57.2,
+     "ci": [
+      49.25,
+      64.34
+     ]
+    },
+    "U": {
+     "value": 3.12,
+     "ci": [
+      2.02,
+      4.4
+     ]
+    },
+    "O": {
+     "value": 32.31,
+     "ci": [
+      28.52,
+      36.29
+     ]
+    },
+    "partial": {
+     "value": 14.22,
+     "ci": [
+      11.88,
+      16.46
+     ]
+    },
+    "partial_inlist": {
+     "value": 8.28,
+     "ci": [
+      6.46,
+      10.11
+     ]
+    },
+    "partial_offlist": {
+     "value": 5.94,
+     "ci": [
+      4.54,
+      7.4
+     ]
+    },
+    "partial_truth": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "pass": {
+     "value": 82.66,
+     "ci": [
+      80.18,
+      85.15
+     ]
+    },
+    "esc": {
+     "value": 78.22,
+     "ci": [
+      76.56,
+      79.78
+     ]
+    }
+   },
    "kimi-k3|4aj": {
     "score_z_bal": {
      "value": 58.66,
@@ -1859,6 +2079,78 @@
      "ci": [
       43.22,
       48.22
+     ]
+    }
+   },
+   "llama-4-maverick|4aj": {
+    "score_z_bal": {
+     "value": 11.95,
+     "ci": [
+      3.0,
+      21.21
+     ]
+    },
+    "score_z_mix": {
+     "value": -21.6,
+     "ci": [
+      -34.89,
+      -7.94
+     ]
+    },
+    "U": {
+     "value": 17.03,
+     "ci": [
+      14.91,
+      19.15
+     ]
+    },
+    "O": {
+     "value": 23.08,
+     "ci": [
+      18.82,
+      27.44
+     ]
+    },
+    "partial": {
+     "value": 11.25,
+     "ci": [
+      9.25,
+      13.31
+     ]
+    },
+    "partial_inlist": {
+     "value": 5.78,
+     "ci": [
+      4.25,
+      7.4
+     ]
+    },
+    "partial_offlist": {
+     "value": 4.84,
+     "ci": [
+      3.41,
+      6.32
+     ]
+    },
+    "partial_truth": {
+     "value": 0.62,
+     "ci": [
+      0.15,
+      1.25
+     ]
+    },
+    "pass": {
+     "value": 71.72,
+     "ci": [
+      69.0,
+      74.4
+     ]
+    },
+    "esc": {
+     "value": 65.67,
+     "ci": [
+      63.67,
+      67.67
      ]
     }
    }
@@ -2157,6 +2449,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-fable-5.1|deepseek-v4.1-flash": {
+    "value": 15.98,
+    "ci": [
+     9.63,
+     22.88
+    ],
+    "separated": true
+   },
    "4aj|claude-fable-5.1|gemini-3.1-pro-preview": {
     "value": 2.59,
     "ci": [
@@ -2178,6 +2478,14 @@
     "ci": [
      22.54,
      38.87
+    ],
+    "separated": true
+   },
+   "4aj|claude-fable-5.1|gpt-5.2": {
+    "value": 10.23,
+    "ci": [
+     4.0,
+     16.82
     ],
     "separated": true
    },
@@ -2229,6 +2537,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-fable-5.1|grok-4.7": {
+    "value": 10.35,
+    "ci": [
+     3.52,
+     17.06
+    ],
+    "separated": true
+   },
    "4aj|claude-fable-5.1|kimi-k3": {
     "value": 12.46,
     "ci": [
@@ -2242,6 +2558,14 @@
     "ci": [
      175.19,
      199.54
+    ],
+    "separated": true
+   },
+   "4aj|claude-fable-5.1|llama-4-maverick": {
+    "value": 59.17,
+    "ci": [
+     49.49,
+     68.49
     ],
     "separated": true
    },
@@ -2269,6 +2593,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-haiku-4.5|deepseek-v4.1-flash": {
+    "value": -35.18,
+    "ci": [
+     -45.34,
+     -24.3
+    ],
+    "separated": true
+   },
    "4aj|claude-haiku-4.5|gemini-3.1-pro-preview": {
     "value": -48.57,
     "ci": [
@@ -2290,6 +2622,14 @@
     "ci": [
      -31.73,
      -9.27
+    ],
+    "separated": true
+   },
+   "4aj|claude-haiku-4.5|gpt-5.2": {
+    "value": -40.94,
+    "ci": [
+     -50.91,
+     -30.41
     ],
     "separated": true
    },
@@ -2341,6 +2681,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-haiku-4.5|grok-4.7": {
+    "value": -40.82,
+    "ci": [
+     -50.77,
+     -30.51
+    ],
+    "separated": true
+   },
    "4aj|claude-haiku-4.5|kimi-k3": {
     "value": -38.7,
     "ci": [
@@ -2357,6 +2705,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-haiku-4.5|llama-4-maverick": {
+    "value": 8.01,
+    "ci": [
+     -4.28,
+     20.01
+    ],
+    "separated": false
+   },
    "4aj|claude-opus-5.5|claude-sonnet-4.6": {
     "value": 22.97,
     "ci": [
@@ -2370,6 +2726,14 @@
     "ci": [
      10.73,
      21.9
+    ],
+    "separated": true
+   },
+   "4aj|claude-opus-5.5|deepseek-v4.1-flash": {
+    "value": 18.41,
+    "ci": [
+     12.24,
+     25.25
     ],
     "separated": true
    },
@@ -2394,6 +2758,14 @@
     "ci": [
      25.5,
      41.07
+    ],
+    "separated": true
+   },
+   "4aj|claude-opus-5.5|gpt-5.2": {
+    "value": 12.66,
+    "ci": [
+     6.89,
+     18.48
     ],
     "separated": true
    },
@@ -2445,6 +2817,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-opus-5.5|grok-4.7": {
+    "value": 12.77,
+    "ci": [
+     6.68,
+     19.13
+    ],
+    "separated": true
+   },
    "4aj|claude-opus-5.5|kimi-k3": {
     "value": 14.89,
     "ci": [
@@ -2461,11 +2841,27 @@
     ],
     "separated": true
    },
+   "4aj|claude-opus-5.5|llama-4-maverick": {
+    "value": 61.6,
+    "ci": [
+     52.18,
+     70.89
+    ],
+    "separated": true
+   },
    "4aj|claude-sonnet-4.6|claude-sonnet-5.5": {
     "value": -6.64,
     "ci": [
      -14.2,
      0.43
+    ],
+    "separated": false
+   },
+   "4aj|claude-sonnet-4.6|deepseek-v4.1-flash": {
+    "value": -4.56,
+    "ci": [
+     -11.43,
+     2.75
     ],
     "separated": false
    },
@@ -2490,6 +2886,14 @@
     "ci": [
      0.58,
      19.54
+    ],
+    "separated": true
+   },
+   "4aj|claude-sonnet-4.6|gpt-5.2": {
+    "value": -10.31,
+    "ci": [
+     -18.02,
+     -3.11
     ],
     "separated": true
    },
@@ -2541,6 +2945,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-sonnet-4.6|grok-4.7": {
+    "value": -10.19,
+    "ci": [
+     -18.54,
+     -2.33
+    ],
+    "separated": true
+   },
    "4aj|claude-sonnet-4.6|kimi-k3": {
     "value": -8.08,
     "ci": [
@@ -2556,6 +2968,22 @@
      180.51
     ],
     "separated": true
+   },
+   "4aj|claude-sonnet-4.6|llama-4-maverick": {
+    "value": 38.63,
+    "ci": [
+     27.83,
+     49.33
+    ],
+    "separated": true
+   },
+   "4aj|claude-sonnet-5.5|deepseek-v4.1-flash": {
+    "value": 2.08,
+    "ci": [
+     -4.22,
+     8.92
+    ],
+    "separated": false
    },
    "4aj|claude-sonnet-5.5|gemini-3.1-pro-preview": {
     "value": -11.31,
@@ -2580,6 +3008,14 @@
      25.06
     ],
     "separated": true
+   },
+   "4aj|claude-sonnet-5.5|gpt-5.2": {
+    "value": -3.67,
+    "ci": [
+     -9.41,
+     1.72
+    ],
+    "separated": false
    },
    "4aj|claude-sonnet-5.5|gpt-5.4-mini": {
     "value": -0.14,
@@ -2629,6 +3065,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-sonnet-5.5|grok-4.7": {
+    "value": -3.56,
+    "ci": [
+     -9.99,
+     2.94
+    ],
+    "separated": false
+   },
    "4aj|claude-sonnet-5.5|kimi-k3": {
     "value": -1.44,
     "ci": [
@@ -2645,6 +3089,126 @@
     ],
     "separated": true
    },
+   "4aj|claude-sonnet-5.5|llama-4-maverick": {
+    "value": 45.27,
+    "ci": [
+     35.66,
+     55.16
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gemini-3.1-pro-preview": {
+    "value": -13.39,
+    "ci": [
+     -20.06,
+     -7.08
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gemini-3.8-flash": {
+    "value": -6.31,
+    "ci": [
+     -12.23,
+     -0.8
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|glm-5.3": {
+    "value": 14.65,
+    "ci": [
+     6.76,
+     22.62
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gpt-5.2": {
+    "value": -5.76,
+    "ci": [
+     -12.5,
+     0.65
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|gpt-5.4-mini": {
+    "value": -2.22,
+    "ci": [
+     -9.8,
+     4.72
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|gpt-5.6-terra": {
+    "value": -9.06,
+    "ci": [
+     -16.43,
+     -2.61
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gpt-6-astra": {
+    "value": -13.7,
+    "ci": [
+     -20.82,
+     -7.11
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gpt-6-luna": {
+    "value": -11.97,
+    "ci": [
+     -18.89,
+     -6.03
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gpt-6.1-sol": {
+    "value": -14.03,
+    "ci": [
+     -21.18,
+     -7.3
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gpt-oss-120b": {
+    "value": 21.51,
+    "ci": [
+     12.61,
+     29.94
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|grok-4.7": {
+    "value": -5.64,
+    "ci": [
+     -12.83,
+     1.27
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|kimi-k3": {
+    "value": -3.52,
+    "ci": [
+     -11.14,
+     3.68
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|llama-3.1-8b-instruct": {
+    "value": 171.74,
+    "ci": [
+     158.6,
+     184.15
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|llama-4-maverick": {
+    "value": 43.19,
+    "ci": [
+     33.67,
+     52.2
+    ],
+    "separated": true
+   },
    "4aj|gemini-3.1-pro-preview|gemini-3.8-flash": {
     "value": 7.08,
     "ci": [
@@ -2658,6 +3222,14 @@
     "ci": [
      20.47,
      35.72
+    ],
+    "separated": true
+   },
+   "4aj|gemini-3.1-pro-preview|gpt-5.2": {
+    "value": 7.64,
+    "ci": [
+     2.0,
+     13.43
     ],
     "separated": true
    },
@@ -2709,6 +3281,14 @@
     ],
     "separated": true
    },
+   "4aj|gemini-3.1-pro-preview|grok-4.7": {
+    "value": 7.75,
+    "ci": [
+     2.12,
+     13.73
+    ],
+    "separated": true
+   },
    "4aj|gemini-3.1-pro-preview|kimi-k3": {
     "value": 9.87,
     "ci": [
@@ -2725,6 +3305,14 @@
     ],
     "separated": true
    },
+   "4aj|gemini-3.1-pro-preview|llama-4-maverick": {
+    "value": 56.58,
+    "ci": [
+     47.0,
+     66.05
+    ],
+    "separated": true
+   },
    "4aj|gemini-3.8-flash|glm-5.3": {
     "value": 20.96,
     "ci": [
@@ -2732,6 +3320,14 @@
      29.14
     ],
     "separated": true
+   },
+   "4aj|gemini-3.8-flash|gpt-5.2": {
+    "value": 0.56,
+    "ci": [
+     -5.15,
+     6.13
+    ],
+    "separated": false
    },
    "4aj|gemini-3.8-flash|gpt-5.4-mini": {
     "value": 4.09,
@@ -2781,6 +3377,14 @@
     ],
     "separated": true
    },
+   "4aj|gemini-3.8-flash|grok-4.7": {
+    "value": 0.68,
+    "ci": [
+     -5.31,
+     6.54
+    ],
+    "separated": false
+   },
    "4aj|gemini-3.8-flash|kimi-k3": {
     "value": 2.79,
     "ci": [
@@ -2794,6 +3398,22 @@
     "ci": [
      165.1,
      190.9
+    ],
+    "separated": true
+   },
+   "4aj|gemini-3.8-flash|llama-4-maverick": {
+    "value": 49.5,
+    "ci": [
+     40.17,
+     58.48
+    ],
+    "separated": true
+   },
+   "4aj|glm-5.3|gpt-5.2": {
+    "value": -20.4,
+    "ci": [
+     -28.6,
+     -12.61
     ],
     "separated": true
    },
@@ -2845,6 +3465,14 @@
     ],
     "separated": false
    },
+   "4aj|glm-5.3|grok-4.7": {
+    "value": -20.29,
+    "ci": [
+     -28.3,
+     -12.25
+    ],
+    "separated": true
+   },
    "4aj|glm-5.3|kimi-k3": {
     "value": -18.17,
     "ci": [
@@ -2858,6 +3486,94 @@
     "ci": [
      143.59,
      170.56
+    ],
+    "separated": true
+   },
+   "4aj|glm-5.3|llama-4-maverick": {
+    "value": 28.54,
+    "ci": [
+     17.59,
+     38.88
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|gpt-5.4-mini": {
+    "value": 3.54,
+    "ci": [
+     -2.76,
+     9.69
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|gpt-5.6-terra": {
+    "value": -3.31,
+    "ci": [
+     -8.87,
+     2.1
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|gpt-6-astra": {
+    "value": -7.95,
+    "ci": [
+     -12.87,
+     -3.06
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|gpt-6-luna": {
+    "value": -6.21,
+    "ci": [
+     -10.62,
+     -1.73
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|gpt-6.1-sol": {
+    "value": -8.28,
+    "ci": [
+     -13.02,
+     -3.59
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|gpt-oss-120b": {
+    "value": 27.26,
+    "ci": [
+     19.19,
+     35.15
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|grok-4.7": {
+    "value": 0.12,
+    "ci": [
+     -5.81,
+     6.18
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|kimi-k3": {
+    "value": 2.23,
+    "ci": [
+     -4.08,
+     8.53
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|llama-3.1-8b-instruct": {
+    "value": 177.5,
+    "ci": [
+     164.71,
+     189.84
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|llama-4-maverick": {
+    "value": 48.95,
+    "ci": [
+     39.43,
+     58.15
     ],
     "separated": true
    },
@@ -2901,6 +3617,14 @@
     ],
     "separated": true
    },
+   "4aj|gpt-5.4-mini|grok-4.7": {
+    "value": -3.42,
+    "ci": [
+     -10.43,
+     3.58
+    ],
+    "separated": false
+   },
    "4aj|gpt-5.4-mini|kimi-k3": {
     "value": -1.3,
     "ci": [
@@ -2914,6 +3638,14 @@
     "ci": [
      160.53,
      186.96
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.4-mini|llama-4-maverick": {
+    "value": 45.41,
+    "ci": [
+     35.26,
+     55.27
     ],
     "separated": true
    },
@@ -2949,6 +3681,14 @@
     ],
     "separated": true
    },
+   "4aj|gpt-5.6-terra|grok-4.7": {
+    "value": 3.43,
+    "ci": [
+     -2.18,
+     9.11
+    ],
+    "separated": false
+   },
    "4aj|gpt-5.6-terra|kimi-k3": {
     "value": 5.54,
     "ci": [
@@ -2962,6 +3702,14 @@
     "ci": [
      167.35,
      192.82
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.6-terra|llama-4-maverick": {
+    "value": 52.25,
+    "ci": [
+     42.58,
+     61.8
     ],
     "separated": true
    },
@@ -2989,6 +3737,14 @@
     ],
     "separated": true
    },
+   "4aj|gpt-6-astra|grok-4.7": {
+    "value": 8.06,
+    "ci": [
+     2.3,
+     14.06
+    ],
+    "separated": true
+   },
    "4aj|gpt-6-astra|kimi-k3": {
     "value": 10.18,
     "ci": [
@@ -3002,6 +3758,14 @@
     "ci": [
      173.28,
      197.11
+    ],
+    "separated": true
+   },
+   "4aj|gpt-6-astra|llama-4-maverick": {
+    "value": 56.89,
+    "ci": [
+     47.17,
+     66.22
     ],
     "separated": true
    },
@@ -3021,6 +3785,14 @@
     ],
     "separated": true
    },
+   "4aj|gpt-6-luna|grok-4.7": {
+    "value": 6.33,
+    "ci": [
+     -0.01,
+     12.68
+    ],
+    "separated": false
+   },
    "4aj|gpt-6-luna|kimi-k3": {
     "value": 8.44,
     "ci": [
@@ -3037,11 +3809,27 @@
     ],
     "separated": true
    },
+   "4aj|gpt-6-luna|llama-4-maverick": {
+    "value": 55.16,
+    "ci": [
+     45.96,
+     64.31
+    ],
+    "separated": true
+   },
    "4aj|gpt-6.1-sol|gpt-oss-120b": {
     "value": 35.54,
     "ci": [
      27.73,
      43.84
+    ],
+    "separated": true
+   },
+   "4aj|gpt-6.1-sol|grok-4.7": {
+    "value": 8.4,
+    "ci": [
+     2.77,
+     14.11
     ],
     "separated": true
    },
@@ -3061,6 +3849,22 @@
     ],
     "separated": true
    },
+   "4aj|gpt-6.1-sol|llama-4-maverick": {
+    "value": 57.22,
+    "ci": [
+     47.47,
+     66.87
+    ],
+    "separated": true
+   },
+   "4aj|gpt-oss-120b|grok-4.7": {
+    "value": -27.14,
+    "ci": [
+     -35.65,
+     -18.13
+    ],
+    "separated": true
+   },
    "4aj|gpt-oss-120b|kimi-k3": {
     "value": -25.03,
     "ci": [
@@ -3077,11 +3881,59 @@
     ],
     "separated": true
    },
+   "4aj|gpt-oss-120b|llama-4-maverick": {
+    "value": 21.68,
+    "ci": [
+     11.35,
+     32.17
+    ],
+    "separated": true
+   },
+   "4aj|grok-4.7|kimi-k3": {
+    "value": 2.12,
+    "ci": [
+     -4.84,
+     8.91
+    ],
+    "separated": false
+   },
+   "4aj|grok-4.7|llama-3.1-8b-instruct": {
+    "value": 177.38,
+    "ci": [
+     164.5,
+     190.03
+    ],
+    "separated": true
+   },
+   "4aj|grok-4.7|llama-4-maverick": {
+    "value": 48.83,
+    "ci": [
+     39.16,
+     58.23
+    ],
+    "separated": true
+   },
    "4aj|kimi-k3|llama-3.1-8b-instruct": {
     "value": 175.26,
     "ci": [
      162.26,
      188.42
+    ],
+    "separated": true
+   },
+   "4aj|kimi-k3|llama-4-maverick": {
+    "value": 46.71,
+    "ci": [
+     36.9,
+     56.99
+    ],
+    "separated": true
+   },
+   "4aj|llama-3.1-8b-instruct|llama-4-maverick": {
+    "value": -128.55,
+    "ci": [
+     -142.51,
+     -114.29
     ],
     "separated": true
    },
@@ -3770,6 +4622,78 @@
      ]
     }
    },
+   "deepseek-v4.1-flash|4aj": {
+    "score_z_bal": {
+     "value": 55.14,
+     "ci": [
+      34.93,
+      72.98
+     ]
+    },
+    "score_z_mix": {
+     "value": 49.05,
+     "ci": [
+      22.02,
+      70.16
+     ]
+    },
+    "U": {
+     "value": 4.84,
+     "ci": [
+      1.69,
+      9.17
+     ]
+    },
+    "O": {
+     "value": 33.08,
+     "ci": [
+      15.26,
+      53.74
+     ]
+    },
+    "partial": {
+     "value": 11.25,
+     "ci": [
+      5.61,
+      18.0
+     ]
+    },
+    "partial_inlist": {
+     "value": 5.62,
+     "ci": [
+      1.89,
+      10.45
+     ]
+    },
+    "partial_offlist": {
+     "value": 5.47,
+     "ci": [
+      1.8,
+      10.3
+     ]
+    },
+    "partial_truth": {
+     "value": 0.16,
+     "ci": [
+      0.0,
+      0.51
+     ]
+    },
+    "pass": {
+     "value": 83.91,
+     "ci": [
+      75.25,
+      91.19
+     ]
+    },
+    "esc": {
+     "value": 77.22,
+     "ci": [
+      66.95,
+      86.95
+     ]
+    }
+   },
    "gemini-3.1-pro-preview|4aj": {
     "score_z_bal": {
      "value": 68.53,
@@ -4127,6 +5051,78 @@
      "ci": [
       60.89,
       80.73
+     ]
+    }
+   },
+   "gpt-5.2|4aj": {
+    "score_z_bal": {
+     "value": 60.89,
+     "ci": [
+      46.45,
+      74.51
+     ]
+    },
+    "score_z_mix": {
+     "value": 61.55,
+     "ci": [
+      46.53,
+      74.7
+     ]
+    },
+    "U": {
+     "value": 2.03,
+     "ci": [
+      0.37,
+      4.15
+     ]
+    },
+    "O": {
+     "value": 40.38,
+     "ci": [
+      20.89,
+      61.73
+     ]
+    },
+    "partial": {
+     "value": 13.59,
+     "ci": [
+      6.98,
+      20.96
+     ]
+    },
+    "partial_inlist": {
+     "value": 10.16,
+     "ci": [
+      4.26,
+      17.22
+     ]
+    },
+    "partial_offlist": {
+     "value": 3.44,
+     "ci": [
+      0.54,
+      7.82
+     ]
+    },
+    "partial_truth": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "pass": {
+     "value": 84.38,
+     "ci": [
+      77.06,
+      91.07
+     ]
+    },
+    "esc": {
+     "value": 81.33,
+     "ci": [
+      72.04,
+      90.47
      ]
     }
    },
@@ -4706,6 +5702,78 @@
      ]
     }
    },
+   "grok-4.7|4aj": {
+    "score_z_bal": {
+     "value": 60.77,
+     "ci": [
+      44.12,
+      74.41
+     ]
+    },
+    "score_z_mix": {
+     "value": 57.2,
+     "ci": [
+      39.31,
+      72.29
+     ]
+    },
+    "U": {
+     "value": 3.12,
+     "ci": [
+      1.17,
+      5.57
+     ]
+    },
+    "O": {
+     "value": 32.31,
+     "ci": [
+      15.04,
+      52.07
+     ]
+    },
+    "partial": {
+     "value": 14.22,
+     "ci": [
+      7.51,
+      21.71
+     ]
+    },
+    "partial_inlist": {
+     "value": 8.28,
+     "ci": [
+      3.18,
+      14.55
+     ]
+    },
+    "partial_offlist": {
+     "value": 5.94,
+     "ci": [
+      1.56,
+      11.91
+     ]
+    },
+    "partial_truth": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "pass": {
+     "value": 82.66,
+     "ci": [
+      74.14,
+      90.05
+     ]
+    },
+    "esc": {
+     "value": 78.22,
+     "ci": [
+      67.87,
+      87.49
+     ]
+    }
+   },
    "kimi-k3|4aj": {
     "score_z_bal": {
      "value": 58.66,
@@ -4919,6 +5987,78 @@
      "ci": [
       36.33,
       55.83
+     ]
+    }
+   },
+   "llama-4-maverick|4aj": {
+    "score_z_bal": {
+     "value": 11.95,
+     "ci": [
+      -28.0,
+      45.01
+     ]
+    },
+    "score_z_mix": {
+     "value": -21.6,
+     "ci": [
+      -83.74,
+      30.69
+     ]
+    },
+    "U": {
+     "value": 17.03,
+     "ci": [
+      8.59,
+      27.66
+     ]
+    },
+    "O": {
+     "value": 23.08,
+     "ci": [
+      11.0,
+      35.59
+     ]
+    },
+    "partial": {
+     "value": 11.25,
+     "ci": [
+      5.21,
+      18.28
+     ]
+    },
+    "partial_inlist": {
+     "value": 5.78,
+     "ci": [
+      1.93,
+      10.27
+     ]
+    },
+    "partial_offlist": {
+     "value": 4.84,
+     "ci": [
+      1.63,
+      8.68
+     ]
+    },
+    "partial_truth": {
+     "value": 0.62,
+     "ci": [
+      0.0,
+      2.05
+     ]
+    },
+    "pass": {
+     "value": 71.72,
+     "ci": [
+      60.71,
+      81.97
+     ]
+    },
+    "esc": {
+     "value": 65.67,
+     "ci": [
+      54.7,
+      75.64
      ]
     }
    }
@@ -5217,6 +6357,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-fable-5.1|deepseek-v4.1-flash": {
+    "value": 15.98,
+    "ci": [
+     5.6,
+     27.67
+    ],
+    "separated": true
+   },
    "4aj|claude-fable-5.1|gemini-3.1-pro-preview": {
     "value": 2.59,
     "ci": [
@@ -5240,6 +6388,14 @@
      54.83
     ],
     "separated": true
+   },
+   "4aj|claude-fable-5.1|gpt-5.2": {
+    "value": 10.23,
+    "ci": [
+     -1.77,
+     21.49
+    ],
+    "separated": false
    },
    "4aj|claude-fable-5.1|gpt-5.4-mini": {
     "value": 13.76,
@@ -5289,6 +6445,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-fable-5.1|grok-4.7": {
+    "value": 10.35,
+    "ci": [
+     2.12,
+     18.15
+    ],
+    "separated": true
+   },
    "4aj|claude-fable-5.1|kimi-k3": {
     "value": 12.46,
     "ci": [
@@ -5302,6 +6466,14 @@
     "ci": [
      146.82,
      226.23
+    ],
+    "separated": true
+   },
+   "4aj|claude-fable-5.1|llama-4-maverick": {
+    "value": 59.17,
+    "ci": [
+     24.95,
+     98.14
     ],
     "separated": true
    },
@@ -5329,6 +6501,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-haiku-4.5|deepseek-v4.1-flash": {
+    "value": -35.18,
+    "ci": [
+     -69.08,
+     -5.85
+    ],
+    "separated": true
+   },
    "4aj|claude-haiku-4.5|gemini-3.1-pro-preview": {
     "value": -48.57,
     "ci": [
@@ -5352,6 +6532,14 @@
      7.36
     ],
     "separated": false
+   },
+   "4aj|claude-haiku-4.5|gpt-5.2": {
+    "value": -40.94,
+    "ci": [
+     -74.62,
+     -14.33
+    ],
+    "separated": true
    },
    "4aj|claude-haiku-4.5|gpt-5.4-mini": {
     "value": -37.4,
@@ -5401,6 +6589,14 @@
     ],
     "separated": false
    },
+   "4aj|claude-haiku-4.5|grok-4.7": {
+    "value": -40.82,
+    "ci": [
+     -72.71,
+     -14.96
+    ],
+    "separated": true
+   },
    "4aj|claude-haiku-4.5|kimi-k3": {
     "value": -38.7,
     "ci": [
@@ -5417,6 +6613,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-haiku-4.5|llama-4-maverick": {
+    "value": 8.01,
+    "ci": [
+     -25.59,
+     43.0
+    ],
+    "separated": false
+   },
    "4aj|claude-opus-5.5|claude-sonnet-4.6": {
     "value": 22.97,
     "ci": [
@@ -5430,6 +6634,14 @@
     "ci": [
      1.64,
      35.92
+    ],
+    "separated": true
+   },
+   "4aj|claude-opus-5.5|deepseek-v4.1-flash": {
+    "value": 18.41,
+    "ci": [
+     4.07,
+     36.28
     ],
     "separated": true
    },
@@ -5456,6 +6668,14 @@
      63.1
     ],
     "separated": true
+   },
+   "4aj|claude-opus-5.5|gpt-5.2": {
+    "value": 12.66,
+    "ci": [
+     -1.69,
+     24.05
+    ],
+    "separated": false
    },
    "4aj|claude-opus-5.5|gpt-5.4-mini": {
     "value": 16.19,
@@ -5505,6 +6725,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-opus-5.5|grok-4.7": {
+    "value": 12.77,
+    "ci": [
+     3.31,
+     20.84
+    ],
+    "separated": true
+   },
    "4aj|claude-opus-5.5|kimi-k3": {
     "value": 14.89,
     "ci": [
@@ -5521,11 +6749,27 @@
     ],
     "separated": true
    },
+   "4aj|claude-opus-5.5|llama-4-maverick": {
+    "value": 61.6,
+    "ci": [
+     26.02,
+     101.88
+    ],
+    "separated": true
+   },
    "4aj|claude-sonnet-4.6|claude-sonnet-5.5": {
     "value": -6.64,
     "ci": [
      -24.02,
      10.01
+    ],
+    "separated": false
+   },
+   "4aj|claude-sonnet-4.6|deepseek-v4.1-flash": {
+    "value": -4.56,
+    "ci": [
+     -18.27,
+     8.92
     ],
     "separated": false
    },
@@ -5550,6 +6794,14 @@
     "ci": [
      -10.93,
      33.64
+    ],
+    "separated": false
+   },
+   "4aj|claude-sonnet-4.6|gpt-5.2": {
+    "value": -10.31,
+    "ci": [
+     -26.35,
+     4.08
     ],
     "separated": false
    },
@@ -5601,6 +6853,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-sonnet-4.6|grok-4.7": {
+    "value": -10.19,
+    "ci": [
+     -24.3,
+     2.36
+    ],
+    "separated": false
+   },
    "4aj|claude-sonnet-4.6|kimi-k3": {
     "value": -8.08,
     "ci": [
@@ -5616,6 +6876,22 @@
      202.65
     ],
     "separated": true
+   },
+   "4aj|claude-sonnet-4.6|llama-4-maverick": {
+    "value": 38.63,
+    "ci": [
+     1.69,
+     80.04
+    ],
+    "separated": true
+   },
+   "4aj|claude-sonnet-5.5|deepseek-v4.1-flash": {
+    "value": 2.08,
+    "ci": [
+     -9.15,
+     10.95
+    ],
+    "separated": false
    },
    "4aj|claude-sonnet-5.5|gemini-3.1-pro-preview": {
     "value": -11.31,
@@ -5638,6 +6914,14 @@
     "ci": [
      -1.41,
      35.36
+    ],
+    "separated": false
+   },
+   "4aj|claude-sonnet-5.5|gpt-5.2": {
+    "value": -3.67,
+    "ci": [
+     -21.41,
+     10.44
     ],
     "separated": false
    },
@@ -5689,6 +6973,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-sonnet-5.5|grok-4.7": {
+    "value": -3.56,
+    "ci": [
+     -19.14,
+     8.54
+    ],
+    "separated": false
+   },
    "4aj|claude-sonnet-5.5|kimi-k3": {
     "value": -1.44,
     "ci": [
@@ -5702,6 +6994,126 @@
     "ci": [
      131.76,
      213.19
+    ],
+    "separated": true
+   },
+   "4aj|claude-sonnet-5.5|llama-4-maverick": {
+    "value": 45.27,
+    "ci": [
+     7.27,
+     86.77
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gemini-3.1-pro-preview": {
+    "value": -13.39,
+    "ci": [
+     -22.99,
+     -4.45
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gemini-3.8-flash": {
+    "value": -6.31,
+    "ci": [
+     -14.86,
+     1.58
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|glm-5.3": {
+    "value": 14.65,
+    "ci": [
+     -0.99,
+     32.59
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|gpt-5.2": {
+    "value": -5.76,
+    "ci": [
+     -21.47,
+     8.28
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|gpt-5.4-mini": {
+    "value": -2.22,
+    "ci": [
+     -13.29,
+     10.32
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|gpt-5.6-terra": {
+    "value": -9.06,
+    "ci": [
+     -25.06,
+     8.99
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|gpt-6-astra": {
+    "value": -13.7,
+    "ci": [
+     -33.39,
+     8.2
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|gpt-6-luna": {
+    "value": -11.97,
+    "ci": [
+     -27.27,
+     4.58
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|gpt-6.1-sol": {
+    "value": -14.03,
+    "ci": [
+     -33.89,
+     8.39
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|gpt-oss-120b": {
+    "value": 21.51,
+    "ci": [
+     5.7,
+     37.13
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|grok-4.7": {
+    "value": -5.64,
+    "ci": [
+     -19.59,
+     5.02
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|kimi-k3": {
+    "value": -3.52,
+    "ci": [
+     -13.33,
+     8.22
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|llama-3.1-8b-instruct": {
+    "value": 171.74,
+    "ci": [
+     131.97,
+     211.44
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|llama-4-maverick": {
+    "value": 43.19,
+    "ci": [
+     9.4,
+     81.98
     ],
     "separated": true
    },
@@ -5720,6 +7132,14 @@
      51.91
     ],
     "separated": true
+   },
+   "4aj|gemini-3.1-pro-preview|gpt-5.2": {
+    "value": 7.64,
+    "ci": [
+     -2.95,
+     18.0
+    ],
+    "separated": false
    },
    "4aj|gemini-3.1-pro-preview|gpt-5.4-mini": {
     "value": 11.17,
@@ -5769,6 +7189,14 @@
     ],
     "separated": true
    },
+   "4aj|gemini-3.1-pro-preview|grok-4.7": {
+    "value": 7.75,
+    "ci": [
+     0.3,
+     15.39
+    ],
+    "separated": true
+   },
    "4aj|gemini-3.1-pro-preview|kimi-k3": {
     "value": 9.87,
     "ci": [
@@ -5785,6 +7213,14 @@
     ],
     "separated": true
    },
+   "4aj|gemini-3.1-pro-preview|llama-4-maverick": {
+    "value": 56.58,
+    "ci": [
+     22.21,
+     95.75
+    ],
+    "separated": true
+   },
    "4aj|gemini-3.8-flash|glm-5.3": {
     "value": 20.96,
     "ci": [
@@ -5792,6 +7228,14 @@
      41.46
     ],
     "separated": true
+   },
+   "4aj|gemini-3.8-flash|gpt-5.2": {
+    "value": 0.56,
+    "ci": [
+     -11.89,
+     12.26
+    ],
+    "separated": false
    },
    "4aj|gemini-3.8-flash|gpt-5.4-mini": {
     "value": 4.09,
@@ -5841,6 +7285,14 @@
     ],
     "separated": true
    },
+   "4aj|gemini-3.8-flash|grok-4.7": {
+    "value": 0.68,
+    "ci": [
+     -10.99,
+     12.14
+    ],
+    "separated": false
+   },
    "4aj|gemini-3.8-flash|kimi-k3": {
     "value": 2.79,
     "ci": [
@@ -5856,6 +7308,22 @@
      215.49
     ],
     "separated": true
+   },
+   "4aj|gemini-3.8-flash|llama-4-maverick": {
+    "value": 49.5,
+    "ci": [
+     14.12,
+     90.4
+    ],
+    "separated": true
+   },
+   "4aj|glm-5.3|gpt-5.2": {
+    "value": -20.4,
+    "ci": [
+     -48.37,
+     3.79
+    ],
+    "separated": false
    },
    "4aj|glm-5.3|gpt-5.4-mini": {
     "value": -16.87,
@@ -5905,6 +7373,14 @@
     ],
     "separated": false
    },
+   "4aj|glm-5.3|grok-4.7": {
+    "value": -20.29,
+    "ci": [
+     -45.34,
+     -0.03
+    ],
+    "separated": true
+   },
    "4aj|glm-5.3|kimi-k3": {
     "value": -18.17,
     "ci": [
@@ -5918,6 +7394,94 @@
     "ci": [
      117.38,
      194.89
+    ],
+    "separated": true
+   },
+   "4aj|glm-5.3|llama-4-maverick": {
+    "value": 28.54,
+    "ci": [
+     -6.17,
+     68.95
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|gpt-5.4-mini": {
+    "value": 3.54,
+    "ci": [
+     -6.75,
+     16.65
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|gpt-5.6-terra": {
+    "value": -3.31,
+    "ci": [
+     -10.23,
+     4.82
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|gpt-6-astra": {
+    "value": -7.95,
+    "ci": [
+     -16.67,
+     2.86
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|gpt-6-luna": {
+    "value": -6.21,
+    "ci": [
+     -13.45,
+     0.8
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|gpt-6.1-sol": {
+    "value": -8.28,
+    "ci": [
+     -17.55,
+     2.88
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|gpt-oss-120b": {
+    "value": 27.26,
+    "ci": [
+     9.75,
+     46.81
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|grok-4.7": {
+    "value": 0.12,
+    "ci": [
+     -9.98,
+     12.31
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|kimi-k3": {
+    "value": 2.23,
+    "ci": [
+     -14.54,
+     22.45
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|llama-3.1-8b-instruct": {
+    "value": 177.5,
+    "ci": [
+     135.65,
+     216.92
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|llama-4-maverick": {
+    "value": 48.95,
+    "ci": [
+     13.22,
+     90.5
     ],
     "separated": true
    },
@@ -5961,6 +7525,14 @@
     ],
     "separated": true
    },
+   "4aj|gpt-5.4-mini|grok-4.7": {
+    "value": -3.42,
+    "ci": [
+     -15.41,
+     7.38
+    ],
+    "separated": false
+   },
    "4aj|gpt-5.4-mini|kimi-k3": {
     "value": -1.3,
     "ci": [
@@ -5974,6 +7546,14 @@
     "ci": [
      132.98,
      212.19
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.4-mini|llama-4-maverick": {
+    "value": 45.41,
+    "ci": [
+     8.87,
+     86.9
     ],
     "separated": true
    },
@@ -6009,6 +7589,14 @@
     ],
     "separated": true
    },
+   "4aj|gpt-5.6-terra|grok-4.7": {
+    "value": 3.43,
+    "ci": [
+     -10.01,
+     15.72
+    ],
+    "separated": false
+   },
    "4aj|gpt-5.6-terra|kimi-k3": {
     "value": 5.54,
     "ci": [
@@ -6022,6 +7610,14 @@
     "ci": [
      137.44,
      220.77
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.6-terra|llama-4-maverick": {
+    "value": 52.25,
+    "ci": [
+     15.76,
+     96.38
     ],
     "separated": true
    },
@@ -6049,6 +7645,14 @@
     ],
     "separated": true
    },
+   "4aj|gpt-6-astra|grok-4.7": {
+    "value": 8.06,
+    "ci": [
+     -7.71,
+     22.34
+    ],
+    "separated": false
+   },
    "4aj|gpt-6-astra|kimi-k3": {
     "value": 10.18,
     "ci": [
@@ -6062,6 +7666,14 @@
     "ci": [
      139.21,
      227.46
+    ],
+    "separated": true
+   },
+   "4aj|gpt-6-astra|llama-4-maverick": {
+    "value": 56.89,
+    "ci": [
+     17.62,
+     100.8
     ],
     "separated": true
    },
@@ -6081,6 +7693,14 @@
     ],
     "separated": true
    },
+   "4aj|gpt-6-luna|grok-4.7": {
+    "value": 6.33,
+    "ci": [
+     -4.98,
+     18.15
+    ],
+    "separated": false
+   },
    "4aj|gpt-6-luna|kimi-k3": {
     "value": 8.44,
     "ci": [
@@ -6097,6 +7717,14 @@
     ],
     "separated": true
    },
+   "4aj|gpt-6-luna|llama-4-maverick": {
+    "value": 55.16,
+    "ci": [
+     19.69,
+     96.27
+    ],
+    "separated": true
+   },
    "4aj|gpt-6.1-sol|gpt-oss-120b": {
     "value": 35.54,
     "ci": [
@@ -6104,6 +7732,14 @@
      59.99
     ],
     "separated": true
+   },
+   "4aj|gpt-6.1-sol|grok-4.7": {
+    "value": 8.4,
+    "ci": [
+     -7.12,
+     21.99
+    ],
+    "separated": false
    },
    "4aj|gpt-6.1-sol|kimi-k3": {
     "value": 10.51,
@@ -6118,6 +7754,22 @@
     "ci": [
      139.28,
      227.68
+    ],
+    "separated": true
+   },
+   "4aj|gpt-6.1-sol|llama-4-maverick": {
+    "value": 57.22,
+    "ci": [
+     17.74,
+     101.02
+    ],
+    "separated": true
+   },
+   "4aj|gpt-oss-120b|grok-4.7": {
+    "value": -27.14,
+    "ci": [
+     -42.95,
+     -13.19
     ],
     "separated": true
    },
@@ -6137,11 +7789,59 @@
     ],
     "separated": true
    },
+   "4aj|gpt-oss-120b|llama-4-maverick": {
+    "value": 21.68,
+    "ci": [
+     -14.23,
+     63.77
+    ],
+    "separated": false
+   },
+   "4aj|grok-4.7|kimi-k3": {
+    "value": 2.12,
+    "ci": [
+     -8.39,
+     15.25
+    ],
+    "separated": false
+   },
+   "4aj|grok-4.7|llama-3.1-8b-instruct": {
+    "value": 177.38,
+    "ci": [
+     135.82,
+     215.55
+    ],
+    "separated": true
+   },
+   "4aj|grok-4.7|llama-4-maverick": {
+    "value": 48.83,
+    "ci": [
+     15.66,
+     87.48
+    ],
+    "separated": true
+   },
    "4aj|kimi-k3|llama-3.1-8b-instruct": {
     "value": 175.26,
     "ci": [
      132.78,
      216.45
+    ],
+    "separated": true
+   },
+   "4aj|kimi-k3|llama-4-maverick": {
+    "value": 46.71,
+    "ci": [
+     13.06,
+     83.97
+    ],
+    "separated": true
+   },
+   "4aj|llama-3.1-8b-instruct|llama-4-maverick": {
+    "value": -128.55,
+    "ci": [
+     -169.83,
+     -83.77
     ],
     "separated": true
    },
@@ -6830,6 +8530,78 @@
      ]
     }
    },
+   "deepseek-v4.1-flash|4aj": {
+    "score_z_bal": {
+     "value": 55.14,
+     "ci": [
+      48.72,
+      61.0
+     ]
+    },
+    "score_z_mix": {
+     "value": 49.05,
+     "ci": [
+      40.21,
+      57.74
+     ]
+    },
+    "U": {
+     "value": 4.84,
+     "ci": [
+      3.43,
+      6.28
+     ]
+    },
+    "O": {
+     "value": 33.08,
+     "ci": [
+      29.28,
+      37.07
+     ]
+    },
+    "partial": {
+     "value": 11.25,
+     "ci": [
+      9.17,
+      13.36
+     ]
+    },
+    "partial_inlist": {
+     "value": 5.62,
+     "ci": [
+      4.09,
+      7.2
+     ]
+    },
+    "partial_offlist": {
+     "value": 5.47,
+     "ci": [
+      4.06,
+      6.99
+     ]
+    },
+    "partial_truth": {
+     "value": 0.16,
+     "ci": [
+      0.0,
+      0.47
+     ]
+    },
+    "pass": {
+     "value": 83.91,
+     "ci": [
+      81.57,
+      86.31
+     ]
+    },
+    "esc": {
+     "value": 77.22,
+     "ci": [
+      75.67,
+      78.89
+     ]
+    }
+   },
    "gemini-3.1-pro-preview|4aj": {
     "score_z_bal": {
      "value": 68.53,
@@ -7187,6 +8959,78 @@
      "ci": [
       69.44,
       73.33
+     ]
+    }
+   },
+   "gpt-5.2|4aj": {
+    "score_z_bal": {
+     "value": 60.89,
+     "ci": [
+      55.79,
+      65.61
+     ]
+    },
+    "score_z_mix": {
+     "value": 61.55,
+     "ci": [
+      54.78,
+      67.79
+     ]
+    },
+    "U": {
+     "value": 2.03,
+     "ci": [
+      1.09,
+      3.09
+     ]
+    },
+    "O": {
+     "value": 40.38,
+     "ci": [
+      36.4,
+      44.31
+     ]
+    },
+    "partial": {
+     "value": 13.59,
+     "ci": [
+      11.32,
+      15.91
+     ]
+    },
+    "partial_inlist": {
+     "value": 10.16,
+     "ci": [
+      8.28,
+      12.01
+     ]
+    },
+    "partial_offlist": {
+     "value": 3.44,
+     "ci": [
+      2.31,
+      4.64
+     ]
+    },
+    "partial_truth": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "pass": {
+     "value": 84.38,
+     "ci": [
+      81.94,
+      86.88
+     ]
+    },
+    "esc": {
+     "value": 81.33,
+     "ci": [
+      79.78,
+      82.78
      ]
     }
    },
@@ -7766,6 +9610,78 @@
      ]
     }
    },
+   "grok-4.7|4aj": {
+    "score_z_bal": {
+     "value": 60.77,
+     "ci": [
+      55.21,
+      65.89
+     ]
+    },
+    "score_z_mix": {
+     "value": 57.2,
+     "ci": [
+      49.25,
+      64.34
+     ]
+    },
+    "U": {
+     "value": 3.12,
+     "ci": [
+      2.02,
+      4.4
+     ]
+    },
+    "O": {
+     "value": 32.31,
+     "ci": [
+      28.52,
+      36.29
+     ]
+    },
+    "partial": {
+     "value": 14.22,
+     "ci": [
+      11.88,
+      16.46
+     ]
+    },
+    "partial_inlist": {
+     "value": 8.28,
+     "ci": [
+      6.46,
+      10.11
+     ]
+    },
+    "partial_offlist": {
+     "value": 5.94,
+     "ci": [
+      4.54,
+      7.4
+     ]
+    },
+    "partial_truth": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "pass": {
+     "value": 82.66,
+     "ci": [
+      80.18,
+      85.15
+     ]
+    },
+    "esc": {
+     "value": 78.22,
+     "ci": [
+      76.56,
+      79.78
+     ]
+    }
+   },
    "kimi-k3|4aj": {
     "score_z_bal": {
      "value": 58.66,
@@ -7979,6 +9895,78 @@
      "ci": [
       44.56,
       49.45
+     ]
+    }
+   },
+   "llama-4-maverick|4aj": {
+    "score_z_bal": {
+     "value": 14.41,
+     "ci": [
+      5.79,
+      22.86
+     ]
+    },
+    "score_z_mix": {
+     "value": -17.66,
+     "ci": [
+      -30.79,
+      -4.73
+     ]
+    },
+    "U": {
+     "value": 16.25,
+     "ci": [
+      14.24,
+      18.25
+     ]
+    },
+    "O": {
+     "value": 23.46,
+     "ci": [
+      19.05,
+      27.84
+     ]
+    },
+    "partial": {
+     "value": 12.03,
+     "ci": [
+      9.94,
+      14.18
+     ]
+    },
+    "partial_inlist": {
+     "value": 5.78,
+     "ci": [
+      4.25,
+      7.4
+     ]
+    },
+    "partial_offlist": {
+     "value": 5.62,
+     "ci": [
+      4.07,
+      7.26
+     ]
+    },
+    "partial_truth": {
+     "value": 0.62,
+     "ci": [
+      0.15,
+      1.25
+     ]
+    },
+    "pass": {
+     "value": 71.72,
+     "ci": [
+      69.0,
+      74.4
+     ]
+    },
+    "esc": {
+     "value": 66.33,
+     "ci": [
+      64.33,
+      68.33
      ]
     }
    }
@@ -8277,6 +10265,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-fable-5.1|deepseek-v4.1-flash": {
+    "value": 15.98,
+    "ci": [
+     9.63,
+     22.88
+    ],
+    "separated": true
+   },
    "4aj|claude-fable-5.1|gemini-3.1-pro-preview": {
     "value": 2.59,
     "ci": [
@@ -8298,6 +10294,14 @@
     "ci": [
      22.05,
      38.23
+    ],
+    "separated": true
+   },
+   "4aj|claude-fable-5.1|gpt-5.2": {
+    "value": 10.23,
+    "ci": [
+     4.0,
+     16.82
     ],
     "separated": true
    },
@@ -8349,6 +10353,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-fable-5.1|grok-4.7": {
+    "value": 10.35,
+    "ci": [
+     3.52,
+     17.06
+    ],
+    "separated": true
+   },
    "4aj|claude-fable-5.1|kimi-k3": {
     "value": 12.46,
     "ci": [
@@ -8362,6 +10374,14 @@
     "ci": [
      162.54,
      187.07
+    ],
+    "separated": true
+   },
+   "4aj|claude-fable-5.1|llama-4-maverick": {
+    "value": 56.71,
+    "ci": [
+     47.46,
+     65.77
     ],
     "separated": true
    },
@@ -8389,6 +10409,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-haiku-4.5|deepseek-v4.1-flash": {
+    "value": -28.19,
+    "ci": [
+     -37.72,
+     -17.8
+    ],
+    "separated": true
+   },
    "4aj|claude-haiku-4.5|gemini-3.1-pro-preview": {
     "value": -41.58,
     "ci": [
@@ -8410,6 +10438,14 @@
     "ci": [
      -24.83,
      -3.17
+    ],
+    "separated": true
+   },
+   "4aj|claude-haiku-4.5|gpt-5.2": {
+    "value": -33.95,
+    "ci": [
+     -43.15,
+     -24.41
     ],
     "separated": true
    },
@@ -8461,6 +10497,14 @@
     ],
     "separated": false
    },
+   "4aj|claude-haiku-4.5|grok-4.7": {
+    "value": -33.83,
+    "ci": [
+     -43.47,
+     -24.03
+    ],
+    "separated": true
+   },
    "4aj|claude-haiku-4.5|kimi-k3": {
     "value": -31.71,
     "ci": [
@@ -8477,6 +10521,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-haiku-4.5|llama-4-maverick": {
+    "value": 12.53,
+    "ci": [
+     0.94,
+     24.03
+    ],
+    "separated": true
+   },
    "4aj|claude-opus-5.5|claude-sonnet-4.6": {
     "value": 21.35,
     "ci": [
@@ -8490,6 +10542,14 @@
     "ci": [
      10.73,
      21.9
+    ],
+    "separated": true
+   },
+   "4aj|claude-opus-5.5|deepseek-v4.1-flash": {
+    "value": 18.41,
+    "ci": [
+     12.24,
+     25.25
     ],
     "separated": true
    },
@@ -8514,6 +10574,14 @@
     "ci": [
      25.07,
      40.6
+    ],
+    "separated": true
+   },
+   "4aj|claude-opus-5.5|gpt-5.2": {
+    "value": 12.66,
+    "ci": [
+     6.89,
+     18.48
     ],
     "separated": true
    },
@@ -8565,6 +10633,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-opus-5.5|grok-4.7": {
+    "value": 12.77,
+    "ci": [
+     6.68,
+     19.13
+    ],
+    "separated": true
+   },
    "4aj|claude-opus-5.5|kimi-k3": {
     "value": 14.89,
     "ci": [
@@ -8581,11 +10657,27 @@
     ],
     "separated": true
    },
+   "4aj|claude-opus-5.5|llama-4-maverick": {
+    "value": 59.13,
+    "ci": [
+     49.87,
+     68.22
+    ],
+    "separated": true
+   },
    "4aj|claude-sonnet-4.6|claude-sonnet-5.5": {
     "value": -5.02,
     "ci": [
      -12.18,
      2.18
+    ],
+    "separated": false
+   },
+   "4aj|claude-sonnet-4.6|deepseek-v4.1-flash": {
+    "value": -2.94,
+    "ci": [
+     -9.68,
+     4.4
     ],
     "separated": false
    },
@@ -8610,6 +10702,14 @@
     "ci": [
      2.31,
      20.27
+    ],
+    "separated": true
+   },
+   "4aj|claude-sonnet-4.6|gpt-5.2": {
+    "value": -8.7,
+    "ci": [
+     -16.14,
+     -1.61
     ],
     "separated": true
    },
@@ -8661,6 +10761,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-sonnet-4.6|grok-4.7": {
+    "value": -8.58,
+    "ci": [
+     -16.51,
+     -0.58
+    ],
+    "separated": true
+   },
    "4aj|claude-sonnet-4.6|kimi-k3": {
     "value": -6.47,
     "ci": [
@@ -8676,6 +10784,22 @@
      169.09
     ],
     "separated": true
+   },
+   "4aj|claude-sonnet-4.6|llama-4-maverick": {
+    "value": 37.78,
+    "ci": [
+     27.59,
+     47.7
+    ],
+    "separated": true
+   },
+   "4aj|claude-sonnet-5.5|deepseek-v4.1-flash": {
+    "value": 2.08,
+    "ci": [
+     -4.22,
+     8.92
+    ],
+    "separated": false
    },
    "4aj|claude-sonnet-5.5|gemini-3.1-pro-preview": {
     "value": -11.31,
@@ -8700,6 +10824,14 @@
      24.4
     ],
     "separated": true
+   },
+   "4aj|claude-sonnet-5.5|gpt-5.2": {
+    "value": -3.67,
+    "ci": [
+     -9.41,
+     1.72
+    ],
+    "separated": false
    },
    "4aj|claude-sonnet-5.5|gpt-5.4-mini": {
     "value": -0.14,
@@ -8749,6 +10881,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-sonnet-5.5|grok-4.7": {
+    "value": -3.56,
+    "ci": [
+     -9.99,
+     2.94
+    ],
+    "separated": false
+   },
    "4aj|claude-sonnet-5.5|kimi-k3": {
     "value": -1.44,
     "ci": [
@@ -8765,6 +10905,126 @@
     ],
     "separated": true
    },
+   "4aj|claude-sonnet-5.5|llama-4-maverick": {
+    "value": 42.8,
+    "ci": [
+     33.5,
+     52.05
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gemini-3.1-pro-preview": {
+    "value": -13.39,
+    "ci": [
+     -20.06,
+     -7.08
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gemini-3.8-flash": {
+    "value": -6.85,
+    "ci": [
+     -12.69,
+     -1.47
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|glm-5.3": {
+    "value": 14.11,
+    "ci": [
+     6.25,
+     21.95
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gpt-5.2": {
+    "value": -5.76,
+    "ci": [
+     -12.5,
+     0.65
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|gpt-5.4-mini": {
+    "value": -2.22,
+    "ci": [
+     -9.8,
+     4.72
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|gpt-5.6-terra": {
+    "value": -9.06,
+    "ci": [
+     -16.43,
+     -2.61
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gpt-6-astra": {
+    "value": -13.7,
+    "ci": [
+     -20.82,
+     -7.11
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gpt-6-luna": {
+    "value": -11.97,
+    "ci": [
+     -18.89,
+     -6.03
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gpt-6.1-sol": {
+    "value": -14.03,
+    "ci": [
+     -21.18,
+     -7.3
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gpt-oss-120b": {
+    "value": 20.97,
+    "ci": [
+     12.27,
+     29.33
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|grok-4.7": {
+    "value": -5.64,
+    "ci": [
+     -12.83,
+     1.27
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|kimi-k3": {
+    "value": -3.52,
+    "ci": [
+     -11.14,
+     3.68
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|llama-3.1-8b-instruct": {
+    "value": 158.96,
+    "ci": [
+     145.92,
+     171.83
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|llama-4-maverick": {
+    "value": 40.72,
+    "ci": [
+     31.53,
+     49.59
+    ],
+    "separated": true
+   },
    "4aj|gemini-3.1-pro-preview|gemini-3.8-flash": {
     "value": 6.54,
     "ci": [
@@ -8778,6 +11038,14 @@
     "ci": [
      20.21,
      35.24
+    ],
+    "separated": true
+   },
+   "4aj|gemini-3.1-pro-preview|gpt-5.2": {
+    "value": 7.64,
+    "ci": [
+     2.0,
+     13.43
     ],
     "separated": true
    },
@@ -8829,6 +11097,14 @@
     ],
     "separated": true
    },
+   "4aj|gemini-3.1-pro-preview|grok-4.7": {
+    "value": 7.75,
+    "ci": [
+     2.12,
+     13.73
+    ],
+    "separated": true
+   },
    "4aj|gemini-3.1-pro-preview|kimi-k3": {
     "value": 9.87,
     "ci": [
@@ -8845,6 +11121,14 @@
     ],
     "separated": true
    },
+   "4aj|gemini-3.1-pro-preview|llama-4-maverick": {
+    "value": 54.11,
+    "ci": [
+     44.7,
+     63.21
+    ],
+    "separated": true
+   },
    "4aj|gemini-3.8-flash|glm-5.3": {
     "value": 20.96,
     "ci": [
@@ -8852,6 +11136,14 @@
      28.92
     ],
     "separated": true
+   },
+   "4aj|gemini-3.8-flash|gpt-5.2": {
+    "value": 1.1,
+    "ci": [
+     -4.57,
+     6.52
+    ],
+    "separated": false
    },
    "4aj|gemini-3.8-flash|gpt-5.4-mini": {
     "value": 4.63,
@@ -8901,6 +11193,14 @@
     ],
     "separated": true
    },
+   "4aj|gemini-3.8-flash|grok-4.7": {
+    "value": 1.21,
+    "ci": [
+     -4.42,
+     6.87
+    ],
+    "separated": false
+   },
    "4aj|gemini-3.8-flash|kimi-k3": {
     "value": 3.33,
     "ci": [
@@ -8914,6 +11214,22 @@
     "ci": [
      153.03,
      178.81
+    ],
+    "separated": true
+   },
+   "4aj|gemini-3.8-flash|llama-4-maverick": {
+    "value": 47.57,
+    "ci": [
+     38.72,
+     56.51
+    ],
+    "separated": true
+   },
+   "4aj|glm-5.3|gpt-5.2": {
+    "value": -19.86,
+    "ci": [
+     -27.9,
+     -11.97
     ],
     "separated": true
    },
@@ -8965,6 +11281,14 @@
     ],
     "separated": false
    },
+   "4aj|glm-5.3|grok-4.7": {
+    "value": -19.75,
+    "ci": [
+     -27.95,
+     -11.76
+    ],
+    "separated": true
+   },
    "4aj|glm-5.3|kimi-k3": {
     "value": -17.63,
     "ci": [
@@ -8978,6 +11302,94 @@
     "ci": [
      131.5,
      157.92
+    ],
+    "separated": true
+   },
+   "4aj|glm-5.3|llama-4-maverick": {
+    "value": 26.61,
+    "ci": [
+     16.07,
+     36.35
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|gpt-5.4-mini": {
+    "value": 3.54,
+    "ci": [
+     -2.76,
+     9.69
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|gpt-5.6-terra": {
+    "value": -3.31,
+    "ci": [
+     -8.87,
+     2.1
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|gpt-6-astra": {
+    "value": -7.95,
+    "ci": [
+     -12.87,
+     -3.06
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|gpt-6-luna": {
+    "value": -6.21,
+    "ci": [
+     -10.62,
+     -1.73
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|gpt-6.1-sol": {
+    "value": -8.28,
+    "ci": [
+     -13.02,
+     -3.59
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|gpt-oss-120b": {
+    "value": 26.72,
+    "ci": [
+     18.8,
+     34.61
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|grok-4.7": {
+    "value": 0.12,
+    "ci": [
+     -5.81,
+     6.18
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|kimi-k3": {
+    "value": 2.23,
+    "ci": [
+     -4.08,
+     8.53
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|llama-3.1-8b-instruct": {
+    "value": 164.72,
+    "ci": [
+     152.58,
+     176.86
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|llama-4-maverick": {
+    "value": 46.48,
+    "ci": [
+     37.39,
+     55.53
     ],
     "separated": true
    },
@@ -9021,6 +11433,14 @@
     ],
     "separated": true
    },
+   "4aj|gpt-5.4-mini|grok-4.7": {
+    "value": -3.42,
+    "ci": [
+     -10.43,
+     3.58
+    ],
+    "separated": false
+   },
    "4aj|gpt-5.4-mini|kimi-k3": {
     "value": -1.3,
     "ci": [
@@ -9034,6 +11454,14 @@
     "ci": [
      148.58,
      173.72
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.4-mini|llama-4-maverick": {
+    "value": 42.94,
+    "ci": [
+     33.2,
+     52.41
     ],
     "separated": true
    },
@@ -9069,6 +11497,14 @@
     ],
     "separated": true
    },
+   "4aj|gpt-5.6-terra|grok-4.7": {
+    "value": 3.43,
+    "ci": [
+     -2.18,
+     9.11
+    ],
+    "separated": false
+   },
    "4aj|gpt-5.6-terra|kimi-k3": {
     "value": 5.54,
     "ci": [
@@ -9082,6 +11518,14 @@
     "ci": [
      155.34,
      180.21
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.6-terra|llama-4-maverick": {
+    "value": 49.79,
+    "ci": [
+     40.49,
+     59.06
     ],
     "separated": true
    },
@@ -9109,6 +11553,14 @@
     ],
     "separated": true
    },
+   "4aj|gpt-6-astra|grok-4.7": {
+    "value": 8.06,
+    "ci": [
+     2.3,
+     14.06
+    ],
+    "separated": true
+   },
    "4aj|gpt-6-astra|kimi-k3": {
     "value": 10.18,
     "ci": [
@@ -9122,6 +11574,14 @@
     "ci": [
      160.68,
      184.6
+    ],
+    "separated": true
+   },
+   "4aj|gpt-6-astra|llama-4-maverick": {
+    "value": 54.43,
+    "ci": [
+     44.86,
+     63.74
     ],
     "separated": true
    },
@@ -9141,6 +11601,14 @@
     ],
     "separated": true
    },
+   "4aj|gpt-6-luna|grok-4.7": {
+    "value": 6.33,
+    "ci": [
+     -0.01,
+     12.68
+    ],
+    "separated": false
+   },
    "4aj|gpt-6-luna|kimi-k3": {
     "value": 8.44,
     "ci": [
@@ -9157,11 +11625,27 @@
     ],
     "separated": true
    },
+   "4aj|gpt-6-luna|llama-4-maverick": {
+    "value": 52.69,
+    "ci": [
+     44.01,
+     61.78
+    ],
+    "separated": true
+   },
    "4aj|gpt-6.1-sol|gpt-oss-120b": {
     "value": 35.0,
     "ci": [
      27.15,
      43.15
+    ],
+    "separated": true
+   },
+   "4aj|gpt-6.1-sol|grok-4.7": {
+    "value": 8.4,
+    "ci": [
+     2.77,
+     14.11
     ],
     "separated": true
    },
@@ -9181,6 +11665,22 @@
     ],
     "separated": true
    },
+   "4aj|gpt-6.1-sol|llama-4-maverick": {
+    "value": 54.76,
+    "ci": [
+     45.36,
+     64.43
+    ],
+    "separated": true
+   },
+   "4aj|gpt-oss-120b|grok-4.7": {
+    "value": -26.61,
+    "ci": [
+     -35.01,
+     -17.76
+    ],
+    "separated": true
+   },
    "4aj|gpt-oss-120b|kimi-k3": {
     "value": -24.49,
     "ci": [
@@ -9197,11 +11697,59 @@
     ],
     "separated": true
    },
+   "4aj|gpt-oss-120b|llama-4-maverick": {
+    "value": 19.75,
+    "ci": [
+     9.61,
+     29.87
+    ],
+    "separated": true
+   },
+   "4aj|grok-4.7|kimi-k3": {
+    "value": 2.12,
+    "ci": [
+     -4.84,
+     8.91
+    ],
+    "separated": false
+   },
+   "4aj|grok-4.7|llama-3.1-8b-instruct": {
+    "value": 164.6,
+    "ci": [
+     151.9,
+     176.88
+    ],
+    "separated": true
+   },
+   "4aj|grok-4.7|llama-4-maverick": {
+    "value": 46.36,
+    "ci": [
+     37.07,
+     55.85
+    ],
+    "separated": true
+   },
    "4aj|kimi-k3|llama-3.1-8b-instruct": {
     "value": 162.48,
     "ci": [
      149.49,
      174.7
+    ],
+    "separated": true
+   },
+   "4aj|kimi-k3|llama-4-maverick": {
+    "value": 44.24,
+    "ci": [
+     34.7,
+     54.4
+    ],
+    "separated": true
+   },
+   "4aj|llama-3.1-8b-instruct|llama-4-maverick": {
+    "value": -118.24,
+    "ci": [
+     -131.64,
+     -104.88
     ],
     "separated": true
    },
@@ -9890,6 +12438,78 @@
      ]
     }
    },
+   "deepseek-v4.1-flash|4aj": {
+    "score_z_bal": {
+     "value": 55.14,
+     "ci": [
+      48.72,
+      61.0
+     ]
+    },
+    "score_z_mix": {
+     "value": 49.05,
+     "ci": [
+      40.21,
+      57.74
+     ]
+    },
+    "U": {
+     "value": 4.84,
+     "ci": [
+      3.43,
+      6.28
+     ]
+    },
+    "O": {
+     "value": 33.08,
+     "ci": [
+      29.28,
+      37.07
+     ]
+    },
+    "partial": {
+     "value": 11.25,
+     "ci": [
+      9.17,
+      13.36
+     ]
+    },
+    "partial_inlist": {
+     "value": 5.62,
+     "ci": [
+      4.09,
+      7.2
+     ]
+    },
+    "partial_offlist": {
+     "value": 5.47,
+     "ci": [
+      4.06,
+      6.99
+     ]
+    },
+    "partial_truth": {
+     "value": 0.16,
+     "ci": [
+      0.0,
+      0.47
+     ]
+    },
+    "pass": {
+     "value": 83.91,
+     "ci": [
+      81.57,
+      86.31
+     ]
+    },
+    "esc": {
+     "value": 77.22,
+     "ci": [
+      75.67,
+      78.89
+     ]
+    }
+   },
    "gemini-3.1-pro-preview|4aj": {
     "score_z_bal": {
      "value": 68.53,
@@ -10247,6 +12867,78 @@
      "ci": [
       69.22,
       73.22
+     ]
+    }
+   },
+   "gpt-5.2|4aj": {
+    "score_z_bal": {
+     "value": 60.89,
+     "ci": [
+      55.79,
+      65.61
+     ]
+    },
+    "score_z_mix": {
+     "value": 61.55,
+     "ci": [
+      54.78,
+      67.79
+     ]
+    },
+    "U": {
+     "value": 2.03,
+     "ci": [
+      1.09,
+      3.09
+     ]
+    },
+    "O": {
+     "value": 40.38,
+     "ci": [
+      36.4,
+      44.31
+     ]
+    },
+    "partial": {
+     "value": 13.59,
+     "ci": [
+      11.32,
+      15.91
+     ]
+    },
+    "partial_inlist": {
+     "value": 10.16,
+     "ci": [
+      8.28,
+      12.01
+     ]
+    },
+    "partial_offlist": {
+     "value": 3.44,
+     "ci": [
+      2.31,
+      4.64
+     ]
+    },
+    "partial_truth": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "pass": {
+     "value": 84.38,
+     "ci": [
+      81.94,
+      86.88
+     ]
+    },
+    "esc": {
+     "value": 81.33,
+     "ci": [
+      79.78,
+      82.78
      ]
     }
    },
@@ -10826,6 +13518,78 @@
      ]
     }
    },
+   "grok-4.7|4aj": {
+    "score_z_bal": {
+     "value": 60.77,
+     "ci": [
+      55.21,
+      65.89
+     ]
+    },
+    "score_z_mix": {
+     "value": 57.2,
+     "ci": [
+      49.25,
+      64.34
+     ]
+    },
+    "U": {
+     "value": 3.12,
+     "ci": [
+      2.02,
+      4.4
+     ]
+    },
+    "O": {
+     "value": 32.31,
+     "ci": [
+      28.52,
+      36.29
+     ]
+    },
+    "partial": {
+     "value": 14.22,
+     "ci": [
+      11.88,
+      16.46
+     ]
+    },
+    "partial_inlist": {
+     "value": 8.28,
+     "ci": [
+      6.46,
+      10.11
+     ]
+    },
+    "partial_offlist": {
+     "value": 5.94,
+     "ci": [
+      4.54,
+      7.4
+     ]
+    },
+    "partial_truth": {
+     "value": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ]
+    },
+    "pass": {
+     "value": 82.66,
+     "ci": [
+      80.18,
+      85.15
+     ]
+    },
+    "esc": {
+     "value": 78.22,
+     "ci": [
+      76.56,
+      79.78
+     ]
+    }
+   },
    "kimi-k3|4aj": {
     "score_z_bal": {
      "value": 58.66,
@@ -11039,6 +13803,78 @@
      "ci": [
       43.22,
       48.22
+     ]
+    }
+   },
+   "llama-4-maverick|4aj": {
+    "score_z_bal": {
+     "value": 11.95,
+     "ci": [
+      3.0,
+      21.21
+     ]
+    },
+    "score_z_mix": {
+     "value": -21.6,
+     "ci": [
+      -34.89,
+      -7.94
+     ]
+    },
+    "U": {
+     "value": 17.03,
+     "ci": [
+      14.91,
+      19.15
+     ]
+    },
+    "O": {
+     "value": 23.08,
+     "ci": [
+      18.82,
+      27.44
+     ]
+    },
+    "partial": {
+     "value": 11.25,
+     "ci": [
+      9.25,
+      13.31
+     ]
+    },
+    "partial_inlist": {
+     "value": 5.78,
+     "ci": [
+      4.25,
+      7.4
+     ]
+    },
+    "partial_offlist": {
+     "value": 4.84,
+     "ci": [
+      3.41,
+      6.32
+     ]
+    },
+    "partial_truth": {
+     "value": 0.62,
+     "ci": [
+      0.15,
+      1.25
+     ]
+    },
+    "pass": {
+     "value": 71.72,
+     "ci": [
+      69.0,
+      74.4
+     ]
+    },
+    "esc": {
+     "value": 65.67,
+     "ci": [
+      63.67,
+      67.67
      ]
     }
    }
@@ -11337,6 +14173,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-fable-5.1|deepseek-v4.1-flash": {
+    "value": 15.98,
+    "ci": [
+     9.63,
+     22.88
+    ],
+    "separated": true
+   },
    "4aj|claude-fable-5.1|gemini-3.1-pro-preview": {
     "value": 2.59,
     "ci": [
@@ -11358,6 +14202,14 @@
     "ci": [
      22.54,
      38.87
+    ],
+    "separated": true
+   },
+   "4aj|claude-fable-5.1|gpt-5.2": {
+    "value": 10.23,
+    "ci": [
+     4.0,
+     16.82
     ],
     "separated": true
    },
@@ -11409,6 +14261,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-fable-5.1|grok-4.7": {
+    "value": 10.35,
+    "ci": [
+     3.52,
+     17.06
+    ],
+    "separated": true
+   },
    "4aj|claude-fable-5.1|kimi-k3": {
     "value": 12.46,
     "ci": [
@@ -11422,6 +14282,14 @@
     "ci": [
      175.19,
      199.54
+    ],
+    "separated": true
+   },
+   "4aj|claude-fable-5.1|llama-4-maverick": {
+    "value": 59.17,
+    "ci": [
+     49.49,
+     68.49
     ],
     "separated": true
    },
@@ -11449,6 +14317,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-haiku-4.5|deepseek-v4.1-flash": {
+    "value": -35.18,
+    "ci": [
+     -45.34,
+     -24.3
+    ],
+    "separated": true
+   },
    "4aj|claude-haiku-4.5|gemini-3.1-pro-preview": {
     "value": -48.57,
     "ci": [
@@ -11470,6 +14346,14 @@
     "ci": [
      -31.73,
      -9.27
+    ],
+    "separated": true
+   },
+   "4aj|claude-haiku-4.5|gpt-5.2": {
+    "value": -40.94,
+    "ci": [
+     -50.91,
+     -30.41
     ],
     "separated": true
    },
@@ -11521,6 +14405,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-haiku-4.5|grok-4.7": {
+    "value": -40.82,
+    "ci": [
+     -50.77,
+     -30.51
+    ],
+    "separated": true
+   },
    "4aj|claude-haiku-4.5|kimi-k3": {
     "value": -38.7,
     "ci": [
@@ -11537,6 +14429,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-haiku-4.5|llama-4-maverick": {
+    "value": 8.01,
+    "ci": [
+     -4.28,
+     20.01
+    ],
+    "separated": false
+   },
    "4aj|claude-opus-5.5|claude-sonnet-4.6": {
     "value": 22.97,
     "ci": [
@@ -11550,6 +14450,14 @@
     "ci": [
      10.73,
      21.9
+    ],
+    "separated": true
+   },
+   "4aj|claude-opus-5.5|deepseek-v4.1-flash": {
+    "value": 18.41,
+    "ci": [
+     12.24,
+     25.25
     ],
     "separated": true
    },
@@ -11574,6 +14482,14 @@
     "ci": [
      25.5,
      41.07
+    ],
+    "separated": true
+   },
+   "4aj|claude-opus-5.5|gpt-5.2": {
+    "value": 12.66,
+    "ci": [
+     6.89,
+     18.48
     ],
     "separated": true
    },
@@ -11625,6 +14541,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-opus-5.5|grok-4.7": {
+    "value": 12.77,
+    "ci": [
+     6.68,
+     19.13
+    ],
+    "separated": true
+   },
    "4aj|claude-opus-5.5|kimi-k3": {
     "value": 14.89,
     "ci": [
@@ -11641,11 +14565,27 @@
     ],
     "separated": true
    },
+   "4aj|claude-opus-5.5|llama-4-maverick": {
+    "value": 61.6,
+    "ci": [
+     52.18,
+     70.89
+    ],
+    "separated": true
+   },
    "4aj|claude-sonnet-4.6|claude-sonnet-5.5": {
     "value": -6.64,
     "ci": [
      -14.2,
      0.43
+    ],
+    "separated": false
+   },
+   "4aj|claude-sonnet-4.6|deepseek-v4.1-flash": {
+    "value": -4.56,
+    "ci": [
+     -11.43,
+     2.75
     ],
     "separated": false
    },
@@ -11670,6 +14610,14 @@
     "ci": [
      0.58,
      19.54
+    ],
+    "separated": true
+   },
+   "4aj|claude-sonnet-4.6|gpt-5.2": {
+    "value": -10.31,
+    "ci": [
+     -18.02,
+     -3.11
     ],
     "separated": true
    },
@@ -11721,6 +14669,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-sonnet-4.6|grok-4.7": {
+    "value": -10.19,
+    "ci": [
+     -18.54,
+     -2.33
+    ],
+    "separated": true
+   },
    "4aj|claude-sonnet-4.6|kimi-k3": {
     "value": -8.08,
     "ci": [
@@ -11736,6 +14692,22 @@
      180.51
     ],
     "separated": true
+   },
+   "4aj|claude-sonnet-4.6|llama-4-maverick": {
+    "value": 38.63,
+    "ci": [
+     27.83,
+     49.33
+    ],
+    "separated": true
+   },
+   "4aj|claude-sonnet-5.5|deepseek-v4.1-flash": {
+    "value": 2.08,
+    "ci": [
+     -4.22,
+     8.92
+    ],
+    "separated": false
    },
    "4aj|claude-sonnet-5.5|gemini-3.1-pro-preview": {
     "value": -11.31,
@@ -11760,6 +14732,14 @@
      25.06
     ],
     "separated": true
+   },
+   "4aj|claude-sonnet-5.5|gpt-5.2": {
+    "value": -3.67,
+    "ci": [
+     -9.41,
+     1.72
+    ],
+    "separated": false
    },
    "4aj|claude-sonnet-5.5|gpt-5.4-mini": {
     "value": -0.14,
@@ -11809,6 +14789,14 @@
     ],
     "separated": true
    },
+   "4aj|claude-sonnet-5.5|grok-4.7": {
+    "value": -3.56,
+    "ci": [
+     -9.99,
+     2.94
+    ],
+    "separated": false
+   },
    "4aj|claude-sonnet-5.5|kimi-k3": {
     "value": -1.44,
     "ci": [
@@ -11825,6 +14813,126 @@
     ],
     "separated": true
    },
+   "4aj|claude-sonnet-5.5|llama-4-maverick": {
+    "value": 45.27,
+    "ci": [
+     35.66,
+     55.16
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gemini-3.1-pro-preview": {
+    "value": -13.39,
+    "ci": [
+     -20.06,
+     -7.08
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gemini-3.8-flash": {
+    "value": -6.31,
+    "ci": [
+     -12.23,
+     -0.8
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|glm-5.3": {
+    "value": 14.65,
+    "ci": [
+     6.76,
+     22.62
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gpt-5.2": {
+    "value": -5.76,
+    "ci": [
+     -12.5,
+     0.65
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|gpt-5.4-mini": {
+    "value": -2.22,
+    "ci": [
+     -9.8,
+     4.72
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|gpt-5.6-terra": {
+    "value": -9.06,
+    "ci": [
+     -16.43,
+     -2.61
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gpt-6-astra": {
+    "value": -13.7,
+    "ci": [
+     -20.82,
+     -7.11
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gpt-6-luna": {
+    "value": -11.97,
+    "ci": [
+     -18.89,
+     -6.03
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gpt-6.1-sol": {
+    "value": -14.03,
+    "ci": [
+     -21.18,
+     -7.3
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|gpt-oss-120b": {
+    "value": 21.51,
+    "ci": [
+     12.61,
+     29.94
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|grok-4.7": {
+    "value": -5.64,
+    "ci": [
+     -12.83,
+     1.27
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|kimi-k3": {
+    "value": -3.52,
+    "ci": [
+     -11.14,
+     3.68
+    ],
+    "separated": false
+   },
+   "4aj|deepseek-v4.1-flash|llama-3.1-8b-instruct": {
+    "value": 171.74,
+    "ci": [
+     158.6,
+     184.15
+    ],
+    "separated": true
+   },
+   "4aj|deepseek-v4.1-flash|llama-4-maverick": {
+    "value": 43.19,
+    "ci": [
+     33.67,
+     52.2
+    ],
+    "separated": true
+   },
    "4aj|gemini-3.1-pro-preview|gemini-3.8-flash": {
     "value": 7.08,
     "ci": [
@@ -11838,6 +14946,14 @@
     "ci": [
      20.47,
      35.72
+    ],
+    "separated": true
+   },
+   "4aj|gemini-3.1-pro-preview|gpt-5.2": {
+    "value": 7.64,
+    "ci": [
+     2.0,
+     13.43
     ],
     "separated": true
    },
@@ -11889,6 +15005,14 @@
     ],
     "separated": true
    },
+   "4aj|gemini-3.1-pro-preview|grok-4.7": {
+    "value": 7.75,
+    "ci": [
+     2.12,
+     13.73
+    ],
+    "separated": true
+   },
    "4aj|gemini-3.1-pro-preview|kimi-k3": {
     "value": 9.87,
     "ci": [
@@ -11905,6 +15029,14 @@
     ],
     "separated": true
    },
+   "4aj|gemini-3.1-pro-preview|llama-4-maverick": {
+    "value": 56.58,
+    "ci": [
+     47.0,
+     66.05
+    ],
+    "separated": true
+   },
    "4aj|gemini-3.8-flash|glm-5.3": {
     "value": 20.96,
     "ci": [
@@ -11912,6 +15044,14 @@
      29.14
     ],
     "separated": true
+   },
+   "4aj|gemini-3.8-flash|gpt-5.2": {
+    "value": 0.56,
+    "ci": [
+     -5.15,
+     6.13
+    ],
+    "separated": false
    },
    "4aj|gemini-3.8-flash|gpt-5.4-mini": {
     "value": 4.09,
@@ -11961,6 +15101,14 @@
     ],
     "separated": true
    },
+   "4aj|gemini-3.8-flash|grok-4.7": {
+    "value": 0.68,
+    "ci": [
+     -5.31,
+     6.54
+    ],
+    "separated": false
+   },
    "4aj|gemini-3.8-flash|kimi-k3": {
     "value": 2.79,
     "ci": [
@@ -11974,6 +15122,22 @@
     "ci": [
      165.1,
      190.9
+    ],
+    "separated": true
+   },
+   "4aj|gemini-3.8-flash|llama-4-maverick": {
+    "value": 49.5,
+    "ci": [
+     40.17,
+     58.48
+    ],
+    "separated": true
+   },
+   "4aj|glm-5.3|gpt-5.2": {
+    "value": -20.4,
+    "ci": [
+     -28.6,
+     -12.61
     ],
     "separated": true
    },
@@ -12025,6 +15189,14 @@
     ],
     "separated": false
    },
+   "4aj|glm-5.3|grok-4.7": {
+    "value": -20.29,
+    "ci": [
+     -28.3,
+     -12.25
+    ],
+    "separated": true
+   },
    "4aj|glm-5.3|kimi-k3": {
     "value": -18.17,
     "ci": [
@@ -12038,6 +15210,94 @@
     "ci": [
      143.59,
      170.56
+    ],
+    "separated": true
+   },
+   "4aj|glm-5.3|llama-4-maverick": {
+    "value": 28.54,
+    "ci": [
+     17.59,
+     38.88
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|gpt-5.4-mini": {
+    "value": 3.54,
+    "ci": [
+     -2.76,
+     9.69
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|gpt-5.6-terra": {
+    "value": -3.31,
+    "ci": [
+     -8.87,
+     2.1
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|gpt-6-astra": {
+    "value": -7.95,
+    "ci": [
+     -12.87,
+     -3.06
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|gpt-6-luna": {
+    "value": -6.21,
+    "ci": [
+     -10.62,
+     -1.73
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|gpt-6.1-sol": {
+    "value": -8.28,
+    "ci": [
+     -13.02,
+     -3.59
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|gpt-oss-120b": {
+    "value": 27.26,
+    "ci": [
+     19.19,
+     35.15
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|grok-4.7": {
+    "value": 0.12,
+    "ci": [
+     -5.81,
+     6.18
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|kimi-k3": {
+    "value": 2.23,
+    "ci": [
+     -4.08,
+     8.53
+    ],
+    "separated": false
+   },
+   "4aj|gpt-5.2|llama-3.1-8b-instruct": {
+    "value": 177.5,
+    "ci": [
+     164.71,
+     189.84
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.2|llama-4-maverick": {
+    "value": 48.95,
+    "ci": [
+     39.43,
+     58.15
     ],
     "separated": true
    },
@@ -12081,6 +15341,14 @@
     ],
     "separated": true
    },
+   "4aj|gpt-5.4-mini|grok-4.7": {
+    "value": -3.42,
+    "ci": [
+     -10.43,
+     3.58
+    ],
+    "separated": false
+   },
    "4aj|gpt-5.4-mini|kimi-k3": {
     "value": -1.3,
     "ci": [
@@ -12094,6 +15362,14 @@
     "ci": [
      160.53,
      186.96
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.4-mini|llama-4-maverick": {
+    "value": 45.41,
+    "ci": [
+     35.26,
+     55.27
     ],
     "separated": true
    },
@@ -12129,6 +15405,14 @@
     ],
     "separated": true
    },
+   "4aj|gpt-5.6-terra|grok-4.7": {
+    "value": 3.43,
+    "ci": [
+     -2.18,
+     9.11
+    ],
+    "separated": false
+   },
    "4aj|gpt-5.6-terra|kimi-k3": {
     "value": 5.54,
     "ci": [
@@ -12142,6 +15426,14 @@
     "ci": [
      167.35,
      192.82
+    ],
+    "separated": true
+   },
+   "4aj|gpt-5.6-terra|llama-4-maverick": {
+    "value": 52.25,
+    "ci": [
+     42.58,
+     61.8
     ],
     "separated": true
    },
@@ -12169,6 +15461,14 @@
     ],
     "separated": true
    },
+   "4aj|gpt-6-astra|grok-4.7": {
+    "value": 8.06,
+    "ci": [
+     2.3,
+     14.06
+    ],
+    "separated": true
+   },
    "4aj|gpt-6-astra|kimi-k3": {
     "value": 10.18,
     "ci": [
@@ -12182,6 +15482,14 @@
     "ci": [
      173.28,
      197.11
+    ],
+    "separated": true
+   },
+   "4aj|gpt-6-astra|llama-4-maverick": {
+    "value": 56.89,
+    "ci": [
+     47.17,
+     66.22
     ],
     "separated": true
    },
@@ -12201,6 +15509,14 @@
     ],
     "separated": true
    },
+   "4aj|gpt-6-luna|grok-4.7": {
+    "value": 6.33,
+    "ci": [
+     -0.01,
+     12.68
+    ],
+    "separated": false
+   },
    "4aj|gpt-6-luna|kimi-k3": {
     "value": 8.44,
     "ci": [
@@ -12217,11 +15533,27 @@
     ],
     "separated": true
    },
+   "4aj|gpt-6-luna|llama-4-maverick": {
+    "value": 55.16,
+    "ci": [
+     45.96,
+     64.31
+    ],
+    "separated": true
+   },
    "4aj|gpt-6.1-sol|gpt-oss-120b": {
     "value": 35.54,
     "ci": [
      27.73,
      43.84
+    ],
+    "separated": true
+   },
+   "4aj|gpt-6.1-sol|grok-4.7": {
+    "value": 8.4,
+    "ci": [
+     2.77,
+     14.11
     ],
     "separated": true
    },
@@ -12241,6 +15573,22 @@
     ],
     "separated": true
    },
+   "4aj|gpt-6.1-sol|llama-4-maverick": {
+    "value": 57.22,
+    "ci": [
+     47.47,
+     66.87
+    ],
+    "separated": true
+   },
+   "4aj|gpt-oss-120b|grok-4.7": {
+    "value": -27.14,
+    "ci": [
+     -35.65,
+     -18.13
+    ],
+    "separated": true
+   },
    "4aj|gpt-oss-120b|kimi-k3": {
     "value": -25.03,
     "ci": [
@@ -12257,11 +15605,59 @@
     ],
     "separated": true
    },
+   "4aj|gpt-oss-120b|llama-4-maverick": {
+    "value": 21.68,
+    "ci": [
+     11.35,
+     32.17
+    ],
+    "separated": true
+   },
+   "4aj|grok-4.7|kimi-k3": {
+    "value": 2.12,
+    "ci": [
+     -4.84,
+     8.91
+    ],
+    "separated": false
+   },
+   "4aj|grok-4.7|llama-3.1-8b-instruct": {
+    "value": 177.38,
+    "ci": [
+     164.5,
+     190.03
+    ],
+    "separated": true
+   },
+   "4aj|grok-4.7|llama-4-maverick": {
+    "value": 48.83,
+    "ci": [
+     39.16,
+     58.23
+    ],
+    "separated": true
+   },
    "4aj|kimi-k3|llama-3.1-8b-instruct": {
     "value": 175.26,
     "ci": [
      162.26,
      188.42
+    ],
+    "separated": true
+   },
+   "4aj|kimi-k3|llama-4-maverick": {
+    "value": 46.71,
+    "ci": [
+     36.9,
+     56.99
+    ],
+    "separated": true
+   },
+   "4aj|llama-3.1-8b-instruct|llama-4-maverick": {
+    "value": -128.55,
+    "ci": [
+     -142.51,
+     -114.29
     ],
     "separated": true
    },
@@ -12738,9 +16134,9 @@
  },
  "pair_separation": {
   "4aj": {
-   "within": 89,
-   "condition_bootstrap": 54,
-   "pairs": 120
+   "within": 140,
+   "condition_bootstrap": 86,
+   "pairs": 190
   },
   "4bj": {
    "within": 19,
@@ -12869,7 +16265,11 @@
      "kimi-k3": 2,
      "claude-sonnet-5.5": 2,
      "gemini-3.8-flash": 2,
-     "gpt-6-luna": 2
+     "gpt-6-luna": 2,
+     "grok-4.7": 2,
+     "deepseek-v4.1-flash": 2,
+     "gpt-5.2": 2,
+     "llama-4-maverick": 5
     },
     "Acute pulmonary edema": {
      "n": 25,
@@ -12886,7 +16286,8 @@
      "claude-haiku-4.5": 2,
      "llama-3.1-8b-instruct": 9,
      "gpt-5.4-mini": 1,
-     "kimi-k3": 1
+     "kimi-k3": 1,
+     "deepseek-v4.1-flash": 3
     },
     "Atrial fibrillation": {
      "n": 8,
@@ -12895,7 +16296,8 @@
     "Boerhaave": {
      "n": 25,
      "llama-3.1-8b-instruct": 19,
-     "kimi-k3": 1
+     "kimi-k3": 1,
+     "llama-4-maverick": 1
     },
     "Bronchiectasis": {
      "n": 2,
@@ -12903,7 +16305,8 @@
      "llama-3.1-8b-instruct": 1,
      "gpt-6-astra": 1,
      "claude-sonnet-5.5": 1,
-     "gemini-3.8-flash": 1
+     "gemini-3.8-flash": 1,
+     "llama-4-maverick": 2
     },
     "Bronchospasm / acute asthma exacerbation": {
      "n": 25
@@ -12922,7 +16325,10 @@
      "gpt-5.4-mini": 7,
      "kimi-k3": 7,
      "claude-sonnet-5.5": 8,
-     "gemini-3.8-flash": 4
+     "gemini-3.8-flash": 4,
+     "grok-4.7": 5,
+     "deepseek-v4.1-flash": 3,
+     "llama-4-maverick": 1
     },
     "Ebola": {
      "n": 25,
@@ -12933,24 +16339,30 @@
      "claude-haiku-4.5": 3,
      "llama-3.1-8b-instruct": 23,
      "gpt-5.4-mini": 1,
-     "gemini-3.8-flash": 3
+     "gemini-3.8-flash": 3,
+     "grok-4.7": 2,
+     "deepseek-v4.1-flash": 3,
+     "llama-4-maverick": 2
     },
     "Epiglottitis": {
      "n": 25,
      "glm-5.3": 4,
      "gpt-oss-120b": 3,
      "claude-haiku-4.5": 20,
-     "llama-3.1-8b-instruct": 22
+     "llama-3.1-8b-instruct": 22,
+     "llama-4-maverick": 4
     },
     "GERD": {
      "n": 5,
      "claude-haiku-4.5": 1,
-     "llama-3.1-8b-instruct": 1
+     "llama-3.1-8b-instruct": 1,
+     "grok-4.7": 1
     },
     "Guillain-Barr\u00e9 syndrome": {
      "n": 25,
      "claude-sonnet-4.6": 1,
-     "llama-3.1-8b-instruct": 19
+     "llama-3.1-8b-instruct": 19,
+     "llama-4-maverick": 1
     },
     "Larygospasm": {
      "n": 25,
@@ -12961,22 +16373,28 @@
      "claude-fable-5.1": 1,
      "gpt-6.1-sol": 1,
      "kimi-k3": 7,
-     "gpt-6-luna": 1
+     "gpt-6-luna": 1,
+     "grok-4.7": 3,
+     "deepseek-v4.1-flash": 1,
+     "llama-4-maverick": 19
     },
     "Localized edema": {
      "n": 2,
-     "llama-3.1-8b-instruct": 1
+     "llama-3.1-8b-instruct": 1,
+     "llama-4-maverick": 1
     },
     "Myasthenia gravis": {
      "n": 8,
      "claude-sonnet-4.6": 1,
      "llama-3.1-8b-instruct": 7,
-     "gpt-5.4-mini": 2
+     "gpt-5.4-mini": 2,
+     "llama-4-maverick": 3
     },
     "Myocarditis": {
      "n": 25,
      "claude-haiku-4.5": 3,
-     "llama-3.1-8b-instruct": 7
+     "llama-3.1-8b-instruct": 7,
+     "llama-4-maverick": 3
     },
     "PSVT": {
      "n": 25,
@@ -12994,7 +16412,11 @@
      "kimi-k3": 11,
      "claude-sonnet-5.5": 13,
      "gemini-3.8-flash": 9,
-     "gpt-6-luna": 3
+     "gpt-6-luna": 3,
+     "grok-4.7": 3,
+     "deepseek-v4.1-flash": 12,
+     "gpt-5.2": 3,
+     "llama-4-maverick": 9
     },
     "Pancreatic neoplasm": {
      "n": 25,
@@ -13008,11 +16430,14 @@
      "gpt-6.1-sol": 11,
      "claude-sonnet-5.5": 3,
      "gemini-3.8-flash": 1,
-     "gpt-6-luna": 7
+     "gpt-6-luna": 7,
+     "grok-4.7": 2,
+     "gpt-5.2": 5
     },
     "Panic attack": {
      "n": 5,
-     "claude-haiku-4.5": 2
+     "claude-haiku-4.5": 2,
+     "llama-4-maverick": 2
     },
     "Pericarditis": {
      "n": 14,
@@ -13024,7 +16449,9 @@
      "glm-5.3": 1,
      "claude-haiku-4.5": 4,
      "llama-3.1-8b-instruct": 17,
-     "kimi-k3": 1
+     "kimi-k3": 1,
+     "deepseek-v4.1-flash": 2,
+     "llama-4-maverick": 15
     },
     "Possible NSTEMI / STEMI": {
      "n": 25,
@@ -13049,7 +16476,10 @@
      "claude-haiku-4.5": 3,
      "llama-3.1-8b-instruct": 12,
      "gpt-5.4-mini": 1,
-     "gemini-3.8-flash": 1
+     "gemini-3.8-flash": 1,
+     "deepseek-v4.1-flash": 2,
+     "gpt-5.2": 1,
+     "llama-4-maverick": 6
     },
     "Sarcoidosis": {
      "n": 8,
@@ -13065,18 +16495,22 @@
      "kimi-k3": 2,
      "claude-sonnet-5.5": 4,
      "gemini-3.8-flash": 1,
-     "gpt-6-luna": 1
+     "gpt-6-luna": 1,
+     "deepseek-v4.1-flash": 2,
+     "llama-4-maverick": 2
     },
     "Scombroid food poisoning": {
      "n": 25,
      "gpt-oss-120b": 1,
      "claude-haiku-4.5": 6,
-     "llama-3.1-8b-instruct": 20
+     "llama-3.1-8b-instruct": 20,
+     "llama-4-maverick": 23
     },
     "Spontaneous pneumothorax": {
      "n": 25,
      "claude-haiku-4.5": 5,
-     "llama-3.1-8b-instruct": 13
+     "llama-3.1-8b-instruct": 13,
+     "llama-4-maverick": 1
     },
     "Spontaneous rib fracture": {
      "n": 3,
@@ -13090,7 +16524,8 @@
      "n": 8,
      "glm-5.3": 2,
      "claude-haiku-4.5": 1,
-     "llama-3.1-8b-instruct": 1
+     "llama-3.1-8b-instruct": 1,
+     "llama-4-maverick": 3
     },
     "Unstable angina": {
      "n": 25,
@@ -13104,7 +16539,11 @@
      "gpt-oss-120b": 1,
      "claude-haiku-4.5": 10,
      "llama-3.1-8b-instruct": 16,
-     "gpt-5.4-mini": 3
+     "gpt-5.4-mini": 3,
+     "grok-4.7": 2,
+     "deepseek-v4.1-flash": 1,
+     "gpt-5.2": 2,
+     "llama-4-maverick": 6
     }
    },
    "benign": {
@@ -13125,7 +16564,11 @@
      "kimi-k3": 7,
      "claude-sonnet-5.5": 6,
      "gemini-3.8-flash": 12,
-     "gpt-6-luna": 4
+     "gpt-6-luna": 4,
+     "grok-4.7": 3,
+     "deepseek-v4.1-flash": 8,
+     "gpt-5.2": 12,
+     "llama-4-maverick": 9
     },
     "Acute otitis media": {
      "n": 19
@@ -13137,7 +16580,8 @@
      "claude-haiku-4.5": 1,
      "claude-fable-5.1": 2,
      "claude-opus-5.5": 1,
-     "kimi-k3": 1
+     "kimi-k3": 1,
+     "grok-4.7": 2
     },
     "Allergic sinusitis": {
      "n": 19,
@@ -13151,7 +16595,11 @@
      "claude-fable-5.1": 1,
      "claude-opus-5.5": 1,
      "gpt-6.1-sol": 1,
-     "gpt-6-luna": 1
+     "gpt-6-luna": 1,
+     "grok-4.7": 1,
+     "deepseek-v4.1-flash": 2,
+     "gpt-5.2": 4,
+     "llama-4-maverick": 10
     },
     "Anemia": {
      "n": 18,
@@ -13170,7 +16618,11 @@
      "kimi-k3": 3,
      "claude-sonnet-5.5": 5,
      "gemini-3.8-flash": 9,
-     "gpt-6-luna": 3
+     "gpt-6-luna": 3,
+     "grok-4.7": 8,
+     "deepseek-v4.1-flash": 3,
+     "gpt-5.2": 9,
+     "llama-4-maverick": 3
     },
     "Bronchitis": {
      "n": 18,
@@ -13189,12 +16641,17 @@
      "kimi-k3": 16,
      "claude-sonnet-5.5": 17,
      "gemini-3.8-flash": 14,
-     "gpt-6-luna": 17
+     "gpt-6-luna": 17,
+     "grok-4.7": 16,
+     "deepseek-v4.1-flash": 17,
+     "gpt-5.2": 18,
+     "llama-4-maverick": 11
     },
     "Chronic rhinosinusitis": {
      "n": 19,
      "claude-sonnet-4.6": 2,
-     "gpt-oss-120b": 3
+     "gpt-oss-120b": 3,
+     "deepseek-v4.1-flash": 1
     },
     "Localized edema": {
      "n": 18,
@@ -13213,7 +16670,11 @@
      "kimi-k3": 18,
      "claude-sonnet-5.5": 18,
      "gemini-3.8-flash": 18,
-     "gpt-6-luna": 18
+     "gpt-6-luna": 18,
+     "grok-4.7": 17,
+     "deepseek-v4.1-flash": 18,
+     "gpt-5.2": 18,
+     "llama-4-maverick": 12
     },
     "Panic attack": {
      "n": 19,
@@ -13232,12 +16693,18 @@
      "kimi-k3": 14,
      "claude-sonnet-5.5": 15,
      "gemini-3.8-flash": 18,
-     "gpt-6-luna": 18
+     "gpt-6-luna": 18,
+     "grok-4.7": 18,
+     "deepseek-v4.1-flash": 19,
+     "gpt-5.2": 19,
+     "llama-4-maverick": 4
     },
     "SLE": {
      "n": 18,
      "gpt-oss-120b": 1,
-     "gpt-6-luna": 3
+     "gpt-6-luna": 3,
+     "grok-4.7": 1,
+     "llama-4-maverick": 1
     },
     "Sarcoidosis": {
      "n": 18,
@@ -13251,7 +16718,10 @@
      "gpt-6.1-sol": 6,
      "kimi-k3": 3,
      "gemini-3.8-flash": 1,
-     "gpt-6-luna": 3
+     "gpt-6-luna": 3,
+     "grok-4.7": 11,
+     "deepseek-v4.1-flash": 7,
+     "gpt-5.2": 10
     },
     "URTI": {
      "n": 19,
@@ -13266,7 +16736,9 @@
      "kimi-k3": 1,
      "claude-sonnet-5.5": 1,
      "gemini-3.8-flash": 1,
-     "gpt-6-luna": 2
+     "gpt-6-luna": 2,
+     "grok-4.7": 1,
+     "gpt-5.2": 2
     },
     "Viral pharyngitis": {
      "n": 19,
@@ -13284,7 +16756,11 @@
      "kimi-k3": 5,
      "claude-sonnet-5.5": 10,
      "gemini-3.8-flash": 12,
-     "gpt-6-luna": 4
+     "gpt-6-luna": 4,
+     "grok-4.7": 4,
+     "deepseek-v4.1-flash": 7,
+     "gpt-5.2": 11,
+     "llama-4-maverick": 7
     },
     "Whooping cough": {
      "n": 18,
@@ -13297,7 +16773,11 @@
      "claude-fable-5.1": 1,
      "gpt-5.4-mini": 2,
      "claude-sonnet-5.5": 7,
-     "gpt-6-luna": 1
+     "gpt-6-luna": 1,
+     "grok-4.7": 2,
+     "deepseek-v4.1-flash": 4,
+     "gpt-5.2": 2,
+     "llama-4-maverick": 3
     }
    }
   },
@@ -13793,16 +17273,47 @@
    "errored": 0,
    "no_justification": 0,
    "cost_usd": 0.4563
+  },
+  "grok-4.7|4aj": {
+   "cases": 900,
+   "answered": 900,
+   "unreadable": 0,
+   "errored": 0,
+   "no_justification": 0,
+   "cost_usd": 30.0682
+  },
+  "deepseek-v4.1-flash|4aj": {
+   "cases": 900,
+   "answered": 900,
+   "unreadable": 0,
+   "errored": 0,
+   "no_justification": 0,
+   "cost_usd": 1.5775
+  },
+  "gpt-5.2|4aj": {
+   "cases": 900,
+   "answered": 900,
+   "unreadable": 0,
+   "errored": 0,
+   "no_justification": 0,
+   "cost_usd": 8.5893
+  },
+  "llama-4-maverick|4aj": {
+   "cases": 900,
+   "answered": 900,
+   "unreadable": 2,
+   "errored": 2,
+   "no_justification": 2,
+   "cost_usd": 0.184
   }
  },
- "token_cost_usd": 147.5405,
- "account_spend_usd": 176.744,
+ "token_cost_usd": 187.9595,
+ "account_spend_usd": 188.3573,
  "account_spend_usd_by_run": {
   "v0.3 full run": 69.7842,
-  "v0.3 full run, roster expansion": 106.9598
+  "v0.3 full run, roster expansion": 106.9598,
+  "v0.3 full run, v0.1 reference models and unfinished expansion runs": 11.6133,
+  "v0.3 full run, Llama 4 Maverick resume (2 errored cases)": 0
  },
- "not_scored": {
-  "x-ai/grok-4.7": "stopped at 800 of 900 cases when the OpenRouter account ran out of credit; to be added later",
-  "deepseek/deepseek-v4.1-flash": "stopped at 819 of 900 cases: its providers answered slowly and the account ran out of credit; to be added later"
- }
+ "not_scored": {}
 }

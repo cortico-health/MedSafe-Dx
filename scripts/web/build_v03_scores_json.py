@@ -14,7 +14,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / "results" / "v03_full" / "scores.json"
 OUT = ROOT / "web" / "static" / "data" / "v03-scores.json"
-SOURCE_COMMIT = "1d424d5"  # the commit that scored the full run (16 models)
+# The scores come from the working tree on top of b4579ed: the scorer change that adds the 2026-10-01
+# models (Grok 4.7, DeepSeek V4.1 Flash, the v0.1 references GPT-5.2 and Llama 4 Maverick; 20 models) was
+# not yet committed.
+SOURCE_COMMIT = "b4579ed + working tree"
 
 HEADLINE, SECONDARY = "4aj", "4bj"
 REFERENCE_ROWS = [
@@ -57,6 +60,7 @@ def main():
     boot = src["condition_bootstrap"]
 
     models = sorted({k.split("|")[0] for k in within["rows"]})
+    v01_reference = {m.split("/", 1)[1] for m in src.get("reference_models", [])}
     rows = []
     for model in models:
         a = within["rows"][f"{model}|{HEADLINE}"]
@@ -64,6 +68,8 @@ def main():
         b = within["rows"].get(f"{model}|{SECONDARY}")
         rows.append({
             "model": model,
+            # A v0.1 reference model: scored like the rest, marked on the board as a progress reference.
+            "v01_reference": model in v01_reference,
             "score_4aj": metric(a, "score_z_bal"),
             "score_4aj_condition_bootstrap_ci": metric(boot["rows"][f"{model}|{HEADLINE}"], "score_z_bal")["ci"],
             "U": metric(a, "U"),

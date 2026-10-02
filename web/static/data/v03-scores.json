@@ -1,7 +1,7 @@
 {
  "source": {
   "file": "results/v03_full/scores.json",
-  "commit": "1d424d5",
+  "commit": "b4579ed + working tree",
   "built_by": "scripts/web/build_v03_scores_json.py"
  },
  "set": {
@@ -25,6 +25,7 @@
  "models": [
   {
    "model": "claude-opus-5.5",
+   "v01_reference": false,
    "score_4aj": {
     "value": 73.5,
     "ci": [
@@ -70,6 +71,7 @@
   },
   {
    "model": "claude-fable-5.1",
+   "v01_reference": false,
    "score_4aj": {
     "value": 71.1,
     "ci": [
@@ -115,6 +117,7 @@
   },
   {
    "model": "gpt-6.1-sol",
+   "v01_reference": false,
    "score_4aj": {
     "value": 69.2,
     "ci": [
@@ -160,6 +163,7 @@
   },
   {
    "model": "gpt-6-astra",
+   "v01_reference": false,
    "score_4aj": {
     "value": 68.8,
     "ci": [
@@ -205,6 +209,7 @@
   },
   {
    "model": "gemini-3.1-pro-preview",
+   "v01_reference": false,
    "score_4aj": {
     "value": 68.5,
     "ci": [
@@ -256,6 +261,7 @@
   },
   {
    "model": "gpt-6-luna",
+   "v01_reference": false,
    "score_4aj": {
     "value": 67.1,
     "ci": [
@@ -301,6 +307,7 @@
   },
   {
    "model": "gpt-5.6-terra",
+   "v01_reference": false,
    "score_4aj": {
     "value": 64.2,
     "ci": [
@@ -352,6 +359,7 @@
   },
   {
    "model": "gemini-3.8-flash",
+   "v01_reference": false,
    "score_4aj": {
     "value": 61.5,
     "ci": [
@@ -396,7 +404,100 @@
    "parse_4bj_unreadable": null
   },
   {
+   "model": "gpt-5.2",
+   "v01_reference": true,
+   "score_4aj": {
+    "value": 60.9,
+    "ci": [
+     55.8,
+     65.6
+    ]
+   },
+   "score_4aj_condition_bootstrap_ci": [
+    46.5,
+    74.5
+   ],
+   "U": {
+    "value": 2.0,
+    "ci": [
+     1.1,
+     3.1
+    ]
+   },
+   "O": {
+    "value": 40.4,
+    "ci": [
+     36.4,
+     44.3
+    ]
+   },
+   "partial": {
+    "total": 13.6,
+    "in_list": 10.2,
+    "off_list": 3.4,
+    "truth": 0.0
+   },
+   "escalated": 81.3,
+   "miss_equivalent": {
+    "value": 3.97,
+    "ci": [
+     3.03,
+     5.03
+    ]
+   },
+   "parse_4aj_unreadable": 0,
+   "score_4bj": null,
+   "parse_4bj_unreadable": null
+  },
+  {
+   "model": "grok-4.7",
+   "v01_reference": false,
+   "score_4aj": {
+    "value": 60.8,
+    "ci": [
+     55.2,
+     65.9
+    ]
+   },
+   "score_4aj_condition_bootstrap_ci": [
+    44.1,
+    74.4
+   ],
+   "U": {
+    "value": 3.1,
+    "ci": [
+     2.0,
+     4.4
+    ]
+   },
+   "O": {
+    "value": 32.3,
+    "ci": [
+     28.5,
+     36.3
+    ]
+   },
+   "partial": {
+    "total": 14.2,
+    "in_list": 8.3,
+    "off_list": 5.9,
+    "truth": 0.0
+   },
+   "escalated": 78.2,
+   "miss_equivalent": {
+    "value": 5.15,
+    "ci": [
+     4.05,
+     6.43
+    ]
+   },
+   "parse_4aj_unreadable": 0,
+   "score_4bj": null,
+   "parse_4bj_unreadable": null
+  },
+  {
    "model": "kimi-k3",
+   "v01_reference": false,
    "score_4aj": {
     "value": 58.7,
     "ci": [
@@ -442,6 +543,7 @@
   },
   {
    "model": "gpt-5.4-mini",
+   "v01_reference": false,
    "score_4aj": {
     "value": 57.4,
     "ci": [
@@ -487,6 +589,7 @@
   },
   {
    "model": "claude-sonnet-5.5",
+   "v01_reference": false,
    "score_4aj": {
     "value": 57.2,
     "ci": [
@@ -531,7 +634,54 @@
    "parse_4bj_unreadable": null
   },
   {
+   "model": "deepseek-v4.1-flash",
+   "v01_reference": false,
+   "score_4aj": {
+    "value": 55.1,
+    "ci": [
+     48.7,
+     61.0
+    ]
+   },
+   "score_4aj_condition_bootstrap_ci": [
+    34.9,
+    73.0
+   ],
+   "U": {
+    "value": 4.8,
+    "ci": [
+     3.4,
+     6.3
+    ]
+   },
+   "O": {
+    "value": 33.1,
+    "ci": [
+     29.3,
+     37.1
+    ]
+   },
+   "partial": {
+    "total": 11.2,
+    "in_list": 5.6,
+    "off_list": 5.5,
+    "truth": 0.2
+   },
+   "escalated": 77.2,
+   "miss_equivalent": {
+    "value": 6.45,
+    "ci": [
+     5.04,
+     7.89
+    ]
+   },
+   "parse_4aj_unreadable": 0,
+   "score_4bj": null,
+   "parse_4bj_unreadable": null
+  },
+  {
    "model": "claude-sonnet-4.6",
+   "v01_reference": false,
    "score_4aj": {
     "value": 50.6,
     "ci": [
@@ -583,6 +733,7 @@
   },
   {
    "model": "glm-5.3",
+   "v01_reference": false,
    "score_4aj": {
     "value": 40.5,
     "ci": [
@@ -634,6 +785,7 @@
   },
   {
    "model": "gpt-oss-120b",
+   "v01_reference": false,
    "score_4aj": {
     "value": 33.6,
     "ci": [
@@ -685,6 +837,7 @@
   },
   {
    "model": "claude-haiku-4.5",
+   "v01_reference": false,
    "score_4aj": {
     "value": 19.9,
     "ci": [
@@ -735,7 +888,54 @@
    "parse_4bj_unreadable": 0
   },
   {
+   "model": "llama-4-maverick",
+   "v01_reference": true,
+   "score_4aj": {
+    "value": 11.9,
+    "ci": [
+     3.0,
+     21.2
+    ]
+   },
+   "score_4aj_condition_bootstrap_ci": [
+    -28.0,
+    45.0
+   ],
+   "U": {
+    "value": 17.0,
+    "ci": [
+     14.9,
+     19.1
+    ]
+   },
+   "O": {
+    "value": 23.1,
+    "ci": [
+     18.8,
+     27.4
+    ]
+   },
+   "partial": {
+    "total": 11.2,
+    "in_list": 5.8,
+    "off_list": 4.8,
+    "truth": 0.6
+   },
+   "escalated": 65.7,
+   "miss_equivalent": {
+    "value": 18.64,
+    "ci": [
+     16.52,
+     20.76
+    ]
+   },
+   "parse_4aj_unreadable": 2,
+   "score_4bj": null,
+   "parse_4bj_unreadable": null
+  },
+  {
    "model": "llama-3.1-8b-instruct",
+   "v01_reference": false,
    "score_4aj": {
     "value": -116.6,
     "ci": [
@@ -889,9 +1089,9 @@
  ],
  "pair_separation": {
   "4aj": {
-   "separated": 89,
-   "separated_condition_bootstrap": 54,
-   "pairs": 120,
+   "separated": 140,
+   "separated_condition_bootstrap": 86,
+   "pairs": 190,
    "not_separated": [
     [
      "claude-fable-5.1",
@@ -914,6 +1114,10 @@
      "gpt-6.1-sol"
     ],
     [
+     "claude-haiku-4.5",
+     "llama-4-maverick"
+    ],
+    [
      "claude-opus-5.5",
      "gemini-3.1-pro-preview"
     ],
@@ -931,7 +1135,15 @@
     ],
     [
      "claude-sonnet-4.6",
+     "deepseek-v4.1-flash"
+    ],
+    [
+     "claude-sonnet-4.6",
      "gpt-5.4-mini"
+    ],
+    [
+     "claude-sonnet-5.5",
+     "deepseek-v4.1-flash"
     ],
     [
      "claude-sonnet-5.5",
@@ -939,10 +1151,34 @@
     ],
     [
      "claude-sonnet-5.5",
+     "gpt-5.2"
+    ],
+    [
+     "claude-sonnet-5.5",
      "gpt-5.4-mini"
     ],
     [
      "claude-sonnet-5.5",
+     "grok-4.7"
+    ],
+    [
+     "claude-sonnet-5.5",
+     "kimi-k3"
+    ],
+    [
+     "deepseek-v4.1-flash",
+     "gpt-5.2"
+    ],
+    [
+     "deepseek-v4.1-flash",
+     "gpt-5.4-mini"
+    ],
+    [
+     "deepseek-v4.1-flash",
+     "grok-4.7"
+    ],
+    [
+     "deepseek-v4.1-flash",
      "kimi-k3"
     ],
     [
@@ -963,6 +1199,10 @@
     ],
     [
      "gemini-3.8-flash",
+     "gpt-5.2"
+    ],
+    [
+     "gemini-3.8-flash",
      "gpt-5.4-mini"
     ],
     [
@@ -972,6 +1212,10 @@
     [
      "gemini-3.8-flash",
      "gpt-6-luna"
+    ],
+    [
+     "gemini-3.8-flash",
+     "grok-4.7"
     ],
     [
      "gemini-3.8-flash",
@@ -982,8 +1226,28 @@
      "gpt-oss-120b"
     ],
     [
+     "gpt-5.2",
+     "gpt-5.4-mini"
+    ],
+    [
+     "gpt-5.2",
+     "gpt-5.6-terra"
+    ],
+    [
+     "gpt-5.2",
+     "grok-4.7"
+    ],
+    [
+     "gpt-5.2",
+     "kimi-k3"
+    ],
+    [
      "gpt-5.4-mini",
      "gpt-5.6-terra"
+    ],
+    [
+     "gpt-5.4-mini",
+     "grok-4.7"
     ],
     [
      "gpt-5.4-mini",
@@ -1000,6 +1264,10 @@
     [
      "gpt-5.6-terra",
      "gpt-6.1-sol"
+    ],
+    [
+     "gpt-5.6-terra",
+     "grok-4.7"
     ],
     [
      "gpt-5.6-terra",
@@ -1016,6 +1284,14 @@
     [
      "gpt-6-luna",
      "gpt-6.1-sol"
+    ],
+    [
+     "gpt-6-luna",
+     "grok-4.7"
+    ],
+    [
+     "grok-4.7",
+     "kimi-k3"
     ]
    ]
   },
@@ -1039,5 +1315,5 @@
   "models_surviving_holm": 0,
   "models": 7
  },
- "spend_usd": 176.74
+ "spend_usd": 188.36
 }

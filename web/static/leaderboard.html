@@ -166,6 +166,7 @@
             font-weight: 600;
             vertical-align: middle;
         }
+        .v01-tag { margin-left: 0.35rem; font-size: 0.72rem; color: #6c757d; white-space: nowrap; }
         .design-mark { margin-left: 0.15rem; color: #842029; font-weight: 700; text-decoration: none; cursor: help; }
         .author-chip {
             display: inline-block;
@@ -383,8 +384,8 @@
             <h3 class="section">Scores</h3>
             <p class="section-sub">
                 Ranked by the score in arm 4aj: the model sees the intake alone and adds a one-line justification. Bars show the point and its 95% interval; grey rows are reference policies, not models.
-                A "not separated" badge names the ranks whose paired 95% interval includes 0. Intervals resample cases within each condition and are not corrected for the 120 comparisons; the wider interval that also resamples conditions separates 54 pairs, not 89.<!-- source: results/v03_full/scores.md, "Model-pair separation", arm 4aj (89 of 120; 54 under the condition bootstrap) -->
-                An asterisk (*) marks a model used in the study design (<a href="#design-note">note below the table</a>).
+                A "not separated" badge names the ranks whose paired 95% interval includes 0. Intervals resample cases within each condition and are not corrected for the 190 comparisons; the wider interval that also resamples conditions separates 86 pairs, not 140.<!-- source: results/v03_full/scores.md, "Model-pair separation", arm 4aj (140 of 190; 86 under the condition bootstrap) -->
+                An asterisk (*) marks a model used in the study design; a dagger (&dagger;) marks the v0.1 board's top two models, rescored here as a progress reference (<a href="#design-note">notes below the table</a>).
             </p>
             <p class="scroll-hint">Swipe the table sideways for the interval bars and more columns.</p>
             <div class="table-scroll">
@@ -392,6 +393,7 @@
             </div>
             <p class="table-footnote" id="table-footnote"></p>
             <p class="table-footnote" id="design-note">* Model used in study design (coding, lit review). Claude Opus 5.5 helped code the rules; Claude Fable 5.1 and GPT-6 Astra wrote the literature reference. See <a href="report.html#8-limits">limit 7</a>.</p>
+            <p class="table-footnote" id="v01-note">&dagger; v0.1 reference: GPT-5.2 and Llama 4 Maverick ranked #1 and #2 on the <a href="/archive/v0.1-board-2026-09/">v0.1 board</a>. We score them on the same 900 cases and rules as every other model, so their rows show how far newer models have moved since v0.1. Maverick's answers on 2 cases did not parse after the retry; we score those as routine, as we would for any model.<!-- source: web/static/archive/v0.1-preprint/leaderboard-data.json (rows 1-2, openai-gpt-5.2 and meta-llama-llama-4-maverick); results/v03_full/scores.md, "Parsing" (llama-4-maverick|4aj unreadable 2) --></p>
             <div class="miss-types" id="miss-types">
                 <h4>Miss types</h4>
                 <p>A miss (U, under-escalation) is a SERIOUS patient the model did not send on for a serious reason. Each costs 7. There are two types:</p>
@@ -422,10 +424,10 @@
                     <h4>What the run shows</h4>
                     <ol>
                         <li><strong>No clear leader.</strong> Claude Opus 5.5 scores highest (73.5) but does not separate from Fable 5.1, GPT-6.1 Sol, GPT-6 Astra or Gemini 3.1 Pro.<!-- source: results/v03_full/scores.md, "Model-pair separation", arm 4aj --></li>
-                        <li><strong>89 of 120 pairs separate</strong> (54 under the wider interval), uncorrected for multiple comparisons.<!-- source: results/v03_full/scores.md, "Model-pair separation", arm 4aj --></li>
+                        <li><strong>140 of 190 pairs separate</strong> (86 under the wider interval), uncorrected for multiple comparisons.<!-- source: results/v03_full/scores.md, "Model-pair separation", arm 4aj --></li>
                         <li><strong>Cost does not buy the score.</strong> GPT-6 Luna ($0.46 for 900 answers) does not separate from GPT-6 Astra ($21.97).<!-- source: results/v03_full/scores.json, model_pairs 4aj|gpt-6-astra|gpt-6-luna; results/v03_full/scores.md, "Parsing" --></li>
                         <li><strong>A stated benign diagnosis</strong> in the prompt made no consistent difference (<a href="report.html#discussion-does-a-stated-benign-diagnosis-change-the-answer">discussion</a>).<!-- source: results/v03_full/scores.md, "Confirmatory anchor test (spec record R2)" --></li>
-                        <li><strong>Every model answered all 900 cases</strong> after one retry of unparsed answers. The runs cost $176.74.<!-- source: results/v03_full/scores.md, "Parsing" and header (account spend delta) --></li>
+                        <li><strong>Every model answered all 900 cases</strong>; after one retry of unparsed answers, only Llama 4 Maverick's answers on 2 cases stayed unreadable, and we score those as routine. The runs cost $188.36.<!-- source: results/v03_full/scores.md, "Parsing" and header (account spend delta) --></li>
                     </ol>
                 </div>
             </div>
@@ -441,6 +443,7 @@
                     <li><strong>Why.</strong> Clinical advisors reviewing the v0.1 model answers, and our own audit, found that the dataset's answer often disagreed with other references for the same patient, because DDXPlus gives every patient with a condition the same severity. A literature review judged about two-thirds of the answers our earlier scoring penalised to be safe.<!-- source: docs/v0.3-fp-fn-audit.md, update table, A3 row "Precision, all penalties" 33.5% (185 of 553), so 66.5% of penalised answers were safe by the reference --></li>
                     <li><strong>What changed.</strong> We keep each case, correct it with a published red-flag rule, or set it aside, and cite the reason.</li>
                     <li><strong>How we checked.</strong> We froze the rules and tested them on fresh cases against criteria set in advance. The first round failed on one group of cases and on reviewer agreement; we set that group aside and the second round passed five of six criteria; the failing rule was demoted.<!-- source: results/phase2/label_validation.md; results/phase2b/validation.md --></li>
+                    <li><strong>Added 1 October.</strong> GPT-5.2 and Llama 4 Maverick, #1 and #2 on the v0.1 board, join as progress references (&dagger;); the board now ranks 20 models.<!-- source: results/v03_full/scores.md --></li>
                     <li><strong>Scoring.</strong> A model passes a serious case only when it escalates for a valid serious reason, so escalating everyone with one fixed flag scores 0.</li>
                 </ol>
                 <p style="font-size: 0.9rem;">
@@ -454,7 +457,7 @@
         </div>
 
         <footer>
-            MedSafe-Dx v0.3 | Scores from <code>results/v03_full/scores.json</code> (commit <code>1d424d5</code>)<!-- source: web/static/data/v03-scores.json, source field --><br>
+            MedSafe-Dx v0.3 | Scores from <code>results/v03_full/scores.json</code> (<code>b4579ed</code> plus uncommitted scorer changes)<!-- source: web/static/data/v03-scores.json, source field --><br>
             Copyright © <a href="https://cortico.health" target="_blank" rel="noopener">Cortico Health Technologies Inc</a> 2026 | Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>
         </footer>
     </div>
@@ -481,6 +484,8 @@
             'gemini-3.8-flash': 'Gemini 3.8 Flash',
             'deepseek-v4.1-flash': 'DeepSeek V4.1 Flash',
             'gpt-6-luna': 'GPT-6 Luna',
+            'gpt-5.2': 'GPT-5.2',
+            'llama-4-maverick': 'Llama 4 Maverick',
         };
         // Short chart labels; the tooltip keeps the full name. Every name here must stay unique.
         const SHORT = {
@@ -489,7 +494,10 @@
             'grok-4.7': 'Grok', 'claude-fable-5.1': 'Fable', 'gpt-6-astra': 'Astra', 'claude-opus-5.5': 'Opus',
             'gpt-5.4-mini': '5.4 mini', 'gpt-6.1-sol': 'Sol', 'kimi-k3': 'Kimi', 'claude-sonnet-5.5': 'Sonnet 5.5',
             'gemini-3.8-flash': 'Gemini Flash', 'deepseek-v4.1-flash': 'DeepSeek', 'gpt-6-luna': 'Luna',
+            'gpt-5.2': 'GPT-5.2', 'llama-4-maverick': 'Maverick',
         };
+        // Rank on the v0.1 board of each v0.1 reference model (web/static/archive/v0.1-preprint/leaderboard-data.json).
+        const V01_RANK = { 'gpt-5.2': 1, 'llama-4-maverick': 2 };
         // The models that wrote the literature reference the rules were designed against and validated on
         // (results/phase2b/label_validation.md; adjudication_notes.md); decision 36 keeps them ranked and flagged.
         const REFERENCE_AUTHORS = {
@@ -567,7 +575,7 @@
                 const others = notSeparatedFrom.get(model);
                 if (!others || !others.length) return '';
                 const names = others.slice().sort((a, b) => rankOf.get(a) - rankOf.get(b)).map(o => NAMES[o] || o).join(', ');
-                return `<span class="tie-chip" title="Not separated from ${esc(names)}: the paired 95% interval of the score difference includes 0 (within-condition interval, not corrected for the 120 comparisons)">not separated from ${rankRuns(others.map(o => rankOf.get(o)))}</span>`;
+                return `<span class="tie-chip" title="Not separated from ${esc(names)}: the paired 95% interval of the score difference includes 0 (within-condition interval, not corrected for the ${d.pair_separation['4aj'].pairs} comparisons)">not separated from ${rankRuns(others.map(o => rankOf.get(o)))}</span>`;
             };
             const authorChip = model => {
                 const v = REFERENCE_AUTHORS[model];
@@ -575,6 +583,9 @@
                 const tip = Array.isArray(v) ? v[1] : v;
                 return `<a class="design-mark" href="#design-note" title="${esc(tip)}" aria-label="Model used in study design">*</a>`;
             };
+            const v01Chip = m => m.v01_reference
+                ? `<a class="design-mark" href="#v01-note" title="v0.1 reference: #${V01_RANK[m.model]} on the v0.1 board, rescored on the v0.3 cases and rules" aria-label="v0.1 reference: #${V01_RANK[m.model]} on the v0.1 board">&dagger;</a><span class="v01-tag">v0.1 #${V01_RANK[m.model]}</span>`
+                : '';
 
             const rows = d.models.map(m => ({ kind: 'model', score: m.score_4aj.value, m }))
                 .concat(d.reference_rows.map(r => ({ kind: 'ref', score: r.score.value, r })))
@@ -598,7 +609,7 @@
                 const tie = tieChip(m.model);
                 return `<tr>
                     <td class="rank">${rank}</td>
-                    <td><span class="model-name">${esc(NAMES[m.model] || m.model)}</span>${authorChip(m.model)}${tie}<span class="model-id">${esc(m.model)}</span></td>
+                    <td><span class="model-name">${esc(NAMES[m.model] || m.model)}</span>${authorChip(m.model)}${v01Chip(m)}${tie}<span class="model-id">${esc(m.model)}</span></td>
                     <td class="num"><span class="score">${f1(m.score_4aj.value)}</span><span class="ci">${ciText(m.score_4aj.ci)}</span><span class="ci" title="Condition bootstrap">cond. ${ciText(m.score_4aj_condition_bootstrap_ci)}</span></td>
                     <td class="bar-cell">${barSvg(m.score_4aj, false)}</td>
                     <td class="num">${f1(m.U.value)}%<span class="ci">${ciText(m.U.ci)}</span></td>

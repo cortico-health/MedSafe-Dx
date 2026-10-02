@@ -2,7 +2,7 @@
 """
 Summarise the settings each model ran under in the v0.3 full run, for the methodology's "Run settings" table.
 
-We read the run config (inference/run_config_v03_abj.json), the two provenance files and every arm-4aj prediction file
+We read the run config (inference/run_config_v03_abj.json), the provenance files and every arm-4aj prediction file
 under results/v03_full/runs/ (git-ignored), and write results/v03_full/run_settings.md, which is committed so the
 methodology can cite it. Per model we report the reasoning effort we sent, the mean reasoning and completion tokens
 per case as OpenRouter reported them (usage.completion_tokens_details.reasoning_tokens, usage.completion_tokens), and
@@ -50,7 +50,9 @@ def main():
         })
     rows.sort(key=lambda r: (r["short"] not in order, order.get(r["short"], 0)))
 
-    prov = {name: json.loads((RUNS / name).read_text()) for name in ("provenance.json", "provenance-expansion.json")}
+    prov = {name: json.loads((RUNS / name).read_text()) for name in ("provenance.json", "provenance-expansion.json",
+                                                                      "provenance-v01-reference.json",
+                                                                      "provenance-v01-reference-resume.json")}
     lines = [
         "# v0.3 full run: run settings per model (arm 4aj)",
         "",
